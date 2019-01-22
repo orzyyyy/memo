@@ -4,9 +4,9 @@ const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
 const fs = require('fs');
 
-function addMapping(router, mapping) {
-  for (var url in mapping) {
-    var path = url.substring(4);
+const addMapping = (router, mapping) => {
+  for (let url in mapping) {
+    let path = url.substring(4);
     if (url.startsWith('GET ')) {
       router.get(path, mapping[url]);
       // eslint-disable-next-line
@@ -21,19 +21,19 @@ function addMapping(router, mapping) {
       console.log(`invalid URL: ${url}`);
     }
   }
-}
+};
 
-function addControllers(router) {
-  var files = fs.readdirSync(__dirname + '/controller');
-  var jsFiles = files.filter(f => {
+const addControllers = router => {
+  let files = fs.readdirSync(__dirname + '/controller');
+  let jsFiles = files.filter(f => {
     return f.endsWith('.js');
   });
 
-  for (var file of jsFiles) {
+  for (let file of jsFiles) {
     let mapping = require(__dirname + '/controller/' + file);
     addMapping(router, mapping);
   }
-}
+};
 
 addControllers(router);
 app.use(bodyParser());

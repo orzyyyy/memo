@@ -2,9 +2,9 @@
   "name": "zy410419243.github.io",
   "version": "0.0.0",
   "description": "A memo for myself",
-  "main": "index.js",
+  "main": "server",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server",
     "lint": "npx eslint .",
     "prettier": "node ./scripts/prettier.js",
     "lint-staged": "lint-staged"
