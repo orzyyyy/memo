@@ -7,6 +7,7 @@
     "start": "start-all.sh",
     "lint": "npx eslint .",
     "server": "node server",
+    "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build.js -w -d",
     "build": "nino koei -c scripts/build.js",
     "prettier": "node ./scripts/prettier.js",
