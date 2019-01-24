@@ -1,4 +1,5 @@
 #!/bin/bash
 
 npm run dev &
-npm run server
+npm run server &
+wait
