@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      hash: true,
       filename: '../index.html',
       minify: {
         minifyJS: true,
