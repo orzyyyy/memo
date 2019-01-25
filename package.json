@@ -4,7 +4,7 @@
   "description": "A memo for myself",
   "main": "server",
   "scripts": {
-    "start": "start-all.sh",
+    "start": "bash ./scripts/start-all.sh",
     "lint": "npx eslint .",
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
