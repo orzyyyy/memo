@@ -85,7 +85,7 @@ export default class demo extends Component {
     return (
       <div className="demo">
         <Toolbar />
-        <Canvas data={data} />
+        <Canvas data={data} className="canvas" />
       </div>
     );
   };
