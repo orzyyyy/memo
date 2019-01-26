@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './assets/demo.css';
 import Canvas from 'mini-xmind/dist/lib/canvas';
 import Toolbar from 'mini-xmind/dist/lib/toolbar';
-import './assets/demo.css';
+import { ajax, isDev } from './urlHelper';
 
 export default class demo extends Component {
   static propTypes = {};
@@ -14,7 +15,31 @@ export default class demo extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    document.onkeydown = e => {
+      const { ctrlKey, keyCode } = e;
+
+      // ctrl + s
+      if (ctrlKey && keyCode === 83) {
+        const data = DataCollector.getAll();
+        this.send();
+      }
+      return false;
+    };
+  };
+
+  send = () => {
+    ajax({
+      url: 'http://localhost:9099/save',
+      params: {
+        method: 'POST',
+        body: JSON.stringify({ name: 'test1' }),
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+      },
+      success: result => {},
+    });
+  };
 
   render = () => {
     const data = {
