@@ -22,22 +22,25 @@ export default class demo extends Component {
       // ctrl + s
       if (ctrlKey && keyCode === 83) {
         const data = DataCollector.getAll();
-        this.send();
+        this.send(data);
       }
       return false;
     };
   };
 
-  send = () => {
+  send = data => {
     ajax({
       url: 'http://localhost:9099/save',
       params: {
         method: 'POST',
-        body: JSON.stringify({ name: 'test1' }),
+        body: JSON.stringify({ layout: data }),
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
       },
-      success: result => {},
+      success: result => {
+        // eslint-disable-next-line
+        console.log(result);
+      },
     });
   };
 

@@ -46,6 +46,8 @@
   ],
   "lint-staged": {
     "*.{js,css}": [
+      "npm run build",
+      "git add dist",
       "npm run prettier",
       "npx eslint .",
       "git add"

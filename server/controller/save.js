@@ -1,8 +1,6 @@
 const saveLayout = async (ctx, next) => {
   const body = ctx.request.body;
-  // eslint-disable-next-line
-  console.log(body);
-  ctx.response.body = 'result';
+  ctx.response.body = body.layout;
 };
 
 module.exports = {
