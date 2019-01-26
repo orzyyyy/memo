@@ -11,6 +11,7 @@
     "dev": "nino koei -c scripts/build.js -w -d",
     "build": "nino koei -c scripts/build.js",
     "prettier": "node ./scripts/prettier.js",
+    "test": "nino test",
     "lint-staged": "lint-staged"
   },
   "repository": {
