@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './assets/demo.css';
+import '../assets/demo.css';
 import Canvas from 'mini-xmind/dist/lib/canvas';
 import Toolbar from 'mini-xmind/dist/lib/toolbar';
-import { ajax, isDev } from './urlHelper';
+import { ajax, isDev } from '../urlHelper';
 
 export default class demo extends Component {
   static propTypes = {};
