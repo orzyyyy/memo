@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Demo from './demo';
+import Demo from './pages';
 
 const MOUNT_NODE = document.getElementById('root');
 

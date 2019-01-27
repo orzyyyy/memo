@@ -1,6 +1,7 @@
 const path = require('path');
 const cwd = process.cwd();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   output: {
@@ -17,5 +18,15 @@ module.exports = {
         collapseWhitespace: true,
       },
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(cwd, '/src/mapping.json'),
+        to: path.join(cwd, '/dist/lib/main/mapping.json'),
+      },
+      {
+        from: path.join(cwd, '/src/layout'),
+        to: path.join(cwd, 'dist/lib/main/layout'),
+      },
+    ]),
   ],
 };
