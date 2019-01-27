@@ -20,8 +20,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.join(cwd, '/src/mapping'),
-        to: path.join(cwd, '/dist/lib/main/mapping'),
+        from: path.join(cwd, '/src/mapping.json'),
+        to: path.join(cwd, '/dist/lib/main/mapping.json'),
       },
       {
         from: path.join(cwd, '/src/layout'),
