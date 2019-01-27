@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../assets/MainPage.css';
 import { ajax } from '../urlHelper';
 import { Card, Dropdown, Menu } from 'antd';
-import classNames from 'classnames';
 
 export default class MainPage extends Component {
   static propTypes = {};
@@ -14,6 +13,9 @@ export default class MainPage extends Component {
 
     this.state = {
       data: [],
+      status: 'main', // main => MainPage, detail => mapping
+      Detail: null,
+      mappingId: '',
     };
   }
 
@@ -25,11 +27,16 @@ export default class MainPage extends Component {
   };
 
   handleClick = ({ id }) => {
-    // eslint-disable-next-line
-    console.log(id);
+    import('./mapping').then(target => {
+      this.setState({
+        Detail: target.default,
+        status: 'detail',
+        mappingId: id,
+      });
+    });
   };
 
-  render = () => {
+  generateMainPage = () => {
     const { data } = this.state;
     const menu = (
       <Menu>
@@ -37,22 +44,28 @@ export default class MainPage extends Component {
         <Menu.Item key="2">删除</Menu.Item>
       </Menu>
     );
+    return data.map(item => {
+      const { thumbnailUrl, id, hoverText } = item;
+      return (
+        <Card.Grid className="card" key={id}>
+          <Dropdown overlay={menu} trigger={['contextMenu']}>
+            <img src={thumbnailUrl} onClick={() => this.handleClick(item)} />
+          </Dropdown>
+        </Card.Grid>
+      );
+    });
+  };
 
+  generateDetail = () => {
+    const { Detail, mappingId } = this.state;
+    return this.state.Detail && <Detail id={mappingId} />;
+  };
+
+  render = () => {
+    const { status } = this.state;
     return (
       <div className="MainPage">
-        {data.map(item => {
-          const { thumbnailUrl, id, hoverText } = item;
-          return (
-            <Card.Grid className="card" key={id}>
-              <Dropdown overlay={menu} trigger={['contextMenu']}>
-                <img
-                  src={thumbnailUrl}
-                  onClick={() => this.handleClick(item)}
-                />
-              </Dropdown>
-            </Card.Grid>
-          );
-        })}
+        {status === 'main' ? this.generateMainPage() : this.generateDetail()}
       </div>
     );
   };
