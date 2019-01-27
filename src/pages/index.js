@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../assets/demo.css';
+import '../assets/MainPage.css';
 import { ajax } from '../urlHelper';
-import { Card, Tooltip } from 'antd';
+import { Card, Dropdown, Menu } from 'antd';
+import classNames from 'classnames';
 
 export default class MainPage extends Component {
   static propTypes = {};
@@ -23,23 +24,33 @@ export default class MainPage extends Component {
     });
   };
 
+  handleClick = ({ id }) => {
+    // eslint-disable-next-line
+    console.log(id);
+  };
+
   render = () => {
     const { data } = this.state;
-    const gridStyle = {
-      width: '25%',
-      textAlign: 'center',
-    };
+    const menu = (
+      <Menu>
+        <Menu.Item key="1">修改</Menu.Item>
+        <Menu.Item key="2">删除</Menu.Item>
+      </Menu>
+    );
 
     return (
       <div className="MainPage">
         {data.map(item => {
           const { thumbnailUrl, id, hoverText } = item;
           return (
-            <Tooltip title={hoverText} key={id}>
-              <Card.Grid style={gridStyle}>
-                <img src={thumbnailUrl} />
-              </Card.Grid>
-            </Tooltip>
+            <Card.Grid className="card" key={id}>
+              <Dropdown overlay={menu} trigger={['contextMenu']}>
+                <img
+                  src={thumbnailUrl}
+                  onClick={() => this.handleClick(item)}
+                />
+              </Dropdown>
+            </Card.Grid>
           );
         })}
       </div>
