@@ -19,7 +19,7 @@ export default class MainPage extends Component {
 
   componentDidMount = () => {
     ajax({
-      url: 'dist/lib/main/mapping.json',
+      url: 'dist/mapping.json',
       success: data => this.setState({ data }),
     });
   };
