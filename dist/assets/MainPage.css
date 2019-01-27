@@ -1,0 +1,22 @@
+.MainPage img {
+  width: 100%;
+}
+
+.MainPage .card {
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.MainPage .animate-appear {
+  animation: 0.3s appear 0s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
