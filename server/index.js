@@ -4,6 +4,7 @@ const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
 const fs = require('fs');
 const KoaStatic = require('koa-static');
+const path = require('path');
 
 const addMapping = (router, mapping) => {
   for (let url in mapping) {
@@ -36,6 +37,7 @@ app.use(bodyParser());
 app.use(router.routes());
 
 app.use(KoaStatic(process.cwd()));
+app.use(KoaStatic(path.join(process.cwd(), 'dist')));
 
 app.listen(9099);
 // eslint-disable-next-line
