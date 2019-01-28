@@ -42,7 +42,8 @@
     "mini-xmind": "^1.0.3",
     "nino-cli": "^0.2.5",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "react-router-dom": "^4.3.1"
   },
   "pre-commit": [
     "lint-staged"

@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   output: {
     path: path.join(cwd + '/dist'),
+    publicPath: '/dist/',
   },
   plugins: [
     new HtmlWebpackPlugin({
