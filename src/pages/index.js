@@ -58,14 +58,15 @@ export default class MainPage extends Component {
 
   generateDetail = () => {
     const { Detail, mappingId } = this.state;
-    return this.state.Detail && <Detail id={mappingId} />;
+    return Detail && <Detail id={mappingId} />;
   };
 
   render = () => {
     const { status } = this.state;
     return (
       <div className="MainPage">
-        {status === 'main' ? this.generateMainPage() : this.generateDetail()}
+        {status === 'main' && this.generateMainPage()}
+        {status === 'detail' && this.generateDetail()}
       </div>
     );
   };

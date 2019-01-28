@@ -13,7 +13,10 @@ export default class mapping extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    // eslint-disable-next-line
+    console.log(this.props.id);
+  };
 
   render = () => {
     return <div className="mapping">mapping</div>;
