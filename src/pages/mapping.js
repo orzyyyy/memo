@@ -15,7 +15,7 @@ export default class mapping extends Component {
 
   componentDidMount = () => {
     // eslint-disable-next-line
-    console.log(this.props.id);
+    console.log(location);
   };
 
   render = () => {

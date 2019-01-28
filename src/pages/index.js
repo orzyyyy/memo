@@ -27,13 +27,7 @@ export default class MainPage extends Component {
   };
 
   handleClick = ({ id }) => {
-    import('./mapping').then(target => {
-      this.setState({
-        Detail: target.default,
-        status: 'detail',
-        mappingId: id,
-      });
-    });
+    location.hash = `/${id}`;
   };
 
   generateMainPage = () => {
