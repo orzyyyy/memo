@@ -37,7 +37,6 @@ app.use(bodyParser());
 app.use(router.routes());
 
 app.use(KoaStatic(process.cwd()));
-app.use(KoaStatic(path.join(process.cwd(), 'dist')));
 
 app.listen(9099);
 // eslint-disable-next-line
