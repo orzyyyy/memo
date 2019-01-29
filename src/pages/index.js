@@ -30,12 +30,19 @@ export default class MainPage extends Component {
     location.hash = `/${id}`;
   };
 
+  handleDelete = ({ item, key, keyPath }) => {
+    // eslint-disable-next-line
+    console.log(item, key, keyPath);
+  };
+
   generateMainPage = () => {
     const { data } = this.state;
     const menu = (
       <Menu>
         <Menu.Item key="1">修改</Menu.Item>
-        <Menu.Item key="2">删除</Menu.Item>
+        <Menu.Item key="2" onClick={this.handleDelete}>
+          删除
+        </Menu.Item>
       </Menu>
     );
     return data.map(item => {
