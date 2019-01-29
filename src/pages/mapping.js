@@ -36,11 +36,12 @@ export default class mapping extends Component {
   };
 
   send = data => {
+    const id = this.getMappingId();
     ajax({
       url: 'save',
       params: {
         method: 'POST',
-        body: JSON.stringify({ layout: data }),
+        body: JSON.stringify({ layout: data, id }),
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
       },
