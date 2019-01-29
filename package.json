@@ -35,6 +35,7 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
+    "blueimp-md5": "^2.10.0",
     "date-fns": "^2.0.0-alpha.27",
     "eslint": "^5.12.1",
     "husky": "^1.3.1",

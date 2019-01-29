@@ -45,8 +45,9 @@ export default class mapping extends Component {
         headers: { 'Content-Type': 'application/json' },
       },
       success: result => {
-        // eslint-disable-next-line
-        console.log(result);
+        if (!result) {
+          console.error('error with save');
+        }
       },
     });
   };
