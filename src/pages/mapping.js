@@ -5,10 +5,6 @@ import Canvas from 'mini-xmind/dist/lib/canvas';
 import Toolbar from 'mini-xmind/dist/lib/toolbar';
 
 export default class mapping extends Component {
-  static propTypes = {};
-
-  static defaultProps = {};
-
   constructor(props) {
     super(props);
 
