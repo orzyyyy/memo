@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const generate = require('../generateMapping');
 
 const del = async ctx => {
   const body = ctx.request.body;
@@ -14,6 +15,7 @@ const del = async ctx => {
         throw Error("file doesn't exist.");
       }
     }
+    generate();
     ctx.response.body = true;
   } catch (error) {
     ctx.response.body = false;

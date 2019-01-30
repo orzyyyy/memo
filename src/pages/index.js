@@ -68,6 +68,6 @@ export default class MainPage extends Component {
   };
 
   render = () => {
-    return <div className="MainPage">this.generateMainPage()</div>;
+    return <div className="MainPage">{this.generateMainPage()}</div>;
   };
 }

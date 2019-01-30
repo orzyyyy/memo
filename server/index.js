@@ -4,6 +4,7 @@ const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
 const fs = require('fs');
 const KoaStatic = require('koa-static');
+const generate = require('./generateMapping');
 
 const addMapping = (router, mapping) => {
   for (let url in mapping) {
@@ -37,6 +38,7 @@ const addControllers = router => {
   }
 };
 
+generate();
 addControllers(router);
 app.use(bodyParser());
 app.use(router.routes());
