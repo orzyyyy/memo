@@ -109,11 +109,6 @@ export default class MainPage extends Component {
   };
 
   render = () => {
-    const menu = (
-      <Menu>
-        <Menu.Item onClick={this.handleAdd}>新增</Menu.Item>
-      </Menu>
-    );
     return <div className="MainPage">{this.generateMainPage()}</div>;
   };
 }
