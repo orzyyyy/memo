@@ -4,10 +4,6 @@ import { ajax } from '../urlHelper';
 import { Card, Dropdown, Menu } from 'antd';
 
 export default class MainPage extends Component {
-  static propTypes = {};
-
-  static defaultProps = {};
-
   constructor(props) {
     super(props);
 
@@ -17,6 +13,10 @@ export default class MainPage extends Component {
   }
 
   componentDidMount = () => {
+    this.getMapping();
+  };
+
+  getMapping = () => {
     ajax({
       url: 'dist/mapping.json',
       success: data => this.setState({ data }),
@@ -39,6 +39,8 @@ export default class MainPage extends Component {
       success: result => {
         if (!result) {
           console.error('error with delete');
+        } else {
+          this.getMapping();
         }
       },
     });
