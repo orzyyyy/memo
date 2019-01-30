@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/MainPage.css';
 import { ajax } from '../urlHelper';
-import { Card, Dropdown, Menu } from 'antd';
+import { Card, Dropdown, Menu, Icon } from 'antd';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -46,23 +46,56 @@ export default class MainPage extends Component {
     });
   };
 
+  handleAdd = () => {
+    ajax({
+      url: 'save/new',
+      type: 'text',
+      params: {
+        method: 'POST',
+        body: '',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+      },
+      success: result => {
+        if (result) {
+          location.hash = '/' + result;
+        }
+      },
+    });
+  };
+
   generateMainPage = () => {
     const { data } = this.state;
+
+    const add = (
+      <Card.Grid className="card" key="add" onClick={this.handleAdd}>
+        <Icon type="plus" />
+      </Card.Grid>
+    );
+    if (data.length == 0) {
+      return add;
+    }
     return data.map(item => {
       const { thumbnailUrl, id, hoverText } = item;
       const menu = (
         <Menu>
-          <Menu.Item key="delete" onClick={() => this.handleDelete(item)}>
+          <Menu.Item
+            key={`delete-${id}`}
+            onClick={() => this.handleDelete(item)}
+          >
             删除
           </Menu.Item>
         </Menu>
       );
       return (
-        <Card.Grid className="card" key={id}>
-          <Dropdown overlay={menu} trigger={['contextMenu']}>
-            <img src={thumbnailUrl} onClick={() => this.handleClick(item)} />
-          </Dropdown>
-        </Card.Grid>
+        <React.Fragment key={`fragment-${id}`}>
+          <Card.Grid className="card">
+            <Dropdown overlay={menu} trigger={['contextMenu']}>
+              <img src={thumbnailUrl} onClick={() => this.handleClick(item)} />
+            </Dropdown>
+          </Card.Grid>
+          {add}
+        </React.Fragment>
       );
     });
   };
