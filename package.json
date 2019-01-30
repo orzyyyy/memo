@@ -10,7 +10,6 @@
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build.js -w -d",
     "build": "nino koei -c scripts/build.js",
-    "generate": "node scripts/generateMapping.js",
     "prettier": "node ./scripts/prettier.js",
     "test": "nino test",
     "lint-staged": "lint-staged"

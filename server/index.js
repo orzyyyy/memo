@@ -4,7 +4,7 @@ const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
 const fs = require('fs');
 const KoaStatic = require('koa-static');
-const path = require('path');
+const generate = require('./generateMapping');
 
 const addMapping = (router, mapping) => {
   for (let url in mapping) {
@@ -14,6 +14,12 @@ const addMapping = (router, mapping) => {
     } else if (url.startsWith('POST ')) {
       path = url.substring(5);
       router.post(path, mapping[url]);
+    } else if (url.startsWith('DELETE ')) {
+      path = url.substring(7);
+      router.delete(path, mapping[url]);
+    } else if (url.startsWith('PUT ')) {
+      path = url.substring(4);
+      router.put(path, mapping[url]);
     } else {
       console.error(`invalid URL: ${url}`);
     }
@@ -32,6 +38,7 @@ const addControllers = router => {
   }
 };
 
+generate();
 addControllers(router);
 app.use(bodyParser());
 app.use(router.routes());
