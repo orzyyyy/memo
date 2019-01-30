@@ -13,9 +13,6 @@ export default class MainPage extends Component {
 
     this.state = {
       data: [],
-      status: 'main', // main => MainPage, detail => mapping
-      Detail: null,
-      mappingId: '',
     };
   }
 
@@ -69,18 +66,7 @@ export default class MainPage extends Component {
     });
   };
 
-  generateDetail = () => {
-    const { Detail, mappingId } = this.state;
-    return Detail && <Detail id={mappingId} />;
-  };
-
   render = () => {
-    const { status } = this.state;
-    return (
-      <div className="MainPage">
-        {status === 'main' && this.generateMainPage()}
-        {status === 'detail' && this.generateDetail()}
-      </div>
-    );
+    return <div className="MainPage">this.generateMainPage()</div>;
   };
 }
