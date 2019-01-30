@@ -75,29 +75,36 @@ export default class MainPage extends Component {
     if (data.length == 0) {
       return add;
     }
-    return data.map(item => {
-      const { thumbnailUrl, id, hoverText } = item;
-      const menu = (
-        <Menu>
-          <Menu.Item
-            key={`delete-${id}`}
-            onClick={() => this.handleDelete(item)}
-          >
-            删除
-          </Menu.Item>
-        </Menu>
-      );
-      return (
-        <React.Fragment key={`fragment-${id}`}>
-          <Card.Grid className="card">
-            <Dropdown overlay={menu} trigger={['contextMenu']}>
-              <img src={thumbnailUrl} onClick={() => this.handleClick(item)} />
-            </Dropdown>
-          </Card.Grid>
-          {add}
-        </React.Fragment>
-      );
-    });
+    return (
+      <>
+        {data.map(item => {
+          const { thumbnailUrl, id, hoverText } = item;
+          const menu = (
+            <Menu>
+              <Menu.Item
+                key={`delete-${id}`}
+                onClick={() => this.handleDelete(item)}
+              >
+                删除
+              </Menu.Item>
+            </Menu>
+          );
+          return (
+            <React.Fragment key={`fragment-${id}`}>
+              <Card.Grid className="card">
+                <Dropdown overlay={menu} trigger={['contextMenu']}>
+                  <img
+                    src={thumbnailUrl}
+                    onClick={() => this.handleClick(item)}
+                  />
+                </Dropdown>
+              </Card.Grid>
+            </React.Fragment>
+          );
+        })}
+        {add}
+      </>
+    );
   };
 
   render = () => {
