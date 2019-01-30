@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/MainPage.css';
 import { ajax } from '../urlHelper';
-import { Card, Dropdown, Menu, Icon } from 'antd';
+import { Card, Dropdown, Menu } from 'antd';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -67,20 +67,15 @@ export default class MainPage extends Component {
   generateMainPage = () => {
     const { data } = this.state;
 
-    const add = (
-      <Card.Grid className="card" key="add" onClick={this.handleAdd}>
-        <Icon type="plus" />
-      </Card.Grid>
-    );
-    if (data.length == 0) {
-      return add;
-    }
     return (
       <>
         {data.map(item => {
           const { thumbnailUrl, id, hoverText } = item;
           const menu = (
             <Menu>
+              <Menu.Item key={`add-${id}`} onClick={this.handleAdd}>
+                新增
+              </Menu.Item>
               <Menu.Item
                 key={`delete-${id}`}
                 onClick={() => this.handleDelete(item)}
@@ -102,12 +97,20 @@ export default class MainPage extends Component {
             </React.Fragment>
           );
         })}
-        {add}
       </>
     );
   };
 
   render = () => {
-    return <div className="MainPage">{this.generateMainPage()}</div>;
+    const menu = (
+      <Menu>
+        <Menu.Item onClick={this.handleAdd}>新增</Menu.Item>
+      </Menu>
+    );
+    return (
+      <Dropdown overlay={menu} trigger={['contextMenu']}>
+        <div className="MainPage">{this.generateMainPage()}</div>
+      </Dropdown>
+    );
   };
 }

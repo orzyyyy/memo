@@ -3,20 +3,18 @@
 }
 
 .MainPage .card {
-  width: 25%;
+  width: 15%;
   text-align: center;
   cursor: pointer;
 }
 
-.MainPage .animate-appear {
-  animation: 0.3s appear 0s;
+.MainPage .add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 288px;
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.MainPage {
+  height: 100vh;
 }
