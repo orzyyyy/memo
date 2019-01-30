@@ -15,6 +15,10 @@ export default class Entry extends Component {
               component={props => <MainPage {...props} />}
               exact
             />
+            <Route
+              path="/new"
+              component={props => <MappingDetail {...props} />}
+            />
             {mapping.map(item => {
               const { id } = item;
               return (
