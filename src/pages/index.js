@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/MainPage.css';
 import { ajax } from '../urlHelper';
-import { Card, Dropdown, Menu } from 'antd';
+import { Card, Dropdown, Menu, Icon } from 'antd';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -67,6 +67,13 @@ export default class MainPage extends Component {
   generateMainPage = () => {
     const { data } = this.state;
 
+    if (data.length == 0) {
+      return (
+        <Card.Grid className="card add" onClick={this.handleAdd}>
+          <Icon type="plus" />
+        </Card.Grid>
+      );
+    }
     return (
       <>
         {data.map(item => {
@@ -107,10 +114,6 @@ export default class MainPage extends Component {
         <Menu.Item onClick={this.handleAdd}>新增</Menu.Item>
       </Menu>
     );
-    return (
-      <Dropdown overlay={menu} trigger={['contextMenu']}>
-        <div className="MainPage">{this.generateMainPage()}</div>
-      </Dropdown>
-    );
+    return <div className="MainPage">{this.generateMainPage()}</div>;
   };
 }
