@@ -60,7 +60,12 @@ export default class mapping extends Component {
 
   getMappingId = () => {
     const hash = location.hash.split('/');
-    return hash[hash.length - 1];
+    const param = hash[hash.length - 1];
+    if (param.includes('?')) {
+      const search = param.split('?');
+      return search[search.length - 1];
+    }
+    return param;
   };
 
   render = () => {

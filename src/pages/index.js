@@ -58,7 +58,7 @@ export default class MainPage extends Component {
       },
       success: result => {
         if (result) {
-          location.hash = '/' + result;
+          location.hash = '/new?' + result;
         }
       },
     });
