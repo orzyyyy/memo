@@ -38,8 +38,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: npm run codecov
-      - run: bash <(curl -s https://codecov.io/bash) -t b0824134-3eef-4895-8b64-95d258ac57aa
+      - run: npm test
 
 workflows:
   version: 2
