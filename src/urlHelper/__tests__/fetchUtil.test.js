@@ -5,7 +5,6 @@ import {
   getRealUrl,
   checkMethod,
 } from '..';
-import 'nino-cli/scripts/setup';
 
 const error = console.error;
 
