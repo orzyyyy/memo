@@ -1,6 +1,5 @@
 codecov:
   branch: master
-  token: b0824134-3eef-4895-8b64-95d258ac57aa
 
 coverage:
   status:
