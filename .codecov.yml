@@ -1,5 +1,5 @@
 codecov:
-  branch: codecov
+  branch: master
 
 coverage:
   status:
