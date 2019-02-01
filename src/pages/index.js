@@ -40,6 +40,7 @@ export default class MainPage extends Component {
         if (!result) {
           console.error('error with delete');
         } else {
+          DataCollector.clear();
           this.getMapping();
         }
       },

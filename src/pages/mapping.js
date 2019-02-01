@@ -44,6 +44,8 @@ export default class mapping extends Component {
       success: result => {
         if (!result) {
           console.error('error with save');
+        } else {
+          DataCollector.clear();
         }
       },
     });
