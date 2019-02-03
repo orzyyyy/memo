@@ -45,7 +45,7 @@ export default class mapping extends Component {
         if (!result) {
           console.error('error with save');
         } else {
-          // DataCollector.clear();
+          location.reload();
         }
       },
     });
