@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/mapping.css';
 import { ajax } from '../urlHelper';
-import Canvas from 'mini-xmind/dist/lib/canvas';
-import Toolbar from 'mini-xmind/dist/lib/toolbar';
+import { Canvas, Toolbar } from 'mini-xmind';
 
 export default class mapping extends Component {
   constructor(props) {
