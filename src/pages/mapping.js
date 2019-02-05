@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../assets/mapping.css';
 import { ajax } from '../urlHelper';
 import { Canvas, Toolbar } from 'mini-xmind';
+import { message } from 'antd';
+import { format } from 'date-fns';
+import { zhCN } from 'date-fns/locale';
 
 export default class mapping extends Component {
   constructor(props) {
@@ -42,9 +45,9 @@ export default class mapping extends Component {
       },
       success: result => {
         if (!result) {
-          console.error('error with save');
+          message.error('error with save');
         } else {
-          location.reload();
+          this.getMapping();
         }
       },
     });
@@ -55,7 +58,13 @@ export default class mapping extends Component {
 
     ajax({
       url: `dist/layout/${id}.json`,
-      success: data => this.setState({ data }),
+      success: data => {
+        const date = format(new Date(), 'a HH:mm:ss', {
+          locale: zhCN,
+        });
+        message.success(`更新时间：${date}`);
+        this.setState({ data });
+      },
     });
   };
 
