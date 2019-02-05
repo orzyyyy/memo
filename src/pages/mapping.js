@@ -47,7 +47,8 @@ export default class mapping extends Component {
         if (!result) {
           message.error('error with save');
         } else {
-          this.getMapping();
+          location.reload();
+          // this.getMapping();
         }
       },
     });
