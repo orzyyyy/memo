@@ -15,8 +15,8 @@ module.exports = function() {
       title: 'test1',
       thumbnailUrl: 'dist/assets/5795774_0.jpg',
       hoverText: '测试 layout-' + fileName,
-      createTime: new Date().getTime(),
-      modifyTime: new Date().getTime(),
+      // createTime: new Date().getTime(),
+      // modifyTime: new Date().getTime(),
     });
   }
 
