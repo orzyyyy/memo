@@ -84,7 +84,7 @@ export default class mapping extends Component {
     return (
       <div className="mapping">
         <Toolbar />
-        <Canvas data={data} className="canvas" orientation="v" />
+        <Canvas data={data} className="canvas-wrapper" orientation="v" />
       </div>
     );
   };
