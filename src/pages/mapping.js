@@ -6,7 +6,7 @@ import { message } from 'antd';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 
-export default class mapping extends Component {
+export default class Mapping extends Component {
   constructor(props) {
     super(props);
 
@@ -28,8 +28,9 @@ export default class mapping extends Component {
       if (ctrlKey && keyCode === 83) {
         const data = DataCollector.getAll();
         this.send(data);
+      } else {
+        e.stopPropagation();
       }
-      return false;
     };
   };
 
