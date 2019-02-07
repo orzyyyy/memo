@@ -51,8 +51,6 @@
   ],
   "lint-staged": {
     "*.{js,css}": [
-      "npm run build",
-      "git add dist",
       "npm run prettier",
       "git add"
     ]
