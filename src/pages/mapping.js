@@ -22,6 +22,7 @@ export default class Mapping extends Component {
 
   bindKeyDown = () => {
     document.onkeydown = e => {
+      e.preventDefault();
       const { ctrlKey, keyCode } = e;
 
       // ctrl + s
