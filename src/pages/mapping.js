@@ -22,11 +22,11 @@ export default class Mapping extends Component {
 
   bindKeyDown = () => {
     document.onkeydown = e => {
-      e.preventDefault();
       const { ctrlKey, keyCode } = e;
 
       // ctrl + s
       if (ctrlKey && keyCode === 83) {
+        e.preventDefault();
         const data = DataCollector.getAll();
         this.send(data);
       } else {
