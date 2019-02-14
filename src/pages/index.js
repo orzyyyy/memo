@@ -12,6 +12,8 @@ export default class MainPage extends Component {
 
     this.state = {
       data: [],
+      breadParent: defaultOpenKeys,
+      breadChild: defaultSelectedKeys,
     };
   }
 
@@ -68,8 +70,15 @@ export default class MainPage extends Component {
     });
   };
 
+  handleMenuClick = ({ keyPath }) => {
+    this.setState({
+      breadChild: keyPath[0],
+      breadParent: keyPath[1],
+    });
+  };
+
   generateMainPage = () => {
-    const { data } = this.state;
+    const { data, breadParent, breadChild } = this.state;
 
     if (data.length == 0) {
       return (
@@ -82,9 +91,10 @@ export default class MainPage extends Component {
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible theme="light">
           <Menu
-            defaultSelectedKeys={defaultSelectedKeys}
-            defaultOpenKeys={defaultOpenKeys}
+            defaultSelectedKeys={[defaultSelectedKeys]}
+            defaultOpenKeys={[defaultOpenKeys]}
             mode="inline"
+            onClick={this.handleMenuClick}
           >
             {menu.map(item => {
               const { key, title, children } = item;
@@ -101,8 +111,8 @@ export default class MainPage extends Component {
         <Layout>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
+              <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
               {data.map(item => {

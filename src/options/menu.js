@@ -1,30 +1,26 @@
-import React from 'react';
-
-const defaultSelectedKeys = ['3'];
-const defaultOpenKeys = ['js'];
+const defaultSelectedKeys = 'basic';
+const defaultOpenKeys = 'JavaScript';
 const menu = [
   {
-    key: 'js',
-    title: <span>User</span>,
+    key: 'JavaScript',
+    title: 'JavaScript',
     children: [
       {
-        key: '3',
-        value: 'tom',
+        key: 'basic',
+        value: '基础',
       },
-      { key: '4', value: 'Bill' },
-      { key: '5', value: 'Alex' },
+      { key: 'react', value: 'react' },
+      { key: 'optimization', value: '优化' },
     ],
   },
   {
-    key: 'js1',
-    title: <span>User</span>,
+    key: 'music-theory',
+    title: '乐理',
     children: [
       {
-        key: '31',
-        value: 'tom',
+        key: 'musical-pitch',
+        value: '音律',
       },
-      { key: '41', value: 'Bill' },
-      { key: '51', value: 'Alex' },
     ],
   },
 ];

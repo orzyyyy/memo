@@ -57,36 +57,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultSelectedKeys", function() { return defaultSelectedKeys; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultOpenKeys", function() { return defaultOpenKeys; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "menu", function() { return menu; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/_react@16.7.0@react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-var defaultSelectedKeys = ['3'];
-var defaultOpenKeys = ['js'];
+var defaultSelectedKeys = 'basic';
+var defaultOpenKeys = 'JavaScript';
 var menu = [{
-  key: 'js',
-  title: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User"),
+  key: 'JavaScript',
+  title: 'JavaScript',
   children: [{
-    key: '3',
-    value: 'tom'
+    key: 'basic',
+    value: '基础'
   }, {
-    key: '4',
-    value: 'Bill'
+    key: 'react',
+    value: 'react'
   }, {
-    key: '5',
-    value: 'Alex'
+    key: 'optimization',
+    value: '优化'
   }]
 }, {
-  key: 'js1',
-  title: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User"),
+  key: 'music-theory',
+  title: '乐理',
   children: [{
-    key: '31',
-    value: 'tom'
-  }, {
-    key: '41',
-    value: 'Bill'
-  }, {
-    key: '51',
-    value: 'Alex'
+    key: 'musical-pitch',
+    value: '音律'
   }]
 }];
 
@@ -255,8 +246,20 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleMenuClick", function (_ref3) {
+      var keyPath = _ref3.keyPath;
+
+      _this.setState({
+        breadChild: keyPath[0],
+        breadParent: keyPath[1]
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "generateMainPage", function () {
-      var data = _this.state.data;
+      var _this$state = _this.state,
+          data = _this$state.data,
+          breadParent = _this$state.breadParent,
+          breadChild = _this$state.breadChild;
 
       if (data.length == 0) {
         return react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_card__WEBPACK_IMPORTED_MODULE_7___default.a.Grid, {
@@ -275,9 +278,10 @@ function (_Component) {
         collapsible: true,
         theme: "light"
       }, react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_menu__WEBPACK_IMPORTED_MODULE_13___default.a, {
-        defaultSelectedKeys: _options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultSelectedKeys"],
-        defaultOpenKeys: _options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultOpenKeys"],
-        mode: "inline"
+        defaultSelectedKeys: [_options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultSelectedKeys"]],
+        defaultOpenKeys: [_options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultOpenKeys"]],
+        mode: "inline",
+        onClick: _this.handleMenuClick
       }, _options_menu__WEBPACK_IMPORTED_MODULE_17__["menu"].map(function (item) {
         var key = item.key,
             title = item.title,
@@ -298,7 +302,7 @@ function (_Component) {
         style: {
           margin: '16px 0'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_breadcrumb__WEBPACK_IMPORTED_MODULE_5___default.a.Item, null, "User"), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_breadcrumb__WEBPACK_IMPORTED_MODULE_5___default.a.Item, null, "Bill")), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_breadcrumb__WEBPACK_IMPORTED_MODULE_5___default.a.Item, null, breadParent), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_breadcrumb__WEBPACK_IMPORTED_MODULE_5___default.a.Item, null, breadChild)), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
         style: {
           padding: 24,
           background: '#fff',
@@ -345,7 +349,9 @@ function (_Component) {
     });
 
     _this.state = {
-      data: []
+      data: [],
+      breadParent: _options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultOpenKeys"],
+      breadChild: _options_menu__WEBPACK_IMPORTED_MODULE_17__["defaultSelectedKeys"]
     };
     return _this;
   }
