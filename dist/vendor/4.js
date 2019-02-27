@@ -55,11 +55,11 @@ if(false) {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mapping; });
-/* harmony import */ var antd_lib_message_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd/lib/message/style/css */ "./node_modules/_antd@3.12.4@antd/lib/message/style/css.js");
+/* harmony import */ var antd_lib_message_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd/lib/message/style/css */ "./node_modules/_antd@3.13.6@antd/lib/message/style/css.js");
 /* harmony import */ var antd_lib_message_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/message */ "./node_modules/_antd@3.12.4@antd/lib/message/index.js");
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/message */ "./node_modules/_antd@3.13.6@antd/lib/message/index.js");
 /* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/_react@16.7.0@react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/_react@16.8.3@react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _assets_mapping_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/mapping.css */ "./src/assets/mapping.css");
 /* harmony import */ var _assets_mapping_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_mapping_css__WEBPACK_IMPORTED_MODULE_3__);
@@ -79,11 +79,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -106,13 +106,13 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Mapping).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       _this.bindKeyDown();
 
       _this.getMapping();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "bindKeyDown", function () {
+    _defineProperty(_assertThisInitialized(_this), "bindKeyDown", function () {
       document.onkeydown = function (e) {
         var ctrlKey = e.ctrlKey,
             keyCode = e.keyCode; // ctrl + s
@@ -128,7 +128,7 @@ function (_Component) {
       };
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "send", function (data) {
+    _defineProperty(_assertThisInitialized(_this), "send", function (data) {
       var id = _this.getMappingId();
 
       Object(_urlHelper__WEBPACK_IMPORTED_MODULE_4__["ajax"])({
@@ -154,7 +154,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getMapping", function () {
+    _defineProperty(_assertThisInitialized(_this), "getMapping", function () {
       var id = _this.getMappingId();
 
       Object(_urlHelper__WEBPACK_IMPORTED_MODULE_4__["ajax"])({
@@ -173,7 +173,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getMappingId", function () {
+    _defineProperty(_assertThisInitialized(_this), "getMappingId", function () {
       var hash = location.hash.split('/');
       var param = hash[hash.length - 1];
 
@@ -185,7 +185,7 @@ function (_Component) {
       return param;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "render", function () {
+    _defineProperty(_assertThisInitialized(_this), "render", function () {
       var data = _this.state.data;
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "mapping"
@@ -226,6 +226,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ajax", function() { return ajax; });
 /* harmony import */ var _path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./path */ "./src/urlHelper/path.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDev", function() { return _path__WEBPACK_IMPORTED_MODULE_0__["isDev"]; });
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 // import { fetch } from 'whatwg-fetch';
 
@@ -278,12 +280,12 @@ var ajax = function ajax(_ref) {
     };
   }
 
-  postParam = Object.assign({}, postParam, params);
+  postParam = _extends({}, postParam, params);
   fetch(realUrl + realParams, postParam).then(function (result) {
     return result[type]();
   }).then(function (result) {
     return success && success(result);
-  }).catch(function (err) {
+  })["catch"](function (err) {
     return error && error(err);
   });
 };
