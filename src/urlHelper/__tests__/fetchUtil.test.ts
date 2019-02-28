@@ -53,9 +53,6 @@ describe('fetchUtil', () => {
   it('serialize should work', () => {
     expect(serialize(data, '&')).toBe(dataStr);
     expect(serialize(data, '%26')).toBe('apple=1%26orange=2');
-
-    data = dataStr;
-    expect(serialize(data, '&')).toBe(data);
     expect(serialize([])).toBe('');
     expect(serialize({})).toBe('');
   });

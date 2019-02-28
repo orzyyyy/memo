@@ -3,7 +3,18 @@ import { path, proxy, isDev } from './path';
 
 const types = ['json', 'html', 'text'];
 const methods = ['GET', 'POST', 'PUT', 'DELETE'];
-
+export interface ajaxProps {
+  url?: string;
+  key?: any;
+  method?: string;
+  data?: any;
+  type?: string;
+  success?: (result: any) => void;
+  params?: any;
+  fix?: string;
+  isProxy?: boolean;
+  error?: any;
+}
 /**
  * 封装的fetch请求
  * @param { key } 请求地址对应的简写key
@@ -28,7 +39,7 @@ const ajax = ({
   fix = '&',
   isProxy = false,
   error,
-}) => {
+}: ajaxProps) => {
   let realUrl,
     realParams,
     postParam = {};
@@ -57,7 +68,7 @@ const ajax = ({
     .catch(err => error && error(err));
 };
 
-export const checkMethod = method => {
+export const checkMethod = (method: any) => {
   if (!method) {
     console.error('fetch method is undefined.');
 
@@ -75,7 +86,7 @@ export const checkMethod = method => {
   return method;
 };
 
-export const checkType = type => {
+export const checkType = (type: any) => {
   if (!type) {
     console.error('fetch type is undefined.');
 
@@ -93,7 +104,7 @@ export const checkType = type => {
   return type;
 };
 
-export const getRealParams = (url, data, fixStr) => {
+export const getRealParams = (url: string, data: any, fixStr: string) => {
   if (!url || !data) {
     return '';
   }
@@ -108,8 +119,8 @@ export const getRealParams = (url, data, fixStr) => {
   return result;
 };
 
-export const serialize = (data, fixStr) => {
-  if (!data || Object.keys(data).lenght == 0 || data instanceof Array) {
+export const serialize = (data: any, fixStr?: string) => {
+  if (!data || Object.keys(data).length == 0 || data instanceof Array) {
     return '';
   }
 
@@ -119,7 +130,7 @@ export const serialize = (data, fixStr) => {
 
   let paramStr = '';
 
-  for (let key in data) {
+  for (let key of Object.keys(data)) {
     paramStr += `${key}=${data[key]}${fixStr}`;
   }
 
@@ -128,7 +139,12 @@ export const serialize = (data, fixStr) => {
   return paramStr;
 };
 
-export const getRealUrl = (key, path, proxy, isProxy) => {
+export const getRealUrl = (
+  key: string,
+  path: any,
+  proxy?: string,
+  isProxy?: boolean,
+) => {
   let realUrl;
 
   for (let realKey in path) {
