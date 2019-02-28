@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import MainPage from "./pages";
-import MappingDetail from "./pages/mapping";
-import mapping from "./mapping.json";
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import MainPage from './pages';
+import MappingDetail from './pages/mapping';
+import mapping from './mapping.json';
 
 export interface MappingItem {
   id: string;

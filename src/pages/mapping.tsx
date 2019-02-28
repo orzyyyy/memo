@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import "../assets/mapping.css";
-import { ajax } from "../urlHelper";
-import { Canvas, Toolbar } from "mini-xmind";
-import { message } from "antd";
-import { format } from "date-fns";
-import { zhCN } from "date-fns/locale";
+import React, { Component } from 'react';
+import '../assets/mapping.css';
+import { ajax } from '../urlHelper';
+import { Canvas, Toolbar } from 'mini-xmind';
+import { message } from 'antd';
+import { format } from 'date-fns';
+import { zhCN } from 'date-fns/locale';
 
 export interface MappingState {
   data: any;
@@ -15,7 +15,7 @@ export default class Mapping extends Component<any, MappingState> {
     super(props);
 
     this.state = {
-      data: {}
+      data: {},
     };
   }
 
@@ -42,21 +42,21 @@ export default class Mapping extends Component<any, MappingState> {
   send = (data: any) => {
     const id = this.getMappingId();
     ajax({
-      url: "save",
+      url: 'save',
       params: {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({ layout: data, id }),
-        mode: "cors",
-        headers: { "Content-Type": "application/json" }
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
       },
       success: result => {
         if (!result) {
-          message.error("error with save");
+          message.error('error with save');
         } else {
           location.reload();
           // this.getMapping();
         }
-      }
+      },
     });
   };
 
@@ -66,20 +66,20 @@ export default class Mapping extends Component<any, MappingState> {
     ajax({
       url: `dist/layout/${id}.json`,
       success: data => {
-        const date = format(new Date(), "a HH:mm:ss", {
-          locale: zhCN
+        const date = format(new Date(), 'a HH:mm:ss', {
+          locale: zhCN,
         });
         message.success(`更新时间：${date}`);
         this.setState({ data });
-      }
+      },
     });
   };
 
   getMappingId = () => {
-    const hash = location.hash.split("/");
+    const hash = location.hash.split('/');
     const param = hash[hash.length - 1];
-    if (param.includes("?")) {
-      const search = param.split("?");
+    if (param.includes('?')) {
+      const search = param.split('?');
       return search[search.length - 1];
     }
     return param;
