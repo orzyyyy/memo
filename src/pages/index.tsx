@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import '../assets/MainPage.css';
-import { ajax } from '../urlHelper';
-import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
+import React, { Component } from "react";
+import "../assets/MainPage.css";
+import { ajax } from "../urlHelper";
+import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from "antd";
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { defaultSelectedKeys, defaultOpenKeys, menu } from '../options/menu';
+import { defaultSelectedKeys, defaultOpenKeys, menu } from "../options/menu";
 
 export interface MainPageState {
   data: Array<any>;
@@ -19,7 +19,7 @@ export default class MainPage extends Component<any, MainPageState> {
     this.state = {
       data: [],
       breadParent: defaultOpenKeys,
-      breadChild: defaultSelectedKeys,
+      breadChild: defaultSelectedKeys
     };
   }
 
@@ -29,8 +29,8 @@ export default class MainPage extends Component<any, MainPageState> {
 
   getMapping = () => {
     ajax({
-      url: 'dist/mapping.json',
-      success: data => this.setState({ data }),
+      url: "dist/mapping.json",
+      success: data => this.setState({ data })
     });
   };
 
@@ -40,46 +40,46 @@ export default class MainPage extends Component<any, MainPageState> {
 
   handleDelete = ({ id }: { id: string }) => {
     ajax({
-      url: 'del',
+      url: "del",
       params: {
-        method: 'DELETE',
+        method: "DELETE",
         body: JSON.stringify({ id }),
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        mode: "cors",
+        headers: { "Content-Type": "application/json" }
       },
       success: result => {
         if (!result) {
-          console.error('error with delete');
+          console.error("error with delete");
         } else {
           (window as any).DataCollector.clear();
           this.getMapping();
         }
-      },
+      }
     });
   };
 
   handleAdd = () => {
     ajax({
-      url: 'save/new',
-      type: 'text',
+      url: "save/new",
+      type: "text",
       params: {
-        method: 'POST',
-        body: '',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        body: "",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" }
       },
       success: result => {
         if (result) {
-          location.hash = '/new?' + result;
+          location.hash = "/new?" + result;
         }
-      },
+      }
     });
   };
 
   handleMenuClick = ({ keyPath }: { keyPath: Array<string> }) => {
     this.setState({
       breadChild: keyPath[0],
-      breadParent: keyPath[1],
+      breadParent: keyPath[1]
     });
   };
 
@@ -94,7 +94,7 @@ export default class MainPage extends Component<any, MainPageState> {
       );
     }
     return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Layout style={{ minHeight: "100vh" }}>
         <Sider collapsible theme="light">
           <Menu
             defaultSelectedKeys={[defaultSelectedKeys]}
@@ -115,12 +115,12 @@ export default class MainPage extends Component<any, MainPageState> {
           </Menu>
         </Sider>
         <Layout>
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
               <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
+            <div style={{ padding: 24, background: "#fff", minHeight: "100%" }}>
               {data.map(item => {
                 const { thumbnailUrl, id, hoverText } = item;
                 const menu = (
@@ -139,7 +139,7 @@ export default class MainPage extends Component<any, MainPageState> {
                 return (
                   <Tooltip title={hoverText} key={`fragment-${id}`}>
                     <Card.Grid className="card">
-                      <Dropdown overlay={menu} trigger={['contextMenu']}>
+                      <Dropdown overlay={menu} trigger={["contextMenu"]}>
                         <img
                           src={thumbnailUrl}
                           onClick={() => this.handleClick(item)}
@@ -151,7 +151,7 @@ export default class MainPage extends Component<any, MainPageState> {
               })}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          <Footer style={{ textAlign: "center" }}>
             <div>
               你睡了一下午，醒的时候屋子里黑漆漆，一点声音都没有。抬头望了望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机，打开后屏幕亮起，干净，没有一条信息
             </div>
