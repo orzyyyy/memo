@@ -3,3 +3,7 @@
 /scripts/prettier.js
 *.css
 /coverage/
+*.jsx
+/src/options/*.js
+/src/urlHelper/*.js
+/server/*.js
