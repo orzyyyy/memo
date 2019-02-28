@@ -63,7 +63,7 @@ const ajax = ({
   postParam = Object.assign({}, postParam, params);
 
   fetch(realUrl + realParams, postParam)
-    .then(result => result[type]())
+    .then((result: any) => result[type]())
     .then(result => success && success(result))
     .catch(err => error && error(err));
 };

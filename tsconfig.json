@@ -9,7 +9,8 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": ["dom", "es7"]
+    "lib": ["dom", "es7"],
+    "module": "commonjs"
   },
   "exclude": [
     "node_modules",

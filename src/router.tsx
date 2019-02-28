@@ -4,6 +4,13 @@ const MainPage = lazy(() => import('./pages'));
 const MappingDetail = lazy(() => import('./pages/mapping'));
 import mapping from './mapping.json';
 
+export interface MappingItem {
+  id: string;
+  title: string;
+  thumbnailUrl: string;
+  hoverText: string;
+}
+
 export default class Entry extends Component {
   render = () => {
     return (
@@ -12,20 +19,20 @@ export default class Entry extends Component {
           <Switch>
             <Route
               path="/"
-              component={props => <MainPage {...props} />}
+              component={(props: any) => <MainPage {...props} />}
               exact
             />
             <Route
               path="/new"
-              component={props => <MappingDetail {...props} />}
+              component={(props: any) => <MappingDetail {...props} />}
             />
-            {mapping.map(item => {
+            {mapping.map((item: MappingItem) => {
               const { id } = item;
               return (
                 <Route
                   key={id}
                   path={`/${id}`}
-                  component={props => <MappingDetail {...props} />}
+                  component={(props: any) => <MappingDetail {...props} />}
                 />
               );
             })}

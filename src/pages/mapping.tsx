@@ -6,8 +6,12 @@ import { message } from 'antd';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 
-export default class Mapping extends Component {
-  constructor(props) {
+export interface MappingState {
+  data: any;
+}
+
+export default class Mapping extends Component<any, MappingState> {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -27,7 +31,7 @@ export default class Mapping extends Component {
       // ctrl + s
       if (ctrlKey && keyCode === 83) {
         e.preventDefault();
-        const data = DataCollector.getAll();
+        const data = (window as any).DataCollector.getAll();
         this.send(data);
       } else {
         e.stopPropagation();
@@ -35,7 +39,7 @@ export default class Mapping extends Component {
     };
   };
 
-  send = data => {
+  send = (data: any) => {
     const id = this.getMappingId();
     ajax({
       url: 'save',

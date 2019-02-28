@@ -6,8 +6,14 @@ const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { defaultSelectedKeys, defaultOpenKeys, menu } from '../options/menu';
 
-export default class MainPage extends Component {
-  constructor(props) {
+export interface MainPageState {
+  data: Array<any>;
+  breadParent: string;
+  breadChild: string;
+}
+
+export default class MainPage extends Component<any, MainPageState> {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -28,11 +34,11 @@ export default class MainPage extends Component {
     });
   };
 
-  handleClick = ({ id }) => {
+  handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
   };
 
-  handleDelete = ({ id }) => {
+  handleDelete = ({ id }: { id: string }) => {
     ajax({
       url: 'del',
       params: {
@@ -45,7 +51,7 @@ export default class MainPage extends Component {
         if (!result) {
           console.error('error with delete');
         } else {
-          DataCollector.clear();
+          (window as any).DataCollector.clear();
           this.getMapping();
         }
       },
@@ -70,7 +76,7 @@ export default class MainPage extends Component {
     });
   };
 
-  handleMenuClick = ({ keyPath }) => {
+  handleMenuClick = ({ keyPath }: { keyPath: Array<string> }) => {
     this.setState({
       breadChild: keyPath[0],
       breadParent: keyPath[1],
