@@ -4,7 +4,7 @@ const cwd = process.cwd();
 
 module.exports = function() {
   const files = fs.readdirSync(path.join(cwd, "src/layout"));
-  const layoutFiles = files.filter(file => {
+  const layoutFiles = files.filter((file: string) => {
     return file.endsWith(".json");
   });
 
