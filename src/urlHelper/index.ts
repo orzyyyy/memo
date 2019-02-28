@@ -68,37 +68,33 @@ const ajax = ({
     .catch(err => error && error(err));
 };
 
-export const checkMethod = (method: any) => {
+export const checkMethod = (method: string) => {
   if (!method) {
     console.error('fetch method is undefined.');
-
-    return;
+    return false;
   }
 
   method = method.toUpperCase();
 
   if (!methods.includes(method)) {
     console.error('fetch method error.');
-
-    return;
+    return false;
   }
 
   return method;
 };
 
-export const checkType = (type: any) => {
+export const checkType = (type: string) => {
   if (!type) {
     console.error('fetch type is undefined.');
-
-    return;
+    return false;
   }
 
   type = type.toLowerCase();
 
   if (!types.includes(type)) {
     console.error('fetch type error.');
-
-    return;
+    return false;
   }
 
   return type;

@@ -20,7 +20,7 @@ describe('fetchUtil', () => {
 
   it('checkType should work', () => {
     const types = [
-      { type: 'test', result: undefined },
+      { type: 'test', result: false },
       { type: 'Json', result: 'json' },
       { type: 'TExT', result: 'text' },
       { type: 'HTML', result: 'html' },
@@ -35,10 +35,17 @@ describe('fetchUtil', () => {
     }
   });
 
+  it("fetch type shouldn't be null", () => {
+    console.error = jest.fn();
+    expect(checkType(undefined)).toBe(false);
+    expect(checkType(null)).toBe(false);
+    expect(checkType('')).toBe(false);
+  });
+
   it('checkMethod should work', () => {
     const methods = [
       { type: 'post', result: 'POST' },
-      { type: 'TEST', result: undefined },
+      { type: 'TEST', result: false },
     ];
 
     console.error = jest.fn();
