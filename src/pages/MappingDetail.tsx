@@ -6,11 +6,11 @@ import { message } from 'antd';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 
-export interface MappingState {
+export interface MappingDetailState {
   data: any;
 }
 
-export default class Mapping extends Component<any, MappingState> {
+export default class MappingDetail extends Component<any, MappingDetailState> {
   constructor(props: any) {
     super(props);
 

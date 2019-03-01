@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPage from './pages';
-import MappingDetail from './pages/mapping';
+import MainPage from './pages/MainPageDataController';
+import MappingDetail from './pages/MappingDetail';
 import mapping from './mapping.json';
 
 export interface MappingItem {
