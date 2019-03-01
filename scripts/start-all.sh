@@ -1,6 +1,5 @@
 #!/bin/bash
 
-tsc --watch &
 npm run dev &
-npm run server &
+npm run server
 wait
