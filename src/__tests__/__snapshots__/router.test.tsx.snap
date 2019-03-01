@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router render correctly 1`] = `
+<HashRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/new"
+    />
+    <Route
+      component={[Function]}
+      key="b07b876e6050e333988404e268921906"
+      path="/b07b876e6050e333988404e268921906"
+    />
+    <Route
+      component={[Function]}
+      key="c9abecfb05549080298f37daea8de46f"
+      path="/c9abecfb05549080298f37daea8de46f"
+    />
+    <Route
+      component={[Function]}
+      key="e6342ea80e1b9da29570d49af1daaaeb"
+      path="/e6342ea80e1b9da29570d49af1daaaeb"
+    />
+  </Switch>
+</HashRouter>
+`;
