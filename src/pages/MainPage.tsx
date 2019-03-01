@@ -41,13 +41,6 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     const { dataSource, onSave, onDelete } = this.props;
     const { breadParent, breadChild } = this.state;
 
-    if (dataSource.length == 0) {
-      return (
-        <Card.Grid className="card add" onClick={onSave}>
-          <Icon type="plus" />
-        </Card.Grid>
-      );
-    }
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible theme="light">
@@ -76,6 +69,13 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
               <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
+              {dataSource.length == 0 && (
+                <div onClick={onSave} className="card-grid-wrapper">
+                  <Card.Grid className="card add">
+                    <Icon type="plus" />
+                  </Card.Grid>
+                </div>
+              )}
               {dataSource.map(item => {
                 const { thumbnailUrl, id, hoverText } = item;
                 const menu = (
