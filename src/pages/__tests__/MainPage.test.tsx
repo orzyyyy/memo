@@ -52,4 +52,20 @@ describe('MainPage', () => {
       .simulate('click');
     expect(onSave).toBeCalled();
   });
+
+  it('onDelete works correctly', () => {
+    const onDelete = jest.fn();
+    const wrapper = mount(
+      <MainPage dataSource={dataSource} onDelete={onDelete} />,
+    );
+    wrapper
+      .find('img')
+      .at(0)
+      .simulate('contextmenu');
+    wrapper
+      .find('.ant-dropdown-menu-item')
+      .at(1)
+      .simulate('click');
+    expect(onDelete).toBeCalled();
+  });
 });
