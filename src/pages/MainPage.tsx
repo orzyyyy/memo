@@ -1,79 +1,33 @@
 import React, { Component } from 'react';
 import '../assets/MainPage.css';
-import { ajax } from '../urlHelper';
 import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { defaultSelectedKeys, defaultOpenKeys, menu } from '../options/menu';
+import { MappingItem } from '../router';
 
+export interface MainPageProps {
+  dataSource: Array<MappingItem>;
+  onSave?: () => void;
+  onDelete?: (dataItem: MappingItem) => void;
+}
 export interface MainPageState {
-  data: Array<any>;
   breadParent: string;
   breadChild: string;
 }
 
-export default class MainPage extends Component<any, MainPageState> {
+export default class MainPage extends Component<MainPageProps, MainPageState> {
   constructor(props: any) {
     super(props);
 
     this.state = {
-      data: [],
       breadParent: defaultOpenKeys,
       breadChild: defaultSelectedKeys,
     };
   }
 
-  componentDidMount = () => {
-    this.getMapping();
-  };
-
-  getMapping = () => {
-    ajax({
-      url: 'dist/mapping.json',
-      success: data => this.setState({ data }),
-    });
-  };
-
   handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
-  };
-
-  handleDelete = ({ id }: { id: string }) => {
-    ajax({
-      url: 'del',
-      params: {
-        method: 'DELETE',
-        body: JSON.stringify({ id }),
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (!result) {
-          console.error('error with delete');
-        } else {
-          (window as any).DataCollector.clear();
-          this.getMapping();
-        }
-      },
-    });
-  };
-
-  handleAdd = () => {
-    ajax({
-      url: 'save/new',
-      type: 'text',
-      params: {
-        method: 'POST',
-        body: '',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (result) {
-          location.hash = '/new?' + result;
-        }
-      },
-    });
   };
 
   handleMenuClick = ({ keyPath }: { keyPath: Array<string> }) => {
@@ -84,11 +38,12 @@ export default class MainPage extends Component<any, MainPageState> {
   };
 
   generateMainPage = () => {
-    const { data, breadParent, breadChild } = this.state;
+    const { dataSource, onSave, onDelete } = this.props;
+    const { breadParent, breadChild } = this.state;
 
-    if (data.length == 0) {
+    if (dataSource.length == 0) {
       return (
-        <Card.Grid className="card add" onClick={this.handleAdd}>
+        <Card.Grid className="card add" onClick={onSave}>
           <Icon type="plus" />
         </Card.Grid>
       );
@@ -121,16 +76,16 @@ export default class MainPage extends Component<any, MainPageState> {
               <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-              {data.map(item => {
+              {dataSource.map(item => {
                 const { thumbnailUrl, id, hoverText } = item;
                 const menu = (
                   <Menu>
-                    <Menu.Item key={`add-${id}`} onClick={this.handleAdd}>
+                    <Menu.Item key={`add-${id}`} onClick={onSave}>
                       新增
                     </Menu.Item>
                     <Menu.Item
                       key={`delete-${id}`}
-                      onClick={() => this.handleDelete(item)}
+                      onClick={() => onDelete && onDelete(item)}
                     >
                       删除
                     </Menu.Item>
