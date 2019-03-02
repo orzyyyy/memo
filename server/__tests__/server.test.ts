@@ -1,9 +1,9 @@
-import { app } from '..';
+const instance = require('..');
 const request = require('supertest');
 
 describe('server', () => {
   it('listening port works correctly', () => {
-    request(app.listen())
+    request(instance.app.listen())
       .get('/')
       .expect(204);
   });

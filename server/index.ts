@@ -14,4 +14,6 @@ app.listen(9099);
 // eslint-disable-next-line
 console.log('listen at port 9099');
 
-export { app };
+module.exports = {
+  app: app
+};
