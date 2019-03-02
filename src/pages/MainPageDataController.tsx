@@ -11,13 +11,9 @@ export default class MainPageDataController extends Component<
   any,
   MainPageDataControllerState
 > {
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
-      dataSource: [],
-    };
-  }
+  state = {
+    dataSource: [],
+  };
 
   componentDidMount = () => {
     this.getMapping();
