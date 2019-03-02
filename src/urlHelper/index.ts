@@ -152,7 +152,7 @@ export const getRealUrl = (
   }
 
   if (!realUrl) {
-    return;
+    return false;
   }
 
   if (proxy && isProxy) {
