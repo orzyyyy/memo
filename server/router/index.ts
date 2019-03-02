@@ -3,7 +3,7 @@ const fs = require('fs');
 const cwd = process.cwd();
 const path = require('path');
 
-const addMapping = (router, mapping) => {
+const addMapping = (router: any, mapping: any) => {
   for (let url in mapping) {
     let path = url.substring(4);
     if (url.startsWith('GET ')) {
@@ -23,9 +23,9 @@ const addMapping = (router, mapping) => {
   }
 };
 
-const addControllers = router => {
+const addControllers = (router: any) => {
   let files = fs.readdirSync(path.join(cwd, '/server/controller'));
-  let jsFiles = files.filter(f => {
+  let jsFiles = files.filter((f: string) => {
     return f.endsWith('.js');
   });
 
@@ -38,3 +38,5 @@ const addControllers = router => {
 addControllers(router);
 
 module.exports = router;
+
+export {};

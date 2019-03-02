@@ -38,3 +38,5 @@ module.exports = function() {
     throw Error('generate failed: ' + error);
   }
 };
+
+export {};

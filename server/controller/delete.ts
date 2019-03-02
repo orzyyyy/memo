@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const generate = require('../generateMapping');
 
-const del = async ctx => {
+const del = async (ctx: any) => {
   const body = ctx.request.body;
   const id = body.id;
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
@@ -23,5 +23,6 @@ const del = async ctx => {
 };
 
 module.exports = {
-  'DELETE /del': del,
+  'DELETE /del': del
 };
+export {};

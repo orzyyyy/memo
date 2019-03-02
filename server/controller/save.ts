@@ -3,7 +3,7 @@ const md5 = require('blueimp-md5');
 const path = require('path');
 const generate = require('../generateMapping');
 
-const saveLayout = async ctx => {
+const saveLayout = async (ctx: any) => {
   const body = ctx.request.body;
   const layout = body.layout;
   const id = body.id || md5(new Date().getTime());
@@ -18,7 +18,7 @@ const saveLayout = async ctx => {
   }
 };
 
-const initMapping = async ctx => {
+const initMapping = async (ctx: any) => {
   const id = md5(new Date().getTime());
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
   try {
@@ -35,5 +35,6 @@ const initMapping = async ctx => {
 
 module.exports = {
   'POST /save': saveLayout,
-  'POST /save/new': initMapping,
+  'POST /save/new': initMapping
 };
+export {};
