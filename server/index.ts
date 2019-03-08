@@ -10,10 +10,10 @@ app.use(bodyParser());
 app.use(router.routes());
 app.use(KoaStatic(process.cwd()));
 
-app.listen(9099);
+const server = app.listen(9099);
 // eslint-disable-next-line
 console.log('listen at port 9099');
 
 module.exports = {
-  app: app
+  server: server,
 };
