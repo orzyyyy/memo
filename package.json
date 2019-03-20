@@ -47,7 +47,7 @@
     "nino-cli": "^0.6.4",
     "pre-commit": "^1.2.2",
     "prettier": "^1.15.3",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.0.0",
     "supertest": "^4.0.0"
   },
   "pre-commit": [
