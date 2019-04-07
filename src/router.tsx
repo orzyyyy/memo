@@ -16,24 +16,11 @@ export default class Entry extends Component {
     return (
       <Router>
         <Switch>
-          <Route
-            path="/"
-            component={(props: any) => <MainPage {...props} />}
-            exact
-          />
-          <Route
-            path="/new"
-            component={(props: any) => <MappingDetail {...props} />}
-          />
+          <Route path="/" component={MainPage} exact />
+          <Route path="/new" component={MappingDetail} />
           {mapping.map((item: MappingItem) => {
             const { id } = item;
-            return (
-              <Route
-                key={id}
-                path={`/${id}`}
-                component={(props: any) => <MappingDetail {...props} />}
-              />
-            );
+            return <Route key={id} path={`/${id}`} component={MappingDetail} />;
           })}
         </Switch>
       </Router>
