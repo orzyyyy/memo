@@ -4,11 +4,11 @@ references:
   container_config: &container_config
     docker:
       - image: circleci/node:10.0.0
-    working_directory: ~/zy410419243.github.io
+    working_directory: ~/memo
 
   attach_workspace: &attach_workspace
     attach_workspace:
-      at: ~/zy410419243.github.io
+      at: ~/memo
 
 jobs:
   setup:
@@ -24,7 +24,7 @@ jobs:
             npm ls
             true
       - persist_to_workspace:
-          root: ~/zy410419243.github.io
+          root: ~/memo
           paths:
             - node_modules
   lint:
@@ -32,14 +32,13 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: npm run lint
   test:
     <<: *container_config
     steps:
       - checkout
       - *attach_workspace
       - run: npm run codecov
-      - run: bash <(curl -s https://codecov.io/bash) -t b0824134-3eef-4895-8b64-95d258ac57aa
+      - run: bash <(curl -s https://codecov.io/bash) -t cdf5917e-b38d-4156-a9d6-6a405484b930
 
 workflows:
   version: 2
