@@ -1,15 +1,16 @@
 {
-  "name": "zy410419243.github.io",
+  "name": "memo",
   "version": "0.0.0",
   "description": "A memo for myself",
   "main": "server",
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
     "lint": "npx eslint .",
+    "generate": "node scripts/generateMapping",
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
-    "dev": "nino koei -c scripts/build.js -w -d -t",
-    "build": "nino koei -c scripts/build.js",
+    "dev": "nino koei -c scripts/build -w -d -t",
+    "build": "nino koei -c scripts/build",
     "prettier": "nino prettier",
     "test": "nino test",
     "codecov": "nino test -d",
@@ -17,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zy410419243/zy410419243.github.io"
+    "url": "https://github.com/zy410419243/memo"
   },
   "keywords": [
     "blog"
@@ -25,9 +26,9 @@
   "author": "zy9",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zy410419243/zy410419243.github.io/issues"
+    "url": "https://github.com/zy410419243/memo/issues"
   },
-  "homepage": "https://github.com/zy410419243/zy410419243.github.io#readme",
+  "homepage": "https://github.com/zy410419243/memo#readme",
   "dependencies": {
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
