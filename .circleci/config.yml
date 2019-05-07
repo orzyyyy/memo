@@ -32,6 +32,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
+      - run: npm run lint
   test:
     <<: *container_config
     steps:
