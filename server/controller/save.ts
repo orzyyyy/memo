@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const md5 = require('blueimp-md5');
 const path = require('path');
 const generate = require('../generate');
@@ -10,7 +10,15 @@ const saveLayout = async (ctx: any) => {
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
   try {
     for (let item of writeFiles) {
-      fs.writeFileSync(path.join(process.cwd(), item), JSON.stringify(layout));
+      fs.outputJSON(path.join(process.cwd(), item), layout, {
+        spaces: 2,
+      })
+        .then(() => {
+          console.log(`${id} written`);
+        })
+        .catch((err: any) => {
+          console.error(err);
+        });
     }
     ctx.response.body = true;
   } catch (error) {
