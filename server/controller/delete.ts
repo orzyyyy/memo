@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const generate = require('../generateMapping');
+const generate = require('../generate');
 
 const del = async (ctx: any) => {
   const body = ctx.request.body;
@@ -23,6 +23,6 @@ const del = async (ctx: any) => {
 };
 
 module.exports = {
-  'DELETE /del': del
+  'DELETE /del': del,
 };
 export {};

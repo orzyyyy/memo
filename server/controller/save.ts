@@ -1,7 +1,7 @@
 const fs = require('fs');
 const md5 = require('blueimp-md5');
 const path = require('path');
-const generate = require('../generateMapping');
+const generate = require('../generate');
 
 const saveLayout = async (ctx: any) => {
   const body = ctx.request.body;
@@ -35,6 +35,6 @@ const initMapping = async (ctx: any) => {
 
 module.exports = {
   'POST /save': saveLayout,
-  'POST /save/new': initMapping
+  'POST /save/new': initMapping,
 };
 export {};
