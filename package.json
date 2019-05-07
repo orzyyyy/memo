@@ -2,7 +2,6 @@
   "name": "memo",
   "version": "0.0.0",
   "description": "A memo for myself",
-  "main": "server",
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
     "lint": "npx eslint .",
