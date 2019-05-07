@@ -1,514 +1,444 @@
 {
-  "CanvasPosition": { "x": -1607, "y": -347 },
+  "CanvasPosition": {
+    "x": -1607,
+    "y": -347
+  },
   "TagGroup": {
     "tag-360935": {
       "x": 1678,
       "y": 118,
-
       "editable": false,
       "input": "页面加载优化"
     },
     "tag-372427": {
       "x": 321,
       "y": 461,
-
       "editable": false,
       "input": "完全空白"
     },
     "tag-387363": {
       "x": 104,
       "y": 658,
-
       "editable": false,
       "input": "cdn 或者提升硬件方面"
     },
     "tag-560128": {
       "x": 909,
       "y": 454,
-
       "editable": false,
       "input": "html 首屏"
     },
     "tag-569558": {
       "x": 862,
       "y": 339,
-
       "editable": false,
       "input": "这时在加载 html 跟 css"
     },
     "tag-759485": {
       "x": 1903,
       "y": 457,
-
       "editable": false,
       "input": "js 首屏"
     },
     "tag-891938": {
       "x": 1807,
       "y": 331,
-
       "editable": false,
       "input": "这时在加载静态代码"
     },
     "tag-990493": {
       "x": 2907,
       "y": 461,
-
       "editable": false,
       "input": "业务代码"
     },
     "tag-10787": {
       "x": 2126,
       "y": 403,
-
       "editable": false,
       "input": "这里没处理好就会抖动一下，比如高度"
     },
     "tag-44555": {
       "x": 2831,
       "y": 322,
-
       "editable": false,
       "input": "这时开始异步请求，重新渲染页面，完成后即可交互"
     },
     "tag-353611": {
       "x": 3540,
       "y": 459,
-
       "editable": false,
       "input": "懒加载资源"
     },
     "tag-414176": {
       "x": 3510,
       "y": 344,
-
       "editable": false,
       "input": "比如图片"
     },
     "tag-179488": {
       "x": 891,
       "y": 663,
-
       "editable": false,
       "input": "往 html 写东西"
     },
     "tag-230739": {
       "x": 831,
       "y": 543,
-
       "editable": false,
       "input": "把 js 首屏的部分内容放到这里加载"
     },
     "tag-250291": {
       "x": 700,
       "y": 980,
-
       "editable": false,
       "input": "SSR"
     },
     "tag-287488": {
       "x": 948,
       "y": 976,
-
       "editable": false,
       "input": "css"
     },
     "tag-352404": {
       "x": 863,
       "y": 855,
-
       "editable": false,
       "input": "加上过渡动画，比如 svg，或者简易 loading"
     },
     "tag-465242": {
       "x": 1192,
       "y": 979,
-
       "editable": false,
       "input": "js"
     },
     "tag-474009": {
       "x": 1086,
       "y": 879,
-
       "editable": false,
       "input": "复杂的加载动画"
     },
     "tag-606313": {
       "x": 1031,
       "y": 1247,
-
       "editable": false,
       "input": "html-webpack-plugin"
     },
     "tag-612443": {
       "x": 978,
       "y": 1139,
-
       "editable": false,
       "input": "把 loding 页单独拆出一个 html 来放在这里加载"
     },
     "tag-45911": {
       "x": 1245,
       "y": 1247,
-
       "editable": false,
       "input": "prerender-spa-plugin"
     },
     "tag-102767": {
       "x": 1187,
       "y": 1140,
-
       "editable": false,
       "input": "用这个插件做到近似 SSR，实质上是 pre-render"
     },
     "tag-623302": {
       "x": 1399,
       "y": 767,
-
       "editable": false,
       "input": "基础框架"
     },
     "tag-627826": {
       "x": 1327,
       "y": 655,
-
       "editable": false,
       "input": "比如 react 的库，常年不变的代码"
     },
     "tag-680924": {
       "x": 1530,
       "y": 947,
-
       "editable": false,
       "input": "http 缓存"
     },
     "tag-815031": {
       "x": 1412,
       "y": 1131,
-
       "editable": false,
       "input": "强缓存"
     },
     "tag-821978": {
       "x": 1657,
       "y": 1127,
-
       "editable": false,
       "input": "协议缓存"
     },
     "tag-318269": {
       "x": 1133,
       "y": 1579,
-
       "editable": false,
       "input": "http 1.0"
     },
     "tag-346366": {
       "x": 889,
       "y": 1819,
-
       "editable": false,
       "input": "Expires"
     },
     "tag-389212": {
       "x": 884,
       "y": 1846,
-
       "editable": false,
       "input": "缓存时间"
     },
     "tag-411931": {
       "x": 803,
       "y": 1726,
-
       "editable": false,
       "input": "只和设置的缓存时间有关，没到就读缓存"
     },
     "tag-550641": {
       "x": 923,
       "y": 1726,
-
       "editable": false,
       "input": "但服务器时间和用户端时间可能不一致"
     },
     "tag-783015": {
       "x": 1351,
       "y": 1578,
-
       "editable": false,
       "input": "http 1.1"
     },
     "tag-803521": {
       "x": 1335,
       "y": 1831,
-
       "editable": false,
       "input": "Cache-Control"
     },
     "tag-576624": {
       "x": 1147,
       "y": 1814,
-
       "editable": false,
       "input": "Pragma"
     },
     "tag-582113": {
       "x": 1145,
       "y": 1845,
-
       "editable": false,
       "input": "是否缓存"
     },
     "tag-977993": {
       "x": 1078,
       "y": 1741,
-
       "editable": false,
       "input": "no-cache 为不缓存"
     },
     "tag-385089": {
       "x": 1270,
       "y": 1679,
-
       "editable": false,
       "input": "max-age 是一个常用的属性，最长缓存时间"
     },
     "tag-571544": {
       "x": 1595,
       "y": 1410,
-
       "editable": false,
       "input": "http 1.0"
     },
     "tag-579392": {
       "x": 1922,
       "y": 1410,
-
       "editable": false,
       "input": "http 1.1"
     },
     "tag-648370": {
       "x": 1335,
       "y": 1036,
-
       "editable": false,
       "input": "缓存时间没到就读缓存，否则请求服务器"
     },
     "tag-749477": {
       "x": 1582,
       "y": 1009,
-
       "editable": false,
       "input": "浏览器先拿缓存标识问服务器有没有新资源，有就拿，没就用自己的"
     },
     "tag-956292": {
       "x": 1579,
       "y": 1574,
-
       "editable": false,
       "input": "Last-Modified"
     },
     "tag-965089": {
       "x": 1518,
       "y": 1473,
-
       "editable": false,
       "input": "第一次请求时响应头会被标上标识"
     },
     "tag-65311": {
       "x": 1584,
       "y": 1816,
-
       "editable": false,
       "input": "If-Modified-Since"
     },
     "tag-71608": {
       "x": 1511,
       "y": 1674,
-
       "editable": false,
       "input": "第二次请求时比较俩时间，不一致就刷新标识并返回资源，一致就读缓存"
     },
     "tag-174501": {
       "x": 1630,
       "y": 1654,
-
       "editable": false,
       "input": "弊端是资源没有标识，比如加个字符又删了，俩标识就对不上了，就浪费了服务器资源"
     },
     "tag-284298": {
       "x": 1930,
       "y": 1571,
-
       "editable": false,
       "input": "Etag "
     },
     "tag-290909": {
       "x": 1844,
       "y": 1485,
-
       "editable": false,
       "input": "第一次请求时的标识"
     },
     "tag-319418": {
       "x": 1905,
       "y": 1833,
-
       "editable": false,
       "input": "If-None-Match"
     },
     "tag-326950": {
       "x": 1838,
       "y": 1658,
-
       "editable": false,
       "input": "仍然是俩标识比较，但 Etag 是服务器根据资源文件算出来的，所以不会有浪费的问题"
     },
     "tag-363248": {
       "x": 1960,
       "y": 1660,
-
       "editable": false,
       "input": "但因为是算出来的，所以在另一个方面会浪费服务器资源"
     },
     "tag-808650": {
       "x": 1860,
       "y": 753,
-
       "editable": false,
       "input": "动态 polyfill"
     },
     "tag-943561": {
       "x": 1868,
       "y": 1097,
-
       "editable": false,
       "input": "原理简述"
     },
     "tag-113380": {
       "x": 1794,
       "y": 835,
-
       "editable": false,
       "input": "浏览器 UA 头判断需要哪些 polyfill"
     },
     "tag-129026": {
       "x": 1793,
       "y": 916,
-
       "editable": false,
       "input": "对天朝手机来说，百分之九十都是不用 polyfill 的，甚至可以当成 chrome。ios 除外，因为我没有"
     },
     "tag-258878": {
       "x": 1865,
       "y": 780,
-
       "editable": false,
       "input": "polyfill.io"
     },
     "tag-275528": {
       "x": 1910,
       "y": 835,
-
       "editable": false,
       "input": "此时的代码审查需要格外小心，因为引入的第三方组件可能自带了 polyfill"
     },
     "tag-338670": {
       "x": 1911,
       "y": 968,
-
       "editable": false,
       "input": "真要用，只要加个 polyfill 的 cdn 引用就行了"
     },
     "tag-445055": {
       "x": 2082,
       "y": 767,
-
       "editable": false,
       "input": "SplitChunksPlugin "
     },
     "tag-451313": {
       "x": 2029,
       "y": 630,
-
       "editable": false,
       "input": "webpack 4 中的特性"
     },
     "tag-485533": {
       "x": 2144,
       "y": 630,
-
       "editable": false,
       "input": "和之前的 CommonChunksPlugin 比起来，公共代码抽象地更为彻底"
     },
     "tag-697338": {
       "x": 2350,
       "y": 771,
-
       "editable": false,
       "input": "Tree Shaking"
     },
     "tag-51404": {
       "x": 2393,
       "y": 628,
-
       "editable": false,
       "input": "试了许久都没摇好，第三方库太难处理了..."
     },
     "tag-883483": {
       "x": 2393,
       "y": 697,
-
       "editable": false,
       "input": "本身项目构建工具也很难兼容"
     },
     "tag-491103": {
       "x": 2655,
       "y": 772,
-
       "editable": false,
       "input": "Code Splitting"
     },
     "tag-861305": {
       "x": 2714,
       "y": 642,
-
       "editable": false,
       "input": "这个用 webpack 默认配置就能有八九成的性能了"
     },
     "tag-943589": {
       "x": 3098,
       "y": 763,
-
       "editable": false,
       "input": "额外编译出es2015+"
     },
     "tag-27679": {
       "x": 3079,
       "y": 1045,
-
       "editable": false,
       "input": "<script type=\"module\">"
     },
     "tag-80731": {
       "x": 3022,
       "y": 848,
-
       "editable": false,
       "input": "html 中额外加入一个 script 标签，用来引入 es5 的代码。不能用的不认识这标签，但能减少不少体积"
     },
     "tag-357354": {
       "x": 2591,
       "y": 645,
-
       "editable": false,
       "input": "动态加载，比如点击后才出发加载"
     },
     "tag-592384": {
       "x": 422,
       "y": 667,
-
       "editable": false,
       "input": "ServiceWorker"
     }
@@ -1742,14 +1672,14 @@
         "left": 1472
       },
       "from": {
-        "x": 1470,
+        "x": 1469,
         "y": 683,
         "width": 100,
         "height": 80,
         "top": 683,
-        "right": 1570,
+        "right": 1569,
         "bottom": 763,
-        "left": 1470
+        "left": 1469
       }
     },
     "line-583096": {
