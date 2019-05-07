@@ -69,7 +69,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
               <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-              {dataSource.length == 0 && (
+              {dataSource.length === 0 && (
                 <div onClick={onSave} className="card-grid-wrapper">
                   <Card.Grid className="card add">
                     <Icon type="plus" />
@@ -78,7 +78,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
               )}
               {dataSource.map(item => {
                 const { thumbnailUrl, id, hoverText } = item;
-                const menu = (
+                const dropDownMenu = (
                   <Menu>
                     <Menu.Item key={`add-${id}`} onClick={onSave}>
                       新增
@@ -94,7 +94,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
                 return (
                   <Tooltip title={hoverText} key={`fragment-${id}`}>
                     <Card.Grid className="card">
-                      <Dropdown overlay={menu} trigger={['contextMenu']}>
+                      <Dropdown
+                        overlay={dropDownMenu}
+                        trigger={['contextMenu']}
+                      >
                         <img
                           src={thumbnailUrl}
                           onClick={() => this.handleClick(item)}

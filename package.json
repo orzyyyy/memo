@@ -4,7 +4,7 @@
   "description": "A memo for myself",
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
-    "lint": "npx eslint .",
+    "lint": "tslint -c tslint.json 'src/**/*.ts[x]'",
     "generate": "node scripts/generateMapping",
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
@@ -43,7 +43,11 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lint-staged": "^8.1.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.0.0"
   },
   "pre-commit": [
     "lint-staged"
@@ -51,6 +55,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run prettier",
+      "npm run lint",
       "git add"
     ]
   }
