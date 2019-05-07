@@ -11,13 +11,9 @@ export interface MappingDetailState {
 }
 
 export default class MappingDetail extends Component<any, MappingDetailState> {
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
-      data: {},
-    };
-  }
+  state: MappingDetailState = {
+    data: {},
+  };
 
   componentDidMount = () => {
     this.bindKeyDown();
@@ -31,8 +27,7 @@ export default class MappingDetail extends Component<any, MappingDetailState> {
       // ctrl + s
       if (ctrlKey && keyCode === 83) {
         e.preventDefault();
-        const data = (window as any).DataCollector.getAll();
-        this.send(data);
+        this.send(this.state.data);
       } else {
         e.stopPropagation();
       }
@@ -85,12 +80,19 @@ export default class MappingDetail extends Component<any, MappingDetailState> {
     return param;
   };
 
+  handleCanvasChange = (data: any) => this.setState({ data });
+
   render = () => {
     const { data } = this.state;
     return (
       <div className="mapping">
         <Toolbar />
-        <Canvas data={data} className="canvas-wrapper" orientation="v" />
+        <Canvas
+          data={data}
+          className="canvas-wrapper"
+          orientation="v"
+          onChange={this.handleCanvasChange}
+        />
       </div>
     );
   };
