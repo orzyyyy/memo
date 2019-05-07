@@ -3,6 +3,7 @@
 *.map
 /.vscode/
 /coverage/
+/dist/
 *.jsx
 /src/options/*.js
 /src/urlHelper/*.js
