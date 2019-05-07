@@ -31,7 +31,7 @@
     "antd": "^3.17.0",
     "koa": "^2.7.0",
     "mini-xmind": "^1.2.0",
-    "nino-cli": "^0.8.0"
+    "nino-cli": "^0.8.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.16",
