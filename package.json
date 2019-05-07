@@ -22,32 +22,28 @@
   "keywords": [
     "blog"
   ],
-  "author": "zy9",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zy410419243/memo/issues"
   },
   "homepage": "https://github.com/zy410419243/memo#readme",
   "dependencies": {
+    "antd": "^3.17.0",
     "koa": "^2.7.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-static": "^5.0.0",
-    "koa-router": "^7.4.0"
+    "mini-xmind": "^1.2.0",
+    "nino-cli": "^0.8.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.16",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
-    "antd": "^3.17.0",
     "blueimp-md5": "^2.10.0",
     "date-fns": "^2.0.0-alpha.27",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "lint-staged": "^8.1.6",
-    "mini-xmind": "^1.2.0",
-    "nino-cli": "^0.8.0",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.17.0",
-    "react-router-dom": "^5.0.0",
-    "supertest": "^4.0.2"
+    "react-router-dom": "^5.0.0"
   },
   "pre-commit": [
     "lint-staged"
