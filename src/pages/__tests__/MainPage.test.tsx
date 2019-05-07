@@ -7,13 +7,13 @@ const dataSource = [
   {
     id: '1',
     title: 'test1',
-    thumbnailUrl: 'dist/assets/5795774_0.jpg',
+    thumbnailUrl: 'assets/5795774_0.jpg',
     hoverText: 'test1',
   },
   {
     id: '2',
     title: 'test2',
-    thumbnailUrl: 'dist/assets/5795774_0.jpg',
+    thumbnailUrl: 'assets/5795774_0.jpg',
     hoverText: 'test2',
   },
 ];

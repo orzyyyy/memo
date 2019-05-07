@@ -6,7 +6,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   output: {
     path: path.join(cwd + '/dist'),
-    publicPath: '/dist/',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -20,11 +19,11 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.join(cwd, '/src/mapping.json'),
-        to: path.join(cwd, '/dist/mapping.json'),
+        from: path.join(cwd, 'src/mapping.json'),
+        to: path.join(cwd, 'dist/mapping.json'),
       },
       {
-        from: path.join(cwd, '/src/layout'),
+        from: path.join(cwd, 'src/layout'),
         to: path.join(cwd, 'dist/layout'),
       },
       {

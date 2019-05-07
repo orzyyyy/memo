@@ -13,7 +13,7 @@ function generate() {
     layouts.push({
       id: fileName.replace('.json', ''),
       title: 'test1',
-      thumbnailUrl: 'dist/assets/5795774_0.jpg',
+      thumbnailUrl: 'assets/5795774_0.jpg',
       hoverText: '测试 layout-' + fileName,
       // createTime: new Date().getTime(),
       // modifyTime: new Date().getTime(),

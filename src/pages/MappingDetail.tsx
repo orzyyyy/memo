@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/mapping.css';
+import './css/mapping.css';
 import { ajax } from '../urlHelper';
 import { Canvas, Toolbar } from 'mini-xmind';
 import { message } from 'antd';
@@ -64,7 +64,7 @@ export default class MappingDetail extends Component<any, MappingDetailState> {
     const id = this.getMappingId();
 
     ajax({
-      url: `dist/layout/${id}.json`,
+      url: `layout/${id}.json`,
       success: data => {
         const date = format(new Date(), 'a HH:mm:ss', {
           locale: zhCN,

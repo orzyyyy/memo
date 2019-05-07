@@ -11,7 +11,6 @@ const del = async (ctx: any) => {
       if (fs.existsSync(item)) {
         fs.unlinkSync(path.join(process.cwd(), item));
       } else {
-        // eslint-disable-next-line
         throw Error("file doesn't exist.");
       }
     }

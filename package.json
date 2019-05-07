@@ -10,7 +10,7 @@
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
-    "build": "nino koei -c scripts/build",
+    "build": "tsc && nino koei -c scripts/build",
     "prettier": "nino prettier",
     "test": "nino test",
     "codecov": "nino test -d",

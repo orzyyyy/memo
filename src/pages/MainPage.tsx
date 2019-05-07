@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/MainPage.css';
+import './css/MainPage.css';
 import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;

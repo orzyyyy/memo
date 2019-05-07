@@ -6,10 +6,9 @@ const router = require('./router');
 
 app.use(bodyParser());
 app.use(router.routes());
-app.use(KoaStatic(process.cwd()));
+app.use(KoaStatic(process.cwd() + '/dist'));
 
 const server = app.listen(9099);
-// eslint-disable-next-line
 console.log('listen at port 9099');
 
 module.exports = {

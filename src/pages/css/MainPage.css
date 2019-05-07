@@ -1,0 +1,20 @@
+.MainPage img {
+  width: 100%;
+}
+
+.MainPage .card {
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.MainPage .add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 288px;
+}
+
+.MainPage {
+  height: 100vh;
+}

@@ -21,7 +21,7 @@ export default class MainPageDataController extends Component<
 
   getMapping = () => {
     ajax({
-      url: 'dist/mapping.json',
+      url: 'mapping.json',
       success: dataSource => this.setState({ dataSource }),
     });
   };
