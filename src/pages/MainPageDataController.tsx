@@ -19,11 +19,10 @@ export default class MainPageDataController extends Component<
     this.getMapping();
   };
 
-  getMapping = () => {
-    ajax({
-      url: 'mapping.json',
-      success: dataSource => this.setState({ dataSource }),
-    });
+  getMapping = async () => {
+    const response = await fetch('./mapping.json');
+    const dataSource = await response.json();
+    this.setState({ dataSource });
   };
 
   handleDelete = ({ id }: { id: string }) => {

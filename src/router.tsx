@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './pages/MainPageDataController';
 import MappingDetail from './pages/MappingDetail';
-import mapping from './mapping.json';
 
 export interface MappingItem {
   id: string;
@@ -12,13 +11,24 @@ export interface MappingItem {
 }
 
 export default class Entry extends Component {
+  state: { paths: Array<MappingItem> } = {
+    paths: [],
+  };
+
+  componentDidMount = async () => {
+    const response = await fetch('./mapping.json');
+    const paths = await response.json();
+    this.setState({ paths });
+  };
+
   render = () => {
+    const { paths } = this.state;
     return (
       <Router>
         <Switch>
-          <Route path="/" component={MainPage} exact />
+          <Route path="/" component={MainPage} exact paths={paths} />
           <Route path="/new" component={MappingDetail} />
-          {mapping.map((item: MappingItem) => {
+          {paths.map((item: MappingItem) => {
             const { id } = item;
             return <Route key={id} path={`/${id}`} component={MappingDetail} />;
           })}
