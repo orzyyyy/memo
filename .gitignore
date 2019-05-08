@@ -8,3 +8,4 @@
 /src/options/*.js
 /src/urlHelper/*.js
 /server/**/*.js
+/src/mapping.json
