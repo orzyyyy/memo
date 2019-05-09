@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPage from './pages/MainPageDataController';
-import MappingDetail from './pages/MappingDetail';
+const MainPage = lazy(() => import('./pages/MainPageDataController'));
+const MappingDetail = lazy(() => import('./pages/MappingDetail'));
 
 export interface MappingItem {
   id: string;
@@ -25,14 +25,18 @@ export default class Entry extends Component {
     const { paths } = this.state;
     return (
       <Router>
-        <Switch>
-          <Route path="/" component={MainPage} exact paths={paths} />
-          <Route path="/new" component={MappingDetail} />
-          {paths.map((item: MappingItem) => {
-            const { id } = item;
-            return <Route key={id} path={`/${id}`} component={MappingDetail} />;
-          })}
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/" component={MainPage} exact paths={paths} />
+            <Route path="/new" component={MappingDetail} />
+            {paths.map((item: MappingItem) => {
+              const { id } = item;
+              return (
+                <Route key={id} path={`/${id}`} component={MappingDetail} />
+              );
+            })}
+          </Switch>
+        </Suspense>
       </Router>
     );
   };

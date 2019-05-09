@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "esNext",
     "strictNullChecks": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
