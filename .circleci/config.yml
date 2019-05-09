@@ -45,10 +45,10 @@ workflows:
   version: 2
   build:
     jobs:
-      - setup
-        filters:
-          branches:
-            ignore: gh-pages
+      - setup:
+          filters:
+            branches:
+              ignore: gh-pages
       - test:
           requires:
             - setup
