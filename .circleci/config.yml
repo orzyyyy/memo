@@ -46,6 +46,9 @@ workflows:
   build:
     jobs:
       - setup
+          filters:
+            branches:
+              ignore: gh-pages
       - test:
           requires:
             - setup
