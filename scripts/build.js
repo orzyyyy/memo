@@ -30,6 +30,10 @@ module.exports = {
         from: path.join(cwd, 'src/assets'),
         to: path.join(cwd, 'dist/assets'),
       },
+      {
+        from: path.join(cwd, '.circleci/config.yml'),
+        to: path.join(cwd, 'dist/.circleci/config.yml'),
+      },
     ]),
   ],
 };
