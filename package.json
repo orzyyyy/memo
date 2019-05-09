@@ -14,7 +14,7 @@
     "test": "nino test",
     "codecov": "nino test -d",
     "lint-staged": "lint-staged",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist -t"
   },
   "repository": {
     "type": "git",
