@@ -9,6 +9,7 @@ app.use(router.routes());
 app.use(KoaStatic(process.cwd() + '/dist'));
 
 const server = app.listen(9099);
+// tslint:disable-next-line: no-console
 console.log('listen at port 9099');
 
 module.exports = {

@@ -8,8 +8,8 @@ function generate() {
     return file.endsWith('.json');
   });
 
-  let layouts = [];
-  for (let fileName of layoutFiles) {
+  const layouts = [];
+  for (const fileName of layoutFiles) {
     layouts.push({
       id: fileName.replace('.json', ''),
       title: 'test1',
@@ -24,6 +24,7 @@ function generate() {
     spaces: 2,
   })
     .then(() => {
+      // tslint:disable-next-line: no-console
       console.log('generate mapping completed');
     })
     .catch((err: any) => {

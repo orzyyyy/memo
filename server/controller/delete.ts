@@ -7,7 +7,7 @@ const del = async (ctx: any) => {
   const id = body.id;
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
   try {
-    for (let item of writeFiles) {
+    for (const item of writeFiles) {
       if (fs.existsSync(item)) {
         fs.unlinkSync(path.join(process.cwd(), item));
       } else {

@@ -9,11 +9,12 @@ const saveLayout = async (ctx: any) => {
   const id = body.id || md5(new Date().getTime());
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
   try {
-    for (let item of writeFiles) {
+    for (const item of writeFiles) {
       fs.outputJSON(path.join(process.cwd(), item), layout, {
         spaces: 2,
       })
         .then(() => {
+          // tslint:disable-next-line: no-console
           console.log(`${id} written`);
         })
         .catch((err: any) => {
@@ -30,7 +31,7 @@ const initMapping = async (ctx: any) => {
   const id = md5(new Date().getTime());
   const writeFiles = [`src/layout/${id}.json`, `dist/layout/${id}.json`];
   try {
-    for (let item of writeFiles) {
+    for (const item of writeFiles) {
       fs.writeFileSync(path.join(process.cwd(), item), '');
     }
     ctx.response.body = id;

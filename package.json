@@ -4,7 +4,7 @@
   "description": "A memo for myself",
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
-    "lint": "tslint -c tslint.json 'src/**/*.ts[x]'",
+    "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
     "generate": "node scripts/generateMapping",
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
