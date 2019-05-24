@@ -20,7 +20,7 @@ function generate() {
     });
   }
 
-  fs.outputJSON(path.join(process.cwd(), `src/mapping.json`), layouts, {
+  fs.outputJSON(path.join(process.cwd(), `src/assets/mapping.json`), layouts, {
     spaces: 2,
   })
     .then(() => {

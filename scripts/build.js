@@ -19,14 +19,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.join(cwd, 'src/mapping.json'),
-        to: path.join(cwd, 'dist/mapping.json'),
-      },
-      {
-        from: path.join(cwd, 'src/layout'),
-        to: path.join(cwd, 'dist/layout'),
-      },
-      {
         from: path.join(cwd, 'src/assets'),
         to: path.join(cwd, 'dist/assets'),
       },
