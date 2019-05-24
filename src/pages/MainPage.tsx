@@ -17,14 +17,10 @@ export interface MainPageState {
 }
 
 export default class MainPage extends Component<MainPageProps, MainPageState> {
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
-      breadParent: defaultOpenKeys,
-      breadChild: defaultSelectedKeys,
-    };
-  }
+  state: MainPageState = {
+    breadParent: defaultOpenKeys,
+    breadChild: defaultSelectedKeys,
+  };
 
   handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
@@ -37,93 +33,97 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     });
   };
 
-  generateMainPage = () => {
+  renderSider = () => (
+    <Sider collapsible theme="light">
+      <Menu
+        defaultSelectedKeys={[defaultSelectedKeys]}
+        defaultOpenKeys={[defaultOpenKeys]}
+        mode="inline"
+        onClick={this.handleMenuClick}
+      >
+        {menu.map(item => {
+          const { key, title, children } = item;
+          return (
+            <SubMenu key={key} title={title}>
+              {children.map(jtem => (
+                <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
+              ))}
+            </SubMenu>
+          );
+        })}
+      </Menu>
+    </Sider>
+  );
+
+  renderContent = () => {
     const { dataSource, onSave, onDelete } = this.props;
     const { breadParent, breadChild } = this.state;
-
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible theme="light">
-          <Menu
-            defaultSelectedKeys={[defaultSelectedKeys]}
-            defaultOpenKeys={[defaultOpenKeys]}
-            mode="inline"
-            onClick={this.handleMenuClick}
-          >
-            {menu.map(item => {
-              const { key, title, children } = item;
-              return (
-                <SubMenu key={key} title={title}>
-                  {children.map(jtem => (
-                    <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
-                  ))}
-                </SubMenu>
-              );
-            })}
-          </Menu>
-        </Sider>
-        <Layout>
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
-              <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-              {dataSource.length === 0 && (
-                <div onClick={onSave} className="card-grid-wrapper">
-                  <Card.Grid className="card add">
-                    <Icon type="plus" />
-                  </Card.Grid>
-                </div>
-              )}
-              {dataSource.map(item => {
-                const { thumbnailUrl, id, hoverText } = item;
-                const dropDownMenu = (
-                  <Menu>
-                    <Menu.Item key={`add-${id}`} onClick={onSave}>
-                      新增
-                    </Menu.Item>
-                    <Menu.Item
-                      key={`delete-${id}`}
-                      onClick={() => onDelete && onDelete(item)}
-                    >
-                      删除
-                    </Menu.Item>
-                  </Menu>
-                );
-                return (
-                  <Tooltip title={hoverText} key={`fragment-${id}`}>
-                    <Card.Grid className="card">
-                      <Dropdown
-                        overlay={dropDownMenu}
-                        trigger={['contextMenu']}
-                      >
-                        <img
-                          src={thumbnailUrl}
-                          onClick={() => this.handleClick(item)}
-                        />
-                      </Dropdown>
-                    </Card.Grid>
-                  </Tooltip>
-                );
-              })}
+      <Content style={{ margin: '0 16px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
+          <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
+        </Breadcrumb>
+        <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
+          {dataSource.length === 0 && (
+            <div onClick={onSave} className="card-grid-wrapper">
+              <Card.Grid className="card add">
+                <Icon type="plus" />
+              </Card.Grid>
             </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            <div>
-              你睡了一下午，醒的时候屋子里黑漆漆，一点声音都没有。抬头望了望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机，打开后屏幕亮起，干净，没有一条信息
-            </div>
-            <div>
-              打开电脑，打开 github。pull request 写得很菜，collaborators
-              都在喷你，但忽然就不孤独了
-            </div>
-          </Footer>
-        </Layout>
-      </Layout>
+          )}
+          {dataSource.map(item => {
+            const { thumbnailUrl, id, hoverText } = item;
+            const dropDownMenu = (
+              <Menu>
+                <Menu.Item key={`add-${id}`} onClick={onSave}>
+                  新增
+                </Menu.Item>
+                <Menu.Item
+                  key={`delete-${id}`}
+                  onClick={() => onDelete && onDelete(item)}
+                >
+                  删除
+                </Menu.Item>
+              </Menu>
+            );
+            return (
+              <Tooltip title={hoverText} key={`fragment-${id}`}>
+                <Card.Grid className="card">
+                  <Dropdown overlay={dropDownMenu} trigger={['contextMenu']}>
+                    <img
+                      src={thumbnailUrl}
+                      onClick={() => this.handleClick(item)}
+                    />
+                  </Dropdown>
+                </Card.Grid>
+              </Tooltip>
+            );
+          })}
+        </div>
+      </Content>
     );
   };
 
-  render = () => {
-    return <div className="MainPage">{this.generateMainPage()}</div>;
-  };
+  renderFooter = () => (
+    <Footer style={{ textAlign: 'center' }}>
+      <div>
+        你睡了一下午，醒的时候屋子里黑漆漆，一点声音都没有。抬头望了望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机，打开后屏幕亮起，干净，没有一条信息
+      </div>
+      <div>
+        打开电脑，打开 github。pull request 写得很菜，collaborators
+        都在喷你，但忽然就不孤独了
+      </div>
+    </Footer>
+  );
+
+  render = () => (
+    <Layout className="MainPage">
+      {this.renderSider()}
+      <Layout>
+        {this.renderContent()}
+        {this.renderFooter()}
+      </Layout>
+    </Layout>
+  );
 }
