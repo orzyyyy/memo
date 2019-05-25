@@ -125,5 +125,6 @@ const initNewMapping = async (ctx: any) => {
 module.exports = {
   'POST /save/mapping/update': updateTargetMapping,
   'POST /save/mapping/new': initNewMapping,
+  updateMappingRouter: updateMappingRouter,
 };
 export {};
