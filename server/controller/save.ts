@@ -55,13 +55,32 @@ const updateTargetMapping = async (ctx: any) => {
   if (!id) {
     throw Error('id is undefined.');
   }
-  const writeFilesPaths = [
+  const mappingPaths = [
     `src/assets/mapping/${id}.json`,
     `dist/assets/mapping/${id}.json`,
   ];
+  const markdownPaths = [
+    `src/assets/markdown/${id}.md`,
+    `dist/assets/markdown/${id}.md`,
+  ];
+  let targetPaths: string[] = [];
+
+  switch (category) {
+    case 'mapping':
+      targetPaths = mappingPaths;
+      break;
+
+    case 'markdown':
+      targetPaths = markdownPaths;
+      break;
+
+    default:
+      break;
+  }
+
   // update layout
   try {
-    for (const item of writeFilesPaths) {
+    for (const item of targetPaths) {
       fs.outputJSON(path.join(process.cwd(), item), layout, {
         spaces: 2,
       })
@@ -112,13 +131,32 @@ const initNewMapping = async (ctx: any) => {
   const { title, type, subType, category } = ctx.request.body;
   const dateTime = new Date().getTime();
   const id = md5(dateTime);
-  const writeFilesPaths = [
+  const mappingPaths = [
     `src/assets/mapping/${id}.json`,
     `dist/assets/mapping/${id}.json`,
   ];
+  const markdownPaths = [
+    `src/assets/markdown/${id}.md`,
+    `dist/assets/markdown/${id}.md`,
+  ];
+  let targetPaths: string[] = [];
+
+  switch (category) {
+    case 'mapping':
+      targetPaths = mappingPaths;
+      break;
+
+    case 'markdown':
+      targetPaths = markdownPaths;
+      break;
+
+    default:
+      break;
+  }
+
   try {
     // generate empty file in assets/mapping for mapping info
-    for (const item of writeFilesPaths) {
+    for (const item of targetPaths) {
       fs.writeFileSync(path.join(process.cwd(), item), '');
     }
     // update router file
@@ -140,8 +178,8 @@ const initNewMapping = async (ctx: any) => {
 };
 
 module.exports = {
-  'POST /save/mapping/update': updateTargetMapping,
-  'POST /save/mapping/new': initNewMapping,
+  'POST /save/update': updateTargetMapping,
+  'POST /save/new': initNewMapping,
   updateMappingRouter: updateMappingRouter,
 };
 export {};
