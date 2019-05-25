@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
 const generate = require('../generate');
 
 const del = async (ctx: any) => {
@@ -24,4 +24,3 @@ const del = async (ctx: any) => {
 module.exports = {
   'DELETE /del': del,
 };
-export {};

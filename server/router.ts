@@ -1,7 +1,7 @@
 const KoaRouter = require('koa-router')();
-const fs = require('fs');
 const cwd = process.cwd();
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
 
 const addMapping = (router: any, mapping: any) => {
   // tslint:disable-next-line: forin
@@ -39,5 +39,3 @@ const addControllers = (router: any) => {
 addControllers(KoaRouter);
 
 module.exports = KoaRouter;
-
-export {};

@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
 
 const get = async (ctx: any) => {
   ctx.type = 'html';
@@ -11,4 +11,3 @@ const get = async (ctx: any) => {
 module.exports = {
   'GET /': get,
 };
-export {};
