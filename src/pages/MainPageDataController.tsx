@@ -6,7 +6,7 @@ import { MappingItem } from '../router';
 export interface SiderProps {
   key: string;
   title?: string;
-  children: { key: string; value: string }[];
+  children?: { key: string; value: string }[];
 }
 export interface MainPageDataControllerState {
   dataSource: MappingItem[];
