@@ -1,0 +1,20 @@
+[
+  {
+    "key": "JavaScript",
+    "title": "JavaScript",
+    "children": [
+      {
+        "key": "基础",
+        "value": "基础"
+      },
+      {
+        "key": "优化",
+        "value": "优化"
+      },
+      {
+        "key": "react",
+        "value": "react"
+      }
+    ]
+  }
+]
