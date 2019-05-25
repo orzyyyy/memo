@@ -26,6 +26,7 @@ const updateMappingRouter = (targetItem: MappingProps) => {
   console.log('update mapping router completed');
 };
 
+// todo: refactor
 const updateMapping = async (ctx: any) => {
   const body = ctx.request.body;
   const { layout, id, title, url } = body.layout;
