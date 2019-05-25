@@ -47,14 +47,16 @@ const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
 };
 
 // todo: refactor
-const updateMapping = async (ctx: any) => {
-  const body = ctx.request.body;
-  const { layout, id, title, url } = body.layout;
+const updateTargetMapping = async (ctx: any) => {
+  const { layout, id, title, url } = ctx.request.body;
+  if (!id) {
+    throw Error('id is undefined.');
+  }
   const writeFilesPaths = [
     `src/assets/mapping/${id}.json`,
     `dist/assets/mapping/${id}.json`,
   ];
-  // 1. update assets
+  // update layout
   try {
     for (const item of writeFilesPaths) {
       fs.outputJSON(path.join(process.cwd(), item), layout, {
@@ -62,19 +64,21 @@ const updateMapping = async (ctx: any) => {
       })
         .then(() => {
           // tslint:disable-next-line: no-console
-          console.log(`${id} written`);
+          console.log(`written completed => ${id}`);
         })
         .catch((err: any) => {
           console.error(err);
         });
     }
+    // update router
     const targetFile = fs.readFileSync(
-      path.join(process.cwd(), `src/assets/mapping/${id}.json`),
+      path.join(process.cwd(), 'src/assets/mapping.json'),
     );
-    const { createTime, title: originTitle, url: originUrl } = JSON.parse(
-      targetFile.toString(),
+    const targetArr = JSON.parse(targetFile.toString()).filter(
+      (item: MappingProps) => item.id === targetFile.id,
     );
-    // 2. update router
+    const targetItem = targetArr.length > 0 ? targetArr[0] : {};
+    const { createTime, title: originTitle, url: originUrl } = targetItem;
     updateMappingRouter({
       createTime,
       modifyTime: new Date().getTime(),
@@ -99,11 +103,11 @@ const initNewMapping = async (ctx: any) => {
     `dist/assets/mapping/${id}.json`,
   ];
   try {
-    // 1. generate empty file in assets/mapping for mapping info
+    // generate empty file in assets/mapping for mapping info
     for (const item of writeFilesPaths) {
       fs.writeFileSync(path.join(process.cwd(), item), '');
     }
-    // 2. update router file
+    // update router file
     updateMappingRouter({
       id,
       title,
@@ -119,7 +123,7 @@ const initNewMapping = async (ctx: any) => {
 };
 
 module.exports = {
-  'POST /save/mapping/update': updateMapping,
+  'POST /save/mapping/update': updateTargetMapping,
   'POST /save/mapping/new': initNewMapping,
 };
 export {};
