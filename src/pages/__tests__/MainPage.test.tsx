@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import MainPage from '../MainPage';
+import menuData from '../../assets/sider.json';
 import 'nino-cli/scripts/setup';
 
 const dataSource = [
@@ -20,18 +21,22 @@ const dataSource = [
 
 describe('MainPage', () => {
   it('render correctly', () => {
-    const wrapper = mount(<MainPage dataSource={dataSource} />);
+    const wrapper = mount(
+      <MainPage dataSource={dataSource} menuData={menuData} />,
+    );
     expect(wrapper.find('img').length).toBe(2);
   });
 
   it('when dataSource is null, render add button correctly', () => {
-    const wrapper = mount(<MainPage dataSource={[]} />);
+    const wrapper = mount(<MainPage dataSource={[]} menuData={menuData} />);
     expect(wrapper.find('.card-grid-wrapper').length).toBe(1);
   });
 
   it('onSave works correctly', () => {
     const onSave = jest.fn();
-    const wrapper = mount(<MainPage dataSource={dataSource} onSave={onSave} />);
+    const wrapper = mount(
+      <MainPage dataSource={dataSource} onSave={onSave} menuData={menuData} />,
+    );
     wrapper
       .find('img')
       .at(0)
@@ -45,7 +50,9 @@ describe('MainPage', () => {
 
   it('onSave works correctly when dataSource is null', () => {
     const onSave = jest.fn();
-    const wrapper = mount(<MainPage dataSource={[]} onSave={onSave} />);
+    const wrapper = mount(
+      <MainPage dataSource={[]} onSave={onSave} menuData={menuData} />,
+    );
     wrapper
       .find('.card-grid-wrapper')
       .at(0)
@@ -56,7 +63,11 @@ describe('MainPage', () => {
   it('onDelete works correctly', () => {
     const onDelete = jest.fn();
     const wrapper = mount(
-      <MainPage dataSource={dataSource} onDelete={onDelete} />,
+      <MainPage
+        dataSource={dataSource}
+        onDelete={onDelete}
+        menuData={menuData}
+      />,
     );
     wrapper
       .find('img')
