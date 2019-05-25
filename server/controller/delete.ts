@@ -1,6 +1,5 @@
-import fs from 'fs-extra';
-import path from 'path';
-const generate = require('../generate');
+const fs = require('fs-extra');
+const path = require('path');
 
 const del = async (ctx: any) => {
   const body = ctx.request.body;
@@ -14,7 +13,6 @@ const del = async (ctx: any) => {
         throw Error("file doesn't exist.");
       }
     }
-    generate();
     ctx.response.body = true;
   } catch (error) {
     ctx.response.body = false;
@@ -24,3 +22,4 @@ const del = async (ctx: any) => {
 module.exports = {
   'DELETE /del': del,
 };
+export {};
