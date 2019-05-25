@@ -5,7 +5,7 @@
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
-    "generate": "node scripts/generateMapping",
+    "generate": "tsc && node scripts/generateMapping",
     "server": "node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
@@ -35,6 +35,8 @@
     "nino-cli": "^0.8.1"
   },
   "devDependencies": {
+    "@types/blueimp-md5": "^2.7.0",
+    "@types/fs-extra": "^7.0.0",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
