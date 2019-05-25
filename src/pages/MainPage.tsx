@@ -3,66 +3,89 @@ import './css/MainPage.css';
 import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { defaultSelectedKeys, defaultOpenKeys, menu } from '../options/menu';
 import { MappingItem } from '../router';
+import { SiderProps } from './MainPageDataController';
 
 export interface MainPageProps {
-  dataSource: Array<MappingItem>;
+  dataSource: MappingItem[];
   onSave?: () => void;
   onDelete?: (dataItem: MappingItem) => void;
+  menuData: SiderProps[];
 }
 export interface MainPageState {
-  breadParent: string;
-  breadChild: string;
+  siderOpenKey: string;
+  siderSelectedKey: string;
 }
 
 export default class MainPage extends Component<MainPageProps, MainPageState> {
+  static getDerivedStateFromProps(
+    prevProps: MainPageProps,
+    prevState: MainPageState,
+  ) {
+    const { menuData } = prevProps;
+    const { siderSelectedKey } = prevState;
+    if (
+      menuData.length > 0 &&
+      menuData[0].children.length > 0 &&
+      !siderSelectedKey
+    ) {
+      return {
+        siderOpenKey: menuData[0].title,
+        siderSelectedKey: menuData[0].children[0].value,
+      };
+    }
+    return null;
+  }
   state: MainPageState = {
-    breadParent: defaultOpenKeys,
-    breadChild: defaultSelectedKeys,
+    siderOpenKey: '',
+    siderSelectedKey: '',
   };
 
   handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
   };
 
-  handleMenuClick = ({ keyPath }: { keyPath: Array<string> }) => {
+  handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     this.setState({
-      breadChild: keyPath[0],
-      breadParent: keyPath[1],
+      siderOpenKey: keyPath[1],
+      siderSelectedKey: keyPath[0],
     });
   };
 
-  renderSider = () => (
-    <Sider collapsible theme="light">
-      <Menu
-        defaultSelectedKeys={[defaultSelectedKeys]}
-        defaultOpenKeys={[defaultOpenKeys]}
-        mode="inline"
-        onClick={this.handleMenuClick}
-      >
-        {menu.map(item => {
-          const { key, title, children } = item;
-          return (
-            <SubMenu key={key} title={title}>
-              {children.map(jtem => (
-                <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
-              ))}
-            </SubMenu>
-          );
-        })}
-      </Menu>
-    </Sider>
-  );
+  renderSider = () => {
+    const { menuData } = this.props;
+    const { siderOpenKey, siderSelectedKey } = this.state;
+    return (
+      <Sider collapsible theme="light">
+        <Menu
+          selectedKeys={[siderSelectedKey]}
+          openKeys={[siderOpenKey]}
+          mode="inline"
+          onClick={this.handleMenuClick}
+        >
+          {menuData.map((item: any) => {
+            const { key, title, children } = item;
+            return (
+              <SubMenu key={key} title={title}>
+                {children.map((jtem: any) => (
+                  <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
+                ))}
+              </SubMenu>
+            );
+          })}
+        </Menu>
+      </Sider>
+    );
+  };
 
   renderContent = () => {
     const { dataSource, onSave, onDelete } = this.props;
-    const { breadParent, breadChild } = this.state;
+    const { siderOpenKey, siderSelectedKey } = this.state;
     return (
       <Content style={{ margin: '0 16px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
-          <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
+          <Breadcrumb.Item>{siderOpenKey}</Breadcrumb.Item>
+          <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
         <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
           {dataSource.length === 0 && (

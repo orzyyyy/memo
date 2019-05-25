@@ -11,7 +11,7 @@ export interface MappingItem {
 }
 
 export default class Entry extends Component {
-  state: { paths: Array<MappingItem> } = {
+  state: { paths: MappingItem[] } = {
     paths: [],
   };
 
