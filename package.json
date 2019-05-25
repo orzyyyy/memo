@@ -5,8 +5,7 @@
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
-    "generate": "tsc && node scripts/generateMapping",
-    "server": "node server",
+    "server": "tsc && node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
     "build": "tsc && nino koei -c scripts/build",
