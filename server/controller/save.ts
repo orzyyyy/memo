@@ -64,18 +64,19 @@ const updateTargetMapping = async (ctx: any) => {
       })
         .then(() => {
           // tslint:disable-next-line: no-console
-          console.log(`written completed => ${id}`);
+          console.log(`written completed => ${item}`);
         })
         .catch((err: any) => {
           console.error(err);
         });
     }
     // update router
-    const targetFile = fs.readFileSync(
-      path.join(process.cwd(), 'src/assets/mapping.json'),
-    );
-    const targetArr = JSON.parse(targetFile.toString()).filter(
-      (item: MappingProps) => item.id === targetFile.id,
+    const targetFile = fs
+      .readFileSync(path.join(process.cwd(), 'src/assets/mapping.json'))
+      .toString();
+    const targetJSONFile = JSON.parse(targetFile);
+    const targetArr = targetJSONFile.filter(
+      (item: MappingProps) => item.id === id,
     );
     const targetItem = targetArr.length > 0 ? targetArr[0] : {};
     const { createTime, title: originTitle, url: originUrl } = targetItem;
