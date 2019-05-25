@@ -16,7 +16,7 @@ export default class Entry extends Component {
   };
 
   componentDidMount = async () => {
-    const response = await fetch('./mapping.json');
+    const response = await fetch('./assets/mapping.json');
     const paths = await response.json();
     this.setState({ paths });
   };

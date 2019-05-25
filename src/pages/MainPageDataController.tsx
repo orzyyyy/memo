@@ -20,7 +20,7 @@ export default class MainPageDataController extends Component<
   };
 
   getMapping = async () => {
-    const response = await fetch('./mapping.json');
+    const response = await fetch('./assets/mapping.json');
     const dataSource = await response.json();
     this.setState({ dataSource });
   };
