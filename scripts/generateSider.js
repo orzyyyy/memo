@@ -29,6 +29,7 @@ for (const item of result) {
     }
   }
 }
+menu = [{ key: 'all', title: 'all' }, ...menu];
 
 fs.outputJSON(path.join(process.cwd(), 'src/assets/sider.json'), menu, {
   spaces: 2,

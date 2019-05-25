@@ -24,14 +24,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   ) {
     const { menuData } = prevProps;
     const { siderSelectedKey } = prevState;
-    if (
-      menuData.length > 0 &&
-      menuData[0].children.length > 0 &&
-      !siderSelectedKey
-    ) {
+    if (menuData.length > 0 && !siderSelectedKey) {
       return {
         siderOpenKey: menuData[0].title,
-        siderSelectedKey: menuData[0].children[0].value,
+        siderSelectedKey: menuData[0].title,
       };
     }
     return null;
@@ -54,17 +50,19 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
 
   renderSider = () => {
     const { menuData } = this.props;
-    const { siderOpenKey, siderSelectedKey } = this.state;
+    const { siderSelectedKey } = this.state;
     return (
       <Sider collapsible theme="light">
         <Menu
           selectedKeys={[siderSelectedKey]}
-          openKeys={[siderOpenKey]}
           mode="inline"
           onClick={this.handleMenuClick}
         >
           {menuData.map((item: any) => {
             const { key, title, children } = item;
+            if (!children) {
+              return <Menu.Item key={key}>{title}</Menu.Item>;
+            }
             return (
               <SubMenu key={key} title={title}>
                 {children.map((jtem: any) => (
