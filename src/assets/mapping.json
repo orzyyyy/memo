@@ -1,20 +1,32 @@
 [
   {
-    "id": "b07b876e6050e333988404e268921906.json",
-    "title": "b07b876e6050e333988404e268921906",
+    "id": "b07b876e6050e333988404e268921906",
+    "title": "js 基本类型",
     "url": "./assets/mapping/b07b876e6050e333988404e268921906.json",
-    "modifyTime": 1558690403907
+    "createTime": 1558690403907,
+    "modifyTime": 1558690403907,
+    "type": "JavaScript",
+    "subType": "基础",
+    "category": "mapping"
   },
   {
-    "id": "c9abecfb05549080298f37daea8de46f.json",
-    "title": "c9abecfb05549080298f37daea8de46f",
+    "id": "c9abecfb05549080298f37daea8de46f",
+    "title": "页面加载优化",
     "url": "./assets/mapping/c9abecfb05549080298f37daea8de46f.json",
-    "modifyTime": 1558690403907
+    "createTime": 1558690403907,
+    "modifyTime": 1558690403907,
+    "type": "JavaScript",
+    "subType": "优化",
+    "category": "mapping"
   },
   {
-    "id": "e6342ea80e1b9da29570d49af1daaaeb.json",
+    "id": "e6342ea80e1b9da29570d49af1daaaeb",
     "title": "e6342ea80e1b9da29570d49af1daaaeb",
     "url": "./assets/mapping/e6342ea80e1b9da29570d49af1daaaeb.json",
-    "modifyTime": 1558690403907
+    "createTime": 1558690403907,
+    "modifyTime": 1558690403907,
+    "type": "JavaScript",
+    "subType": "react",
+    "category": "mapping"
   }
 ]

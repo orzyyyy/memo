@@ -10,6 +10,7 @@ export interface MappingProps {
   url: string;
   type: string;
   subType: string;
+  category: 'mapping' | 'markdown';
 }
 
 const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
@@ -50,7 +51,7 @@ const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
 
 // todo: refactor
 const updateTargetMapping = async (ctx: any) => {
-  const { layout, id, title, url, type, subType } = ctx.request.body;
+  const { layout, id, title, url, type, subType, category } = ctx.request.body;
   if (!id) {
     throw Error('id is undefined.');
   }
@@ -87,6 +88,7 @@ const updateTargetMapping = async (ctx: any) => {
       url: originUrl,
       type: originType,
       subType: originSubType,
+      category: originCategory,
     } = targetItem;
     updateMappingRouter({
       createTime,
@@ -96,6 +98,7 @@ const updateTargetMapping = async (ctx: any) => {
       url: url || originUrl,
       type: type || originType,
       subType: subType || originSubType,
+      category: category || originCategory,
     });
     ctx.response.body = true;
   } catch (error) {
@@ -106,7 +109,7 @@ const updateTargetMapping = async (ctx: any) => {
 // 1. generate empty file in assets/mapping for mapping info
 // 2. update router file
 const initNewMapping = async (ctx: any) => {
-  const { title, type, subType } = ctx.request.body;
+  const { title, type, subType, category } = ctx.request.body;
   const dateTime = new Date().getTime();
   const id = md5(dateTime);
   const writeFilesPaths = [
@@ -127,6 +130,7 @@ const initNewMapping = async (ctx: any) => {
       modifyTime: dateTime,
       type,
       subType,
+      category,
     });
     ctx.response.body = id;
   } catch (error) {
