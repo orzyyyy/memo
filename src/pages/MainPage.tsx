@@ -5,10 +5,11 @@ const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { SiderProps } from './MainPageDataController';
 import { MappingProps } from '../../server/controller/save';
+import { Button } from 'antd';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
-  onSave?: () => void;
+  onEdit?: () => void;
   onDelete?: (dataItem: MappingProps) => void;
   menuData: SiderProps[];
 }
@@ -32,6 +33,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     }
     return null;
   }
+
   state: MainPageState = {
     siderOpenKey: '',
     siderSelectedKey: '',
@@ -77,7 +79,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
-    const { dataSource, onSave, onDelete } = this.props;
+    const { dataSource, onDelete, onEdit } = this.props;
     const { siderOpenKey, siderSelectedKey } = this.state;
     return (
       <Content style={{ margin: '0 16px' }}>
@@ -85,6 +87,12 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
           <Breadcrumb.Item>{siderOpenKey}</Breadcrumb.Item>
           <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
+        <Button
+          style={{ position: 'absolute', right: 24, top: 10 }}
+          onClick={onEdit}
+        >
+          <Icon type="plus" />
+        </Button>
         <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
           <List
             dataSource={
@@ -97,8 +105,8 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
               <Dropdown
                 overlay={() => (
                   <Menu>
-                    <Menu.Item key={`add-${item.id}`} onClick={onSave}>
-                      新增
+                    <Menu.Item key={`add-${item.id}`} onClick={onEdit}>
+                      修改
                     </Menu.Item>
                     <Menu.Item
                       key={`delete-${item.id}`}
@@ -114,7 +122,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
                 <List.Item className="list-item">
                   {item.category === 'mapping' && (
                     <Icon
-                      type="file-text"
+                      type="apartment"
                       style={{
                         marginRight: 10,
                         fontSize: 16,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
 import { MappingProps } from '../../server/controller/save';
+import { FormProps } from './EditForm';
 
 export interface SiderProps {
   key: string;
@@ -11,6 +12,8 @@ export interface SiderProps {
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
+  EditForm: any;
+  formVisible: boolean;
 }
 
 export default class MainPageDataController extends Component<
@@ -20,6 +23,8 @@ export default class MainPageDataController extends Component<
   state: MainPageDataControllerState = {
     dataSource: [],
     menuData: [],
+    EditForm: null,
+    formVisible: false,
   };
 
   componentDidMount = () => {
@@ -59,7 +64,7 @@ export default class MainPageDataController extends Component<
     });
   };
 
-  handleAdd = () => {
+  handleSave = () => {
     ajax({
       url: 'save/new',
       type: 'text',
@@ -77,15 +82,47 @@ export default class MainPageDataController extends Component<
     });
   };
 
+  handleEdit = () => {
+    import('./EditForm').then(EditForm => {
+      this.setState({
+        formVisible: true,
+        EditForm: EditForm.default || EditForm,
+      });
+    });
+  };
+
+  handleSubmit = async (item: FormProps) => {
+    const response = await fetch('save/new', {
+      body: JSON.stringify(item),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    await response.json();
+  };
+
+  handleModalCancel = () => {
+    this.setState({ formVisible: false });
+  };
+
   render = () => {
-    const { dataSource, menuData } = this.state;
+    const { dataSource, menuData, EditForm, formVisible } = this.state;
     return (
-      <MainPage
-        dataSource={dataSource}
-        onSave={this.handleAdd}
-        onDelete={this.handleDelete}
-        menuData={menuData}
-      />
+      <>
+        <MainPage
+          dataSource={dataSource}
+          onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
+          menuData={menuData}
+        />
+        {EditForm && (
+          <EditForm
+            visible={formVisible}
+            cascaderData={menuData}
+            onSubmit={this.handleSubmit}
+            onCancel={this.handleModalCancel}
+          />
+        )}
+      </>
     );
   };
 }
