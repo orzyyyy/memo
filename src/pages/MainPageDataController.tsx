@@ -77,9 +77,10 @@ export default class MainPageDataController extends Component<
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-    await response.text();
-    message.success('创建完成');
-    this.setState({ formVisible: false });
+    const id = await response.text();
+    message.success(`${item.category} 初始化完成`);
+    this.handleModalCancel();
+    location.hash = `/${item.category}/${id}`;
   };
 
   handleModalCancel = () => {

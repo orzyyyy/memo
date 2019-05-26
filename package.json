@@ -32,7 +32,8 @@
     "antd": "3.18.2",
     "koa": "^2.7.0",
     "mini-xmind": "^1.2.1",
-    "nino-cli": "^0.8.1"
+    "nino-cli": "^0.8.1",
+    "react-markdown": "^4.0.8"
   },
   "devDependencies": {
     "@types/blueimp-md5": "^2.7.0",
