@@ -28,5 +28,4 @@ comment:
 ignore:
   - 'src/router.*'
   - 'src/index.*'
-  - 'src/urlHelper/**/*'
   - 'server/**/*'

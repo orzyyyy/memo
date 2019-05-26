@@ -6,5 +6,4 @@
 /dist/
 *.jsx
 /src/options/*.js
-/src/urlHelper/*.js
 /server/**/*.js

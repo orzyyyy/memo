@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
 import { MappingProps } from '../../server/controller/save';
 import { FormProps } from './EditForm';
@@ -47,42 +46,19 @@ export default class MainPageDataController extends Component<
     this.setState({ menuData });
   };
 
-  handleDelete = ({ id }: { id: string }) => {
-    ajax({
-      url: 'del',
-      params: {
-        method: 'DELETE',
-        body: JSON.stringify({ id }),
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (!result) {
-          console.error('error with delete');
-        } else {
-          (window as any).DataCollector.clear();
-          this.getMapping();
-        }
-      },
+  handleDelete = async ({ id }: { id: string }) => {
+    const response = await fetch('/del/mapping', {
+      method: 'DELETE',
+      body: JSON.stringify({ id }),
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
     });
-  };
-
-  handleSave = () => {
-    ajax({
-      url: 'save/new',
-      type: 'text',
-      params: {
-        method: 'POST',
-        body: '',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (result) {
-          location.hash = '/new?' + result;
-        }
-      },
-    });
+    const result = await response.json();
+    if (!result) {
+      console.error('error with delete');
+    } else {
+      this.getMapping();
+    }
   };
 
   handleEdit = () => {

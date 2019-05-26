@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './css/mapping.css';
-import { ajax } from '../urlHelper';
 import { Canvas, Toolbar } from 'mini-xmind';
 import { message } from 'antd';
 import { format } from 'date-fns';
@@ -34,40 +33,32 @@ export default class MappingDetail extends Component<any, MappingDetailState> {
     };
   };
 
-  send = (data: any) => {
+  send = async (data: any) => {
     const id = this.getMappingId();
-    ajax({
-      url: 'save',
-      params: {
-        method: 'POST',
-        body: JSON.stringify({ layout: data, id }),
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (!result) {
-          message.error('error with save');
-        } else {
-          location.reload();
-          // this.getMapping();
-        }
-      },
+    const response = await fetch('/save/update', {
+      method: 'POST',
+      body: JSON.stringify({ layout: data, id }),
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
     });
+    const result = await response.json();
+    if (!result) {
+      message.error('error with save');
+    } else {
+      // location.reload();
+      this.getMapping();
+    }
   };
 
-  getMapping = () => {
+  getMapping = async () => {
     const id = this.getMappingId();
-
-    ajax({
-      url: `layout/${id}.json`,
-      success: data => {
-        const date = format(new Date(), 'a HH:mm:ss', {
-          locale: zhCN,
-        });
-        message.success(`更新时间：${date}`);
-        this.setState({ data });
-      },
+    const response = await fetch(`assets/mapping/${id}.json`);
+    const data = await response.json();
+    const date = format(new Date(), 'a HH:mm:ss', {
+      locale: zhCN,
     });
+    message.success(`更新时间：${date}`);
+    this.setState({ data });
   };
 
   getMappingId = () => {
