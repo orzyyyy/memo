@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
 import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
-import { MappingItem } from '../router';
+import { MappingProps } from '../../server/controller/save';
 
+export interface SiderProps {
+  key: string;
+  title?: string;
+  children?: { key: string; value: string }[];
+}
 export interface MainPageDataControllerState {
-  dataSource: Array<MappingItem>;
+  dataSource: MappingProps[];
+  menuData: SiderProps[];
 }
 
 export default class MainPageDataController extends Component<
   any,
   MainPageDataControllerState
 > {
-  state = {
+  state: MainPageDataControllerState = {
     dataSource: [],
+    menuData: [],
   };
 
   componentDidMount = () => {
+    this.getSider();
     this.getMapping();
   };
 
   getMapping = async () => {
-    const response = await fetch('./mapping.json');
+    const response = await fetch('./assets/mapping.json');
     const dataSource = await response.json();
     this.setState({ dataSource });
+  };
+
+  getSider = async () => {
+    const response = await fetch('./assets/sider.json');
+    const menuData = await response.json();
+    this.setState({ menuData });
   };
 
   handleDelete = ({ id }: { id: string }) => {
@@ -64,12 +78,13 @@ export default class MainPageDataController extends Component<
   };
 
   render = () => {
-    const { dataSource } = this.state;
+    const { dataSource, menuData } = this.state;
     return (
       <MainPage
         dataSource={dataSource}
         onSave={this.handleAdd}
         onDelete={this.handleDelete}
+        menuData={menuData}
       />
     );
   };

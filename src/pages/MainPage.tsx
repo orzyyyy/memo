@@ -1,105 +1,142 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
+import { Dropdown, Menu, Layout, Breadcrumb, List, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { defaultSelectedKeys, defaultOpenKeys, menu } from '../options/menu';
-import { MappingItem } from '../router';
+import { SiderProps } from './MainPageDataController';
+import { MappingProps } from '../../server/controller/save';
 
 export interface MainPageProps {
-  dataSource: Array<MappingItem>;
+  dataSource: MappingProps[];
   onSave?: () => void;
-  onDelete?: (dataItem: MappingItem) => void;
+  onDelete?: (dataItem: MappingProps) => void;
+  menuData: SiderProps[];
 }
 export interface MainPageState {
-  breadParent: string;
-  breadChild: string;
+  siderOpenKey: string;
+  siderSelectedKey: string;
 }
 
 export default class MainPage extends Component<MainPageProps, MainPageState> {
+  static getDerivedStateFromProps(
+    prevProps: MainPageProps,
+    prevState: MainPageState,
+  ) {
+    const { menuData } = prevProps;
+    const { siderSelectedKey } = prevState;
+    if (menuData.length > 0 && !siderSelectedKey) {
+      return {
+        siderOpenKey: menuData[0].title,
+        siderSelectedKey: menuData[0].title,
+      };
+    }
+    return null;
+  }
   state: MainPageState = {
-    breadParent: defaultOpenKeys,
-    breadChild: defaultSelectedKeys,
+    siderOpenKey: '',
+    siderSelectedKey: '',
   };
 
   handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
   };
 
-  handleMenuClick = ({ keyPath }: { keyPath: Array<string> }) => {
+  handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     this.setState({
-      breadChild: keyPath[0],
-      breadParent: keyPath[1],
+      siderOpenKey: keyPath[1],
+      siderSelectedKey: keyPath[0],
     });
   };
 
-  renderSider = () => (
-    <Sider collapsible theme="light">
-      <Menu
-        defaultSelectedKeys={[defaultSelectedKeys]}
-        defaultOpenKeys={[defaultOpenKeys]}
-        mode="inline"
-        onClick={this.handleMenuClick}
-      >
-        {menu.map(item => {
-          const { key, title, children } = item;
-          return (
-            <SubMenu key={key} title={title}>
-              {children.map(jtem => (
-                <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
-              ))}
-            </SubMenu>
-          );
-        })}
-      </Menu>
-    </Sider>
-  );
+  renderSider = () => {
+    const { menuData } = this.props;
+    const { siderSelectedKey } = this.state;
+    return (
+      <Sider collapsible theme="light">
+        <Menu
+          selectedKeys={[siderSelectedKey]}
+          mode="inline"
+          onClick={this.handleMenuClick}
+        >
+          {menuData.map((item: any) => {
+            const { key, title, children } = item;
+            if (!children) {
+              return <Menu.Item key={key}>{title}</Menu.Item>;
+            }
+            return (
+              <SubMenu key={key} title={title}>
+                {children.map((jtem: any) => (
+                  <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
+                ))}
+              </SubMenu>
+            );
+          })}
+        </Menu>
+      </Sider>
+    );
+  };
 
   renderContent = () => {
     const { dataSource, onSave, onDelete } = this.props;
-    const { breadParent, breadChild } = this.state;
+    const { siderOpenKey, siderSelectedKey } = this.state;
     return (
       <Content style={{ margin: '0 16px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>{breadParent}</Breadcrumb.Item>
-          <Breadcrumb.Item>{breadChild}</Breadcrumb.Item>
+          <Breadcrumb.Item>{siderOpenKey}</Breadcrumb.Item>
+          <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
         <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-          {dataSource.length === 0 && (
-            <div onClick={onSave} className="card-grid-wrapper">
-              <Card.Grid className="card add">
-                <Icon type="plus" />
-              </Card.Grid>
-            </div>
-          )}
-          {dataSource.map(item => {
-            const { thumbnailUrl, id, hoverText } = item;
-            const dropDownMenu = (
-              <Menu>
-                <Menu.Item key={`add-${id}`} onClick={onSave}>
-                  新增
-                </Menu.Item>
-                <Menu.Item
-                  key={`delete-${id}`}
-                  onClick={() => onDelete && onDelete(item)}
-                >
-                  删除
-                </Menu.Item>
-              </Menu>
-            );
-            return (
-              <Tooltip title={hoverText} key={`fragment-${id}`}>
-                <Card.Grid className="card">
-                  <Dropdown overlay={dropDownMenu} trigger={['contextMenu']}>
-                    <img
-                      src={thumbnailUrl}
-                      onClick={() => this.handleClick(item)}
+          <List
+            dataSource={
+              siderSelectedKey === 'all'
+                ? dataSource
+                : dataSource.filter(item => item.subType === siderSelectedKey)
+            }
+            size="large"
+            renderItem={(item: any) => (
+              <Dropdown
+                overlay={() => (
+                  <Menu>
+                    <Menu.Item key={`add-${item.id}`} onClick={onSave}>
+                      新增
+                    </Menu.Item>
+                    <Menu.Item
+                      key={`delete-${item.id}`}
+                      onClick={() => onDelete && onDelete(item)}
+                    >
+                      删除
+                    </Menu.Item>
+                  </Menu>
+                )}
+                trigger={['contextMenu']}
+                key={`fragment-${item.id}`}
+              >
+                <List.Item className="list-item">
+                  {item.category === 'mapping' && (
+                    <Icon
+                      type="file-text"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#108ee9',
+                      }}
                     />
-                  </Dropdown>
-                </Card.Grid>
-              </Tooltip>
-            );
-          })}
+                  )}
+                  {item.category === 'markdown' && (
+                    <Icon
+                      type="file-markdown"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#87d068',
+                      }}
+                    />
+                  )}
+                  {item.title}
+                </List.Item>
+              </Dropdown>
+            )}
+          />
         </div>
       </Content>
     );
