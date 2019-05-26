@@ -2,20 +2,17 @@
   width: 100%;
 }
 
-.MainPage .card {
-  width: 15%;
-  text-align: center;
-  cursor: pointer;
-}
-
-.MainPage .add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 288px;
-}
-
 .MainPage {
   height: 100vh;
   min-height: 100vh;
+}
+
+.MainPage .list-item {
+  cursor: pointer;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.MainPage .list-item:hover {
+  background: #e6f7ff;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

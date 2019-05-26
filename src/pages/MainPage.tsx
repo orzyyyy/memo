@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import { Card, Dropdown, Menu, Icon, Layout, Breadcrumb, Tooltip } from 'antd';
+import { Dropdown, Menu, Layout, Breadcrumb, List, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { MappingItem } from '../router';
@@ -86,41 +86,53 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
           <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
         <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-          {dataSource.length === 0 && (
-            <div onClick={onSave} className="card-grid-wrapper">
-              <Card.Grid className="card add">
-                <Icon type="plus" />
-              </Card.Grid>
-            </div>
-          )}
-          {dataSource.map(item => {
-            const { thumbnailUrl, id, hoverText } = item;
-            const dropDownMenu = (
-              <Menu>
-                <Menu.Item key={`add-${id}`} onClick={onSave}>
-                  新增
-                </Menu.Item>
-                <Menu.Item
-                  key={`delete-${id}`}
-                  onClick={() => onDelete && onDelete(item)}
-                >
-                  删除
-                </Menu.Item>
-              </Menu>
-            );
-            return (
-              <Tooltip title={hoverText} key={`fragment-${id}`}>
-                <Card.Grid className="card">
-                  <Dropdown overlay={dropDownMenu} trigger={['contextMenu']}>
-                    <img
-                      src={thumbnailUrl}
-                      onClick={() => this.handleClick(item)}
+          <List
+            dataSource={dataSource}
+            size="large"
+            renderItem={(item: any) => (
+              <Dropdown
+                overlay={() => (
+                  <Menu>
+                    <Menu.Item key={`add-${item.id}`} onClick={onSave}>
+                      新增
+                    </Menu.Item>
+                    <Menu.Item
+                      key={`delete-${item.id}`}
+                      onClick={() => onDelete && onDelete(item)}
+                    >
+                      删除
+                    </Menu.Item>
+                  </Menu>
+                )}
+                trigger={['contextMenu']}
+                key={`fragment-${item.id}`}
+              >
+                <List.Item className="list-item">
+                  {item.category === 'mapping' && (
+                    <Icon
+                      type="file-text"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#108ee9',
+                      }}
                     />
-                  </Dropdown>
-                </Card.Grid>
-              </Tooltip>
-            );
-          })}
+                  )}
+                  {item.category === 'markdown' && (
+                    <Icon
+                      type="file-markdown"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#87d068',
+                      }}
+                    />
+                  )}
+                  {item.title}
+                </List.Item>
+              </Dropdown>
+            )}
+          />
         </div>
       </Content>
     );
