@@ -3,13 +3,13 @@ import './css/MainPage.css';
 import { Dropdown, Menu, Layout, Breadcrumb, List, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { MappingItem } from '../router';
 import { SiderProps } from './MainPageDataController';
+import { MappingProps } from '../../server/controller/save';
 
 export interface MainPageProps {
-  dataSource: MappingItem[];
+  dataSource: MappingProps[];
   onSave?: () => void;
-  onDelete?: (dataItem: MappingItem) => void;
+  onDelete?: (dataItem: MappingProps) => void;
   menuData: SiderProps[];
 }
 export interface MainPageState {
@@ -87,7 +87,11 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
         </Breadcrumb>
         <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
           <List
-            dataSource={dataSource}
+            dataSource={
+              siderSelectedKey === 'all'
+                ? dataSource
+                : dataSource.filter(item => item.subType === siderSelectedKey)
+            }
             size="large"
             renderItem={(item: any) => (
               <Dropdown

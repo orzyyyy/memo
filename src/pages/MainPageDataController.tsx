@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
-import { MappingItem } from '../router';
+import { MappingProps } from '../../server/controller/save';
 
 export interface SiderProps {
   key: string;
@@ -9,7 +9,7 @@ export interface SiderProps {
   children?: { key: string; value: string }[];
 }
 export interface MainPageDataControllerState {
-  dataSource: MappingItem[];
+  dataSource: MappingProps[];
   menuData: SiderProps[];
 }
 
