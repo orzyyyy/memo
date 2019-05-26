@@ -15,12 +15,10 @@ export interface EditFormProps {
   cascaderData: SiderProps[];
   onSubmit: (form: FormProps) => void;
   onCancel: () => void;
-}
-export interface EditFormState {
-  visible: boolean;
+  loading: boolean;
 }
 
-class EditForm extends Component<EditFormProps, EditFormState> {
+class EditForm extends Component<EditFormProps> {
   handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const { form, onSubmit } = this.props;
@@ -70,7 +68,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
   };
 
   render() {
-    const { form, visible } = this.props;
+    const { form, visible, loading } = this.props;
     const { getFieldDecorator } = form;
     const formItemLayout = {
       labelCol: {
@@ -135,7 +133,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
             <Button style={{ marginRight: 16 }} onClick={this.handleReset}>
               重置
             </Button>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               确定
             </Button>
           </Form.Item>

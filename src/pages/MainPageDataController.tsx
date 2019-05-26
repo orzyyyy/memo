@@ -3,6 +3,7 @@ import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
 import { MappingProps } from '../../server/controller/save';
 import { FormProps } from './EditForm';
+import { message } from 'antd';
 
 export interface SiderProps {
   key: string;
@@ -14,6 +15,7 @@ export interface MainPageDataControllerState {
   menuData: SiderProps[];
   EditForm: any;
   formVisible: boolean;
+  formLoading: boolean;
 }
 
 export default class MainPageDataController extends Component<
@@ -25,6 +27,7 @@ export default class MainPageDataController extends Component<
     menuData: [],
     EditForm: null,
     formVisible: false,
+    formLoading: false,
   };
 
   componentDidMount = () => {
@@ -92,12 +95,15 @@ export default class MainPageDataController extends Component<
   };
 
   handleSubmit = async (item: FormProps) => {
+    this.setState({ formLoading: true });
     const response = await fetch('save/new', {
       body: JSON.stringify(item),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-    await response.json();
+    await response.text();
+    message.success('创建完成');
+    this.setState({ formVisible: false });
   };
 
   handleModalCancel = () => {
@@ -105,7 +111,13 @@ export default class MainPageDataController extends Component<
   };
 
   render = () => {
-    const { dataSource, menuData, EditForm, formVisible } = this.state;
+    const {
+      dataSource,
+      menuData,
+      EditForm,
+      formVisible,
+      formLoading,
+    } = this.state;
     return (
       <>
         <MainPage
@@ -120,6 +132,7 @@ export default class MainPageDataController extends Component<
             cascaderData={menuData}
             onSubmit={this.handleSubmit}
             onCancel={this.handleModalCancel}
+            loading={formLoading}
           />
         )}
       </>
