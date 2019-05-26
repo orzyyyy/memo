@@ -126,6 +126,7 @@ class EditForm extends Component<EditFormProps> {
                 expandTrigger="hover"
                 options={this.transformCascaderData()}
                 placeholder=""
+                showSearch
               />,
             )}
           </Form.Item>
