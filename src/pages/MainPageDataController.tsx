@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { ajax } from '../urlHelper';
 import MainPage from './MainPage';
 import { MappingProps } from '../../server/controller/save';
+import { FormProps } from './EditForm';
+import { message } from 'antd';
 
 export interface SiderProps {
   key: string;
@@ -11,6 +12,9 @@ export interface SiderProps {
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
+  EditForm: any;
+  formVisible: boolean;
+  formLoading: boolean;
 }
 
 export default class MainPageDataController extends Component<
@@ -20,6 +24,9 @@ export default class MainPageDataController extends Component<
   state: MainPageDataControllerState = {
     dataSource: [],
     menuData: [],
+    EditForm: null,
+    formVisible: false,
+    formLoading: false,
   };
 
   componentDidMount = () => {
@@ -39,53 +46,72 @@ export default class MainPageDataController extends Component<
     this.setState({ menuData });
   };
 
-  handleDelete = ({ id }: { id: string }) => {
-    ajax({
-      url: 'del',
-      params: {
-        method: 'DELETE',
-        body: JSON.stringify({ id }),
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (!result) {
-          console.error('error with delete');
-        } else {
-          (window as any).DataCollector.clear();
-          this.getMapping();
-        }
-      },
+  handleDelete = async ({ id }: { id: string }) => {
+    const response = await fetch('/del/mapping', {
+      method: 'DELETE',
+      body: JSON.stringify({ id }),
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const result = await response.json();
+    if (!result) {
+      console.error('error with delete');
+    } else {
+      this.getMapping();
+    }
+  };
+
+  handleEdit = () => {
+    import('./EditForm').then(EditForm => {
+      this.setState({
+        formVisible: true,
+        EditForm: EditForm.default || EditForm,
+      });
     });
   };
 
-  handleAdd = () => {
-    ajax({
-      url: 'save/new',
-      type: 'text',
-      params: {
-        method: 'POST',
-        body: '',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-      },
-      success: result => {
-        if (result) {
-          location.hash = '/new?' + result;
-        }
-      },
+  handleSubmit = async (item: FormProps) => {
+    this.setState({ formLoading: true });
+    const response = await fetch('save/new', {
+      body: JSON.stringify(item),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
     });
+    await response.text();
+    message.success('创建完成');
+    this.setState({ formVisible: false });
+  };
+
+  handleModalCancel = () => {
+    this.setState({ formVisible: false });
   };
 
   render = () => {
-    const { dataSource, menuData } = this.state;
+    const {
+      dataSource,
+      menuData,
+      EditForm,
+      formVisible,
+      formLoading,
+    } = this.state;
     return (
-      <MainPage
-        dataSource={dataSource}
-        onSave={this.handleAdd}
-        onDelete={this.handleDelete}
-        menuData={menuData}
-      />
+      <>
+        <MainPage
+          dataSource={dataSource}
+          onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
+          menuData={menuData}
+        />
+        {EditForm && (
+          <EditForm
+            visible={formVisible}
+            cascaderData={menuData}
+            onSubmit={this.handleSubmit}
+            onCancel={this.handleModalCancel}
+            loading={formLoading}
+          />
+        )}
+      </>
     );
   };
 }
