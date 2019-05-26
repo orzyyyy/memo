@@ -29,6 +29,17 @@ for (const item of result) {
     }
   }
 }
+
+const unique = target => {
+  let result = {};
+  target.forEach(function(item) {
+    result[JSON.stringify(item)] = item;
+  });
+  return Object.keys(result).map(item => JSON.parse(item));
+};
+for (const item of menu) {
+  item.children = unique(item.children);
+}
 menu = [{ key: 'all', title: 'all' }, ...menu];
 
 fs.outputJSON(path.join(process.cwd(), 'src/assets/sider.json'), menu, {
