@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Markdown from 'react-markdown';
-import { Col, Row, Input, Button, message } from 'antd';
+import { Col, Row, Input, Button } from 'antd';
 const { TextArea } = Input;
 
 export interface MarkdownEditorProps {
   targetId: string;
   dataSource: string;
+  onSave: ({ id, layout }: { id: string; layout: string }) => void;
 }
 export interface MarkdownEditorState {
   textareaValue: string;
@@ -33,20 +34,10 @@ export default class MarkdownEditor extends Component<
     this.setState({ textareaValue: e.target.value });
   };
 
-  handleSave = async () => {
-    const response = await fetch('save/update', {
-      body: JSON.stringify({
-        id: this.props.targetId,
-        layout: this.state.textareaValue,
-      }),
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const result = await response.json();
-    if (result) {
-      message.success('保存成功');
-    } else {
-      message.error('保存失败');
+  handleSave = () => {
+    const onSave = this.props.onSave;
+    if (onSave) {
+      onSave({ id: this.props.targetId, layout: this.state.textareaValue });
     }
   };
 
