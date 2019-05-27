@@ -78,6 +78,16 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     );
   };
 
+  handleListItemClick = ({
+    category,
+    id,
+  }: {
+    category: 'mapping' | 'markdown';
+    id: string;
+  }) => {
+    location.hash = `/${category}/${id}`;
+  };
+
   renderContent = () => {
     const { dataSource, onDelete, onEdit } = this.props;
     const { siderOpenKey, siderSelectedKey } = this.state;
@@ -119,7 +129,15 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
                 trigger={['contextMenu']}
                 key={`fragment-${item.id}`}
               >
-                <List.Item className="list-item">
+                <List.Item
+                  className="list-item"
+                  onClick={() =>
+                    this.handleListItemClick({
+                      category: item.category,
+                      id: item.id,
+                    })
+                  }
+                >
                   {item.category === 'mapping' && (
                     <Icon
                       type="apartment"
