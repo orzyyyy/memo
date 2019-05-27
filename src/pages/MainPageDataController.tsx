@@ -80,7 +80,7 @@ export default class MainPageDataController extends Component<
     const id = await response.text();
     message.success(`${item.category} 初始化完成`);
     this.handleModalCancel();
-    location.hash = `/${item.category}/${id}`;
+    location.hash = `/${item.category}/edit/${id}`;
   };
 
   handleModalCancel = () => {
