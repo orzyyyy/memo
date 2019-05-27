@@ -65,7 +65,35 @@ const updateTargetMapping = async (ctx: any) => {
   ];
   let targetPaths: string[] = [];
 
-  switch (category) {
+  // update router
+  const targetFile = fs
+    .readFileSync(path.join(process.cwd(), 'src/assets/mapping.json'))
+    .toString();
+  const targetJSONFile = JSON.parse(targetFile);
+  const targetArr = targetJSONFile.filter(
+    (item: MappingProps) => item.id === id,
+  );
+  const targetItem = targetArr.length > 0 ? targetArr[0] : {};
+  const {
+    createTime,
+    title: originTitle,
+    url: originUrl,
+    type: originType,
+    subType: originSubType,
+    category: originCategory,
+  } = targetItem;
+  updateMappingRouter({
+    id,
+    title: title || originTitle,
+    url: url || originUrl,
+    createTime,
+    modifyTime: new Date().getTime(),
+    type: type || originType,
+    subType: subType || originSubType,
+    category: category || originCategory,
+  });
+
+  switch (category || originCategory) {
     case 'mapping':
       targetPaths = mappingPaths;
       break;
@@ -81,44 +109,10 @@ const updateTargetMapping = async (ctx: any) => {
   // update layout
   try {
     for (const item of targetPaths) {
-      fs.outputJSON(path.join(process.cwd(), item), layout, {
-        spaces: 2,
-      })
-        .then(() => {
-          // tslint:disable-next-line: no-console
-          console.log(`written completed => ${item}`);
-        })
-        .catch((err: any) => {
-          console.error(err);
-        });
+      fs.writeFileSync(path.join(process.cwd(), item), layout);
+      // tslint:disable-next-line: no-console
+      console.log(`written completed => ${item}`);
     }
-    // update router
-    const targetFile = fs
-      .readFileSync(path.join(process.cwd(), 'src/assets/mapping.json'))
-      .toString();
-    const targetJSONFile = JSON.parse(targetFile);
-    const targetArr = targetJSONFile.filter(
-      (item: MappingProps) => item.id === id,
-    );
-    const targetItem = targetArr.length > 0 ? targetArr[0] : {};
-    const {
-      createTime,
-      title: originTitle,
-      url: originUrl,
-      type: originType,
-      subType: originSubType,
-      category: originCategory,
-    } = targetItem;
-    updateMappingRouter({
-      createTime,
-      modifyTime: new Date().getTime(),
-      id,
-      title: title || originTitle,
-      url: url || originUrl,
-      type: type || originType,
-      subType: subType || originSubType,
-      category: category || originCategory,
-    });
     ctx.response.body = true;
   } catch (error) {
     ctx.response.body = error.message;
