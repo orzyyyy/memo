@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Input, Modal, Select, Cascader, Button } from 'antd';
+import { Form, Input, Modal, Select, Button, Icon, Divider } from 'antd';
 import { SiderProps } from './MainPageDataController';
+import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
 
 export interface FormProps {
@@ -12,49 +13,32 @@ export interface FormProps {
 export interface EditFormProps {
   form: any;
   visible: boolean;
-  cascaderData: SiderProps[];
+  selectData: SiderProps[];
   onSubmit: (form: FormProps) => void;
   onCancel: () => void;
   loading: boolean;
 }
+export interface EditFormState {
+  showSelectIcon: boolean;
+  currentType: SelectValue;
+}
 
-class EditForm extends Component<EditFormProps> {
+class EditForm extends Component<EditFormProps, EditFormState> {
+  state = {
+    showSelectIcon: false,
+    currentType: '',
+  };
+
   handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const { form, onSubmit } = this.props;
-    form.validateFields((err: any, { docType, title, category }: any) => {
-      if (!err) {
-        onSubmit({
-          title,
-          category,
-          type: docType[0],
-          subType: docType[1],
-        });
-      }
-    });
-  };
-
-  transformCascaderData = () => {
-    const { cascaderData } = this.props;
-    const result: any[] = [];
-
-    for (const item of cascaderData.filter(target => target.children)) {
-      const { key, title, children = [] } = item;
-      const tempChildren = [];
-      for (const child of children) {
-        tempChildren.push({
-          label: child.key,
-          value: child.value,
-        });
-      }
-      result.push({
-        label: title,
-        value: key,
-        children: tempChildren,
-      });
-    }
-
-    return result;
+    form.validateFields(
+      (err: any, { type, subType, title, category }: FormProps) => {
+        if (!err) {
+          onSubmit({ title, category, type, subType });
+        }
+      },
+    );
   };
 
   handleReset = () => {
@@ -67,9 +51,12 @@ class EditForm extends Component<EditFormProps> {
     this.handleReset();
   };
 
+  addType = () => {};
+
   render() {
-    const { form, visible, loading } = this.props;
+    const { form, visible, loading, selectData } = this.props;
     const { getFieldDecorator } = form;
+    const { showSelectIcon, currentType } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 4 },
@@ -114,7 +101,7 @@ class EditForm extends Component<EditFormProps> {
             )}
           </Form.Item>
           <Form.Item label="文档类别">
-            {getFieldDecorator('docType', {
+            {getFieldDecorator('type', {
               rules: [
                 {
                   required: true,
@@ -122,12 +109,63 @@ class EditForm extends Component<EditFormProps> {
                 },
               ],
             })(
-              <Cascader
-                expandTrigger="hover"
-                options={this.transformCascaderData()}
-                placeholder=""
+              <Select
                 showSearch
-              />,
+                onDropdownVisibleChange={open =>
+                  this.setState({ showSelectIcon: open })
+                }
+                onChange={value => this.setState({ currentType: value })}
+              >
+                {selectData.map(item => (
+                  <Option value={item.key} key={`type-${item.key}`}>
+                    {item.title}
+                  </Option>
+                ))}
+              </Select>,
+            )}
+          </Form.Item>
+          <Form.Item label="文档子类">
+            {getFieldDecorator('subType', {
+              rules: [
+                {
+                  required: true,
+                  message: '文档子类不能为空',
+                },
+              ],
+            })(
+              <Select
+                showSearch
+                onDropdownVisibleChange={open =>
+                  this.setState({ showSelectIcon: open })
+                }
+                dropdownRender={menu => (
+                  <>
+                    {menu}
+                    <Divider style={{ margin: '4px 0' }} />
+                    <div
+                      style={{ padding: '8px', cursor: 'pointer' }}
+                      onClick={this.addType}
+                    >
+                      <Icon type="plus" /> 添加子类
+                    </div>
+                  </>
+                )}
+              >
+                {selectData
+                  .filter(item =>
+                    currentType ? item.key === currentType : true,
+                  )
+                  .map(({ children = [] }) =>
+                    children.map(jtem => (
+                      <Option value={jtem.key} key={jtem.key}>
+                        {jtem.value}
+                        {showSelectIcon && (
+                          <Icon style={{ float: 'right' }} type="minus" />
+                        )}
+                      </Option>
+                    )),
+                  )}
+              </Select>,
             )}
           </Form.Item>
           <Form.Item wrapperCol={{ span: 24, offset: 16 }}>

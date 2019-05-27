@@ -106,7 +106,7 @@ export default class MainPageDataController extends Component<
         {EditForm && (
           <EditForm
             visible={formVisible}
-            cascaderData={menuData}
+            selectData={menuData.filter(item => item.children)}
             onSubmit={this.handleSubmit}
             onCancel={this.handleModalCancel}
             loading={formLoading}
