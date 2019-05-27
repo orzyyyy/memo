@@ -32,8 +32,8 @@ export default class MarkdownDetail extends Component<MarkdownDetailProps> {
             value={textareaValue}
           />
         </Col>
-        <Col span={12}>
-          <Markdown source={textareaValue} />
+        <Col span={12} style={{ height: '95vh', overflow: 'auto' }}>
+          <Markdown source={textareaValue} escapeHtml={false} />
         </Col>
       </Row>
     );
