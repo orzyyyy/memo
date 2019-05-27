@@ -3,12 +3,29 @@ import Markdown from 'react-markdown';
 import { Col, Row, Input, Button, message } from 'antd';
 const { TextArea } = Input;
 
-export interface MarkdownDetailProps {
-  match: any;
+export interface MarkdownEditorProps {
+  targetId: string;
+  dataSource: string;
+}
+export interface MarkdownEditorState {
+  textareaValue: string;
 }
 
-export default class MarkdownDetail extends Component<MarkdownDetailProps> {
-  state = {
+export default class MarkdownEditor extends Component<
+  MarkdownEditorProps,
+  MarkdownEditorState
+> {
+  static getDerivedStateFromProps(
+    prevProps: MarkdownEditorProps,
+    prevState: MarkdownEditorState,
+  ) {
+    if (!prevState.textareaValue) {
+      return { textareaValue: prevProps.dataSource };
+    }
+    return null;
+  }
+
+  state: MarkdownEditorState = {
     textareaValue: '',
   };
 
@@ -19,7 +36,7 @@ export default class MarkdownDetail extends Component<MarkdownDetailProps> {
   handleSave = async () => {
     const response = await fetch('save/update', {
       body: JSON.stringify({
-        id: this.props.match.params.id,
+        id: this.props.targetId,
         layout: this.state.textareaValue,
       }),
       method: 'POST',
@@ -35,7 +52,6 @@ export default class MarkdownDetail extends Component<MarkdownDetailProps> {
 
   render() {
     const { textareaValue } = this.state;
-
     return (
       <Row gutter={16} style={{ padding: 15, width: '100%' }}>
         <Col span={12}>
