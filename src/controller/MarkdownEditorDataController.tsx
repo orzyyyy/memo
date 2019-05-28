@@ -29,7 +29,7 @@ export default class MarkdownEditorDataController extends Component<
   }
 
   loadModule = (moduleName: string, targetId: string) => {
-    import(`./${moduleName}`).then(target =>
+    import(`../pages/${moduleName}`).then(target =>
       this.setState({ [moduleName]: target.default || target }, () => {
         this.getTargetMarkdown(targetId);
       }),
