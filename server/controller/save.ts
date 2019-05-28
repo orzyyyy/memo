@@ -28,7 +28,7 @@ const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
   const isExistTargetIndex = result.findIndex(
     (item: MappingProps) => item.id === targetItem.id,
   );
-  if (isExistTargetIndex > 0) {
+  if (isExistTargetIndex > -1) {
     if (isDelete) {
       result.splice(isExistTargetIndex, 1);
     } else {
