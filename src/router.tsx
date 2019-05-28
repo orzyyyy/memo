@@ -1,7 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 const MainPage = lazy(() => import('./pages/MainPageDataController'));
-const MappingDetail = lazy(() => import('./pages/MappingDetail'));
+const MappingDetailDataController = lazy(() =>
+  import('./pages/MappingDetailDataController'),
+);
 const MarkdownEditorDataController = lazy(() =>
   import('./pages/MarkdownEditorDataController'),
 );
@@ -11,7 +13,7 @@ export default () => (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route path="/" component={MainPage} exact />
-        <Route path="/mapping/:id" component={MappingDetail} />
+        <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
           path="/markdown/edit/:id"
           component={MarkdownEditorDataController}
