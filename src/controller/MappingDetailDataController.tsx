@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MappingDetail from './MappingDetail';
+import MappingDetail from '../pages/MappingDetail';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { message } from 'antd';

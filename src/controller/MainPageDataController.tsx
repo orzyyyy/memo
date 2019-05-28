@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MainPage from './MainPage';
+import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/save';
-import { FormProps } from './EditForm';
+import { FormProps } from '../pages/EditForm';
 import { message } from 'antd';
 
 export interface SiderProps {
@@ -62,7 +62,7 @@ export default class MainPageDataController extends Component<
   };
 
   handleEdit = () => {
-    import('./EditForm').then(EditForm => {
+    import('../pages/EditForm').then(EditForm => {
       this.setState({
         formVisible: true,
         EditForm: EditForm.default || EditForm,

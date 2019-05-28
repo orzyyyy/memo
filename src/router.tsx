@@ -1,11 +1,11 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-const MainPage = lazy(() => import('./pages/MainPageDataController'));
+const MainPage = lazy(() => import('./controller/MainPageDataController'));
 const MappingDetailDataController = lazy(() =>
-  import('./pages/MappingDetailDataController'),
+  import('./controller/MappingDetailDataController'),
 );
 const MarkdownEditorDataController = lazy(() =>
-  import('./pages/MarkdownEditorDataController'),
+  import('./controller/MarkdownEditorDataController'),
 );
 
 export default () => (

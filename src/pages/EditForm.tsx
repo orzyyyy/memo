@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Modal, Select, Button, Icon, Divider } from 'antd';
-import { SiderProps } from './MainPageDataController';
+import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
 

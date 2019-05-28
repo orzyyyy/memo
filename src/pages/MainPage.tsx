@@ -3,7 +3,7 @@ import './css/MainPage.css';
 import { Dropdown, Menu, Layout, Breadcrumb, List, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { SiderProps } from './MainPageDataController';
+import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/save';
 import { Button } from 'antd';
 
