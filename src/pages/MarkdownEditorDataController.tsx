@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MarkdownEditor from './MarkdownEditor';
 import { message } from 'antd';
 
 export interface MarkdownEditorDataControllerProps {
@@ -7,6 +6,7 @@ export interface MarkdownEditorDataControllerProps {
 }
 export interface MarkdownEditorDataControllerState {
   dataSource: string;
+  [moduleName: string]: any;
 }
 
 export default class MarkdownEditorDataController extends Component<
@@ -14,13 +14,27 @@ export default class MarkdownEditorDataController extends Component<
   MarkdownEditorDataControllerState
 > {
   state: MarkdownEditorDataControllerState = {
+    MarkdownEditor: null,
+    MarkdownDetail: null,
     dataSource: '',
   };
 
   componentDidMount() {
-    const targetId = this.props.match.params.id;
-    this.getTargetMarkdown(targetId);
+    const { path, params } = this.props.match;
+    const targetId = params.id;
+    this.loadModule(
+      path.includes('edit') ? 'MarkdownEditor' : 'MarkdownDetail',
+      targetId,
+    );
   }
+
+  loadModule = (moduleName: string, targetId: string) => {
+    import(`./${moduleName}`).then(target =>
+      this.setState({ [moduleName]: target.default || target }, () => {
+        this.getTargetMarkdown(targetId);
+      }),
+    );
+  };
 
   getTargetMarkdown = async (targetId: string) => {
     const response = await fetch(`./assets/markdown/${targetId}.md`);
@@ -43,13 +57,18 @@ export default class MarkdownEditorDataController extends Component<
   };
 
   render() {
-    const { dataSource } = this.state;
+    const { dataSource, MarkdownEditor, MarkdownDetail } = this.state;
     return (
-      <MarkdownEditor
-        targetId={this.props.match.params.id}
-        dataSource={dataSource}
-        onSave={this.handleSave}
-      />
+      <>
+        {MarkdownEditor && (
+          <MarkdownEditor
+            targetId={this.props.match.params.id}
+            dataSource={dataSource}
+            onSave={this.handleSave}
+          />
+        )}
+        {MarkdownDetail && <MarkdownDetail dataSource={dataSource} />}
+      </>
     );
   }
 }
