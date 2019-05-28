@@ -82,6 +82,7 @@ const updateTargetMapping = async (ctx: any) => {
     subType: originSubType,
     category: originCategory,
   } = targetItem;
+  const targetCategory = category || originCategory;
   updateMappingRouter({
     id,
     title: title || originTitle,
@@ -90,10 +91,10 @@ const updateTargetMapping = async (ctx: any) => {
     modifyTime: new Date().getTime(),
     type: type || originType,
     subType: subType || originSubType,
-    category: category || originCategory,
+    category: targetCategory,
   });
 
-  switch (category || originCategory) {
+  switch (targetCategory) {
     case 'mapping':
       targetPaths = mappingPaths;
       break;
@@ -109,7 +110,16 @@ const updateTargetMapping = async (ctx: any) => {
   // update layout
   try {
     for (const item of targetPaths) {
-      fs.writeFileSync(path.join(process.cwd(), item), layout);
+      if (targetCategory === 'markdown') {
+        fs.writeFileSync(path.join(process.cwd(), item), layout);
+      }
+      if (targetCategory === 'mapping') {
+        fs.outputJSON(path.join(process.cwd(), item), layout, {
+          spaces: 2,
+        }).catch((err: any) => {
+          console.error(err);
+        });
+      }
       // tslint:disable-next-line: no-console
       console.log(`written completed => ${item}`);
     }
