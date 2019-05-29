@@ -15,6 +15,7 @@ export interface MainPageDataControllerState {
   EditForm: any;
   formVisible: boolean;
   formLoading: boolean;
+  formDataItem: FormProps | null;
 }
 
 export default class MainPageDataController extends Component<
@@ -27,6 +28,7 @@ export default class MainPageDataController extends Component<
     EditForm: null,
     formVisible: false,
     formLoading: false,
+    formDataItem: null,
   };
 
   componentDidMount = () => {
@@ -61,11 +63,12 @@ export default class MainPageDataController extends Component<
     }
   };
 
-  handleEdit = () => {
+  handleEdit = (formDataItem?: any) => {
     import('../pages/EditForm').then(EditForm => {
       this.setState({
         formVisible: true,
         EditForm: EditForm.default || EditForm,
+        formDataItem,
       });
     });
   };
@@ -94,6 +97,7 @@ export default class MainPageDataController extends Component<
       EditForm,
       formVisible,
       formLoading,
+      formDataItem,
     } = this.state;
     return (
       <>
@@ -110,6 +114,7 @@ export default class MainPageDataController extends Component<
             onSubmit={this.handleSubmit}
             onCancel={this.handleModalCancel}
             loading={formLoading}
+            dataItem={formDataItem}
           />
         )}
       </>

@@ -9,7 +9,7 @@ import { Button } from 'antd';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
-  onEdit?: () => void;
+  onEdit: (dataItem?: any) => void;
   onDelete?: (dataItem: MappingProps) => void;
   menuData: SiderProps[];
 }
@@ -99,7 +99,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
         </Breadcrumb>
         <Button
           style={{ position: 'absolute', right: 24, top: 10 }}
-          onClick={onEdit}
+          onClick={() => onEdit()}
         >
           <Icon type="plus" />
         </Button>
@@ -115,7 +115,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
               <Dropdown
                 overlay={() => (
                   <Menu>
-                    <Menu.Item key={`add-${item.id}`} onClick={onEdit}>
+                    <Menu.Item
+                      key={`add-${item.id}`}
+                      onClick={() => onEdit(item)}
+                    >
                       修改
                     </Menu.Item>
                     <Menu.Item

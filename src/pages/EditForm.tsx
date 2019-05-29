@@ -17,6 +17,7 @@ export interface EditFormProps {
   onSubmit: (form: FormProps) => void;
   onCancel: () => void;
   loading: boolean;
+  dataItem: FormProps;
 }
 export interface EditFormState {
   showSelectIcon: boolean;
@@ -54,7 +55,13 @@ class EditForm extends Component<EditFormProps, EditFormState> {
   addType = () => {};
 
   render() {
-    const { form, visible, loading, selectData } = this.props;
+    const {
+      form,
+      visible,
+      loading,
+      selectData,
+      dataItem = { type: '', subType: '', category: '', title: '' },
+    } = this.props;
     const { getFieldDecorator } = form;
     const { showSelectIcon, currentType } = this.state;
     const formItemLayout = {
@@ -83,6 +90,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                   message: '名称不能为空',
                 },
               ],
+              initialValue: dataItem.title,
             })(<Input />)}
           </Form.Item>
           <Form.Item label="显示类别">
@@ -93,6 +101,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                   message: '显示类别不能为空',
                 },
               ],
+              initialValue: dataItem.category,
             })(
               <Select>
                 <Option value="markdown">markdown</Option>
@@ -108,6 +117,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                   message: '文档类别不能为空',
                 },
               ],
+              initialValue: dataItem.type,
             })(
               <Select
                 showSearch
@@ -132,6 +142,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                   message: '文档子类不能为空',
                 },
               ],
+              initialValue: dataItem.subType,
             })(
               <Select
                 showSearch
