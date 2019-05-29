@@ -48,10 +48,10 @@ export default class MainPageDataController extends Component<
     this.setState({ menuData });
   };
 
-  handleDelete = async ({ id }: { id: string }) => {
+  handleDelete = async ({ id, category }: { id: string; category: string }) => {
     const response = await fetch('/del/mapping', {
       method: 'DELETE',
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id, category }),
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
     });
