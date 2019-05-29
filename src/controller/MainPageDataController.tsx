@@ -94,7 +94,9 @@ export default class MainPageDataController extends Component<
       message.success(`${item.category} 初始化完成`);
     }
     this.handleModalCancel();
-    location.hash = `/${item.category}/edit/${id}`;
+    location.hash = `/${item.category}${
+      item.category === 'markdown' ? '/edit' : ''
+    }/${id}`;
   };
 
   handleModalCancel = () => {
