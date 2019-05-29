@@ -79,7 +79,7 @@ export default class MainPageDataController extends Component<
     if (dataItem) {
       id = dataItem.id;
       await fetch('save/update', {
-        body: JSON.stringify(dataItem),
+        body: JSON.stringify(Object.assign({}, dataItem, item)),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
