@@ -20,13 +20,11 @@ export interface EditFormProps {
   dataItem: any;
 }
 export interface EditFormState {
-  showSelectIcon: boolean;
   currentType: SelectValue;
 }
 
 class EditForm extends Component<EditFormProps, EditFormState> {
   state = {
-    showSelectIcon: false,
     currentType: '',
   };
 
@@ -63,7 +61,7 @@ class EditForm extends Component<EditFormProps, EditFormState> {
       dataItem = { type: '', subType: '', category: '', title: '' },
     } = this.props;
     const { getFieldDecorator } = form;
-    const { showSelectIcon, currentType } = this.state;
+    const { currentType } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 4 },
@@ -121,9 +119,6 @@ class EditForm extends Component<EditFormProps, EditFormState> {
             })(
               <Select
                 showSearch
-                onDropdownVisibleChange={open =>
-                  this.setState({ showSelectIcon: open })
-                }
                 onChange={value => this.setState({ currentType: value })}
               >
                 {selectData.map(item => (
@@ -146,9 +141,6 @@ class EditForm extends Component<EditFormProps, EditFormState> {
             })(
               <Select
                 showSearch
-                onDropdownVisibleChange={open =>
-                  this.setState({ showSelectIcon: open })
-                }
                 dropdownRender={menu => (
                   <>
                     {menu}
@@ -170,9 +162,6 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                     children.map(jtem => (
                       <Option value={jtem.key} key={jtem.key}>
                         {jtem.value}
-                        {showSelectIcon && (
-                          <Icon style={{ float: 'right' }} type="minus" />
-                        )}
                       </Option>
                     )),
                   )}
