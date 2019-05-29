@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Modal, Select, Button, Icon, Divider } from 'antd';
+import { Form, Input, Modal, Select, Button } from 'antd';
 import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
@@ -21,11 +21,15 @@ export interface EditFormProps {
 }
 export interface EditFormState {
   currentType: SelectValue;
+  extraTypeSelectItem: string;
+  extraSubTypeSelectItem: string;
 }
 
 class EditForm extends Component<EditFormProps, EditFormState> {
   state = {
     currentType: '',
+    extraTypeSelectItem: '',
+    extraSubTypeSelectItem: '',
   };
 
   handleSubmit = (e: { preventDefault: () => void }) => {
@@ -45,12 +49,9 @@ class EditForm extends Component<EditFormProps, EditFormState> {
   };
 
   handleOnCancel = () => {
-    const { onCancel } = this.props;
-    onCancel();
+    this.props.onCancel();
     this.handleReset();
   };
-
-  addType = () => {};
 
   render() {
     const {
@@ -61,7 +62,11 @@ class EditForm extends Component<EditFormProps, EditFormState> {
       dataItem = { type: '', subType: '', category: '', title: '' },
     } = this.props;
     const { getFieldDecorator } = form;
-    const { currentType } = this.state;
+    const {
+      currentType,
+      extraTypeSelectItem,
+      extraSubTypeSelectItem,
+    } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 4 },
@@ -119,6 +124,9 @@ class EditForm extends Component<EditFormProps, EditFormState> {
             })(
               <Select
                 showSearch
+                onSearch={value =>
+                  this.setState({ extraTypeSelectItem: value })
+                }
                 onChange={value => this.setState({ currentType: value })}
               >
                 {selectData.map(item => (
@@ -126,6 +134,9 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                     {item.title}
                   </Option>
                 ))}
+                <Option value={extraTypeSelectItem}>
+                  {extraTypeSelectItem}
+                </Option>
               </Select>,
             )}
           </Form.Item>
@@ -141,18 +152,9 @@ class EditForm extends Component<EditFormProps, EditFormState> {
             })(
               <Select
                 showSearch
-                dropdownRender={menu => (
-                  <>
-                    {menu}
-                    <Divider style={{ margin: '4px 0' }} />
-                    <div
-                      style={{ padding: '8px', cursor: 'pointer' }}
-                      onClick={this.addType}
-                    >
-                      <Icon type="plus" /> 添加子类
-                    </div>
-                  </>
-                )}
+                onSearch={value =>
+                  this.setState({ extraSubTypeSelectItem: value })
+                }
               >
                 {selectData
                   .filter(item =>
@@ -165,6 +167,9 @@ class EditForm extends Component<EditFormProps, EditFormState> {
                       </Option>
                     )),
                   )}
+                <Option value={extraSubTypeSelectItem}>
+                  {extraSubTypeSelectItem}
+                </Option>
               </Select>,
             )}
           </Form.Item>
