@@ -8,7 +8,7 @@
     "server": "tsc && node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
-    "build": "tsc && nino koei -c scripts/build",
+    "build": "tsc && generate && nino koei -c scripts/build",
     "prettier": "nino prettier",
     "test": "nino test",
     "codecov": "nino test -d",
@@ -32,7 +32,7 @@
     "antd": "^3.19.1",
     "koa": "^2.7.0",
     "mini-xmind": "^1.2.1",
-    "nino-cli": "^0.8.1",
+    "nino-cli": "^0.8.2",
     "react-markdown": "^4.0.8"
   },
   "devDependencies": {
