@@ -14,10 +14,10 @@ export interface EditFormProps {
   form: any;
   visible: boolean;
   selectData: SiderProps[];
-  onSubmit: (form: FormProps) => void;
+  onSubmit: (form: FormProps, id?: string | undefined) => void;
   onCancel: () => void;
   loading: boolean;
-  dataItem: FormProps;
+  dataItem: any;
 }
 export interface EditFormState {
   showSelectIcon: boolean;
@@ -32,11 +32,11 @@ class EditForm extends Component<EditFormProps, EditFormState> {
 
   handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const { form, onSubmit } = this.props;
+    const { form, onSubmit, dataItem } = this.props;
     form.validateFields(
       (err: any, { type, subType, title, category }: FormProps) => {
         if (!err) {
-          onSubmit({ title, category, type, subType });
+          onSubmit({ title, category, type, subType }, dataItem);
         }
       },
     );

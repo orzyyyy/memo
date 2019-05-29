@@ -108,13 +108,21 @@ const updateTargetMapping = async (ctx: any) => {
   }
 
   // update layout
+  let originLayout = layout;
+  if (!layout && id) {
+    const targetLayoutFile = fs.readFileSync(
+      path.join(path.join(process.cwd(), targetPaths[0])),
+    );
+    originLayout = JSON.parse(targetLayoutFile.toString());
+  }
+
   try {
     for (const item of targetPaths) {
       if (targetCategory === 'markdown') {
-        fs.writeFileSync(path.join(process.cwd(), item), layout);
+        fs.writeFileSync(path.join(process.cwd(), item), originLayout);
       }
       if (targetCategory === 'mapping') {
-        fs.outputJSON(path.join(process.cwd(), item), layout, {
+        fs.outputJSON(path.join(process.cwd(), item), originLayout, {
           spaces: 2,
         }).catch((err: any) => {
           console.error(err);

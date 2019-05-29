@@ -73,15 +73,26 @@ export default class MainPageDataController extends Component<
     });
   };
 
-  handleSubmit = async (item: FormProps) => {
+  handleSubmit = async (item: FormProps, dataItem?: any) => {
     this.setState({ formLoading: true });
-    const response = await fetch('save/new', {
-      body: JSON.stringify(item),
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const id = await response.text();
-    message.success(`${item.category} 初始化完成`);
+    let id;
+    if (dataItem) {
+      id = dataItem.id;
+      await fetch('save/update', {
+        body: JSON.stringify(dataItem),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      message.success(`${item.category} 更新完成`);
+    } else {
+      const response = await fetch('save/new', {
+        body: JSON.stringify(item),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      id = await response.text();
+      message.success(`${item.category} 初始化完成`);
+    }
     this.handleModalCancel();
     location.hash = `/${item.category}/edit/${id}`;
   };
