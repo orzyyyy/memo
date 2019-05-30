@@ -20,5 +20,15 @@
         "value": "react"
       }
     ]
+  },
+  {
+    "key": "读书",
+    "title": "读书",
+    "children": [
+      {
+        "key": "摘抄",
+        "value": "摘抄"
+      }
+    ]
   }
 ]
