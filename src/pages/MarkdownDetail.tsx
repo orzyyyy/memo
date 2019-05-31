@@ -7,6 +7,6 @@ export interface MarkdownDetailProps {
 
 export default (props: MarkdownDetailProps) => (
   <div style={{ height: '95vh', overflow: 'auto', padding: '5px 24px' }}>
-    <Markdown source={props.dataSource} escapeHtml={false} />;
+    <Markdown source={props.dataSource} escapeHtml={false} />
   </div>
 );
