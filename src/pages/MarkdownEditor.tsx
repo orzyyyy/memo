@@ -52,7 +52,10 @@ export default class MarkdownEditor extends Component<
             value={textareaValue}
           />
         </Col>
-        <Col span={12} style={{ height: '90vh', overflow: 'auto' }}>
+        <Col
+          span={12}
+          style={{ height: '90vh', overflow: 'auto', paddingLeft: 24 }}
+        >
           <Markdown source={textareaValue} escapeHtml={false} />
         </Col>
         <Col span={8} push={8} style={{ marginTop: 24 }}>
