@@ -14,10 +14,16 @@ export default class MappingDetail extends Component<
   MappingDetailProps,
   MappingDetailState
 > {
-  static getDerivedStateFromProps(prevProps: MappingDetailProps) {
-    return {
-      dataSource: prevProps.dataSource,
-    };
+  static getDerivedStateFromProps(
+    prevProps: MappingDetailProps,
+    prevState: MappingDetailState,
+  ) {
+    if (!Object.keys(prevState).length) {
+      return {
+        dataSource: prevProps.dataSource,
+      };
+    }
+    return {};
   }
 
   state: MappingDetailState = {
@@ -45,7 +51,7 @@ export default class MappingDetail extends Component<
   handleCanvasChange = (dataSource: any) => this.setState({ dataSource });
 
   render = () => {
-    const { dataSource } = this.props;
+    const { dataSource } = this.state;
     return (
       <div className="mapping">
         <Toolbar />
