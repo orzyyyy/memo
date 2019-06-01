@@ -47,14 +47,19 @@ export default class MarkdownEditor extends Component<
       <Row gutter={16} style={{ padding: 15, width: '100%' }}>
         <Col span={12}>
           <TextArea
-            style={{ height: '90vh' }}
+            style={{ height: '90vh', fontSize: 16 }}
             onChange={this.handleOnChange}
             value={textareaValue}
           />
         </Col>
         <Col
           span={12}
-          style={{ height: '90vh', overflow: 'auto', paddingLeft: 24 }}
+          style={{
+            height: '90vh',
+            overflow: 'auto',
+            paddingLeft: 24,
+            fontSize: 16,
+          }}
         >
           <Markdown source={textareaValue} escapeHtml={false} />
         </Col>
