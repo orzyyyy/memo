@@ -18,7 +18,7 @@ export default class MappingDetail extends Component<
     prevProps: MappingDetailProps,
     prevState: MappingDetailState,
   ) {
-    if (!Object.keys(prevState).length) {
+    if (!Object.keys(prevState.dataSource).length) {
       return {
         dataSource: prevProps.dataSource,
       };
@@ -48,7 +48,18 @@ export default class MappingDetail extends Component<
     };
   };
 
-  handleCanvasChange = (dataSource: any) => this.setState({ dataSource });
+  handleCanvasChange = (dataSource: any) => {
+    dataSource = Object.assign(
+      {
+        CanvasPosition: { x: 0, y: 0, z: 0, gap: 1 },
+        BlockGroup: {},
+        TagGroup: {},
+        LineGroup: {},
+      },
+      dataSource,
+    );
+    this.setState({ dataSource });
+  };
 
   render = () => {
     const { dataSource } = this.state;
