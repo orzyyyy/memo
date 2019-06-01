@@ -1,0 +1,310 @@
+{
+  "CanvasPosition": {
+    "x": -1262,
+    "y": -1005,
+    "z": 0,
+    "gap": 1
+  },
+  "BlockGroup": {
+    "block-357197": {
+      "x": 1944,
+      "y": 1138
+    },
+    "block-775102": {
+      "x": 1942,
+      "y": 1262
+    },
+    "block-490345": {
+      "x": 1735,
+      "y": 1443
+    },
+    "block-585848": {
+      "x": 2140,
+      "y": 1444
+    },
+    "block-133601": {
+      "x": 1946,
+      "y": 1009
+    },
+    "block-210595": {
+      "x": 1932,
+      "y": 1642
+    },
+    "block-718490": {
+      "x": 1761,
+      "y": 1830
+    },
+    "block-720034": {
+      "x": 2104,
+      "y": 1829
+    }
+  },
+  "TagGroup": {
+    "tag-660600": {
+      "x": 1965,
+      "y": 1036,
+      "editable": false,
+      "input": "制衡最大化"
+    },
+    "tag-789245": {
+      "x": 1979,
+      "y": 1291,
+      "editable": false,
+      "input": "平等"
+    },
+    "tag-498003": {
+      "x": 1736,
+      "y": 1468,
+      "editable": false,
+      "input": "充分制衡的权利下渗"
+    },
+    "tag-528747": {
+      "x": 1819,
+      "y": 1366,
+      "editable": false,
+      "input": "设置权利底限"
+    },
+    "tag-594707": {
+      "x": 2144,
+      "y": 1461,
+      "editable": false,
+      "input": "社会经济地位平等"
+    },
+    "tag-622842": {
+      "x": 2102,
+      "y": 1364,
+      "editable": false,
+      "input": "精英治国"
+    },
+    "tag-141574": {
+      "x": 1979,
+      "y": 1167,
+      "editable": false,
+      "input": "自由"
+    },
+    "tag-218588": {
+      "x": 1969,
+      "y": 1672,
+      "editable": false,
+      "input": "民主"
+    },
+    "tag-739078": {
+      "x": 1842,
+      "y": 1744,
+      "editable": false,
+      "input": "向下的自由"
+    },
+    "tag-747713": {
+      "x": 1763,
+      "y": 1854,
+      "editable": false,
+      "input": "民粹面目的极权主义"
+    },
+    "tag-788800": {
+      "x": 2034,
+      "y": 1744,
+      "editable": false,
+      "input": "向上的自由"
+    },
+    "tag-798930": {
+      "x": 2106,
+      "y": 1849,
+      "editable": false,
+      "input": "能提升多数公民下限的手段"
+    }
+  },
+  "LineGroup": {
+    "line-777472": {
+      "fromKey": "block-775102",
+      "toKey": "block-357197",
+      "from": {
+        "x": 681,
+        "y": 258,
+        "width": 100,
+        "height": 80,
+        "top": 258,
+        "right": 781,
+        "bottom": 338,
+        "left": 681
+      },
+      "to": {
+        "x": 683,
+        "y": 134,
+        "width": 100,
+        "height": 80,
+        "top": 134,
+        "right": 783,
+        "bottom": 214,
+        "left": 683
+      }
+    },
+    "line-491333": {
+      "fromKey": "block-490345",
+      "toKey": "block-775102",
+      "from": {
+        "x": 474,
+        "y": 439,
+        "width": 100,
+        "height": 80,
+        "top": 439,
+        "right": 574,
+        "bottom": 519,
+        "left": 474
+      },
+      "to": {
+        "x": 681,
+        "y": 258,
+        "width": 100,
+        "height": 80,
+        "top": 258,
+        "right": 781,
+        "bottom": 338,
+        "left": 681
+      }
+    },
+    "line-587256": {
+      "fromKey": "block-585848",
+      "toKey": "block-775102",
+      "from": {
+        "x": 879,
+        "y": 440,
+        "width": 100,
+        "height": 80,
+        "top": 440,
+        "right": 979,
+        "bottom": 520,
+        "left": 879
+      },
+      "to": {
+        "x": 681,
+        "y": 258,
+        "width": 100,
+        "height": 80,
+        "top": 258,
+        "right": 781,
+        "bottom": 338,
+        "left": 681
+      }
+    },
+    "line-134605": {
+      "fromKey": "block-133601",
+      "toKey": "block-357197",
+      "from": {
+        "x": 685,
+        "y": 5,
+        "width": 100,
+        "height": 80,
+        "top": 5,
+        "right": 785,
+        "bottom": 85,
+        "left": 685
+      },
+      "to": {
+        "x": 683,
+        "y": 134,
+        "width": 100,
+        "height": 80,
+        "top": 134,
+        "right": 783,
+        "bottom": 214,
+        "left": 683
+      }
+    },
+    "line-211538": {
+      "fromKey": "block-210595",
+      "toKey": "block-585848",
+      "from": {
+        "x": 671,
+        "y": 638,
+        "width": 100,
+        "height": 80,
+        "top": 638,
+        "right": 771,
+        "bottom": 718,
+        "left": 671
+      },
+      "to": {
+        "x": 879,
+        "y": 440,
+        "width": 100,
+        "height": 80,
+        "top": 440,
+        "right": 979,
+        "bottom": 520,
+        "left": 879
+      }
+    },
+    "line-213093": {
+      "fromKey": "block-490345",
+      "toKey": "block-210595",
+      "from": {
+        "x": 474,
+        "y": 439,
+        "width": 100,
+        "height": 80,
+        "top": 439,
+        "right": 574,
+        "bottom": 519,
+        "left": 474
+      },
+      "to": {
+        "x": 671,
+        "y": 638,
+        "width": 100,
+        "height": 80,
+        "top": 638,
+        "right": 771,
+        "bottom": 718,
+        "left": 671
+      }
+    },
+    "line-720845": {
+      "fromKey": "block-720034",
+      "toKey": "block-210595",
+      "from": {
+        "x": 843,
+        "y": 825,
+        "width": 100,
+        "height": 80,
+        "top": 825,
+        "right": 943,
+        "bottom": 905,
+        "left": 843
+      },
+      "to": {
+        "x": 671,
+        "y": 638,
+        "width": 100,
+        "height": 80,
+        "top": 638,
+        "right": 771,
+        "bottom": 718,
+        "left": 671
+      }
+    },
+    "line-724696": {
+      "fromKey": "block-718490",
+      "toKey": "block-210595",
+      "from": {
+        "x": 500,
+        "y": 826,
+        "width": 100,
+        "height": 80,
+        "top": 826,
+        "right": 600,
+        "bottom": 906,
+        "left": 500
+      },
+      "to": {
+        "x": 671,
+        "y": 638,
+        "width": 100,
+        "height": 80,
+        "top": 638,
+        "right": 771,
+        "bottom": 718,
+        "left": 671
+      }
+    }
+  }
+}

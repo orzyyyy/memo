@@ -34,9 +34,19 @@
     "title": "《民主的细节》摘抄",
     "url": "./assets/mapping/f3a00b390b07d089f0ee965ecfa1354c.json",
     "createTime": 1559178666618,
-    "modifyTime": 1559266897800,
+    "modifyTime": 1559350852046,
     "type": "读书",
     "subType": "摘抄",
     "category": "markdown"
+  },
+  {
+    "id": "296b3f76fa35ff649cf28a494e1f8c93",
+    "title": "《民主的细节》阅读思路整理",
+    "url": "./assets/mapping/296b3f76fa35ff649cf28a494e1f8c93.json",
+    "createTime": 1559351098071,
+    "modifyTime": 1559372939631,
+    "type": "读书",
+    "subType": "思路",
+    "category": "mapping"
   }
 ]
