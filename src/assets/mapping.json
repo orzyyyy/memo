@@ -48,5 +48,15 @@
     "type": "读书",
     "subType": "思路",
     "category": "mapping"
+  },
+  {
+    "id": "32e89f38116080d6b7608cf2137f3c96",
+    "title": "音程表",
+    "url": "./assets/mapping/32e89f38116080d6b7608cf2137f3c96.json",
+    "createTime": 1559522075108,
+    "modifyTime": 1559523700429,
+    "type": "音乐",
+    "subType": "乐理",
+    "category": "markdown"
   }
 ]
