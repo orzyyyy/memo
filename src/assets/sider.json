@@ -44,5 +44,15 @@
         "value": "乐理"
       }
     ]
+  },
+  {
+    "key": "Rust",
+    "title": "Rust",
+    "children": [
+      {
+        "key": "安装",
+        "value": "安装"
+      }
+    ]
   }
 ]
