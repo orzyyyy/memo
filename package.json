@@ -48,7 +48,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^8.2.0",
     "react-router-dom": "^5.0.1",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
