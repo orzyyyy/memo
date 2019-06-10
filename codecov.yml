@@ -28,5 +28,5 @@ comment:
 ignore:
   - 'src/router.*'
   - 'src/index.*'
-  - 'server/**/*'
+  - 'server/*.*'
   - 'src/controller/**/*'
