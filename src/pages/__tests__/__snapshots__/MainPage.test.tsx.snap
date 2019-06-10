@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPage render correctly 1`] = `
+<Adapter
+  className="MainPage"
+>
+  <Sider
+    collapsible={true}
+    theme="light"
+  >
+    <Menu
+      mode="inline"
+      onClick={[Function]}
+      selectedKeys={
+        Array [
+          "all",
+        ]
+      }
+    >
+      <MenuItem
+        key="all"
+      >
+        all
+      </MenuItem>
+      <SubMenu
+        key="读书"
+        title="读书"
+      >
+        <MenuItem
+          key="摘抄"
+        >
+          摘抄
+        </MenuItem>
+        <MenuItem
+          key="思路"
+        >
+          思路
+        </MenuItem>
+      </SubMenu>
+    </Menu>
+  </Sider>
+  <Adapter>
+    <Adapter
+      style={
+        Object {
+          "margin": "0 16px",
+        }
+      }
+    >
+      <Breadcrumb
+        separator="/"
+        style={
+          Object {
+            "margin": "16px 0",
+          }
+        }
+      >
+        <BreadcrumbItem
+          separator="/"
+        >
+          all
+        </BreadcrumbItem>
+        <BreadcrumbItem
+          separator="/"
+        >
+          all
+        </BreadcrumbItem>
+      </Breadcrumb>
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "position": "absolute",
+            "right": 24,
+            "top": 10,
+          }
+        }
+      >
+        <Icon
+          type="plus"
+        />
+      </Button>
+      <div
+        style={
+          Object {
+            "background": "#fff",
+            "minHeight": "100%",
+            "padding": 24,
+          }
+        }
+      >
+        <List
+          bordered={false}
+          dataSource={
+            Array [
+              Object {
+                "category": "markdown",
+                "createTime": 1559522075108,
+                "id": "32e89f38116080d6b7608cf2137f3c96",
+                "modifyTime": 1559523700429,
+                "subType": "乐理",
+                "title": "音程表",
+                "type": "音乐",
+                "url": "./assets/mapping/32e89f38116080d6b7608cf2137f3c96.json",
+              },
+              Object {
+                "category": "markdown",
+                "createTime": 1559617097664,
+                "id": "7a73d21c13f1eb55053d4af66e0d057b",
+                "modifyTime": 1559633639037,
+                "subType": "安装",
+                "title": "windows 下安装 rust",
+                "type": "Rust",
+                "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
+              },
+            ]
+          }
+          loading={false}
+          pagination={false}
+          renderItem={[Function]}
+          size="large"
+          split={true}
+        />
+      </div>
+    </Adapter>
+    <Adapter
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <div>
+        你睡了一下午，醒的时候屋子里黑漆漆，一点声音都没有。抬头望了望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机，打开后屏幕亮起，干净，没有一条信息
+      </div>
+      <div>
+        打开电脑，打开 github。pull request 写得很菜，collaborators 都在喷你，但忽然就不孤独了
+      </div>
+    </Adapter>
+  </Adapter>
+</Adapter>
+`;
