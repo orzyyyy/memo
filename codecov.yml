@@ -29,4 +29,4 @@ ignore:
   - 'src/router.*'
   - 'src/index.*'
   - 'server/*.*'
-  - 'src/controller/**/*'
+  - 'src/controller/*.*'
