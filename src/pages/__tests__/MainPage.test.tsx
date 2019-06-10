@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import MainPage from '../MainPage';
 import 'nino-cli/scripts/setup';
 import { MappingProps } from '../../../server/controller/save';
@@ -56,5 +56,46 @@ describe('MainPage', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('onEdit of init button works correctly', () => {
+    const onEdit = jest.fn();
+    const wrapper = mount(
+      <MainPage dataSource={[]} menuData={[]} onEdit={onEdit} />,
+    );
+    wrapper
+      .find('Button')
+      .props()
+      .onClick();
+    expect(onEdit).toHaveBeenCalled();
+  });
+
+  it('onEdit and onDelete in Dropdown works correctly', () => {
+    const onEdit = jest.fn();
+    const onDelete = jest.fn();
+    const wrapper = mount(
+      <MainPage
+        dataSource={dataSource as MappingProps[]}
+        menuData={menuData}
+        onEdit={onEdit}
+        onDelete={onDelete}
+      />,
+    );
+    wrapper
+      .find('Item')
+      .first()
+      .simulate('contextmenu');
+    wrapper
+      .find('.ant-dropdown-menu-item')
+      .first()
+      .props()
+      .onClick();
+    expect(onEdit).toHaveBeenCalled();
+    wrapper
+      .find('.ant-dropdown-menu-item')
+      .last()
+      .props()
+      .onClick();
+    expect(onDelete).toHaveBeenCalled();
   });
 });
