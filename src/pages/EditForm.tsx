@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Modal, Select, Button } from 'antd';
+import { FormComponentProps } from 'antd/lib/form';
 import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
@@ -10,7 +11,7 @@ export interface FormProps {
   type: string;
   subType: string;
 }
-export interface EditFormProps {
+export interface EditFormProps extends FormComponentProps {
   form: any;
   visible: boolean;
   selectData: SiderProps[];
@@ -187,4 +188,4 @@ class EditForm extends Component<EditFormProps, EditFormState> {
   }
 }
 
-export default Form.create()(EditForm);
+export default Form.create<EditFormProps>()(EditForm);
