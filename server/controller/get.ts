@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const puppeteer = require('puppeteer-core');
 const exHentaiCookie = require('../resource/exHentaiCookie');
+const { format } = require('date-fns');
 
 export interface ExHentaiInfoItem {
   name: string;
@@ -68,7 +69,7 @@ const getExhentai = async (ctx: any) => {
     executablePath:
       'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
     args: ['--proxy-server=127.0.0.1:1080'],
-    devtools: true,
+    // devtools: true,
   });
   const page = await browser.newPage();
 
@@ -79,9 +80,17 @@ const getExhentai = async (ctx: any) => {
     results = [...results, ...result];
     await page.waitFor(4000);
   }
-
   await browser.close();
-  ctx.response.body = JSON.stringify(results);
+
+  const createTime = format(new Date(), 'yyyyMMddHHmmss');
+  fs.outputJSON(
+    path.join(process.cwd(), `src/assets/exhentai/${createTime}.json`),
+    results,
+  ).catch((err: any) => {
+    console.error(err);
+  });
+
+  ctx.response.body = `./assets/${createTime}.json`;
 };
 
 module.exports = {
