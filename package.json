@@ -33,6 +33,7 @@
     "koa": "^2.7.0",
     "mini-xmind": "^1.2.2",
     "nino-cli": "^0.8.2",
+    "puppeteer-core": "^1.17.0",
     "react-markdown": "^4.0.8",
     "typescript": "^3.5.1"
   },
