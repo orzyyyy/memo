@@ -85,7 +85,7 @@ const getExHentaiInfo = async ({
 const getExhentai = async (ctx: any) => {
   const browser = await puppeteer.launch({
     executablePath: exHentai.executablePath,
-    args: exHentai.lauchArgs,
+    args: exHentai.launchArgs,
     devtools: exHentai.devtools,
   });
   success('launch puppeteer');

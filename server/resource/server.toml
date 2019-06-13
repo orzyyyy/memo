@@ -1,6 +1,6 @@
 [exHentai]
 href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
-lauchArgs = ['--proxy-server=127.0.0.1:1080']
+launchArgs = ['--proxy-server=127.0.0.1:1080']
 devtools = false
 executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 waitTime = 4000
