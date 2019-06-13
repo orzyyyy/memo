@@ -64,3 +64,6 @@ workflows:
       - lint:
           requires:
             - setup
+      - deploy:
+          requires:
+            - test
