@@ -4,3 +4,4 @@ lauchArgs = ['--proxy-server=127.0.0.1:1080']
 devtools = false
 executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 waitTime = 4000
+maxPageIndex = 40

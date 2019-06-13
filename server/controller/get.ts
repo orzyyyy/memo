@@ -77,7 +77,7 @@ const getExhentai = async (ctx: any) => {
 
   setExHentaiCookie(page);
   let results: ExHentaiInfoItem[] = [];
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < exHentai.maxPageIndex; i++) {
     const result = await getExHentaiInfo({ pageIndex: i, page });
     results = [...results, ...result];
     await page.waitFor(exHentai.waitTime);
