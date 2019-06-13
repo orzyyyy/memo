@@ -3,6 +3,21 @@ const path = require('path');
 const puppeteer = require('puppeteer-core');
 const { format } = require('date-fns');
 const toml = require('toml');
+const chalk = require('chalk');
+
+const dateFormat = 'yyyy-MM-dd HH:mm:ss';
+const getTimestamp = () => `[${format(new Date(), dateFormat)}] `;
+const success = (text: string) =>
+  // tslint:disable-next-line: no-console
+  console.log(chalk.greenBright(getTimestamp() + '✅   ' + text));
+const error = (text: string) =>
+  // tslint:disable-next-line: no-console
+  console.log(chalk.red(getTimestamp() + text));
+// tslint:disable-next-line: no-console
+// const info = (text: string) => console.log(chalk.yellowBright(text));
+const trace = (text: string) =>
+  // tslint:disable-next-line: no-console
+  console.log(chalk.cyanBright(getTimestamp() + text));
 
 const { exHentai: exHentaiCookie } = toml.parse(
   fs.readFileSync(path.join(__dirname, '../resource/cookie.toml'), 'utf-8'),
@@ -73,24 +88,29 @@ const getExhentai = async (ctx: any) => {
     args: exHentai.lauchArgs,
     devtools: exHentai.devtools,
   });
+  success('launch puppeteer');
   const page = await browser.newPage();
 
   setExHentaiCookie(page);
+  success('set cookie');
   let results: ExHentaiInfoItem[] = [];
   for (let i = 0; i < exHentai.maxPageIndex; i++) {
     const result = await getExHentaiInfo({ pageIndex: i, page });
     results = [...results, ...result];
+    trace(`fetching pageIndex => ${i + 1}`);
     await page.waitFor(exHentai.waitTime);
   }
   await browser.close();
 
+  trace('write into json');
   const createTime = format(new Date(), 'yyyyMMddHHmmss');
   fs.outputJSON(
     path.join(process.cwd(), `src/assets/exhentai/${createTime}.json`),
     results,
   ).catch((err: any) => {
-    console.error(err);
+    error('write into json' + err);
   });
+  success('write into json');
 
   ctx.response.body = `./assets/${createTime}.json`;
 };
