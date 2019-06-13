@@ -8,3 +8,4 @@ ghpages.publish('dist', {
     email: 'zy410419243@gmail.com',
   },
 });
+console.log('published');

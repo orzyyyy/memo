@@ -13,7 +13,7 @@
     "test": "nino test",
     "codecov": "nino test -d",
     "lint-staged": "lint-staged",
-    "deploy": "npm run build && node scripts/publish",
+    "deploy": "node scripts/publish",
     "generate": "node scripts/generateSider"
   },
   "repository": {
