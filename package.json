@@ -13,7 +13,7 @@
     "test": "nino test",
     "codecov": "nino test -d",
     "lint-staged": "lint-staged",
-    "deploy": "npm run build && gh-pages -d dist -t",
+    "deploy": "npm run build && gh-pages -d dist -t --user zy410419243 <zy410419243@gmail.com> --repo https://github.com/zy410419243/memo.git",
     "generate": "node scripts/generateSider"
   },
   "repository": {
