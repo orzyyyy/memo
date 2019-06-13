@@ -17,6 +17,8 @@ jobs:
       - checkout
       - run: node -v
       - run: npm -v
+      - run: git config --global user.email zy410419243@gmail.com
+      - run: git config --global user.name zy410419243
       - run: npm install
       - run:
           command: |
