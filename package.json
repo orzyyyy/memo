@@ -51,6 +51,7 @@
     "koa-static": "^5.0.0",
     "lint-staged": "^8.2.0",
     "react-router-dom": "^5.0.1",
+    "toml": "^3.0.0",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",

@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 const puppeteer = require('puppeteer-core');
-const exHentaiCookie = require('../resource/exHentaiCookie');
 const { format } = require('date-fns');
+const toml = require('toml');
 
 export interface ExHentaiInfoItem {
   name: string;
@@ -19,6 +19,9 @@ const get = async (ctx: any) => {
 };
 
 const setExHentaiCookie = async (page: any) => {
+  const { exHentai: exHentaiCookie } = toml.parse(
+    fs.readFileSync(path.join(__dirname, '../resource/cookie.toml'), 'utf-8'),
+  );
   for (const item of exHentaiCookie) {
     await page.setCookie(item);
   }
@@ -69,7 +72,7 @@ const getExhentai = async (ctx: any) => {
     executablePath:
       'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
     args: ['--proxy-server=127.0.0.1:1080'],
-    // devtools: true,
+    devtools: true,
   });
   const page = await browser.newPage();
 
