@@ -40,6 +40,15 @@ jobs:
       - *attach_workspace
       - run: npm run codecov
       - run: bash <(curl -s https://codecov.io/bash) -t cdf5917e-b38d-4156-a9d6-6a405484b930
+  deploy:
+    <<: *container_config
+    steps:
+      - checkout
+      - *attach_workspace
+      - run:
+          name: deploy
+          when: on_success
+          command: npm run deploy
 
 workflows:
   version: 2
