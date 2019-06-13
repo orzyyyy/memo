@@ -71,10 +71,20 @@
   },
   {
     "id": "57ca721de1c14fb189d8bc5f6e14448c",
-    "title": "ex 改 cookie 步骤备忘",
+    "title": "改 cookie 步骤",
     "url": "./assets/mapping/57ca721de1c14fb189d8bc5f6e14448c.json",
     "createTime": 1560220086082,
     "modifyTime": 1560220318066,
+    "type": "生活",
+    "subType": "ExHentai",
+    "category": "markdown"
+  },
+  {
+    "id": "56f14e6c24b6ece2e63bdf56accdef16",
+    "title": "爬虫思路",
+    "url": "./assets/mapping/56f14e6c24b6ece2e63bdf56accdef16.json",
+    "createTime": 1560392150068,
+    "modifyTime": 1560392654377,
     "type": "生活",
     "subType": "ExHentai",
     "category": "markdown"
