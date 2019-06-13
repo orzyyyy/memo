@@ -4,6 +4,13 @@ const puppeteer = require('puppeteer-core');
 const { format } = require('date-fns');
 const toml = require('toml');
 
+const { exHentai: exHentaiCookie } = toml.parse(
+  fs.readFileSync(path.join(__dirname, '../resource/cookie.toml'), 'utf-8'),
+);
+const { exHentai } = toml.parse(
+  fs.readFileSync(path.join(__dirname, '../resource/server.toml'), 'utf-8'),
+);
+
 export interface ExHentaiInfoItem {
   name: string;
   detailUrl: string;
@@ -19,9 +26,6 @@ const get = async (ctx: any) => {
 };
 
 const setExHentaiCookie = async (page: any) => {
-  const { exHentai: exHentaiCookie } = toml.parse(
-    fs.readFileSync(path.join(__dirname, '../resource/cookie.toml'), 'utf-8'),
-  );
   for (const item of exHentaiCookie) {
     await page.setCookie(item);
   }
@@ -35,11 +39,7 @@ const getExHentaiInfo = async ({
   page: any;
 }) => {
   await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
-  await page.goto(
-    'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page=' +
-      pageIndex,
-    { waitUntil: 'domcontentloaded' },
-  );
+  await page.goto(exHentai.href + pageIndex, { waitUntil: 'domcontentloaded' });
   const exHentaiInfo = await page.$$eval(
     'div.gl1t',
     (wrappers: any[]) =>
@@ -69,10 +69,9 @@ const getExHentaiInfo = async ({
 
 const getExhentai = async (ctx: any) => {
   const browser = await puppeteer.launch({
-    executablePath:
-      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
-    args: ['--proxy-server=127.0.0.1:1080'],
-    devtools: true,
+    executablePath: exHentai.executablePath,
+    args: exHentai.lauchArgs,
+    devtools: exHentai.devtools,
   });
   const page = await browser.newPage();
 
@@ -81,7 +80,7 @@ const getExhentai = async (ctx: any) => {
   for (let i = 0; i < 1; i++) {
     const result = await getExHentaiInfo({ pageIndex: i, page });
     results = [...results, ...result];
-    await page.waitFor(4000);
+    await page.waitFor(exHentai.waitTime);
   }
   await browser.close();
 
