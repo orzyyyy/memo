@@ -11,7 +11,7 @@ ghpages.publish(
     },
   },
   error => {
-    throw Error(error.message);
+    throw new Error(error.message);
   },
 );
 console.log('published');
