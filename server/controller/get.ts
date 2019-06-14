@@ -9,12 +9,14 @@ const dateFormat = 'yyyy-MM-dd HH:mm:ss';
 const getTimestamp = () => `[${format(new Date(), dateFormat)}] `;
 const success = (text: string) =>
   // tslint:disable-next-line: no-console
-  console.log(chalk.greenBright(getTimestamp() + '✅   ' + text));
+  console.log(chalk.greenBright(getTimestamp() + 'success => ' + text));
 const error = (text: string) =>
   // tslint:disable-next-line: no-console
   console.log(chalk.red(getTimestamp() + text));
 // tslint:disable-next-line: no-console
-// const info = (text: string) => console.log(chalk.yellowBright(text));
+const info = (text: string) =>
+  // tslint:disable-next-line: no-console
+  console.log(chalk.yellowBright(getTimestamp() + text));
 const trace = (text: string) =>
   // tslint:disable-next-line: no-console
   console.log(chalk.cyanBright(getTimestamp() + text));
@@ -33,7 +35,7 @@ export interface ExHentaiInfoItem {
   thumbnailUrl: string;
 }
 
-const get = async (ctx: any) => {
+const getMainPage = async (ctx: any) => {
   ctx.type = 'html';
   ctx.response.body = fs.createReadStream(
     path.join(process.cwd(), 'dist', 'index.html'),
@@ -97,7 +99,7 @@ const getExhentai = async (ctx: any) => {
   for (let i = 0; i < exHentai.maxPageIndex; i++) {
     const result = await getExHentaiInfo({ pageIndex: i, page });
     results = [...results, ...result];
-    trace(`fetching pageIndex => ${i + 1}`);
+    info(`fetching pageIndex => ${i + 1}`);
     await page.waitFor(exHentai.waitTime);
   }
   await browser.close();
@@ -115,8 +117,26 @@ const getExhentai = async (ctx: any) => {
   ctx.response.body = `./assets/${createTime}.json`;
 };
 
+const getLastestExHentaiSet = async (ctx: any) => {
+  const exHentaiInfoPath = path.join(process.cwd(), './src/assets/exhentai/');
+  const exHentaiInfoFiles = fs
+    .readdirSync(exHentaiInfoPath)
+    .filter((item: string) => item !== '.gitkeep')
+    .map((item: string) => parseInt(item, 10));
+  const result = exHentaiInfoFiles.sort((a: any, b: any) => b - a);
+
+  ctx.response.body = `./assets/exhentai/${result[0]}.json`;
+};
+
+const downloadImages = async (ctx: any) => {
+  // const { url } = ctx.request.body;
+  ctx.response.body = true;
+};
+
 module.exports = {
-  'GET /': get,
+  'GET /': getMainPage,
   'GET /exhentai': getExhentai,
+  'GET /exhentai/download': downloadImages,
+  'GET /exhentai/getLastestSet': getLastestExHentaiSet,
 };
 export {};
