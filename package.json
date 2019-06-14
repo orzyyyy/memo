@@ -14,7 +14,8 @@
     "codecov": "nino test -d",
     "lint-staged": "lint-staged",
     "deploy": "node scripts/publish",
-    "generate": "node scripts/generateSider"
+    "generate": "node scripts/generateSider",
+    "d": "npm run build && node scripts/publish"
   },
   "repository": {
     "type": "git",
