@@ -7,6 +7,9 @@ const MappingDetailDataController = lazy(() =>
 const MarkdownEditorDataController = lazy(() =>
   import('./controller/MarkdownEditorDataController'),
 );
+const ExHentaiList = lazy(() =>
+  import('./controller/ExHentaiListDataController'),
+);
 
 export default () => (
   <Router>
@@ -16,8 +19,9 @@ export default () => (
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
           path="/markdown/edit/:id"
-          component={MarkdownEditorDataController}
+          component={MappingDetailDataController}
         />
+        <Route path="/exhentai" component={ExHentaiList} />
         <Route path="/markdown/:id" component={MarkdownEditorDataController} />
       </Switch>
     </Suspense>

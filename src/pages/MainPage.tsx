@@ -98,6 +98,13 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
           <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
         <Button
+          style={{ position: 'absolute', right: 88, top: 10 }}
+          onClick={() => (location.hash = '/exhentai')}
+          type="danger"
+        >
+          <Icon type="alert" />
+        </Button>
+        <Button
           style={{ position: 'absolute', right: 24, top: 10 }}
           onClick={() => onEdit()}
         >
