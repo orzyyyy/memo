@@ -88,5 +88,15 @@
     "type": "生活",
     "subType": "ExHentai",
     "category": "markdown"
+  },
+  {
+    "id": "2b91499cc79105eef0a71f5a3c7df3b7",
+    "title": "词语填空同音词",
+    "url": "./assets/mapping/2b91499cc79105eef0a71f5a3c7df3b7.json",
+    "createTime": 1560473744117,
+    "modifyTime": 1560476816461,
+    "type": "公考",
+    "subType": "行测",
+    "category": "markdown"
   }
 ]

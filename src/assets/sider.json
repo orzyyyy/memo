@@ -64,5 +64,15 @@
         "value": "ExHentai"
       }
     ]
+  },
+  {
+    "key": "公考",
+    "title": "公考",
+    "children": [
+      {
+        "key": "行测",
+        "value": "行测"
+      }
+    ]
   }
 ]
