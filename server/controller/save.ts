@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const md5 = require('blueimp-md5');
+const { updateSider } = require('../../scripts/generateSider');
 
 export interface MappingProps {
   createTime: number;
@@ -13,7 +14,11 @@ export interface MappingProps {
   category: 'mapping' | 'markdown';
 }
 
-const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
+const updateMappingRouter = (
+  targetItem: MappingProps,
+  isDelete?: boolean,
+  callback?: () => void,
+) => {
   const writeFilesPaths = [
     `src/assets/mapping.json`,
     `dist/assets/mapping.json`,
@@ -44,6 +49,9 @@ const updateMappingRouter = (targetItem: MappingProps, isDelete?: boolean) => {
     }).catch((err: any) => {
       console.error(err);
     });
+  }
+  if (callback) {
+    callback();
   }
   // tslint:disable-next-line: no-console
   console.log(`mapping updated => ${targetItem.id}`);
@@ -172,16 +180,20 @@ const initNewMapping = async (ctx: any) => {
       fs.writeFileSync(path.join(process.cwd(), item), '');
     }
     // update router file
-    updateMappingRouter({
-      id,
-      title,
-      url: `./assets/mapping/${id}.json`,
-      createTime: dateTime,
-      modifyTime: dateTime,
-      type,
-      subType,
-      category,
-    });
+    updateMappingRouter(
+      {
+        id,
+        title,
+        url: `./assets/mapping/${id}.json`,
+        createTime: dateTime,
+        modifyTime: dateTime,
+        type,
+        subType,
+        category,
+      },
+      false,
+      updateSider,
+    );
     ctx.response.body = id;
   } catch (error) {
     console.error(error);
