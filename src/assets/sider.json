@@ -4,20 +4,24 @@
     "title": "all"
   },
   {
-    "key": "JavaScript",
-    "title": "JavaScript",
+    "key": "编程",
+    "title": "编程",
     "children": [
       {
-        "key": "基础",
-        "value": "基础"
-      },
-      {
-        "key": "优化",
-        "value": "优化"
+        "key": "JavaScript",
+        "value": "JavaScript"
       },
       {
         "key": "react",
         "value": "react"
+      },
+      {
+        "key": "Rust",
+        "value": "Rust"
+      },
+      {
+        "key": "ExHentai",
+        "value": "ExHentai"
       }
     ]
   },
@@ -42,26 +46,6 @@
       {
         "key": "乐理",
         "value": "乐理"
-      }
-    ]
-  },
-  {
-    "key": "Rust",
-    "title": "Rust",
-    "children": [
-      {
-        "key": "安装",
-        "value": "安装"
-      }
-    ]
-  },
-  {
-    "key": "生活",
-    "title": "生活",
-    "children": [
-      {
-        "key": "ExHentai",
-        "value": "ExHentai"
       }
     ]
   },

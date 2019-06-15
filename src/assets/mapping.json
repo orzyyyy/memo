@@ -5,8 +5,8 @@
     "url": "./assets/mapping/b07b876e6050e333988404e268921906.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
-    "type": "JavaScript",
-    "subType": "基础",
+    "type": "编程",
+    "subType": "JavaScript",
     "category": "mapping"
   },
   {
@@ -15,8 +15,8 @@
     "url": "./assets/mapping/c9abecfb05549080298f37daea8de46f.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
-    "type": "JavaScript",
-    "subType": "优化",
+    "type": "编程",
+    "subType": "JavaScript",
     "category": "mapping"
   },
   {
@@ -25,7 +25,7 @@
     "url": "./assets/mapping/e6342ea80e1b9da29570d49af1daaaeb.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
-    "type": "JavaScript",
+    "type": "编程",
     "subType": "react",
     "category": "mapping"
   },
@@ -65,8 +65,8 @@
     "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
     "createTime": 1559617097664,
     "modifyTime": 1559633639037,
-    "type": "Rust",
-    "subType": "安装",
+    "type": "编程",
+    "subType": "Rust",
     "category": "markdown"
   },
   {
@@ -75,7 +75,7 @@
     "url": "./assets/mapping/57ca721de1c14fb189d8bc5f6e14448c.json",
     "createTime": 1560220086082,
     "modifyTime": 1560220318066,
-    "type": "生活",
+    "type": "编程",
     "subType": "ExHentai",
     "category": "markdown"
   },
@@ -85,7 +85,7 @@
     "url": "./assets/mapping/56f14e6c24b6ece2e63bdf56accdef16.json",
     "createTime": 1560392150068,
     "modifyTime": 1560392654377,
-    "type": "生活",
+    "type": "编程",
     "subType": "ExHentai",
     "category": "markdown"
   },
@@ -108,5 +108,15 @@
     "type": "公考",
     "subType": "行测",
     "category": "mapping"
+  },
+  {
+    "id": "d84c686eca77b9db11063f995d4f4694",
+    "title": "deploy with gh-pages and circleci",
+    "url": "./assets/mapping/d84c686eca77b9db11063f995d4f4694.json",
+    "createTime": 1560559934239,
+    "modifyTime": 1560561050670,
+    "type": "编程",
+    "subType": "其他",
+    "category": "markdown"
   }
 ]
