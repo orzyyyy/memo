@@ -22,6 +22,10 @@
       {
         "key": "ExHentai",
         "value": "ExHentai"
+      },
+      {
+        "key": "其他",
+        "value": "其他"
       }
     ]
   },
@@ -54,8 +58,8 @@
     "title": "公考",
     "children": [
       {
-        "key": "行测",
-        "value": "行测"
+        "key": "言语理解与表达",
+        "value": "言语理解与表达"
       }
     ]
   }

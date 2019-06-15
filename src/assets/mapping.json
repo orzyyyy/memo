@@ -96,17 +96,17 @@
     "createTime": 1560473744117,
     "modifyTime": 1560476816461,
     "type": "公考",
-    "subType": "行测",
+    "subType": "言语理解与表达",
     "category": "markdown"
   },
   {
     "id": "ac1b811c06101cf7cd870495cb6d6662",
-    "title": "言语 - 填空解题思路",
+    "title": "填空解题思路",
     "url": "./assets/mapping/ac1b811c06101cf7cd870495cb6d6662.json",
     "createTime": 1560493141920,
     "modifyTime": 1560503379659,
     "type": "公考",
-    "subType": "行测",
+    "subType": "言语理解与表达",
     "category": "mapping"
   },
   {
@@ -117,6 +117,16 @@
     "modifyTime": 1560561050670,
     "type": "编程",
     "subType": "其他",
+    "category": "markdown"
+  },
+  {
+    "id": "edabfb3a75ee39f82ad29e384d04dc0b",
+    "title": "填空错题集",
+    "url": "./assets/mapping/edabfb3a75ee39f82ad29e384d04dc0b.json",
+    "createTime": 1560583719588,
+    "modifyTime": 1560585112273,
+    "type": "公考",
+    "subType": "言语理解与表达",
     "category": "markdown"
   }
 ]
