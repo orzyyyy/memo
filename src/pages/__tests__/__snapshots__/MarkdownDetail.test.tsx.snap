@@ -14,7 +14,7 @@ exports[`MarkdownDetail render correctly 1`] = `
       }
     }
   >
-    <ReactMarkdown
+    <ReactMarkdownWithHtml
       astPlugins={Array []}
       escapeHtml={false}
       plugins={Array []}
@@ -56,7 +56,7 @@ exports[`MarkdownDetail render correctly 1`] = `
           </ul>
         </List>
       </Root>
-    </ReactMarkdown>
+    </ReactMarkdownWithHtml>
   </div>
 </Component>
 `;
