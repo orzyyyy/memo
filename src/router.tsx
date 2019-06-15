@@ -19,7 +19,7 @@ export default () => (
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
           path="/markdown/edit/:id"
-          component={MappingDetailDataController}
+          component={MarkdownEditorDataController}
         />
         <Route path="/exhentai" component={ExHentaiList} />
         <Route path="/markdown/:id" component={MarkdownEditorDataController} />
