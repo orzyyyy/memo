@@ -1,5 +1,5 @@
 import React from 'react';
-import Markdown from 'react-markdown';
+import Markdown from 'react-markdown/with-html';
 
 export interface MarkdownDetailProps {
   dataSource: string;

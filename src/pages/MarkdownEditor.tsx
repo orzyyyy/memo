@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Markdown from 'react-markdown';
+import Markdown from 'react-markdown/with-html';
 import { Col, Row, Input, Button } from 'antd';
 const { TextArea } = Input;
 
