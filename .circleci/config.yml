@@ -58,6 +58,9 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
+      - add_ssh_keys:
+          fingerprints:
+            - 'e9:66:f5:03:68:81:21:5d:8c:b7:ec:d7:11:b7:96:e9'
       - run:
           name: deploy
           when: on_success

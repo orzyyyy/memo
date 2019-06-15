@@ -14,4 +14,3 @@ ghpages.publish(
     console.error(error.message);
   },
 );
-console.log('published');
