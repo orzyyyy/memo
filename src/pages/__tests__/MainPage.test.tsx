@@ -65,6 +65,7 @@ describe('MainPage', () => {
     );
     wrapper
       .find('Button')
+      .at(1)
       .props()
       .onClick();
     expect(onEdit).toHaveBeenCalled();

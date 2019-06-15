@@ -75,6 +75,25 @@ exports[`MainPage render correctly 1`] = `
         style={
           Object {
             "position": "absolute",
+            "right": 88,
+            "top": 10,
+          }
+        }
+        type="danger"
+      >
+        <Icon
+          type="alert"
+        />
+      </Button>
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "position": "absolute",
             "right": 24,
             "top": 10,
           }
