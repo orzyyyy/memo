@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExHentaiList render correctly 1`] = `
+<Row
+  gutter={16}
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <Col
+    key="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]0"
+    span={4}
+  >
+    <LazyLoad
+      height={0}
+      offset={0}
+      once={true}
+      overflow={false}
+      resize={false}
+      scroll={true}
+      unmountIfInvisible={false}
+    >
+      <Dropdown
+        mouseEnterDelay={0.15}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <Menu>
+            <MenuItem>
+              下载
+            </MenuItem>
+          </Menu>
+        }
+        placement="bottomLeft"
+        trigger={
+          Array [
+            "contextMenu",
+          ]
+        }
+      >
+        <Card
+          cover={
+            <img
+              alt="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
+              src="https://exhentai.org/t/5b/47/5b47c48abf0fb6c685869520cdb8ab0d97990e4d-1074410-1280-1807-jpg_250.jpg"
+            />
+          }
+          hoverable={true}
+          onClick={[Function]}
+          style={
+            Object {
+              "height": 500,
+            }
+          }
+        >
+          <Meta
+            title="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
+          />
+        </Card>
+      </Dropdown>
+    </LazyLoad>
+  </Col>
+</Row>
+`;
