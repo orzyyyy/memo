@@ -156,6 +156,7 @@ exports[`EditForm render correctly 1`] = `
                         <button
                           aria-label="Close"
                           class="ant-modal-close"
+                          type="button"
                         >
                           <span
                             class="ant-modal-close-x"
@@ -711,6 +712,7 @@ exports[`EditForm render correctly 1`] = `
                               aria-label="Close"
                               className="ant-modal-close"
                               onClick={[Function]}
+                              type="button"
                             >
                               <span
                                 className="ant-modal-close-x"
