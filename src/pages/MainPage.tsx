@@ -6,6 +6,7 @@ const { Content, Footer, Sider } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/save';
 import LazyLoad from 'react-lazyload';
+import { format } from 'date-fns';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
@@ -170,6 +171,12 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
                       />
                     )}
                     {item.title}
+                    <div style={{ float: 'right', marginRight: 8 }}>
+                      {`${format(
+                        new Date(item.createTime),
+                        'yyyy-MM-dd',
+                      )} / ${format(new Date(item.modifyTime), 'yyyy-MM-dd')}`}
+                    </div>
                   </List.Item>
                 </Dropdown>
               )}
