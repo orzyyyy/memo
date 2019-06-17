@@ -17,6 +17,7 @@ describe('ExHentaiList', () => {
               'https://exhentai.org/t/5b/47/5b47c48abf0fb6c685869520cdb8ab0d97990e4d-1074410-1280-1807-jpg_250.jpg',
           },
         ]}
+        onDownload={() => {}}
       />,
     );
     expect(wrapper).toMatchSnapshot();
