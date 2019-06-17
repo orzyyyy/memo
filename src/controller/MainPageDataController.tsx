@@ -39,7 +39,11 @@ export default class MainPageDataController extends Component<
   getMapping = async () => {
     const response = await fetch('./assets/mapping.json');
     const dataSource = await response.json();
-    this.setState({ dataSource });
+    this.setState({
+      dataSource: dataSource.sort(
+        (a: MappingProps, b: MappingProps) => b.modifyTime - a.modifyTime,
+      ),
+    });
   };
 
   getSider = async () => {
