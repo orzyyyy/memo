@@ -3,27 +3,43 @@ import { ExHentaiInfoItem } from '../../server/controller/get';
 import { Row, Col, Card, Dropdown, Menu } from 'antd';
 import LazyLoad from 'react-lazyload';
 
+export interface DownloadProps {
+  url: string;
+  name: string;
+}
 export interface ExHentaiListProps {
   dataSource: ExHentaiInfoItem[] | null;
+  onDownload: ({ url, name }: DownloadProps) => void;
 }
-
-const menu = (
-  <Menu>
-    <Menu.Item key="download">下载</Menu.Item>
-  </Menu>
-);
 
 const openDetail = (url: string) => {
   window.open(url);
 };
 
-export default ({ dataSource }: ExHentaiListProps) => (
+export default ({ dataSource, onDownload }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource &&
       dataSource.map((item, i) => (
         <Col span={4} key={item.name + i}>
           <LazyLoad height={document.body.clientHeight} once>
-            <Dropdown overlay={menu} trigger={['contextMenu']}>
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item
+                    key="download"
+                    onClick={() => {
+                      onDownload({
+                        url: item.detailUrl,
+                        name: item.name,
+                      });
+                    }}
+                  >
+                    download
+                  </Menu.Item>
+                </Menu>
+              }
+              trigger={['contextMenu']}
+            >
               <Card
                 hoverable
                 cover={<img alt={item.name} src={item.thumbnailUrl} />}

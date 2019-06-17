@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ExHentaiList from '../pages/ExHentaiList';
+import ExHentaiList, { DownloadProps } from '../pages/ExHentaiList';
 import { ExHentaiInfoItem } from '../../server/controller/get';
-import { Empty } from 'antd';
+import { Empty, message } from 'antd';
 
 export interface ExHentaiListDataControllerState {
   dataSource: ExHentaiInfoItem[] | null;
@@ -16,7 +16,7 @@ export default class ExHentaiListDataController extends Component<
   };
 
   componentDidMount = () => {
-    fetch('/exhentai/getLastestSet1')
+    fetch('/exhentai/getLastestSet')
       .then(response => {
         if (response.ok) {
           return response.text();
@@ -35,12 +35,25 @@ export default class ExHentaiListDataController extends Component<
       });
   };
 
+  handleDownload = async (item: DownloadProps) => {
+    fetch('exhentai/download', {
+      body: JSON.stringify(item),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(response => response.text())
+      .then(result => result === 'true' && message.success('保存完成'));
+  };
+
   render() {
     const notify = <Empty description={`该页面仅在本地可用`} />;
     return (
       <>
         {!this.state.dataSource && notify}
-        <ExHentaiList dataSource={this.state.dataSource} />
+        <ExHentaiList
+          dataSource={this.state.dataSource}
+          onDownload={this.handleDownload}
+        />
       </>
     );
   }

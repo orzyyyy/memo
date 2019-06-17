@@ -5,3 +5,5 @@ devtools = false
 executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 waitTime = 4000
 maxPageIndex = 40
+downloadPath = 'exhentai'
+proxy = 'http://127.0.0.1:1080'

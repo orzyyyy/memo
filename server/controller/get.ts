@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer-core');
 const { format } = require('date-fns');
 const toml = require('toml');
 const chalk = require('chalk');
+const request = require('request-promise');
 
 const dateFormat = 'yyyy-MM-dd HH:mm:ss';
 const getTimestamp = () => `[${format(new Date(), dateFormat)}] `;
@@ -84,7 +85,7 @@ const getExHentaiInfo = async ({
   return exHentaiInfo;
 };
 
-const getExhentai = async (ctx: any) => {
+const launchExHentaiPage = async () => {
   const browser = await puppeteer.launch({
     executablePath: exHentai.executablePath,
     args: exHentai.launchArgs,
@@ -92,9 +93,13 @@ const getExhentai = async (ctx: any) => {
   });
   success('launch puppeteer');
   const page = await browser.newPage();
-
   setExHentaiCookie(page);
   success('set cookie');
+  return { page, browser };
+};
+
+const getExhentai = async (ctx: any) => {
+  const { page, browser } = await launchExHentaiPage();
   let results: ExHentaiInfoItem[] = [];
   for (let i = 0; i < exHentai.maxPageIndex; i++) {
     const result = await getExHentaiInfo({ pageIndex: i, page });
@@ -129,14 +134,75 @@ const getLastestExHentaiSet = async (ctx: any) => {
 };
 
 const downloadImages = async (ctx: any) => {
-  // const { url } = ctx.request.body;
+  const { url, name } = ctx.request.body;
+  info(`download from: ${url}`);
+  const { page, browser } = await launchExHentaiPage();
+  await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  const targetImgUrls = await page.$$eval(
+    '.gdtm a',
+    (wrappers: any[]) =>
+      new Promise(resolve => {
+        const result: any[] = [];
+        for (const item of wrappers) {
+          result.push(item.href);
+        }
+        resolve(result);
+      }),
+  );
+  const images = [];
+  for (let i = 0; i < targetImgUrls.length; i++) {
+    await page.goto('https://www.google.com/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await page.goto(targetImgUrls[i], { waitUntil: 'domcontentloaded' });
+    info(`fetching image url => ${targetImgUrls[i]}`);
+    const imgUrl = await page.$eval(
+      '[id=i3] img',
+      (target: any) =>
+        new Promise(resolve => {
+          resolve(target.src);
+        }),
+    );
+    images.push(imgUrl);
+    await page.waitFor(exHentai.waitTime);
+  }
+  success('fetch all images');
+  const datePath = format(new Date(), 'yyyyMMdd');
+  fs.ensureDirSync(
+    path.join(process.cwd(), `${exHentai.downloadPath}/${datePath}/${name}`),
+  );
+  // fetch and save images
+  for (let i = 0; i < images.length; i++) {
+    const item = images[i];
+    trace('download begin: ' + item);
+    await request
+      .get({ url: item, proxy: exHentai.proxy })
+      .on('error', (err: any) => {
+        error(err + ' => ' + item);
+      })
+      .pipe(
+        fs
+          .createWriteStream(
+            path.join(
+              process.cwd(),
+              `${exHentai.downloadPath}/${datePath}/${name}/${i + 1}.jpg`,
+            ),
+          )
+          .on('finish', () => success(`${i + 1}.jpg`))
+          .on('error', (err: any) =>
+            error(`${name}-${i + 1}.jpg failed, ${err}`),
+          ),
+      );
+  }
+  await browser.close();
   ctx.response.body = true;
 };
 
 module.exports = {
   'GET /': getMainPage,
   'GET /exhentai': getExhentai,
-  'GET /exhentai/download': downloadImages,
+  'POST /exhentai/download': downloadImages,
   'GET /exhentai/getLastestSet': getLastestExHentaiSet,
 };
 export {};
