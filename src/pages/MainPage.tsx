@@ -5,7 +5,6 @@ const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/save';
-import LazyLoad from 'react-lazyload';
 import { format } from 'date-fns';
 
 export interface MainPageProps {
@@ -92,6 +91,8 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   renderContent = () => {
     const { dataSource, onDelete, onEdit } = this.props;
     const { siderOpenKey, siderSelectedKey } = this.state;
+
+    const wrapperHeight = document.body.clientHeight - 21 - 90 - 24;
     return (
       <Content style={{ margin: '0 16px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -111,77 +112,81 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
         >
           <Icon type="plus" />
         </Button>
-        <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
-          <LazyLoad height={document.body.clientHeight} once>
-            <List
-              dataSource={
-                siderSelectedKey === 'all'
-                  ? dataSource
-                  : dataSource.filter(item => item.subType === siderSelectedKey)
-              }
-              size="large"
-              renderItem={(item: any) => (
-                <Dropdown
-                  overlay={() => (
-                    <Menu>
-                      <Menu.Item
-                        key={`add-${item.id}`}
-                        onClick={() => onEdit(item)}
-                      >
-                        修改
-                      </Menu.Item>
-                      <Menu.Item
-                        key={`delete-${item.id}`}
-                        onClick={() => onDelete && onDelete(item)}
-                      >
-                        删除
-                      </Menu.Item>
-                    </Menu>
-                  )}
-                  trigger={['contextMenu']}
-                  key={`fragment-${item.id}`}
+        <div
+          style={{
+            padding: 24,
+            background: '#fff',
+            height: wrapperHeight,
+            overflow: 'auto',
+          }}
+        >
+          <List
+            dataSource={
+              siderSelectedKey === 'all'
+                ? dataSource
+                : dataSource.filter(item => item.subType === siderSelectedKey)
+            }
+            renderItem={(item: any) => (
+              <Dropdown
+                overlay={() => (
+                  <Menu>
+                    <Menu.Item
+                      key={`add-${item.id}`}
+                      onClick={() => onEdit(item)}
+                    >
+                      修改
+                    </Menu.Item>
+                    <Menu.Item
+                      key={`delete-${item.id}`}
+                      onClick={() => onDelete && onDelete(item)}
+                    >
+                      删除
+                    </Menu.Item>
+                  </Menu>
+                )}
+                trigger={['contextMenu']}
+                key={`fragment-${item.id}`}
+              >
+                <List.Item
+                  className="list-item"
+                  onClick={() =>
+                    this.handleListItemClick({
+                      category: item.category,
+                      id: item.id,
+                    })
+                  }
                 >
-                  <List.Item
-                    className="list-item"
-                    onClick={() =>
-                      this.handleListItemClick({
-                        category: item.category,
-                        id: item.id,
-                      })
-                    }
-                  >
-                    {item.category === 'mapping' && (
-                      <Icon
-                        type="apartment"
-                        style={{
-                          marginRight: 10,
-                          fontSize: 16,
-                          color: '#108ee9',
-                        }}
-                      />
-                    )}
-                    {item.category === 'markdown' && (
-                      <Icon
-                        type="file-markdown"
-                        style={{
-                          marginRight: 10,
-                          fontSize: 16,
-                          color: '#87d068',
-                        }}
-                      />
-                    )}
-                    {item.title}
-                    <div style={{ float: 'right', marginRight: 8 }}>
-                      {`${format(
-                        new Date(item.createTime),
-                        'yyyy-MM-dd',
-                      )} / ${format(new Date(item.modifyTime), 'yyyy-MM-dd')}`}
-                    </div>
-                  </List.Item>
-                </Dropdown>
-              )}
-            />
-          </LazyLoad>
+                  {item.category === 'mapping' && (
+                    <Icon
+                      type="apartment"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#108ee9',
+                      }}
+                    />
+                  )}
+                  {item.category === 'markdown' && (
+                    <Icon
+                      type="file-markdown"
+                      style={{
+                        marginRight: 10,
+                        fontSize: 16,
+                        color: '#87d068',
+                      }}
+                    />
+                  )}
+                  {item.title}
+                  <div style={{ float: 'right', marginRight: 8 }}>
+                    {`${format(
+                      new Date(item.createTime),
+                      'yyyy-MM-dd',
+                    )} / ${format(new Date(item.modifyTime), 'yyyy-MM-dd')}`}
+                  </div>
+                </List.Item>
+              </Dropdown>
+            )}
+          />
         </div>
       </Content>
     );
