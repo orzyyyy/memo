@@ -27,8 +27,10 @@ exports[`ExHentaiList render correctly 1`] = `
         mouseLeaveDelay={0.1}
         overlay={
           <Menu>
-            <MenuItem>
-              下载
+            <MenuItem
+              onClick={[Function]}
+            >
+              download
             </MenuItem>
           </Menu>
         }
