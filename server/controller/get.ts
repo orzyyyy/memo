@@ -259,7 +259,9 @@ const downloadImages = async (ctx: any) => {
             error(`${subName}-${i + 1}.jpg failed, ${err}`),
           ),
       );
-    await page.waitFor(exHentai.waitTime);
+    if (i % 4 === 0) {
+      await page.waitFor(exHentai.waitTime);
+    }
   }
   await browser.close();
   ctx.response.body = true;
