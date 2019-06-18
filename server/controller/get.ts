@@ -229,7 +229,7 @@ const downloadImages = async (ctx: any) => {
       process.cwd(),
       `${exHentai.downloadPath}/${datePath}/${subName}/detailImageUrls.json`,
     ),
-    targetImgUrls,
+    images,
   ).catch((err: any) => {
     error('write into json' + err);
   });
