@@ -218,7 +218,7 @@ const downloadImages = async (ctx: any) => {
   fs.outputJSON(
     path.join(
       process.cwd(),
-      `src/assets/exhentai/${subName}/restDetailUrls.json`,
+      `${exHentai.downloadPath}/${datePath}/${subName}/restDetailUrls.json`,
     ),
     targetImgUrls,
   ).catch((err: any) => {
@@ -227,7 +227,7 @@ const downloadImages = async (ctx: any) => {
   fs.outputJSON(
     path.join(
       process.cwd(),
-      `src/assets/exhentai/${subName}/detailImageUrls.json`,
+      `${exHentai.downloadPath}/${datePath}/${subName}/detailImageUrls.json`,
     ),
     targetImgUrls,
   ).catch((err: any) => {
