@@ -133,13 +133,8 @@ const getLastestExHentaiSet = async (ctx: any) => {
   ctx.response.body = `./assets/exhentai/${result[0]}.json`;
 };
 
-const downloadImages = async (ctx: any) => {
-  const { url, name } = ctx.request.body;
-  info(`download from: ${url}`);
-  const { page, browser } = await launchExHentaiPage();
-  await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
-  await page.goto(url, { waitUntil: 'domcontentloaded' });
-  const targetImgUrls = await page.$$eval(
+const getAllThumbnaiUrls = async (page: any) =>
+  await page.$$eval(
     '.gdtm a',
     (wrappers: any[]) =>
       new Promise(resolve => {
@@ -150,7 +145,57 @@ const downloadImages = async (ctx: any) => {
         resolve(result);
       }),
   );
+
+const getUrlFromPaginationInfo = async (page: any) =>
+  await page.$$eval(
+    'table.ptt a',
+    (wrappers: any[]) =>
+      new Promise(resolve => {
+        if (wrappers.length !== 1) {
+          const result: string[] = [];
+          wrappers.pop();
+          wrappers.shift();
+          for (const item of wrappers) {
+            result.push(item.href);
+          }
+          resolve(result);
+        } else {
+          resolve([]);
+        }
+      }),
+  );
+
+const downloadImages = async (ctx: any) => {
+  const { url, name } = ctx.request.body;
+  const subName = name.substring(0, 32);
+  info(`download from: ${url}`);
+  const { page, browser } = await launchExHentaiPage();
+  await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
+
+  // prepare for download
+  const datePath = format(new Date(), 'yyyyMMdd');
+  fs.ensureDirSync(
+    path.join(process.cwd(), `${exHentai.downloadPath}/${datePath}/${subName}`),
+  );
+
+  const restDetailUrls = await getUrlFromPaginationInfo(page);
+  const firstPageThumbnailUrls = await getAllThumbnaiUrls(page);
+  await page.waitFor(exHentai.waitTime);
+  for (const item of restDetailUrls) {
+    await page.goto('https://www.google.com/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await page.goto(item, { waitUntil: 'domcontentloaded' });
+    const thumbnailUrlsFromNextPage = await getAllThumbnaiUrls(page);
+    firstPageThumbnailUrls.push(...thumbnailUrlsFromNextPage);
+    info('image length: ' + firstPageThumbnailUrls.length);
+    await page.waitFor(exHentai.waitTime);
+  }
+
   const images = [];
+  const targetImgUrls = firstPageThumbnailUrls;
+  // get thumbnail url in detail page
   for (let i = 0; i < targetImgUrls.length; i++) {
     await page.goto('https://www.google.com/', {
       waitUntil: 'domcontentloaded',
@@ -168,10 +213,14 @@ const downloadImages = async (ctx: any) => {
     await page.waitFor(exHentai.waitTime);
   }
   success('fetch all images');
-  const datePath = format(new Date(), 'yyyyMMdd');
-  fs.ensureDirSync(
-    path.join(process.cwd(), `${exHentai.downloadPath}/${datePath}/${name}`),
-  );
+  // save detail image url into file, for unexpect error
+  fs.outputJSON(
+    path.join(process.cwd(), `src/assets/exhentai/${subName}/mapping.json`),
+    targetImgUrls,
+  ).catch((err: any) => {
+    error('write into json' + err);
+  });
+
   // fetch and save images
   for (let i = 0; i < images.length; i++) {
     const item = images[i];
@@ -186,12 +235,12 @@ const downloadImages = async (ctx: any) => {
           .createWriteStream(
             path.join(
               process.cwd(),
-              `${exHentai.downloadPath}/${datePath}/${name}/${i + 1}.jpg`,
+              `${exHentai.downloadPath}/${datePath}/${subName}/${i + 1}.jpg`,
             ),
           )
           .on('finish', () => success(`${i + 1}.jpg`))
           .on('error', (err: any) =>
-            error(`${name}-${i + 1}.jpg failed, ${err}`),
+            error(`${subName}-${i + 1}.jpg failed, ${err}`),
           ),
       );
   }
