@@ -135,7 +135,7 @@ const getLastestExHentaiSet = async (ctx: any) => {
 
 const getAllThumbnaiUrls = async (page: any) =>
   await page.$$eval(
-    '.gdtm a',
+    exHentai.thumbnailClass,
     (wrappers: any[]) =>
       new Promise(resolve => {
         const result: any[] = [];
@@ -182,6 +182,7 @@ const downloadImages = async (ctx: any) => {
   const restDetailUrls = await getUrlFromPaginationInfo(page);
   const firstPageThumbnailUrls = await getAllThumbnaiUrls(page);
   await page.waitFor(exHentai.waitTime);
+
   for (const item of restDetailUrls) {
     await page.goto('https://www.google.com/', {
       waitUntil: 'domcontentloaded',
@@ -213,9 +214,21 @@ const downloadImages = async (ctx: any) => {
     await page.waitFor(exHentai.waitTime);
   }
   success('fetch all images');
-  // save detail image url into file, for unexpect error
+  // save image url into file, for unexpect error
   fs.outputJSON(
-    path.join(process.cwd(), `src/assets/exhentai/${subName}/mapping.json`),
+    path.join(
+      process.cwd(),
+      `src/assets/exhentai/${subName}/restDetailUrls.json`,
+    ),
+    targetImgUrls,
+  ).catch((err: any) => {
+    error('write into json' + err);
+  });
+  fs.outputJSON(
+    path.join(
+      process.cwd(),
+      `src/assets/exhentai/${subName}/detailImageUrls.json`,
+    ),
     targetImgUrls,
   ).catch((err: any) => {
     error('write into json' + err);
@@ -243,6 +256,7 @@ const downloadImages = async (ctx: any) => {
             error(`${subName}-${i + 1}.jpg failed, ${err}`),
           ),
       );
+    await page.waitFor(exHentai.waitTime);
   }
   await browser.close();
   ctx.response.body = true;

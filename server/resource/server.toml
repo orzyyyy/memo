@@ -7,3 +7,5 @@ waitTime = 4000
 maxPageIndex = 40
 downloadPath = 'exhentai'
 proxy = 'http://127.0.0.1:1080'
+# size, normal is gdtm, large is gdtl
+thumbnailClass = '.gdtm a'
