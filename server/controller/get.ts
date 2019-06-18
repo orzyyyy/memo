@@ -167,7 +167,10 @@ const getUrlFromPaginationInfo = async (page: any) =>
 
 const downloadImages = async (ctx: any) => {
   const { url, name } = ctx.request.body;
-  const subName = name.substring(0, 32);
+  const subName = name.replace(
+    /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim,
+    '',
+  );
   info(`download from: ${url}`);
   const { page, browser } = await launchExHentaiPage();
   await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
