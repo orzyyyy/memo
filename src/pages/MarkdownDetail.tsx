@@ -1,19 +1,17 @@
 import React from 'react';
 import Markdown from 'react-markdown/with-html';
+import './css/MarkdownDetail.css';
 
 export interface MarkdownDetailProps {
   dataSource: string;
 }
 
 export default (props: MarkdownDetailProps) => (
-  <div
-    style={{
-      height: '95vh',
-      overflow: 'auto',
-      padding: '5px 24px',
-      fontSize: 16,
-    }}
-  >
-    <Markdown source={props.dataSource} escapeHtml={false} />
+  <div className="MarkdownDetail">
+    <div className="wrapper">
+      <div className="content">
+        <Markdown source={props.dataSource} escapeHtml={false} />
+      </div>
+    </div>
   </div>
 );
