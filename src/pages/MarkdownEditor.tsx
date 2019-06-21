@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Markdown from 'react-markdown/with-html';
+import MarkDownDetail from './MarkdownDetail';
 import { Col, Row, Input, Button } from 'antd';
 const { TextArea } = Input;
 
@@ -61,7 +61,7 @@ export default class MarkdownEditor extends Component<
             fontSize: 16,
           }}
         >
-          <Markdown source={textareaValue} escapeHtml={false} />
+          <MarkDownDetail dataSource={textareaValue} />
         </Col>
         <Col span={8} push={8} style={{ marginTop: 24 }}>
           <Button block onClick={this.handleSave}>
