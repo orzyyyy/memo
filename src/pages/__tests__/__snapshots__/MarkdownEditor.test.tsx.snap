@@ -91,33 +91,49 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <ReactMarkdownWithHtml
-            astPlugins={Array []}
-            escapeHtml={false}
-            plugins={Array []}
-            rawSourcePos={false}
-            renderers={Object {}}
-            skipHtml={false}
-            source="testDataSource"
-            sourcePos={false}
-            transformLinkUri={[Function]}
+          <Component
+            dataSource="testDataSource"
           >
-            <Root
-              key="root-1-1"
+            <div
+              className="MarkdownDetail"
             >
-              <p
-                key="paragraph-1-1"
+              <div
+                className="wrapper"
               >
-                <TextRenderer
-                  key="text-1-1"
-                  nodeKey="text-1-1"
-                  value="testDataSource"
+                <div
+                  className="content"
                 >
-                  testDataSource
-                </TextRenderer>
-              </p>
-            </Root>
-          </ReactMarkdownWithHtml>
+                  <ReactMarkdownWithHtml
+                    astPlugins={Array []}
+                    escapeHtml={false}
+                    plugins={Array []}
+                    rawSourcePos={false}
+                    renderers={Object {}}
+                    skipHtml={false}
+                    source="testDataSource"
+                    sourcePos={false}
+                    transformLinkUri={[Function]}
+                  >
+                    <Root
+                      key="root-1-1"
+                    >
+                      <p
+                        key="paragraph-1-1"
+                      >
+                        <TextRenderer
+                          key="text-1-1"
+                          nodeKey="text-1-1"
+                          value="testDataSource"
+                        >
+                          testDataSource
+                        </TextRenderer>
+                      </p>
+                    </Root>
+                  </ReactMarkdownWithHtml>
+                </div>
+              </div>
+            </div>
+          </Component>
         </div>
       </Col>
       <Col
