@@ -23,3 +23,13 @@
   position: relative;
   margin: 5% 0;
 }
+
+.MarkdownDetail .wrapper .content span {
+  background: #444;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.MarkdownDetail .wrapper .content span:hover {
+  background: #fff;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}

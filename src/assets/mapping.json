@@ -128,5 +128,15 @@
     "type": "公考",
     "subType": "言语理解与表达",
     "category": "markdown"
+  },
+  {
+    "id": "9c44d7d3145e382d441fe81ef477e4c6",
+    "title": "片段阅读错题集",
+    "url": "./assets/mapping/9c44d7d3145e382d441fe81ef477e4c6.json",
+    "createTime": 1561015817211,
+    "modifyTime": 1561083717433,
+    "type": "公考",
+    "subType": "言语理解与表达",
+    "category": "markdown"
   }
 ]
