@@ -101,10 +101,10 @@
   },
   {
     "id": "ac1b811c06101cf7cd870495cb6d6662",
-    "title": "填空解题思路",
+    "title": "词语填空解题思路",
     "url": "./assets/mapping/ac1b811c06101cf7cd870495cb6d6662.json",
     "createTime": 1560493141920,
-    "modifyTime": 1560503379659,
+    "modifyTime": 1561108324553,
     "type": "公考",
     "subType": "言语理解与表达",
     "category": "mapping"
@@ -121,7 +121,7 @@
   },
   {
     "id": "edabfb3a75ee39f82ad29e384d04dc0b",
-    "title": "填空错题集",
+    "title": "词语填空错题集",
     "url": "./assets/mapping/edabfb3a75ee39f82ad29e384d04dc0b.json",
     "createTime": 1560583719588,
     "modifyTime": 1560931062586,
