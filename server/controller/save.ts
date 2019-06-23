@@ -177,7 +177,21 @@ const initNewMapping = async (ctx: any) => {
   try {
     // generate empty file in assets/mapping for mapping info
     for (const item of targetPaths) {
-      fs.writeFileSync(path.join(process.cwd(), item), '');
+      fs.writeFileSync(
+        path.join(process.cwd(), item),
+        `{
+          "CanvasPosition": {
+            "x": -2810,
+            "y": -3323,
+            "z": 0,
+            "gap": 1
+          },
+          "BlockGroup": {},
+          "TagGroup": {},
+          "LineGroup": {}
+        }
+        `,
+      );
     }
     // update router file
     updateMappingRouter(
