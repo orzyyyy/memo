@@ -1,18 +1,14 @@
 {
   "CanvasPosition": {
-    "x": -3034,
-    "y": -3286,
+    "x": -2989,
+    "y": -3560,
     "z": 0,
     "gap": 1
   },
   "BlockGroup": {
-    "block-911544": {
-      "x": 3843,
-      "y": 3460
-    },
     "block-22683": {
-      "x": 3841,
-      "y": 3624
+      "x": 3843,
+      "y": 3572
     },
     "block-72108": {
       "x": 3408,
@@ -97,30 +93,14 @@
     "block-314275": {
       "x": 4526,
       "y": 4175
-    },
-    "block-151855": {
-      "x": 3844,
-      "y": 3302
     }
   },
   "TagGroup": {
     "tag-915462": {
-      "x": 3867,
-      "y": 3332,
+      "x": 3864,
+      "y": 3600,
       "editable": false,
       "input": "主旨观点"
-    },
-    "tag-28646": {
-      "x": 3845,
-      "y": 3481,
-      "editable": false,
-      "input": "模糊记忆所有选项"
-    },
-    "tag-49433": {
-      "x": 3788,
-      "y": 3556,
-      "editable": false,
-      "input": "至少把所有答案都看一遍"
     },
     "tag-380909": {
       "x": 3435,
@@ -201,8 +181,8 @@
       "input": "行文结构"
     },
     "tag-33243": {
-      "x": 3787,
-      "y": 3388,
+      "x": 3778,
+      "y": 3660,
       "editable": false,
       "input": "这段文字意在说明、这段文字说的是"
     },
@@ -219,7 +199,7 @@
       "input": "分总"
     },
     "tag-183740": {
-      "x": 4383,
+      "x": 4388,
       "y": 4013,
       "editable": false,
       "input": "并列"
@@ -253,571 +233,511 @@
       "y": 4203,
       "editable": false,
       "input": "看转折之后"
-    },
-    "tag-172161": {
-      "x": 3861,
-      "y": 3652,
-      "editable": false,
-      "input": "浏览材料"
-    },
-    "tag-215255": {
-      "x": 3783,
-      "y": 3711,
-      "editable": false,
-      "input": "获得材料中大部分信息"
     }
   },
   "LineGroup": {
-    "line-23607": {
-      "fromKey": "block-22683",
-      "toKey": "block-911544",
-      "from": {
-        "x": 808,
-        "y": 339,
-        "width": 100,
-        "height": 80,
-        "top": 339,
-        "right": 908,
-        "bottom": 419,
-        "left": 808
-      },
-      "to": {
-        "x": 810,
-        "y": 175,
-        "width": 100,
-        "height": 80,
-        "top": 175,
-        "right": 910,
-        "bottom": 255,
-        "left": 810
-      }
-    },
     "line-72879": {
       "fromKey": "block-72108",
       "toKey": "block-22683",
       "from": {
-        "x": 375,
-        "y": 531,
+        "x": 420,
+        "y": 257,
         "width": 100,
         "height": 80,
-        "top": 531,
-        "right": 475,
-        "bottom": 611,
-        "left": 375
+        "top": 257,
+        "right": 520,
+        "bottom": 337,
+        "left": 420
       },
       "to": {
-        "x": 808,
-        "y": 339,
+        "x": 855,
+        "y": 13,
         "width": 100,
         "height": 80,
-        "top": 339,
-        "right": 908,
-        "bottom": 419,
-        "left": 808
+        "top": 13,
+        "right": 955,
+        "bottom": 93,
+        "left": 855
       }
     },
     "line-392146": {
       "fromKey": "block-391416",
       "toKey": "block-72108",
       "from": {
-        "x": 139,
-        "y": 705,
+        "x": 184,
+        "y": 431,
         "width": 100,
         "height": 80,
-        "top": 705,
-        "right": 239,
-        "bottom": 785,
-        "left": 139
+        "top": 431,
+        "right": 284,
+        "bottom": 511,
+        "left": 184
       },
       "to": {
-        "x": 375,
-        "y": 531,
+        "x": 420,
+        "y": 257,
         "width": 100,
         "height": 80,
-        "top": 531,
-        "right": 475,
-        "bottom": 611,
-        "left": 375
+        "top": 257,
+        "right": 520,
+        "bottom": 337,
+        "left": 420
       }
     },
     "line-406385": {
       "fromKey": "block-404318",
       "toKey": "block-72108",
       "from": {
-        "x": 581,
-        "y": 704,
+        "x": 626,
+        "y": 430,
         "width": 100,
         "height": 80,
-        "top": 704,
-        "right": 681,
-        "bottom": 784,
-        "left": 581
+        "top": 430,
+        "right": 726,
+        "bottom": 510,
+        "left": 626
       },
       "to": {
-        "x": 375,
-        "y": 531,
+        "x": 420,
+        "y": 257,
         "width": 100,
         "height": 80,
-        "top": 531,
-        "right": 475,
-        "bottom": 611,
-        "left": 375
+        "top": 257,
+        "right": 520,
+        "bottom": 337,
+        "left": 420
       }
     },
     "line-621502": {
       "fromKey": "block-620761",
       "toKey": "block-404318",
       "from": {
-        "x": 408,
-        "y": 884,
+        "x": 453,
+        "y": 610,
         "width": 100,
         "height": 80,
-        "top": 884,
-        "right": 508,
-        "bottom": 964,
-        "left": 408
+        "top": 610,
+        "right": 553,
+        "bottom": 690,
+        "left": 453
       },
       "to": {
-        "x": 581,
-        "y": 704,
+        "x": 626,
+        "y": 430,
         "width": 100,
         "height": 80,
-        "top": 704,
-        "right": 681,
-        "bottom": 784,
-        "left": 581
+        "top": 430,
+        "right": 726,
+        "bottom": 510,
+        "left": 626
       }
     },
     "line-626782": {
       "fromKey": "block-404318",
       "toKey": "block-624523",
       "from": {
-        "x": 581,
-        "y": 704,
+        "x": 626,
+        "y": 430,
         "width": 100,
         "height": 80,
-        "top": 704,
-        "right": 681,
-        "bottom": 784,
-        "left": 581
+        "top": 430,
+        "right": 726,
+        "bottom": 510,
+        "left": 626
       },
       "to": {
-        "x": 561,
-        "y": 884,
+        "x": 606,
+        "y": 610,
         "width": 100,
         "height": 80,
-        "top": 884,
-        "right": 661,
-        "bottom": 964,
-        "left": 561
+        "top": 610,
+        "right": 706,
+        "bottom": 690,
+        "left": 606
       }
     },
     "line-678046": {
       "fromKey": "block-677164",
       "toKey": "block-404318",
       "from": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       },
       "to": {
-        "x": 581,
-        "y": 704,
+        "x": 626,
+        "y": 430,
         "width": 100,
         "height": 80,
-        "top": 704,
-        "right": 681,
-        "bottom": 784,
-        "left": 581
+        "top": 430,
+        "right": 726,
+        "bottom": 510,
+        "left": 626
       }
     },
     "line-757256": {
       "fromKey": "block-756260",
       "toKey": "block-677164",
       "from": {
-        "x": 394,
-        "y": 1072,
+        "x": 439,
+        "y": 798,
         "width": 100,
         "height": 80,
-        "top": 1072,
-        "right": 494,
-        "bottom": 1152,
-        "left": 394
+        "top": 798,
+        "right": 539,
+        "bottom": 878,
+        "left": 439
       },
       "to": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       }
     },
     "line-760372": {
       "fromKey": "block-759655",
       "toKey": "block-677164",
       "from": {
-        "x": 511,
-        "y": 1073,
+        "x": 556,
+        "y": 799,
         "width": 100,
         "height": 80,
-        "top": 1073,
-        "right": 611,
-        "bottom": 1153,
-        "left": 511
+        "top": 799,
+        "right": 656,
+        "bottom": 879,
+        "left": 556
       },
       "to": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       }
     },
     "line-770405": {
       "fromKey": "block-677164",
       "toKey": "block-768369",
       "from": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       },
       "to": {
-        "x": 630,
-        "y": 1072,
+        "x": 675,
+        "y": 798,
         "width": 100,
         "height": 80,
-        "top": 1072,
-        "right": 730,
-        "bottom": 1152,
-        "left": 630
+        "top": 798,
+        "right": 775,
+        "bottom": 878,
+        "left": 675
       }
     },
     "line-780794": {
       "fromKey": "block-779054",
       "toKey": "block-677164",
       "from": {
-        "x": 268,
-        "y": 1073,
+        "x": 313,
+        "y": 799,
         "width": 100,
         "height": 80,
-        "top": 1073,
-        "right": 368,
-        "bottom": 1153,
-        "left": 268
+        "top": 799,
+        "right": 413,
+        "bottom": 879,
+        "left": 313
       },
       "to": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       }
     },
     "line-787301": {
       "fromKey": "block-785673",
       "toKey": "block-677164",
       "from": {
-        "x": 764,
-        "y": 1072,
+        "x": 809,
+        "y": 798,
         "width": 100,
         "height": 80,
-        "top": 1072,
-        "right": 864,
-        "bottom": 1152,
-        "left": 764
+        "top": 798,
+        "right": 909,
+        "bottom": 878,
+        "left": 809
       },
       "to": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       }
     },
     "line-832364": {
       "fromKey": "block-830615",
       "toKey": "block-677164",
       "from": {
-        "x": 141,
-        "y": 1072,
+        "x": 186,
+        "y": 798,
         "width": 100,
         "height": 80,
-        "top": 1072,
-        "right": 241,
-        "bottom": 1152,
-        "left": 141
+        "top": 798,
+        "right": 286,
+        "bottom": 878,
+        "left": 186
       },
       "to": {
-        "x": 711,
-        "y": 886,
+        "x": 756,
+        "y": 612,
         "width": 100,
         "height": 80,
-        "top": 886,
-        "right": 811,
-        "bottom": 966,
-        "left": 711
+        "top": 612,
+        "right": 856,
+        "bottom": 692,
+        "left": 756
       }
     },
     "line-907903": {
       "fromKey": "block-906652",
       "toKey": "block-22683",
       "from": {
-        "x": 1235,
-        "y": 530,
+        "x": 1280,
+        "y": 256,
         "width": 100,
         "height": 80,
-        "top": 530,
-        "right": 1335,
-        "bottom": 610,
-        "left": 1235
+        "top": 256,
+        "right": 1380,
+        "bottom": 336,
+        "left": 1280
       },
       "to": {
-        "x": 808,
-        "y": 339,
+        "x": 855,
+        "y": 13,
         "width": 100,
         "height": 80,
-        "top": 339,
-        "right": 908,
-        "bottom": 419,
-        "left": 808
+        "top": 13,
+        "right": 955,
+        "bottom": 93,
+        "left": 855
       }
     },
     "line-5671": {
       "fromKey": "block-4900",
       "toKey": "block-906652",
       "from": {
-        "x": 951,
-        "y": 700,
+        "x": 996,
+        "y": 426,
         "width": 100,
         "height": 80,
-        "top": 700,
-        "right": 1051,
-        "bottom": 780,
-        "left": 951
+        "top": 426,
+        "right": 1096,
+        "bottom": 506,
+        "left": 996
       },
       "to": {
-        "x": 1235,
-        "y": 530,
+        "x": 1280,
+        "y": 256,
         "width": 100,
         "height": 80,
-        "top": 530,
-        "right": 1335,
-        "bottom": 610,
-        "left": 1235
+        "top": 256,
+        "right": 1380,
+        "bottom": 336,
+        "left": 1280
       }
     },
     "line-152343": {
       "fromKey": "block-151421",
       "toKey": "block-906652",
       "from": {
-        "x": 1136,
-        "y": 701,
+        "x": 1181,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1236,
-        "bottom": 781,
-        "left": 1136
+        "top": 427,
+        "right": 1281,
+        "bottom": 507,
+        "left": 1181
       },
       "to": {
-        "x": 1235,
-        "y": 530,
+        "x": 1280,
+        "y": 256,
         "width": 100,
         "height": 80,
-        "top": 530,
-        "right": 1335,
-        "bottom": 610,
-        "left": 1235
+        "top": 256,
+        "right": 1380,
+        "bottom": 336,
+        "left": 1280
       }
     },
     "line-170112": {
       "fromKey": "block-169247",
       "toKey": "block-906652",
       "from": {
-        "x": 1317,
-        "y": 701,
+        "x": 1362,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1417,
-        "bottom": 781,
-        "left": 1317
+        "top": 427,
+        "right": 1462,
+        "bottom": 507,
+        "left": 1362
       },
       "to": {
-        "x": 1235,
-        "y": 530,
+        "x": 1280,
+        "y": 256,
         "width": 100,
         "height": 80,
-        "top": 530,
-        "right": 1335,
-        "bottom": 610,
-        "left": 1235
+        "top": 256,
+        "right": 1380,
+        "bottom": 336,
+        "left": 1280
       }
     },
     "line-199478": {
       "fromKey": "block-198629",
       "toKey": "block-906652",
       "from": {
-        "x": 1495,
-        "y": 701,
+        "x": 1540,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1595,
-        "bottom": 781,
-        "left": 1495
+        "top": 427,
+        "right": 1640,
+        "bottom": 507,
+        "left": 1540
       },
       "to": {
-        "x": 1235,
-        "y": 530,
+        "x": 1280,
+        "y": 256,
         "width": 100,
         "height": 80,
-        "top": 530,
-        "right": 1335,
-        "bottom": 610,
-        "left": 1235
+        "top": 256,
+        "right": 1380,
+        "bottom": 336,
+        "left": 1280
       }
     },
     "line-218303": {
       "fromKey": "block-212716",
       "toKey": "block-4900",
       "from": {
-        "x": 949,
-        "y": 884,
+        "x": 994,
+        "y": 610,
         "width": 100,
         "height": 80,
-        "top": 884,
-        "right": 1049,
-        "bottom": 964,
-        "left": 949
+        "top": 610,
+        "right": 1094,
+        "bottom": 690,
+        "left": 994
       },
       "to": {
-        "x": 951,
-        "y": 700,
+        "x": 996,
+        "y": 426,
         "width": 100,
         "height": 80,
-        "top": 700,
-        "right": 1051,
-        "bottom": 780,
-        "left": 951
+        "top": 426,
+        "right": 1096,
+        "bottom": 506,
+        "left": 996
       }
     },
     "line-244819": {
       "fromKey": "block-151421",
       "toKey": "block-243049",
       "from": {
-        "x": 1136,
-        "y": 701,
+        "x": 1181,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1236,
-        "bottom": 781,
-        "left": 1136
+        "top": 427,
+        "right": 1281,
+        "bottom": 507,
+        "left": 1181
       },
       "to": {
-        "x": 1134,
-        "y": 887,
+        "x": 1179,
+        "y": 613,
         "width": 100,
         "height": 80,
-        "top": 887,
-        "right": 1234,
-        "bottom": 967,
-        "left": 1134
+        "top": 613,
+        "right": 1279,
+        "bottom": 693,
+        "left": 1179
       }
     },
     "line-295406": {
       "fromKey": "block-294569",
       "toKey": "block-169247",
       "from": {
-        "x": 1315,
-        "y": 891,
+        "x": 1360,
+        "y": 617,
         "width": 100,
         "height": 80,
-        "top": 891,
-        "right": 1415,
-        "bottom": 971,
-        "left": 1315
+        "top": 617,
+        "right": 1460,
+        "bottom": 697,
+        "left": 1360
       },
       "to": {
-        "x": 1317,
-        "y": 701,
+        "x": 1362,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1417,
-        "bottom": 781,
-        "left": 1317
+        "top": 427,
+        "right": 1462,
+        "bottom": 507,
+        "left": 1362
       }
     },
     "line-315077": {
       "fromKey": "block-314275",
       "toKey": "block-198629",
       "from": {
-        "x": 1493,
-        "y": 890,
+        "x": 1538,
+        "y": 616,
         "width": 100,
         "height": 80,
-        "top": 890,
-        "right": 1593,
-        "bottom": 970,
-        "left": 1493
+        "top": 616,
+        "right": 1638,
+        "bottom": 696,
+        "left": 1538
       },
       "to": {
-        "x": 1495,
-        "y": 701,
+        "x": 1540,
+        "y": 427,
         "width": 100,
         "height": 80,
-        "top": 701,
-        "right": 1595,
-        "bottom": 781,
-        "left": 1495
-      }
-    },
-    "line-153149": {
-      "fromKey": "block-151855",
-      "toKey": "block-911544",
-      "from": {
-        "x": 811,
-        "y": 17,
-        "width": 100,
-        "height": 80,
-        "top": 17,
-        "right": 911,
-        "bottom": 97,
-        "left": 811
-      },
-      "to": {
-        "x": 810,
-        "y": 175,
-        "width": 100,
-        "height": 80,
-        "top": 175,
-        "right": 910,
-        "bottom": 255,
-        "left": 810
+        "top": 427,
+        "right": 1640,
+        "bottom": 507,
+        "left": 1540
       }
     }
   }
