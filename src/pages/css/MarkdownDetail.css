@@ -5,6 +5,7 @@
     'Microsoft YaHei', 'WenQuanYi Micro Hei', Heiti, ubuntu, SimSun, sans-serif;
   font-size: 1.125rem;
   line-height: 1.7;
+  min-height: 100vh;
 }
 
 .MarkdownDetail .wrapper {
