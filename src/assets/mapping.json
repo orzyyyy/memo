@@ -138,5 +138,15 @@
     "type": "公考",
     "subType": "言语理解与表达",
     "category": "markdown"
+  },
+  {
+    "id": "2250bfcdc903daabb68a9925e8701383",
+    "title": "主旨题解题思路",
+    "url": "./assets/mapping/2250bfcdc903daabb68a9925e8701383.json",
+    "createTime": 1561249847278,
+    "modifyTime": 1561254690621,
+    "type": "公考",
+    "subType": "言语理解与表达",
+    "category": "mapping"
   }
 ]

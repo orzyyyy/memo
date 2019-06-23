@@ -1,0 +1,824 @@
+{
+  "CanvasPosition": {
+    "x": -3034,
+    "y": -3286,
+    "z": 0,
+    "gap": 1
+  },
+  "BlockGroup": {
+    "block-911544": {
+      "x": 3843,
+      "y": 3460
+    },
+    "block-22683": {
+      "x": 3841,
+      "y": 3624
+    },
+    "block-72108": {
+      "x": 3408,
+      "y": 3816
+    },
+    "block-391416": {
+      "x": 3172,
+      "y": 3990
+    },
+    "block-404318": {
+      "x": 3614,
+      "y": 3989
+    },
+    "block-620761": {
+      "x": 3441,
+      "y": 4169
+    },
+    "block-624523": {
+      "x": 3594,
+      "y": 4169
+    },
+    "block-677164": {
+      "x": 3744,
+      "y": 4171
+    },
+    "block-756260": {
+      "x": 3427,
+      "y": 4357
+    },
+    "block-759655": {
+      "x": 3544,
+      "y": 4358
+    },
+    "block-768369": {
+      "x": 3663,
+      "y": 4357
+    },
+    "block-779054": {
+      "x": 3301,
+      "y": 4358
+    },
+    "block-785673": {
+      "x": 3797,
+      "y": 4357
+    },
+    "block-830615": {
+      "x": 3174,
+      "y": 4357
+    },
+    "block-906652": {
+      "x": 4268,
+      "y": 3815
+    },
+    "block-4900": {
+      "x": 3984,
+      "y": 3985
+    },
+    "block-151421": {
+      "x": 4169,
+      "y": 3986
+    },
+    "block-169247": {
+      "x": 4350,
+      "y": 3986
+    },
+    "block-198629": {
+      "x": 4528,
+      "y": 3986
+    },
+    "block-212716": {
+      "x": 3982,
+      "y": 4169
+    },
+    "block-243049": {
+      "x": 4167,
+      "y": 4172
+    },
+    "block-294569": {
+      "x": 4348,
+      "y": 4176
+    },
+    "block-314275": {
+      "x": 4526,
+      "y": 4175
+    },
+    "block-151855": {
+      "x": 3844,
+      "y": 3302
+    }
+  },
+  "TagGroup": {
+    "tag-915462": {
+      "x": 3867,
+      "y": 3332,
+      "editable": false,
+      "input": "主旨观点"
+    },
+    "tag-28646": {
+      "x": 3845,
+      "y": 3481,
+      "editable": false,
+      "input": "模糊记忆所有选项"
+    },
+    "tag-49433": {
+      "x": 3788,
+      "y": 3556,
+      "editable": false,
+      "input": "至少把所有答案都看一遍"
+    },
+    "tag-380909": {
+      "x": 3435,
+      "y": 3844,
+      "editable": false,
+      "input": "关键字"
+    },
+    "tag-394965": {
+      "x": 3201,
+      "y": 4018,
+      "editable": false,
+      "input": "高频词"
+    },
+    "tag-412650": {
+      "x": 3647,
+      "y": 4017,
+      "editable": false,
+      "input": "连接词"
+    },
+    "tag-633879": {
+      "x": 3476,
+      "y": 4198,
+      "editable": false,
+      "input": "强调"
+    },
+    "tag-641204": {
+      "x": 3630,
+      "y": 4200,
+      "editable": false,
+      "input": "总结"
+    },
+    "tag-699303": {
+      "x": 3770,
+      "y": 4199,
+      "editable": false,
+      "input": "对应关系"
+    },
+    "tag-793279": {
+      "x": 3336,
+      "y": 4387,
+      "editable": false,
+      "input": "转折"
+    },
+    "tag-799624": {
+      "x": 3462,
+      "y": 4387,
+      "editable": false,
+      "input": "递进"
+    },
+    "tag-806051": {
+      "x": 3577,
+      "y": 4387,
+      "editable": false,
+      "input": "因果"
+    },
+    "tag-813535": {
+      "x": 3698,
+      "y": 4388,
+      "editable": false,
+      "input": "条件"
+    },
+    "tag-818882": {
+      "x": 3835,
+      "y": 4386,
+      "editable": false,
+      "input": "假设"
+    },
+    "tag-836778": {
+      "x": 3205,
+      "y": 4388,
+      "editable": false,
+      "input": "并列"
+    },
+    "tag-972596": {
+      "x": 4291,
+      "y": 3844,
+      "editable": false,
+      "input": "行文结构"
+    },
+    "tag-33243": {
+      "x": 3787,
+      "y": 3388,
+      "editable": false,
+      "input": "这段文字意在说明、这段文字说的是"
+    },
+    "tag-135492": {
+      "x": 4018,
+      "y": 4014,
+      "editable": false,
+      "input": "总分"
+    },
+    "tag-159120": {
+      "x": 4206,
+      "y": 4014,
+      "editable": false,
+      "input": "分总"
+    },
+    "tag-183740": {
+      "x": 4383,
+      "y": 4013,
+      "editable": false,
+      "input": "并列"
+    },
+    "tag-204830": {
+      "x": 4566,
+      "y": 4015,
+      "editable": false,
+      "input": "转折"
+    },
+    "tag-232765": {
+      "x": 4010,
+      "y": 4199,
+      "editable": false,
+      "input": "看首句"
+    },
+    "tag-254375": {
+      "x": 4199,
+      "y": 4203,
+      "editable": false,
+      "input": "看尾句"
+    },
+    "tag-300172": {
+      "x": 4350,
+      "y": 4196,
+      "editable": false,
+      "input": "看答案，代入验证"
+    },
+    "tag-324368": {
+      "x": 4541,
+      "y": 4203,
+      "editable": false,
+      "input": "看转折之后"
+    },
+    "tag-172161": {
+      "x": 3861,
+      "y": 3652,
+      "editable": false,
+      "input": "浏览材料"
+    },
+    "tag-215255": {
+      "x": 3783,
+      "y": 3711,
+      "editable": false,
+      "input": "获得材料中大部分信息"
+    }
+  },
+  "LineGroup": {
+    "line-23607": {
+      "fromKey": "block-22683",
+      "toKey": "block-911544",
+      "from": {
+        "x": 808,
+        "y": 339,
+        "width": 100,
+        "height": 80,
+        "top": 339,
+        "right": 908,
+        "bottom": 419,
+        "left": 808
+      },
+      "to": {
+        "x": 810,
+        "y": 175,
+        "width": 100,
+        "height": 80,
+        "top": 175,
+        "right": 910,
+        "bottom": 255,
+        "left": 810
+      }
+    },
+    "line-72879": {
+      "fromKey": "block-72108",
+      "toKey": "block-22683",
+      "from": {
+        "x": 375,
+        "y": 531,
+        "width": 100,
+        "height": 80,
+        "top": 531,
+        "right": 475,
+        "bottom": 611,
+        "left": 375
+      },
+      "to": {
+        "x": 808,
+        "y": 339,
+        "width": 100,
+        "height": 80,
+        "top": 339,
+        "right": 908,
+        "bottom": 419,
+        "left": 808
+      }
+    },
+    "line-392146": {
+      "fromKey": "block-391416",
+      "toKey": "block-72108",
+      "from": {
+        "x": 139,
+        "y": 705,
+        "width": 100,
+        "height": 80,
+        "top": 705,
+        "right": 239,
+        "bottom": 785,
+        "left": 139
+      },
+      "to": {
+        "x": 375,
+        "y": 531,
+        "width": 100,
+        "height": 80,
+        "top": 531,
+        "right": 475,
+        "bottom": 611,
+        "left": 375
+      }
+    },
+    "line-406385": {
+      "fromKey": "block-404318",
+      "toKey": "block-72108",
+      "from": {
+        "x": 581,
+        "y": 704,
+        "width": 100,
+        "height": 80,
+        "top": 704,
+        "right": 681,
+        "bottom": 784,
+        "left": 581
+      },
+      "to": {
+        "x": 375,
+        "y": 531,
+        "width": 100,
+        "height": 80,
+        "top": 531,
+        "right": 475,
+        "bottom": 611,
+        "left": 375
+      }
+    },
+    "line-621502": {
+      "fromKey": "block-620761",
+      "toKey": "block-404318",
+      "from": {
+        "x": 408,
+        "y": 884,
+        "width": 100,
+        "height": 80,
+        "top": 884,
+        "right": 508,
+        "bottom": 964,
+        "left": 408
+      },
+      "to": {
+        "x": 581,
+        "y": 704,
+        "width": 100,
+        "height": 80,
+        "top": 704,
+        "right": 681,
+        "bottom": 784,
+        "left": 581
+      }
+    },
+    "line-626782": {
+      "fromKey": "block-404318",
+      "toKey": "block-624523",
+      "from": {
+        "x": 581,
+        "y": 704,
+        "width": 100,
+        "height": 80,
+        "top": 704,
+        "right": 681,
+        "bottom": 784,
+        "left": 581
+      },
+      "to": {
+        "x": 561,
+        "y": 884,
+        "width": 100,
+        "height": 80,
+        "top": 884,
+        "right": 661,
+        "bottom": 964,
+        "left": 561
+      }
+    },
+    "line-678046": {
+      "fromKey": "block-677164",
+      "toKey": "block-404318",
+      "from": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      },
+      "to": {
+        "x": 581,
+        "y": 704,
+        "width": 100,
+        "height": 80,
+        "top": 704,
+        "right": 681,
+        "bottom": 784,
+        "left": 581
+      }
+    },
+    "line-757256": {
+      "fromKey": "block-756260",
+      "toKey": "block-677164",
+      "from": {
+        "x": 394,
+        "y": 1072,
+        "width": 100,
+        "height": 80,
+        "top": 1072,
+        "right": 494,
+        "bottom": 1152,
+        "left": 394
+      },
+      "to": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      }
+    },
+    "line-760372": {
+      "fromKey": "block-759655",
+      "toKey": "block-677164",
+      "from": {
+        "x": 511,
+        "y": 1073,
+        "width": 100,
+        "height": 80,
+        "top": 1073,
+        "right": 611,
+        "bottom": 1153,
+        "left": 511
+      },
+      "to": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      }
+    },
+    "line-770405": {
+      "fromKey": "block-677164",
+      "toKey": "block-768369",
+      "from": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      },
+      "to": {
+        "x": 630,
+        "y": 1072,
+        "width": 100,
+        "height": 80,
+        "top": 1072,
+        "right": 730,
+        "bottom": 1152,
+        "left": 630
+      }
+    },
+    "line-780794": {
+      "fromKey": "block-779054",
+      "toKey": "block-677164",
+      "from": {
+        "x": 268,
+        "y": 1073,
+        "width": 100,
+        "height": 80,
+        "top": 1073,
+        "right": 368,
+        "bottom": 1153,
+        "left": 268
+      },
+      "to": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      }
+    },
+    "line-787301": {
+      "fromKey": "block-785673",
+      "toKey": "block-677164",
+      "from": {
+        "x": 764,
+        "y": 1072,
+        "width": 100,
+        "height": 80,
+        "top": 1072,
+        "right": 864,
+        "bottom": 1152,
+        "left": 764
+      },
+      "to": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      }
+    },
+    "line-832364": {
+      "fromKey": "block-830615",
+      "toKey": "block-677164",
+      "from": {
+        "x": 141,
+        "y": 1072,
+        "width": 100,
+        "height": 80,
+        "top": 1072,
+        "right": 241,
+        "bottom": 1152,
+        "left": 141
+      },
+      "to": {
+        "x": 711,
+        "y": 886,
+        "width": 100,
+        "height": 80,
+        "top": 886,
+        "right": 811,
+        "bottom": 966,
+        "left": 711
+      }
+    },
+    "line-907903": {
+      "fromKey": "block-906652",
+      "toKey": "block-22683",
+      "from": {
+        "x": 1235,
+        "y": 530,
+        "width": 100,
+        "height": 80,
+        "top": 530,
+        "right": 1335,
+        "bottom": 610,
+        "left": 1235
+      },
+      "to": {
+        "x": 808,
+        "y": 339,
+        "width": 100,
+        "height": 80,
+        "top": 339,
+        "right": 908,
+        "bottom": 419,
+        "left": 808
+      }
+    },
+    "line-5671": {
+      "fromKey": "block-4900",
+      "toKey": "block-906652",
+      "from": {
+        "x": 951,
+        "y": 700,
+        "width": 100,
+        "height": 80,
+        "top": 700,
+        "right": 1051,
+        "bottom": 780,
+        "left": 951
+      },
+      "to": {
+        "x": 1235,
+        "y": 530,
+        "width": 100,
+        "height": 80,
+        "top": 530,
+        "right": 1335,
+        "bottom": 610,
+        "left": 1235
+      }
+    },
+    "line-152343": {
+      "fromKey": "block-151421",
+      "toKey": "block-906652",
+      "from": {
+        "x": 1136,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1236,
+        "bottom": 781,
+        "left": 1136
+      },
+      "to": {
+        "x": 1235,
+        "y": 530,
+        "width": 100,
+        "height": 80,
+        "top": 530,
+        "right": 1335,
+        "bottom": 610,
+        "left": 1235
+      }
+    },
+    "line-170112": {
+      "fromKey": "block-169247",
+      "toKey": "block-906652",
+      "from": {
+        "x": 1317,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1417,
+        "bottom": 781,
+        "left": 1317
+      },
+      "to": {
+        "x": 1235,
+        "y": 530,
+        "width": 100,
+        "height": 80,
+        "top": 530,
+        "right": 1335,
+        "bottom": 610,
+        "left": 1235
+      }
+    },
+    "line-199478": {
+      "fromKey": "block-198629",
+      "toKey": "block-906652",
+      "from": {
+        "x": 1495,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1595,
+        "bottom": 781,
+        "left": 1495
+      },
+      "to": {
+        "x": 1235,
+        "y": 530,
+        "width": 100,
+        "height": 80,
+        "top": 530,
+        "right": 1335,
+        "bottom": 610,
+        "left": 1235
+      }
+    },
+    "line-218303": {
+      "fromKey": "block-212716",
+      "toKey": "block-4900",
+      "from": {
+        "x": 949,
+        "y": 884,
+        "width": 100,
+        "height": 80,
+        "top": 884,
+        "right": 1049,
+        "bottom": 964,
+        "left": 949
+      },
+      "to": {
+        "x": 951,
+        "y": 700,
+        "width": 100,
+        "height": 80,
+        "top": 700,
+        "right": 1051,
+        "bottom": 780,
+        "left": 951
+      }
+    },
+    "line-244819": {
+      "fromKey": "block-151421",
+      "toKey": "block-243049",
+      "from": {
+        "x": 1136,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1236,
+        "bottom": 781,
+        "left": 1136
+      },
+      "to": {
+        "x": 1134,
+        "y": 887,
+        "width": 100,
+        "height": 80,
+        "top": 887,
+        "right": 1234,
+        "bottom": 967,
+        "left": 1134
+      }
+    },
+    "line-295406": {
+      "fromKey": "block-294569",
+      "toKey": "block-169247",
+      "from": {
+        "x": 1315,
+        "y": 891,
+        "width": 100,
+        "height": 80,
+        "top": 891,
+        "right": 1415,
+        "bottom": 971,
+        "left": 1315
+      },
+      "to": {
+        "x": 1317,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1417,
+        "bottom": 781,
+        "left": 1317
+      }
+    },
+    "line-315077": {
+      "fromKey": "block-314275",
+      "toKey": "block-198629",
+      "from": {
+        "x": 1493,
+        "y": 890,
+        "width": 100,
+        "height": 80,
+        "top": 890,
+        "right": 1593,
+        "bottom": 970,
+        "left": 1493
+      },
+      "to": {
+        "x": 1495,
+        "y": 701,
+        "width": 100,
+        "height": 80,
+        "top": 701,
+        "right": 1595,
+        "bottom": 781,
+        "left": 1495
+      }
+    },
+    "line-153149": {
+      "fromKey": "block-151855",
+      "toKey": "block-911544",
+      "from": {
+        "x": 811,
+        "y": 17,
+        "width": 100,
+        "height": 80,
+        "top": 17,
+        "right": 911,
+        "bottom": 97,
+        "left": 811
+      },
+      "to": {
+        "x": 810,
+        "y": 175,
+        "width": 100,
+        "height": 80,
+        "top": 175,
+        "right": 910,
+        "bottom": 255,
+        "left": 810
+      }
+    }
+  }
+}
