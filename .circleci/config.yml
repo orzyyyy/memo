@@ -39,7 +39,7 @@ jobs:
       - checkout
       - *attach_workspace
       - run: npm run codecov
-      - run: bash <(curl -s https://codecov.io/bash) -t cdf5917e-b38d-4156-a9d6-6a405484b930
+      - run: bash <(curl -s https://codecov.io/bash) -t b0824134-3eef-4895-8b64-95d258ac57aa
   dist:
     <<: *container_config
     steps:
