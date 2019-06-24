@@ -1,6 +1,6 @@
 # memo
 
-![CircleCI](https://img.shields.io/circleci/project/github/zy410419243/memo/master.svg)
-[![codecov](https://codecov.io/gh/zy410419243/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/zy410419243/memo)
+![CircleCI](https://img.shields.io/circleci/project/github/orzyyyy/memo/master.svg)
+[![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
 
-https://zy410419243.github.io/memo
+https://orzyyyy.github.io/memo
