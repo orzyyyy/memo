@@ -36,7 +36,7 @@
     "nino-cli": "^0.8.2",
     "puppeteer-core": "^1.18.0",
     "react-lazyload": "^2.6.1",
-    "react-markdown": "^4.0.8",
+    "react-markdown": "^4.1.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
