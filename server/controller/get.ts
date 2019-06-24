@@ -98,13 +98,37 @@ const launchExHentaiPage = async () => {
   return { page, browser };
 };
 
+const getLastestFileName = () => {
+  const exHentaiInfoPath = path.join(process.cwd(), './src/assets/exhentai/');
+  const exHentaiInfoFiles = fs
+    .readdirSync(exHentaiInfoPath)
+    .filter((item: string) => item !== '.gitkeep')
+    .map((item: string) => parseInt(item, 10));
+  return exHentaiInfoFiles.sort((a: any, b: any) => b - a);
+};
+
 const getExhentai = async (ctx: any) => {
   const { page, browser } = await launchExHentaiPage();
   let results: ExHentaiInfoItem[] = [];
+  const lastestFileName = getLastestFileName()[0];
+  const lastestFilePath = path.join(
+    process.cwd(),
+    `src/assets/exhentai/${lastestFileName}.json`,
+  );
+  const { postTime } = JSON.parse(
+    fs.readFileSync(lastestFilePath).toString(),
+  )[0];
   for (let i = 0; i < exHentai.maxPageIndex; i++) {
+    info(`fetching pageIndex => ${i + 1}`);
     const result = await getExHentaiInfo({ pageIndex: i, page });
     results = [...results, ...result];
-    info(`fetching pageIndex => ${i + 1}`);
+    // compare lastest date of comic, break when current comic has been fetched
+    if (result.length > 0) {
+      if (result[result.length - 1].postTime < postTime) {
+        break;
+      }
+    }
+
     await page.waitFor(exHentai.waitTime);
   }
   await browser.close();
@@ -123,14 +147,7 @@ const getExhentai = async (ctx: any) => {
 };
 
 const getLastestExHentaiSet = async (ctx: any) => {
-  const exHentaiInfoPath = path.join(process.cwd(), './src/assets/exhentai/');
-  const exHentaiInfoFiles = fs
-    .readdirSync(exHentaiInfoPath)
-    .filter((item: string) => item !== '.gitkeep')
-    .map((item: string) => parseInt(item, 10));
-  const result = exHentaiInfoFiles.sort((a: any, b: any) => b - a);
-
-  ctx.response.body = `./assets/exhentai/${result[0]}.json`;
+  ctx.response.body = `./assets/exhentai/${getLastestFileName()[0]}.json`;
 };
 
 const getAllThumbnaiUrls = async (page: any) =>
