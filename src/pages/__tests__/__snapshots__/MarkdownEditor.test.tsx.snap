@@ -106,6 +106,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                   <ReactMarkdownWithHtml
                     astPlugins={Array []}
                     escapeHtml={false}
+                    parserOptions={Object {}}
                     plugins={Array []}
                     rawSourcePos={false}
                     renderers={Object {}}
