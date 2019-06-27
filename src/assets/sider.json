@@ -26,6 +26,10 @@
       {
         "key": "其他",
         "value": "其他"
+      },
+      {
+        "key": "linux",
+        "value": "linux"
       }
     ]
   },

@@ -148,5 +148,15 @@
     "type": "公考",
     "subType": "言语理解与表达",
     "category": "mapping"
+  },
+  {
+    "id": "5652a52ab188e25bddf687b32d4ce326",
+    "title": "manjaro 安装",
+    "url": "./assets/mapping/5652a52ab188e25bddf687b32d4ce326.json",
+    "createTime": 1561623131393,
+    "modifyTime": 1561623131393,
+    "type": "编程",
+    "subType": "linux",
+    "category": "markdown"
   }
 ]
