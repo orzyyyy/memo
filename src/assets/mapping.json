@@ -158,5 +158,15 @@
     "type": "编程",
     "subType": "linux",
     "category": "markdown"
+  },
+  {
+    "id": "b921eb06421a6a25e75c8009721d7324",
+    "title": "github ssh proxy",
+    "url": "./assets/mapping/b921eb06421a6a25e75c8009721d7324.json",
+    "createTime": 1561705415318,
+    "modifyTime": 1561705415318,
+    "type": "编程",
+    "subType": "linux",
+    "category": "markdown"
   }
 ]
