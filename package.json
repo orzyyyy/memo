@@ -5,7 +5,7 @@
   "scripts": {
     "start": "bash ./scripts/start-all.sh",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
-    "server": "tsc && node server",
+    "server": "tsc --target es6 --module commonjs --sourceMap && node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
     "build": "tsc && npm run generate && nino koei -c scripts/build",
@@ -14,8 +14,7 @@
     "codecov": "nino test -d",
     "lint-staged": "lint-staged",
     "deploy": "node scripts/publish",
-    "generate": "node scripts/generateSider",
-    "d": "npm run build && node scripts/publish"
+    "generate": "node scripts/generateSider"
   },
   "repository": {
     "type": "git",
@@ -42,10 +41,12 @@
   "devDependencies": {
     "@types/blueimp-md5": "^2.7.0",
     "@types/fs-extra": "^8.0.0",
+    "@types/puppeteer-core": "^1.9.0",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
     "@types/react-lazyload": "^2.5.0",
     "@types/react-router-dom": "^4.3.4",
+    "@types/request-promise": "^4.1.44",
     "blueimp-md5": "^2.10.0",
     "chalk": "^2.4.2",
     "date-fns": "^2.0.0-beta.2",
