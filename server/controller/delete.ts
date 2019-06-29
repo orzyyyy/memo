@@ -1,6 +1,7 @@
-const fs = require('fs-extra');
-const path = require('path');
-const { updateMappingRouter } = require('./save');
+import fs from 'fs-extra';
+import path from 'path';
+import Save from './save';
+const { updateMappingRouter } = Save;
 
 const del = async (ctx: any) => {
   const { id, category } = ctx.request.body;
@@ -35,14 +36,11 @@ const del = async (ctx: any) => {
         throw Error(`${item} doesn't exist.`);
       }
     }
-    updateMappingRouter({ id }, true);
+    updateMappingRouter({ id } as any, true);
     ctx.response.body = true;
   } catch (error) {
     ctx.response.body = false;
   }
 };
 
-module.exports = {
-  'DELETE /del/mapping': del,
-};
-export {};
+export default { 'DELETE /del/mapping': del };

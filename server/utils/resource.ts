@@ -1,6 +1,6 @@
-const toml = require('toml');
-const path = require('path');
-const fs = require('fs-extra');
+import toml from 'toml';
+import path from 'path';
+import fs from 'fs-extra';
 
 export const getTargetResource = (resourceFileName: string) => {
   const resourceFilePath = path.join(

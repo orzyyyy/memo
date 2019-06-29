@@ -1,6 +1,6 @@
-const fs = require('fs-extra');
-const path = require('path');
-const md5 = require('blueimp-md5');
+import fs from 'fs-extra';
+import path from 'path';
+import md5 from 'blueimp-md5';
 const { updateSider } = require('../../scripts/generateSider');
 
 export interface MappingProps {
@@ -150,7 +150,7 @@ const updateTargetMapping = async (ctx: any) => {
 const initNewMapping = async (ctx: any) => {
   const { title, type, subType, category } = ctx.request.body;
   const dateTime = new Date().getTime();
-  const id = md5(dateTime);
+  const id = md5(dateTime as any);
   const mappingPaths = [
     `src/assets/mapping/${id}.json`,
     `dist/assets/mapping/${id}.json`,
@@ -215,9 +215,8 @@ const initNewMapping = async (ctx: any) => {
   }
 };
 
-module.exports = {
+export default {
   'POST /save/update': updateTargetMapping,
   'POST /save/new': initNewMapping,
-  updateMappingRouter: updateMappingRouter,
+  updateMappingRouter,
 };
-export {};
