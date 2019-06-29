@@ -18,16 +18,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zy410419243/memo"
+    "url": "https://github.com/orzyyyy/memo"
   },
   "keywords": [
     "blog"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zy410419243/memo/issues"
+    "url": "https://github.com/orzyyyy/memo/issues"
   },
-  "homepage": "https://github.com/zy410419243/memo#readme",
+  "homepage": "https://github.com/orzyyyy/memo#readme",
   "dependencies": {
     "antd": "^3.19.8",
     "koa": "^2.7.0",
