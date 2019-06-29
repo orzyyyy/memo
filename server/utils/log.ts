@@ -2,8 +2,8 @@ const { format } = require('date-fns');
 const chalk = require('chalk');
 import { getTargetResource } from './resource';
 
-const resource = getTargetResource('server');
-const getTimestamp = () => `[${format(new Date(), resource.dateFormat)}] `;
+const { log } = getTargetResource('server');
+const getTimestamp = () => `[${format(new Date(), log.dateFormat)}] `;
 const logger = (color: string, prefix: string, content: string) => {
   const message = getTimestamp() + prefix + content;
   // tslint:disable-next-line: no-console
