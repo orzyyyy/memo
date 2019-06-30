@@ -2,36 +2,47 @@
   "name": "memo",
   "version": "1.0.0",
   "description": "A memo for myself",
-  "scripts": {
-    "start": "npm run pre:start && npm-run-all --parallel server dev",
-    "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
-    "server": "node server",
-    "kill": "taskkill /f /im node.exe",
-    "dev": "nino koei -c scripts/build -w -d -t",
-    "build": "tsc && npm run generate && nino koei -c scripts/build",
-    "prettier": "nino prettier",
-    "test": "nino test",
-    "codecov": "nino test -d",
-    "lint-staged": "lint-staged",
-    "deploy": "node scripts/publish",
-    "generate": "node scripts/generateSider",
-    "tsc": "tsc",
-    "compile:server": "tsc --target es6 --module commonjs --sourceMap",
-    "clean:views": "node scripts/pre-start",
-    "pre:start": "npm-run-all compile:server clean:views generate"
+  "keywords": [
+    "blog"
+  ],
+  "homepage": "https://github.com/orzyyyy/memo#readme",
+  "bugs": {
+    "url": "https://github.com/orzyyyy/memo/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/orzyyyy/memo"
   },
-  "keywords": [
-    "blog"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/orzyyyy/memo/issues"
+  "scripts": {
+    "build": "tsc && npm run generate && nino koei -c scripts/build",
+    "clean:views": "node scripts/pre-start",
+    "codecov": "nino test -d",
+    "compile:server": "tsc --target es6 --module commonjs --sourceMap",
+    "d": "tsc --target es6 --module commonjs --sourceMap --watch",
+    "deploy": "node scripts/publish",
+    "dev": "nino koei -c scripts/build -w -d -t",
+    "generate": "node scripts/generateSider",
+    "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
+    "lint-staged": "lint-staged",
+    "pre:start": "npm-run-all compile:server clean:views generate",
+    "prettier": "nino prettier",
+    "server": "node server",
+    "sort-script": "npx sort-package-json",
+    "start": "npm run pre:start && npm-run-all --parallel server dev",
+    "test": "nino test",
+    "tsc": "tsc"
   },
-  "homepage": "https://github.com/orzyyyy/memo#readme",
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run prettier",
+      "npm run lint",
+      "git add"
+    ]
+  },
   "dependencies": {
     "antd": "^3.19.8",
     "koa": "^2.7.0",
@@ -71,15 +82,5 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0"
-  },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "npm run prettier",
-      "npm run lint",
-      "git add"
-    ]
   }
 }
