@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "module": "esNext",
     "strictNullChecks": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -11,17 +10,9 @@
     "noImplicitAny": true,
     "target": "es6",
     "lib": ["dom", "es7"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext"
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "scripts",
-    "docs",
-    ".circleci",
-    ".github",
-    "lib",
-    "**/__tests__/**"
-  ],
-  "typings": "./index.d.ts"
+  "exclude": ["dist", "**/__tests__/**"],
+  "typings": "./typings.d.ts"
 }

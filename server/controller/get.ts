@@ -1,33 +1,13 @@
-const fs = require('fs-extra');
-const path = require('path');
-const puppeteer = require('puppeteer-core');
-const { format } = require('date-fns');
-const toml = require('toml');
-const chalk = require('chalk');
-const request = require('request-promise');
+import { getTargetResource } from '../utils/resource';
+import fs from 'fs-extra';
+import path from 'path';
+import puppeteer from 'puppeteer-core';
+import { format } from 'date-fns';
+import request from 'request-promise';
+import { success, info, trace, error } from '../utils/log';
 
-const dateFormat = 'yyyy-MM-dd HH:mm:ss';
-const getTimestamp = () => `[${format(new Date(), dateFormat)}] `;
-const success = (text: string) =>
-  // tslint:disable-next-line: no-console
-  console.log(chalk.greenBright(getTimestamp() + 'success => ' + text));
-const error = (text: string) =>
-  // tslint:disable-next-line: no-console
-  console.log(chalk.red(getTimestamp() + text));
-// tslint:disable-next-line: no-console
-const info = (text: string) =>
-  // tslint:disable-next-line: no-console
-  console.log(chalk.yellowBright(getTimestamp() + text));
-const trace = (text: string) =>
-  // tslint:disable-next-line: no-console
-  console.log(chalk.cyanBright(getTimestamp() + text));
-
-const { exHentai: exHentaiCookie } = toml.parse(
-  fs.readFileSync(path.join(__dirname, '../resource/cookie.toml'), 'utf-8'),
-);
-const { exHentai } = toml.parse(
-  fs.readFileSync(path.join(__dirname, '../resource/server.toml'), 'utf-8'),
-);
+const { exHentai: exHentaiCookie } = getTargetResource('cookie');
+const { exHentai } = getTargetResource('server');
 
 export interface ExHentaiInfoItem {
   name: string;
@@ -259,7 +239,10 @@ const downloadImages = async (ctx: any) => {
     const item = images[i];
     trace('download begin: ' + item);
     await request
-      .get({ url: item, proxy: exHentai.proxy })
+      .get({ url: item, proxy: exHentai.proxy } as {
+        url: string;
+        proxy: string;
+      })
       .on('error', (err: any) => {
         error(err + ' => ' + item);
       })

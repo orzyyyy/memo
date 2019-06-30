@@ -4,10 +4,10 @@ ghpages.publish(
   'dist',
   {
     dotfiles: true,
-    repo: 'https://github.com/zy410419243/memo.git',
+    repo: 'https://github.com/orzyyyy/memo.git',
     user: {
-      name: 'zy410419243',
-      email: 'zy410419243@gmail.com',
+      name: 'orzyyyy',
+      email: 'orzyyyy@gmail.com',
     },
   },
   error => {

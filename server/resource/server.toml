@@ -9,3 +9,6 @@ downloadPath = 'exhentai'
 proxy = 'http://127.0.0.1:1080'
 # size, normal is gdtm, large is gdtl
 thumbnailClass = '.gdtm a'
+
+[log]
+dateFormat = 'yyyy-MM-dd HH:mm:ss'
