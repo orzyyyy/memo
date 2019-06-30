@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all --parallel dev server",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
-    "server": "tsc --target es6 --module commonjs --sourceMap && node server",
+    "server": "tsc && node server",
     "kill": "taskkill /f /im node.exe",
     "dev": "nino koei -c scripts/build -w -d -t",
     "build": "tsc && npm run generate && nino koei -c scripts/build",
