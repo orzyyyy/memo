@@ -11,8 +11,7 @@
     "target": "es6",
     "lib": ["dom", "es7"],
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "module": "commonjs"
+    "module": "esnext"
   },
   "exclude": ["dist", "**/__tests__/**"],
   "typings": "./typings.d.ts"
