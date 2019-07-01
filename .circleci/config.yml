@@ -60,7 +60,7 @@ jobs:
       - *attach_workspace
       - add_ssh_keys:
           fingerprints:
-            - 'e9:66:f5:03:68:81:21:5d:8c:b7:ec:d7:11:b7:96:e9'
+            - '6b:38:b8:ae:87:df:d9:4f:99:fe:96:ee:f9:64:fe:05'
       - run:
           name: deploy
           when: on_success
