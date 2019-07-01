@@ -33,7 +33,8 @@ const addControllers = (router: any) => {
   });
 
   for (const file of jsFiles) {
-    const mapping = require(path.join(cwd, '/server/controller/', file));
+    const mapping = require(path.join(cwd, '/server/controller/', file))
+      .default;
     addMapping(router, mapping);
   }
 };

@@ -121,7 +121,12 @@ const updateTargetMapping = async (ctx: any) => {
     const targetLayoutFile = fs.readFileSync(
       path.join(path.join(process.cwd(), targetPaths[0])),
     );
-    originLayout = JSON.parse(targetLayoutFile.toString());
+    const targetLayout = targetLayoutFile.toString();
+    try {
+      originLayout = JSON.parse(targetLayout);
+    } catch (error) {
+      originLayout = targetLayout;
+    }
   }
 
   try {
