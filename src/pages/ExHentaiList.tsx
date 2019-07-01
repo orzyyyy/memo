@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExHentaiInfoItem } from '../../server/controller/get';
+import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import { Row, Col, Card, Dropdown, Menu } from 'antd';
 import LazyLoad from 'react-lazyload';
 

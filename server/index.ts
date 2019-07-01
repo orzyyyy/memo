@@ -1,14 +1,23 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import KoaStatic from 'koa-static';
-import Router from './router';
+import fs from 'fs-extra';
+import path from 'path';
 import { info } from './utils/log';
 
+const initRouter = (targetApp: any) => {
+  fs.readdirSync(path.join(process.cwd(), '/server/controller'))
+    .filter((filePath: string) => filePath.endsWith('.js'))
+    .map((controllerPath: any) => {
+      const controller = path.join(__dirname, 'controller', controllerPath);
+      targetApp.use(require(controller).default.routes());
+    });
+};
+
 const app = new Koa();
-const { router } = Router;
 
 app.use(bodyParser());
-app.use(router.routes());
+initRouter(app);
 app.use(KoaStatic(process.cwd() + '/dist'));
 
 export default app.listen(9099, () => {

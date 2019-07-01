@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainPage from '../pages/MainPage';
-import { MappingProps } from '../../server/controller/save';
+import { MappingProps } from '../../server/controller/MarkdownController';
 import { FormProps } from '../pages/EditForm';
 import { message } from 'antd';
 

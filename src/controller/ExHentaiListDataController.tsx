@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ExHentaiList, { DownloadProps } from '../pages/ExHentaiList';
-import { ExHentaiInfoItem } from '../../server/controller/get';
+import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import { Empty, message } from 'antd';
 
 export interface ExHentaiListDataControllerState {
