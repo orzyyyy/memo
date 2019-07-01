@@ -3,7 +3,7 @@ import bodyParser from 'koa-bodyparser';
 import KoaStatic from 'koa-static';
 import { info } from './utils/log';
 
-import { TestController } from './controller/test';
+const TestController = require('./controller/test');
 
 const app = new Koa();
 
