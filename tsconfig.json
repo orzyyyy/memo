@@ -13,6 +13,6 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext"
   },
-  "exclude": ["dist", "**/__tests__/**", "server"],
+  "exclude": ["dist", "**/__tests__/**"],
   "typings": "./typings.d.ts"
 }

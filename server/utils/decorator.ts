@@ -13,7 +13,7 @@ export function Controller(prefix: string) {
         fn(router);
       }
     }
-    router.prototype.routes = null;
+    // router.prototype.routes = null;
     return router;
   };
 }
