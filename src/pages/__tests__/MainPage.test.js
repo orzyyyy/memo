@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import MainPage from '../MainPage';
 import 'nino-cli/scripts/setup';
-import { MappingProps } from '../../../server/controller/save';
 const menuData = [
   {
     key: 'all',
@@ -49,11 +48,7 @@ const dataSource = [
 describe('MainPage', () => {
   it('render correctly', () => {
     const wrapper = shallow(
-      <MainPage
-        dataSource={dataSource as MappingProps[]}
-        menuData={menuData}
-        onEdit={null}
-      />,
+      <MainPage dataSource={dataSource} menuData={menuData} onEdit={null} />,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -76,7 +71,7 @@ describe('MainPage', () => {
     const onDelete = jest.fn();
     const wrapper = mount(
       <MainPage
-        dataSource={dataSource as MappingProps[]}
+        dataSource={dataSource}
         menuData={menuData}
         onEdit={onEdit}
         onDelete={onDelete}

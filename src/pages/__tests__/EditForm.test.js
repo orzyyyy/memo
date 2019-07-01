@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import EditForm from '../EditForm';
 import 'nino-cli/scripts/setup';
-import { SiderProps } from '../../controller/MainPageDataController';
 
 const menuData = [
   {
@@ -33,7 +32,7 @@ describe('EditForm', () => {
     const wrapper = mount(
       <EditForm
         visible
-        selectData={menuData as SiderProps[]}
+        selectData={menuData}
         onSubmit={noop}
         onCancel={noop}
         loading={false}
@@ -50,7 +49,7 @@ describe('EditForm', () => {
     const wrapper = mount(
       <EditForm
         visible
-        selectData={menuData as SiderProps[]}
+        selectData={menuData}
         onSubmit={onSubmit}
         onCancel={onCancel}
         loading={false}
