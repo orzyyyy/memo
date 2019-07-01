@@ -7,7 +7,7 @@ ghpages.publish(
     repo: 'https://github.com/orzyyyy/memo.git',
     user: {
       name: 'orzyyyy',
-      email: 'orzyyyy@gmail.com',
+      email: 'zy410419243@gmail.com',
     },
   },
   error => {
