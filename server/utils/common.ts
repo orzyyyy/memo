@@ -13,7 +13,7 @@ export const writeIntoJsonFile = (
   if (!url.endsWith('.json')) {
     url += '.json';
   }
-  fs.outputJSON(path.join(process.cwd(), url), content, {
+  fs.outputJSON(joinWithRootPath(url), content, {
     spaces: spaces ? 2 : 0,
   }).catch((err: Error) => {
     error(`error in utils/common.writeInfoJsonFile => ${url}: ${err}`);

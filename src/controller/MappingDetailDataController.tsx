@@ -27,7 +27,11 @@ export default class MappingDetailDataController extends Component<
     const targetId = this.props.match.params.id;
     const response = await fetch('/document/update', {
       method: 'POST',
-      body: JSON.stringify({ layout: data, id: targetId }),
+      body: JSON.stringify({
+        layout: data,
+        id: targetId,
+        category: 'mapping',
+      }),
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
     });

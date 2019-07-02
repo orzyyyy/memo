@@ -13,3 +13,6 @@ listInfoPath = 'src/assets/exhentai/'
 
 [log]
 dateFormat = 'yyyy-MM-dd HH:mm:ss'
+
+[document]
+mappingFilePath = 'src/assets/mapping.json'

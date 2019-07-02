@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 export interface MainPageProps {
   dataSource: MappingProps[];
   onEdit: (dataItem?: any) => void;
-  onDelete?: (dataItem: MappingProps) => void;
+  onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
 }
 export interface MainPageState {

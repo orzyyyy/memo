@@ -41,7 +41,7 @@ export default class MainPageDataController extends Component<
     const dataSource = await response.json();
     this.setState({
       dataSource: dataSource.sort(
-        (a: MappingProps, b: MappingProps) => b.modifyTime - a.modifyTime,
+        (a: any, b: any) => b.modifyTime - a.modifyTime,
       ),
     });
   };
