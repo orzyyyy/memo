@@ -1,7 +1,10 @@
 import puppeteer from 'puppeteer-core';
-import { success, info } from '../utils/log';
+import fs from 'fs-extra';
+import request from 'request-promise';
+import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
+import { joinWithRootPath, getDateStamp } from '../utils/common';
 
 export default class ExhentaiService {
   cookie: any[];
@@ -37,15 +40,41 @@ export default class ExhentaiService {
     this.setExHentaiCookie();
 
     success('set cookie');
+
+    return { page, browser };
   };
 
-  getListInfo = async ({ pageIndex }: { pageIndex: number }) => {
+  gotoTargetPage = async (url: string) => {
     await this.page.goto('https://www.google.com/', {
       waitUntil: 'domcontentloaded',
     });
-    await this.page.goto(this.config.href + pageIndex, {
+    await this.page.goto(url, {
       waitUntil: 'domcontentloaded',
     });
+  };
+
+  getComicName = async () => {
+    const name: any = await this.page.$eval(
+      '#gj',
+      (target: any) => new Promise(resolve => resolve(target.innerText)),
+    );
+    return name.replace(/[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, '');
+  };
+
+  ensureFolderForSave = async () => {
+    const subName = await this.getComicName();
+    const datePath = getDateStamp();
+    const prefixPath = `${this.config.downloadPath}/${datePath}/${subName}`;
+    const folderToSaveImages = joinWithRootPath(prefixPath);
+    fs.ensureDirSync(folderToSaveImages);
+
+    success(`check ${prefixPath} for saving images`);
+
+    return prefixPath;
+  };
+
+  getListInfo = async ({ pageIndex }: { pageIndex: number }) => {
+    await this.gotoTargetPage(this.config.href + pageIndex);
     const exHentaiInfo: ExHentaiInfoItem[] = await this.page.$$eval(
       'div.gl1t',
       (wrappers: any[]) =>
@@ -102,9 +131,105 @@ export default class ExhentaiService {
     return results;
   };
 
-  saveListInfo = () => {};
+  getUrlFromPaginationInfo = async () =>
+    await this.page.$$eval(
+      'table.ptt a',
+      (wrappers: any[]) =>
+        new Promise(resolve => {
+          if (wrappers.length !== 1) {
+            const result: string[] = [];
+            wrappers.pop();
+            wrappers.shift();
+            for (const item of wrappers) {
+              result.push(item.href);
+            }
+            resolve(result);
+          } else {
+            resolve([]);
+          }
+        }),
+    );
 
-  getPage = () => this.page;
+  getAllThumbnaiUrls = async () =>
+    await this.page.$$eval(
+      this.config.thumbnailClass,
+      (wrappers: any[]) =>
+        new Promise(resolve => {
+          const result: any[] = [];
+          for (const item of wrappers) {
+            result.push(item.href);
+          }
+          resolve(result);
+        }),
+    );
 
-  getBrowser = () => this.browser;
+  downImages = async (imageUrl: string[], prefixPath: string) => {
+    const { page, browser, config } = this;
+    for (let i = 0; i < imageUrl.length; i++) {
+      const item = imageUrl[i];
+      const pageIndex = i + 1;
+
+      trace('download begin: ' + item);
+
+      await request
+        .get({ url: item, proxy: config.proxy } as {
+          url: string;
+          proxy: string;
+        })
+        .on('error', (err: any) => {
+          error(err + ' => ' + item);
+        })
+        .pipe(
+          fs
+            .createWriteStream(
+              joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
+            )
+            .on('finish', () => success(`${pageIndex}.jpg`))
+            .on('error', (err: any) =>
+              error(`${pageIndex}.jpg failed, ${err}`),
+            ),
+        );
+      if (i % 4 === 0) {
+        await page.waitFor(config.waitTime);
+      }
+    }
+    await browser.close();
+  };
+
+  getThumbnaiUrlFromDetailPage = async () => {
+    const restDetailUrls = (await this.getUrlFromPaginationInfo()) as string[];
+    const firstPageThumbnailUrls = (await this.getAllThumbnaiUrls()) as string[];
+    await this.page.waitFor(this.config.waitTime);
+
+    for (const item of restDetailUrls) {
+      await this.gotoTargetPage(item);
+      const thumbnailUrlsFromNextPage = (await this.getAllThumbnaiUrls()) as string[];
+      firstPageThumbnailUrls.push(...thumbnailUrlsFromNextPage);
+
+      info('image length: ' + firstPageThumbnailUrls.length);
+
+      await this.page.waitFor(this.config.waitTime);
+    }
+    return firstPageThumbnailUrls;
+  };
+
+  fetchTargetImageUrls = async (thumbnailUrls: string[]) => {
+    const images: string[] = [];
+    for (let i = 0; i < thumbnailUrls.length; i++) {
+      await this.gotoTargetPage(thumbnailUrls[i]);
+
+      info(`fetching image url => ${thumbnailUrls[i]}`);
+
+      const imgUrl: string = await this.page.$eval(
+        '[id=i3] img',
+        (target: any) =>
+          new Promise(resolve => {
+            resolve(target.src);
+          }),
+      );
+      images.push(imgUrl);
+      await this.page.waitFor(this.config.waitTime);
+    }
+    return images;
+  };
 }
