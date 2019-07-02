@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
-import path from 'path';
 import { Controller, Request } from '../utils/decorator';
+import { joinWithRootPath } from '../utils/common';
 
 @Controller('/')
 export default class MainPageController {
@@ -8,7 +8,7 @@ export default class MainPageController {
   async getMainPage(ctx: any) {
     ctx.type = 'html';
     ctx.response.body = fs.createReadStream(
-      path.join(process.cwd(), 'dist', 'index.html'),
+      joinWithRootPath('dist/index.html'),
     );
   }
 }

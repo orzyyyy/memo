@@ -43,7 +43,7 @@ export default class MarkdownEditorDataController extends Component<
   };
 
   handleSave = async ({ id, layout }: { id: string; layout: string }) => {
-    const response = await fetch('save/update', {
+    const response = await fetch('document/update', {
       body: JSON.stringify({ id, layout }),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

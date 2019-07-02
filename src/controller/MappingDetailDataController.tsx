@@ -25,7 +25,7 @@ export default class MappingDetailDataController extends Component<
 
   handleOnSave = async (data: any) => {
     const targetId = this.props.match.params.id;
-    const response = await fetch('/save/update', {
+    const response = await fetch('/document/update', {
       method: 'POST',
       body: JSON.stringify({ layout: data, id: targetId }),
       mode: 'cors',
