@@ -146,7 +146,6 @@ export default class ExhentaiController {
     }
     await browser.close();
 
-    trace('write into json');
     const createTime = format(new Date(), 'yyyyMMddHHmmss');
     fs.outputJSON(
       path.join(process.cwd(), `src/assets/exhentai/${createTime}.json`),
