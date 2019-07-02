@@ -1,14 +1,12 @@
-import fs from 'fs-extra';
 import { Controller, Request } from '../utils/decorator';
-import { joinWithRootPath } from '../utils/common';
+import MainPageService from '../service/MainPageService';
 
 @Controller('/')
 export default class MainPageController {
   @Request({ url: '/', method: 'get' })
   async getMainPage(ctx: any) {
+    const service = new MainPageService();
     ctx.type = 'html';
-    ctx.response.body = fs.createReadStream(
-      joinWithRootPath('dist/index.html'),
-    );
+    ctx.response.body = service.getDist();
   }
 }
