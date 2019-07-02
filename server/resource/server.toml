@@ -1,4 +1,4 @@
-[exHentai]
+[exhentai]
 href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
 launchArgs = ['--proxy-server=127.0.0.1:1080']
 devtools = false
@@ -9,6 +9,10 @@ downloadPath = 'exhentai'
 proxy = 'http://127.0.0.1:1080'
 # size, normal is gdtm, large is gdtl
 thumbnailClass = '.gdtm a'
+listInfoPath = 'src/assets/exhentai/'
 
 [log]
 dateFormat = 'yyyy-MM-dd HH:mm:ss'
+
+[document]
+mappingFilePath = 'src/assets/mapping.json'

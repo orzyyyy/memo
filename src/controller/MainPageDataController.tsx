@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainPage from '../pages/MainPage';
-import { MappingProps } from '../../server/controller/MarkdownController';
+import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
 import { message } from 'antd';
 
@@ -41,7 +41,7 @@ export default class MainPageDataController extends Component<
     const dataSource = await response.json();
     this.setState({
       dataSource: dataSource.sort(
-        (a: MappingProps, b: MappingProps) => b.modifyTime - a.modifyTime,
+        (a: any, b: any) => b.modifyTime - a.modifyTime,
       ),
     });
   };
@@ -53,7 +53,7 @@ export default class MainPageDataController extends Component<
   };
 
   handleDelete = async ({ id, category }: { id: string; category: string }) => {
-    const response = await fetch('/del/mapping', {
+    const response = await fetch('/document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
       mode: 'cors',
@@ -82,14 +82,14 @@ export default class MainPageDataController extends Component<
     let id;
     if (dataItem) {
       id = dataItem.id;
-      await fetch('save/update', {
+      await fetch('document/update', {
         body: JSON.stringify(Object.assign({}, dataItem, item)),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
       message.success(`${item.category} 更新完成`);
     } else {
-      const response = await fetch('save/new', {
+      const response = await fetch('document/add', {
         body: JSON.stringify(item),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

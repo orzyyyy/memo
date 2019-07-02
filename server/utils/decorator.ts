@@ -1,19 +1,26 @@
 import KoaRouter from 'koa-router';
+// import path from 'path';
 
-export function Controller(prefix: string) {
+function injectService(service: string[], propsList: any) {
+  for (const item of service) {
+    propsList[item] = item;
+  }
+}
+
+export function Controller(prefix: string, service: string[] = []) {
   const router: any = new KoaRouter();
   if (prefix) {
     router.prefix(prefix);
   }
   return function(target: any) {
-    const reqList = Object.getOwnPropertyDescriptors(target.prototype);
-    for (const v in reqList) {
-      if (v !== 'constructor') {
-        const fn = reqList[v].value;
+    const propsList = Object.getOwnPropertyDescriptors(target.prototype);
+    injectService(service, propsList);
+    for (const v in propsList) {
+      if (v !== 'constructor' && !service.includes(v)) {
+        const fn = propsList[v].value;
         fn(router);
       }
     }
-    // router.prototype.routes = null;
     return router;
   };
 }

@@ -4,13 +4,13 @@ import { Dropdown, Menu, Layout, Breadcrumb, List, Icon, Button } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
-import { MappingProps } from '../../server/controller/MarkdownController';
+import { MappingProps } from '../../server/controller/DocumentController';
 import { format } from 'date-fns';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
   onEdit: (dataItem?: any) => void;
-  onDelete?: (dataItem: MappingProps) => void;
+  onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
 }
 export interface MainPageState {
