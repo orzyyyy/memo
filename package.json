@@ -61,7 +61,7 @@
     "@types/koa-static": "^4.0.1",
     "@types/prettier": "^1.16.4",
     "@types/puppeteer-core": "^1.9.0",
-    "@types/react": "^16.8.22",
+    "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-lazyload": "^2.5.0",
     "@types/react-router-dom": "^4.3.4",
