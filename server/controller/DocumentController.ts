@@ -19,11 +19,23 @@ export interface MappingProps {
 export default class MarkdownController {
   @Request({ url: '/update', method: 'post' })
   async updateTargetDocument(ctx: any) {
-    const { layout, id, title, type, subType, category } = ctx.request.body;
+    const {
+      layout,
+      id,
+      title,
+      type,
+      subType,
+      category,
+      format,
+    } = ctx.request.body;
     if (!id) {
       throw Error('id is undefined');
     }
     const service = new DocumentService();
+    // formatted by prettier
+    if (format) {
+      service.formattedByPrettier(layout);
+    }
     // update mapping
     service.updateMapping({
       id,

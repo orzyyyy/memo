@@ -59,6 +59,7 @@
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-router": "^7.0.42",
     "@types/koa-static": "^4.0.1",
+    "@types/prettier": "^1.16.4",
     "@types/puppeteer-core": "^1.9.0",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",

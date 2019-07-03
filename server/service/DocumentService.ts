@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import omit from 'omit.js';
+import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
 import { getWriteFilesPaths } from '../utils/document';
 import {
@@ -112,5 +113,11 @@ export default class DocumentService {
         throw Error(`${item} doesn't exist.`);
       }
     }
+  };
+
+  formattedByPrettier = (content: string) => {
+    return prettier.format(content, {
+      parser: 'markdown',
+    });
   };
 }
