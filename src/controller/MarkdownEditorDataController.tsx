@@ -8,6 +8,11 @@ export interface MarkdownEditorDataControllerState {
   dataSource: string;
   [moduleName: string]: any;
 }
+export interface MarkdownEditorSaveProps {
+  id: string;
+  layout: string;
+  format?: boolean;
+}
 
 export default class MarkdownEditorDataController extends Component<
   MarkdownEditorDataControllerProps,
@@ -42,15 +47,16 @@ export default class MarkdownEditorDataController extends Component<
     this.setState({ dataSource: result });
   };
 
-  handleSave = async ({ id, layout }: { id: string; layout: string }) => {
+  handleSave = async ({ id, layout, format }: MarkdownEditorSaveProps) => {
     const response = await fetch('document/update', {
-      body: JSON.stringify({ id, layout, category: 'markdown' }),
+      body: JSON.stringify({ id, layout, category: 'markdown', format }),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.json();
     if (result) {
       message.success('保存成功');
+      this.getTargetMarkdown(id);
     } else {
       message.error('保存失败');
     }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MarkDownDetail from './MarkdownDetail';
 import { Col, Row, Input, Button } from 'antd';
+import { MarkdownEditorSaveProps } from '../controller/MarkdownEditorDataController';
 const { TextArea } = Input;
 
 export interface MarkdownEditorProps {
   targetId: string;
   dataSource: string;
-  onSave: ({ id, layout }: { id: string; layout: string }) => void;
+  onSave: ({ id, layout, format }: MarkdownEditorSaveProps) => void;
 }
 export interface MarkdownEditorState {
   textareaValue: string;
@@ -28,6 +29,23 @@ export default class MarkdownEditor extends Component<
 
   state: MarkdownEditorState = {
     textareaValue: '',
+  };
+
+  componentDidMount = () => {
+    document.onkeydown = e => {
+      const { ctrlKey, keyCode } = e;
+      // ctrl + s
+      if (ctrlKey && keyCode === 83) {
+        e.preventDefault();
+        this.props.onSave({
+          id: this.props.targetId,
+          layout: this.state.textareaValue,
+          format: true,
+        });
+      } else {
+        e.stopPropagation();
+      }
+    };
   };
 
   handleOnChange = (e: any) => {
