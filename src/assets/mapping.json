@@ -178,5 +178,15 @@
     "type": "编程",
     "subType": "其他",
     "category": "markdown"
+  },
+  {
+    "createTime": 1562373606865,
+    "modifyTime": 1562374384736,
+    "url": "./assets/mapping/75bb0cdbfd5e9961635470f42b66c92d.json",
+    "id": "75bb0cdbfd5e9961635470f42b66c92d",
+    "title": "到底怎样才不算是搬砖、API Caller、Crud Boy？",
+    "type": "公考",
+    "subType": "申论练习",
+    "category": "markdown"
   }
 ]
