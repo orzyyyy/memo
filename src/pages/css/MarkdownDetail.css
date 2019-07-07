@@ -23,6 +23,7 @@
   padding: 3% 6%;
   position: relative;
   margin: 5% 0;
+  min-height: 90vh;
 }
 
 .MarkdownDetail .wrapper .content span {
