@@ -51,7 +51,7 @@
     "puppeteer-core": "^1.18.1",
     "react-lazyload": "^2.6.2",
     "react-markdown": "^4.1.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
     "@types/blueimp-md5": "^2.7.0",
