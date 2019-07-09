@@ -3,7 +3,12 @@ import fs from 'fs-extra';
 import { error } from './log';
 import { format } from 'date-fns';
 
-export const joinWithRootPath = (url: string) => path.join(process.cwd(), url);
+export const joinWithRootPath = (paths: string | string[]) => {
+  if (Array.isArray(paths)) {
+    return path.join(process.cwd(), ...paths);
+  }
+  return path.join(process.cwd(), paths);
+};
 
 export const writeIntoJsonFile = (
   url: string,
