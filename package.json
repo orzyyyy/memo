@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run generate && nino koei -c scripts/build",
-    "codecov": "nino test -d",
+    "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "node scripts/publish",
