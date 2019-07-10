@@ -8,3 +8,4 @@
 /src/assets/exhentai/*.json
 /exhentai
 /server/**/*.js
+/bin
