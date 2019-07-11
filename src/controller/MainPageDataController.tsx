@@ -107,6 +107,17 @@ export default class MainPageDataController extends Component<
     this.setState({ formVisible: false });
   };
 
+  handleExhentaiDownload = (e: any) => {
+    const url = e.target.value;
+    fetch('exhentai/download', {
+      body: JSON.stringify({ url }),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(response => response.text())
+      .then(result => result === 'true' && message.success('保存完成'));
+  };
+
   render = () => {
     const {
       dataSource,
@@ -123,6 +134,7 @@ export default class MainPageDataController extends Component<
           onEdit={this.handleEdit}
           onDelete={this.handleDelete}
           menuData={menuData}
+          onExhentaiDownload={this.handleExhentaiDownload}
         />
         {EditForm && (
           <EditForm

@@ -5,7 +5,7 @@ import LazyLoad from 'react-lazyload';
 
 export interface DownloadProps {
   url: string;
-  name: string;
+  name?: string;
 }
 export interface ExHentaiListProps {
   dataSource: ExHentaiInfoItem[] | null;

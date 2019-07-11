@@ -65,6 +65,18 @@ exports[`MainPage render correctly 1`] = `
           all
         </BreadcrumbItem>
       </Breadcrumb>
+      <Input
+        disabled={false}
+        style={
+          Object {
+            "position": "absolute",
+            "right": 150,
+            "top": 10,
+            "width": 350,
+          }
+        }
+        type="text"
+      />
       <Button
         block={false}
         ghost={false}
