@@ -38,7 +38,7 @@ export default class DocumentService {
         removeKeys.push(key);
       }
     }
-    targetItem = omit(targetItem, removeKeys);
+    targetItem = omit(targetItem, removeKeys) as MappingProps;
     const originMappingItem = this.getOriginMappingItem(targetItem.id);
     const writeFilesPaths = getWriteFilesPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
