@@ -15,7 +15,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run generate && nino koei -c scripts/build",
+    "build": "npm-run-all generate dist copy:ci",
+    "dist": "nino koei -c scripts/build",
+    "copy:ci": "cp -r .circleci dist/.circleci",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
