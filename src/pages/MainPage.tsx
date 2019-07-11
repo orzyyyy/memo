@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import { Dropdown, Menu, Layout, Breadcrumb, List, Icon, Button } from 'antd';
+import {
+  Dropdown,
+  Menu,
+  Layout,
+  Breadcrumb,
+  List,
+  Icon,
+  Button,
+  Input,
+} from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
@@ -12,6 +21,7 @@ export interface MainPageProps {
   onEdit: (dataItem?: any) => void;
   onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
+  onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 export interface MainPageState {
   siderOpenKey: string;
@@ -89,7 +99,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
-    const { dataSource, onDelete, onEdit } = this.props;
+    const { dataSource, onDelete, onEdit, onExhentaiDownload } = this.props;
     const { siderOpenKey, siderSelectedKey } = this.state;
 
     const wrapperHeight = document.body.clientHeight - 21 - 90 - 24;
@@ -99,6 +109,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
           <Breadcrumb.Item>{siderOpenKey}</Breadcrumb.Item>
           <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
         </Breadcrumb>
+        <Input
+          onPressEnter={onExhentaiDownload}
+          style={{ position: 'absolute', right: 150, top: 10, width: 350 }}
+        />
         <Button
           style={{ position: 'absolute', right: 88, top: 10 }}
           onClick={() => (location.hash = '/exhentai')}
