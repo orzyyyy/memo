@@ -4,7 +4,11 @@ import request from 'request-promise';
 import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
-import { joinWithRootPath, getDateStamp } from '../utils/common';
+import {
+  joinWithRootPath,
+  getDateStamp,
+  writeIntoJsonFile,
+} from '../utils/common';
 
 export default class ExhentaiService {
   cookie: any[];
@@ -15,6 +19,7 @@ export default class ExhentaiService {
   constructor() {
     this.cookie = getTargetResource('cookie').exhentai;
     this.config = getTargetResource('server').exhentai;
+    request.defaults({ proxy: this.config.proxy });
   }
 
   setExHentaiCookie = async () => {
@@ -24,7 +29,14 @@ export default class ExhentaiService {
   };
 
   initBrowser = async () => {
-    const { executablePath, launchArgs, devtools } = this.config;
+    const {
+      winChromePath,
+      linuxChromePath,
+      launchArgs,
+      devtools,
+    } = this.config;
+    const executablePath =
+      process.platform === 'win32' ? winChromePath : linuxChromePath;
     const browser = await puppeteer.launch({
       executablePath,
       args: launchArgs,
@@ -44,10 +56,12 @@ export default class ExhentaiService {
     return { page, browser };
   };
 
-  gotoTargetPage = async (url: string) => {
-    await this.page.goto('https://www.google.com/', {
-      waitUntil: 'domcontentloaded',
-    });
+  gotoTargetPage = async (url: string, isFirstPage?: boolean) => {
+    if (isFirstPage) {
+      await this.page.goto('https://www.google.com/', {
+        waitUntil: 'domcontentloaded',
+      });
+    }
     await this.page.goto(url, {
       waitUntil: 'domcontentloaded',
     });
@@ -128,6 +142,7 @@ export default class ExhentaiService {
 
       await this.page.waitFor(waitTime);
     }
+    await this.browser.close();
     return results;
   };
 
@@ -163,8 +178,10 @@ export default class ExhentaiService {
         }),
     );
 
-  downImages = async (imageUrl: string[], prefixPath: string) => {
-    const { page, browser, config } = this;
+  downloadImages = async (imageUrl: string[], prefixPath: string) => {
+    const { page, config } = this;
+    const counter: number[] = [];
+    const failedImageUrls: { url: string; pageIndex: number }[] = [];
     for (let i = 0; i < imageUrl.length; i++) {
       const item = imageUrl[i];
       const pageIndex = i + 1;
@@ -172,19 +189,26 @@ export default class ExhentaiService {
       trace('download begin: ' + item);
 
       await request
-        .get({ url: item, proxy: config.proxy } as {
+        .get({ url: item } as {
           url: string;
           proxy: string;
         })
         .on('error', (err: any) => {
-          error(err + ' => ' + item);
+          error(err + ' => ' + item + ': ' + pageIndex);
+          failedImageUrls.push({ url: item, pageIndex });
         })
         .pipe(
           fs
             .createWriteStream(
               joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
             )
-            .on('finish', () => success(`${pageIndex}.jpg`))
+            .on('finish', () => {
+              success(`${pageIndex}.jpg`);
+              counter.push(pageIndex);
+              if (counter.length === imageUrl.length) {
+                success('download completed.');
+              }
+            })
             .on('error', (err: any) =>
               error(`${pageIndex}.jpg failed, ${err}`),
             ),
@@ -193,7 +217,7 @@ export default class ExhentaiService {
         await page.waitFor(config.waitTime);
       }
     }
-    await browser.close();
+    writeIntoJsonFile(`${prefixPath}/failedImageUrls`, failedImageUrls);
   };
 
   getThumbnaiUrlFromDetailPage = async () => {
@@ -210,6 +234,7 @@ export default class ExhentaiService {
 
       await this.page.waitFor(this.config.waitTime);
     }
+    await this.browser.close();
     return firstPageThumbnailUrls;
   };
 

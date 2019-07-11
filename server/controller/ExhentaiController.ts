@@ -35,7 +35,7 @@ export default class ExhentaiController {
     const { url } = ctx.request.body;
     const service = new ExhentaiService();
     await service.initBrowser();
-    await service.gotoTargetPage(url);
+    await service.gotoTargetPage(url, true);
     const prefixPath = await service.ensureFolderForSave();
 
     info(`start fetching thumbnai urls from: ${url}`);
@@ -51,9 +51,7 @@ export default class ExhentaiController {
 
     writeIntoJsonFile(`${prefixPath}/detailImageUrls`, images);
 
-    await service.downImages(images, prefixPath);
-
-    success('download completed');
+    await service.downloadImages(images, prefixPath);
 
     ctx.response.body = true;
   }
