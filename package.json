@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "nino koei -c scripts/build.js",
+    "build": "npm run pre:css && tsc && nino koei -c scripts/build.js",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
