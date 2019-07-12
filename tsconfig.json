@@ -12,10 +12,7 @@
     "lib": ["dom", "es7"],
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
-    "sourceMap": true,
-    "declaration": true,
     "outDir": "dist"
   },
-  "exclude": ["dist", "**/__tests__/**", "node_modules"],
   "typings": "./typings.d.ts"
 }
