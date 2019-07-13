@@ -114,7 +114,7 @@
     "title": "deploy with gh-pages and circleci",
     "url": "./assets/mapping/d84c686eca77b9db11063f995d4f4694.json",
     "createTime": 1560559934239,
-    "modifyTime": 1561955003623,
+    "modifyTime": 1563003475889,
     "type": "编程",
     "subType": "其他",
     "category": "markdown"
@@ -151,10 +151,10 @@
   },
   {
     "id": "5652a52ab188e25bddf687b32d4ce326",
-    "title": "manjaro install",
+    "title": "linux after install",
     "url": "./assets/mapping/5652a52ab188e25bddf687b32d4ce326.json",
     "createTime": 1561623131393,
-    "modifyTime": 1562985279720,
+    "modifyTime": 1563003318050,
     "type": "编程",
     "subType": "linux",
     "category": "markdown"
