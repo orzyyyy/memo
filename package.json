@@ -19,7 +19,7 @@
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
-    "deploy": "node scripts/publish",
+    "deploy": "gh-pages -d dist -t",
     "pre:css": "rimraf dist && mkdir -p dist/src/pages/css && cp -r src/pages/css dist/src/pages",
     "dev": "npm run pre:css && nino koei -c scripts/build.js -w -d",
     "generate": "node scripts/generateSider",
