@@ -5,7 +5,7 @@
 /coverage/
 /dist/
 *.jsx
-/exhentai
+/exhentai/**/*.jpg
 /server/**/*.js
 /bin
 package-lock.json
