@@ -1,10 +1,10 @@
 [exhentai]
 href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
 launchArgs = ['--proxy-server=127.0.0.1:12333']
-devtools = false
+headless = true
 winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 linuxChromePath = '/opt/google/chrome/chrome'
-waitTime = 4000
+waitTime = 1000
 maxPageIndex = 40
 downloadPath = 'exhentai'
 proxy = 'http://127.0.0.1:12333'

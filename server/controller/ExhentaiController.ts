@@ -1,8 +1,17 @@
 import { success, info } from '../utils/log';
 import { Controller, Request } from '../utils/decorator';
-import { writeIntoJsonFile, getTimeStamp } from '../utils/common';
+import {
+  writeIntoJsonFile,
+  getTimeStamp,
+  readJsonFile,
+  joinWithRootPath,
+} from '../utils/common';
 import ExhentaiService from '../service/ExhentaiService';
-import { getLastestListInfo, getLastestListFileName } from '../utils/exhentai';
+import {
+  getLastestListInfo,
+  getLastestListFileName,
+  getBaseNameOfImage,
+} from '../utils/exhentai';
 
 export interface ExHentaiInfoItem {
   name: string;
@@ -54,5 +63,41 @@ export default class ExhentaiController {
     await service.downloadImages(images, prefixPath);
 
     ctx.response.body = true;
+  }
+
+  @Request({ url: '/download/target', method: 'get' })
+  async downloadFromExistUrls(ctx: any) {
+    const { name, dateStamp } = ctx.query;
+    const service = new ExhentaiService();
+    const prefixPath = `exhentai/${dateStamp}/${name}`;
+    const detailImageUrls = readJsonFile(
+      joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
+    );
+    service.downloadImages(detailImageUrls, prefixPath);
+    ctx.response.body = true;
+  }
+
+  @Request({ url: '/download/stat', method: 'get' })
+  async statisticsFailedDownloadImgUrls(ctx: any) {
+    const { name, dateStamp, length } = ctx.query;
+    const prefixPath = `exhentai/${dateStamp}/${name}`;
+    const detailImageUrls: string[] = readJsonFile(
+      joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
+    );
+    const indexImageUrls: string[] = readJsonFile(
+      joinWithRootPath(`${prefixPath}/restDetailUrls.json`),
+    );
+    const imgUrls: string[] = getBaseNameOfImage(prefixPath);
+    const result: { detail: string; index: string; i: number }[] = [];
+    for (let i = 1; i < parseInt(length, 10) + 1; i++) {
+      if (!imgUrls.includes(i.toString())) {
+        result.push({
+          detail: detailImageUrls[i - 1],
+          i,
+          index: indexImageUrls[i - 1],
+        });
+      }
+    }
+    ctx.response.body = result;
   }
 }

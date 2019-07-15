@@ -4,11 +4,7 @@ import request from 'request-promise';
 import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
-import {
-  joinWithRootPath,
-  getDateStamp,
-  writeIntoJsonFile,
-} from '../utils/common';
+import { joinWithRootPath, getDateStamp } from '../utils/common';
 
 export default class ExhentaiService {
   cookie: any[];
@@ -33,14 +29,14 @@ export default class ExhentaiService {
       winChromePath,
       linuxChromePath,
       launchArgs,
-      devtools,
+      headless,
     } = this.config;
     const executablePath =
       process.platform === 'win32' ? winChromePath : linuxChromePath;
     const browser = await puppeteer.launch({
       executablePath,
       args: launchArgs,
-      devtools,
+      headless,
     });
     this.browser = browser;
 
@@ -58,7 +54,7 @@ export default class ExhentaiService {
 
   gotoTargetPage = async (url: string, isFirstPage?: boolean) => {
     if (isFirstPage) {
-      await this.page.goto('https://www.google.com/', {
+      await this.page.goto('https://www.baidu.com/', {
         waitUntil: 'domcontentloaded',
       });
     }
@@ -178,10 +174,12 @@ export default class ExhentaiService {
         }),
     );
 
-  downloadImages = async (imageUrl: string[], prefixPath: string) => {
-    const { page, config } = this;
+  downloadImages = async (
+    imageUrl: string[],
+    prefixPath: string,
+    isBrowserExist?: boolean,
+  ) => {
     const counter: number[] = [];
-    const failedImageUrls: { url: string; pageIndex: number }[] = [];
     for (let i = 0; i < imageUrl.length; i++) {
       const item = imageUrl[i];
       const pageIndex = i + 1;
@@ -195,7 +193,6 @@ export default class ExhentaiService {
         })
         .on('error', (err: any) => {
           error(err + ' => ' + item + ': ' + pageIndex);
-          failedImageUrls.push({ url: item, pageIndex });
         })
         .pipe(
           fs
@@ -203,8 +200,9 @@ export default class ExhentaiService {
               joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
             )
             .on('finish', () => {
-              success(`${pageIndex}.jpg`);
               counter.push(pageIndex);
+              success(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
+
               if (counter.length === imageUrl.length) {
                 success('download completed.');
               }
@@ -213,11 +211,11 @@ export default class ExhentaiService {
               error(`${pageIndex}.jpg failed, ${err}`),
             ),
         );
-      if (i % 4 === 0) {
-        await page.waitFor(config.waitTime);
+      if (isBrowserExist && i % 2 === 0) {
+        await this.browser.close();
+        await this.page.waitFor(this.config.waitTime);
       }
     }
-    writeIntoJsonFile(`${prefixPath}/failedImageUrls`, failedImageUrls);
   };
 
   getThumbnaiUrlFromDetailPage = async () => {
@@ -234,7 +232,6 @@ export default class ExhentaiService {
 
       await this.page.waitFor(this.config.waitTime);
     }
-    await this.browser.close();
     return firstPageThumbnailUrls;
   };
 
