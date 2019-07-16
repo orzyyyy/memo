@@ -6,6 +6,7 @@
 /dist/
 *.jsx
 /exhentai/**/*.jpg
+/exhentai/**/detailImageUrls.json
 /server/**/*.js
 /bin
 package-lock.json

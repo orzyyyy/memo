@@ -20,16 +20,16 @@
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "node scripts/publish",
-    "pre:css": "rimraf dist && mkdir -p dist/src/pages/css && cp -r src/pages/css dist/src/pages",
     "dev": "npm run pre:css && nino koei -c scripts/build.js -w -d",
     "generate": "node scripts/generateSider",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
     "lint-staged": "lint-staged",
+    "pre:css": "rimraf dist && mkdir -p dist/src/pages/css && cp -r src/pages/css dist/src/pages",
     "pre:start": "npm-run-all compile:server clean:views generate",
     "prettier": "nino prettier",
     "run:server": "node bin",
     "server": "npm-run-all compile:server run:server",
-    "sort-script": "npx sort-package-json",
+    "sort": "npx sort-package-json",
     "start": "npm-run-all --parallel server dev",
     "test": "nino test",
     "tsc": "tsc"
@@ -45,7 +45,7 @@
     ]
   },
   "dependencies": {
-    "antd": "^3.20.1",
+    "antd": "^3.20.2",
     "koa": "^2.7.0",
     "mini-xmind": "^1.3.0",
     "nino-cli": "^1.0.2",
