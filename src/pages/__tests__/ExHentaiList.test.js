@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ExHentaiList from '../ExHentaiList';
-import 'nino-cli/scripts/setup';
 
 describe('ExHentaiList', () => {
   it('render correctly', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import MappingDetail from '../MappingDetail';
-import 'nino-cli/scripts/setup';
 
 const dataSource = {
   CanvasPosition: { x: -67, y: 230 },

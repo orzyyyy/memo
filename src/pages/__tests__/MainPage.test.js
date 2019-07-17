@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import MainPage from '../MainPage';
-import 'nino-cli/scripts/setup';
+
 const menuData = [
   {
     key: 'all',
