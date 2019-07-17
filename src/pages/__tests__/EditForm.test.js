@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import EditForm from '../EditForm';
-import 'nino-cli/scripts/setup';
 
 const menuData = [
   {
