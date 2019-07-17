@@ -84,7 +84,7 @@ export default class ExhentaiService {
   };
 
   getListInfo = async ({ pageIndex }: { pageIndex: number }) => {
-    await this.gotoTargetPage(this.config.href + pageIndex);
+    await this.gotoTargetPage(this.config.href + pageIndex, true);
     const exHentaiInfo: ExHentaiInfoItem[] = await this.page.$$eval(
       'div.gl1t',
       (wrappers: any[]) =>
