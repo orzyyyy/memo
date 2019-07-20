@@ -66,7 +66,6 @@ exports[`MainPage render correctly 1`] = `
         </BreadcrumbItem>
       </Breadcrumb>
       <Input
-        disabled={false}
         style={
           Object {
             "position": "absolute",
