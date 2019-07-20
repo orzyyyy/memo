@@ -41,7 +41,11 @@ const writeSiderInfoJson = () => {
   for (const item of menu) {
     item.children = unique(item.children);
   }
-  menu = [{ key: 'all', title: 'all' }, ...menu];
+  menu = [
+    { key: 'all', title: 'all' },
+    { key: 'ex-hentai-module', title: 'ex-hentai' },
+    ...menu,
+  ];
   fs.outputJSON(path.join(process.cwd(), 'src/assets/sider.json'), menu, {
     spaces: 2,
   })

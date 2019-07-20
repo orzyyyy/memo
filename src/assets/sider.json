@@ -4,6 +4,10 @@
     "title": "all"
   },
   {
+    "key": "ex-hentai-module",
+    "title": "ex-hentai"
+  },
+  {
     "key": "编程",
     "title": "编程",
     "children": [
@@ -20,8 +24,8 @@
         "value": "Rust"
       },
       {
-        "key": "ExHentai",
-        "value": "ExHentai"
+        "key": "ex-hentai",
+        "value": "ex-hentai"
       },
       {
         "key": "其他",
