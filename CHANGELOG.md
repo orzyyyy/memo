@@ -1,3 +1,12 @@
+#### 发布周期
+
+- 主版本号：当整体框架发生颠覆性变化时。如 `1.0.0` 发布时几乎重写了所有代码
+- 次版本号：当新特性自觉极具标志性时。如 `1.0.0` 中的`根据 url 保存 exhentai 图片到本地` 的接口，极大简化了获得快乐的步骤
+- 修订号：当 commit 列表需要翻两三页才能找到上个 `release` 时。
+- 说明：当 commit 没有被包含在 `pull request` 而显得零零散散时，只记录关键信息。如升级 `nino-cli` 时，零散提交的 commit，记录时只需记录 `更新 nino-cli` 即可
+
+---
+
 ## 1.0.1
 
 `2019-07-20`
@@ -14,6 +23,7 @@
 - `MainPage` 顶部增加文本框，以根据 url 直接下载 exhentai 中的所有图片 [#117](https://github.com/orzyyyy/memo/pull/117)
 - 增加检查 exhentai 下载遗漏图片的接口 [#119](https://github.com/orzyyyy/memo/pull/119)
 - 更新 `nino-cli` 到 1.0.3 [#120](https://github.com/orzyyyy/memo/pull/120)
+- 提交 exhentai 漫画名称列表及相关 url [a649b11](https://github.com/orzyyyy/memo/commit/a649b112c7f6275b5aab26707def28eec20e7d2b)
 
 ---
 
