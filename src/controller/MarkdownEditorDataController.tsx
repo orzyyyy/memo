@@ -42,7 +42,7 @@ export default class MarkdownEditorDataController extends Component<
   };
 
   getTargetMarkdown = async (targetId: string) => {
-    const response = await fetch(`./assets/${targetId}.md`);
+    const response = await fetch(`./assets/markdown/${targetId}.md`);
     const result = await response.text();
     this.setState({ dataSource: result });
   };

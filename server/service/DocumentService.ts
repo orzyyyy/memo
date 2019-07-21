@@ -39,7 +39,10 @@ export default class DocumentService {
       }
     }
     targetItem = omit(targetItem, removeKeys) as MappingProps;
-    const originMappingItem = this.getOriginMappingItem(targetItem.id);
+    const originMappingItem = this.getOriginMappingItem(
+      targetItem.id,
+      targetItem.category,
+    );
     const writeFilesPaths = getWriteFilesPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
     if (!fs.existsSync(mappingPath)) {
@@ -63,7 +66,7 @@ export default class DocumentService {
     success(`mapping updated => ${targetItem.id}`);
   };
 
-  getOriginMappingItem = (id: string) => {
+  getOriginMappingItem = (id: string, category?: 'mapping' | 'markdown') => {
     const targetArr = readJsonFile(this.config.document.mappingFilePath).filter(
       (item: MappingProps) => item.id === id,
     );
@@ -71,7 +74,7 @@ export default class DocumentService {
     const defaultItem = {
       createTime: time,
       modifyTime: time,
-      url: `./assets/mapping/${id}.json`,
+      url: `./assets/${category}/${id}.json`,
     };
     const targetItem = targetArr.length > 0 ? targetArr[0] : defaultItem;
     return targetItem;
