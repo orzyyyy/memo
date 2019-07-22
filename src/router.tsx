@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-const MainPage = lazy(() => import('./controller/MainPageDataController'));
+import TohoLoading from './pages/TohoLoading';
+// const MainPage = lazy(() => import('./controller/MainPageDataController'));
 const MappingDetailDataController = lazy(() =>
   import('./controller/MappingDetailDataController'),
 );
@@ -13,9 +14,9 @@ const ExHentaiList = lazy(() =>
 
 export default () => (
   <Router>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={TohoLoading}>
       <Switch>
-        <Route path="/" component={MainPage} exact />
+        <Route path="/" component={TohoLoading} exact />
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
           path="/markdown/edit/:id"
