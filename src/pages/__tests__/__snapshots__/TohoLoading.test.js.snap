@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TohoLoading render correctly 1`] = `
+<TohoLoading
+  currentNeta={
+    Array [
+      "test1",
+      "test2",
+    ]
+  }
+>
+  <div
+    className="TohoLoading"
+  >
+    <div
+      className="neta-wrapper"
+    >
+      <ul>
+        <li
+          key="test1"
+          style={
+            Object {
+              "transform": "translateY(-56px)",
+            }
+          }
+        >
+          test1
+        </li>
+        <li
+          key="test2"
+          style={
+            Object {
+              "transform": "translateY(-56px)",
+            }
+          }
+        >
+          test2
+        </li>
+      </ul>
+    </div>
+    <div
+      className="dot-wrapper"
+      style={
+        Object {
+          "fontSize": 20,
+          "left": "90%",
+          "top": "90%",
+        }
+      }
+    >
+      少女祈祷中
+      .....
+    </div>
+  </div>
+</TohoLoading>
+`;

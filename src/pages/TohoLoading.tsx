@@ -36,6 +36,10 @@ const neta = [
   ],
 ];
 
+export interface TohoLoadingProps {
+  currentNeta?: string[];
+}
+
 export interface TohoLoadingState {
   currentNeta: string[];
   currentNetaIndex: number;
@@ -45,12 +49,17 @@ export interface TohoLoadingState {
   dotFontSize: number;
 }
 
-export default class TohoLoading extends Component<any, TohoLoadingState> {
+export default class TohoLoading extends Component<
+  TohoLoadingProps,
+  TohoLoadingState
+> {
   timer: number;
   dots = ['.', '..', '...', '....', '.....'];
 
   state = {
-    currentNeta: neta[Math.round(Math.random() * 100) % neta.length],
+    currentNeta:
+      this.props.currentNeta ||
+      neta[Math.round(Math.random() * 100) % neta.length],
     currentNetaIndex: -1,
     currentDot: this.dots[2],
     dotTop: '50%',
