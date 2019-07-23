@@ -53,7 +53,8 @@ export default class TohoLoading extends Component<
   TohoLoadingProps,
   TohoLoadingState
 > {
-  timer: number;
+  dotTimer: number;
+  netaTimer: number;
   dots = ['.', '..', '...', '....', '.....'];
 
   state = {
@@ -69,19 +70,20 @@ export default class TohoLoading extends Component<
 
   componentDidMount() {
     this.handleLoadingDot();
-    setTimeout(() => {
+    this.netaTimer = window.setTimeout(() => {
       this.moveLogingToRightBottom();
       this.handleNeta();
     }, 3000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearInterval(this.dotTimer);
+    clearTimeout(this.netaTimer);
   }
 
   handleLoadingDot = () => {
     let counter = 3;
-    this.timer = window.setInterval(() => {
+    this.dotTimer = window.setInterval(() => {
       this.setState({ currentDot: this.dots[counter % 5] });
       counter++;
     }, 800);

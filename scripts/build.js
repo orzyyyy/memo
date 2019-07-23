@@ -3,7 +3,10 @@ const cwd = process.cwd();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: { ninoninoni: path.join(__dirname, '../dist/src') },
+  entry: {
+    ninoninoni: path.join(__dirname, '../dist/src'),
+    reactBase: ['react', 'react-dom'],
+  },
   plugins: [
     new CopyWebpackPlugin([
       {
@@ -20,4 +23,16 @@ module.exports = {
       },
     ]),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: 'common',
+          chunks: 'initial',
+          priority: 2,
+          minChunks: 2,
+        },
+      },
+    },
+  },
 };
