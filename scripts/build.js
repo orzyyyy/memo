@@ -1,9 +1,13 @@
 const path = require('path');
 const cwd = process.cwd();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  entry: { ninoninoni: path.join(__dirname, '../dist/src') },
+  entry: {
+    ninoninoni: path.join(__dirname, '../dist/src'),
+    reactBase: ['react', 'react-dom'],
+  },
   plugins: [
     new CopyWebpackPlugin([
       {
@@ -19,5 +23,18 @@ module.exports = {
         to: path.join(cwd, 'dist/src/pages/css'),
       },
     ]),
+    // new BundleAnalyzerPlugin(),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: 'common',
+          chunks: 'initial',
+          priority: 2,
+          minChunks: 2,
+        },
+      },
+    },
+  },
 };
