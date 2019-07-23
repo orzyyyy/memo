@@ -1,6 +1,7 @@
 const path = require('path');
 const cwd = process.cwd();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: {
@@ -22,6 +23,7 @@ module.exports = {
         to: path.join(cwd, 'dist/src/pages/css'),
       },
     ]),
+    // new BundleAnalyzerPlugin(),
   ],
   optimization: {
     splitChunks: {

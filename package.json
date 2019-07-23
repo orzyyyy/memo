@@ -86,6 +86,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0",
-    "walk": "^2.3.14"
+    "walk": "^2.3.14",
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }
