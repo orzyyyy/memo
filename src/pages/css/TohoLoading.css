@@ -1,0 +1,38 @@
+.TohoLoading {
+  will-change: transform;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.TohoLoading .neta-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.TohoLoading ul {
+  height: 56px;
+  line-height: 56px;
+  list-style: none;
+  overflow: hidden;
+}
+
+.TohoLoading ul li {
+  font-size: 28px;
+  width: 100%;
+  height: 100%;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.TohoLoading .dot-wrapper {
+  transform: translate3d(-50%, -50%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow: hidden;
+  position: absolute;
+  height: 40px;
+  width: 180px;
+}
