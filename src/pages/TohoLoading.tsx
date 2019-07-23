@@ -93,50 +93,53 @@ export default class TohoLoading extends Component<
 
   handleNeta = () => {
     let { currentNetaIndex, currentNeta } = this.state;
-    setTimeout(() => {
-      setInterval(() => {
-        if (currentNetaIndex < currentNeta.length - 1) {
-          this.setState({ currentNetaIndex: ++currentNetaIndex });
-        }
-      }, 2000);
-    }, 500);
+    setInterval(() => {
+      if (currentNetaIndex < currentNeta.length - 1) {
+        this.setState({ currentNetaIndex: ++currentNetaIndex });
+      }
+    }, 2000);
   };
 
+  renderCurrentNeta = ({ currentNeta, currentNetaIndex }: TohoLoadingState) => (
+    <div className="neta-wrapper">
+      <ul>
+        {currentNeta.map(item => (
+          <li
+            key={item}
+            style={{
+              transform: `translateY(${-(currentNetaIndex * 56)}px)`,
+            }}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  renderDot = ({
+    currentDot,
+    dotFontSize,
+    dotTop,
+    dotLeft,
+  }: TohoLoadingState) => (
+    <div
+      className="dot-wrapper"
+      style={{
+        fontSize: dotFontSize,
+        top: dotTop,
+        left: dotLeft,
+      }}
+    >
+      少女祈祷中{currentDot}
+    </div>
+  );
+
   render() {
-    const {
-      currentDot,
-      dotFontSize,
-      dotTop,
-      dotLeft,
-      currentNeta,
-      currentNetaIndex,
-    } = this.state;
     return (
       <div className="TohoLoading">
-        <div className="neta-wrapper">
-          <ul>
-            {currentNeta.map(item => (
-              <li
-                key={item}
-                style={{
-                  transform: `translateY(${-(currentNetaIndex * 56)}px)`,
-                }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          className="dot-wrapper"
-          style={{
-            fontSize: dotFontSize,
-            top: dotTop,
-            left: dotLeft,
-          }}
-        >
-          少女祈祷中{currentDot}
-        </div>
+        {this.renderCurrentNeta(this.state)}
+        {this.renderDot(this.state)}
       </div>
     );
   }
