@@ -14,7 +14,7 @@ const ExHentaiList = lazy(() =>
 
 export default () => (
   <Router>
-    <Suspense fallback={TohoLoading}>
+    <Suspense fallback={<TohoLoading />}>
       <Switch>
         <Route path="/" component={MainPage} exact />
         <Route path="/mapping/:id" component={MappingDetailDataController} />
