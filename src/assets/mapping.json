@@ -1,7 +1,7 @@
 [
   {
     "id": "b07b876e6050e333988404e268921906",
-    "title": "js 基本类型",
+    "title": "基本类型",
     "url": "./assets/mapping/b07b876e6050e333988404e268921906.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
@@ -21,7 +21,7 @@
   },
   {
     "id": "e6342ea80e1b9da29570d49af1daaaeb",
-    "title": "react 渲染过程",
+    "title": "渲染过程",
     "url": "./assets/mapping/e6342ea80e1b9da29570d49af1daaaeb.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
@@ -61,7 +61,7 @@
   },
   {
     "id": "7a73d21c13f1eb55053d4af66e0d057b",
-    "title": "windows 下安装 rust",
+    "title": "windows 下的安装",
     "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
     "createTime": 1559617097664,
     "modifyTime": 1559633639037,
@@ -151,7 +151,7 @@
   },
   {
     "id": "5652a52ab188e25bddf687b32d4ce326",
-    "title": "linux after install",
+    "title": "config after install",
     "url": "./assets/mapping/5652a52ab188e25bddf687b32d4ce326.json",
     "createTime": 1561623131393,
     "modifyTime": 1563003318050,
