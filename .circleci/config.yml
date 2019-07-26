@@ -79,7 +79,7 @@ workflows:
             - setup
       - dist:
           requires:
-            - test
+            - setup
       - deploy:
           requires:
             - dist
