@@ -49,6 +49,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     siderSelectedKey: '',
   };
 
+  componentDidMount() {
+    window.onresize = () => this.setState({});
+  }
+
   handleClick = ({ id }: { id: string }) => {
     location.hash = `/${id}`;
   };
