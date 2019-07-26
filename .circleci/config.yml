@@ -45,10 +45,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run:
-          name: dist
-          when: on_success
-          command: npm run build
+      - run: npm run build
       - persist_to_workspace:
           root: ~/memo
           paths:
