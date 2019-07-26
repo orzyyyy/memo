@@ -194,7 +194,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
                       }}
                     />
                   )}
-                  {item.title}
+                  {item.type + ' - ' + item.subType + ' - ' + item.title}
                   <div style={{ float: 'right', marginRight: 8 }}>
                     {`${format(
                       new Date(item.createTime),
