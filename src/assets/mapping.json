@@ -198,5 +198,15 @@
     "type": "公考",
     "subType": "资料分析",
     "category": "markdown"
+  },
+  {
+    "createTime": 1564104000329,
+    "modifyTime": 1564104122006,
+    "url": "./assets/markdown/84a65e108e3721e07261e6b3c4336ff1.json",
+    "id": "84a65e108e3721e07261e6b3c4336ff1",
+    "title": "题型分类",
+    "type": "公考",
+    "subType": "资料分析",
+    "category": "markdown"
   }
 ]
