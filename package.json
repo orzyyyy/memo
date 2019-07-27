@@ -24,7 +24,7 @@
     "generate": "node scripts/generateSider",
     "lint": "tslint -c tslint.json 'src/**/*.tsx' 'server/**/*.ts'",
     "lint-staged": "lint-staged",
-    "pre:css": "rimraf dist && mkdir -p dist/src/pages/css && cp -r src/pages/css dist/src/pages",
+    "pre:css": "rimraf dist && tsc && cp -r src/pages/css dist/src/pages",
     "pre:start": "npm-run-all compile:server clean:views generate",
     "prettier": "nino prettier",
     "run:server": "node bin",
