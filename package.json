@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run pre:css && tsc && nino koei -c scripts/build.js",
+    "build": "npm run pre:css && tsc && cross-env BUILD_ENV=prod nino koei -c scripts/build.js",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
@@ -72,6 +72,7 @@
     "@types/socket.io-client": "^1.4.32",
     "blueimp-md5": "^2.11.0",
     "chalk": "^2.4.2",
+    "cross-env": "^5.2.0",
     "date-fns": "^2.0.0-beta.2",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.0.1",
