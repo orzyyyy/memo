@@ -2,11 +2,13 @@ const path = require('path');
 const cwd = process.cwd();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const PostCompile = require('post-compile-webpack-plugin');
+const IO = require('socket.io-client');
 
 module.exports = {
   entry: {
     ninoninoni: path.join(__dirname, '../dist/src'),
-    reactBase: ['react', 'react-dom'],
+    'react-base': ['react', 'react-dom'],
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -24,6 +26,10 @@ module.exports = {
       },
     ]),
     // new BundleAnalyzerPlugin(),
+    new PostCompile(() => {
+      const socket = IO('http://localhost:9099');
+      socket.emit('refresh');
+    }),
   ],
   optimization: {
     splitChunks: {
