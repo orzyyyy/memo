@@ -20,9 +20,8 @@ export default class ExHentaiListDataController extends Component<
       .then(response => {
         if (response.ok) {
           return response.text();
-        } else {
-          throw new Error();
         }
+        throw new Error();
       })
       .then((url: string) => {
         fetch(url)
@@ -46,7 +45,7 @@ export default class ExHentaiListDataController extends Component<
   };
 
   render() {
-    const notify = <Empty description={`该页面仅在本地可用`} />;
+    const notify = <Empty description={'该页面仅在本地可用'} />;
     return (
       <>
         {!this.state.dataSource && notify}
