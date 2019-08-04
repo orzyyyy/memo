@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import {
-  Dropdown,
-  Menu,
-  Layout,
-  Breadcrumb,
-  List,
-  Icon,
-  Button,
-  Input,
-} from 'antd';
+import { Dropdown, Menu, Layout, List, Icon, Button, Input } from 'antd';
 const { SubMenu } = Menu;
-const { Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider, Header } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { format } from 'date-fns';
@@ -104,15 +95,11 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
 
   renderContent = () => {
     const { dataSource, onDelete, onEdit, onExhentaiDownload } = this.props;
-    const { siderOpenKey, siderSelectedKey } = this.state;
+    const { siderSelectedKey } = this.state;
 
     const wrapperHeight = document.body.clientHeight - 21 - 90 - 24;
     return (
-      <Content style={{ margin: '0 16px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>{siderOpenKey}</Breadcrumb.Item>
-          <Breadcrumb.Item>{siderSelectedKey}</Breadcrumb.Item>
-        </Breadcrumb>
+      <Content style={{ marginLeft: 8 }}>
         <Input
           onPressEnter={onExhentaiDownload}
           style={{ position: 'absolute', right: 150, top: 10, width: 350 }}
@@ -226,6 +213,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     <Layout className="MainPage">
       {this.renderSider()}
       <Layout>
+        <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }} />
         {this.renderContent()}
         {this.renderFooter()}
       </Layout>
