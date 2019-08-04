@@ -10,7 +10,7 @@ exports[`ExHentaiList render correctly 1`] = `
   }
 >
   <Col
-    key="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]0"
+    key="https://exhentai.org/g/1430261/17651c12eb/0"
     span={4}
   >
     <LazyLoad
@@ -42,22 +42,17 @@ exports[`ExHentaiList render correctly 1`] = `
         }
       >
         <Card
-          cover={
-            <img
-              alt="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
-              src="https://exhentai.org/t/5b/47/5b47c48abf0fb6c685869520cdb8ab0d97990e4d-1074410-1280-1807-jpg_250.jpg"
-            />
-          }
           hoverable={true}
           onClick={[Function]}
           style={
             Object {
-              "height": 500,
+              "height": 0,
             }
           }
         >
-          <Meta
-            title="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
+          <img
+            alt="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
+            src="https://exhentai.org/t/5b/47/5b47c48abf0fb6c685869520cdb8ab0d97990e4d-1074410-1280-1807-jpg_250.jpg"
           />
         </Card>
       </Dropdown>

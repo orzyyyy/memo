@@ -68,7 +68,10 @@ export default class ExhentaiService {
       '#gj',
       (target: any) => new Promise(resolve => resolve(target.innerText)),
     );
-    return name.replace(/[!@#$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, ' ');
+    return name.replace(
+      /[!@#$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim,
+      ' ',
+    );
   };
 
   ensureFolderForSave = async () => {
@@ -101,7 +104,7 @@ export default class ExhentaiService {
             const minute = originDate.substring(10, 12);
             const postTime = new Date(year, month, day, hour, minute).getTime();
             results.push({
-              name: item.firstChild.innerText,
+              // name: item.firstChild.innerText,
               detailUrl: item.firstChild.href,
               postTime,
               thumbnailUrl: item.childNodes[1].firstChild.firstChild.src,

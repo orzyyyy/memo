@@ -20,7 +20,7 @@ export default ({ dataSource, onDownload }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource &&
       dataSource.map((item, i) => (
-        <Col span={4} key={item.name + i}>
+        <Col span={4} key={item.detailUrl + i}>
           <LazyLoad height={document.body.clientHeight} once>
             <Dropdown
               overlay={
@@ -28,10 +28,7 @@ export default ({ dataSource, onDownload }: ExHentaiListProps) => (
                   <Menu.Item
                     key="download"
                     onClick={() => {
-                      onDownload({
-                        url: item.detailUrl,
-                        name: item.name,
-                      });
+                      onDownload({ url: item.detailUrl });
                     }}
                   >
                     download
@@ -42,11 +39,10 @@ export default ({ dataSource, onDownload }: ExHentaiListProps) => (
             >
               <Card
                 hoverable
-                cover={<img alt={item.name} src={item.thumbnailUrl} />}
-                style={{ height: 500 }}
+                style={{ height: document.body.clientHeight / 2 }}
                 onClick={() => openDetail(item.detailUrl)}
               >
-                <Card.Meta title={item.name} />
+                <img alt={item.name} src={item.thumbnailUrl} />
               </Card>
             </Dropdown>
           </LazyLoad>
