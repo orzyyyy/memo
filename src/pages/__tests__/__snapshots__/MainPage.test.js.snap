@@ -42,29 +42,18 @@ exports[`MainPage render correctly 1`] = `
     <Adapter
       style={
         Object {
-          "margin": "0 16px",
+          "background": "rgba(0, 0, 0, 0)",
+          "height": 48,
+        }
+      }
+    />
+    <Adapter
+      style={
+        Object {
+          "marginLeft": 8,
         }
       }
     >
-      <Breadcrumb
-        separator="/"
-        style={
-          Object {
-            "margin": "16px 0",
-          }
-        }
-      >
-        <BreadcrumbItem
-          separator="/"
-        >
-          all
-        </BreadcrumbItem>
-        <BreadcrumbItem
-          separator="/"
-        >
-          all
-        </BreadcrumbItem>
-      </Breadcrumb>
       <Input
         style={
           Object {
