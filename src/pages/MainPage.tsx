@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import { Dropdown, Menu, Layout, List, Icon, Button, Input } from 'antd';
+import { Menu, Layout, Icon, Button, Input } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider, Header } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/DocumentController';
-import { format } from 'date-fns';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
@@ -13,6 +12,12 @@ export interface MainPageProps {
   onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  renderContent: (
+    props: MainPageProps,
+    state: MainPageState,
+    event?: any,
+  ) => React.ReactNode;
+  onMenuClick: (keyPath: string[]) => void;
 }
 export interface MainPageState {
   siderOpenKey: string;
@@ -49,6 +54,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
+    this.props.onMenuClick(keyPath);
     this.setState({
       siderOpenKey: keyPath[1],
       siderSelectedKey: keyPath[0],
@@ -94,29 +100,9 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
-    const { dataSource, onDelete, onEdit, onExhentaiDownload } = this.props;
-    const { siderSelectedKey } = this.state;
-
     const wrapperHeight = document.body.clientHeight - 21 - 90 - 24;
     return (
       <Content style={{ marginLeft: 8 }}>
-        <Input
-          onPressEnter={onExhentaiDownload}
-          style={{ position: 'absolute', right: 150, top: 10, width: 350 }}
-        />
-        <Button
-          style={{ position: 'absolute', right: 88, top: 10 }}
-          onClick={() => (location.hash = '/exhentai')}
-          type="danger"
-        >
-          <Icon type="alert" />
-        </Button>
-        <Button
-          style={{ position: 'absolute', right: 24, top: 10 }}
-          onClick={() => onEdit()}
-        >
-          <Icon type="plus" />
-        </Button>
         <div
           style={{
             padding: 24,
@@ -125,73 +111,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
             overflow: 'auto',
           }}
         >
-          <List
-            dataSource={
-              siderSelectedKey === 'all'
-                ? dataSource
-                : dataSource.filter(item => item.subType === siderSelectedKey)
-            }
-            renderItem={(item: any) => (
-              <Dropdown
-                overlay={() => (
-                  <Menu>
-                    <Menu.Item
-                      key={`add-${item.id}`}
-                      onClick={() => onEdit(item)}
-                    >
-                      修改
-                    </Menu.Item>
-                    <Menu.Item
-                      key={`delete-${item.id}`}
-                      onClick={() => onDelete && onDelete(item)}
-                    >
-                      删除
-                    </Menu.Item>
-                  </Menu>
-                )}
-                trigger={['contextMenu']}
-                key={`fragment-${item.id}`}
-              >
-                <List.Item
-                  className="list-item"
-                  onClick={() =>
-                    this.handleListItemClick({
-                      category: item.category,
-                      id: item.id,
-                    })
-                  }
-                >
-                  {item.category === 'mapping' && (
-                    <Icon
-                      type="apartment"
-                      style={{
-                        marginRight: 10,
-                        fontSize: 16,
-                        color: '#108ee9',
-                      }}
-                    />
-                  )}
-                  {item.category === 'markdown' && (
-                    <Icon
-                      type="file-markdown"
-                      style={{
-                        marginRight: 10,
-                        fontSize: 16,
-                        color: '#87d068',
-                      }}
-                    />
-                  )}
-                  {item.type + ' - ' + item.subType + ' - ' + item.title}
-                  <div style={{ float: 'right', marginRight: 8 }}>
-                    {`${format(
-                      new Date(item.createTime),
-                      'yyyy-MM-dd',
-                    )} / ${format(new Date(item.modifyTime), 'yyyy-MM-dd')}`}
-                  </div>
-                </List.Item>
-              </Dropdown>
-            )}
-          />
+          {this.props.renderContent(this.props, this.state, this)}
         </div>
       </Content>
     );
@@ -209,11 +129,36 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     </Footer>
   );
 
+  renderHeader = () => {
+    const { onExhentaiDownload, onEdit } = this.props;
+    return (
+      <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }}>
+        <Input
+          onPressEnter={onExhentaiDownload}
+          style={{ position: 'absolute', right: 150, top: 10, width: 350 }}
+        />
+        <Button
+          style={{ position: 'absolute', right: 88, top: 10 }}
+          onClick={() => (location.hash = '/exhentai')}
+          type="danger"
+        >
+          <Icon type="alert" />
+        </Button>
+        <Button
+          style={{ position: 'absolute', right: 24, top: 10 }}
+          onClick={() => onEdit()}
+        >
+          <Icon type="plus" />
+        </Button>
+      </Header>
+    );
+  };
+
   render = () => (
     <Layout className="MainPage">
       {this.renderSider()}
       <Layout>
-        <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }} />
+        {this.renderHeader()}
         {this.renderContent()}
         {this.renderFooter()}
       </Layout>
