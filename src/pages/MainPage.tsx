@@ -49,10 +49,6 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     window.onresize = () => this.setState({});
   }
 
-  handleClick = ({ id }: { id: string }) => {
-    location.hash = `/${id}`;
-  };
-
   handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     this.props.onMenuClick(keyPath);
     this.setState({
@@ -135,15 +131,8 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
       <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }}>
         <Input
           onPressEnter={onExhentaiDownload}
-          style={{ position: 'absolute', right: 150, top: 10, width: 350 }}
+          style={{ position: 'absolute', right: 80, top: 10, width: 350 }}
         />
-        <Button
-          style={{ position: 'absolute', right: 88, top: 10 }}
-          onClick={() => (location.hash = '/exhentai')}
-          type="danger"
-        >
-          <Icon type="alert" />
-        </Button>
         <Button
           style={{ position: 'absolute', right: 24, top: 10 }}
           onClick={() => onEdit()}
