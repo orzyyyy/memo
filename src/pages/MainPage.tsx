@@ -96,12 +96,12 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
-    const wrapperHeight = document.body.clientHeight - 21 - 90 - 24;
+    const wrapperHeight = document.body.clientHeight - 48 - 90;
     return (
       <Content style={{ marginLeft: 8 }}>
         <div
           style={{
-            padding: 24,
+            padding: '8px 16px 8px 8px',
             background: '#fff',
             height: wrapperHeight,
             overflow: 'auto',

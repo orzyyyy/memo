@@ -52,6 +52,7 @@ export default class ExHentaiListDataController extends Component<
         <ExHentaiList
           dataSource={this.state.dataSource}
           onDownload={this.handleDownload}
+          wrapperHeight={document.body.clientHeight - 48 - 90}
         />
       </>
     );
