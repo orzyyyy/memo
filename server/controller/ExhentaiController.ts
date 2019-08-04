@@ -14,7 +14,7 @@ import {
 } from '../utils/exhentai';
 
 export interface ExHentaiInfoItem {
-  name: string;
+  name?: string;
   detailUrl: string;
   postTime: number;
   thumbnailUrl: string;
