@@ -6,6 +6,7 @@
 /dist/
 *.jsx
 /exhentai/**/*.jpg
+/exhentai/**/*.png
 /exhentai/**/detailImageUrls.json
 /server/**/*.js
 /bin
