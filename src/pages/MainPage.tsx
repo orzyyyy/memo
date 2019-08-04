@@ -116,10 +116,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   renderFooter = () => (
     <Footer style={{ textAlign: 'center' }}>
       <div>
-        你睡了一下午，醒的时候屋子里黑漆漆，一点声音都没有。抬头望了望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机，打开后屏幕亮起，干净，没有一条信息
+        你睡了一下午，醒的时候屋子里黑漆漆、一点声音都没有。抬头望望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机。打开后屏幕亮起，干净，没有一条消息
       </div>
       <div>
-        打开电脑，打开 github。pull request 写得很菜，collaborators
+        打开电脑，打开 github。pull request 写得很菜，连 core
         都在喷你，但忽然就不孤独了
       </div>
     </Footer>
