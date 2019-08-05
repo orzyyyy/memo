@@ -9,4 +9,9 @@ export default class MainPageController {
     ctx.type = 'html';
     ctx.response.body = service.getDist();
   }
+
+  @Request({ url: '/test', method: 'get' })
+  async isLocalEnvironment(ctx: any) {
+    ctx.response.body = 'success';
+  }
 }
