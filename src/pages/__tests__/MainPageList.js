@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import MainPageList from '../MainPageList';
 
 const dataSource = [
@@ -21,7 +21,7 @@ const dataSource = [
     modifyTime: 1559633639037,
     type: 'Rust',
     subType: '安装',
-    category: 'markdown',
+    category: 'mapping',
   },
 ];
 
@@ -41,13 +41,13 @@ describe('MainPageList', () => {
     const event = {
       handleListItemClick,
     };
-    const wrapper = shallow(
+    const wrapper = mount(
       <MainPageList props={props} state={state} event={event} />,
     );
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('onEdit and onDelete in Dropdown works correctly', () => {
+  it('events works correctly', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
     const props = {
@@ -81,5 +81,10 @@ describe('MainPageList', () => {
       .props()
       .onClick();
     expect(onDelete).toHaveBeenCalled();
+    wrapper
+      .find('Item')
+      .first()
+      .simulate('click');
+    expect(handleListItemClick).toHaveBeenCalled();
   });
 });
