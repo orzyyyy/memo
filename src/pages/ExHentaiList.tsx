@@ -17,6 +17,32 @@ const openDetail = (url: string) => {
   window.open(url);
 };
 
+const renderDropdown = ({ onDownload, wrapperHeight, item }: any) => (
+  <Dropdown
+    overlay={
+      <Menu>
+        <Menu.Item
+          key="download"
+          onClick={() => {
+            onDownload({ url: item.detailUrl });
+          }}
+        >
+          download
+        </Menu.Item>
+      </Menu>
+    }
+    trigger={['contextMenu']}
+  >
+    <Card
+      hoverable
+      style={{ height: wrapperHeight / 2 }}
+      onClick={() => openDetail(item.detailUrl)}
+    >
+      <img alt={item.name} src={item.thumbnailUrl} />
+    </Card>
+  </Dropdown>
+);
+
 export default ({
   dataSource,
   onDownload,
@@ -24,32 +50,14 @@ export default ({
 }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource &&
-      dataSource.map((item, i) => (
-        <Col span={4} key={item.detailUrl + i}>
-          <LazyLoad height={wrapperHeight} once>
-            <Dropdown
-              overlay={
-                <Menu>
-                  <Menu.Item
-                    key="download"
-                    onClick={() => {
-                      onDownload({ url: item.detailUrl });
-                    }}
-                  >
-                    download
-                  </Menu.Item>
-                </Menu>
-              }
-              trigger={['contextMenu']}
-            >
-              <Card
-                hoverable
-                style={{ height: wrapperHeight / 2 }}
-                onClick={() => openDetail(item.detailUrl)}
-              >
-                <img alt={item.name} src={item.thumbnailUrl} />
-              </Card>
-            </Dropdown>
+      dataSource.map(item => (
+        <Col span={4} key={item.detailUrl}>
+          <LazyLoad
+            height={wrapperHeight}
+            once
+            scrollContainer=".main-page-content-wrapper"
+          >
+            {renderDropdown({ onDownload, wrapperHeight, item })}
           </LazyLoad>
         </Col>
       ))}

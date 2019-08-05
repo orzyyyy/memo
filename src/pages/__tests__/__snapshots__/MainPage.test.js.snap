@@ -85,6 +85,7 @@ exports[`MainPage render correctly 1`] = `
       }
     >
       <div
+        className="main-page-content-wrapper"
         style={
           Object {
             "background": "#fff",

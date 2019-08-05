@@ -107,6 +107,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
             height: wrapperHeight,
             overflow: 'auto',
           }}
+          className="main-page-content-wrapper"
         >
           {renderContent && renderContent(this.props, this.state, this)}
         </div>
