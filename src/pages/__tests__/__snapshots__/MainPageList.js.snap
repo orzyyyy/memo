@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPageList render correctly 1`] = `
+<List
+  bordered={false}
+  dataSource={
+    Array [
+      Object {
+        "category": "markdown",
+        "createTime": 1559522075108,
+        "id": "32e89f38116080d6b7608cf2137f3c96",
+        "modifyTime": 1559523700429,
+        "subType": "乐理",
+        "title": "音程表",
+        "type": "音乐",
+        "url": "./assets/mapping/32e89f38116080d6b7608cf2137f3c96.json",
+      },
+      Object {
+        "category": "markdown",
+        "createTime": 1559617097664,
+        "id": "7a73d21c13f1eb55053d4af66e0d057b",
+        "modifyTime": 1559633639037,
+        "subType": "安装",
+        "title": "windows 下安装 rust",
+        "type": "Rust",
+        "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
+      },
+    ]
+  }
+  loading={false}
+  pagination={false}
+  renderItem={[Function]}
+  split={true}
+/>
+`;

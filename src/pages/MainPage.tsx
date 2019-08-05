@@ -12,7 +12,7 @@ export interface MainPageProps {
   onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  renderContent: (
+  renderContent?: (
     props: MainPageProps,
     state: MainPageState,
     event?: any,
@@ -96,6 +96,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
+    const { renderContent } = this.props;
     const wrapperHeight = document.body.clientHeight - 48 - 90;
     return (
       <Content style={{ marginLeft: 8 }}>
@@ -107,7 +108,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
             overflow: 'auto',
           }}
         >
-          {this.props.renderContent(this.props, this.state, this)}
+          {renderContent && renderContent(this.props, this.state, this)}
         </div>
       </Content>
     );

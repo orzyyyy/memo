@@ -60,38 +60,9 @@ describe('MainPage', () => {
     );
     wrapper
       .find('Button')
-      .at(1)
+      .at(0)
       .props()
       .onClick();
     expect(onEdit).toHaveBeenCalled();
-  });
-
-  it('onEdit and onDelete in Dropdown works correctly', () => {
-    const onEdit = jest.fn();
-    const onDelete = jest.fn();
-    const wrapper = mount(
-      <MainPage
-        dataSource={dataSource}
-        menuData={menuData}
-        onEdit={onEdit}
-        onDelete={onDelete}
-      />,
-    );
-    wrapper
-      .find('Item')
-      .first()
-      .simulate('contextmenu');
-    wrapper
-      .find('.ant-dropdown-menu-item')
-      .first()
-      .props()
-      .onClick();
-    expect(onEdit).toHaveBeenCalled();
-    wrapper
-      .find('.ant-dropdown-menu-item')
-      .last()
-      .props()
-      .onClick();
-    expect(onDelete).toHaveBeenCalled();
   });
 });
