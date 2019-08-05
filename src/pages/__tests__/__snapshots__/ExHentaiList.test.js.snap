@@ -10,7 +10,7 @@ exports[`ExHentaiList render correctly 1`] = `
   }
 >
   <Col
-    key="https://exhentai.org/g/1430261/17651c12eb/0"
+    key="https://exhentai.org/g/1430261/17651c12eb/"
     span={4}
   >
     <LazyLoad
@@ -20,6 +20,7 @@ exports[`ExHentaiList render correctly 1`] = `
       overflow={false}
       resize={false}
       scroll={true}
+      scrollContainer=".main-page-content-wrapper"
       unmountIfInvisible={false}
     >
       <Dropdown
