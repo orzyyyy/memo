@@ -10,18 +10,23 @@ export interface DownloadProps {
 export interface ExHentaiListProps {
   dataSource: ExHentaiInfoItem[] | null;
   onDownload: ({ url, name }: DownloadProps) => void;
+  wrapperHeight: number;
 }
 
 const openDetail = (url: string) => {
   window.open(url);
 };
 
-export default ({ dataSource, onDownload }: ExHentaiListProps) => (
+export default ({
+  dataSource,
+  onDownload,
+  wrapperHeight,
+}: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource &&
       dataSource.map((item, i) => (
         <Col span={4} key={item.detailUrl + i}>
-          <LazyLoad height={document.body.clientHeight} once>
+          <LazyLoad height={wrapperHeight} once>
             <Dropdown
               overlay={
                 <Menu>
@@ -39,7 +44,7 @@ export default ({ dataSource, onDownload }: ExHentaiListProps) => (
             >
               <Card
                 hoverable
-                style={{ height: document.body.clientHeight / 2 }}
+                style={{ height: wrapperHeight / 2 }}
                 onClick={() => openDetail(item.detailUrl)}
               >
                 <img alt={item.name} src={item.thumbnailUrl} />

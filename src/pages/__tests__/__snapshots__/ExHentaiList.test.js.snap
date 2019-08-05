@@ -14,7 +14,7 @@ exports[`ExHentaiList render correctly 1`] = `
     span={4}
   >
     <LazyLoad
-      height={0}
+      height={1000}
       offset={0}
       once={true}
       overflow={false}
@@ -46,7 +46,7 @@ exports[`ExHentaiList render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "height": 0,
+              "height": 500,
             }
           }
         >

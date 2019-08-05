@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import MainPage from '../pages/MainPage';
+import MainPage, { MainPageProps, MainPageState } from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
+import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
 
 export interface SiderProps {
@@ -13,9 +14,11 @@ export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
   EditForm: any;
+  ExhentaiList: any;
   formVisible: boolean;
   formLoading: boolean;
   formDataItem: FormProps | null;
+  isExhentai: boolean;
 }
 
 export default class MainPageDataController extends Component<
@@ -26,9 +29,11 @@ export default class MainPageDataController extends Component<
     dataSource: [],
     menuData: [],
     EditForm: null,
+    ExhentaiList: null,
     formVisible: false,
     formLoading: false,
     formDataItem: null,
+    isExhentai: false,
   };
 
   componentDidMount = () => {
@@ -118,6 +123,33 @@ export default class MainPageDataController extends Component<
       .then(result => result === 'true' && message.success('保存完成'));
   };
 
+  renderContent = (
+    mainPageProps: MainPageProps,
+    mainPageState: MainPageState,
+    event?: any,
+  ) => {
+    const { isExhentai, ExhentaiList } = this.state;
+    if (isExhentai && ExhentaiList) {
+      return <ExhentaiList />;
+    }
+    return (
+      <MainPageList props={mainPageProps} state={mainPageState} event={event} />
+    );
+  };
+
+  handleMenuClick = async (keyPath: string[]) => {
+    this.setState({
+      isExhentai: keyPath.length === 1 && keyPath[0] === 'ex-hentai-module',
+    });
+    if (!this.state.ExhentaiList) {
+      await import('./ExHentaiListDataController').then(target => {
+        this.setState({
+          ExhentaiList: target.default,
+        });
+      });
+    }
+  };
+
   render = () => {
     const {
       dataSource,
@@ -133,8 +165,10 @@ export default class MainPageDataController extends Component<
           dataSource={dataSource}
           onEdit={this.handleEdit}
           onDelete={this.handleDelete}
+          onMenuClick={this.handleMenuClick}
           menuData={menuData}
           onExhentaiDownload={this.handleExhentaiDownload}
+          renderContent={this.renderContent}
         />
         {EditForm && (
           <EditForm
