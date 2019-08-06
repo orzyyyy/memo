@@ -18,6 +18,13 @@ export interface MainPageProps {
     event?: any,
   ) => React.ReactNode;
   onMenuClick: (keyPath: string[]) => void;
+  onListItemClick: ({
+    category,
+    id,
+  }: {
+    category: 'mapping' | 'markdown';
+    id: string;
+  }) => void;
 }
 export interface MainPageState {
   siderOpenKey: string;
@@ -85,16 +92,6 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     );
   };
 
-  handleListItemClick = ({
-    category,
-    id,
-  }: {
-    category: 'mapping' | 'markdown';
-    id: string;
-  }) => {
-    location.hash = `/${category}/${id}`;
-  };
-
   renderContent = () => {
     const { renderContent } = this.props;
     const wrapperHeight = document.body.clientHeight - 48 - 90;
@@ -109,7 +106,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
           }}
           className="main-page-content-wrapper"
         >
-          {renderContent && renderContent(this.props, this.state, this)}
+          {renderContent && renderContent(this.props, this.state)}
         </div>
       </Content>
     );

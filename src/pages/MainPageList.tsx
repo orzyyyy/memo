@@ -6,11 +6,9 @@ import { MainPageProps, MainPageState } from './MainPage';
 const MainPageList = ({
   props,
   state,
-  event,
 }: {
   props: MainPageProps;
   state: MainPageState;
-  event?: any;
 }) => {
   const { dataSource, onDelete, onEdit } = props;
   const { siderSelectedKey } = state;
@@ -42,7 +40,7 @@ const MainPageList = ({
           <List.Item
             className="list-item"
             onClick={() =>
-              event.handleListItemClick({
+              props.onListItemClick({
                 category: item.category,
                 id: item.id,
               })

@@ -37,34 +37,24 @@ describe('MainPageList', () => {
     const state = {
       siderSelectedKey: 'all',
     };
-    const handleListItemClick = jest.fn();
-    const event = {
-      handleListItemClick,
-    };
-    const wrapper = mount(
-      <MainPageList props={props} state={state} event={event} />,
-    );
+    const wrapper = mount(<MainPageList props={props} state={state} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('events works correctly', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
+    const onListItemClick = jest.fn();
     const props = {
       dataSource,
       onDelete,
       onEdit,
+      onListItemClick,
     };
     const state = {
       siderSelectedKey: 'all',
     };
-    const handleListItemClick = jest.fn();
-    const event = {
-      handleListItemClick,
-    };
-    const wrapper = mount(
-      <MainPageList props={props} state={state} event={event} />,
-    );
+    const wrapper = mount(<MainPageList props={props} state={state} />);
     wrapper
       .find('Item')
       .first()
@@ -85,6 +75,6 @@ describe('MainPageList', () => {
       .find('Item')
       .first()
       .simulate('click');
-    expect(handleListItemClick).toHaveBeenCalled();
+    expect(onListItemClick).toHaveBeenCalled();
   });
 });

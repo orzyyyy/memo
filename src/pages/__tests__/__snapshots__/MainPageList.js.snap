@@ -2,11 +2,6 @@
 
 exports[`MainPageList render correctly 1`] = `
 <MainPageList
-  event={
-    Object {
-      "handleListItemClick": [MockFunction],
-    }
-  }
   props={
     Object {
       "dataSource": Array [
