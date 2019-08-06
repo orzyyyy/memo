@@ -126,15 +126,12 @@ export default class MainPageDataController extends Component<
   renderContent = (
     mainPageProps: MainPageProps,
     mainPageState: MainPageState,
-    event?: any,
   ) => {
     const { isExhentai, ExhentaiList } = this.state;
     if (isExhentai && ExhentaiList) {
       return <ExhentaiList />;
     }
-    return (
-      <MainPageList props={mainPageProps} state={mainPageState} event={event} />
-    );
+    return <MainPageList props={mainPageProps} state={mainPageState} />;
   };
 
   handleMenuClick = async (keyPath: string[]) => {
@@ -148,6 +145,16 @@ export default class MainPageDataController extends Component<
         });
       });
     }
+  };
+
+  handleListItemClick = ({
+    category,
+    id,
+  }: {
+    category: 'mapping' | 'markdown';
+    id: string;
+  }) => {
+    location.hash = `/${category}/${id}`;
   };
 
   render = () => {
@@ -169,6 +176,7 @@ export default class MainPageDataController extends Component<
           menuData={menuData}
           onExhentaiDownload={this.handleExhentaiDownload}
           renderContent={this.renderContent}
+          onListItemClick={this.handleListItemClick}
         />
         {EditForm && (
           <EditForm
