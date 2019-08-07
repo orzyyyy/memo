@@ -3,8 +3,8 @@ import MainPage, { MainPageProps, MainPageState } from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
+import { history } from '../router';
 import { message } from 'antd';
-import { withRouter } from 'react-router-dom';
 
 export interface SiderProps {
   key: string;
@@ -32,7 +32,7 @@ const bindSocket = () => {
   });
 };
 
-class MainPageDataController extends Component<
+export default class MainPageDataController extends Component<
   any,
   MainPageDataControllerState
 > {
@@ -183,7 +183,8 @@ class MainPageDataController extends Component<
     id: string;
   }) => {
     // this.props.history.push(`/${category}/${id}`);
-    this.props.history.pushState(null, `/${category}/${id}`);
+    // this.props.history.pushState(null, `/${category}/${id}`);
+    history.push(`/${category}/${id}`);
   };
 
   render = () => {
@@ -223,5 +224,3 @@ class MainPageDataController extends Component<
     );
   };
 }
-
-export default withRouter(MainPageDataController);

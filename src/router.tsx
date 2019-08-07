@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Router } from 'react-router-dom';
 import TohoLoading from './pages/TohoLoading';
+import { createBrowserHistory } from 'history';
 const MainPage = lazy(() => import('./controller/MainPageDataController'));
 const MappingDetailDataController = lazy(() =>
   import('./controller/MappingDetailDataController'),
@@ -8,11 +9,12 @@ const MappingDetailDataController = lazy(() =>
 const MarkdownEditorDataController = lazy(() =>
   import('./controller/MarkdownEditorDataController'),
 );
+export const history = createBrowserHistory();
 
 export default () => (
   <BrowserRouter>
     <Suspense fallback={<TohoLoading />}>
-      <Switch>
+      <Router history={history}>
         <Route path="/" component={MainPage} exact />
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
@@ -20,7 +22,7 @@ export default () => (
           component={MarkdownEditorDataController}
         />
         <Route path="/markdown/:id" component={MarkdownEditorDataController} />
-      </Switch>
+      </Router>
     </Suspense>
   </BrowserRouter>
 );
