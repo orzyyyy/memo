@@ -42,13 +42,13 @@ export default class MarkdownEditorDataController extends Component<
   };
 
   getTargetMarkdown = async (targetId: string) => {
-    const response = await fetch(`./assets/markdown/${targetId}.md`);
+    const response = await fetch(`../../assets/markdown/${targetId}.md`);
     const result = await response.text();
     this.setState({ dataSource: result });
   };
 
   handleSave = async ({ id, layout, format }: MarkdownEditorSaveProps) => {
-    const response = await fetch('document/update', {
+    const response = await fetch('../../document/update', {
       body: JSON.stringify({ id, layout, category: 'markdown', format }),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

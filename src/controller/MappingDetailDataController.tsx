@@ -25,7 +25,7 @@ export default class MappingDetailDataController extends Component<
 
   handleOnSave = async (data: any) => {
     const targetId = this.props.match.params.id;
-    const response = await fetch('/document/update', {
+    const response = await fetch('../../document/update', {
       method: 'POST',
       body: JSON.stringify({
         layout: data,
@@ -46,7 +46,7 @@ export default class MappingDetailDataController extends Component<
 
   getTargetMapping = async () => {
     const targetId = this.props.match.params.id;
-    const response = await fetch(`assets/mapping/${targetId}.json`);
+    const response = await fetch(`../../assets/mapping/${targetId}.json`);
     const dataSource = await response.json();
     const date = format(new Date(), 'a HH:mm:ss', {
       locale: zhCN,

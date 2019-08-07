@@ -4,6 +4,7 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
+import { withRouter } from 'react-router-dom';
 
 export interface SiderProps {
   key: string;
@@ -31,7 +32,7 @@ const bindSocket = () => {
   });
 };
 
-export default class MainPageDataController extends Component<
+class MainPageDataController extends Component<
   any,
   MainPageDataControllerState
 > {
@@ -69,7 +70,7 @@ export default class MainPageDataController extends Component<
   };
 
   getMapping = async () => {
-    const response = await fetch('./assets/mapping.json');
+    const response = await fetch('../../assets/mapping.json');
     const dataSource = await response.json();
     this.setState({
       dataSource: dataSource.sort(
@@ -79,13 +80,13 @@ export default class MainPageDataController extends Component<
   };
 
   getSider = async () => {
-    const response = await fetch('./assets/sider.json');
+    const response = await fetch('../../assets/sider.json');
     const menuData = await response.json();
     this.setState({ menuData });
   };
 
   handleDelete = async ({ id, category }: { id: string; category: string }) => {
-    const response = await fetch('/document/delete', {
+    const response = await fetch('../../document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
       mode: 'cors',
@@ -114,14 +115,14 @@ export default class MainPageDataController extends Component<
     let id;
     if (dataItem) {
       id = dataItem.id;
-      await fetch('document/update', {
+      await fetch('../../document/update', {
         body: JSON.stringify(Object.assign({}, dataItem, item)),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
       message.success(`${item.category} 更新完成`);
     } else {
-      const response = await fetch('document/add', {
+      const response = await fetch('../../document/add', {
         body: JSON.stringify(item),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -130,9 +131,9 @@ export default class MainPageDataController extends Component<
       message.success(`${item.category} 初始化完成`);
     }
     this.handleModalCancel();
-    location.hash = `/${item.category}${
-      item.category === 'markdown' ? '/edit' : ''
-    }/${id}`;
+    this.props.history.push(
+      `/${item.category}${item.category === 'markdown' ? '/edit' : ''}/${id}`,
+    );
   };
 
   handleModalCancel = () => {
@@ -181,7 +182,7 @@ export default class MainPageDataController extends Component<
     category: 'mapping' | 'markdown';
     id: string;
   }) => {
-    location.hash = `/${category}/${id}`;
+    this.props.history.push(`/${category}/${id}`);
   };
 
   render = () => {
@@ -221,3 +222,5 @@ export default class MainPageDataController extends Component<
     );
   };
 }
+
+export default withRouter(MainPageDataController);
