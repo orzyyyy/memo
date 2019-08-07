@@ -48,6 +48,7 @@ exports[`MainPage render correctly 1`] = `
       }
     >
       <Input
+        disabled={true}
         style={
           Object {
             "position": "absolute",
@@ -60,6 +61,7 @@ exports[`MainPage render correctly 1`] = `
       />
       <Button
         block={false}
+        disabled={true}
         ghost={false}
         htmlType="button"
         loading={false}

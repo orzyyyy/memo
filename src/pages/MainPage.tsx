@@ -25,6 +25,7 @@ export interface MainPageProps {
     category: 'mapping' | 'markdown';
     id: string;
   }) => void;
+  isLocal: boolean;
 }
 export interface MainPageState {
   siderOpenKey: string;
@@ -125,16 +126,18 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   );
 
   renderHeader = () => {
-    const { onExhentaiDownload, onEdit } = this.props;
+    const { onExhentaiDownload, onEdit, isLocal } = this.props;
     return (
       <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }}>
         <Input
           onPressEnter={onExhentaiDownload}
           style={{ position: 'absolute', right: 80, top: 10, width: 350 }}
+          disabled={!isLocal}
         />
         <Button
           style={{ position: 'absolute', right: 24, top: 10 }}
           onClick={() => onEdit()}
+          disabled={!isLocal}
         >
           <Icon type="plus" />
         </Button>

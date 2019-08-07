@@ -19,7 +19,17 @@ export interface MainPageDataControllerState {
   formLoading: boolean;
   formDataItem: FormProps | null;
   isExhentai: boolean;
+  isLocal: boolean;
 }
+
+const bindSocket = () => {
+  import('socket.io-client').then(target => {
+    const socket = target.default('http://localhost:9099');
+    socket.on('refresh', () => {
+      location.reload();
+    });
+  });
+};
 
 export default class MainPageDataController extends Component<
   any,
@@ -34,11 +44,28 @@ export default class MainPageDataController extends Component<
     formLoading: false,
     formDataItem: null,
     isExhentai: false,
+    isLocal: false,
   };
 
   componentDidMount = () => {
+    this.checkLocalStatus();
     this.getSider();
     this.getMapping();
+  };
+
+  checkLocalStatus = () => {
+    fetch('/test')
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error();
+      })
+      .then(() => {
+        bindSocket();
+        this.setState({ isLocal: true });
+      })
+      .catch();
   };
 
   getMapping = async () => {
@@ -165,6 +192,7 @@ export default class MainPageDataController extends Component<
       formVisible,
       formLoading,
       formDataItem,
+      isLocal,
     } = this.state;
     return (
       <>
@@ -177,6 +205,7 @@ export default class MainPageDataController extends Component<
           onExhentaiDownload={this.handleExhentaiDownload}
           renderContent={this.renderContent}
           onListItemClick={this.handleListItemClick}
+          isLocal={isLocal}
         />
         {EditForm && (
           <EditForm
