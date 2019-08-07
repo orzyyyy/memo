@@ -182,7 +182,8 @@ class MainPageDataController extends Component<
     category: 'mapping' | 'markdown';
     id: string;
   }) => {
-    this.props.history.push(`/${category}/${id}`);
+    // this.props.history.push(`/${category}/${id}`);
+    this.props.history.pushState(null, `/${category}/${id}`);
   };
 
   render = () => {
