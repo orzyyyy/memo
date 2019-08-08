@@ -208,5 +208,15 @@
     "type": "公考",
     "subType": "资料分析",
     "category": "markdown"
+  },
+  {
+    "createTime": 1565223099856,
+    "modifyTime": 1565223226290,
+    "url": "./assets/markdown/7a9a2d738fa682b6c2b1abc0471616b2.json",
+    "id": "7a9a2d738fa682b6c2b1abc0471616b2",
+    "title": "常用解题思路",
+    "type": "公考",
+    "subType": "数量关系",
+    "category": "markdown"
   }
 ]
