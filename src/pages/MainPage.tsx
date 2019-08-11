@@ -94,8 +94,9 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   };
 
   renderContent = () => {
-    const { renderContent } = this.props;
-    const wrapperHeight = document.body.clientHeight - 48 - 90;
+    const { renderContent, isLocal } = this.props;
+    const headerHeight = isLocal ? 48 : 0;
+    const wrapperHeight = document.body.clientHeight - 90 - headerHeight;
     return (
       <Content style={{ marginLeft: 8 }}>
         <div
@@ -126,18 +127,16 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   );
 
   renderHeader = () => {
-    const { onExhentaiDownload, onEdit, isLocal } = this.props;
+    const { onExhentaiDownload, onEdit } = this.props;
     return (
       <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }}>
         <Input
           onPressEnter={onExhentaiDownload}
           style={{ position: 'absolute', right: 80, top: 10, width: 350 }}
-          disabled={!isLocal}
         />
         <Button
           style={{ position: 'absolute', right: 24, top: 10 }}
           onClick={() => onEdit()}
-          disabled={!isLocal}
         >
           <Icon type="plus" />
         </Button>
@@ -149,7 +148,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     <Layout className="MainPage">
       {this.renderSider()}
       <Layout>
-        {this.renderHeader()}
+        {this.props.isLocal && this.renderHeader()}
         {this.renderContent()}
         {this.renderFooter()}
       </Layout>
