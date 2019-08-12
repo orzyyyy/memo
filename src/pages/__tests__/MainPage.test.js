@@ -52,4 +52,29 @@ describe('MainPage', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('onMenuClick works', async () => {
+    const onMenuClick = jest.fn();
+    const wrapper = await mount(
+      <MainPage
+        dataSource={dataSource}
+        menuData={menuData}
+        onMenuClick={onMenuClick}
+      />,
+    );
+    wrapper
+      .find('MenuItem')
+      .at(1)
+      .simulate('click');
+    expect(onMenuClick).toHaveBeenCalled();
+  });
+
+  it('import Header dynamically correctly', async () => {
+    const wrapper = await mount(
+      <MainPage dataSource={dataSource} menuData={[]} />,
+    );
+    wrapper.setProps({ isLocal: true });
+    await wrapper.update();
+    expect(wrapper.state('DynamicHeader')).toBeNull();
+  });
 });

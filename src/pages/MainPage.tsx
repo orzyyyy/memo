@@ -55,7 +55,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     DynamicHeader: null,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     window.onresize = () => this.setState({});
   }
 
