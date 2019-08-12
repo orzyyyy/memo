@@ -141,7 +141,11 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   );
 
   renderHeader = () => {
-    return this.state.DynamicHeader;
+    const { isLocal } = this.props;
+    const header = isLocal ? (
+      <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }} />
+    ) : null;
+    return this.state.DynamicHeader || header;
   };
 
   render = () => (
