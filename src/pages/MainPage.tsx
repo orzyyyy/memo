@@ -38,12 +38,24 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     prevProps: MainPageProps,
     prevState: MainPageState,
   ) {
-    const { menuData } = prevProps;
-    const { siderSelectedKey } = prevState;
+    const { menuData, isLocal } = prevProps;
+    const { siderSelectedKey, DynamicHeader } = prevState;
     if (menuData.length > 0 && !siderSelectedKey) {
       return {
         siderOpenKey: menuData[0].title,
         siderSelectedKey: menuData[0].title,
+      };
+    }
+    if (isLocal && !DynamicHeader) {
+      // todo: replace require with import()
+      // if replace require with import now, it would cause memory leak
+      // have checked https://github.com/webpack/webpack/issues/4292#issuecomment-280165950
+      // but no effect, so use require temporarily
+      // 1. this function should be moved to componentDidUpdate
+      // 2. should check unexpected shaking of Header
+      const MainPageHeader = require('./MainPageHeader').default;
+      return {
+        DynamicHeader: <MainPageHeader Header={Header} {...prevProps} />,
       };
     }
     return null;
@@ -58,18 +70,6 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   componentDidMount() {
     window.onresize = () => this.setState({});
   }
-
-  async componentDidUpdate() {
-    if (this.props.isLocal && !this.state.DynamicHeader) {
-      const DynamicHeader: any = await this.loadHeader();
-      this.setState({ DynamicHeader });
-    }
-  }
-
-  loadHeader = async () =>
-    await import('./MainPageHeader').then(({ default: MainPageHeader }) => (
-      <MainPageHeader Header={Header} {...this.props} />
-    ));
 
   handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     this.props.onMenuClick(keyPath);
@@ -141,11 +141,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   );
 
   renderHeader = () => {
-    const { isLocal } = this.props;
-    const header = isLocal ? (
-      <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }} />
-    ) : null;
-    return this.state.DynamicHeader || header;
+    return this.state.DynamicHeader;
   };
 
   render = () => (
