@@ -75,6 +75,6 @@ describe('MainPage', () => {
     );
     wrapper.setProps({ isLocal: true });
     await wrapper.update();
-    expect(wrapper.state('DynamicHeader')).toBeNull();
+    expect(wrapper.state('DynamicHeader')).not.toBeNull();
   });
 });
