@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPageHeader render correctly 1`] = `
+<Adapter
+  style={
+    Object {
+      "background": "rgba(0, 0, 0, 0)",
+      "height": 48,
+    }
+  }
+>
+  <Input
+    style={
+      Object {
+        "position": "absolute",
+        "right": 80,
+        "top": 10,
+        "width": 350,
+      }
+    }
+    type="text"
+  />
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "position": "absolute",
+        "right": 24,
+        "top": 10,
+      }
+    }
+  >
+    <Icon
+      type="plus"
+    />
+  </Button>
+</Adapter>
+`;

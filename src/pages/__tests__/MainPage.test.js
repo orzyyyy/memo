@@ -52,17 +52,4 @@ describe('MainPage', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('onEdit of init button works correctly', () => {
-    const onEdit = jest.fn();
-    const wrapper = mount(
-      <MainPage dataSource={[]} menuData={[]} onEdit={onEdit} />,
-    );
-    wrapper
-      .find('Button')
-      .at(0)
-      .props()
-      .onClick();
-    expect(onEdit).toHaveBeenCalled();
-  });
 });
