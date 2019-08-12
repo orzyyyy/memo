@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/MainPage.css';
-import { Menu, Layout, Icon, Button, Input } from 'antd';
+import { Menu, Layout } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider, Header } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
@@ -30,6 +30,7 @@ export interface MainPageProps {
 export interface MainPageState {
   siderOpenKey: string;
   siderSelectedKey: string;
+  DynamicHeader: any;
 }
 
 export default class MainPage extends Component<MainPageProps, MainPageState> {
@@ -51,11 +52,24 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   state: MainPageState = {
     siderOpenKey: '',
     siderSelectedKey: '',
+    DynamicHeader: null,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     window.onresize = () => this.setState({});
   }
+
+  async componentDidUpdate() {
+    if (this.props.isLocal && !this.state.DynamicHeader) {
+      const DynamicHeader: any = await this.loadHeader();
+      this.setState({ DynamicHeader });
+    }
+  }
+
+  loadHeader = async () =>
+    await import('./MainPageHeader').then(({ default: MainPageHeader }) => (
+      <MainPageHeader Header={Header} {...this.props} />
+    ));
 
   handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     this.props.onMenuClick(keyPath);
@@ -127,28 +141,14 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
   );
 
   renderHeader = () => {
-    const { onExhentaiDownload, onEdit } = this.props;
-    return (
-      <Header style={{ background: 'rgba(0, 0, 0, 0)', height: 48 }}>
-        <Input
-          onPressEnter={onExhentaiDownload}
-          style={{ position: 'absolute', right: 80, top: 10, width: 350 }}
-        />
-        <Button
-          style={{ position: 'absolute', right: 24, top: 10 }}
-          onClick={() => onEdit()}
-        >
-          <Icon type="plus" />
-        </Button>
-      </Header>
-    );
+    return this.state.DynamicHeader;
   };
 
   render = () => (
     <Layout className="MainPage">
       {this.renderSider()}
       <Layout>
-        {this.props.isLocal && this.renderHeader()}
+        {this.renderHeader()}
         {this.renderContent()}
         {this.renderFooter()}
       </Layout>
