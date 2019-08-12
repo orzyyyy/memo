@@ -53,16 +53,28 @@ describe('MainPage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('onEdit of init button works correctly', () => {
-    const onEdit = jest.fn();
-    const wrapper = mount(
-      <MainPage dataSource={[]} menuData={[]} onEdit={onEdit} />,
+  it('onMenuClick works', async () => {
+    const onMenuClick = jest.fn();
+    const wrapper = await mount(
+      <MainPage
+        dataSource={dataSource}
+        menuData={menuData}
+        onMenuClick={onMenuClick}
+      />,
     );
     wrapper
-      .find('Button')
-      .at(0)
-      .props()
-      .onClick();
-    expect(onEdit).toHaveBeenCalled();
+      .find('MenuItem')
+      .at(1)
+      .simulate('click');
+    expect(onMenuClick).toHaveBeenCalled();
+  });
+
+  it('import Header dynamically correctly', async () => {
+    const wrapper = await mount(
+      <MainPage dataSource={dataSource} menuData={[]} />,
+    );
+    wrapper.setProps({ isLocal: true });
+    await wrapper.update();
+    expect(wrapper.state('DynamicHeader')).toBeNull();
   });
 });

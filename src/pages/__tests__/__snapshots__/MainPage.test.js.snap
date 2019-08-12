@@ -42,46 +42,6 @@ exports[`MainPage render correctly 1`] = `
     <Adapter
       style={
         Object {
-          "background": "rgba(0, 0, 0, 0)",
-          "height": 48,
-        }
-      }
-    >
-      <Input
-        disabled={true}
-        style={
-          Object {
-            "position": "absolute",
-            "right": 80,
-            "top": 10,
-            "width": 350,
-          }
-        }
-        type="text"
-      />
-      <Button
-        block={false}
-        disabled={true}
-        ghost={false}
-        htmlType="button"
-        loading={false}
-        onClick={[Function]}
-        style={
-          Object {
-            "position": "absolute",
-            "right": 24,
-            "top": 10,
-          }
-        }
-      >
-        <Icon
-          type="plus"
-        />
-      </Button>
-    </Adapter>
-    <Adapter
-      style={
-        Object {
           "marginLeft": 8,
         }
       }
@@ -91,7 +51,7 @@ exports[`MainPage render correctly 1`] = `
         style={
           Object {
             "background": "#fff",
-            "height": -138,
+            "height": -90,
             "overflow": "auto",
             "padding": "8px 16px 8px 8px",
           }
