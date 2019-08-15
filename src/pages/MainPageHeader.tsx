@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Input, Icon } from 'antd';
+import { Button, Input } from 'antd';
 import { MainPageProps } from './MainPage';
+import { Plus } from '@ant-design/icons';
 
 const MainPageHeader = ({
   Header,
@@ -16,7 +17,7 @@ const MainPageHeader = ({
       style={{ position: 'absolute', right: 24, top: 10 }}
       onClick={() => onEdit()}
     >
-      <Icon type="plus" />
+      <Plus />
     </Button>
   </Header>
 );
