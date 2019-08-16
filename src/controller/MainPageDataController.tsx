@@ -114,7 +114,7 @@ export default class MainPageDataController extends Component<
       return;
     }
     this.setState({ formLoading: true });
-    let id;
+    let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
       await fetch('document/update', {

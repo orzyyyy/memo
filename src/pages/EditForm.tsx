@@ -36,6 +36,8 @@ const formItemLayout = {
   },
 };
 
+let isInit = true;
+
 const EditForm = ({
   visible,
   loading,
@@ -45,9 +47,9 @@ const EditForm = ({
   dataItem = { type: '', subType: '', category: '', title: '' },
 }: EditFormProps) => {
   const [form] = Form.useForm();
-  const [currentType, setCurrentType] = useState('');
-  const [extraTypeSelectItem, setExtraTypeSelectItem] = useState('');
-  const [extraSubTypeSelectItem, setExtraSubTypeSelectItem] = useState('');
+  const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(
+    dataItem.type,
+  );
 
   const onFinish = ({ type, subType, title, category }: FormProps) => {
     onSubmit({ title, category, type, subType }, dataItem);
@@ -58,33 +60,46 @@ const EditForm = ({
     onSubmit();
   };
 
-  const handleReset = () => {
-    form.resetFields();
+  const handleCancel = () => {
+    isInit = true;
+    setCurrentTypeSelectItem(null);
+    onCancel();
   };
 
-  const handleOnCancel = () => {
-    onCancel();
-    handleReset();
+  const setTypeValue = (type: any) => {
+    form.setFieldsValue({ type });
+    setCurrentTypeSelectItem(type);
   };
+
+  const formValues = form.getFieldsValue();
+  if (!dataItem.id) {
+    if (isInit) {
+      form.resetFields();
+    } else {
+      form.setFieldsValue(Object.assign({}, dataItem, formValues));
+    }
+  } else {
+    if (isInit) {
+      form.setFieldsValue(Object.assign({}, formValues, dataItem));
+    } else {
+      form.setFieldsValue(Object.assign({}, dataItem, formValues));
+    }
+  }
 
   return (
     <Modal
       visible={visible}
       title="新建文档"
       footer={null}
-      onCancel={handleOnCancel}
+      onCancel={handleCancel}
     >
       <Form
         {...formItemLayout}
         name="edit-form"
+        form={form}
         onFinish={onFinish as any}
         onFinishFailed={onFinishFailed}
-        initialValues={{
-          title: dataItem.title,
-          category: dataItem.category,
-          type: dataItem.type,
-          subType: dataItem.subType,
-        }}
+        onValuesChange={() => (isInit = false)}
       >
         <Form.Item
           label="标题"
@@ -126,17 +141,12 @@ const EditForm = ({
             },
           ]}
         >
-          <Select
-            showSearch
-            onSearch={value => setExtraTypeSelectItem(value)}
-            onChange={value => setCurrentType(value as string)}
-          >
+          <Select showSearch onSearch={setTypeValue} onChange={setTypeValue}>
             {selectData.map(item => (
               <Option value={item.key} key={`type-${item.key}`}>
                 {item.title}
               </Option>
             ))}
-            <Option value={extraTypeSelectItem}>{extraTypeSelectItem}</Option>
           </Select>
         </Form.Item>
         <Form.Item
@@ -152,10 +162,14 @@ const EditForm = ({
         >
           <Select
             showSearch
-            onSearch={value => setExtraSubTypeSelectItem(value)}
+            onSearch={subType => {
+              form.setFieldsValue({ subType });
+            }}
           >
             {selectData
-              .filter(item => (currentType ? item.key === currentType : true))
+              .filter(
+                item => item.key === (currentTypeSelectItem || dataItem.type),
+              )
               .map(({ children = [] }) =>
                 children.map(jtem => (
                   <Option value={jtem.key} key={jtem.key}>
@@ -163,17 +177,22 @@ const EditForm = ({
                   </Option>
                 )),
               )}
-            <Option value={extraSubTypeSelectItem}>
-              {extraSubTypeSelectItem}
-            </Option>
           </Select>
         </Form.Item>
         <Form.Item wrapperCol={{ span: 24, offset: 16 }}>
           <>
-            <Button style={{ marginRight: 16 }} onClick={handleReset}>
-              重置
+            <Button
+              type="danger"
+              style={{ marginRight: 16 }}
+              onClick={() => form.resetFields()}
+            >
+              清空
             </Button>
-            <Button type="primary" htmlType="submit" loading={loading}>
+            <Button
+              type="primary"
+              onClick={() => form.submit()}
+              loading={loading}
+            >
               确定
             </Button>
           </>
