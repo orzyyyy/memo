@@ -66,4 +66,11 @@ describe('EditForm', () => {
       .onCancel();
     expect(onCancel).toHaveBeenCalled();
   });
+
+  it('empty dataItem', () => {
+    const wrapper = mount(
+      <EditForm visible selectData={menuData} loading={false} />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 });
