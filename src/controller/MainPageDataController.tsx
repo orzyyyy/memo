@@ -110,6 +110,9 @@ export default class MainPageDataController extends Component<
   };
 
   handleSubmit = async (item: FormProps, dataItem?: any) => {
+    if (!item && !dataItem) {
+      return;
+    }
     this.setState({ formLoading: true });
     let id;
     if (dataItem && dataItem.id) {

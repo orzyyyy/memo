@@ -14,7 +14,7 @@ export interface EditFormProps {
   form: any;
   visible: boolean;
   selectData: SiderProps[];
-  onSubmit: (form: FormProps, id?: string | undefined) => void;
+  onSubmit: (form?: FormProps, dataItem?: any) => void;
   onCancel: () => void;
   loading: boolean;
   dataItem: any;
@@ -55,6 +55,7 @@ const EditForm = ({
 
   const onFinishFailed = ({ errorFields }: any) => {
     form.scrollToField(errorFields[0].name);
+    onSubmit();
   };
 
   const handleReset = () => {

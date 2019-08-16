@@ -41,10 +41,9 @@ describe('EditForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('onSubmit, onCancel, onSearch works', () => {
+  it('onSubmit and onCancel works', () => {
     const onSubmit = jest.fn();
     const onCancel = jest.fn();
-    let form;
     const wrapper = mount(
       <EditForm
         visible
@@ -53,36 +52,18 @@ describe('EditForm', () => {
         onCancel={onCancel}
         loading={false}
         dataItem={dataItem}
-        wrappedComponentRef={ref => (form = ref)}
       />,
     );
     wrapper
-      .find('Button')
-      .at(1)
-      .simulate('submit');
+      .find('#edit-form')
+      .first()
+      .props()
+      .onFinish(dataItem, dataItem);
     expect(onSubmit).toHaveBeenCalled();
     wrapper
       .find('Modal')
       .props()
       .onCancel();
     expect(onCancel).toHaveBeenCalled();
-    wrapper
-      .find('Select')
-      .at(2)
-      .props()
-      .onSearch('testType');
-    expect(form.state.extraTypeSelectItem).toBe('testType');
-    wrapper
-      .find('Select')
-      .at(2)
-      .props()
-      .onChange('testTypeChange');
-    expect(form.state.currentType).toBe('testTypeChange');
-    wrapper
-      .find('Select')
-      .at(4)
-      .props()
-      .onSearch('testSubType');
-    expect(form.state.extraSubTypeSelectItem).toBe('testSubType');
   });
 });
