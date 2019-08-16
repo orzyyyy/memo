@@ -170,7 +170,7 @@ exports[`EditForm render correctly 1`] = `
                                     class="ant-input"
                                     id="edit-form_title"
                                     type="text"
-                                    value="testTitle"
+                                    value=""
                                   />
                                 </div>
                               </div>
@@ -211,15 +211,7 @@ exports[`EditForm render correctly 1`] = `
                                     >
                                       <div
                                         class="ant-select-selection__rendered"
-                                      >
-                                        <div
-                                          class="ant-select-selection-selected-value"
-                                          style="display: block; opacity: 1;"
-                                          title="markdown"
-                                        >
-                                          markdown
-                                        </div>
-                                      </div>
+                                      />
                                       <span
                                         class="ant-select-arrow"
                                         style="user-select: none;"
@@ -288,13 +280,6 @@ exports[`EditForm render correctly 1`] = `
                                       <div
                                         class="ant-select-selection__rendered"
                                       >
-                                        <div
-                                          class="ant-select-selection-selected-value"
-                                          style="display: block; opacity: 1;"
-                                          title="testType"
-                                        >
-                                          testType
-                                        </div>
                                         <div
                                           class="ant-select-search ant-select-search--inline"
                                           style="display: none;"
@@ -386,13 +371,6 @@ exports[`EditForm render correctly 1`] = `
                                         class="ant-select-selection__rendered"
                                       >
                                         <div
-                                          class="ant-select-selection-selected-value"
-                                          style="display: block; opacity: 1;"
-                                          title="testSubType"
-                                        >
-                                          testSubType
-                                        </div>
-                                        <div
                                           class="ant-select-search ant-select-search--inline"
                                           style="display: none;"
                                         >
@@ -455,17 +433,17 @@ exports[`EditForm render correctly 1`] = `
                                   class="ant-form-item-control-input"
                                 >
                                   <button
-                                    class="ant-btn"
+                                    class="ant-btn ant-btn-danger"
                                     style="margin-right: 16px;"
                                     type="button"
                                   >
                                     <span>
-                                      重 置
+                                      清 空
                                     </span>
                                   </button>
                                   <button
                                     class="ant-btn ant-btn-primary"
-                                    type="submit"
+                                    type="button"
                                   >
                                     <span>
                                       确 定
@@ -731,12 +709,26 @@ exports[`EditForm render correctly 1`] = `
                               className="ant-modal-body"
                             >
                               <ForwardRef(InternalForm)
-                                initialValues={
+                                form={
                                   Object {
-                                    "category": "markdown",
-                                    "subType": "testSubType",
-                                    "title": "testTitle",
-                                    "type": "testType",
+                                    "__INTERNAL__": Object {
+                                      "name": "edit-form",
+                                    },
+                                    "getFieldError": [Function],
+                                    "getFieldValue": [Function],
+                                    "getFieldsError": [Function],
+                                    "getFieldsValue": [Function],
+                                    "getInternalHooks": [Function],
+                                    "isFieldTouched": [Function],
+                                    "isFieldValidating": [Function],
+                                    "isFieldsTouched": [Function],
+                                    "isFieldsValidating": [Function],
+                                    "resetFields": [Function],
+                                    "scrollToField": [Function],
+                                    "setFields": [Function],
+                                    "setFieldsValue": [Function],
+                                    "submit": [Function],
+                                    "validateFields": [Function],
                                   }
                                 }
                                 labelCol={
@@ -752,6 +744,7 @@ exports[`EditForm render correctly 1`] = `
                                 name="edit-form"
                                 onFinish={[Function]}
                                 onFinishFailed={[Function]}
+                                onValuesChange={[Function]}
                                 wrapperCol={
                                   Object {
                                     "sm": Object {
@@ -788,17 +781,10 @@ exports[`EditForm render correctly 1`] = `
                                     }
                                   }
                                   id="edit-form"
-                                  initialValues={
-                                    Object {
-                                      "category": "markdown",
-                                      "subType": "testSubType",
-                                      "title": "testTitle",
-                                      "type": "testType",
-                                    }
-                                  }
                                   name="edit-form"
                                   onFinish={[Function]}
                                   onFinishFailed={[Function]}
+                                  onValuesChange={[Function]}
                                 >
                                   <form
                                     className="ant-form ant-form-horizontal"
@@ -931,7 +917,6 @@ exports[`EditForm render correctly 1`] = `
                                                       id="edit-form_title"
                                                       onChange={[Function]}
                                                       type="text"
-                                                      value="testTitle"
                                                     >
                                                       <input
                                                         className="ant-input"
@@ -939,7 +924,7 @@ exports[`EditForm render correctly 1`] = `
                                                         onChange={[Function]}
                                                         onKeyDown={[Function]}
                                                         type="text"
-                                                        value="testTitle"
+                                                        value=""
                                                       />
                                                     </Input>
                                                   </div>
@@ -1096,7 +1081,6 @@ exports[`EditForm render correctly 1`] = `
                                                       onChange={[Function]}
                                                       showSearch={false}
                                                       transitionName="slide-up"
-                                                      value="markdown"
                                                     >
                                                       <Select
                                                         allowClear={false}
@@ -1160,7 +1144,6 @@ exports[`EditForm render correctly 1`] = `
                                                         tags={false}
                                                         tokenSeparators={Array []}
                                                         transitionName="slide-up"
-                                                        value="markdown"
                                                       >
                                                         <SelectTrigger
                                                           ariaId="test-uuid"
@@ -1192,11 +1175,7 @@ exports[`EditForm render correctly 1`] = `
                                                           }
                                                           showSearch={false}
                                                           transitionName="slide-up"
-                                                          value={
-                                                            Array [
-                                                              "markdown",
-                                                            ]
-                                                          }
+                                                          value={Array []}
                                                           visible={false}
                                                         >
                                                           <Trigger
@@ -1288,11 +1267,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 onMenuSelect={[Function]}
                                                                 onPopupFocus={[Function]}
                                                                 prefixCls="ant-select-dropdown"
-                                                                value={
-                                                                  Array [
-                                                                    "markdown",
-                                                                  ]
-                                                                }
+                                                                value={Array []}
                                                                 visible={false}
                                                               />
                                                             }
@@ -1310,11 +1285,7 @@ exports[`EditForm render correctly 1`] = `
                                                             }
                                                             showSearch={false}
                                                             transitionName="slide-up"
-                                                            value={
-                                                              Array [
-                                                                "markdown",
-                                                              ]
-                                                            }
+                                                            value={Array []}
                                                             visible={false}
                                                           >
                                                             <div
@@ -1343,21 +1314,7 @@ exports[`EditForm render correctly 1`] = `
                                                               >
                                                                 <div
                                                                   className="ant-select-selection__rendered"
-                                                                >
-                                                                  <div
-                                                                    className="ant-select-selection-selected-value"
-                                                                    key="value"
-                                                                    style={
-                                                                      Object {
-                                                                        "display": "block",
-                                                                        "opacity": 1,
-                                                                      }
-                                                                    }
-                                                                    title="markdown"
-                                                                  >
-                                                                    markdown
-                                                                  </div>
-                                                                </div>
+                                                                />
                                                                 <span
                                                                   className="ant-select-arrow"
                                                                   key="arrow"
@@ -1608,7 +1565,6 @@ exports[`EditForm render correctly 1`] = `
                                                       onSearch={[Function]}
                                                       showSearch={true}
                                                       transitionName="slide-up"
-                                                      value="testType"
                                                     >
                                                       <Select
                                                         allowClear={false}
@@ -1672,7 +1628,6 @@ exports[`EditForm render correctly 1`] = `
                                                         tags={false}
                                                         tokenSeparators={Array []}
                                                         transitionName="slide-up"
-                                                        value="testType"
                                                       >
                                                         <SelectTrigger
                                                           ariaId="test-uuid"
@@ -1704,11 +1659,7 @@ exports[`EditForm render correctly 1`] = `
                                                           }
                                                           showSearch={true}
                                                           transitionName="slide-up"
-                                                          value={
-                                                            Array [
-                                                              "testType",
-                                                            ]
-                                                          }
+                                                          value={Array []}
                                                           visible={false}
                                                         >
                                                           <Trigger
@@ -1800,11 +1751,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 onMenuSelect={[Function]}
                                                                 onPopupFocus={[Function]}
                                                                 prefixCls="ant-select-dropdown"
-                                                                value={
-                                                                  Array [
-                                                                    "testType",
-                                                                  ]
-                                                                }
+                                                                value={Array []}
                                                                 visible={false}
                                                               />
                                                             }
@@ -1822,11 +1769,7 @@ exports[`EditForm render correctly 1`] = `
                                                             }
                                                             showSearch={true}
                                                             transitionName="slide-up"
-                                                            value={
-                                                              Array [
-                                                                "testType",
-                                                              ]
-                                                            }
+                                                            value={Array []}
                                                             visible={false}
                                                           >
                                                             <div
@@ -1856,19 +1799,6 @@ exports[`EditForm render correctly 1`] = `
                                                                 <div
                                                                   className="ant-select-selection__rendered"
                                                                 >
-                                                                  <div
-                                                                    className="ant-select-selection-selected-value"
-                                                                    key="value"
-                                                                    style={
-                                                                      Object {
-                                                                        "display": "block",
-                                                                        "opacity": 1,
-                                                                      }
-                                                                    }
-                                                                    title="testType"
-                                                                  >
-                                                                    testType
-                                                                  </div>
                                                                   <div
                                                                     className="ant-select-search ant-select-search--inline"
                                                                     key="input"
@@ -2147,7 +2077,6 @@ exports[`EditForm render correctly 1`] = `
                                                       onSearch={[Function]}
                                                       showSearch={true}
                                                       transitionName="slide-up"
-                                                      value="testSubType"
                                                     >
                                                       <Select
                                                         allowClear={false}
@@ -2211,7 +2140,6 @@ exports[`EditForm render correctly 1`] = `
                                                         tags={false}
                                                         tokenSeparators={Array []}
                                                         transitionName="slide-up"
-                                                        value="testSubType"
                                                       >
                                                         <SelectTrigger
                                                           ariaId="test-uuid"
@@ -2243,11 +2171,7 @@ exports[`EditForm render correctly 1`] = `
                                                           }
                                                           showSearch={true}
                                                           transitionName="slide-up"
-                                                          value={
-                                                            Array [
-                                                              "testSubType",
-                                                            ]
-                                                          }
+                                                          value={Array []}
                                                           visible={false}
                                                         >
                                                           <Trigger
@@ -2339,11 +2263,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 onMenuSelect={[Function]}
                                                                 onPopupFocus={[Function]}
                                                                 prefixCls="ant-select-dropdown"
-                                                                value={
-                                                                  Array [
-                                                                    "testSubType",
-                                                                  ]
-                                                                }
+                                                                value={Array []}
                                                                 visible={false}
                                                               />
                                                             }
@@ -2361,11 +2281,7 @@ exports[`EditForm render correctly 1`] = `
                                                             }
                                                             showSearch={true}
                                                             transitionName="slide-up"
-                                                            value={
-                                                              Array [
-                                                                "testSubType",
-                                                              ]
-                                                            }
+                                                            value={Array []}
                                                             visible={false}
                                                           >
                                                             <div
@@ -2395,19 +2311,6 @@ exports[`EditForm render correctly 1`] = `
                                                                 <div
                                                                   className="ant-select-selection__rendered"
                                                                 >
-                                                                  <div
-                                                                    className="ant-select-selection-selected-value"
-                                                                    key="value"
-                                                                    style={
-                                                                      Object {
-                                                                        "display": "block",
-                                                                        "opacity": 1,
-                                                                      }
-                                                                    }
-                                                                    title="testSubType"
-                                                                  >
-                                                                    testSubType
-                                                                  </div>
                                                                   <div
                                                                     className="ant-select-search ant-select-search--inline"
                                                                     key="input"
@@ -2633,10 +2536,11 @@ exports[`EditForm render correctly 1`] = `
                                                           "marginRight": 16,
                                                         }
                                                       }
+                                                      type="danger"
                                                     >
                                                       <Wave>
                                                         <button
-                                                          className="ant-btn"
+                                                          className="ant-btn ant-btn-danger"
                                                           onClick={[Function]}
                                                           style={
                                                             Object {
@@ -2648,7 +2552,7 @@ exports[`EditForm render correctly 1`] = `
                                                           <span
                                                             key=".0"
                                                           >
-                                                            重 置
+                                                            清 空
                                                           </span>
                                                         </button>
                                                       </Wave>
@@ -2656,15 +2560,16 @@ exports[`EditForm render correctly 1`] = `
                                                     <Button
                                                       block={false}
                                                       ghost={false}
-                                                      htmlType="submit"
+                                                      htmlType="button"
                                                       loading={false}
+                                                      onClick={[Function]}
                                                       type="primary"
                                                     >
                                                       <Wave>
                                                         <button
                                                           className="ant-btn ant-btn-primary"
                                                           onClick={[Function]}
-                                                          type="submit"
+                                                          type="button"
                                                         >
                                                           <span
                                                             key=".0"
