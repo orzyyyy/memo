@@ -68,7 +68,9 @@ export default class ExhentaiService {
       '#gj',
       (target: any) => new Promise(resolve => resolve(target.innerText)),
     );
-    return name.replace(/[\/:*?"<>|]/g, '').replace(/\s+/g, '');
+    return name
+      .replace(/[!@#$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, '')
+      .replace(/\s+/g, '');
   };
 
   ensureFolderForSave = async () => {
