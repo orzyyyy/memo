@@ -34,9 +34,7 @@ exports[`MainPageHeader render correctly 1`] = `
       }
     }
   >
-    <Icon
-      type="plus"
-    />
+    <Plus />
   </Button>
 </Adapter>
 `;

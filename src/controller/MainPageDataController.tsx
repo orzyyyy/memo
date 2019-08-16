@@ -110,9 +110,12 @@ export default class MainPageDataController extends Component<
   };
 
   handleSubmit = async (item: FormProps, dataItem?: any) => {
+    if (!item && !dataItem) {
+      return;
+    }
     this.setState({ formLoading: true });
-    let id;
-    if (dataItem) {
+    let id: string;
+    if (dataItem && dataItem.id) {
       id = dataItem.id;
       await fetch('document/update', {
         body: JSON.stringify(Object.assign({}, dataItem, item)),

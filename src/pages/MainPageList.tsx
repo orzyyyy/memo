@@ -1,7 +1,8 @@
 import React from 'react';
-import { List, Dropdown, Menu, Icon } from 'antd';
+import { List, Dropdown, Menu } from 'antd';
 import { format } from 'date-fns';
 import { MainPageProps, MainPageState } from './MainPage';
+import { Apartment, FileMarkdown } from '@ant-design/icons';
 
 const MainPageList = ({
   props,
@@ -47,8 +48,7 @@ const MainPageList = ({
             }
           >
             {item.category === 'mapping' && (
-              <Icon
-                type="apartment"
+              <Apartment
                 style={{
                   marginRight: 10,
                   fontSize: 16,
@@ -57,8 +57,7 @@ const MainPageList = ({
               />
             )}
             {item.category === 'markdown' && (
-              <Icon
-                type="file-markdown"
+              <FileMarkdown
                 style={{
                   marginRight: 10,
                   fontSize: 16,
