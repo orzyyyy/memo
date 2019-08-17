@@ -5,6 +5,7 @@ const { SubMenu } = Menu;
 const { Content, Footer, Sider, Header } = Layout;
 import { SiderProps } from '../controller/MainPageDataController';
 import { MappingProps } from '../../server/controller/DocumentController';
+import { SelectValue } from 'antd/lib/select';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
@@ -27,12 +28,14 @@ export interface MainPageProps {
   }) => void;
   isLocal: boolean;
   exhentaiDateSet: string[];
+  onExhentaiSelectChange: (value: SelectValue) => void;
 }
 export interface MainPageState {
   siderOpenKey: string;
   siderSelectedKey: string;
   DynamicHeader: any;
 }
+let MainPageHeader: any;
 
 export default class MainPage extends Component<MainPageProps, MainPageState> {
   static getDerivedStateFromProps(
@@ -54,7 +57,12 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
       // but no effect, so use require temporarily
       // 1. this function should be moved to componentDidUpdate
       // 2. should check unexpected shaking of Header
-      const MainPageHeader = require('./MainPageHeader').default;
+      MainPageHeader = require('./MainPageHeader').default;
+      return {
+        DynamicHeader: <MainPageHeader Header={Header} {...prevProps} />,
+      };
+    }
+    if (isLocal && DynamicHeader) {
       return {
         DynamicHeader: <MainPageHeader Header={Header} {...prevProps} />,
       };
@@ -70,6 +78,10 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
 
   componentDidMount() {
     window.onresize = () => this.setState({});
+  }
+
+  componentWillUnmount() {
+    MainPageHeader = null;
   }
 
   handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {

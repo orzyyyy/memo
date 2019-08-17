@@ -4,6 +4,7 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
+import { SelectValue } from 'antd/lib/select';
 
 export interface SiderProps {
   key: string;
@@ -199,6 +200,11 @@ export default class MainPageDataController extends Component<
     location.hash = `/${category}/${id}`;
   };
 
+  handleExhentaiSelectChange = (value: SelectValue) => {
+    // tslint:disable-next-line: no-console
+    console.log(value);
+  };
+
   render = () => {
     const {
       dataSource,
@@ -223,6 +229,7 @@ export default class MainPageDataController extends Component<
           onListItemClick={this.handleListItemClick}
           isLocal={isLocal}
           exhentaiDateSet={exhentaiDateSet}
+          onExhentaiSelectChange={this.handleExhentaiSelectChange}
         />
         {EditForm && (
           <EditForm
