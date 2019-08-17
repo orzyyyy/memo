@@ -49,17 +49,16 @@ export default ({
   wrapperHeight,
 }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
-    {dataSource &&
-      dataSource.map(item => (
-        <Col span={4} key={item.detailUrl + item.postTime}>
-          <LazyLoad
-            height={wrapperHeight}
-            once
-            scrollContainer=".main-page-content-wrapper"
-          >
-            {renderDropdown({ onDownload, wrapperHeight, item })}
-          </LazyLoad>
-        </Col>
-      ))}
+    {dataSource.map(item => (
+      <Col span={4} key={item.detailUrl + '-' + item.postTime}>
+        <LazyLoad
+          height={wrapperHeight}
+          once
+          scrollContainer=".main-page-content-wrapper"
+        >
+          {renderDropdown({ onDownload, wrapperHeight, item })}
+        </LazyLoad>
+      </Col>
+    ))}
   </Row>
 );

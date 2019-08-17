@@ -78,6 +78,9 @@ export default class MainPageDataController extends Component<
     fetch('/exhentai/dateSet')
       .then(response => response.json())
       .then(exhentaiDateSet => {
+        this.handleExhentaiSelectChange(
+          exhentaiDateSet.length ? exhentaiDateSet[0] : '',
+        );
         this.setState({ exhentaiDateSet });
       });
   };
@@ -207,9 +210,16 @@ export default class MainPageDataController extends Component<
 
   handleExhentaiSelectChange = async (value: SelectValue) => {
     const url = `./assets/exhentai/${value}.json`;
-    const response = await fetch(url);
-    const exhentaiListTargetDataSource: any = await response.json();
+    const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await this.getExhentaiTargetDataSource(
+      url,
+    );
     this.setState({ exhentaiListTargetDataSource });
+  };
+
+  getExhentaiTargetDataSource = async (url: string) => {
+    const response = await fetch(url);
+    const exhentaiListTargetDataSource = await response.json();
+    return exhentaiListTargetDataSource;
   };
 
   render = () => {
