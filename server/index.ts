@@ -7,6 +7,9 @@ import { info } from './utils/log';
 import { joinWithRootPath } from './utils/common';
 import { createServer } from 'http';
 import IO from 'socket.io';
+import { updateSider } from './utils/document';
+
+updateSider();
 
 const app = new Koa();
 const server = createServer(app.callback());
