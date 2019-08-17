@@ -20,6 +20,8 @@ export interface MainPageDataControllerState {
   formDataItem: FormProps | null;
   isExhentai: boolean;
   isLocal: boolean;
+  exhentaiDateSet: string[];
+  exhentaiListTargetUrl: string;
 }
 
 const bindSocket = () => {
@@ -45,15 +47,17 @@ export default class MainPageDataController extends Component<
     formDataItem: null,
     isExhentai: false,
     isLocal: false,
+    exhentaiDateSet: [],
+    exhentaiListTargetUrl: '',
   };
 
   componentDidMount = () => {
-    this.checkLocalStatus();
+    this.checkLocalStatus(this.getExhentaiDateSet);
     this.getSider();
     this.getMapping();
   };
 
-  checkLocalStatus = () => {
+  checkLocalStatus = (callback?: () => void) => {
     fetch('/test')
       .then(response => {
         if (response.ok) {
@@ -63,9 +67,17 @@ export default class MainPageDataController extends Component<
       })
       .then(() => {
         bindSocket();
-        this.setState({ isLocal: true });
+        this.setState({ isLocal: true }, () => callback && callback());
       })
       .catch();
+  };
+
+  getExhentaiDateSet = () => {
+    fetch('/exhentai/dateSet')
+      .then(response => response.json())
+      .then(exhentaiDateSet => {
+        this.setState({ exhentaiDateSet });
+      });
   };
 
   getMapping = async () => {
@@ -157,9 +169,9 @@ export default class MainPageDataController extends Component<
     mainPageProps: MainPageProps,
     mainPageState: MainPageState,
   ) => {
-    const { isExhentai, ExhentaiList } = this.state;
+    const { isExhentai, ExhentaiList, exhentaiListTargetUrl } = this.state;
     if (isExhentai && ExhentaiList) {
-      return <ExhentaiList />;
+      return <ExhentaiList targetUrl={exhentaiListTargetUrl} />;
     }
     return <MainPageList props={mainPageProps} state={mainPageState} />;
   };
@@ -196,6 +208,7 @@ export default class MainPageDataController extends Component<
       formLoading,
       formDataItem,
       isLocal,
+      exhentaiDateSet,
     } = this.state;
     return (
       <>
@@ -209,6 +222,7 @@ export default class MainPageDataController extends Component<
           renderContent={this.renderContent}
           onListItemClick={this.handleListItemClick}
           isLocal={isLocal}
+          exhentaiDateSet={exhentaiDateSet}
         />
         {EditForm && (
           <EditForm

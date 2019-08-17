@@ -3,6 +3,9 @@ import ExHentaiList, { DownloadProps } from '../pages/ExHentaiList';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import { Empty, message } from 'antd';
 
+export interface ExHentaiListDataControllerProps {
+  targetUrl: string;
+}
 export interface ExHentaiListDataControllerState {
   dataSource: ExHentaiInfoItem[] | null;
 }
@@ -16,6 +19,13 @@ export default class ExHentaiListDataController extends Component<
   };
 
   componentDidMount = () => {
+    const { targetUrl } = this.props;
+    if (!targetUrl) {
+      this.getLatestSet();
+    }
+  };
+
+  getLatestSet = () => {
     fetch('/exhentai/getLastestSet')
       .then(response => {
         if (response.ok) {
@@ -24,14 +34,18 @@ export default class ExHentaiListDataController extends Component<
         throw new Error();
       })
       .then((url: string) => {
-        fetch(url)
-          .then(response => response.json())
-          .then(dataSource => this.setState({ dataSource }));
+        this.getTargetSet(url);
       })
       .catch(() => {
         this.setState({ dataSource: null });
-        console.error('fetch lastestSet error');
+        console.error('fetch latestSet error');
       });
+  };
+
+  getTargetSet = (url: string) => {
+    fetch(url)
+      .then(response => response.json())
+      .then(dataSource => this.setState({ dataSource }));
   };
 
   handleDownload = async (item: DownloadProps) => {

@@ -26,6 +26,7 @@ export interface MainPageProps {
     id: string;
   }) => void;
   isLocal: boolean;
+  exhentaiDateSet: string[];
 }
 export interface MainPageState {
   siderOpenKey: string;
