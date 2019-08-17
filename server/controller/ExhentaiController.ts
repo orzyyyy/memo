@@ -11,6 +11,7 @@ import {
   getLastestListInfo,
   getLastestListFileName,
   getBaseNameOfImage,
+  getListFiles,
 } from '../utils/exhentai';
 
 export interface ExHentaiInfoItem {
@@ -99,5 +100,17 @@ export default class ExhentaiController {
       }
     }
     ctx.response.body = result;
+  }
+
+  @Request({ url: '/dateSet', method: 'get' })
+  async getDateSet(ctx: any) {
+    const listFiles = getListFiles().reverse();
+    const result: { key: string; name: string }[] = [];
+
+    for (const item of listFiles) {
+      result.push({ key: `./assets/exhentai/${item}.json`, name: item });
+    }
+
+    ctx.response.body = listFiles;
   }
 }
