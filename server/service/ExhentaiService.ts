@@ -28,11 +28,13 @@ export default class ExhentaiService {
     const {
       winChromePath,
       linuxChromePath,
-      launchArgs,
+      winLaunchArgs,
+      linuxLaunchArgs,
       headless,
     } = this.config;
-    const executablePath =
-      process.platform === 'win32' ? winChromePath : linuxChromePath;
+    const isWin = process.platform === 'win32';
+    const executablePath = isWin ? winChromePath : linuxChromePath;
+    const launchArgs = isWin ? winLaunchArgs : linuxLaunchArgs;
     const browser = await puppeteer.launch({
       executablePath,
       args: launchArgs,
