@@ -5,6 +5,7 @@ import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
 import { SelectValue } from 'antd/lib/select';
+import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 
 export interface SiderProps {
   key: string;
@@ -22,7 +23,7 @@ export interface MainPageDataControllerState {
   isExhentai: boolean;
   isLocal: boolean;
   exhentaiDateSet: string[];
-  exhentaiListTargetUrl: string;
+  exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
 
 const bindSocket = () => {
@@ -49,7 +50,7 @@ export default class MainPageDataController extends Component<
     isExhentai: false,
     isLocal: false,
     exhentaiDateSet: [],
-    exhentaiListTargetUrl: '',
+    exhentaiListTargetDataSource: [],
   };
 
   componentDidMount = () => {
@@ -170,9 +171,13 @@ export default class MainPageDataController extends Component<
     mainPageProps: MainPageProps,
     mainPageState: MainPageState,
   ) => {
-    const { isExhentai, ExhentaiList, exhentaiListTargetUrl } = this.state;
+    const {
+      isExhentai,
+      ExhentaiList,
+      exhentaiListTargetDataSource,
+    } = this.state;
     if (isExhentai && ExhentaiList) {
-      return <ExhentaiList targetUrl={exhentaiListTargetUrl} />;
+      return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
     return <MainPageList props={mainPageProps} state={mainPageState} />;
   };
@@ -200,9 +205,11 @@ export default class MainPageDataController extends Component<
     location.hash = `/${category}/${id}`;
   };
 
-  handleExhentaiSelectChange = (value: SelectValue) => {
-    // tslint:disable-next-line: no-console
-    console.log(value);
+  handleExhentaiSelectChange = async (value: SelectValue) => {
+    const url = `./assets/exhentai/${value}.json`;
+    const response = await fetch(url);
+    const exhentaiListTargetDataSource: any = await response.json();
+    this.setState({ exhentaiListTargetDataSource });
   };
 
   render = () => {

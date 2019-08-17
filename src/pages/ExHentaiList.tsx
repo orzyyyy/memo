@@ -8,7 +8,7 @@ export interface DownloadProps {
   name?: string;
 }
 export interface ExHentaiListProps {
-  dataSource: ExHentaiInfoItem[] | null;
+  dataSource: ExHentaiInfoItem[];
   onDownload: ({ url, name }: DownloadProps) => void;
   wrapperHeight: number;
 }
@@ -51,7 +51,7 @@ export default ({
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource &&
       dataSource.map(item => (
-        <Col span={4} key={item.detailUrl}>
+        <Col span={4} key={item.detailUrl + item.postTime}>
           <LazyLoad
             height={wrapperHeight}
             once
