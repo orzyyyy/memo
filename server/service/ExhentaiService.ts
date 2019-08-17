@@ -11,11 +11,16 @@ export default class ExhentaiService {
   config: any;
   browser: puppeteer.Browser;
   page: puppeteer.Page;
+  isWin: boolean;
 
   constructor() {
     this.cookie = getTargetResource('cookie').exhentai;
     this.config = getTargetResource('server').exhentai;
-    request.defaults({ proxy: this.config.proxy });
+    const isWin = process.platform === 'win32';
+    this.isWin = isWin;
+    request.defaults({
+      proxy: isWin ? this.config.winProxy : this.config.linuxProxy,
+    });
   }
 
   setExHentaiCookie = async () => {
@@ -28,11 +33,12 @@ export default class ExhentaiService {
     const {
       winChromePath,
       linuxChromePath,
-      launchArgs,
+      winLaunchArgs,
+      linuxLaunchArgs,
       headless,
     } = this.config;
-    const executablePath =
-      process.platform === 'win32' ? winChromePath : linuxChromePath;
+    const executablePath = this.isWin ? winChromePath : linuxChromePath;
+    const launchArgs = this.isWin ? winLaunchArgs : linuxLaunchArgs;
     const browser = await puppeteer.launch({
       executablePath,
       args: launchArgs,
