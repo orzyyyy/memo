@@ -22,6 +22,18 @@ export const getLastestListFileName = () => {
   return null;
 };
 
+export const getListFiles = (): string[] => {
+  const infoPath = joinWithRootPath(listInfoPath);
+  const infoFiles = fs.readdirSync(infoPath);
+
+  if (infoFiles.length > 0) {
+    return infoFiles
+      .filter((item: string) => item !== '.gitkeep')
+      .map((item: string) => item.replace('.json', ''));
+  }
+  return [];
+};
+
 export const getLastestListInfo = () => {
   const tempPath = getLastestListFileName() || '';
   const newestListFilePath = joinWithRootPath(listInfoPath + tempPath);

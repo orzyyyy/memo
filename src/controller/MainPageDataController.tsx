@@ -4,6 +4,8 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
+import { SelectValue } from 'antd/lib/select';
+import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 
 export interface SiderProps {
   key: string;
@@ -20,6 +22,8 @@ export interface MainPageDataControllerState {
   formDataItem: FormProps | null;
   isExhentai: boolean;
   isLocal: boolean;
+  exhentaiDateSet: string[];
+  exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
 
 const bindSocket = () => {
@@ -45,15 +49,17 @@ export default class MainPageDataController extends Component<
     formDataItem: null,
     isExhentai: false,
     isLocal: false,
+    exhentaiDateSet: [],
+    exhentaiListTargetDataSource: [],
   };
 
   componentDidMount = () => {
-    this.checkLocalStatus();
+    this.checkLocalStatus(this.getExhentaiDateSet);
     this.getSider();
     this.getMapping();
   };
 
-  checkLocalStatus = () => {
+  checkLocalStatus = (callback?: () => void) => {
     fetch('/test')
       .then(response => {
         if (response.ok) {
@@ -63,9 +69,20 @@ export default class MainPageDataController extends Component<
       })
       .then(() => {
         bindSocket();
-        this.setState({ isLocal: true });
+        this.setState({ isLocal: true }, () => callback && callback());
       })
       .catch();
+  };
+
+  getExhentaiDateSet = () => {
+    fetch('/exhentai/dateSet')
+      .then(response => response.json())
+      .then(exhentaiDateSet => {
+        this.handleExhentaiSelectChange(
+          exhentaiDateSet.length ? exhentaiDateSet[0] : '',
+        );
+        this.setState({ exhentaiDateSet });
+      });
   };
 
   getMapping = async () => {
@@ -157,9 +174,13 @@ export default class MainPageDataController extends Component<
     mainPageProps: MainPageProps,
     mainPageState: MainPageState,
   ) => {
-    const { isExhentai, ExhentaiList } = this.state;
+    const {
+      isExhentai,
+      ExhentaiList,
+      exhentaiListTargetDataSource,
+    } = this.state;
     if (isExhentai && ExhentaiList) {
-      return <ExhentaiList />;
+      return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
     return <MainPageList props={mainPageProps} state={mainPageState} />;
   };
@@ -187,6 +208,20 @@ export default class MainPageDataController extends Component<
     location.hash = `/${category}/${id}`;
   };
 
+  handleExhentaiSelectChange = async (value: SelectValue) => {
+    const url = `./assets/exhentai/${value}.json`;
+    const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await this.getExhentaiTargetDataSource(
+      url,
+    );
+    this.setState({ exhentaiListTargetDataSource });
+  };
+
+  getExhentaiTargetDataSource = async (url: string) => {
+    const response = await fetch(url);
+    const exhentaiListTargetDataSource = await response.json();
+    return exhentaiListTargetDataSource;
+  };
+
   render = () => {
     const {
       dataSource,
@@ -196,6 +231,7 @@ export default class MainPageDataController extends Component<
       formLoading,
       formDataItem,
       isLocal,
+      exhentaiDateSet,
     } = this.state;
     return (
       <>
@@ -209,6 +245,8 @@ export default class MainPageDataController extends Component<
           renderContent={this.renderContent}
           onListItemClick={this.handleListItemClick}
           isLocal={isLocal}
+          exhentaiDateSet={exhentaiDateSet}
+          onExhentaiSelectChange={this.handleExhentaiSelectChange}
         />
         {EditForm && (
           <EditForm

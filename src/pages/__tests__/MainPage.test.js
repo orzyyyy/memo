@@ -71,7 +71,7 @@ describe('MainPage', () => {
 
   it('import Header dynamically correctly', async () => {
     const wrapper = await mount(
-      <MainPage dataSource={dataSource} menuData={[]} />,
+      <MainPage dataSource={dataSource} menuData={[]} exhentaiDateSet={[]} />,
     );
     wrapper.setProps({ isLocal: true });
     await wrapper.update();

@@ -6,13 +6,17 @@ import MainPageHeader from '../MainPageHeader';
 
 describe('MainPageHeader', () => {
   it('render correctly', () => {
-    const wrapper = shallow(<MainPageHeader Header={Header} />);
+    const wrapper = shallow(
+      <MainPageHeader Header={Header} exhentaiDateSet={[]} />,
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onEdit of init button works correctly', () => {
     const onEdit = jest.fn();
-    const wrapper = mount(<MainPageHeader onEdit={onEdit} Header={Header} />);
+    const wrapper = mount(
+      <MainPageHeader onEdit={onEdit} Header={Header} exhentaiDateSet={[]} />,
+    );
     wrapper
       .find('Button')
       .first()

@@ -6,9 +6,25 @@ exports[`MainPageHeader render correctly 1`] = `
     Object {
       "background": "rgba(0, 0, 0, 0)",
       "height": 48,
+      "position": "relative",
     }
   }
 >
+  <Select
+    choiceTransitionName="zoom"
+    onChange={[Function]}
+    showSearch={false}
+    style={
+      Object {
+        "left": 8,
+        "position": "absolute",
+        "top": 10,
+        "width": 160,
+      }
+    }
+    transitionName="slide-up"
+    value=""
+  />
   <Input
     style={
       Object {
