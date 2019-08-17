@@ -1,6 +1,6 @@
 import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
-import { getWriteFilesPaths } from '../utils/document';
+import { getWriteFilesPaths, updateSider } from '../utils/document';
 import DocumentService from '../service/DocumentService';
 
 export interface MappingProps {
@@ -71,6 +71,7 @@ export default class MarkdownController {
       category,
     });
     service.updateContent(category, writeFilesPaths);
+    updateSider();
     ctx.response.body = id;
   }
 
