@@ -16,6 +16,7 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run pre:css && tsc && cross-env BUILD_ENV=prod nino koei -c scripts/build.js",
+    "clean": "rimraf node_modules package-lock.json bin dist && npm i",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
