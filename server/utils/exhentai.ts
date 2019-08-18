@@ -5,7 +5,7 @@ import { getTargetResource } from './resource';
 
 const { listInfoPath } = getTargetResource('server').exhentai;
 
-export const getLastestListFileName = () => {
+export const getLatestListFileName = () => {
   const infoPath = joinWithRootPath(listInfoPath);
   const infoFiles = fs.readdirSync(infoPath);
 
@@ -34,8 +34,8 @@ export const getListFiles = (): string[] => {
   return [];
 };
 
-export const getLastestListInfo = () => {
-  const tempPath = getLastestListFileName() || '';
+export const getLatestListInfo = () => {
+  const tempPath = getLatestListFileName() || '';
   const newestListFilePath = joinWithRootPath(listInfoPath + tempPath);
   const result = readJsonFile(newestListFilePath + '.json');
   return result && result[0];

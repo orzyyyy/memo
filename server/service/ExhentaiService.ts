@@ -130,7 +130,7 @@ export default class ExhentaiService {
 
       const result = await this.getListInfo({ pageIndex: i });
       results = [...results, ...result];
-      // compare lastest date of comic, break when current comic has been fetched
+      // compare latest date of comic, break when current comic has been fetched
       if (result.length > 0) {
         const currentItem = result[result.length - 1];
         if (currentItem.postTime < postTime) {

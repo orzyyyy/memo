@@ -8,8 +8,8 @@ import {
 } from '../utils/common';
 import ExhentaiService from '../service/ExhentaiService';
 import {
-  getLastestListInfo,
-  getLastestListFileName,
+  getLatestListInfo,
+  getLatestListFileName,
   getBaseNameOfImage,
   getListFiles,
 } from '../utils/exhentai';
@@ -27,17 +27,17 @@ export default class ExhentaiController {
   async getThumbnaiInfo(ctx: { response: { body: string } }) {
     const service = new ExhentaiService();
     await service.initBrowser();
-    const lastestListInfo = await getLastestListInfo();
-    const results = await service.fetchListInfo(lastestListInfo);
+    const latestListInfo = await getLatestListInfo();
+    const results = await service.fetchListInfo(latestListInfo);
     const createTime = getTimeStamp();
     writeIntoJsonFile(`src/assets/exhentai/${createTime}`, results);
     success('fetch completed.');
     ctx.response.body = `./assets/exhentai/${createTime}.json`;
   }
 
-  @Request({ url: '/getLastestSet', method: 'get' })
-  async getLastestExHentaiSet(ctx: any) {
-    ctx.response.body = `./assets/exhentai/${getLastestListFileName()}.json`;
+  @Request({ url: '/getLatestSet', method: 'get' })
+  async getLatestExHentaiSet(ctx: any) {
+    ctx.response.body = `./assets/exhentai/${getLatestListFileName()}.json`;
   }
 
   @Request({ url: '/download', method: 'post' })
