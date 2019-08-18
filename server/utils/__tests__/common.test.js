@@ -7,16 +7,9 @@ import {
 } from '../common';
 import path from 'path';
 import fs from 'fs-extra';
+import MockDate from 'mockdate';
 
 describe('util-common', () => {
-  const originDate = Date;
-  const DATE_TO_USE = new Date('2019-04-09T00:00:00');
-  global.Date = jest.fn(() => DATE_TO_USE);
-
-  afterAll(() => {
-    global.Date = originDate;
-  });
-
   it('joinWithRootPath', () => {
     const cwd = process.cwd();
     expect(joinWithRootPath('test')).toBe(cwd + '/test');
@@ -27,8 +20,10 @@ describe('util-common', () => {
   });
 
   it('getTimeStamp and getDateStamp', () => {
-    expect(getTimeStamp()).toBe('20190131160000');
-    expect(getDateStamp()).toBe('20190131');
+    MockDate.set(new Date('2019-04-09T00:00:00'));
+    expect(getTimeStamp()).toBe('20190409000000');
+    expect(getDateStamp()).toBe('20190409');
+    MockDate.reset();
   });
 
   it('readJsonFile', () => {
