@@ -27,6 +27,16 @@ jobs:
           root: ~/memo
           paths:
             - node_modules
+  compile:
+    <<: *container_config
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: npm run compile:server
+      - persist_to_workspace:
+          root: ~/memo
+          paths:
+            - bin
   lint:
     <<: *container_config
     steps:
@@ -71,9 +81,12 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - test:
+      - compile:
           requires:
             - setup
+      - test:
+          requires:
+            - compile
       - lint:
           requires:
             - setup
