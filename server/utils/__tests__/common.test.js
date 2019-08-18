@@ -10,7 +10,7 @@ import fs from 'fs-extra';
 
 describe('util-common', () => {
   const originDate = Date;
-  const DATE_TO_USE = new Date('2019', '1', '1');
+  const DATE_TO_USE = new Date('2019-04-09T00:00:00');
   global.Date = jest.fn(() => DATE_TO_USE);
 
   afterAll(() => {
