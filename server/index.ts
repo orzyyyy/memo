@@ -34,7 +34,7 @@ initRouter(app);
 app.use(KoaStatic(joinWithRootPath('dist')));
 
 server.listen(9099, () => {
-  info('listen at port 9099');
+  info('listen at http://localhost:9099');
 });
 
 export { server };

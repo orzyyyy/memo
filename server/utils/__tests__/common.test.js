@@ -37,11 +37,11 @@ describe('util-common', () => {
 
   it('writeIntoJsonFile', () => {
     const originFunc = fs.outputJson;
-    const catcher = jest.fn();
-    fs.outputJSON = jest.fn();
-    fs.outputJSON.mockReturnValue({ catch: catcher });
-    const outputJSON = jest.spyOn(fs, 'outputJSON');
+    fs.outputJsonSync = jest.fn();
+    const outputJSON = jest.spyOn(fs, 'outputJsonSync');
     writeIntoJsonFile('server/utils/__tests__/test-write.json', { test: 1 });
+    expect(outputJSON).toHaveBeenCalled();
+    writeIntoJsonFile('server/utils/__tests__/test-write', { test: 1 });
     expect(outputJSON).toHaveBeenCalled();
     fs.outputJSON = originFunc;
   });
