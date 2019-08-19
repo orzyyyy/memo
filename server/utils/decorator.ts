@@ -1,5 +1,4 @@
 import KoaRouter from 'koa-router';
-// import path from 'path';
 
 function injectService(service: string[], propsList: any) {
   for (const item of service) {
