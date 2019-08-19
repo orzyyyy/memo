@@ -50,6 +50,7 @@ const EditForm = ({
   const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(
     dataItem.type,
   );
+  const [isEditMode, setEditMode] = useState(false);
 
   const onFinish = ({ type, subType, title, category }: FormProps) => {
     onSubmit({ title, category, type, subType }, dataItem);
@@ -125,10 +126,14 @@ const EditForm = ({
             },
           ]}
         >
-          <Select>
-            <Option value="markdown">markdown</Option>
-            <Option value="mapping">mapping</Option>
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select>
+              <Option value="markdown">markdown</Option>
+              <Option value="mapping">mapping</Option>
+            </Select>
+          )}
         </Form.Item>
         <Form.Item
           label="文档类别"
@@ -141,13 +146,17 @@ const EditForm = ({
             },
           ]}
         >
-          <Select showSearch onSearch={setTypeValue} onChange={setTypeValue}>
-            {selectData.map(item => (
-              <Option value={item.key} key={`type-${item.key}`}>
-                {item.title}
-              </Option>
-            ))}
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select onChange={setTypeValue}>
+              {selectData.map(item => (
+                <Option value={item.key} key={`type-${item.key}`}>
+                  {item.title}
+                </Option>
+              ))}
+            </Select>
+          )}
         </Form.Item>
         <Form.Item
           label="文档子类"
@@ -160,29 +169,28 @@ const EditForm = ({
             },
           ]}
         >
-          <Select
-            showSearch
-            onSearch={subType => {
-              form.setFieldsValue({ subType });
-            }}
-          >
-            {selectData
-              .filter(
-                item => item.key === (currentTypeSelectItem || dataItem.type),
-              )
-              .map(({ children = [] }) =>
-                children.map(jtem => (
-                  <Option value={jtem.key} key={jtem.key}>
-                    {jtem.value}
-                  </Option>
-                )),
-              )}
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select>
+              {selectData
+                .filter(
+                  item => item.key === (currentTypeSelectItem || dataItem.type),
+                )
+                .map(({ children = [] }) =>
+                  children.map(jtem => (
+                    <Option value={jtem.key} key={jtem.key}>
+                      {jtem.value}
+                    </Option>
+                  )),
+                )}
+            </Select>
+          )}
         </Form.Item>
         <Form.Item>
           <Row>
             <Col span={6} push={3}>
-              <Button>编辑</Button>
+              <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
             </Col>
             <Col span={12} push={12}>
               <Row gutter={18}>
