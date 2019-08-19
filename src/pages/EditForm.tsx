@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Modal, Select, Button } from 'antd';
+import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
 import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
@@ -50,6 +50,7 @@ const EditForm = ({
   const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(
     dataItem.type,
   );
+  const [isEditMode, setEditMode] = useState(false);
 
   const onFinish = ({ type, subType, title, category }: FormProps) => {
     onSubmit({ title, category, type, subType }, dataItem);
@@ -125,10 +126,14 @@ const EditForm = ({
             },
           ]}
         >
-          <Select>
-            <Option value="markdown">markdown</Option>
-            <Option value="mapping">mapping</Option>
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select>
+              <Option value="markdown">markdown</Option>
+              <Option value="mapping">mapping</Option>
+            </Select>
+          )}
         </Form.Item>
         <Form.Item
           label="文档类别"
@@ -141,13 +146,17 @@ const EditForm = ({
             },
           ]}
         >
-          <Select showSearch onSearch={setTypeValue} onChange={setTypeValue}>
-            {selectData.map(item => (
-              <Option value={item.key} key={`type-${item.key}`}>
-                {item.title}
-              </Option>
-            ))}
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select onChange={setTypeValue}>
+              {selectData.map(item => (
+                <Option value={item.key} key={`type-${item.key}`}>
+                  {item.title}
+                </Option>
+              ))}
+            </Select>
+          )}
         </Form.Item>
         <Form.Item
           label="文档子类"
@@ -160,42 +169,48 @@ const EditForm = ({
             },
           ]}
         >
-          <Select
-            showSearch
-            onSearch={subType => {
-              form.setFieldsValue({ subType });
-            }}
-          >
-            {selectData
-              .filter(
-                item => item.key === (currentTypeSelectItem || dataItem.type),
-              )
-              .map(({ children = [] }) =>
-                children.map(jtem => (
-                  <Option value={jtem.key} key={jtem.key}>
-                    {jtem.value}
-                  </Option>
-                )),
-              )}
-          </Select>
+          {isEditMode ? (
+            <Input />
+          ) : (
+            <Select>
+              {selectData
+                .filter(
+                  item => item.key === (currentTypeSelectItem || dataItem.type),
+                )
+                .map(({ children = [] }) =>
+                  children.map(jtem => (
+                    <Option value={jtem.key} key={jtem.key}>
+                      {jtem.value}
+                    </Option>
+                  )),
+                )}
+            </Select>
+          )}
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 24, offset: 16 }}>
-          <>
-            <Button
-              type="danger"
-              style={{ marginRight: 16 }}
-              onClick={() => form.resetFields()}
-            >
-              清空
-            </Button>
-            <Button
-              type="primary"
-              onClick={() => form.submit()}
-              loading={loading}
-            >
-              确定
-            </Button>
-          </>
+        <Form.Item>
+          <Row>
+            <Col span={6} push={3}>
+              <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
+            </Col>
+            <Col span={12} push={12}>
+              <Row gutter={18}>
+                <Col span={9}>
+                  <Button type="danger" onClick={() => form.resetFields()}>
+                    清空
+                  </Button>
+                </Col>
+                <Col span={6}>
+                  <Button
+                    type="primary"
+                    onClick={() => form.submit()}
+                    loading={loading}
+                  >
+                    确定
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </Form.Item>
       </Form>
     </Modal>
