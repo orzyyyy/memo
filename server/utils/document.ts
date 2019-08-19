@@ -1,8 +1,7 @@
 import fs from 'fs-extra';
-import path from 'path';
 import { MappingProps } from '../controller/DocumentController';
 import { info, error } from './log';
-import { joinWithRootPath } from './common';
+import { joinWithRootPath, readJsonFile } from './common';
 
 const checkCategory = (category: string) => {
   if (category !== 'mapping' && category !== 'markdown') {
@@ -19,9 +18,9 @@ const unique = (target: any[]) => {
 };
 
 const updateSider = () => {
-  const mappingPath = path.join(process.cwd(), 'src/assets/mapping.json');
-  const mappingFile = fs.readFileSync(mappingPath);
-  const result: MappingProps[] = JSON.parse(mappingFile.toString());
+  const result: MappingProps[] = readJsonFile(
+    joinWithRootPath('src/assets/mapping.json'),
+  );
 
   let types: string[] = [];
   result.map(item => {
