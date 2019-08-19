@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Modal, Select, Button } from 'antd';
+import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
 import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
@@ -179,23 +179,30 @@ const EditForm = ({
               )}
           </Select>
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 24, offset: 16 }}>
-          <>
-            <Button
-              type="danger"
-              style={{ marginRight: 16 }}
-              onClick={() => form.resetFields()}
-            >
-              清空
-            </Button>
-            <Button
-              type="primary"
-              onClick={() => form.submit()}
-              loading={loading}
-            >
-              确定
-            </Button>
-          </>
+        <Form.Item>
+          <Row>
+            <Col span={6} push={3}>
+              <Button>编辑</Button>
+            </Col>
+            <Col span={12} push={12}>
+              <Row gutter={18}>
+                <Col span={9}>
+                  <Button type="danger" onClick={() => form.resetFields()}>
+                    清空
+                  </Button>
+                </Col>
+                <Col span={6}>
+                  <Button
+                    type="primary"
+                    onClick={() => form.submit()}
+                    loading={loading}
+                  >
+                    确定
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </Form.Item>
       </Form>
     </Modal>
