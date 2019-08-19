@@ -218,15 +218,5 @@
     "type": "公考",
     "subType": "数量关系",
     "category": "markdown"
-  },
-  {
-    "createTime": 1566175204935,
-    "modifyTime": 1566175326407,
-    "url": "./assets/markdown/aa7d4259ecb6e8b596cd32324dc72dc6.json",
-    "id": "aa7d4259ecb6e8b596cd32324dc72dc6",
-    "title": "mock fetch",
-    "type": "编程",
-    "subType": "片段",
-    "category": "markdown"
   }
 ]

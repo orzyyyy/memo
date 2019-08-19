@@ -65,12 +65,13 @@ export default class MainPageDataController extends Component<
         if (response.ok) {
           return response.text();
         }
-        return {};
+        throw new Error();
       })
       .then(() => {
         bindSocket();
         this.setState({ isLocal: true }, () => callback && callback());
-      });
+      })
+      .catch();
   };
 
   getExhentaiDateSet = () => {
