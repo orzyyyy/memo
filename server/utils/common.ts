@@ -18,11 +18,8 @@ export const writeIntoJsonFile = (
   if (!url.endsWith('.json')) {
     url += '.json';
   }
-  fs.outputJSON(joinWithRootPath(url), content, {
+  fs.outputJsonSync(joinWithRootPath(url), content, {
     spaces: spaces ? 2 : 0,
-  }).catch((err: Error) => {
-    error(`error in utils/common.writeInfoJsonFile => ${url}: ${err}`);
-    throw err;
   });
 };
 
