@@ -41,6 +41,8 @@ describe('util-common', () => {
     const outputJSON = jest.spyOn(fs, 'outputJsonSync');
     writeIntoJsonFile('server/utils/__tests__/test-write.json', { test: 1 });
     expect(outputJSON).toHaveBeenCalled();
+    writeIntoJsonFile('server/utils/__tests__/test-write', { test: 1 });
+    expect(outputJSON).toHaveBeenCalled();
     fs.outputJSON = originFunc;
   });
 });
