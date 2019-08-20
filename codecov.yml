@@ -28,3 +28,4 @@ comment:
 ignore:
   - 'src/router.*'
   - 'src/index.*'
+  - 'nino.koei.js'
