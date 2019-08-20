@@ -69,7 +69,10 @@ const updateSider = () => {
     });
 };
 
-const getWriteFilesPaths = (category?: 'markdown' | 'mapping', id?: string) => {
+const getWriteMappingPaths = (
+  category?: 'markdown' | 'mapping',
+  id?: string,
+) => {
   if (!id || !category) {
     return [`src/assets/mapping.json`, `dist/assets/mapping.json`];
   }
@@ -80,4 +83,4 @@ const getWriteFilesPaths = (category?: 'markdown' | 'mapping', id?: string) => {
   ];
 };
 
-export { getWriteFilesPaths, updateSider };
+export { getWriteMappingPaths, updateSider };
