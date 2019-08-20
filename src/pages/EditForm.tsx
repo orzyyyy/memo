@@ -80,11 +80,9 @@ const EditForm = ({
       form.setFieldsValue(Object.assign({}, dataItem, formValues));
     }
   } else {
-    if (isInit) {
-      form.setFieldsValue(Object.assign({}, formValues, dataItem));
-    } else {
-      form.setFieldsValue(Object.assign({}, dataItem, formValues));
-    }
+    isInit
+      ? form.setFieldsValue(Object.assign({}, formValues, dataItem))
+      : form.setFieldsValue(Object.assign({}, dataItem, formValues));
   }
 
   return (
