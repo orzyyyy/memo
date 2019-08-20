@@ -1,6 +1,6 @@
 import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
-import { getWriteFilesPaths, updateSider } from '../utils/document';
+import { getWriteMappingPaths, updateSider } from '../utils/document';
 import DocumentService from '../service/DocumentService';
 
 export interface MappingProps {
@@ -46,7 +46,7 @@ export default class MarkdownController {
       category,
     });
     // update layout for mapping, content for markdown
-    const writeFilesPaths = getWriteFilesPaths(category, id);
+    const writeFilesPaths = getWriteMappingPaths(category, id);
     const originContent = service.getOriginContent(
       writeFilesPaths[0],
       layout,
@@ -62,7 +62,7 @@ export default class MarkdownController {
     const service = new DocumentService();
     const timeStamp = new Date().getTime();
     const id = md5(timeStamp.toString());
-    const writeFilesPaths = getWriteFilesPaths(category, id);
+    const writeFilesPaths = getWriteMappingPaths(category, id);
     service.updateMapping({
       id,
       title,
@@ -79,7 +79,7 @@ export default class MarkdownController {
   async deleteTargetDocument(ctx: any) {
     const { id, category } = ctx.request.body;
     const service = new DocumentService();
-    const writeFilesPaths = getWriteFilesPaths(category, id);
+    const writeFilesPaths = getWriteMappingPaths(category, id);
     service.deleteTargetDocument(writeFilesPaths);
     service.updateMapping({ id }, true);
     ctx.response.body = true;

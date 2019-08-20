@@ -30,7 +30,10 @@ export default class ExhentaiController {
     const latestListInfo = await getLatestListInfo();
     const results = await service.fetchListInfo(latestListInfo);
     const createTime = getTimeStamp();
-    writeIntoJsonFile(`src/assets/exhentai/${createTime}`, results);
+    [
+      `src/assets/exhentai/${createTime}`,
+      `dist/assets/exhentai/${createTime}`,
+    ].map(item => writeIntoJsonFile(item, results));
     success('fetch completed.');
     ctx.response.body = `./assets/exhentai/${createTime}.json`;
   }

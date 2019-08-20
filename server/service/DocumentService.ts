@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import omit from 'omit.js';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
-import { getWriteFilesPaths } from '../utils/document';
+import { getWriteMappingPaths } from '../utils/document';
 import {
   joinWithRootPath,
   readJsonFile,
@@ -43,7 +43,7 @@ export default class DocumentService {
       targetItem.id,
       targetItem.category,
     );
-    const writeFilesPaths = getWriteFilesPaths();
+    const writeFilesPaths = getWriteMappingPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
     if (!fs.existsSync(mappingPath)) {
       fs.writeFileSync(mappingPath, []);
