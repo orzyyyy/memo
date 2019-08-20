@@ -135,7 +135,9 @@ export default class ExhentaiService {
         const currentItem = result[result.length - 1];
         if (currentItem.postTime < postTime) {
           info(
-            `get newest page now => ${pageIndex}, name is ${currentItem.name}`,
+            `get newest page now => ${pageIndex}, url is ${
+              currentItem.detailUrl
+            }`,
           );
           info(`thumbnailUrl is ${currentItem.thumbnailUrl}`);
           break;
