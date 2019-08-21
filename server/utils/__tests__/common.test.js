@@ -12,11 +12,13 @@ import MockDate from 'mockdate';
 describe('util-common', () => {
   it('joinWithRootPath', () => {
     const cwd = process.cwd();
-    expect(joinWithRootPath('test')).toBe(cwd + '/test');
-    expect(joinWithRootPath('/test')).toBe(cwd + '/test');
-    expect(joinWithRootPath('./test')).toBe(cwd + '/test');
-    expect(joinWithRootPath(['test'])).toBe(cwd + '/test');
-    expect(joinWithRootPath(['test', 'test2'])).toBe(cwd + '/test/test2');
+    expect(joinWithRootPath('test')).toBe(path.join(cwd + '/test'));
+    expect(joinWithRootPath('/test')).toBe(path.join(cwd + '/test'));
+    expect(joinWithRootPath('./test')).toBe(path.join(cwd + '/test'));
+    expect(joinWithRootPath(['test'])).toBe(path.join(cwd + '/test'));
+    expect(joinWithRootPath(['test', 'test2'])).toBe(
+      path.join(cwd + '/test/test2'),
+    );
   });
 
   it('getTimeStamp and getDateStamp', () => {
