@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
 import { SiderProps } from '../controller/MainPageDataController';
@@ -38,6 +39,45 @@ const formItemLayout = {
 
 let isInit = true;
 
+const renderTitle = () => (
+  <Form.Item
+    label="标题"
+    name="title"
+    required
+    rules={[
+      {
+        required: true,
+        message: '标题不能为空',
+      },
+    ]}
+  >
+    <Input />
+  </Form.Item>
+);
+
+const renderCategory = (isEditMode: boolean) => (
+  <Form.Item
+    label="显示类别"
+    name="category"
+    required
+    rules={[
+      {
+        required: true,
+        message: '显示类别不能为空',
+      },
+    ]}
+  >
+    {isEditMode ? (
+      <Input />
+    ) : (
+      <Select>
+        <Option value="markdown">markdown</Option>
+        <Option value="mapping">mapping</Option>
+      </Select>
+    )}
+  </Form.Item>
+);
+
 const EditForm = ({
   visible,
   loading,
@@ -72,6 +112,92 @@ const EditForm = ({
     setCurrentTypeSelectItem(type);
   };
 
+  const renderType = () => (
+    <Form.Item
+      label="文档类别"
+      name="type"
+      required
+      rules={[
+        {
+          required: true,
+          message: '文档类别不能为空',
+        },
+      ]}
+    >
+      {isEditMode ? (
+        <Input />
+      ) : (
+        <Select onChange={setTypeValue}>
+          {selectData.map(item => (
+            <Option value={item.key} key={`type-${item.key}`}>
+              {item.title}
+            </Option>
+          ))}
+        </Select>
+      )}
+    </Form.Item>
+  );
+
+  const renderSubType = () => (
+    <Form.Item
+      label="文档子类"
+      name="subType"
+      required
+      rules={[
+        {
+          required: true,
+          message: '文档子类不能为空',
+        },
+      ]}
+    >
+      {isEditMode ? (
+        <Input />
+      ) : (
+        <Select>
+          {selectData
+            .filter(
+              item => item.key === (currentTypeSelectItem || dataItem.type),
+            )
+            .map(({ children = [] }) =>
+              children.map(jtem => (
+                <Option value={jtem.key} key={jtem.key}>
+                  {jtem.value}
+                </Option>
+              )),
+            )}
+        </Select>
+      )}
+    </Form.Item>
+  );
+
+  const renderConfirmButtonGroup = () => (
+    <Form.Item>
+      <Row>
+        <Col span={6} push={3}>
+          <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
+        </Col>
+        <Col span={12} push={12}>
+          <Row gutter={18}>
+            <Col span={9}>
+              <Button type="danger" onClick={() => form.resetFields()}>
+                清空
+              </Button>
+            </Col>
+            <Col span={6}>
+              <Button
+                type="primary"
+                onClick={() => form.submit()}
+                loading={loading}
+              >
+                确定
+              </Button>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Form.Item>
+  );
+
   const formValues = form.getFieldsValue();
   if (!dataItem.id) {
     if (isInit) {
@@ -100,116 +226,11 @@ const EditForm = ({
         onFinishFailed={onFinishFailed}
         onValuesChange={() => (isInit = false)}
       >
-        <Form.Item
-          label="标题"
-          name="title"
-          required
-          rules={[
-            {
-              required: true,
-              message: '标题不能为空',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="显示类别"
-          name="category"
-          required
-          rules={[
-            {
-              required: true,
-              message: '显示类别不能为空',
-            },
-          ]}
-        >
-          {isEditMode ? (
-            <Input />
-          ) : (
-            <Select>
-              <Option value="markdown">markdown</Option>
-              <Option value="mapping">mapping</Option>
-            </Select>
-          )}
-        </Form.Item>
-        <Form.Item
-          label="文档类别"
-          name="type"
-          required
-          rules={[
-            {
-              required: true,
-              message: '文档类别不能为空',
-            },
-          ]}
-        >
-          {isEditMode ? (
-            <Input />
-          ) : (
-            <Select onChange={setTypeValue}>
-              {selectData.map(item => (
-                <Option value={item.key} key={`type-${item.key}`}>
-                  {item.title}
-                </Option>
-              ))}
-            </Select>
-          )}
-        </Form.Item>
-        <Form.Item
-          label="文档子类"
-          name="subType"
-          required
-          rules={[
-            {
-              required: true,
-              message: '文档子类不能为空',
-            },
-          ]}
-        >
-          {isEditMode ? (
-            <Input />
-          ) : (
-            <Select>
-              {selectData
-                .filter(
-                  item => item.key === (currentTypeSelectItem || dataItem.type),
-                )
-                .map(({ children = [] }) =>
-                  children.map(jtem => (
-                    <Option value={jtem.key} key={jtem.key}>
-                      {jtem.value}
-                    </Option>
-                  )),
-                )}
-            </Select>
-          )}
-        </Form.Item>
-        <Form.Item>
-          <Row>
-            <Col span={6} push={3}>
-              <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
-            </Col>
-            <Col span={12} push={12}>
-              <Row gutter={18}>
-                <Col span={9}>
-                  <Button type="danger" onClick={() => form.resetFields()}>
-                    清空
-                  </Button>
-                </Col>
-                <Col span={6}>
-                  <Button
-                    type="primary"
-                    onClick={() => form.submit()}
-                    loading={loading}
-                  >
-                    确定
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Form.Item>
+        {renderTitle()}
+        {renderCategory(isEditMode)}
+        {renderType()}
+        {renderSubType()}
+        {renderConfirmButtonGroup()}
       </Form>
     </Modal>
   );
