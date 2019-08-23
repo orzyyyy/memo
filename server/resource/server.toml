@@ -5,7 +5,7 @@ linuxLaunchArgs = ['--proxy-server=127.0.0.1:12333']
 headless = true
 winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 linuxChromePath = '/opt/google/chrome/chrome'
-waitTime = 100
+waitTime = 1000
 waitTimeAfterError = 10000
 maxPageIndex = 40
 downloadPath = 'exhentai'
