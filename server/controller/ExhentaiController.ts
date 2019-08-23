@@ -58,7 +58,7 @@ export default class ExhentaiController {
 
     info(`start fetching target images`);
 
-    const images = await service.fetchTargetImageUrls(thumbnailUrls);
+    const images = await service.fetchImageUrls(thumbnailUrls);
 
     success('fetch all image urls');
 
