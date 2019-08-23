@@ -10,8 +10,7 @@ const logger = (colorFunc: Chalk, prefix: string, content: string) => {
   console.log(colorFunc(message));
 };
 
-export const success = (text: string) =>
-  logger(chalk.greenBright, 'success => ', text);
+export const success = (text: string) => logger(chalk.greenBright, '', text);
 
 export const error = (text: string) => logger(chalk.red, '', text);
 
