@@ -34,7 +34,7 @@ export default class ExhentaiController {
       `src/assets/exhentai/${createTime}`,
       `dist/assets/exhentai/${createTime}`,
     ].map(item => writeIntoJsonFile(item, results));
-    success('fetch completed.');
+    success('fetch completed');
     ctx.response.body = `./assets/exhentai/${createTime}.json`;
   }
 

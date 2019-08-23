@@ -6,6 +6,11 @@ import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
 import { joinWithRootPath, getDateStamp } from '../utils/common';
 
+export interface InfoListProps {
+  currentResult: ExHentaiInfoItem[];
+  failed: boolean;
+}
+
 export default class ExhentaiService {
   cookie: any[];
   config: any;
@@ -60,7 +65,7 @@ export default class ExhentaiService {
 
   gotoTargetPage = async (url: string, isFirstPage?: boolean) => {
     if (isFirstPage) {
-      await this.page.goto('https://www.baidu.com/', {
+      await this.page.goto('https://www.google.com/', {
         waitUntil: 'domcontentloaded',
       });
     }
@@ -91,8 +96,21 @@ export default class ExhentaiService {
     return prefixPath;
   };
 
-  getListInfo = async ({ pageIndex }: { pageIndex: number }) => {
-    await this.gotoTargetPage(this.config.href + pageIndex, true);
+  getListInfo = async (pageIndex: number, prevResult: ExHentaiInfoItem[]) => {
+    const timer = Date.now();
+    const targetUrl = this.config.href + pageIndex;
+    try {
+      await this.gotoTargetPage(targetUrl, true);
+      if (Date.now() - timer >= 30 * 1000) {
+        throw Error('time out at page index: ' + pageIndex);
+      }
+    } catch (err) {
+      error(err);
+      return {
+        currentResult: prevResult,
+        failed: true,
+      };
+    }
     const exHentaiInfo: ExHentaiInfoItem[] = await this.page.$$eval(
       'div.gl1t',
       (wrappers: any[]) =>
@@ -118,7 +136,26 @@ export default class ExhentaiService {
           resolve(results);
         }),
     );
-    return exHentaiInfo;
+    return {
+      currentResult: exHentaiInfo,
+      failed: false,
+    };
+  };
+
+  handleFetchListInfoWithFailed = async (
+    pageIndex: number,
+    result: ExHentaiInfoItem[],
+  ) => {
+    const infoList: InfoListProps = await this.getListInfo(pageIndex, result);
+    const { waitTimeAfterError } = this.config;
+    if (infoList.failed) {
+      trace(`re-request after ${waitTimeAfterError} ms`);
+      await this.page.waitFor(waitTimeAfterError);
+      trace('re-request start');
+      return false;
+    } else {
+      return infoList.currentResult;
+    }
   };
 
   fetchListInfo = async ({ postTime }: ExHentaiInfoItem) => {
@@ -128,16 +165,18 @@ export default class ExhentaiService {
       const pageIndex = i + 1;
       info(`fetching pageIndex => ${pageIndex}`);
 
-      const result = await this.getListInfo({ pageIndex: i });
+      let target: ExHentaiInfoItem[] | boolean = true;
+      do {
+        target = await this.handleFetchListInfoWithFailed(i, results);
+      } while (!target);
+      const result: any = target;
       results = [...results, ...result];
       // compare latest date of comic, break when current comic has been fetched
       if (result.length > 0) {
         const currentItem = result[result.length - 1];
         if (currentItem.postTime < postTime) {
           info(
-            `get newest page now => ${pageIndex}, url is ${
-              currentItem.detailUrl
-            }`,
+            `get newest page now => ${pageIndex}, at ${currentItem.detailUrl}`,
           );
           info(`thumbnailUrl is ${currentItem.thumbnailUrl}`);
           break;
@@ -214,7 +253,7 @@ export default class ExhentaiService {
               success(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
 
               if (counter.length === imageUrl.length) {
-                success('download completed.');
+                success('download completed');
               }
             })
             .on('error', (err: any) =>
