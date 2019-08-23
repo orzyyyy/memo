@@ -6,8 +6,8 @@ import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
 import { joinWithRootPath, getDateStamp } from '../utils/common';
 
-export interface InfoListProps {
-  currentResult: ExHentaiInfoItem[];
+export interface InfoListProps<T> {
+  currentResult: T;
   failed: boolean;
 }
 
@@ -96,9 +96,12 @@ export default class ExhentaiService {
     return prefixPath;
   };
 
-  getListInfo = async (pageIndex: number, prevResult: ExHentaiInfoItem[]) => {
+  getListInfo = async <T>(
+    pageIndex: number,
+    prevResult: T,
+    targetUrl: string,
+  ): Promise<InfoListProps<any>> => {
     const timer = Date.now();
-    const targetUrl = this.config.href + pageIndex;
     try {
       await this.gotoTargetPage(targetUrl, true);
       if (Date.now() - timer >= 30 * 1000) {
@@ -142,11 +145,13 @@ export default class ExhentaiService {
     };
   };
 
-  handleFetchListInfoWithFailed = async (
+  handleFetchWithFailed = async <T>(
     pageIndex: number,
-    result: ExHentaiInfoItem[],
+    result: T,
+    url: string,
+    getData: Function,
   ) => {
-    const infoList: InfoListProps = await this.getListInfo(pageIndex, result);
+    const infoList: InfoListProps<T> = await getData(pageIndex, result, url);
     const { waitTimeAfterError } = this.config;
     if (infoList.failed) {
       trace(`re-request after ${waitTimeAfterError} ms`);
@@ -163,11 +168,17 @@ export default class ExhentaiService {
     const { maxPageIndex, waitTime } = this.config;
     for (let i = 0; i < maxPageIndex; i++) {
       const pageIndex = i + 1;
+      const targetUrl = this.config.href + pageIndex;
       info(`fetching pageIndex => ${pageIndex}`);
 
       let target: ExHentaiInfoItem[] | boolean = true;
       do {
-        target = await this.handleFetchListInfoWithFailed(i, results);
+        target = await this.handleFetchWithFailed(
+          i,
+          results,
+          targetUrl,
+          this.getListInfo,
+        );
       } while (!target);
       const result: any = target;
       results = [...results, ...result];
@@ -191,7 +202,7 @@ export default class ExhentaiService {
     return results;
   };
 
-  getUrlFromPaginationInfo = async () =>
+  getUrlFromPaginationInfo = async (): Promise<string[]> =>
     await this.page.$$eval(
       'table.ptt a',
       (wrappers: any[]) =>
@@ -210,12 +221,12 @@ export default class ExhentaiService {
         }),
     );
 
-  getAllThumbnaiUrls = async () =>
+  getAllThumbnaiUrls = async (): Promise<string[]> =>
     await this.page.$$eval(
       this.config.thumbnailClass,
       (wrappers: any[]) =>
         new Promise(resolve => {
-          const result: any[] = [];
+          const result: string[] = [];
           for (const item of wrappers) {
             result.push(item.href);
           }
@@ -268,13 +279,13 @@ export default class ExhentaiService {
   };
 
   getThumbnaiUrlFromDetailPage = async () => {
-    const restDetailUrls = (await this.getUrlFromPaginationInfo()) as string[];
-    const firstPageThumbnailUrls = (await this.getAllThumbnaiUrls()) as string[];
+    const restDetailUrls: string[] = await this.getUrlFromPaginationInfo();
+    const firstPageThumbnailUrls: string[] = await this.getAllThumbnaiUrls();
     await this.page.waitFor(this.config.waitTime);
 
     for (const item of restDetailUrls) {
       await this.gotoTargetPage(item);
-      const thumbnailUrlsFromNextPage = (await this.getAllThumbnaiUrls()) as string[];
+      const thumbnailUrlsFromNextPage: string[] = await this.getAllThumbnaiUrls();
       firstPageThumbnailUrls.push(...thumbnailUrlsFromNextPage);
 
       info('image length: ' + firstPageThumbnailUrls.length);
@@ -284,23 +295,57 @@ export default class ExhentaiService {
     return firstPageThumbnailUrls;
   };
 
-  fetchTargetImageUrls = async (thumbnailUrls: string[]) => {
-    const images: string[] = [];
+  fetchImageUrls = async (thumbnailUrls: string[]) => {
+    let results: string[] = [];
     for (let i = 0; i < thumbnailUrls.length; i++) {
-      await this.gotoTargetPage(thumbnailUrls[i]);
+      const item = thumbnailUrls[i];
+      await this.gotoTargetPage(item);
+      info(`fetching image url => ${item}`);
 
-      info(`fetching image url => ${thumbnailUrls[i]}`);
-
-      const imgUrl: string = await this.page.$eval(
-        '[id=i3] img',
-        (target: any) =>
-          new Promise(resolve => {
-            resolve(target.src);
-          }),
-      );
-      images.push(imgUrl);
+      let target: string[] | boolean = true;
+      do {
+        target = await this.handleFetchWithFailed(
+          i,
+          results,
+          item,
+          this.getTargetImageUrl,
+        );
+      } while (!target);
+      const result: any = target;
+      results = [...results, ...result];
       await this.page.waitFor(this.config.waitTime);
     }
-    return images;
+    return results;
+  };
+
+  getTargetImageUrl = async <T>(
+    pageIndex: number,
+    prevResult: T,
+    targetUrl: string,
+  ): Promise<InfoListProps<any>> => {
+    const timer = Date.now();
+    try {
+      await this.gotoTargetPage(targetUrl, true);
+      if (Date.now() - timer >= 30 * 1000) {
+        throw Error('time out at page index: ' + pageIndex);
+      }
+    } catch (err) {
+      error(err);
+      return {
+        currentResult: prevResult,
+        failed: true,
+      };
+    }
+    const imgUrl: string = await this.page.$eval(
+      '[id=i3] img',
+      (target: any) =>
+        new Promise(resolve => {
+          resolve(target.src);
+        }),
+    );
+    return {
+      currentResult: imgUrl,
+      failed: false,
+    };
   };
 }
