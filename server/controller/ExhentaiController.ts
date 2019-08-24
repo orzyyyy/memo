@@ -12,7 +12,9 @@ import {
   getLatestListFileName,
   getBaseNameOfImage,
   getListFiles,
+  getEmptyRestDetailUrlInfo,
 } from '../utils/exhentai';
+import path from 'path';
 
 export interface ExHentaiInfoItem {
   name?: string;
@@ -53,20 +55,26 @@ export default class ExhentaiController {
 
     info(`start fetching thumbnai urls from: ${url}`);
 
-    const thumbnailUrls = await service.getThumbnaiUrlFromDetailPage();
+    const restDetailUrls: string[] = [
+      url,
+      ...(await service.getUrlFromPaginationInfo()),
+    ];
+    const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(
+      restDetailUrls,
+    );
     writeIntoJsonFile(`${prefixPath}/restDetailUrls`, thumbnailUrls);
 
     info(`start fetching target images`);
 
     const images = await service.fetchImageUrls(thumbnailUrls);
 
-    success('fetch all image urls');
+    success('fetch all image completed');
 
     writeIntoJsonFile(`${prefixPath}/detailImageUrls`, images);
 
     await service.downloadImages(images, prefixPath);
 
-    ctx.response.body = true;
+    ctx.response.body = 'success';
   }
 
   @Request({ url: '/download/target', method: 'get' })
@@ -78,7 +86,7 @@ export default class ExhentaiController {
       joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
     );
     service.downloadImages(detailImageUrls, prefixPath);
-    ctx.response.body = true;
+    ctx.response.body = 'success';
   }
 
   @Request({ url: '/download/stat', method: 'get' })
@@ -115,5 +123,22 @@ export default class ExhentaiController {
     }
 
     ctx.response.body = listFiles;
+  }
+
+  @Request({ url: '/sync', method: 'get' })
+  async sync(ctx: any) {
+    const service = new ExhentaiService();
+    await service.initBrowser();
+    const targetComic = getEmptyRestDetailUrlInfo();
+    for (const jsonUrl of targetComic) {
+      const thumbnailUrls = readJsonFile(jsonUrl);
+      info(`start fetching target images`);
+
+      const images = await service.fetchImageUrls(thumbnailUrls);
+      await service.downloadImages(images, path.dirname(jsonUrl));
+
+      success('fetch all image completed');
+    }
+    ctx.response.body = 'succcess';
   }
 }

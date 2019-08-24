@@ -104,7 +104,7 @@ export default class ExhentaiService {
     const timer = Date.now();
     try {
       await this.gotoTargetPage(targetUrl, true);
-      if (Date.now() - timer >= 30 * 1000) {
+      if (Date.now() - timer >= this.config.requestTime) {
         throw Error('time out at page index: ' + pageIndex);
       }
     } catch (err) {
@@ -244,6 +244,7 @@ export default class ExhentaiService {
       const item = imageUrl[i];
       const pageIndex = i + 1;
       const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
+      fs.ensureFileSync(targetUrl);
 
       const handleDownloadStream = async () => {
         trace('download begin: ' + item);
@@ -256,7 +257,7 @@ export default class ExhentaiService {
           .on('data', () => {
             const newTimer = Date.now();
             if (
-              newTimer - timer >= 30 * 1000 &&
+              newTimer - timer >= this.config.requestTime &&
               fs.existsSync(targetUrl) &&
               status
             ) {
@@ -265,6 +266,12 @@ export default class ExhentaiService {
               error('time out at page index: ' + pageIndex);
               status = false;
             }
+          })
+          .on('error', () => {
+            error('unexpected error occar, will re-request later');
+            fs.unlinkSync(targetUrl);
+            trace(`unlink: ${pageIndex}.jpg`);
+            handleDownloadStream();
           })
           .pipe(
             imageStream.on('finish', () => {
@@ -291,21 +298,18 @@ export default class ExhentaiService {
     }
   };
 
-  getThumbnaiUrlFromDetailPage = async () => {
-    const restDetailUrls: string[] = await this.getUrlFromPaginationInfo();
-    const firstPageThumbnailUrls: string[] = await this.getAllThumbnaiUrls();
-    await this.page.waitFor(this.config.waitTime);
-
+  getThumbnailUrlFromDetailPage = async (restDetailUrls: string[]) => {
+    const result: string[] = [];
     for (const item of restDetailUrls) {
-      await this.gotoTargetPage(item);
-      const thumbnailUrlsFromNextPage: string[] = await this.getAllThumbnaiUrls();
-      firstPageThumbnailUrls.push(...thumbnailUrlsFromNextPage);
+      await this.gotoTargetPage(item, true);
+      const thumbnailUrls: string[] = await this.getAllThumbnaiUrls();
+      result.push(...thumbnailUrls);
 
-      info('image length: ' + firstPageThumbnailUrls.length);
+      info('image length: ' + result.length);
 
       await this.page.waitFor(this.config.waitTime);
     }
-    return firstPageThumbnailUrls;
+    return result;
   };
 
   fetchImageUrls = async (thumbnailUrls: string[]) => {
@@ -339,7 +343,7 @@ export default class ExhentaiService {
     const timer = Date.now();
     try {
       await this.gotoTargetPage(targetUrl, true);
-      if (Date.now() - timer >= 30 * 1000) {
+      if (Date.now() - timer >= this.config.requestTime) {
         throw Error('time out at page index: ' + pageIndex);
       }
     } catch (err) {
