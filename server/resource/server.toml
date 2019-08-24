@@ -7,6 +7,7 @@ winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.ex
 linuxChromePath = '/opt/google/chrome/chrome'
 waitTime = 1000
 waitTimeAfterError = 10000
+requestTime = 90000
 maxPageIndex = 40
 downloadPath = 'exhentai'
 winProxy = 'http://127.0.0.1:1080'
