@@ -43,7 +43,7 @@ const renderDropdown = ({ onDownload, wrapperHeight, item }: any) => (
   </Dropdown>
 );
 
-export default ({
+const ExHentaiList = ({
   dataSource,
   onDownload,
   wrapperHeight,
@@ -62,3 +62,5 @@ export default ({
     ))}
   </Row>
 );
+
+export default ExHentaiList;
