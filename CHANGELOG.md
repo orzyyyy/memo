@@ -7,6 +7,35 @@
 
 ---
 
+## 1.1.0
+
+`2019-08-24`
+
+- 修复创建 `document` 后报的 404 [#127](https://github.com/orzyyyy/memo/pull/127)
+- 增加东方风 `Loading` 页 [#131](https://github.com/orzyyyy/memo/pull/131)
+- 优化打包方式。现在的首页几乎已经按需加载了 [#132](https://github.com/orzyyyy/memo/pull/132)
+- 页面自适应 [#133](https://github.com/orzyyyy/memo/pull/133)
+- 首页列表增加类型前缀 [#135](https://github.com/orzyyyy/memo/pull/135)
+- 修复不同系统对路径处理方式的差异引起的报错
+- 增加基于 `socket.io` 的 live reload [#143](https://github.com/orzyyyy/memo/pull/143)
+- `nino-cli` 升级到 1.1.1，将 `tslint` 替换为 `eslint`
+- 移除 `exhentai` list 中的名称
+- 增加接口 `test`，用于区分线上线下环境 [#152](https://github.com/orzyyyy/memo/pull/152) [#155](https://github.com/orzyyyy/memo/pull/155) [#157](https://github.com/orzyyyy/memo/pull/157) [#159](https://github.com/orzyyyy/memo/pull/159) [#160](https://github.com/orzyyyy/memo/pull/160)
+- 修复 Icon 无法 `tree-shaking` 的问题 [#167](https://github.com/orzyyyy/memo/pull/167)
+  - 更新 `antd` 版本到 `4.0.0-alpha.2`，使用新的 api 重构了 `EditForm`
+  - 增加依赖 `@ant-design/icons` 以实现 `tree-shaking`
+- 增加 `exhentai` 回溯历史 list 信息的页面，仅在本地可用 [#169](https://github.com/orzyyyy/memo/pull/169)
+- 增加 `exhentai` 不同系统下的代理端口 [#171](https://github.com/orzyyyy/memo/pull/171)
+- 新增 `document` 后更新 `sider.json` [#172](https://github.com/orzyyyy/memo/pull/172)
+- 改善 `EditForm` 增加标签时的操作行为。现在不再以 hack 的方式扭曲使用 `Select` 了，而是通过额外的按钮来切换到编辑模式 [#175](https://github.com/orzyyyy/memo/pull/175)
+- 修复 `exhentai` 在爬完 list 后，直接访问页面会提示新抓取 list 404 的问题 [#178](https://github.com/orzyyyy/memo/pull/178)
+- 新增 `exhentai` 对异常的处理 [#149](https://github.com/orzyyyy/memo/issues/149)
+  - 获取 list 失败或超时时，休眠一段时间后重新发起请求，直到请求完整 [#184](https://github.com/orzyyyy/memo/pull/184)
+  - 获取 download 地址失败或超时时，休眠一段时间后重新发起请求，直到请求完整 [#185](https://github.com/orzyyyy/memo/pull/185)
+  - download 某张图片失败或超时时，先删除当前图片，然后重新发起请求，直到请求完整 [#186](https://github.com/orzyyyy/memo/pull/186)
+
+---
+
 ## 1.0.1
 
 `2019-07-20`
