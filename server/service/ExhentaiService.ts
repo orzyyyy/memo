@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs-extra';
-import request from 'request-promise';
+import request from 'request';
 import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
@@ -243,34 +243,47 @@ export default class ExhentaiService {
     for (let i = 0; i < imageUrl.length; i++) {
       const item = imageUrl[i];
       const pageIndex = i + 1;
+      const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
 
-      trace('download begin: ' + item);
-
-      await request
-        .get({ url: item } as {
-          url: string;
-          proxy: string;
-        })
-        .on('error', (err: any) => {
-          error(err + ' => ' + item + ': ' + pageIndex);
-        })
-        .pipe(
-          fs
-            .createWriteStream(
-              joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
-            )
-            .on('finish', () => {
-              counter.push(pageIndex);
-              success(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
-
-              if (counter.length === imageUrl.length) {
-                success('download completed');
-              }
-            })
-            .on('error', (err: any) =>
-              error(`${pageIndex}.jpg failed, ${err}`),
-            ),
+      const handleDownloadStream = async () => {
+        trace('download begin: ' + item);
+        const imageStream = fs.createWriteStream(
+          joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
         );
+        const timer = Date.now();
+        let status = true;
+        await request(item)
+          .on('data', () => {
+            const newTimer = Date.now();
+            if (
+              newTimer - timer >= 30 * 1000 &&
+              fs.existsSync(targetUrl) &&
+              status
+            ) {
+              imageStream.close();
+              trace(`unlink: ${pageIndex}.jpg`);
+              error('time out at page index: ' + pageIndex);
+              status = false;
+            }
+          })
+          .pipe(
+            imageStream.on('finish', () => {
+              if (status) {
+                counter.push(pageIndex);
+                success(
+                  `${pageIndex}.jpg ${counter.length}/${imageUrl.length}`,
+                );
+                if (counter.length === imageUrl.length) {
+                  success('download completed');
+                }
+              } else {
+                fs.unlinkSync(targetUrl);
+                handleDownloadStream();
+              }
+            }),
+          );
+      };
+      await handleDownloadStream();
       if (isBrowserExist && i % 2 === 0) {
         await this.browser.close();
         await this.page.waitFor(this.config.waitTime);
