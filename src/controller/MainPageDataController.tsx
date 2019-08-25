@@ -69,6 +69,7 @@ export default class MainPageDataController extends Component<
       })
       .then(() => {
         bindSocket();
+        this.handleEdit();
         this.setState({ isLocal: true }, () => callback && callback());
       })
       .catch();
@@ -116,14 +117,21 @@ export default class MainPageDataController extends Component<
     }
   };
 
-  handleEdit = (formDataItem?: any) => {
-    import('../pages/EditForm').then(EditForm => {
+  handleEdit = (formDataItem?: any, visible?: boolean) => {
+    if (!this.state.EditForm) {
+      import('../pages/EditForm').then(EditForm => {
+        this.setState({
+          formVisible: !!visible,
+          EditForm: EditForm.default || EditForm,
+          formDataItem,
+        });
+      });
+    } else {
       this.setState({
-        formVisible: true,
-        EditForm: EditForm.default || EditForm,
+        formVisible: !!visible,
         formDataItem,
       });
-    });
+    }
   };
 
   handleSubmit = async (item: FormProps, dataItem?: any) => {

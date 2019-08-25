@@ -9,7 +9,7 @@ import { SelectValue } from 'antd/lib/select';
 
 export interface MainPageProps {
   dataSource: MappingProps[];
-  onEdit: (dataItem?: any) => void;
+  onEdit: (dataItem?: any, visible?: boolean) => void;
   onDelete?: (dataItem: any) => void;
   menuData: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;

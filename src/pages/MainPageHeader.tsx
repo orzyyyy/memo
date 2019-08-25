@@ -46,7 +46,7 @@ const MainPageHeader = ({
       />
       <Button
         style={{ position: 'absolute', right: 24, top: 10 }}
-        onClick={() => onEdit()}
+        onClick={() => onEdit(undefined, true)}
       >
         <Plus />
       </Button>
