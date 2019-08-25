@@ -24,7 +24,10 @@ const MainPageList = ({
         <Dropdown
           overlay={() => (
             <Menu>
-              <Menu.Item key={`add-${item.id}`} onClick={() => onEdit(item)}>
+              <Menu.Item
+                key={`add-${item.id}`}
+                onClick={() => onEdit(item, true)}
+              >
                 修改
               </Menu.Item>
               <Menu.Item
