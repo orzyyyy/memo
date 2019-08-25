@@ -96,7 +96,7 @@ export default class MainPage extends Component<MainPageProps, MainPageState> {
     const { menuData } = this.props;
     const { siderSelectedKey } = this.state;
     return (
-      <Sider theme="light">
+      <Sider theme="light" collapsible collapsedWidth={0}>
         <Menu
           selectedKeys={[siderSelectedKey]}
           mode="inline"

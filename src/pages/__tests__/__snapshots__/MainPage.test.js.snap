@@ -5,6 +5,8 @@ exports[`MainPage render correctly 1`] = `
   className="MainPage"
 >
   <Sider
+    collapsedWidth={0}
+    collapsible={true}
     theme="light"
   >
     <Menu
