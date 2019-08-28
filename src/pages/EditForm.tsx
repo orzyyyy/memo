@@ -12,7 +12,6 @@ export interface FormProps {
   subType: string;
 }
 export interface EditFormProps {
-  form: any;
   visible: boolean;
   selectData: SiderProps[];
   onSubmit: (form?: FormProps, dataItem?: any) => void;
