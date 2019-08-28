@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainPage, { MainPageProps, MainPageState } from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
-import { FormProps } from '../pages/EditForm';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
 import { SelectValue } from 'antd/lib/select';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
+import EditForm, { FormProps } from '../pages/EditForm';
+import ExhentaiList from './ExHentaiListDataController';
 
 export interface SiderProps {
   key: string;
@@ -35,31 +36,54 @@ const bindSocket = () => {
   });
 };
 
-export default class MainPageDataController extends Component<
-  any,
-  MainPageDataControllerState
-> {
-  state: MainPageDataControllerState = {
-    dataSource: [],
-    menuData: [],
-    EditForm: null,
-    ExhentaiList: null,
-    formVisible: false,
-    formLoading: false,
-    formDataItem: null,
-    isExhentai: false,
-    isLocal: false,
-    exhentaiDateSet: [],
-    exhentaiListTargetDataSource: [],
-  };
+const handleExhentaiDownload = (e: any) => {
+  const url = e.target.value;
+  fetch('exhentai/download', {
+    body: JSON.stringify({ url }),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(response => response.text())
+    .then(result => result === 'true' && message.success('保存完成'));
+};
 
-  componentDidMount = () => {
-    this.checkLocalStatus(this.getExhentaiDateSet);
-    this.getSider();
-    this.getMapping();
-  };
+const handleListItemClick = ({
+  category,
+  id,
+}: {
+  category: 'mapping' | 'markdown';
+  id: string;
+}) => {
+  location.hash = `/${category}/${id}`;
+};
 
-  checkLocalStatus = (callback?: () => void) => {
+const getExhentaiTargetDataSource = async (url: string) => {
+  const response = await fetch(url);
+  const exhentaiListTargetDataSource = await response.json();
+  return exhentaiListTargetDataSource;
+};
+
+const MainPageDataController = () => {
+  const [dataSource, setDataSource] = useState([]);
+  const [menuData, setMenuData] = useState([]);
+  const [formVisible, setFormVisible] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formDataItem, setFormDataItem] = useState();
+  const [isExhentai, setIsExhentai] = useState(false);
+  const [isLocal, setIsLocal] = useState(false);
+  const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
+  const [
+    exhentaiListTargetDataSource,
+    setExhentaiListTargetDataSource,
+  ] = useState([]);
+
+  useEffect(() => {
+    checkLocalStatus(getExhentaiDateSet);
+    getSider();
+    getMapping();
+  }, []);
+
+  const checkLocalStatus = (callback?: () => void) => {
     fetch('/test')
       .then(response => {
         if (response.ok) {
@@ -69,40 +93,46 @@ export default class MainPageDataController extends Component<
       })
       .then(() => {
         bindSocket();
-        this.handleEdit();
-        this.setState({ isLocal: true }, () => callback && callback());
+        setIsLocal(true);
+        if (callback) {
+          callback();
+        }
       })
       .catch();
   };
 
-  getExhentaiDateSet = () => {
+  const getExhentaiDateSet = () => {
     fetch('/exhentai/dateSet')
       .then(response => response.json())
       .then(exhentaiDateSet => {
-        this.handleExhentaiSelectChange(
+        handleExhentaiSelectChange(
           exhentaiDateSet.length ? exhentaiDateSet[0] : '',
         );
-        this.setState({ exhentaiDateSet });
+        setExhentaiDateSet(exhentaiDateSet);
       });
   };
 
-  getMapping = async () => {
+  const getMapping = async () => {
     const response = await fetch('./assets/mapping.json');
     const dataSource = await response.json();
-    this.setState({
-      dataSource: dataSource.sort(
-        (a: any, b: any) => b.modifyTime - a.modifyTime,
-      ),
-    });
+    setDataSource(
+      dataSource.sort((a: any, b: any) => b.modifyTime - a.modifyTime),
+    );
   };
 
-  getSider = async () => {
+  const getSider = async () => {
     const response = await fetch('./assets/sider.json');
     const menuData = await response.json();
-    this.setState({ menuData });
+    setMenuData(menuData);
   };
 
-  handleDelete = async ({ id, category }: { id: string; category: string }) => {
+  const handleDelete = async ({
+    id,
+    category,
+  }: {
+    id: string;
+    category: string;
+  }) => {
     const response = await fetch('/document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
@@ -113,32 +143,20 @@ export default class MainPageDataController extends Component<
     if (!result) {
       console.error('error with delete');
     } else {
-      this.getMapping();
+      getMapping();
     }
   };
 
-  handleEdit = (formDataItem?: any, visible?: boolean) => {
-    if (!this.state.EditForm) {
-      import('../pages/EditForm').then(EditForm => {
-        this.setState({
-          formVisible: !!visible,
-          EditForm: EditForm.default || EditForm,
-          formDataItem,
-        });
-      });
-    } else {
-      this.setState({
-        formVisible: !!visible,
-        formDataItem,
-      });
-    }
+  const handleEdit = (formDataItem?: any, visible?: boolean) => {
+    setFormVisible(!!visible);
+    setFormDataItem(formDataItem);
   };
 
-  handleSubmit = async (item: FormProps, dataItem?: any) => {
+  const handleSubmit = async (item: FormProps, dataItem?: any) => {
     if (!item && !dataItem) {
       return;
     }
-    this.setState({ formLoading: true });
+    setFormLoading(true);
     let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
@@ -157,116 +175,63 @@ export default class MainPageDataController extends Component<
       id = await response.text();
       message.success(`${item.category} 初始化完成`);
     }
-    this.handleModalCancel();
+    handleModalCancel();
     location.hash = `/${item.category}${
       item.category === 'markdown' ? '/edit' : ''
     }/${id}`;
   };
 
-  handleModalCancel = () => {
-    this.setState({ formVisible: false });
+  const handleModalCancel = () => {
+    setFormVisible(false);
   };
 
-  handleExhentaiDownload = (e: any) => {
-    const url = e.target.value;
-    fetch('exhentai/download', {
-      body: JSON.stringify({ url }),
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then(response => response.text())
-      .then(result => result === 'true' && message.success('保存完成'));
-  };
-
-  renderContent = (
+  const renderContent = (
     mainPageProps: MainPageProps,
     mainPageState: MainPageState,
   ) => {
-    const {
-      isExhentai,
-      ExhentaiList,
-      exhentaiListTargetDataSource,
-    } = this.state;
     if (isExhentai && ExhentaiList) {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
     return <MainPageList props={mainPageProps} state={mainPageState} />;
   };
 
-  handleMenuClick = async (keyPath: string[]) => {
-    this.setState({
-      isExhentai: keyPath.length === 1 && keyPath[0] === 'ex-hentai-module',
-    });
-    if (!this.state.ExhentaiList) {
-      await import('./ExHentaiListDataController').then(target => {
-        this.setState({
-          ExhentaiList: target.default,
-        });
-      });
-    }
+  const handleMenuClick = (keyPath: string[]) => {
+    setIsExhentai(keyPath.length === 1 && keyPath[0] === 'ex-hentai-module');
   };
 
-  handleListItemClick = ({
-    category,
-    id,
-  }: {
-    category: 'mapping' | 'markdown';
-    id: string;
-  }) => {
-    location.hash = `/${category}/${id}`;
-  };
-
-  handleExhentaiSelectChange = async (value: SelectValue) => {
+  const handleExhentaiSelectChange = async (value: SelectValue) => {
     const url = `./assets/exhentai/${value}.json`;
-    const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await this.getExhentaiTargetDataSource(
+    const exhentaiListTargetDataSource: any = await getExhentaiTargetDataSource(
       url,
     );
-    this.setState({ exhentaiListTargetDataSource });
+    setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
 
-  getExhentaiTargetDataSource = async (url: string) => {
-    const response = await fetch(url);
-    const exhentaiListTargetDataSource = await response.json();
-    return exhentaiListTargetDataSource;
-  };
+  return (
+    <>
+      <MainPage
+        dataSource={dataSource}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onMenuClick={handleMenuClick}
+        menuData={menuData}
+        onExhentaiDownload={handleExhentaiDownload}
+        renderContent={renderContent}
+        onListItemClick={handleListItemClick}
+        isLocal={isLocal}
+        exhentaiDateSet={exhentaiDateSet}
+        onExhentaiSelectChange={handleExhentaiSelectChange}
+      />
+      <EditForm
+        visible={formVisible}
+        selectData={menuData.filter((item: any) => item.children)}
+        onSubmit={handleSubmit}
+        onCancel={handleModalCancel}
+        loading={formLoading}
+        dataItem={formDataItem}
+      />
+    </>
+  );
+};
 
-  render = () => {
-    const {
-      dataSource,
-      menuData,
-      EditForm,
-      formVisible,
-      formLoading,
-      formDataItem,
-      isLocal,
-      exhentaiDateSet,
-    } = this.state;
-    return (
-      <>
-        <MainPage
-          dataSource={dataSource}
-          onEdit={this.handleEdit}
-          onDelete={this.handleDelete}
-          onMenuClick={this.handleMenuClick}
-          menuData={menuData}
-          onExhentaiDownload={this.handleExhentaiDownload}
-          renderContent={this.renderContent}
-          onListItemClick={this.handleListItemClick}
-          isLocal={isLocal}
-          exhentaiDateSet={exhentaiDateSet}
-          onExhentaiSelectChange={this.handleExhentaiSelectChange}
-        />
-        {EditForm && (
-          <EditForm
-            visible={formVisible}
-            selectData={menuData.filter(item => item.children)}
-            onSubmit={this.handleSubmit}
-            onCancel={this.handleModalCancel}
-            loading={formLoading}
-            dataItem={formDataItem}
-          />
-        )}
-      </>
-    );
-  };
-}
+export default MainPageDataController;
