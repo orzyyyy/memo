@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './css/TohoLoading.css';
 
+export interface TohoLoadingProps {
+  currentNeta?: string[];
+}
+
 const neta = [
   [
     '你们体会过吉娃娃丢了的感觉吗？',
@@ -36,13 +40,14 @@ const neta = [
   ],
 ];
 
-const currentNeta = neta[Math.round(Math.random() * 100) % neta.length];
 let dotTimer: number;
 let netaTimer: number;
 let netaToggleTimer: number;
 const dots = ['.', '..', '...', '....', '.....'];
+const defaultNeta = neta[Math.round(Math.random() * 100) % neta.length];
 
-const TohoLoading = () => {
+const TohoLoading = (props: TohoLoadingProps) => {
+  const currentNeta = props.currentNeta || defaultNeta;
   const [currentNetaIndex, setCurrentNetaIndex] = useState(-1);
   const [currentDot, setCurrentDot] = useState(dots[2]);
   const [dotTop, setDotTop] = useState('50%');
@@ -69,7 +74,7 @@ const TohoLoading = () => {
           const result = currentNetaIndex + 1;
           setCurrentNetaIndex(result);
         }
-      }, 1500);
+      }, 2000);
     }
     return () => {
       clearTimeout(netaToggleTimer);
