@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/TohoLoading.css';
+
+export interface TohoLoadingProps {
+  currentNeta?: string[];
+}
 
 const neta = [
   [
@@ -36,73 +40,62 @@ const neta = [
   ],
 ];
 
-export interface TohoLoadingProps {
-  currentNeta?: string[];
-}
+let dotTimer: number;
+let netaTimer: number;
+let netaToggleTimer: number;
+const dots = ['.', '..', '...', '....', '.....'];
+const defaultNeta = neta[Math.round(Math.random() * 100) % neta.length];
 
-export interface TohoLoadingState {
-  currentNeta: string[];
-  currentNetaIndex: number;
-  currentDot: string;
-  dotTop: string;
-  dotLeft: string;
-  dotFontSize: number;
-}
+const TohoLoading = (props: TohoLoadingProps) => {
+  const currentNeta = props.currentNeta || defaultNeta;
+  const [currentNetaIndex, setCurrentNetaIndex] = useState(-1);
+  const [currentDot, setCurrentDot] = useState(dots[2]);
+  const [dotTop, setDotTop] = useState('50%');
+  const [dotLeft, setDotLeft] = useState('50%');
+  const [dotFontSize, setDotFontSize] = useState(28);
+  const [isDotLoadingCompleted, setDotLoadingStatus] = useState(false);
 
-export default class TohoLoading extends Component<
-  TohoLoadingProps,
-  TohoLoadingState
-> {
-  dotTimer: number;
-  netaTimer: number;
-  dots = ['.', '..', '...', '....', '.....'];
-
-  state = {
-    currentNeta:
-      this.props.currentNeta ||
-      neta[Math.round(Math.random() * 100) % neta.length],
-    currentNetaIndex: -1,
-    currentDot: this.dots[2],
-    dotTop: '50%',
-    dotLeft: '50%',
-    dotFontSize: 28,
-  };
-
-  componentDidMount() {
-    this.handleLoadingDot();
-    this.netaTimer = window.setTimeout(() => {
-      this.moveLogingToRightBottom();
-      this.handleNeta();
+  useEffect(() => {
+    handleLoadingDot();
+    netaTimer = window.setTimeout(() => {
+      moveLoggerToRightBottom();
+      setDotLoadingStatus(true);
     }, 3000);
-  }
+    return () => {
+      clearInterval(dotTimer);
+      clearTimeout(netaTimer);
+    };
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this.dotTimer);
-    clearTimeout(this.netaTimer);
-  }
+  useEffect(() => {
+    if (isDotLoadingCompleted) {
+      netaToggleTimer = window.setInterval(() => {
+        if (currentNetaIndex < currentNeta.length - 1) {
+          const result = currentNetaIndex + 1;
+          setCurrentNetaIndex(result);
+        }
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(netaToggleTimer);
+    };
+  }, [isDotLoadingCompleted, currentNetaIndex]);
 
-  handleLoadingDot = () => {
+  const handleLoadingDot = () => {
     let counter = 3;
-    this.dotTimer = window.setInterval(() => {
-      this.setState({ currentDot: this.dots[counter % 5] });
+    dotTimer = window.setInterval(() => {
+      setCurrentDot(dots[counter % 5]);
       counter++;
     }, 800);
   };
 
-  moveLogingToRightBottom = () => {
-    this.setState({ dotTop: '90%', dotLeft: '90%', dotFontSize: 20 });
+  const moveLoggerToRightBottom = () => {
+    setDotTop('90%');
+    setDotLeft('90%');
+    setDotFontSize(20);
   };
 
-  handleNeta = () => {
-    let { currentNetaIndex, currentNeta } = this.state;
-    setInterval(() => {
-      if (currentNetaIndex < currentNeta.length - 1) {
-        this.setState({ currentNetaIndex: ++currentNetaIndex });
-      }
-    }, 2000);
-  };
-
-  renderCurrentNeta = ({ currentNeta, currentNetaIndex }: TohoLoadingState) => (
+  const renderCurrentNeta = () => (
     <div className="neta-wrapper">
       <ul>
         {currentNeta.map(item => (
@@ -119,12 +112,7 @@ export default class TohoLoading extends Component<
     </div>
   );
 
-  renderDot = ({
-    currentDot,
-    dotFontSize,
-    dotTop,
-    dotLeft,
-  }: TohoLoadingState) => (
+  const renderDot = () => (
     <div
       className="dot-wrapper"
       style={{
@@ -137,12 +125,12 @@ export default class TohoLoading extends Component<
     </div>
   );
 
-  render() {
-    return (
-      <div className="TohoLoading">
-        {this.renderCurrentNeta(this.state)}
-        {this.renderDot(this.state)}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="TohoLoading">
+      {renderCurrentNeta()}
+      {renderDot()}
+    </div>
+  );
+};
+
+export default TohoLoading;
