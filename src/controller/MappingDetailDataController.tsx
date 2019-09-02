@@ -3,22 +3,32 @@ import MappingDetail from '../pages/MappingDetail';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { message } from 'antd';
+import { DataSource } from 'mini-xmind/lib/canvas';
 
 const MappingDetailDataController = (props: any) => {
-  const [dataSource, setDataSource] = useState({});
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    getTargetMapping();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', bindKeyDown);
+    return () => window.removeEventListener('keydown', bindKeyDown);
+  }, [data]);
 
   const getTargetMapping = async () => {
     const targetId = props.match.params.id;
     const response = await fetch(`assets/mapping/${targetId}.json`);
-    const dataSource = await response.json();
+    const result = await response.json();
     const date = format(new Date(), 'a HH:mm:ss', {
       locale: zhCN,
     });
     message.success(`更新时间：${date}`);
-    setDataSource(dataSource);
+    setData(result);
   };
 
-  const handleOnSave = async (data: any) => {
+  const handleOnSave = async () => {
     const targetId = props.match.params.id;
     const response = await fetch('/document/update', {
       method: 'POST',
@@ -34,16 +44,27 @@ const MappingDetailDataController = (props: any) => {
     if (!result) {
       message.error('error with save');
     } else {
-      // location.reload();
       getTargetMapping();
     }
   };
 
-  useEffect(() => {
-    getTargetMapping();
-  }, []);
+  function bindKeyDown(e: KeyboardEvent) {
+    const { ctrlKey, keyCode } = e;
 
-  return <MappingDetail dataSource={dataSource} onSave={handleOnSave} />;
+    // ctrl + s
+    if (ctrlKey && keyCode === 83) {
+      e.preventDefault();
+      handleOnSave();
+    } else {
+      e.stopPropagation();
+    }
+  }
+
+  const handleOnChange = (data: DataSource) => {
+    setData(data);
+  };
+
+  return <MappingDetail dataSource={data} onChange={handleOnChange} />;
 };
 
 export default MappingDetailDataController;
