@@ -15,25 +15,23 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run pre:css && tsc && cross-env BUILD_ENV=prod nino koei --not-copy-assets",
+    "build": "rimraf dist && cross-env BUILD_ENV=prod nino koei --not-copy-assets",
     "clean": "rimraf node_modules package-lock.json bin dist && npm i",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "node scripts/publish",
-    "dev": "npm run pre:css && nino koei -w -d --not-copy-assets",
+    "dev": "rimraf dist && nino koei -w -d --not-copy-assets",
     "generate": "node scripts/generateSider",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
-    "pre:css": "rimraf dist && tsc && cp -r src/pages/css dist/src/pages",
     "pre:start": "npm-run-all compile:server clean:views generate",
     "prettier": "nino prettier",
     "run:server": "node bin",
     "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
     "start": "npm-run-all --parallel server dev",
-    "test": "nino test",
-    "tsc": "tsc"
+    "test": "nino test"
   },
   "pre-commit": [
     "lint-staged"
