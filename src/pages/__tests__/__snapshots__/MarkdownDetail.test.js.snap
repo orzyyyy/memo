@@ -26,11 +26,11 @@ exports[`MarkdownDetail render correctly 1`] = `
           transformLinkUri={[Function]}
         >
           <Root
-            key="root-1-1"
+            key="root-1-1-0"
           >
             <List
               depth={0}
-              key="list-1-1"
+              key="list-1-1-0"
               ordered={false}
               start={null}
               tight={true}
@@ -39,14 +39,14 @@ exports[`MarkdownDetail render correctly 1`] = `
                 <ListItem
                   checked={null}
                   index={0}
-                  key="listItem-1-1"
+                  key="listItem-1-1-0"
                   ordered={false}
                   tight={true}
                 >
                   <li>
                     <TextRenderer
-                      key="text-1-3"
-                      nodeKey="text-1-3"
+                      key="text-1-3-0"
+                      nodeKey="text-1-3-0"
                       value="test"
                     >
                       test
