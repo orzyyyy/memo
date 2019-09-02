@@ -1,7 +1,6 @@
 /node_modules/
 *.rar
 *.map
-/.vscode/
 /coverage/
 /dist/
 *.jsx
