@@ -329,7 +329,7 @@ export default class ExhentaiService {
         );
       } while (!target);
       const result: any = target;
-      results = [...results, ...result];
+      results.push(result);
       await this.page.waitFor(this.config.waitTime);
     }
     return results;
