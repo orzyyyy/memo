@@ -46,7 +46,6 @@ exports[`MarkdownEditor render correctly 1`] = `
                 "height": "90vh",
               }
             }
-            value="testDataSource"
           >
             <ReactResizeObserver
               disabled={true}
@@ -62,7 +61,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                     "height": "90vh",
                   }
                 }
-                value="testDataSource"
+                value=""
               />
             </ReactResizeObserver>
           </TextArea>
@@ -91,9 +90,7 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <Component
-            dataSource="testDataSource"
-          >
+          <Component>
             <div
               className="MarkdownDetail"
             >
@@ -111,25 +108,12 @@ exports[`MarkdownEditor render correctly 1`] = `
                     rawSourcePos={false}
                     renderers={Object {}}
                     skipHtml={false}
-                    source="testDataSource"
                     sourcePos={false}
                     transformLinkUri={[Function]}
                   >
                     <Root
                       key="root-1-1-0"
-                    >
-                      <p
-                        key="paragraph-1-1-0"
-                      >
-                        <TextRenderer
-                          key="text-1-1-0"
-                          nodeKey="text-1-1-0"
-                          value="testDataSource"
-                        >
-                          testDataSource
-                        </TextRenderer>
-                      </p>
-                    </Root>
+                    />
                   </ReactMarkdownWithHtml>
                 </div>
               </div>
@@ -161,7 +145,7 @@ exports[`MarkdownEditor render correctly 1`] = `
             ghost={false}
             htmlType="button"
             loading={false}
-            onClick={[Function]}
+            onClick={null}
           >
             <Wave>
               <button
