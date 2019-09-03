@@ -29,15 +29,16 @@ describe('MainPageList', () => {
   it('render correctly', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
-    const props = {
-      dataSource,
-      onDelete,
-      onEdit,
-    };
-    const state = {
-      siderSelectedKey: 'all',
-    };
-    const wrapper = mount(<MainPageList props={props} state={state} />);
+    const onListItemClick = jest.fn();
+    const wrapper = mount(
+      <MainPageList
+        siderSelectedKey="all"
+        dataSource={dataSource}
+        onDelete={onDelete}
+        onEdit={onEdit}
+        onListItemClick={onListItemClick}
+      />,
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -45,16 +46,15 @@ describe('MainPageList', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
     const onListItemClick = jest.fn();
-    const props = {
-      dataSource,
-      onDelete,
-      onEdit,
-      onListItemClick,
-    };
-    const state = {
-      siderSelectedKey: 'all',
-    };
-    const wrapper = mount(<MainPageList props={props} state={state} />);
+    const wrapper = mount(
+      <MainPageList
+        siderSelectedKey="all"
+        dataSource={dataSource}
+        onDelete={onDelete}
+        onEdit={onEdit}
+        onListItemClick={onListItemClick}
+      />,
+    );
     wrapper
       .find('Item')
       .first()
