@@ -48,7 +48,11 @@ const dataSource = [
 describe('MainPage', () => {
   it('render correctly', () => {
     const wrapper = shallow(
-      <MainPage dataSource={dataSource} menuData={menuData} onEdit={null} />,
+      <MainPage
+        dataSource={dataSource}
+        menuData={menuData}
+        siderSelectedKey="all"
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -67,14 +71,5 @@ describe('MainPage', () => {
       .at(1)
       .simulate('click');
     expect(onMenuClick).toHaveBeenCalled();
-  });
-
-  it('import Header dynamically correctly', async () => {
-    const wrapper = await mount(
-      <MainPage dataSource={dataSource} menuData={[]} exhentaiDateSet={[]} />,
-    );
-    wrapper.setProps({ isLocal: true });
-    await wrapper.update();
-    expect(wrapper.state('DynamicHeader')).not.toBeNull();
   });
 });
