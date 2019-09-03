@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Input, Select } from 'antd';
+import { Button, Input, Select, Layout } from 'antd';
 import { MainPageProps } from './MainPage';
 import { Plus } from '@ant-design/icons';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
+const { Header } = Layout;
 
 const MainPageHeader = ({
-  Header,
   onExhentaiDownload,
   onEdit,
   exhentaiDateSet,
   onExhentaiSelectChange,
-}: MainPageProps & { Header: any }) => {
+}: MainPageProps) => {
   const [selectValue, setSelectValue] = useState();
 
   const handleSelectChange = (value: SelectValue) => {

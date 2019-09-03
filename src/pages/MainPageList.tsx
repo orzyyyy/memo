@@ -1,18 +1,28 @@
 import React from 'react';
 import { List, Dropdown, Menu } from 'antd';
 import { format } from 'date-fns';
-import { MainPageProps, MainPageState } from './MainPage';
 import { Apartment, FileMarkdown } from '@ant-design/icons';
+import { MappingProps } from '../../server/controller/DocumentController';
 
 const MainPageList = ({
-  props,
-  state,
+  onDelete,
+  siderSelectedKey,
+  dataSource,
+  onEdit,
+  onListItemClick,
 }: {
-  props: MainPageProps;
-  state: MainPageState;
+  siderSelectedKey: string;
+  onDelete?: (dataItem: any) => void;
+  dataSource: MappingProps[];
+  onEdit: (dataItem?: any, visible?: boolean) => void;
+  onListItemClick: ({
+    category,
+    id,
+  }: {
+    category: 'mapping' | 'markdown';
+    id: string;
+  }) => void;
 }) => {
-  const { dataSource, onDelete, onEdit } = props;
-  const { siderSelectedKey } = state;
   return (
     <List
       dataSource={
@@ -44,7 +54,7 @@ const MainPageList = ({
           <List.Item
             className="list-item"
             onClick={() =>
-              props.onListItemClick({
+              onListItemClick({
                 category: item.category,
                 id: item.id,
               })

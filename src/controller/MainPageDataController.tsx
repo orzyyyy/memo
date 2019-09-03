@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MainPage, { MainPageProps, MainPageState } from '../pages/MainPage';
+import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
 import { message } from 'antd';
@@ -7,6 +7,7 @@ import { SelectValue } from 'antd/lib/select';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList from './ExHentaiListDataController';
+import { useResize } from '../hooks/useResize';
 
 export interface SiderProps {
   key: string;
@@ -76,6 +77,10 @@ const MainPageDataController = () => {
     exhentaiListTargetDataSource,
     setExhentaiListTargetDataSource,
   ] = useState([]);
+  const [siderOpenKey, setSiderOpenKey] = useState('all');
+  const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+
+  useResize();
 
   useEffect(() => {
     checkLocalStatus(getExhentaiDateSet);
@@ -185,17 +190,24 @@ const MainPageDataController = () => {
     setFormVisible(false);
   };
 
-  const renderContent = (
-    mainPageProps: MainPageProps,
-    mainPageState: MainPageState,
-  ) => {
+  const renderContent = () => {
     if (isExhentai && ExhentaiList) {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
-    return <MainPageList props={mainPageProps} state={mainPageState} />;
+    return (
+      <MainPageList
+        siderSelectedKey={siderSelectedKey}
+        onListItemClick={handleListItemClick}
+        onDelete={handleDelete}
+        dataSource={dataSource}
+        onEdit={handleEdit}
+      />
+    );
   };
 
   const handleMenuClick = (keyPath: string[]) => {
+    setSiderOpenKey(keyPath[1]);
+    setSiderSelectedKey(keyPath[0]);
     setIsExhentai(keyPath.length === 1 && keyPath[0] === 'ex-hentai-module');
   };
 
@@ -210,17 +222,16 @@ const MainPageDataController = () => {
   return (
     <>
       <MainPage
-        dataSource={dataSource}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
         onMenuClick={handleMenuClick}
         menuData={menuData}
         onExhentaiDownload={handleExhentaiDownload}
         renderContent={renderContent}
-        onListItemClick={handleListItemClick}
         isLocal={isLocal}
         exhentaiDateSet={exhentaiDateSet}
         onExhentaiSelectChange={handleExhentaiSelectChange}
+        onEdit={handleEdit}
+        siderOpenKey={siderOpenKey}
+        siderSelectedKey={siderSelectedKey}
       />
       <EditForm
         visible={formVisible}
