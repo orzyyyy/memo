@@ -64,12 +64,7 @@ export default class ExhentaiService {
   };
 
   gotoTargetPage = async (url: string, isFirstPage?: boolean) => {
-    if (isFirstPage) {
-      await this.page.goto('https://www.google.com/', {
-        waitUntil: 'domcontentloaded',
-      });
-    }
-    await this.page.goto(url, {
+    await this.page.goto(isFirstPage ? 'https://www.google.com/' : url, {
       waitUntil: 'domcontentloaded',
     });
   };
