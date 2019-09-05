@@ -24,9 +24,10 @@ jobs:
         run: npm run compile:server
       - name: build
         run: npm run build
-      - name: test
-        run: npm test
-      - name: upload report of coverage
+      - name: test with collecting coverage
+        run: npm run codecov
+        if: matrix.coverage
+      - name: upload report of coverage to codecov
         run: bash <(curl -s https://codecov.io/bash) -t b0824134-3eef-4895-8b64-95d258ac57aa
       - name: deploy to gh-pages
         run: npm run deploy
