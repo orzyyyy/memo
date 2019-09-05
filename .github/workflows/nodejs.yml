@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@master
-      - uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
       - name: install
         run: npm install
       - name: lint
@@ -30,5 +27,9 @@ jobs:
         run: npm run build
       - name: test with reporting coverage
         run: npm run codecov
+      - name: upload coverage to codecov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
       - name: deploy to gh-pages
         run: npm run deploy
