@@ -5,6 +5,9 @@ describe('app entry', () => {
   it('app works', done => {
     request(server)
       .get('/test')
-      .expect(200, done);
+      .expect(200, () => {
+        server.close();
+        done();
+      });
   });
 });
