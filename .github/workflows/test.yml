@@ -1,4 +1,4 @@
-name: Node CI
+name: test
 
 on: [push]
 
@@ -12,19 +12,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
+
+      - name: install node.js environment
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - uses: actions/checkout@master
+
       - name: install
         run: npm install
-      - name: lint
-        run: npm run lint
+
       - name: compile
         run: npm run compile:server
+
       - name: test with reporting coverage
         run: npm run codecov
+
       - name: upload coverage to codecov
         uses: codecov/codecov-action@v1.0.2
         with:
