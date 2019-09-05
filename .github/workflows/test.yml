@@ -1,36 +1,55 @@
-name: test
+name: check
 
 on: [push]
 
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
-      - uses: actions/checkout@v1
-
-      - name: install node.js environment
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - uses: actions/checkout@master
+      - name: checkout
+        uses: actions/checkout@master
 
       - name: install
         run: npm install
 
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: compile
         run: npm run compile:server
 
+    needs: install
+
+  dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check status of building
+        run: npm run build
+
+    needs: install
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: lint
+        run: npm run lint
+
+    needs: install
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: test with reporting coverage
         run: npm run codecov
 
       - name: upload coverage to codecov
-        if: matrix.node-version == '12.x'
         uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+    needs: compile
