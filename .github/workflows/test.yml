@@ -3,7 +3,7 @@ name: check
 on: [push]
 
 jobs:
-  install:
+  compile:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,22 +12,6 @@ jobs:
 
       - name: install
         run: npm install
-
-      - uses: actions/upload-artifact@master
-        with:
-          name: dependencies
-          path: node_modules
-
-  compile:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - uses: actions/download-artifact@master
-        with:
-          name: dependencies
 
       - name: compile
         run: npm run compile:server
@@ -46,9 +30,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - uses: actions/download-artifact@master
-        with:
-          name: dependencies
+      - name: install
+        run: npm install
 
       - name: check status of building
         run: npm run build
@@ -62,9 +45,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - uses: actions/download-artifact@master
-        with:
-          name: dependencies
+      - name: install
+        run: npm install
 
       - name: lint
         run: npm run lint
@@ -78,9 +60,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - uses: actions/download-artifact@master
-        with:
-          name: dependencies
+      - name: install
+        run: npm install
 
       - uses: actions/download-artifact@master
         with:
