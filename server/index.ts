@@ -9,6 +9,7 @@ import IO from 'socket.io';
 import { updateSider } from './utils/document';
 
 updateSider();
+info('listen at http://localhost:9099');
 
 const app = new Koa();
 const server = createServer(app.callback());
@@ -33,7 +34,6 @@ app.use(bodyParser());
 initRouter(app);
 app.use(KoaStatic(joinWithRootPath('dist')));
 
-info('listen at http://localhost:9099');
 server.listen(9099);
 
 export { server };
