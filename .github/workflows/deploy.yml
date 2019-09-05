@@ -2,7 +2,7 @@ name: build and deploy
 on:
   push:
     branches:
-      - migrate
+      - master
 jobs:
   steps:
     runs-on: ubuntu-latest
