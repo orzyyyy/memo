@@ -25,7 +25,10 @@ jobs:
       - name: build
         run: npm run build
       - name: test with reporting coverage
-        run: npm run codecov
-        run: bash <(curl -s https://codecov.io/bash) -t b0824134-3eef-4895-8b64-95d258ac57aa
+        run: |
+          npm run codecov
+          bash <(curl -s https://codecov.io/bash)
+        env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: deploy to gh-pages
         run: npm run deploy
