@@ -25,10 +25,12 @@ jobs:
       - name: build
         run: npm run build
       - name: test with reporting coverage
-        run: |
-          npm run codecov
-          bash <(curl -s https://codecov.io/bash)
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: npm run codecov
       - name: deploy to gh-pages
         run: npm run deploy
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
