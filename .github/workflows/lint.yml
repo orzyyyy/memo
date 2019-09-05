@@ -3,15 +3,15 @@ name: lint
 on: [push]
 
 jobs:
-build:
-  runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-    steps:
-    - name: checkout
-      uses: actions/checkout@master
+      steps:
+      - name: checkout
+        uses: actions/checkout@master
 
-    - name: install
-      run: npm install
+      - name: install
+        run: npm install
 
-    - name: lint
-      run: npm run lint
+      - name: lint
+        run: npm run lint
