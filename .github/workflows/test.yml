@@ -3,7 +3,7 @@ name: check
 on: [push]
 
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,57 +16,6 @@ jobs:
       - name: compile
         run: npm run compile:server
 
-      - uses: actions/upload-artifact@master
-        with:
-          name: server-bin
-          path: bin
-
-    needs: install
-
-  dist:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: install
-        run: npm install
-
-      - name: check status of building
-        run: npm run build
-
-    needs: install
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: install
-        run: npm install
-
-      - name: lint
-        run: npm run lint
-
-    needs: install
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: install
-        run: npm install
-
-      - uses: actions/download-artifact@master
-        with:
-          name: server-bin
-
       - name: test with reporting coverage
         run: npm run codecov
 
@@ -74,5 +23,3 @@ jobs:
         uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
-    needs: compile
