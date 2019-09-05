@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import { MappingProps } from '../controller/DocumentController';
-import { info, error } from './log';
 import { joinWithRootPath, readJsonFile } from './common';
 
 const checkCategory = (category: string) => {
@@ -58,15 +57,9 @@ const updateSider = () => {
     { key: 'ex-hentai-module', title: 'ex-hentai' },
     ...menu,
   ];
-  fs.outputJSON(joinWithRootPath('src/assets/sider.json'), menu, {
+  fs.outputJSONSync(joinWithRootPath('src/assets/sider.json'), menu, {
     spaces: 2,
-  })
-    .then(() => {
-      info('generate menu-sider completed.');
-    })
-    .catch(err => {
-      error(err);
-    });
+  });
 };
 
 const getWriteMappingPaths = (

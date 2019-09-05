@@ -33,8 +33,7 @@ app.use(bodyParser());
 initRouter(app);
 app.use(KoaStatic(joinWithRootPath('dist')));
 
-server.listen(9099, () => {
-  info('listen at http://localhost:9099');
-});
+info('listen at http://localhost:9099');
+server.listen(9099);
 
 export { server };
