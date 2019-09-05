@@ -23,13 +23,9 @@ jobs:
         run: npm run lint
       - name: compile
         run: npm run compile:server
-      - name: build
-        run: npm run build
       - name: test with reporting coverage
         run: npm run codecov
       - name: upload coverage to codecov
         uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-      - name: deploy to gh-pages
-        run: npm run deploy
