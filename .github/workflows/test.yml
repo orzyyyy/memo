@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+
       - name: compile
         run: npm run compile:server
 
@@ -26,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+
       - name: check status of building
         run: npm run build
 
@@ -35,6 +41,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+
       - name: lint
         run: npm run lint
 
@@ -44,6 +53,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+
       - name: test with reporting coverage
         run: npm run codecov
 
