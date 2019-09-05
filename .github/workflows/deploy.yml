@@ -4,7 +4,7 @@ on:
     branches:
       - migrate
 jobs:
-  build-and-deploy:
+  steps:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -13,10 +13,12 @@ jobs:
       - name: install
         run: npm install
 
-      - name: build and deploy
+      - name: build
+        run: npm run build
+
+      - name: deploy
         uses: JamesIves/github-pages-deploy-action@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist
-          BUILD_SCRIPT: npm run build
