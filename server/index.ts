@@ -25,7 +25,7 @@ const initRouter = (targetApp: Koa) => {
   fs.readdirSync(path.join(__dirname, 'controller'))
     .filter((filePath: string) => filePath.endsWith('.js'))
     .map((controllerPath: string) => {
-      const controller = joinWithRootPath(['bin/controller', controllerPath]);
+      const controller = path.join(__dirname, 'controller', controllerPath);
       targetApp.use(require(controller).default.routes());
     });
 };

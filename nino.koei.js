@@ -10,10 +10,6 @@ const plugins = [
       from: path.join(__dirname, 'src/assets'),
       to: path.join(__dirname, 'dist/assets'),
     },
-    {
-      from: path.join(__dirname, '.circleci/config.yml'),
-      to: path.join(__dirname, 'dist/.circleci/config.yml'),
-    },
   ]),
   // new BundleAnalyzerPlugin(),
 ];
@@ -30,7 +26,6 @@ if (process.env.BUILD_ENV !== 'prod') {
 module.exports = {
   entry: {
     ninoninoni: path.join(__dirname, 'src'),
-    'react-base': ['react', 'react-dom'],
   },
   plugins,
   optimization: {
