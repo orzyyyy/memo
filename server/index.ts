@@ -7,6 +7,7 @@ import { joinWithRootPath } from './utils/common';
 import { createServer } from 'http';
 import IO from 'socket.io';
 import { updateSider } from './utils/document';
+import path from 'path';
 
 updateSider();
 
@@ -21,7 +22,7 @@ io.on('connection', socket => {
 });
 
 const initRouter = (targetApp: Koa) => {
-  fs.readdirSync(joinWithRootPath('bin/controller'))
+  fs.readdirSync(path.join(__dirname, 'controller'))
     .filter((filePath: string) => filePath.endsWith('.js'))
     .map((controllerPath: string) => {
       const controller = joinWithRootPath(['bin/controller', controllerPath]);
