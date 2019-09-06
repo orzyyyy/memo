@@ -1,4 +1,4 @@
-name: check
+name: test
 
 on: [push]
 
@@ -12,9 +12,6 @@ jobs:
 
       - name: install
         run: npm install
-
-      - name: compile
-        run: npm run compile:server
 
       - name: test with reporting coverage
         run: npm run codecov
