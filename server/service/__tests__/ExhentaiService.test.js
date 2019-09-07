@@ -3,6 +3,8 @@ import Service from '../ExhentaiService';
 import { goto, mockDetail } from '../__mocks__/puppeteer-core';
 import { ensureDirSync } from '../__mocks__/fs-extra';
 import MockDate from 'mockdate';
+import fs, { readJsonSync } from 'fs-extra';
+import path from 'path';
 
 describe('ExhentaiService', () => {
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
@@ -74,5 +76,36 @@ describe('ExhentaiService', () => {
     getData = jest.fn().mockImplementation(() => []);
     result = await service.handleFetchWithFailed(1, null, 'test', getData);
     expect(result).toEqual();
+  });
+
+  it('fetchListInfo', async () => {
+    const result = await service.fetchListInfo({ postTime: Date.now() });
+    const compareFilePathPrefix = path.join(
+      __dirname,
+      '../../../src/assets/exhentai',
+    );
+    const compareFileName = fs
+      .readdirSync(compareFilePathPrefix)
+      .filter(item => !item.includes('.gitkeep'))
+      .reverse()[0];
+    const compare = readJsonSync(
+      path.join(compareFilePathPrefix, compareFileName),
+    );
+    expect(result[0]).toEqual(compare[0]);
+  });
+
+  it('getUrlFromPaginationInfo', async () => {
+    const result = await service.getUrlFromPaginationInfo();
+    expect(result).toEqual(mockDetail);
+  });
+
+  it('getAllThumbnaiUrls', async () => {
+    const result = await service.getAllThumbnaiUrls();
+    expect(result).toEqual(mockDetail);
+  });
+
+  it('fetchImageUrls', async () => {
+    const result = await service.fetchImageUrls(['test1', 'test2']);
+    expect(result).toEqual(['!@#$% test （——）：；', '!@#$% test （——）：；']);
   });
 });

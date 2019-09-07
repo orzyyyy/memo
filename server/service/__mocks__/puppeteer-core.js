@@ -17,12 +17,15 @@ const goto = jest.fn();
 const $eval = jest.fn().mockImplementation(() => '!@#$% test （——）：；');
 const $$eval = jest.fn().mockImplementation(() => mockDetail);
 const waitFor = jest.fn();
+const close = jest.fn();
 // this.page
 const newPage = jest
   .fn()
   .mockImplementation(() => ({ setCookie, goto, $eval, $$eval, waitFor }));
+// this.browser
 const launch = jest.fn().mockImplementation(() => ({
   newPage,
+  close,
 }));
 
 module.exports = { launch, goto, mockDetail };
