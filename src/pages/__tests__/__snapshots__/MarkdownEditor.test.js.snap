@@ -92,30 +92,19 @@ exports[`MarkdownEditor render correctly 1`] = `
         >
           <Component>
             <div
-              className="MarkdownDetail"
+              className="MarkdownDetail markdown-body"
             >
               <div
                 className="wrapper"
               >
                 <div
                   className="content"
-                >
-                  <ReactMarkdownWithHtml
-                    astPlugins={Array []}
-                    escapeHtml={false}
-                    parserOptions={Object {}}
-                    plugins={Array []}
-                    rawSourcePos={false}
-                    renderers={Object {}}
-                    skipHtml={false}
-                    sourcePos={false}
-                    transformLinkUri={[Function]}
-                  >
-                    <Root
-                      key="root-1-1-0"
-                    />
-                  </ReactMarkdownWithHtml>
-                </div>
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "",
+                    }
+                  }
+                />
               </div>
             </div>
           </Component>
