@@ -25,6 +25,22 @@ exports[`MainPageHeader render correctly 1`] = `
     transitionName="slide-up"
     value=""
   />
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    style={
+      Object {
+        "left": 180,
+        "position": "absolute",
+        "top": 10,
+      }
+    }
+    type="dashed"
+  >
+    列表
+  </Button>
   <Input
     style={
       Object {

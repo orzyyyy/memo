@@ -11,6 +11,7 @@ const MainPageHeader = ({
   onEdit,
   exhentaiDateSet,
   onExhentaiSelectChange,
+  onExhentaiLoadList,
 }: MainPageProps) => {
   const [selectValue, setSelectValue] = useState();
 
@@ -40,6 +41,13 @@ const MainPageHeader = ({
           </Option>
         ))}
       </Select>
+      <Button
+        style={{ position: 'absolute', left: 180, top: 10 }}
+        type="dashed"
+        onClick={onExhentaiLoadList}
+      >
+        列表
+      </Button>
       <Input
         onPressEnter={onExhentaiDownload}
         style={{ position: 'absolute', right: 80, top: 10, width: 350 }}

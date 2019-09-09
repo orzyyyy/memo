@@ -19,6 +19,7 @@ export interface MainPageProps {
   onExhentaiSelectChange: (value: SelectValue) => void;
   siderOpenKey?: string;
   siderSelectedKey?: string;
+  onExhentaiLoadList: () => void;
 }
 
 const renderFooter = () => (
@@ -43,6 +44,7 @@ const MainPage = ({
   onEdit,
   exhentaiDateSet,
   onExhentaiSelectChange,
+  onExhentaiLoadList,
 }: MainPageProps) => {
   const handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
     onMenuClick && onMenuClick(keyPath);
@@ -105,6 +107,7 @@ const MainPage = ({
             onEdit={onEdit}
             exhentaiDateSet={exhentaiDateSet}
             onExhentaiSelectChange={onExhentaiSelectChange}
+            onExhentaiLoadList={onExhentaiLoadList}
           />
         )}
         {renderRealContent()}
