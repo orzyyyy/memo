@@ -1,6 +1,5 @@
 # memo
 
-![badge](https://action-badges.now.sh/orzyyyy/memo)
 [![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
 
 [English](./README.md) | 简体中文
