@@ -1,6 +1,6 @@
 # memo
 
-![CircleCI](https://img.shields.io/circleci/project/github/orzyyyy/memo/master.svg)
+![badge](https://action-badges.now.sh/orzyyyy/memo)
 [![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
 
 [English](./README.md) | 简体中文
