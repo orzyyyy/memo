@@ -48,6 +48,10 @@ const handleExhentaiDownload = (e: any) => {
     .then(result => result === 'true' && message.success('保存完成'));
 };
 
+const handleExhentaiLoadList = () => {
+  fetch('exhentai');
+};
+
 const handleListItemClick = ({
   category,
   id,
@@ -232,6 +236,7 @@ const MainPageDataController = () => {
         onEdit={handleEdit}
         siderOpenKey={siderOpenKey}
         siderSelectedKey={siderSelectedKey}
+        onExhentaiLoadList={handleExhentaiLoadList}
       />
       <EditForm
         visible={formVisible}

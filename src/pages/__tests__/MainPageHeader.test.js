@@ -19,7 +19,7 @@ describe('MainPageHeader', () => {
     );
     wrapper
       .find('Button')
-      .first()
+      .at(1)
       .props()
       .onClick();
     expect(onEdit).toHaveBeenCalled();
