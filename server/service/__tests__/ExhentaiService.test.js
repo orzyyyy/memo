@@ -38,7 +38,7 @@ describe('ExhentaiService', () => {
     await service.gotoTargetPage('test');
     expect(goto).toHaveBeenCalledTimes(1);
     await service.gotoTargetPage('test', true);
-    expect(goto).toHaveBeenCalledTimes(2);
+    expect(goto).toHaveBeenCalledTimes(3);
   });
 
   it('getComicName', async () => {
