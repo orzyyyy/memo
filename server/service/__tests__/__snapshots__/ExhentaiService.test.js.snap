@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExhentaiService fetchListInfo 1`] = `
+Object {
+  "detailUrl": "https://exhentai.org/g/1476181/884c10c131/",
+  "postTime": 1567369380000,
+  "thumbnailUrl": "https://exhentai.org/t/60/de/60de2c9b39899a3fd7919dda44b6d7b6492cce1a-1853947-1720-2428-jpg_250.jpg",
+}
+`;

@@ -3,8 +3,6 @@ import Service from '../ExhentaiService';
 import { goto, mockDetail } from '../__mocks__/puppeteer-core';
 import { ensureDirSync } from '../__mocks__/fs-extra';
 import MockDate from 'mockdate';
-import fs, { readJsonSync } from 'fs-extra';
-import path from 'path';
 
 describe('ExhentaiService', () => {
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
@@ -13,20 +11,17 @@ describe('ExhentaiService', () => {
   beforeEach(async () => {
     service = new Service();
     await service.initBrowser();
-  });
-
-  beforeAll(() => {
     MockDate.set(new Date('2019-04-09T00:00:00'));
   });
 
   afterEach(() => {
     logSpy.mockReset();
     service = null;
+    MockDate.reset();
   });
 
   afterAll(() => {
     logSpy.mockRestore();
-    MockDate.reset();
   });
 
   it('initBrowser and setExHentaiCookie', async () => {
@@ -80,18 +75,7 @@ describe('ExhentaiService', () => {
 
   it('fetchListInfo', async () => {
     const result = await service.fetchListInfo({ postTime: Date.now() });
-    const compareFilePathPrefix = path.join(
-      __dirname,
-      '../../../src/assets/exhentai',
-    );
-    const compareFileName = fs
-      .readdirSync(compareFilePathPrefix)
-      .filter(item => !item.includes('.gitkeep'))
-      .reverse()[0];
-    const compare = readJsonSync(
-      path.join(compareFilePathPrefix, compareFileName),
-    );
-    expect(result[0]).toEqual(compare[0]);
+    expect(result[0]).toMatchSnapshot();
   });
 
   it('getUrlFromPaginationInfo', async () => {
