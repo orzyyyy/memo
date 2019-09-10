@@ -23,6 +23,7 @@
     "deploy": "node scripts/publish",
     "dev": "rimraf dist && nino koei -w -d --not-copy-assets",
     "generate": "node scripts/generateSider",
+    "go": "nino go",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
     "pre:start": "npm-run-all compile:server clean:views generate",
