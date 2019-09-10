@@ -13,6 +13,5 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "outDir": "dist"
-  },
-  "typings": "./typings.d.ts"
+  }
 }
