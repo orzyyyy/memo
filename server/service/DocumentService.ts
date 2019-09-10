@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import omit from 'omit.js';
+import { omit } from '../utils/omit';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
 import { getWriteMappingPaths } from '../utils/document';
