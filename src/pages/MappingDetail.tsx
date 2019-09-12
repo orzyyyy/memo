@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/mapping.css';
 import { Canvas, Toolbar } from 'mini-xmind';
-import { DataSource } from 'mini-xmind/lib/canvas';
+import { DataSource } from 'mini-xmind/lib/canvas/core';
 
 export interface MappingDetailProps {
   dataSource: DataSource;
@@ -14,7 +14,7 @@ const MappingDetail = (props: MappingDetailProps) => (
     <Canvas
       data={props.dataSource}
       className="canvas-wrapper"
-      orientation="v"
+      orientation="vertical"
       onChange={props.onChange}
     />
   </div>
