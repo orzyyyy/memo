@@ -10,11 +10,13 @@ const MainPageList = ({
   dataSource,
   onEdit,
   onListItemClick,
+  onHide,
 }: {
   siderSelectedKey: string;
-  onDelete?: (dataItem: any) => void;
+  onDelete?: (dataItem: MappingProps) => void;
+  onHide?: (dataItem: MappingProps) => void;
   dataSource: MappingProps[];
-  onEdit: (dataItem?: any, visible?: boolean) => void;
+  onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
   onListItemClick: ({
     category,
     id,
@@ -39,6 +41,12 @@ const MainPageList = ({
                 onClick={() => onEdit(item, true)}
               >
                 修改
+              </Menu.Item>
+              <Menu.Item
+                key={`hide-${item.id}`}
+                onClick={() => onHide && onHide(item)}
+              >
+                隐藏
               </Menu.Item>
               <Menu.Item
                 key={`delete-${item.id}`}

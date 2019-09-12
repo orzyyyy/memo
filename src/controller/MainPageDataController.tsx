@@ -137,13 +137,7 @@ const MainPageDataController = () => {
     setMenuData(menuData);
   };
 
-  const handleDelete = async ({
-    id,
-    category,
-  }: {
-    id: string;
-    category: string;
-  }) => {
+  const handleDelete = async ({ id, category }: MappingProps) => {
     const response = await fetch('/document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
@@ -192,6 +186,15 @@ const MainPageDataController = () => {
     }/${id}`;
   };
 
+  const handleHide = async ({ id }: MappingProps) => {
+    await fetch('document/update', {
+      body: JSON.stringify({ id }),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    message.success('隐藏完成');
+  };
+
   const handleModalCancel = () => {
     setFormVisible(false);
   };
@@ -207,6 +210,7 @@ const MainPageDataController = () => {
         onDelete={handleDelete}
         dataSource={dataSource}
         onEdit={handleEdit}
+        onHide={handleHide}
       />
     );
   };
