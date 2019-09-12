@@ -12,18 +12,6 @@
     "title": "编程",
     "children": [
       {
-        "key": "JavaScript",
-        "value": "JavaScript"
-      },
-      {
-        "key": "react",
-        "value": "react"
-      },
-      {
-        "key": "Rust",
-        "value": "Rust"
-      },
-      {
         "key": "ex-hentai",
         "value": "ex-hentai"
       },
@@ -34,52 +22,6 @@
       {
         "key": "linux",
         "value": "linux"
-      }
-    ]
-  },
-  {
-    "key": "读书",
-    "title": "读书",
-    "children": [
-      {
-        "key": "摘抄",
-        "value": "摘抄"
-      },
-      {
-        "key": "思路",
-        "value": "思路"
-      }
-    ]
-  },
-  {
-    "key": "音乐",
-    "title": "音乐",
-    "children": [
-      {
-        "key": "乐理",
-        "value": "乐理"
-      }
-    ]
-  },
-  {
-    "key": "公考",
-    "title": "公考",
-    "children": [
-      {
-        "key": "言语理解与表达",
-        "value": "言语理解与表达"
-      },
-      {
-        "key": "申论练习",
-        "value": "申论练习"
-      },
-      {
-        "key": "资料分析",
-        "value": "资料分析"
-      },
-      {
-        "key": "数量关系",
-        "value": "数量关系"
       }
     ]
   }

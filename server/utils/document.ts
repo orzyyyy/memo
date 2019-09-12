@@ -23,7 +23,7 @@ const updateSider = () => {
 
   let types: string[] = [];
   result.map(item => {
-    if (item.type) {
+    if (item.type && item.visible !== false) {
       types.push(item.type);
     }
   });
@@ -38,9 +38,9 @@ const updateSider = () => {
     });
   }
   for (const item of result) {
-    for (const menuItem of menu) {
-      if (menuItem.key === item.type) {
-        if (item.subType) {
+    if (item.visible !== false) {
+      for (const menuItem of menu) {
+        if (menuItem.key === item.type && item.subType) {
           menuItem.children.push({
             key: item.subType,
             value: item.subType,
