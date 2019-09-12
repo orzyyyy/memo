@@ -125,7 +125,9 @@ const MainPageDataController = () => {
     const response = await fetch('./assets/mapping.json');
     const dataSource = await response.json();
     setDataSource(
-      dataSource.sort((a: any, b: any) => b.modifyTime - a.modifyTime),
+      dataSource
+        .filter((item: MappingProps) => item.visible !== false)
+        .sort((a: any, b: any) => b.modifyTime - a.modifyTime),
     );
   };
 
