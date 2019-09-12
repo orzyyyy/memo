@@ -13,6 +13,7 @@ export interface MappingProps {
   type?: string;
   subType?: string;
   category?: 'mapping' | 'markdown';
+  visible?: boolean;
 }
 
 @Controller('/document')
@@ -82,6 +83,16 @@ export default class MarkdownController {
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.deleteTargetDocument(writeFilesPaths);
     service.updateMapping({ id }, true);
+    ctx.response.body = true;
+  }
+
+  @Request({ url: '/hide', method: 'post' })
+  async hideTargetDocument(ctx: any) {
+    const { id } = ctx.request.body;
+    const service = new DocumentService();
+    const item = service.getOriginMappingItem(id);
+    item.visible = false;
+    service.updateMapping(item);
     ctx.response.body = true;
   }
 }
