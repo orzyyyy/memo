@@ -3,13 +3,44 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const PostCompile = require('post-compile-webpack-plugin');
 const IO = require('socket.io-client');
+const fs = require('fs-extra');
+
+const assetsFiles = fs.readdirSync(path.join(__dirname, 'src/assets'));
+const mappingFile = path.join(__dirname, 'src/assets/mapping.json');
+const targetFiles = fs
+  .readJsonSync(mappingFile)
+  .filter(item => item.visible !== false && !assetsFiles.includes(item.id))
+  .map(({ id, category }) => {
+    const src = `src/assets/${category}/${id}.${
+      category === 'mapping' ? 'json' : 'md'
+    }`;
+    const dist = `dist/assets/${category}/${id}.${
+      category === 'mapping' ? 'json' : 'md'
+    }`;
+
+    return {
+      from: path.join(__dirname, src),
+      to: path.join(__dirname, dist),
+    };
+  });
+
+const exhentaiFiles = [];
+if (process.env.BUILD_ENV !== 'prod') {
+  exhentaiFiles.push({
+    from: path.join(__dirname, 'src/assets/exhentai'),
+    to: path.join(__dirname, 'dist/assets/exhentai'),
+  });
+}
 
 const plugins = [
   new CopyWebpackPlugin([
     {
       from: path.join(__dirname, 'src/assets'),
       to: path.join(__dirname, 'dist/assets'),
+      ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
     },
+    ...targetFiles,
+    ...exhentaiFiles,
   ]),
   // new BundleAnalyzerPlugin(),
 ];
