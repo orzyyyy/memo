@@ -1,12 +1,8 @@
-# memo
-
-[![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
+<p align="center">
+  <img src="./docs/logo_transparent.gif" />
+</p>
 
 English | [简体中文](./README-zh_CN.md)
-
-A memo for myself.
-
-https://orzyyyy.github.io/memo
 
 ## ✨ Features
 
@@ -25,3 +21,5 @@ $ npm start
 ```
 
 Open your browser and visit http://localhost:9099
+
+[![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
