@@ -2,10 +2,6 @@
   <img src="./docs/logo_transparent.gif" />
 </p>
 
-<div style="height: 200px;"></div>
-
-[![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
-
 [English](./README.md) | 简体中文
 
 ## ✨ Features
@@ -25,3 +21,5 @@ $ npm start
 ```
 
 打开浏览器访问 http://localhost:9099
+
+[![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
