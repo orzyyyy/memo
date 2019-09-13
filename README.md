@@ -1,12 +1,10 @@
-# memo
+<p align="center">
+  <img src="./docs/logo_transparent.png" />
+</p>
 
 [![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
 
 English | [简体中文](./README-zh_CN.md)
-
-A memo for myself.
-
-https://orzyyyy.github.io/memo
 
 ## ✨ Features
 
