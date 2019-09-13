@@ -2,6 +2,8 @@
   <img src="./docs/logo_transparent.gif" />
 </p>
 
+<div style="height: 200px;"></div>
+
 [![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
 
 English | [简体中文](./README-zh_CN.md)
