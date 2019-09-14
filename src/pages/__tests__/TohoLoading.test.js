@@ -3,6 +3,12 @@ import { mount } from 'enzyme';
 import TohoLoading from '../TohoLoading';
 
 describe('TohoLoading', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     jest.useFakeTimers();
     const wrapper = mount(<TohoLoading currentNeta={['test1', 'test2']} />);

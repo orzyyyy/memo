@@ -27,6 +27,12 @@ const dataItem = {
 function noop() {}
 
 describe('EditForm', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const wrapper = mount(
       <EditForm

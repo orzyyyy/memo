@@ -26,6 +26,12 @@ const dataSource = [
 ];
 
 describe('MainPageList', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();

@@ -142,6 +142,12 @@ const dataSource = {
 };
 
 describe('MappingDetail', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const wrapper = mount(
       <MappingDetail dataSource={dataSource} onSave={null} />,

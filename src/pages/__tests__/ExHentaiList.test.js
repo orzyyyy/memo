@@ -3,6 +3,12 @@ import { shallow } from 'enzyme';
 import ExHentaiList from '../ExHentaiList';
 
 describe('ExHentaiList', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const wrapper = shallow(
       <ExHentaiList
