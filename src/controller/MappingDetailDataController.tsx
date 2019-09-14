@@ -1,6 +1,6 @@
 import React from 'react';
 import MappingDetail from '../pages/MappingDetail';
-import { DataSource } from 'mini-xmind/lib/canvas';
+import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import {
   MarkdownEditorSaveProps,

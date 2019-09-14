@@ -46,6 +46,12 @@ const dataSource = [
 ];
 
 describe('MainPage', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const wrapper = shallow(
       <MainPage

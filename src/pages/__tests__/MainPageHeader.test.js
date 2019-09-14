@@ -5,6 +5,12 @@ const Header = Layout.Header;
 import MainPageHeader from '../MainPageHeader';
 
 describe('MainPageHeader', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   it('render correctly', () => {
     const wrapper = shallow(
       <MainPageHeader Header={Header} exhentaiDateSet={[]} />,
