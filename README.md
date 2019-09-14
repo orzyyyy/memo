@@ -23,8 +23,3 @@ $ npm start
 Open your browser and visit http://localhost:9099
 
 [![codecov](https://codecov.io/gh/orzyyyy/memo/branch/master/graph/badge.svg)](https://codecov.io/gh/orzyyyy/memo)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Forzyyyy%2Fmemo.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Forzyyyy%2Fmemo?ref=badge_shield)
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Forzyyyy%2Fmemo.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Forzyyyy%2Fmemo?ref=badge_large)
