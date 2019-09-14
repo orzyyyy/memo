@@ -2,7 +2,6 @@
   {
     "id": "b07b876e6050e333988404e268921906",
     "title": "基本类型",
-    "url": "./assets/mapping/b07b876e6050e333988404e268921906.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
     "type": "编程",
@@ -13,7 +12,6 @@
   {
     "id": "c9abecfb05549080298f37daea8de46f",
     "title": "页面加载优化",
-    "url": "./assets/mapping/c9abecfb05549080298f37daea8de46f.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
     "type": "编程",
@@ -24,7 +22,6 @@
   {
     "id": "e6342ea80e1b9da29570d49af1daaaeb",
     "title": "渲染过程",
-    "url": "./assets/mapping/e6342ea80e1b9da29570d49af1daaaeb.json",
     "createTime": 1558690403907,
     "modifyTime": 1558690403907,
     "type": "编程",
@@ -35,7 +32,6 @@
   {
     "id": "f3a00b390b07d089f0ee965ecfa1354c",
     "title": "《民主的细节》摘抄",
-    "url": "./assets/mapping/f3a00b390b07d089f0ee965ecfa1354c.json",
     "createTime": 1559178666618,
     "modifyTime": 1559779697256,
     "type": "读书",
@@ -46,7 +42,6 @@
   {
     "id": "296b3f76fa35ff649cf28a494e1f8c93",
     "title": "《民主的细节》阅读思路整理",
-    "url": "./assets/mapping/296b3f76fa35ff649cf28a494e1f8c93.json",
     "createTime": 1559351098071,
     "modifyTime": 1559372939631,
     "type": "读书",
@@ -57,7 +52,6 @@
   {
     "id": "32e89f38116080d6b7608cf2137f3c96",
     "title": "音程表",
-    "url": "./assets/mapping/32e89f38116080d6b7608cf2137f3c96.json",
     "createTime": 1559522075108,
     "modifyTime": 1559523700429,
     "type": "音乐",
@@ -68,7 +62,6 @@
   {
     "id": "7a73d21c13f1eb55053d4af66e0d057b",
     "title": "windows 下的安装",
-    "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
     "createTime": 1559617097664,
     "modifyTime": 1559633639037,
     "type": "编程",
@@ -79,9 +72,8 @@
   {
     "id": "57ca721de1c14fb189d8bc5f6e14448c",
     "title": "改 cookie 步骤",
-    "url": "./assets/mapping/57ca721de1c14fb189d8bc5f6e14448c.json",
     "createTime": 1560220086082,
-    "modifyTime": 1560220318066,
+    "modifyTime": 1568420170204,
     "type": "编程",
     "subType": "ex-hentai",
     "category": "markdown"
@@ -89,7 +81,6 @@
   {
     "id": "56f14e6c24b6ece2e63bdf56accdef16",
     "title": "爬虫思路",
-    "url": "./assets/mapping/56f14e6c24b6ece2e63bdf56accdef16.json",
     "createTime": 1560392150068,
     "modifyTime": 1560392654377,
     "type": "编程",
@@ -100,7 +91,6 @@
   {
     "id": "2b91499cc79105eef0a71f5a3c7df3b7",
     "title": "单词积累",
-    "url": "./assets/mapping/2b91499cc79105eef0a71f5a3c7df3b7.json",
     "createTime": 1560473744117,
     "modifyTime": 1561955003623,
     "type": "公考",
@@ -111,7 +101,6 @@
   {
     "id": "ac1b811c06101cf7cd870495cb6d6662",
     "title": "词语填空解题思路",
-    "url": "./assets/mapping/ac1b811c06101cf7cd870495cb6d6662.json",
     "createTime": 1560493141920,
     "modifyTime": 1561108324553,
     "type": "公考",
@@ -122,9 +111,8 @@
   {
     "id": "d84c686eca77b9db11063f995d4f4694",
     "title": "deploy with gh-pages and circleci",
-    "url": "./assets/mapping/d84c686eca77b9db11063f995d4f4694.json",
     "createTime": 1560559934239,
-    "modifyTime": 1563003475889,
+    "modifyTime": 1568419907837,
     "type": "编程",
     "subType": "其他",
     "category": "markdown"
@@ -132,7 +120,6 @@
   {
     "id": "edabfb3a75ee39f82ad29e384d04dc0b",
     "title": "词语填空错题集",
-    "url": "./assets/mapping/edabfb3a75ee39f82ad29e384d04dc0b.json",
     "createTime": 1560583719588,
     "modifyTime": 1560931062586,
     "type": "公考",
@@ -143,7 +130,6 @@
   {
     "id": "9c44d7d3145e382d441fe81ef477e4c6",
     "title": "片段阅读错题集",
-    "url": "./assets/mapping/9c44d7d3145e382d441fe81ef477e4c6.json",
     "createTime": 1561015817211,
     "modifyTime": 1561277782899,
     "type": "公考",
@@ -154,7 +140,6 @@
   {
     "id": "2250bfcdc903daabb68a9925e8701383",
     "title": "片段阅读考点",
-    "url": "./assets/mapping/2250bfcdc903daabb68a9925e8701383.json",
     "createTime": 1561249847278,
     "modifyTime": 1561280230101,
     "type": "公考",
@@ -165,9 +150,8 @@
   {
     "id": "5652a52ab188e25bddf687b32d4ce326",
     "title": "configurate after install",
-    "url": "./assets/mapping/5652a52ab188e25bddf687b32d4ce326.json",
     "createTime": 1561623131393,
-    "modifyTime": 1564535300650,
+    "modifyTime": 1568419762971,
     "type": "编程",
     "subType": "linux",
     "category": "markdown"
@@ -175,17 +159,15 @@
   {
     "id": "b921eb06421a6a25e75c8009721d7324",
     "title": "github ssh proxy",
-    "url": "./assets/mapping/b921eb06421a6a25e75c8009721d7324.json",
     "createTime": 1561705415318,
-    "modifyTime": 1561705415318,
+    "modifyTime": 1568420197476,
     "type": "编程",
     "subType": "linux",
     "category": "markdown"
   },
   {
     "createTime": 1562317110304,
-    "modifyTime": 1565998027181,
-    "url": "./assets/mapping/91ab070449395f41409a2dd206c25c6b.json",
+    "modifyTime": 1568418967118,
     "id": "91ab070449395f41409a2dd206c25c6b",
     "title": "settings sync 同步",
     "type": "编程",
@@ -195,7 +177,6 @@
   {
     "createTime": 1562373606865,
     "modifyTime": 1562374384736,
-    "url": "./assets/mapping/75bb0cdbfd5e9961635470f42b66c92d.json",
     "id": "75bb0cdbfd5e9961635470f42b66c92d",
     "title": "到底怎样才不算是搬砖、API Caller、Crud Boy？",
     "type": "公考",
@@ -206,7 +187,6 @@
   {
     "createTime": 1563676191249,
     "modifyTime": 1564615595700,
-    "url": "./assets/markdown/e80f3dfbe1ec6675f0bd453d4beb081a.json",
     "id": "e80f3dfbe1ec6675f0bd453d4beb081a",
     "title": "常用解题思路",
     "type": "公考",
@@ -217,7 +197,6 @@
   {
     "createTime": 1564104000329,
     "modifyTime": 1564104122006,
-    "url": "./assets/markdown/84a65e108e3721e07261e6b3c4336ff1.json",
     "id": "84a65e108e3721e07261e6b3c4336ff1",
     "title": "题型分类",
     "type": "公考",
@@ -228,7 +207,6 @@
   {
     "createTime": 1565223099856,
     "modifyTime": 1566391671929,
-    "url": "./assets/markdown/7a9a2d738fa682b6c2b1abc0471616b2.json",
     "id": "7a9a2d738fa682b6c2b1abc0471616b2",
     "title": "常用解题思路",
     "type": "公考",
