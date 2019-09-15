@@ -168,7 +168,7 @@ export default class ExhentaiService {
     const { maxPageIndex, waitTime } = this.config;
     for (let i = 0; i < maxPageIndex; i++) {
       const pageIndex = i + 1;
-      const targetUrl = this.config.href + pageIndex;
+      const targetUrl = this.config.href + i;
       info(`fetching pageIndex => ${pageIndex}`);
 
       let target: ExHentaiInfoItem[] | boolean = true;
