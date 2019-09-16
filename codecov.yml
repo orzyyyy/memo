@@ -13,4 +13,7 @@ coverage:
         threshold: 0.1
 
 comment:
-  branch: !gh-pages
+  layout: 'reach, diff, flags, files'
+  behavior: default
+  require_changes: false
+  branches: !gh-pages
