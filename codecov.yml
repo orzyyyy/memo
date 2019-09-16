@@ -2,3 +2,12 @@ ignore:
   - 'src/router.*'
   - 'src/index.*'
   - 'nino.koei.js'
+
+codecov:
+  branch: master
+
+coverage:
+  status:
+    project:
+      default:
+        threshold: 0.1
