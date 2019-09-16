@@ -3,17 +3,18 @@ ignore:
   - 'src/index.*'
   - 'nino.koei.js'
 
-codecov:
-  branch: master
-
-coverage:
-  status:
-    project:
-      default:
-        threshold: 0.1
-
 comment:
   layout: 'reach, diff, flags, files'
   behavior: default
   require_changes: false
   branches: !gh-pages
+
+codecov:
+  bot: codecovbot
+
+coverage:
+  status:
+    project:
+      default: off
+    patch:
+      default: off
