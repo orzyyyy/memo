@@ -11,10 +11,3 @@ comment:
 
 codecov:
   bot: codecovbot
-
-coverage:
-  status:
-    project:
-      default: off
-    patch:
-      default: off
