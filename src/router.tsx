@@ -14,6 +14,37 @@ const MarkdownDetailDataController = lazy(() =>
   import('./controller/MarkdownDetailDataController'),
 );
 
+const checkLocalStatus = (callback?: () => void) => {
+  fetch('/test')
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      }
+      throw new Error();
+    })
+    .then(() => {
+      if (callback) {
+        callback();
+      }
+    })
+    .catch(() => {});
+};
+
+const bindSocket = () => {
+  import('socket.io-client').then(target => {
+    const socket = target.default('http://localhost:9099');
+    socket.on('refresh', () => {
+      location.reload();
+    });
+  });
+};
+
+checkLocalStatus(() => {
+  // eslint-disable-next-line no-underscore-dangle
+  (window as any).__isLocal = true;
+  bindSocket();
+});
+
 const Router = () => (
   <HashRouter>
     <Suspense fallback={<TohoLoading />}>
