@@ -28,15 +28,6 @@ export interface MainPageDataControllerState {
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
 
-const bindSocket = () => {
-  import('socket.io-client').then(target => {
-    const socket = target.default('http://localhost:9099');
-    socket.on('refresh', () => {
-      location.reload();
-    });
-  });
-};
-
 const handleExhentaiDownload = (e: any) => {
   const url = e.target.value;
   fetch('exhentai/download', {
@@ -75,7 +66,6 @@ const MainPageDataController = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
   const [isExhentai, setIsExhentai] = useState(false);
-  const [isLocal, setIsLocal] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [
     exhentaiListTargetDataSource,
@@ -83,32 +73,16 @@ const MainPageDataController = () => {
   ] = useState([]);
   const [siderOpenKey, setSiderOpenKey] = useState('all');
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+  // eslint-disable-next-line no-underscore-dangle
+  const isLocal = (window as any).__isLocal;
 
   useResize();
 
   useEffect(() => {
-    checkLocalStatus(getExhentaiDateSet);
+    isLocal && getExhentaiDateSet();
     getSider();
     getMapping();
   }, []);
-
-  const checkLocalStatus = (callback?: () => void) => {
-    fetch('/test')
-      .then(response => {
-        if (response.ok) {
-          return response.text();
-        }
-        throw new Error();
-      })
-      .then(() => {
-        bindSocket();
-        setIsLocal(true);
-        if (callback) {
-          callback();
-        }
-      })
-      .catch();
-  };
 
   const getExhentaiDateSet = () => {
     fetch('/exhentai/dateSet')
