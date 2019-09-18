@@ -13,7 +13,6 @@ exports[`MainPageHeader render correctly 1`] = `
   <Select
     choiceTransitionName="zoom"
     onChange={[Function]}
-    showSearch={false}
     style={
       Object {
         "left": 8,
