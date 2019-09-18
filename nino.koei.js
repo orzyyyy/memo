@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const IO = require('socket.io-client');
 const fs = require('fs-extra');
@@ -42,8 +43,14 @@ const plugins = [
     ...targetFiles,
     ...exhentaiFiles,
   ]),
-  // new BundleAnalyzerPlugin(),
+  new MomentLocalesPlugin({
+    localesToKeep: ['es-us', 'zh-cn'],
+  }),
 ];
+
+if (process.env.BUILD_ENV === 'analyse') {
+  plugins.push(new BundleAnalyzerPlugin());
+}
 
 if (process.env.BUILD_ENV !== 'prod') {
   plugins.push(
