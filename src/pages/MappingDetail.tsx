@@ -14,7 +14,6 @@ const MappingDetail = (props: MappingDetailProps) => (
     <Canvas
       data={props.dataSource}
       className="canvas-wrapper"
-      orientation="vertical"
       onChange={props.onChange}
     />
   </div>

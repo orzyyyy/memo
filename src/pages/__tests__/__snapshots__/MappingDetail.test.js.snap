@@ -623,7 +623,6 @@ exports[`MappingDetail render correctly 1`] = `
           },
         }
       }
-      orientation="vertical"
     >
       <Draggable
         allowAnyClick={false}
@@ -3332,7 +3331,7 @@ exports[`MappingDetail render correctly 1`] = `
                   "z": 0,
                 }
               }
-              orientation="vertical"
+              orientation="horizonal"
             >
               <SteppedLine
                 from={
@@ -3356,7 +3355,7 @@ exports[`MappingDetail render correctly 1`] = `
                     "z": 0,
                   }
                 }
-                orientation="vertical"
+                orientation="horizonal"
                 to={
                   Object {
                     "bottom": 523,
@@ -3374,49 +3373,49 @@ exports[`MappingDetail render correctly 1`] = `
                   className="stepped-line"
                 >
                   <Line
-                    x0={197.2890625}
-                    x1={197.2890625}
-                    y0={490}
-                    y1={546}
+                    x0={208.578125}
+                    x1={303.7890625}
+                    y0={479.5}
+                    y1={479.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(197.2890625px, 490px, 0) rotate(90deg)",
-                          "width": "56px",
+                          "transform": "translate3d(208.578125px, 479.5px, 0) rotate(0deg)",
+                          "width": "95.2109375px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={197.2890625}
-                    x1={414.1796875}
-                    y0={546}
-                    y1={546}
+                    x0={303.7890625}
+                    x1={303.7890625}
+                    y0={479.5}
+                    y1={612.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(197.2890625px, 546px, 0) rotate(0deg)",
-                          "width": "216.890625px",
+                          "transform": "translate3d(303.7890625px, 479.5px, 0) rotate(90deg)",
+                          "width": "133px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={414.1796875}
-                    x1={414.1796875}
-                    y0={546}
-                    y1={602}
+                    x0={303.7890625}
+                    x1={399}
+                    y0={612.5}
+                    y1={612.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(414.1796875px, 546px, 0) rotate(90deg)",
-                          "width": "56px",
+                          "transform": "translate3d(303.7890625px, 612.5px, 0) rotate(0deg)",
+                          "width": "95.2109375px",
                         }
                       }
                     />
@@ -3445,7 +3444,7 @@ exports[`MappingDetail render correctly 1`] = `
                     "z": 0,
                   }
                 }
-                orientation="vertical"
+                orientation="horizonal"
                 to={
                   Object {
                     "bottom": 390,
@@ -3463,49 +3462,49 @@ exports[`MappingDetail render correctly 1`] = `
                   className="stepped-line"
                 >
                   <Line
-                    x0={49.1796875}
-                    x1={49.1796875}
-                    y0={388}
-                    y1={428.5}
+                    x0={64.359375}
+                    x1={125.1796875}
+                    y0={377.5}
+                    y1={377.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(49.1796875px, 388px, 0) rotate(90deg)",
-                          "width": "40.5px",
+                          "transform": "translate3d(64.359375px, 377.5px, 0) rotate(0deg)",
+                          "width": "60.8203125px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={49.1796875}
-                    x1={197.2890625}
-                    y0={428.5}
-                    y1={428.5}
+                    x0={125.1796875}
+                    x1={125.1796875}
+                    y0={377.5}
+                    y1={479.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(49.1796875px, 428.5px, 0) rotate(0deg)",
-                          "width": "148.109375px",
+                          "transform": "translate3d(125.1796875px, 377.5px, 0) rotate(90deg)",
+                          "width": "102px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={197.2890625}
-                    x1={197.2890625}
-                    y0={428.5}
-                    y1={469}
+                    x0={125.1796875}
+                    x1={186}
+                    y0={479.5}
+                    y1={479.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(197.2890625px, 428.5px, 0) rotate(90deg)",
-                          "width": "40.5px",
+                          "transform": "translate3d(125.1796875px, 479.5px, 0) rotate(0deg)",
+                          "width": "60.8203125px",
                         }
                       }
                     />
@@ -3534,7 +3533,7 @@ exports[`MappingDetail render correctly 1`] = `
                     "z": 0,
                   }
                 }
-                orientation="vertical"
+                orientation="horizonal"
                 to={
                   Object {
                     "bottom": 390,
@@ -3552,49 +3551,49 @@ exports[`MappingDetail render correctly 1`] = `
                   className="stepped-line"
                 >
                   <Line
-                    x0={400.1796875}
-                    x1={400.1796875}
-                    y0={361}
-                    y1={415}
+                    x0={385}
+                    x1={296.7890625}
+                    y0={350.5}
+                    y1={350.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(400.1796875px, 361px, 0) rotate(90deg)",
-                          "width": "54px",
+                          "transform": "translate3d(385px, 350.5px, 0) rotate(180deg)",
+                          "width": "88.2109375px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={400.1796875}
-                    x1={197.2890625}
-                    y0={415}
-                    y1={415}
+                    x0={296.7890625}
+                    x1={296.7890625}
+                    y0={350.5}
+                    y1={479.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(400.1796875px, 415px, 0) rotate(180deg)",
-                          "width": "202.890625px",
+                          "transform": "translate3d(296.7890625px, 350.5px, 0) rotate(90deg)",
+                          "width": "129px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={197.2890625}
-                    x1={197.2890625}
-                    y0={415}
-                    y1={469}
+                    x0={296.7890625}
+                    x1={208.578125}
+                    y0={479.5}
+                    y1={479.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(197.2890625px, 415px, 0) rotate(90deg)",
-                          "width": "54px",
+                          "transform": "translate3d(296.7890625px, 479.5px, 0) rotate(180deg)",
+                          "width": "88.2109375px",
                         }
                       }
                     />
@@ -3623,7 +3622,7 @@ exports[`MappingDetail render correctly 1`] = `
                     "z": 0,
                   }
                 }
-                orientation="vertical"
+                orientation="horizonal"
                 to={
                   Object {
                     "bottom": 523,
@@ -3641,49 +3640,49 @@ exports[`MappingDetail render correctly 1`] = `
                   className="stepped-line"
                 >
                   <Line
-                    x0={506.1796875}
-                    x1={506.1796875}
-                    y0={691}
-                    y1={657}
+                    x0={491}
+                    x1={460.1796875}
+                    y0={701.5}
+                    y1={701.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(506.1796875px, 691px, 0) rotate(-90deg)",
-                          "width": "34px",
+                          "transform": "translate3d(491px, 701.5px, 0) rotate(180deg)",
+                          "width": "30.8203125px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={506.1796875}
-                    x1={414.1796875}
-                    y0={657}
-                    y1={657}
+                    x0={460.1796875}
+                    x1={460.1796875}
+                    y0={701.5}
+                    y1={612.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(506.1796875px, 657px, 0) rotate(180deg)",
-                          "width": "92px",
+                          "transform": "translate3d(460.1796875px, 701.5px, 0) rotate(-90deg)",
+                          "width": "89px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={414.1796875}
-                    x1={414.1796875}
-                    y0={657}
-                    y1={623}
+                    x0={460.1796875}
+                    x1={429.359375}
+                    y0={612.5}
+                    y1={612.5}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(414.1796875px, 657px, 0) rotate(-90deg)",
-                          "width": "34px",
+                          "transform": "translate3d(460.1796875px, 612.5px, 0) rotate(180deg)",
+                          "width": "30.8203125px",
                         }
                       }
                     />
@@ -3712,7 +3711,7 @@ exports[`MappingDetail render correctly 1`] = `
                     "z": 0,
                   }
                 }
-                orientation="vertical"
+                orientation="horizonal"
                 to={
                   Object {
                     "bottom": 778,
@@ -3730,49 +3729,49 @@ exports[`MappingDetail render correctly 1`] = `
                   className="stepped-line"
                 >
                   <Line
-                    x0={104}
-                    x1={104}
-                    y0={732}
-                    y1={765}
+                    x0={154}
+                    x1={202}
+                    y0={692}
+                    y1={692}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(104px, 732px, 0) rotate(90deg)",
-                          "width": "33px",
+                          "transform": "translate3d(154px, 692px, 0) rotate(0deg)",
+                          "width": "48px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={104}
-                    x1={300}
-                    y0={765}
-                    y1={765}
+                    x0={202}
+                    x1={202}
+                    y0={692}
+                    y1={838}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(104px, 765px, 0) rotate(0deg)",
-                          "width": "196px",
+                          "transform": "translate3d(202px, 692px, 0) rotate(90deg)",
+                          "width": "146px",
                         }
                       }
                     />
                   </Line>
                   <Line
-                    x0={300}
-                    x1={300}
-                    y0={765}
-                    y1={798}
+                    x0={202}
+                    x1={250}
+                    y0={838}
+                    y1={838}
                   >
                     <div
                       className="line-core"
                       style={
                         Object {
-                          "transform": "translate3d(300px, 765px, 0) rotate(90deg)",
-                          "width": "33px",
+                          "transform": "translate3d(202px, 838px, 0) rotate(0deg)",
+                          "width": "48px",
                         }
                       }
                     />
