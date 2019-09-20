@@ -2,6 +2,7 @@ import React from 'react';
 import { message } from 'antd';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
+import { DataSource } from 'mini-xmind/lib/canvas/core';
 
 export interface MarkdownEditorDataControllerProps {
   match: any;
@@ -11,7 +12,7 @@ export interface MarkdownEditorDataControllerState {
 }
 export interface MarkdownEditorSaveProps {
   id: string;
-  layout: string;
+  layout: DataSource;
   format?: boolean;
   category: 'mapping' | 'markdown';
 }

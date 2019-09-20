@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export function useBindKeyDown<T>(originData: T, onSaveCallback?: () => void) {
-  const [data, setData] = useState(originData);
-
+export function useBindKeyDown<T>(
+  originData: T,
+  onSaveCallback?: (data: any) => void,
+) {
   useEffect(() => {
     window.addEventListener('keydown', bindKeyDown);
     return () => window.removeEventListener('keydown', bindKeyDown);
-  }, [data]);
+  }, [originData]);
 
   async function bindKeyDown(e: KeyboardEvent) {
     const { ctrlKey, keyCode } = e;
     // ctrl + s
     if (ctrlKey && keyCode === 83) {
       e.preventDefault();
-      onSaveCallback && (await onSaveCallback());
+      onSaveCallback && (await onSaveCallback(originData));
     } else {
       e.stopPropagation();
     }
   }
-  return setData;
 }

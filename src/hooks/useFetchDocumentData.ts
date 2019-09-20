@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useBindKeyDown } from './useBindKeyDown';
+import { DataSource } from 'mini-xmind/lib/canvas/core';
 
 export function useFetchDocumentData(
   id: string,
   type: 'mapping' | 'markdown',
-  onSaveCallback?: () => void,
+  onSaveCallback?: (data: DataSource) => void,
 ) {
   const ext = type === 'mapping' ? 'json' : 'md';
   const url = `./assets/${type}/${id}.${ext}`;
   const [data, setData] = useState();
-  const setBindKeyDownData = useBindKeyDown(data, onSaveCallback);
+  useBindKeyDown(data, onSaveCallback);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +18,6 @@ export function useFetchDocumentData(
       const response = await fetch(url);
       const result = await response[convertType]();
       setData(result);
-      setBindKeyDownData(result);
     };
     fetchData();
   }, [id]);

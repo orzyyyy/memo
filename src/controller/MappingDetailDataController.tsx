@@ -12,9 +12,9 @@ const MappingDetailDataController = (props: {
 }) => {
   const id: string = props.match.params.id;
 
-  const handleOnSave = async () => {
+  const handleOnSave = async (newData: DataSource) => {
     const params: MarkdownEditorSaveProps = {
-      layout: data,
+      layout: newData,
       id,
       category: 'mapping',
     };
