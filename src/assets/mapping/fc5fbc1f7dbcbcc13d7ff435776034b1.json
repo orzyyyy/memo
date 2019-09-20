@@ -1,0 +1,319 @@
+{
+  "BlockGroup": {},
+  "LineGroup": {
+    "line-96602": {
+      "fromKey": "tag-35852",
+      "toKey": "tag-91717",
+      "from": {
+        "top": 372,
+        "right": 510,
+        "bottom": 393,
+        "left": 454,
+        "width": 56,
+        "height": 21,
+        "x": 454,
+        "y": 372
+      },
+      "to": {
+        "top": 482,
+        "right": 715,
+        "bottom": 503,
+        "left": 673,
+        "width": 42,
+        "height": 21,
+        "x": 673,
+        "y": 482
+      }
+    },
+    "line-97570": {
+      "fromKey": "tag-68923",
+      "toKey": "tag-35852",
+      "from": {
+        "top": 328,
+        "right": 782.25,
+        "bottom": 349,
+        "left": 672,
+        "width": 110.25,
+        "height": 21,
+        "x": 672,
+        "y": 328
+      },
+      "to": {
+        "top": 372,
+        "right": 510,
+        "bottom": 393,
+        "left": 454,
+        "width": 56,
+        "height": 21,
+        "x": 454,
+        "y": 372
+      }
+    },
+    "line-98602": {
+      "fromKey": "tag-59388",
+      "toKey": "tag-35852",
+      "from": {
+        "top": 280,
+        "right": 699,
+        "bottom": 301,
+        "left": 671,
+        "width": 28,
+        "height": 21,
+        "x": 671,
+        "y": 280
+      },
+      "to": {
+        "top": 372,
+        "right": 510,
+        "bottom": 393,
+        "left": 454,
+        "width": 56,
+        "height": 21,
+        "x": 454,
+        "y": 372
+      }
+    },
+    "line-99686": {
+      "fromKey": "tag-53596",
+      "toKey": "tag-35852",
+      "from": {
+        "top": 228,
+        "right": 700,
+        "bottom": 249,
+        "left": 672,
+        "width": 28,
+        "height": 21,
+        "x": 672,
+        "y": 228
+      },
+      "to": {
+        "top": 372,
+        "right": 510,
+        "bottom": 393,
+        "left": 454,
+        "width": 56,
+        "height": 21,
+        "x": 454,
+        "y": 372
+      }
+    },
+    "line-131251": {
+      "fromKey": "tag-127538",
+      "toKey": "tag-91717",
+      "from": {
+        "top": 374,
+        "right": 913,
+        "bottom": 395,
+        "left": 885,
+        "width": 28,
+        "height": 21,
+        "x": 885,
+        "y": 374
+      },
+      "to": {
+        "top": 482,
+        "right": 715,
+        "bottom": 503,
+        "left": 673,
+        "width": 42,
+        "height": 21,
+        "x": 673,
+        "y": 482
+      }
+    },
+    "line-148739": {
+      "fromKey": "tag-145468",
+      "toKey": "tag-91717",
+      "from": {
+        "top": 435,
+        "right": 928,
+        "bottom": 456,
+        "left": 886,
+        "width": 42,
+        "height": 21,
+        "x": 886,
+        "y": 435
+      },
+      "to": {
+        "top": 482,
+        "right": 715,
+        "bottom": 503,
+        "left": 673,
+        "width": 42,
+        "height": 21,
+        "x": 673,
+        "y": 482
+      }
+    },
+    "line-159347": {
+      "fromKey": "tag-155858",
+      "toKey": "tag-91717",
+      "from": {
+        "top": 483,
+        "right": 924,
+        "bottom": 504,
+        "left": 882,
+        "width": 42,
+        "height": 21,
+        "x": 882,
+        "y": 483
+      },
+      "to": {
+        "top": 482,
+        "right": 715,
+        "bottom": 503,
+        "left": 673,
+        "width": 42,
+        "height": 21,
+        "x": 673,
+        "y": 482
+      }
+    },
+    "line-170828": {
+      "fromKey": "tag-167082",
+      "toKey": "tag-91717",
+      "from": {
+        "top": 526,
+        "right": 912,
+        "bottom": 547,
+        "left": 884,
+        "width": 28,
+        "height": 21,
+        "x": 884,
+        "y": 526
+      },
+      "to": {
+        "top": 482,
+        "right": 715,
+        "bottom": 503,
+        "left": 673,
+        "width": 42,
+        "height": 21,
+        "x": 673,
+        "y": 482
+      }
+    },
+    "line-10346": {
+      "fromKey": "tag-5056",
+      "toKey": "tag-127538",
+      "from": {
+        "top": 348,
+        "right": 984,
+        "bottom": 369,
+        "left": 956,
+        "width": 28,
+        "height": 21,
+        "x": 956,
+        "y": 348
+      },
+      "to": {
+        "top": 374,
+        "right": 913,
+        "bottom": 395,
+        "left": 885,
+        "width": 28,
+        "height": 21,
+        "x": 885,
+        "y": 374
+      }
+    },
+    "line-24537": {
+      "fromKey": "tag-20728",
+      "toKey": "tag-127538",
+      "from": {
+        "top": 388,
+        "right": 980,
+        "bottom": 409,
+        "left": 952,
+        "width": 28,
+        "height": 21,
+        "x": 952,
+        "y": 388
+      },
+      "to": {
+        "top": 374,
+        "right": 913,
+        "bottom": 395,
+        "left": 885,
+        "width": 28,
+        "height": 21,
+        "x": 885,
+        "y": 374
+      }
+    }
+  },
+  "TagGroup": {
+    "tag-35852": {
+      "x": 3496,
+      "y": 3364,
+      "editable": false,
+      "input": "种类分布"
+    },
+    "tag-53596": {
+      "x": 3714,
+      "y": 3220,
+      "editable": false,
+      "input": "圆钢"
+    },
+    "tag-59388": {
+      "x": 3713,
+      "y": 3272,
+      "editable": false,
+      "input": "板料"
+    },
+    "tag-68923": {
+      "x": 3714,
+      "y": 3320,
+      "editable": false,
+      "input": "管子 / 模套 / 炮筒"
+    },
+    "tag-91717": {
+      "x": 3715,
+      "y": 3474,
+      "editable": false,
+      "input": "模具钢"
+    },
+    "tag-127538": {
+      "x": 3927,
+      "y": 3366,
+      "editable": false,
+      "input": "淬火"
+    },
+    "tag-145468": {
+      "x": 3928,
+      "y": 3427,
+      "editable": false,
+      "input": "旧冲头"
+    },
+    "tag-155858": {
+      "x": 3924,
+      "y": 3475,
+      "editable": false,
+      "input": "滚丝轮"
+    },
+    "tag-167082": {
+      "x": 3925,
+      "y": 3517,
+      "editable": false,
+      "input": "进口"
+    },
+    "tag-5056": {
+      "x": 3998,
+      "y": 3340,
+      "editable": false,
+      "input": "冷作"
+    },
+    "tag-20728": {
+      "x": 3994,
+      "y": 3380,
+      "editable": false,
+      "input": "热作"
+    }
+  },
+  "CanvasPosition": {
+    "x": -3043,
+    "y": -2993,
+    "z": 0,
+    "gap": 1
+  }
+}

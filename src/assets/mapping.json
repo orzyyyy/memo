@@ -213,5 +213,15 @@
     "subType": "数量关系",
     "category": "markdown",
     "visible": false
+  },
+  {
+    "createTime": 1568944473443,
+    "modifyTime": 1568947142849,
+    "url": "./assets/mapping/fc5fbc1f7dbcbcc13d7ff435776034b1.json",
+    "id": "fc5fbc1f7dbcbcc13d7ff435776034b1",
+    "title": "种类分布",
+    "type": "经营",
+    "subType": "钢铁",
+    "category": "mapping"
   }
 ]
