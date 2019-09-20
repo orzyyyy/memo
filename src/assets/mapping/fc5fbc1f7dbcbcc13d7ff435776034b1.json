@@ -1,244 +1,508 @@
 {
   "BlockGroup": {},
   "LineGroup": {
-    "line-96602": {
-      "fromKey": "tag-35852",
-      "toKey": "tag-91717",
-      "from": {
-        "top": 372,
-        "right": 510,
-        "bottom": 393,
-        "left": 454,
-        "width": 56,
-        "height": 21,
-        "x": 454,
-        "y": 372
-      },
-      "to": {
-        "top": 482,
-        "right": 715,
-        "bottom": 503,
-        "left": 673,
-        "width": 42,
-        "height": 21,
-        "x": 673,
-        "y": 482
-      }
-    },
     "line-97570": {
       "fromKey": "tag-68923",
       "toKey": "tag-35852",
       "from": {
-        "top": 328,
-        "right": 782.25,
-        "bottom": 349,
-        "left": 672,
-        "width": 110.25,
+        "top": 276,
+        "right": 659,
+        "bottom": 297,
+        "left": 631,
+        "width": 28,
         "height": 21,
-        "x": 672,
-        "y": 328
+        "x": 631,
+        "y": 276
       },
       "to": {
-        "top": 372,
-        "right": 510,
-        "bottom": 393,
-        "left": 454,
+        "top": 248,
+        "right": 473,
+        "bottom": 269,
+        "left": 417,
         "width": 56,
         "height": 21,
-        "x": 454,
-        "y": 372
+        "x": 417,
+        "y": 248
       }
     },
     "line-98602": {
       "fromKey": "tag-59388",
       "toKey": "tag-35852",
       "from": {
-        "top": 280,
-        "right": 699,
-        "bottom": 301,
-        "left": 671,
+        "top": 156,
+        "right": 662,
+        "bottom": 177,
+        "left": 634,
         "width": 28,
         "height": 21,
-        "x": 671,
-        "y": 280
+        "x": 634,
+        "y": 156
       },
       "to": {
-        "top": 372,
-        "right": 510,
-        "bottom": 393,
-        "left": 454,
+        "top": 248,
+        "right": 473,
+        "bottom": 269,
+        "left": 417,
         "width": 56,
         "height": 21,
-        "x": 454,
-        "y": 372
+        "x": 417,
+        "y": 248
       }
     },
     "line-99686": {
       "fromKey": "tag-53596",
       "toKey": "tag-35852",
       "from": {
-        "top": 228,
-        "right": 700,
-        "bottom": 249,
-        "left": 672,
+        "top": 104,
+        "right": 663,
+        "bottom": 125,
+        "left": 635,
         "width": 28,
         "height": 21,
-        "x": 672,
-        "y": 228
+        "x": 635,
+        "y": 104
       },
       "to": {
-        "top": 372,
-        "right": 510,
-        "bottom": 393,
-        "left": 454,
+        "top": 248,
+        "right": 473,
+        "bottom": 269,
+        "left": 417,
         "width": 56,
         "height": 21,
-        "x": 454,
-        "y": 372
+        "x": 417,
+        "y": 248
       }
     },
-    "line-131251": {
-      "fromKey": "tag-127538",
-      "toKey": "tag-91717",
+    "line-901778": {
+      "fromKey": "tag-897039",
+      "toKey": "tag-35852",
       "from": {
-        "top": 374,
-        "right": 913,
-        "bottom": 395,
-        "left": 885,
+        "top": 488,
+        "right": 753.671875,
+        "bottom": 509,
+        "left": 630,
+        "width": 123.671875,
+        "height": 21,
+        "x": 630,
+        "y": 488
+      },
+      "to": {
+        "top": 248,
+        "right": 473,
+        "bottom": 269,
+        "left": 417,
+        "width": 56,
+        "height": 21,
+        "x": 417,
+        "y": 248
+      }
+    },
+    "line-37433": {
+      "fromKey": "tag-29038",
+      "toKey": "tag-68923",
+      "from": {
+        "top": 233,
+        "right": 786,
+        "bottom": 254,
+        "left": 758,
         "width": 28,
         "height": 21,
-        "x": 885,
-        "y": 374
+        "x": 758,
+        "y": 233
       },
       "to": {
-        "top": 482,
-        "right": 715,
-        "bottom": 503,
-        "left": 673,
-        "width": 42,
-        "height": 21,
-        "x": 673,
-        "y": 482
-      }
-    },
-    "line-148739": {
-      "fromKey": "tag-145468",
-      "toKey": "tag-91717",
-      "from": {
-        "top": 435,
-        "right": 928,
-        "bottom": 456,
-        "left": 886,
-        "width": 42,
-        "height": 21,
-        "x": 886,
-        "y": 435
-      },
-      "to": {
-        "top": 482,
-        "right": 715,
-        "bottom": 503,
-        "left": 673,
-        "width": 42,
-        "height": 21,
-        "x": 673,
-        "y": 482
-      }
-    },
-    "line-159347": {
-      "fromKey": "tag-155858",
-      "toKey": "tag-91717",
-      "from": {
-        "top": 483,
-        "right": 924,
-        "bottom": 504,
-        "left": 882,
-        "width": 42,
-        "height": 21,
-        "x": 882,
-        "y": 483
-      },
-      "to": {
-        "top": 482,
-        "right": 715,
-        "bottom": 503,
-        "left": 673,
-        "width": 42,
-        "height": 21,
-        "x": 673,
-        "y": 482
-      }
-    },
-    "line-170828": {
-      "fromKey": "tag-167082",
-      "toKey": "tag-91717",
-      "from": {
-        "top": 526,
-        "right": 912,
-        "bottom": 547,
-        "left": 884,
+        "top": 276,
+        "right": 659,
+        "bottom": 297,
+        "left": 631,
         "width": 28,
         "height": 21,
-        "x": 884,
-        "y": 526
+        "x": 631,
+        "y": 276
+      }
+    },
+    "line-39033": {
+      "fromKey": "tag-33798",
+      "toKey": "tag-68923",
+      "from": {
+        "top": 321,
+        "right": 784,
+        "bottom": 342,
+        "left": 756,
+        "width": 28,
+        "height": 21,
+        "x": 756,
+        "y": 321
       },
       "to": {
-        "top": 482,
-        "right": 715,
-        "bottom": 503,
-        "left": 673,
+        "top": 276,
+        "right": 659,
+        "bottom": 297,
+        "left": 631,
+        "width": 28,
+        "height": 21,
+        "x": 631,
+        "y": 276
+      }
+    },
+    "line-633573": {
+      "fromKey": "tag-626250",
+      "toKey": "tag-219053",
+      "from": {
+        "top": 406,
+        "right": 1121,
+        "bottom": 427,
+        "left": 1093,
+        "width": 28,
+        "height": 21,
+        "x": 1093,
+        "y": 406
+      },
+      "to": {
+        "top": 403,
+        "right": 967,
+        "bottom": 424,
+        "left": 925,
         "width": 42,
         "height": 21,
-        "x": 673,
-        "y": 482
+        "x": 925,
+        "y": 403
       }
     },
-    "line-10346": {
-      "fromKey": "tag-5056",
-      "toKey": "tag-127538",
+    "line-634865": {
+      "fromKey": "tag-630482",
+      "toKey": "tag-219053",
       "from": {
-        "top": 348,
-        "right": 984,
-        "bottom": 369,
-        "left": 956,
+        "top": 455,
+        "right": 1121,
+        "bottom": 476,
+        "left": 1093,
         "width": 28,
         "height": 21,
-        "x": 956,
-        "y": 348
+        "x": 1093,
+        "y": 455
       },
       "to": {
-        "top": 374,
-        "right": 913,
-        "bottom": 395,
-        "left": 885,
-        "width": 28,
+        "top": 403,
+        "right": 967,
+        "bottom": 424,
+        "left": 925,
+        "width": 42,
         "height": 21,
-        "x": 885,
-        "y": 374
+        "x": 925,
+        "y": 403
       }
     },
-    "line-24537": {
-      "fromKey": "tag-20728",
-      "toKey": "tag-127538",
+    "line-646581": {
+      "fromKey": "tag-640402",
+      "toKey": "tag-213405",
       "from": {
-        "top": 388,
+        "top": 193,
+        "right": 1104,
+        "bottom": 214,
+        "left": 1076,
+        "width": 28,
+        "height": 21,
+        "x": 1076,
+        "y": 193
+      },
+      "to": {
+        "top": 228,
         "right": 980,
-        "bottom": 409,
+        "bottom": 249,
         "left": 952,
         "width": 28,
         "height": 21,
         "x": 952,
-        "y": 388
-      },
-      "to": {
-        "top": 374,
-        "right": 913,
-        "bottom": 395,
-        "left": 885,
+        "y": 228
+      }
+    },
+    "line-647677": {
+      "fromKey": "tag-643922",
+      "toKey": "tag-213405",
+      "from": {
+        "top": 258,
+        "right": 1100,
+        "bottom": 279,
+        "left": 1072,
         "width": 28,
         "height": 21,
-        "x": 885,
-        "y": 374
+        "x": 1072,
+        "y": 258
+      },
+      "to": {
+        "top": 228,
+        "right": 980,
+        "bottom": 249,
+        "left": 952,
+        "width": 28,
+        "height": 21,
+        "x": 952,
+        "y": 228
+      }
+    },
+    "line-945024": {
+      "fromKey": "tag-940005",
+      "toKey": "tag-35852",
+      "from": {
+        "top": 363,
+        "right": 725.671875,
+        "bottom": 384,
+        "left": 630,
+        "width": 95.671875,
+        "height": 21,
+        "x": 630,
+        "y": 363
+      },
+      "to": {
+        "top": 248,
+        "right": 473,
+        "bottom": 269,
+        "left": 417,
+        "width": 56,
+        "height": 21,
+        "x": 417,
+        "y": 248
+      }
+    },
+    "line-984017": {
+      "fromKey": "tag-167082",
+      "toKey": "tag-940005",
+      "from": {
+        "top": 372,
+        "right": 823,
+        "bottom": 393,
+        "left": 795,
+        "width": 28,
+        "height": 21,
+        "x": 795,
+        "y": 372
+      },
+      "to": {
+        "top": 363,
+        "right": 725.671875,
+        "bottom": 384,
+        "left": 630,
+        "width": 95.671875,
+        "height": 21,
+        "x": 630,
+        "y": 363
+      }
+    },
+    "line-990697": {
+      "fromKey": "tag-985910",
+      "toKey": "tag-940005",
+      "from": {
+        "top": 451,
+        "right": 822,
+        "bottom": 472,
+        "left": 794,
+        "width": 28,
+        "height": 21,
+        "x": 794,
+        "y": 451
+      },
+      "to": {
+        "top": 363,
+        "right": 725.671875,
+        "bottom": 384,
+        "left": 630,
+        "width": 95.671875,
+        "height": 21,
+        "x": 630,
+        "y": 363
+      }
+    },
+    "line-3667": {
+      "fromKey": "tag-167082",
+      "toKey": "tag-213405",
+      "from": {
+        "top": 372,
+        "right": 823,
+        "bottom": 393,
+        "left": 795,
+        "width": 28,
+        "height": 21,
+        "x": 795,
+        "y": 372
+      },
+      "to": {
+        "top": 228,
+        "right": 980,
+        "bottom": 249,
+        "left": 952,
+        "width": 28,
+        "height": 21,
+        "x": 952,
+        "y": 228
+      }
+    },
+    "line-116035": {
+      "fromKey": "tag-219053",
+      "toKey": "tag-985910",
+      "from": {
+        "top": 403,
+        "right": 967,
+        "bottom": 424,
+        "left": 925,
+        "width": 42,
+        "height": 21,
+        "x": 925,
+        "y": 403
+      },
+      "to": {
+        "top": 451,
+        "right": 822,
+        "bottom": 472,
+        "left": 794,
+        "width": 28,
+        "height": 21,
+        "x": 794,
+        "y": 451
+      }
+    },
+    "line-389870": {
+      "fromKey": "tag-985910",
+      "toKey": "tag-383659",
+      "from": {
+        "top": 451,
+        "right": 822,
+        "bottom": 472,
+        "left": 794,
+        "width": 28,
+        "height": 21,
+        "x": 794,
+        "y": 451
+      },
+      "to": {
+        "top": 558,
+        "right": 959,
+        "bottom": 579,
+        "left": 931,
+        "width": 28,
+        "height": 21,
+        "x": 931,
+        "y": 558
+      }
+    },
+    "line-588456": {
+      "fromKey": "tag-498276",
+      "toKey": "tag-383659",
+      "from": {
+        "top": 504,
+        "right": 1070,
+        "bottom": 525,
+        "left": 1042,
+        "width": 28,
+        "height": 21,
+        "x": 1042,
+        "y": 504
+      },
+      "to": {
+        "top": 558,
+        "right": 959,
+        "bottom": 579,
+        "left": 931,
+        "width": 28,
+        "height": 21,
+        "x": 931,
+        "y": 558
+      }
+    },
+    "line-593496": {
+      "fromKey": "tag-590148",
+      "toKey": "tag-383659",
+      "from": {
+        "top": 609,
+        "right": 1059,
+        "bottom": 630,
+        "left": 1031,
+        "width": 28,
+        "height": 21,
+        "x": 1031,
+        "y": 609
+      },
+      "to": {
+        "top": 558,
+        "right": 959,
+        "bottom": 579,
+        "left": 931,
+        "width": 28,
+        "height": 21,
+        "x": 931,
+        "y": 558
+      }
+    },
+    "line-597824": {
+      "fromKey": "tag-498276",
+      "toKey": "tag-581956",
+      "from": {
+        "top": 504,
+        "right": 1070,
+        "bottom": 525,
+        "left": 1042,
+        "width": 28,
+        "height": 21,
+        "x": 1042,
+        "y": 504
+      },
+      "to": {
+        "top": 457,
+        "right": 1308,
+        "bottom": 478,
+        "left": 1266,
+        "width": 42,
+        "height": 21,
+        "x": 1266,
+        "y": 457
+      }
+    },
+    "line-601704": {
+      "fromKey": "tag-513964",
+      "toKey": "tag-498276",
+      "from": {
+        "top": 536,
+        "right": 1309,
+        "bottom": 557,
+        "left": 1267,
+        "width": 42,
+        "height": 21,
+        "x": 1267,
+        "y": 536
+      },
+      "to": {
+        "top": 504,
+        "right": 1070,
+        "bottom": 525,
+        "left": 1042,
+        "width": 28,
+        "height": 21,
+        "x": 1042,
+        "y": 504
+      }
+    },
+    "line-664368": {
+      "fromKey": "tag-498276",
+      "toKey": "tag-486251",
+      "from": {
+        "top": 504,
+        "right": 1070,
+        "bottom": 525,
+        "left": 1042,
+        "width": 28,
+        "height": 21,
+        "x": 1042,
+        "y": 504
+      },
+      "to": {
+        "top": 602,
+        "right": 1313,
+        "bottom": 623,
+        "left": 1271,
+        "width": 42,
+        "height": 21,
+        "x": 1271,
+        "y": 602
       }
     }
   },
@@ -262,57 +526,133 @@
       "input": "板料"
     },
     "tag-68923": {
-      "x": 3714,
-      "y": 3320,
+      "x": 3710,
+      "y": 3392,
       "editable": false,
-      "input": "管子 / 模套 / 炮筒"
-    },
-    "tag-91717": {
-      "x": 3715,
-      "y": 3474,
-      "editable": false,
-      "input": "模具钢"
-    },
-    "tag-127538": {
-      "x": 3927,
-      "y": 3366,
-      "editable": false,
-      "input": "淬火"
-    },
-    "tag-145468": {
-      "x": 3928,
-      "y": 3427,
-      "editable": false,
-      "input": "旧冲头"
-    },
-    "tag-155858": {
-      "x": 3924,
-      "y": 3475,
-      "editable": false,
-      "input": "滚丝轮"
+      "input": "模套"
     },
     "tag-167082": {
-      "x": 3925,
-      "y": 3517,
+      "x": 3874,
+      "y": 3488,
       "editable": false,
       "input": "进口"
     },
-    "tag-5056": {
-      "x": 3998,
-      "y": 3340,
+    "tag-897039": {
+      "x": 3709,
+      "y": 3604,
+      "editable": false,
+      "input": "合金钢 / 合金模具钢"
+    },
+    "tag-29038": {
+      "x": 3837,
+      "y": 3349,
+      "editable": false,
+      "input": "管子"
+    },
+    "tag-33798": {
+      "x": 3835,
+      "y": 3437,
+      "editable": false,
+      "input": "炮筒"
+    },
+    "tag-213405": {
+      "x": 4031,
+      "y": 3344,
+      "editable": false,
+      "input": "淬火"
+    },
+    "tag-219053": {
+      "x": 4004,
+      "y": 3519,
+      "editable": false,
+      "input": "未淬火"
+    },
+    "tag-486251": {
+      "x": 4350,
+      "y": 3718,
+      "editable": false,
+      "input": "旧冲头"
+    },
+    "tag-626250": {
+      "x": 4172,
+      "y": 3522,
       "editable": false,
       "input": "冷作"
     },
-    "tag-20728": {
-      "x": 3994,
-      "y": 3380,
+    "tag-630482": {
+      "x": 4172,
+      "y": 3571,
+      "editable": false,
+      "input": "热作"
+    },
+    "tag-640402": {
+      "x": 4155,
+      "y": 3309,
+      "editable": false,
+      "input": "冷作"
+    },
+    "tag-643922": {
+      "x": 4151,
+      "y": 3374,
+      "editable": false,
+      "input": "热作"
+    },
+    "tag-940005": {
+      "x": 3709,
+      "y": 3479,
+      "editable": false,
+      "input": "模具钢 / 模子料"
+    },
+    "tag-985910": {
+      "x": 3873,
+      "y": 3567,
+      "editable": false,
+      "input": "国标"
+    },
+    "tag-383659": {
+      "x": 4010,
+      "y": 3674,
+      "editable": false,
+      "input": "淬火"
+    },
+    "tag-397059": {
+      "x": 3076,
+      "y": 3589,
+      "editable": false
+    },
+    "tag-450780": {
+      "x": 3077,
+      "y": 3592,
+      "editable": false
+    },
+    "tag-498276": {
+      "x": 4121,
+      "y": 3620,
+      "editable": false,
+      "input": "冷作"
+    },
+    "tag-513964": {
+      "x": 4346,
+      "y": 3652,
+      "editable": false,
+      "input": "搓丝板"
+    },
+    "tag-581956": {
+      "x": 4345,
+      "y": 3573,
+      "editable": false,
+      "input": "滚丝轮"
+    },
+    "tag-590148": {
+      "x": 4110,
+      "y": 3725,
       "editable": false,
       "input": "热作"
     }
   },
   "CanvasPosition": {
-    "x": -3043,
-    "y": -2993,
+    "x": -3078,
+    "y": -3117,
     "z": 0,
     "gap": 1
   }
