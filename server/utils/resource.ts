@@ -9,5 +9,6 @@ export const getTargetResource = (resourceFileName: string) => {
     resourceFileName + '.toml',
   );
   const resourceFile = fs.readFileSync(resourceFilePath, 'utf-8');
-  return toml.parse(resourceFile);
+  const result = toml.parse(resourceFile);
+  return result;
 };
