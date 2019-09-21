@@ -53,6 +53,7 @@ export default class MarkdownController {
       layout,
       id,
     );
+    updateSider();
     service.updateContent(category, writeFilesPaths, originContent);
     ctx.response.body = true;
   }
@@ -83,6 +84,7 @@ export default class MarkdownController {
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.deleteTargetDocument(writeFilesPaths);
     service.updateMapping({ id }, true);
+    updateSider();
     ctx.response.body = true;
   }
 
@@ -93,6 +95,7 @@ export default class MarkdownController {
     const item = service.getOriginMappingItem(id);
     item.visible = false;
     service.updateMapping(item);
+    updateSider();
     ctx.response.body = true;
   }
 }
