@@ -8,6 +8,7 @@ import {
 
 export default class ToyService {
   private static connectionInstance: Connection;
+  private static sqlIns: { [key: string]: SqlInstanceProps };
   connection: Connection;
   sqlInstance: { [key: string]: SqlInstanceProps };
 
@@ -16,16 +17,21 @@ export default class ToyService {
   constructor() {
     if (!ToyService.connectionInstance) {
       const connect = this.createConnection();
-      ToyService.connectionInstance = connect;
-      this.connection = connect;
       connect.connect();
-    }
 
-    const sqlInstance = {};
-    getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(
-      item => Object.assign(sqlInstance, item),
-    );
-    this.sqlInstance = sqlInstance;
+      const sqlInstance = {};
+      getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(
+        item => Object.assign(sqlInstance, item),
+      );
+
+      ToyService.connectionInstance = connect;
+      ToyService.sqlIns = sqlInstance;
+      this.connection = connect;
+      this.sqlInstance = sqlInstance;
+    } else {
+      this.connection = ToyService.connectionInstance;
+      this.sqlInstance = ToyService.sqlIns;
+    }
   }
 
   public static getConnection() {
