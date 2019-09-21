@@ -1,0 +1,3 @@
+[test1]
+sql = 'SELECT * FROM `toy-box`.dictionary where value = 0;'
+method = 'post'

@@ -1,4 +1,5 @@
 import KoaRouter from 'koa-router';
+import { Context } from 'koa';
 
 function injectService(service: string[], propsList: any) {
   for (const item of service) {
@@ -33,8 +34,8 @@ export function Request({
 }) {
   return function(_target: any, _name: string, descriptor: any) {
     const fn = descriptor.value;
-    descriptor.value = (router: any) => {
-      router[method](url, async (ctx: any, next: any) => {
+    descriptor.value = (router: KoaRouter) => {
+      router[method](url, async (ctx: Context, next: any) => {
         await fn(ctx, next);
       });
     };
