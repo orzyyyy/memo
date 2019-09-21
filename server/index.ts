@@ -26,6 +26,12 @@ const initRouter = (targetApp: Koa) => {
     .filter((filePath: string) => filePath.endsWith('.js'))
     .map((controllerPath: string) => {
       const controller = path.join(__dirname, 'controller', controllerPath);
+      if (
+        controllerPath.includes('ToyController') &&
+        process.env.BUILD_ENV !== 'toy'
+      ) {
+        return;
+      }
       targetApp.use(require(controller).default.routes());
     });
 };
