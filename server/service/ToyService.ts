@@ -1,9 +1,15 @@
 import mysql, { Connection } from 'mysql';
 import { getTargetResource } from '../utils/resource';
+import { joinWithRootPath } from '../utils/common';
+import {
+  getAllSqlInstances,
+  SqlInstanceProps,
+} from '../middleware/CheckSqlTomlResource';
 
 export default class ToyService {
   private static connectionInstance: Connection;
   connection: Connection;
+  sqlInstance: { [key: string]: SqlInstanceProps };
 
   // To use this.connection instead of ToyService.connectionInstance
   // in class body
@@ -14,6 +20,12 @@ export default class ToyService {
       this.connection = connect;
       connect.connect();
     }
+
+    const sqlInstance = {};
+    getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(
+      item => Object.assign(sqlInstance, item),
+    );
+    this.sqlInstance = sqlInstance;
   }
 
   public static getConnection() {
@@ -30,9 +42,9 @@ export default class ToyService {
   };
 
   getDataBySqlKey = (key: string) => {
-    const sql = getTargetResource('sql/common').sql;
+    const { sql } = this.sqlInstance[key];
     return new Promise((resolve, reject) => {
-      this.connection.query(sql[key], (error, result, fields) => {
+      this.connection.query(sql, (error, result, fields) => {
         if (error) {
           reject(error);
         }

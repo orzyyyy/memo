@@ -1,6 +1,8 @@
 import KoaRouter from 'koa-router';
 import { Context } from 'koa';
 
+export type HttpMehtod = 'get' | 'post' | 'put' | 'delete';
+
 function injectService(service: string[], propsList: any) {
   for (const item of service) {
     propsList[item] = item;
@@ -25,13 +27,7 @@ export function Controller(prefix: string, service: string[] = []) {
   };
 }
 
-export function Request({
-  url,
-  method,
-}: {
-  url: string;
-  method: 'get' | 'post' | 'put' | 'delete';
-}) {
+export function Request({ url, method }: { url: string; method: HttpMehtod }) {
   return function(_target: any, _name: string, descriptor: any) {
     const fn = descriptor.value;
     descriptor.value = (router: KoaRouter) => {

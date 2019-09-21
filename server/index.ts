@@ -7,6 +7,7 @@ import { createServer } from 'http';
 import IO from 'socket.io';
 import path from 'path';
 import DecoratorRouter from './middleware/DecoratorRouter';
+import CheckSqlTomlResource from './middleware/CheckSqlTomlResource';
 
 const app = new Koa();
 const server = createServer(app.callback());
@@ -31,6 +32,9 @@ app.use(
   }),
 );
 app.use(KoaStatic(joinWithRootPath('dist')));
+if (process.env.BUILD_ENV === 'toy') {
+  app.use(CheckSqlTomlResource(joinWithRootPath('server/resource/sql')));
+}
 
 info('listen at http://localhost:9099');
 server.listen(9099);

@@ -5,7 +5,8 @@ import ToyService from '../service/ToyService';
 export default class MainPageController {
   @Request({ url: '/', method: 'get' })
   async getMainPage(ctx: any) {
+    const { key } = ctx.query;
     const service = new ToyService();
-    ctx.response.body = await service.getDataBySqlKey('test');
+    ctx.response.body = await service.getDataBySqlKey(key);
   }
 }
