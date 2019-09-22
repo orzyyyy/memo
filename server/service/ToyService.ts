@@ -1,4 +1,4 @@
-import mysql, { Connection } from 'mysql';
+import mysql, { Connection, FieldInfo } from 'mysql';
 import { getTargetResource } from '../utils/resource';
 import { joinWithRootPath } from '../utils/common';
 import {
@@ -47,7 +47,9 @@ export default class ToyService {
     return mysql.createConnection(config);
   };
 
-  getDataBySqlKey = (key: string) => {
+  getDataBySqlKey = (
+    key: string,
+  ): Promise<{ result: any; fields: FieldInfo[] | undefined }> => {
     const { sql } = this.sqlInstance[key];
     return new Promise((resolve, reject) => {
       this.connection.query(sql, (error, result, fields) => {
