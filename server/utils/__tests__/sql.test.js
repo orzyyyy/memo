@@ -48,6 +48,20 @@ describe('sql', () => {
 
     expect(
       replacePlaceholderWithParams(
+        'SELECT * FROM dictionary where value = @value and id = @id;',
+        { value: 33, id: null },
+      ),
+    ).toBe('SELECT * FROM dictionary where value = 33 and id = null;');
+
+    expect(
+      replacePlaceholderWithParams(
+        'SELECT * FROM dictionary where value = @value and id = @id;',
+        { value: 33, id: undefined },
+      ),
+    ).toBe('SELECT * FROM dictionary where value = 33 and id = @id;');
+
+    expect(
+      replacePlaceholderWithParams(
         `SELECT * FROM dictionary where value = @value
         and id = @id;`,
         { value: 33, id: '' },
