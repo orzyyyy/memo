@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { message } from 'antd';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
+import { getPathNameFromUrl } from '../utils';
 
 export interface MarkdownEditorDataControllerProps {
   match: any;
@@ -21,10 +23,8 @@ export function showMessageAfterFetching(result: any) {
   result ? message.success('保存成功') : message.error('保存失败');
 }
 
-const MarkdownEditorDataController = (props: {
-  match: { params: { id: string } };
-}) => {
-  const id: string = props.match.params.id;
+const MarkdownEditorDataController = () => {
+  const id: string = getPathNameFromUrl();
 
   const handleOnSave = async () => {
     const params: MarkdownEditorSaveProps = {
@@ -33,7 +33,7 @@ const MarkdownEditorDataController = (props: {
       category: 'markdown',
       format: true,
     };
-    const response = await fetch('document/update', {
+    const response = await fetch('../document/update', {
       body: JSON.stringify(params),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -57,4 +57,7 @@ const MarkdownEditorDataController = (props: {
   );
 };
 
-export default MarkdownEditorDataController;
+ReactDOM.render(
+  <MarkdownEditorDataController />,
+  document.getElementById('root'),
+);

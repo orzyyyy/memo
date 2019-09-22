@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import MappingDetail from '../pages/MappingDetail';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
@@ -6,11 +7,10 @@ import {
   MarkdownEditorSaveProps,
   showMessageAfterFetching,
 } from './MarkdownEditorDataController';
+import { getPathNameFromUrl } from '../utils';
 
-const MappingDetailDataController = (props: {
-  match: { params: { id: string } };
-}) => {
-  const id: string = props.match.params.id;
+const MappingDetailDataController = () => {
+  const id: string = getPathNameFromUrl();
 
   const handleOnSave = async (newData: DataSource) => {
     const params: MarkdownEditorSaveProps = {
@@ -37,4 +37,7 @@ const MappingDetailDataController = (props: {
   return <MappingDetail dataSource={data} onChange={handleOnChange} />;
 };
 
-export default MappingDetailDataController;
+ReactDOM.render(
+  <MappingDetailDataController />,
+  document.getElementById('root'),
+);
