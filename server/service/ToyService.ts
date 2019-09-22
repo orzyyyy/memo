@@ -5,6 +5,7 @@ import {
   getAllSqlInstances,
   SqlInstanceProps,
 } from '../middleware/CheckSqlTomlResource';
+import { replacePlaceholderWithParams } from '../utils/sql';
 
 export default class ToyService {
   private static connectionInstance: Connection;
@@ -49,8 +50,12 @@ export default class ToyService {
 
   getDataBySqlKey = (
     key: string,
+    query: any,
   ): Promise<{ result: any; fields: FieldInfo[] | undefined }> => {
-    const { sql } = this.sqlInstance[key];
+    let { sql } = this.sqlInstance[key];
+    if (Object.keys(query).length && sql) {
+      sql = replacePlaceholderWithParams(sql, query);
+    }
     return new Promise((resolve, reject) => {
       this.connection.query(sql, (error, result, fields) => {
         if (error) {

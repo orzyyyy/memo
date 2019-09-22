@@ -1,3 +1,6 @@
 [test1]
-sql = 'SELECT * FROM dictionary where value = 0;'
+sql = """
+  SELECT * FROM dictionary where value = @value and
+  id = @id;
+"""
 method = 'post'
