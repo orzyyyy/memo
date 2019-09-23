@@ -163,15 +163,15 @@ module.exports = {
   entry: {
     'markdown-detail': path.join(
       __dirname,
-      'src/singlePageRender/MarkdownDetailDataController.tsx',
+      'src/router/MarkdownDetailDataController.tsx',
     ),
     'markdown-editor': path.join(
       __dirname,
-      'src/singlePageRender/MarkdownEditorDataController.tsx',
+      'src/router/MarkdownEditorDataController.tsx',
     ),
     'mapping-detail': path.join(
       __dirname,
-      'src/singlePageRender/MappingDetailDataController.tsx',
+      'src/router/MappingDetailDataController.tsx',
     ),
     ninoninoni: path.join(__dirname, 'src'),
   },
