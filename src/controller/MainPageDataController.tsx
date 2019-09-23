@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
@@ -9,6 +8,7 @@ import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
+import { history } from '../router';
 
 export interface SiderProps {
   key: string;
@@ -51,7 +51,7 @@ const handleListItemClick = ({
   category: 'mapping' | 'markdown';
   id: string;
 }) => {
-  location.href = `./${category}/${id}`;
+  history.push(`./${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -235,4 +235,4 @@ const MainPageDataController = () => {
   );
 };
 
-ReactDOM.render(<MainPageDataController />, document.getElementById('root'));
+export default MainPageDataController;

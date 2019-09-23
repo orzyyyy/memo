@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import MappingDetail from '../pages/MappingDetail';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
@@ -37,7 +36,4 @@ const MappingDetailDataController = () => {
   return <MappingDetail dataSource={data} onChange={handleOnChange} />;
 };
 
-ReactDOM.render(
-  <MappingDetailDataController />,
-  document.getElementById('root'),
-);
+export default MappingDetailDataController;

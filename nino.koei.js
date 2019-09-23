@@ -39,22 +39,14 @@ const getCopyPluginProps = mappings => {
     const src = `src/assets/${category}/${id}.${ext}`;
     const dist = `dist/${category}/${id}/${id}.${ext}`;
     const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
-    if (category === 'mapping') {
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, dist),
-      });
-    }
-    if (category === 'markdown') {
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, dist),
-      });
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, distEditor),
-      });
-    }
+    documentFiles.push({
+      from: path.join(__dirname, src),
+      to: path.join(__dirname, dist),
+    });
+    documentFiles.push({
+      from: path.join(__dirname, src),
+      to: path.join(__dirname, distEditor),
+    });
   });
 
   return [...assetsFiles, ...exhentaiFiles, ...documentFiles];
@@ -91,7 +83,7 @@ const getHtmlPluginProps = mappings => {
     new HtmlWebpackPlugin({
       ...commonHtmlWebpackProps,
       filename: 'index.html',
-      chunks: ['main-page'],
+      chunks: ['ninoninoni'],
     }),
   ];
   const detailPageProps = [];
@@ -161,24 +153,20 @@ if (process.env.BUILD_ENV !== 'prod') {
 
 module.exports = {
   entry: {
-    'main-page': path.join(
-      __dirname,
-      'src/controller/MainPageDataController.tsx',
-    ),
     'markdown-detail': path.join(
       __dirname,
-      'src/controller/MarkdownDetailDataController.tsx',
+      'src/router/MarkdownDetailDataController.tsx',
     ),
     'markdown-editor': path.join(
       __dirname,
-      'src/controller/MarkdownEditorDataController.tsx',
+      'src/router/MarkdownEditorDataController.tsx',
     ),
     'mapping-detail': path.join(
       __dirname,
-      'src/controller/MappingDetailDataController.tsx',
+      'src/router/MappingDetailDataController.tsx',
     ),
+    ninoninoni: path.join(__dirname, 'src'),
   },
-  externals: { 'socket.io-client': 'socket.io-client' },
   plugins,
   output: process.env.PUBLISH_TO === 'github' ? { publicPath: '/memo/' } : {},
 };

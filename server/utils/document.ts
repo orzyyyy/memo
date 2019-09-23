@@ -70,9 +70,11 @@ const getWriteMappingPaths = (
     return [`src/assets/mapping.json`, `dist/assets/mapping.json`];
   }
   checkCategory(category);
+  const ext = category === 'mapping' ? 'json' : 'md';
   return [
-    `src/assets/${category}/${id}.${category === 'mapping' ? 'json' : 'md'}`,
-    `dist/assets/${category}/${id}.${category === 'mapping' ? 'json' : 'md'}`,
+    `src/assets/${category}/${id}.${ext}`,
+    `dist/${category}/${id}/${id}.${ext}`,
+    `dist/${category}-editor/${id}/${id}.${ext}`,
   ];
 };
 
