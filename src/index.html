@@ -31,6 +31,10 @@
   </head>
 
   <body>
+    <%= htmlWebpackPlugin.options.socket %>
+    <script>
+      window.__isLocal = <%= htmlWebpackPlugin.options.environment %>;
+    </script>
     <div id="root"></div>
   </body>
 </html>

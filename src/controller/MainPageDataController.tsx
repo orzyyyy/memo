@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
@@ -50,7 +51,7 @@ const handleListItemClick = ({
   category: 'mapping' | 'markdown';
   id: string;
 }) => {
-  location.hash = `/${category}/${id}`;
+  location.href = `/${category}/${id}`;
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -79,7 +80,9 @@ const MainPageDataController = () => {
   useResize();
 
   useEffect(() => {
-    isLocal && getExhentaiDateSet();
+    if (isLocal) {
+      getExhentaiDateSet();
+    }
     getSider();
     getMapping();
   }, []);
@@ -155,9 +158,11 @@ const MainPageDataController = () => {
       message.success(`${item.category} 初始化完成`);
     }
     handleModalCancel();
-    location.hash = `/${item.category}${
-      item.category === 'markdown' ? '/edit' : ''
-    }/${id}`;
+    if (item.category === 'mapping') {
+      location.href = `/mapping/${id}`;
+      return;
+    }
+    location.href = `/markdown-editor/${id}`;
   };
 
   const handleHide = async ({ id }: MappingProps) => {
@@ -230,4 +235,4 @@ const MainPageDataController = () => {
   );
 };
 
-export default MainPageDataController;
+ReactDOM.render(<MainPageDataController />, document.getElementById('root'));
