@@ -51,7 +51,7 @@ const handleListItemClick = ({
   category: 'mapping' | 'markdown';
   id: string;
 }) => {
-  location.href = `/${category}/${id}`;
+  location.href = `./${category}/${id}`;
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -159,10 +159,10 @@ const MainPageDataController = () => {
     }
     handleModalCancel();
     if (item.category === 'mapping') {
-      location.href = `/mapping/${id}`;
+      location.href = `./mapping/${id}`;
       return;
     }
-    location.href = `/markdown-editor/${id}`;
+    location.href = `./markdown-editor/${id}`;
   };
 
   const handleHide = async ({ id }: MappingProps) => {
