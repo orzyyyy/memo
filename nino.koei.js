@@ -65,7 +65,7 @@ const commonHtmlWebpackProps = {
   environment: process.env.BUILD_ENV !== 'prod',
   base:
     process.env.PUBLISH_TO === 'github'
-      ? `<base href="/memo" />`
+      ? `<base href="/memo/" />`
       : `<base href="/" />`,
   socket:
     process.env.BUILD_ENV !== 'prod'
