@@ -39,22 +39,14 @@ const getCopyPluginProps = mappings => {
     const src = `src/assets/${category}/${id}.${ext}`;
     const dist = `dist/${category}/${id}/${id}.${ext}`;
     const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
-    if (category === 'mapping') {
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, dist),
-      });
-    }
-    if (category === 'markdown') {
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, dist),
-      });
-      documentFiles.push({
-        from: path.join(__dirname, src),
-        to: path.join(__dirname, distEditor),
-      });
-    }
+    documentFiles.push({
+      from: path.join(__dirname, src),
+      to: path.join(__dirname, dist),
+    });
+    documentFiles.push({
+      from: path.join(__dirname, src),
+      to: path.join(__dirname, distEditor),
+    });
   });
 
   return [...assetsFiles, ...exhentaiFiles, ...documentFiles];
