@@ -180,4 +180,5 @@ module.exports = {
   },
   externals: { 'socket.io-client': 'socket.io-client' },
   plugins,
+  output: process.env.PUBLISH_TO === 'github' ? { publicPath: '/memo/' } : {},
 };
