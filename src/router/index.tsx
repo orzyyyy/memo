@@ -35,6 +35,7 @@ const RouterInstance = () => (
     <Suspense fallback={<TohoLoading />}>
       <Router history={history}>
         <Route path="/" component={MainPageDataController} exact />
+        <Route path="/memo" component={MainPageDataController} exact />
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
           path="/markdown/edit/:id"
