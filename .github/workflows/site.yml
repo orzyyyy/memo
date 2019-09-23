@@ -16,5 +16,8 @@ jobs:
       - name: install
         run: npm install
 
-      - name: lint
+      - name: build for netlify
         run: npm run build
+
+      - name: build for gh-pages
+        run: npm run build:gh-pages
