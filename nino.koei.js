@@ -91,7 +91,7 @@ const getHtmlPluginProps = mappings => {
     new HtmlWebpackPlugin({
       ...commonHtmlWebpackProps,
       filename: 'index.html',
-      chunks: ['main-page'],
+      chunks: ['ninoninoni'],
     }),
   ];
   const detailPageProps = [];
@@ -161,24 +161,20 @@ if (process.env.BUILD_ENV !== 'prod') {
 
 module.exports = {
   entry: {
-    'main-page': path.join(
-      __dirname,
-      'src/controller/MainPageDataController.tsx',
-    ),
     'markdown-detail': path.join(
       __dirname,
-      'src/controller/MarkdownDetailDataController.tsx',
+      'src/singlePageRender/MarkdownDetailDataController.tsx',
     ),
     'markdown-editor': path.join(
       __dirname,
-      'src/controller/MarkdownEditorDataController.tsx',
+      'src/singlePageRender/MarkdownEditorDataController.tsx',
     ),
     'mapping-detail': path.join(
       __dirname,
-      'src/controller/MappingDetailDataController.tsx',
+      'src/singlePageRender/MappingDetailDataController.tsx',
     ),
+    ninoninoni: path.join(__dirname, 'src'),
   },
-  externals: { 'socket.io-client': 'socket.io-client' },
   plugins,
   output: process.env.PUBLISH_TO === 'github' ? { publicPath: '/memo/' } : {},
 };

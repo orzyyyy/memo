@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { message } from 'antd';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
@@ -57,7 +56,4 @@ const MarkdownEditorDataController = () => {
   );
 };
 
-ReactDOM.render(
-  <MarkdownEditorDataController />,
-  document.getElementById('root'),
-);
+export default MarkdownEditorDataController;
