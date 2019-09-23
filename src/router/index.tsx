@@ -49,6 +49,7 @@ const RouterInstance = () => (
           path="/memo/markdown/edit/:id"
           component={MarkdownEditorDataController}
         />
+        <Route path="/markdown/:id" component={MarkdownDetailDataController} />
         <Route
           path="/memo/markdown/:id"
           component={MarkdownDetailDataController}
