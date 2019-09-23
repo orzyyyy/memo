@@ -38,10 +38,21 @@ const RouterInstance = () => (
         <Route path="/memo" component={MainPageDataController} />
         <Route path="/mapping/:id" component={MappingDetailDataController} />
         <Route
+          path="/memo/mapping/:id"
+          component={MappingDetailDataController}
+        />
+        <Route
           path="/markdown/edit/:id"
           component={MarkdownEditorDataController}
         />
-        <Route path="/markdown/:id" component={MarkdownDetailDataController} />
+        <Route
+          path="/memo/markdown/edit/:id"
+          component={MarkdownEditorDataController}
+        />
+        <Route
+          path="/memo/markdown/:id"
+          component={MarkdownDetailDataController}
+        />
       </Router>
     </Suspense>
   </BrowserRouter>
