@@ -63,6 +63,10 @@ const getCopyPluginProps = mappings => {
 const commonHtmlWebpackProps = {
   template: './src/index.html',
   environment: process.env.BUILD_ENV !== 'prod',
+  base:
+    process.env.PUBLISH_TO === 'github'
+      ? `<base href="/memo" />`
+      : `<base href="/" />`,
   socket:
     process.env.BUILD_ENV !== 'prod'
       ? `
