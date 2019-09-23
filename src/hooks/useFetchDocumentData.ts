@@ -8,7 +8,7 @@ export function useFetchDocumentData(
   onSaveCallback?: (data: DataSource) => void,
 ) {
   const ext = type === 'mapping' ? 'json' : 'md';
-  const url = `${type}/${id}/${id}.${ext}`;
+  const url = `/${type}/${id}/${id}.${ext}`;
   const [data, setData] = useState();
   useBindKeyDown(data, onSaveCallback);
 
