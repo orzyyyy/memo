@@ -16,19 +16,49 @@ const initMappingFiles = () => {
   return targetFiles;
 };
 
-const getCopyPluginProps = mappings =>
+const getCopyPluginProps = mappings => {
+  const assetsFiles = [
+    {
+      from: path.join(__dirname, 'src/assets'),
+      to: path.join(__dirname, 'dist/assets'),
+      ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
+    },
+  ];
+
+  const exhentaiFiles = [];
+  if (process.env.BUILD_ENV !== 'prod') {
+    exhentaiFiles.push({
+      from: path.join(__dirname, 'src/assets/exhentai'),
+      to: path.join(__dirname, 'dist/assets/exhentai'),
+    });
+  }
+
+  const documentFiles = [];
   mappings.map(({ id, category }) => {
-    const src = `src/assets/${category}/${id}.${
-      category === 'mapping' ? 'json' : 'md'
-    }`;
-    const dist = `dist/assets/${category}/${id}.${
-      category === 'mapping' ? 'json' : 'md'
-    }`;
-    return {
-      from: path.join(__dirname, src),
-      to: path.join(__dirname, dist),
-    };
+    const ext = category === 'mapping' ? 'json' : 'md';
+    const src = `src/assets/${category}/${id}.${ext}`;
+    const dist = `dist/${category}/${id}/${id}.${ext}`;
+    const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
+    if (category === 'mapping') {
+      documentFiles.push({
+        from: path.join(__dirname, src),
+        to: path.join(__dirname, dist),
+      });
+    }
+    if (category === 'markdown') {
+      documentFiles.push({
+        from: path.join(__dirname, src),
+        to: path.join(__dirname, dist),
+      });
+      documentFiles.push({
+        from: path.join(__dirname, src),
+        to: path.join(__dirname, distEditor),
+      });
+    }
   });
+
+  return [...assetsFiles, ...exhentaiFiles, ...documentFiles];
+};
 
 const commonHtmlWebpackProps = {
   template: './src/index.html',
@@ -104,25 +134,9 @@ const readableMappingFiles = initMappingFiles();
 const copyPluginProps = getCopyPluginProps(readableMappingFiles);
 const htmlPluginProps = getHtmlPluginProps(readableMappingFiles);
 
-const exhentaiFiles = [];
-if (process.env.BUILD_ENV !== 'prod') {
-  exhentaiFiles.push({
-    from: path.join(__dirname, 'src/assets/exhentai'),
-    to: path.join(__dirname, 'dist/assets/exhentai'),
-  });
-}
-
 const plugins = [
   ...htmlPluginProps,
-  new CopyWebpackPlugin([
-    {
-      from: path.join(__dirname, 'src/assets'),
-      to: path.join(__dirname, 'dist/assets'),
-      ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
-    },
-    ...copyPluginProps,
-    ...exhentaiFiles,
-  ]),
+  new CopyWebpackPlugin([...copyPluginProps]),
   new MomentLocalesPlugin({
     localesToKeep: ['zh-cn'],
   }),
