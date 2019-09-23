@@ -169,16 +169,4 @@ module.exports = {
   },
   plugins,
   output: process.env.PUBLISH_TO === 'github' ? { publicPath: '/memo/' } : {},
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        common: {
-          name: 'common',
-          chunks: 'initial',
-          priority: 2,
-          minChunks: 2,
-        },
-      },
-    },
-  },
 };
