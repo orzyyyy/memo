@@ -14,7 +14,7 @@ export const getLatestListFileName = () => {
     const result = infoFiles
       .filter((item: string) => item !== '.gitkeep')
       .map((item: string) => parseInt(item, 10))
-      .sort((a: any, b: any) => b - a);
+      .sort((a: number, b: number) => b - a);
     if (result.length > 0) {
       return result[0].toString();
     }
@@ -35,15 +35,49 @@ export const getListFiles = (): string[] => {
   return [];
 };
 
+export const getLatestDownloadDirName = (dateStamp?: string) => {
+  let result = dateStamp;
+  if (!dateStamp) {
+    const downloadDir = fs
+      .readdirSync(joinWithRootPath(downloadPath))
+      .filter((item: string) => item !== '.gitkeep');
+    result = downloadDir[downloadDir.length - 1];
+  }
+  return result;
+};
+
+export const getMissedImgInfo = (latestDirPath: string) => {
+  const result: { detail: string; index: string; i: number }[] = [];
+  fs.readdirSync(latestDirPath).map(item => {
+    const prefix = `${latestDirPath}/${item}`;
+    const files = fs
+      .readdirSync(prefix)
+      .map(f => parseInt(f.replace(/[.jpg|.png]/g, '')))
+      .filter(item => item)
+      .sort((a: number, b: number) => a - b)
+      .map(item => item.toString());
+    const detail: string[] = readJsonFile(`${prefix}/detailImageUrls.json`);
+    const rest: string[] = readJsonFile(`${prefix}/restDetailUrls.json`);
+
+    for (let i = 1; i < rest.length + 1; i++) {
+      if (!files.includes(i.toString())) {
+        result.push({
+          detail: detail[i - 1],
+          i,
+          index: rest[i - 1],
+        });
+      }
+    }
+  });
+  return result;
+};
+
 export const getLatestListInfo = () => {
   const tempPath = getLatestListFileName() || '';
   const newestListFilePath = joinWithRootPath(listInfoPath + tempPath);
   const result = readJsonFile(newestListFilePath + '.json');
   return result && result[0];
 };
-
-export const getBaseNameOfImage = (dir: string) =>
-  fs.readdirSync(joinWithRootPath(dir)).map(f => f.replace(/[.jpg|.png]/g, ''));
 
 export const getEmptyRestDetailUrlInfo = () =>
   glob
