@@ -32,7 +32,12 @@ export function Request({ url, method }: { url: string; method: HttpMehtod }) {
     const fn = descriptor.value;
     descriptor.value = (router: KoaRouter) => {
       router[method](url, async (ctx: Context, next: any) => {
-        await fn(ctx, next);
+        const result = await fn(ctx, next);
+        if (result !== undefined) {
+          ctx.response.body = result;
+          return;
+        }
+        ctx.response.body = 'success';
       });
     };
   };
