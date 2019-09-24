@@ -10,9 +10,10 @@ import ExhentaiService from '../service/ExhentaiService';
 import {
   getLatestListInfo,
   getLatestListFileName,
-  getBaseNameOfImage,
   getListFiles,
   getEmptyRestDetailUrlInfo,
+  getLatestDownloadDirName,
+  getMissedImgInfo,
 } from '../utils/exhentai';
 import path from 'path';
 import { Context } from 'koa';
@@ -87,27 +88,12 @@ export default class ExhentaiController {
     service.downloadImages(detailImageUrls, prefixPath);
   }
 
-  @Request({ url: '/download/stat', method: 'get' })
-  async statisticsFailedDownloadImgUrls(ctx: Context) {
-    const { name, dateStamp } = ctx.query;
-    const prefixPath = `exhentai/${dateStamp}/${name}`;
-    const detailImageUrls: string[] = readJsonFile(
-      joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
-    );
-    const indexImageUrls: string[] = readJsonFile(
-      joinWithRootPath(`${prefixPath}/restDetailUrls.json`),
-    );
-    const imgUrls: string[] = getBaseNameOfImage(prefixPath);
-    const result: { detail: string; index: string; i: number }[] = [];
-    for (let i = 1; i < indexImageUrls.length + 1; i++) {
-      if (!imgUrls.includes(i.toString())) {
-        result.push({
-          detail: detailImageUrls[i - 1],
-          i,
-          index: indexImageUrls[i - 1],
-        });
-      }
-    }
+  @Request({ url: '/download/status', method: 'get' })
+  async checkMissedDownloadImgs(ctx: Context) {
+    const { dateStamp } = ctx.query;
+    const latestDirName = getLatestDownloadDirName(dateStamp);
+    const latestDirPath = joinWithRootPath(`exhentai/${latestDirName}`);
+    const result = getMissedImgInfo(latestDirPath);
     return result;
   }
 
