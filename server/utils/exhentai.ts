@@ -1,6 +1,6 @@
 import { joinWithRootPath, readJsonFile } from './common';
 import fs from 'fs-extra';
-import path, { dirname, join } from 'path';
+import { dirname, join } from 'path';
 import glob from 'glob';
 import { getTargetResource } from './resource';
 
@@ -43,10 +43,7 @@ export const getLatestListInfo = () => {
 };
 
 export const getBaseNameOfImage = (dir: string) =>
-  fs
-    .readdirSync(joinWithRootPath(dir))
-    .filter(f => path.extname(f) !== 'json')
-    .map(f => path.basename(f, '.jpg'));
+  fs.readdirSync(joinWithRootPath(dir)).map(f => f.replace(/[.jpg|.png]/g, ''));
 
 export const getEmptyRestDetailUrlInfo = () =>
   glob
