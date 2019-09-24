@@ -15,6 +15,7 @@ import {
   getEmptyRestDetailUrlInfo,
 } from '../utils/exhentai';
 import path from 'path';
+import { Context } from 'koa';
 
 export interface ExHentaiInfoItem {
   name?: string;
@@ -26,7 +27,7 @@ export interface ExHentaiInfoItem {
 @Controller('/exhentai')
 export default class ExhentaiController {
   @Request({ url: '/', method: 'get' })
-  async getThumbnaiInfo(ctx: { response: { body: string } }) {
+  async getThumbnaiInfo() {
     const service = new ExhentaiService();
     await service.initBrowser();
     const latestListInfo = await getLatestListInfo();
@@ -37,16 +38,16 @@ export default class ExhentaiController {
       `dist/assets/exhentai/${createTime}`,
     ].map(item => writeIntoJsonFile(item, results));
     success('fetch completed');
-    ctx.response.body = `./assets/exhentai/${createTime}.json`;
+    return `./assets/exhentai/${createTime}.json`;
   }
 
   @Request({ url: '/getLatestSet', method: 'get' })
-  async getLatestExHentaiSet(ctx: any) {
-    ctx.response.body = `./assets/exhentai/${getLatestListFileName()}.json`;
+  async getLatestExHentaiSet() {
+    return `./assets/exhentai/${getLatestListFileName()}.json`;
   }
 
   @Request({ url: '/download', method: 'post' })
-  async downloadImages(ctx: any) {
+  async downloadImages(ctx: Context) {
     const { url } = ctx.request.body;
     const service = new ExhentaiService();
     await service.initBrowser();
@@ -73,12 +74,10 @@ export default class ExhentaiController {
     writeIntoJsonFile(`${prefixPath}/detailImageUrls`, images);
 
     await service.downloadImages(images, prefixPath);
-
-    ctx.response.body = 'success';
   }
 
   @Request({ url: '/download/target', method: 'get' })
-  async downloadFromExistUrls(ctx: any) {
+  async downloadFromExistUrls(ctx: Context) {
     const { name, dateStamp } = ctx.query;
     const service = new ExhentaiService();
     const prefixPath = `exhentai/${dateStamp}/${name}`;
@@ -86,12 +85,11 @@ export default class ExhentaiController {
       joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
     );
     service.downloadImages(detailImageUrls, prefixPath);
-    ctx.response.body = 'success';
   }
 
   @Request({ url: '/download/stat', method: 'get' })
-  async statisticsFailedDownloadImgUrls(ctx: any) {
-    const { name, dateStamp, length } = ctx.query;
+  async statisticsFailedDownloadImgUrls(ctx: Context) {
+    const { name, dateStamp } = ctx.query;
     const prefixPath = `exhentai/${dateStamp}/${name}`;
     const detailImageUrls: string[] = readJsonFile(
       joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
@@ -101,7 +99,7 @@ export default class ExhentaiController {
     );
     const imgUrls: string[] = getBaseNameOfImage(prefixPath);
     const result: { detail: string; index: string; i: number }[] = [];
-    for (let i = 1; i < parseInt(length, 10) + 1; i++) {
+    for (let i = 1; i < indexImageUrls.length + 1; i++) {
       if (!imgUrls.includes(i.toString())) {
         result.push({
           detail: detailImageUrls[i - 1],
@@ -110,11 +108,11 @@ export default class ExhentaiController {
         });
       }
     }
-    ctx.response.body = result;
+    return result;
   }
 
   @Request({ url: '/dateSet', method: 'get' })
-  async getDateSet(ctx: any) {
+  async getDateSet() {
     const listFiles = getListFiles().reverse();
     const result: { key: string; name: string }[] = [];
 
@@ -122,11 +120,11 @@ export default class ExhentaiController {
       result.push({ key: `./assets/exhentai/${item}.json`, name: item });
     }
 
-    ctx.response.body = listFiles;
+    return listFiles;
   }
 
   @Request({ url: '/sync', method: 'get' })
-  async sync(ctx: any) {
+  async sync() {
     const service = new ExhentaiService();
     await service.initBrowser();
     const targetComic = getEmptyRestDetailUrlInfo();
@@ -139,6 +137,5 @@ export default class ExhentaiController {
 
       success('fetch all image completed');
     }
-    ctx.response.body = 'succcess';
   }
 }

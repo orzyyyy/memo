@@ -1,13 +1,14 @@
 import { Controller, Request } from '../utils/decorator';
 import MainPageService from '../service/MainPageService';
+import { Context } from 'koa';
 
 @Controller('/')
 export default class MainPageController {
   @Request({ url: '/', method: 'get' })
-  async getMainPage(ctx: any) {
+  async getMainPage(ctx: Context) {
     const service = new MainPageService();
     ctx.type = 'html';
-    ctx.response.body = service.getDist();
+    return service.getDist();
   }
 
   @Request({ url: '/test', method: 'get' })

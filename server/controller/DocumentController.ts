@@ -2,6 +2,7 @@ import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
 import { getWriteMappingPaths, updateSider } from '../utils/document';
 import DocumentService from '../service/DocumentService';
+import { Context } from 'koa';
 
 export interface MappingProps {
   [x: string]: any;
@@ -19,7 +20,7 @@ export interface MappingProps {
 @Controller('/document')
 export default class MarkdownController {
   @Request({ url: '/update', method: 'post' })
-  async updateTargetDocument(ctx: any) {
+  async updateTargetDocument(ctx: Context) {
     const {
       layout,
       id,
@@ -55,11 +56,10 @@ export default class MarkdownController {
     );
     updateSider();
     service.updateContent(category, writeFilesPaths, originContent);
-    ctx.response.body = true;
   }
 
   @Request({ url: '/add', method: 'post' })
-  async initDocument(ctx: any) {
+  async initDocument(ctx: Context) {
     const { title, type, subType, category } = ctx.request.body;
     const service = new DocumentService();
     const timeStamp = new Date().getTime();
@@ -74,28 +74,26 @@ export default class MarkdownController {
     });
     service.updateContent(category, writeFilesPaths);
     updateSider();
-    ctx.response.body = id;
+    return id;
   }
 
   @Request({ url: '/delete', method: 'delete' })
-  async deleteTargetDocument(ctx: any) {
+  async deleteTargetDocument(ctx: Context) {
     const { id, category } = ctx.request.body;
     const service = new DocumentService();
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.deleteTargetDocument(writeFilesPaths);
     service.updateMapping({ id }, true);
     updateSider();
-    ctx.response.body = true;
   }
 
   @Request({ url: '/hide', method: 'post' })
-  async hideTargetDocument(ctx: any) {
+  async hideTargetDocument(ctx: Context) {
     const { id } = ctx.request.body;
     const service = new DocumentService();
     const item = service.getOriginMappingItem(id);
     item.visible = false;
     service.updateMapping(item);
     updateSider();
-    ctx.response.body = true;
   }
 }
