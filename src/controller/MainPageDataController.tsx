@@ -166,11 +166,13 @@ const MainPageDataController = () => {
   };
 
   const handleHide = async ({ id }: MappingProps) => {
-    await fetch('document/update', {
+    await fetch('document/hide', {
       body: JSON.stringify({ id }),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
+    getSider();
+    getMapping();
     message.success('隐藏完成');
   };
 
