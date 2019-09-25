@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import MainPage from '../pages/MainPage';
-import { MappingProps } from '../../server/controller/DocumentController';
-import MainPageList from '../pages/MainPageList';
-import { message } from 'antd';
-import { SelectValue } from 'antd/lib/select';
-import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
-import EditForm, { FormProps } from '../pages/EditForm';
-import ExhentaiList from './ExHentaiListDataController';
-import { useResize } from '../hooks/useResize';
-import { history } from '../router';
+import React, { useEffect, useState } from "react";
+import MainPage from "../pages/MainPage";
+import { MappingProps } from "../../server/controller/DocumentController";
+import MainPageList from "../pages/MainPageList";
+import { message } from "antd";
+import { SelectValue } from "antd/lib/select";
+import { ExHentaiInfoItem } from "../../server/controller/ExhentaiController";
+import EditForm, { FormProps } from "../pages/EditForm";
+import ExhentaiList from "./ExHentaiListDataController";
+import { useResize } from "../hooks/useResize";
+import { history } from "../router";
 
 export interface SiderProps {
   key: string;
@@ -31,24 +31,24 @@ export interface MainPageDataControllerState {
 
 const handleExhentaiDownload = (e: any) => {
   const url = e.target.value;
-  fetch('exhentai/download', {
+  fetch("exhentai/download", {
     body: JSON.stringify({ url }),
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" }
   })
     .then(response => response.text())
-    .then(result => result === 'true' && message.success('保存完成'));
+    .then(result => result === "true" && message.success("保存完成"));
 };
 
 const handleExhentaiLoadList = () => {
-  fetch('exhentai');
+  fetch("exhentai");
 };
 
 const handleListItemClick = ({
   category,
-  id,
+  id
 }: {
-  category: 'mapping' | 'markdown';
+  category: "mapping" | "markdown";
   id: string;
 }) => {
   history.push(`./${category}/${id}`);
@@ -70,10 +70,10 @@ const MainPageDataController = () => {
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [
     exhentaiListTargetDataSource,
-    setExhentaiListTargetDataSource,
+    setExhentaiListTargetDataSource
   ] = useState([]);
-  const [siderOpenKey, setSiderOpenKey] = useState('all');
-  const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+  const [siderOpenKey, setSiderOpenKey] = useState("all");
+  const [siderSelectedKey, setSiderSelectedKey] = useState("all");
   // eslint-disable-next-line no-underscore-dangle
   const isLocal = (window as any).__isLocal;
 
@@ -88,42 +88,42 @@ const MainPageDataController = () => {
   }, []);
 
   const getExhentaiDateSet = () => {
-    fetch('/exhentai/dateSet')
+    fetch("/exhentai/dateSet")
       .then(response => response.json())
       .then(exhentaiDateSet => {
         handleExhentaiSelectChange(
-          exhentaiDateSet.length ? exhentaiDateSet[0] : '',
+          exhentaiDateSet.length ? exhentaiDateSet[0] : ""
         );
         setExhentaiDateSet(exhentaiDateSet);
       });
   };
 
   const getMapping = async () => {
-    const response = await fetch('./assets/mapping.json');
+    const response = await fetch("./assets/mapping.json");
     const dataSource = await response.json();
     setDataSource(
       dataSource
         .filter((item: MappingProps) => item.visible !== false)
-        .sort((a: any, b: any) => b.modifyTime - a.modifyTime),
+        .sort((a: any, b: any) => b.modifyTime - a.modifyTime)
     );
   };
 
   const getSider = async () => {
-    const response = await fetch('./assets/sider.json');
+    const response = await fetch("./assets/sider.json");
     const menuData = await response.json();
     setMenuData(menuData);
   };
 
   const handleDelete = async ({ id, category }: MappingProps) => {
-    const response = await fetch('/document/delete', {
-      method: 'DELETE',
+    const response = await fetch("/document/delete", {
+      method: "DELETE",
       body: JSON.stringify({ id, category }),
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      mode: "cors",
+      headers: { "Content-Type": "application/json" }
     });
     const result = await response.json();
     if (!result) {
-      console.error('error with delete');
+      console.error("error with delete");
     } else {
       getMapping();
     }
@@ -142,23 +142,23 @@ const MainPageDataController = () => {
     let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
-      await fetch('document/update', {
+      await fetch("document/update", {
         body: JSON.stringify(Object.assign({}, dataItem, item)),
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
       });
       message.success(`${item.category} 更新完成`);
     } else {
-      const response = await fetch('document/add', {
+      const response = await fetch("document/add", {
         body: JSON.stringify(item),
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
       });
       id = await response.text();
       message.success(`${item.category} 初始化完成`);
     }
     handleModalCancel();
-    if (item.category === 'mapping') {
+    if (item.category === "mapping") {
       location.href = `./mapping/${id}`;
       return;
     }
@@ -166,14 +166,14 @@ const MainPageDataController = () => {
   };
 
   const handleHide = async ({ id }: MappingProps) => {
-    await fetch('document/hide', {
+    await fetch("document/hide", {
       body: JSON.stringify({ id }),
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
     });
     getSider();
     getMapping();
-    message.success('隐藏完成');
+    message.success("隐藏完成");
   };
 
   const handleModalCancel = () => {
@@ -199,13 +199,13 @@ const MainPageDataController = () => {
   const handleMenuClick = (keyPath: string[]) => {
     setSiderOpenKey(keyPath[1]);
     setSiderSelectedKey(keyPath[0]);
-    setIsExhentai(keyPath.length === 1 && keyPath[0] === 'ex-hentai-module');
+    setIsExhentai(keyPath.length === 1 && keyPath[0] === "ex-hentai-module");
   };
 
   const handleExhentaiSelectChange = async (value: SelectValue) => {
     const url = `./assets/exhentai/${value}.json`;
     const exhentaiListTargetDataSource: any = await getExhentaiTargetDataSource(
-      url,
+      url
     );
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
