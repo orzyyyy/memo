@@ -222,6 +222,7 @@
     "title": "种类分布",
     "type": "经营",
     "subType": "钢铁",
-    "category": "mapping"
+    "category": "mapping",
+    "visible": false
   }
 ]

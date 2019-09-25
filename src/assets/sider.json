@@ -24,15 +24,5 @@
         "value": "linux"
       }
     ]
-  },
-  {
-    "key": "经营",
-    "title": "经营",
-    "children": [
-      {
-        "key": "钢铁",
-        "value": "钢铁"
-      }
-    ]
   }
 ]
