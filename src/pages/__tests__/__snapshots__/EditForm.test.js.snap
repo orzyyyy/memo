@@ -1452,6 +1452,15 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
@@ -2031,6 +2040,15 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
@@ -2570,6 +2588,15 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
@@ -4388,6 +4415,15 @@ exports[`EditForm render correctly 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
@@ -4967,6 +5003,15 @@ exports[`EditForm render correctly 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
@@ -5506,6 +5551,15 @@ exports[`EditForm render correctly 1`] = `
                                                             <TransBtn
                                                               className="ant-select-arrow"
                                                               customizeIcon={<Down />}
+                                                              customizeIconProps={
+                                                                Object {
+                                                                  "focused": false,
+                                                                  "loading": undefined,
+                                                                  "open": undefined,
+                                                                  "searchValue": "",
+                                                                  "showSearch": false,
+                                                                }
+                                                              }
                                                             >
                                                               <span
                                                                 aria-hidden={true}
