@@ -9,10 +9,39 @@ const fs = require('fs-extra');
 
 const initMappingFiles = () => {
   const assetsFiles = fs.readdirSync(path.join(__dirname, 'src/assets'));
-  const mappingFile = path.join(__dirname, 'src/assets/mapping.json');
-  const targetFiles = fs
-    .readJsonSync(mappingFile)
-    .filter(item => item.visible !== false && !assetsFiles.includes(item.id));
+  const mappingFilePath = path.join(__dirname, 'src/assets/mapping.json');
+  const mappingFile = fs
+    .readJsonSync(mappingFilePath)
+    .filter(item => item.visible !== false);
+
+  const targetFiles = mappingFile.filter(
+    item => !assetsFiles.includes(item.id),
+  );
+
+  if (process.env.BUILD_ENV === 'prod') {
+    fs.outputJsonSync(mappingFilePath, mappingFile, {
+      spaces: 0,
+    });
+
+    const siderFilePath = path.join(__dirname, 'src/assets/sider.json');
+    const siderFile = fs.readJsonSync(siderFilePath);
+    fs.outputJsonSync(siderFilePath, siderFile, {
+      spaces: 0,
+    });
+
+    fs.readdirSync(path.join(__dirname, 'src/assets/mapping')).map(item => {
+      for (const mapping of mappingFile) {
+        if (item.includes(mapping.id)) {
+          const mapPath = path.join(__dirname, 'src/assets/mapping', item);
+          const mapFile = fs.readJsonSync(mapPath);
+          fs.outputJsonSync(mapPath, mapFile, {
+            spaces: 0,
+          });
+        }
+      }
+    });
+  }
+
   return targetFiles;
 };
 
