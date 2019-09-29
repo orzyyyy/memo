@@ -128,6 +128,13 @@ const getHtmlPluginProps = mappings => {
             chunks: ['mapping-detail'],
           }),
         );
+        editorPageProps.push(
+          new HtmlWebpackPlugin({
+            ...commonHtmlWebpackProps,
+            filename: `mapping-editor/${id}/index.html`,
+            chunks: ['mapping-editor'],
+          }),
+        );
         break;
 
       case 'markdown':
@@ -191,6 +198,10 @@ module.exports = {
       'src/router/MarkdownEditorDataController.tsx',
     ),
     'mapping-detail': path.join(
+      __dirname,
+      'src/router/MappingDetailDataController.tsx',
+    ),
+    'mapping-editor': path.join(
       __dirname,
       'src/router/MappingDetailDataController.tsx',
     ),
