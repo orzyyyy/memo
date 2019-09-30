@@ -56,6 +56,7 @@
     "typescript": "^3.6.3"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^2.0.1",
     "@types/blueimp-md5": "^2.7.0",
     "@types/fs-extra": "^8.0.0",
     "@types/koa-bodyparser": "^4.3.0",
