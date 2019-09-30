@@ -78,6 +78,7 @@
     "chalk": "^2.4.2",
     "cross-env": "^6.0.0",
     "date-fns": "^2.4.0",
+    "fetch-mock": "^7.4.0",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.1.1",
     "github-markdown-css": "^3.0.1",
