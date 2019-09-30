@@ -19,4 +19,5 @@ export function useBindKeyDown<T>(
       e.stopPropagation();
     }
   }
+  return bindKeyDown;
 }

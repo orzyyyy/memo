@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 export function useResize() {
-  const [, setWidth] = useState(document.body.clientWidth);
-  const [, setHeight] = useState(document.body.clientHeight);
+  const [width, setWidth] = useState(document.body.clientWidth);
+  const [height, setHeight] = useState(document.body.clientHeight);
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,4 +16,5 @@ export function useResize() {
       window.removeEventListener('resize', handleResize);
     };
   });
+  return [width, height, setWidth, setHeight];
 }
