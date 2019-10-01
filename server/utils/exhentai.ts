@@ -47,7 +47,12 @@ export const getLatestDownloadDirName = (dateStamp?: string) => {
 };
 
 export const getMissedImgInfo = (latestDirPath: string) => {
-  const result: { detail: string; index: string; i: number }[] = [];
+  const result: {
+    detail: string;
+    index: string;
+    i: number;
+    name: string;
+  }[] = [];
   fs.readdirSync(latestDirPath).map(item => {
     const prefix = `${latestDirPath}/${item}`;
     const files = fs
@@ -65,6 +70,7 @@ export const getMissedImgInfo = (latestDirPath: string) => {
           detail: detail[i - 1],
           i,
           index: rest[i - 1],
+          name: item,
         });
       }
     }
