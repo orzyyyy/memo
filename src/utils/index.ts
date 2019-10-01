@@ -1,5 +1,5 @@
-export const getPathNameFromUrl = (): string => {
-  let pathName = location.pathname;
+export const getPathNameFromUrl = (url?: string): string => {
+  let pathName = url || location.pathname;
   if (pathName.endsWith('/')) {
     pathName = pathName.substr(0, pathName.length - 1);
   }
