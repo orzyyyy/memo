@@ -1,7 +1,6 @@
 ignore:
-  - 'src/router.*'
-  - 'src/index.*'
-  - 'nino.koei.js'
+  - 'src/router/**/*'
+  - 'src/index.tsx'
 
 comment:
   layout: 'reach, diff, flags, files'
