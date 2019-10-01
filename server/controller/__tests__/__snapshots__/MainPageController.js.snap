@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPageController get snapshots 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {
+    "prefix": "",
+  },
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/",
+      "regexp": /\\^\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/test",
+      "regexp": /\\^\\\\/test\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;

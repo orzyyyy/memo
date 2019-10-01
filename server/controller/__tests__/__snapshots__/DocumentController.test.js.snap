@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentController get snapshots 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {
+    "prefix": "/document",
+  },
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "/document",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/document/update",
+      "regexp": /\\^\\\\/document\\\\/update\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "/document",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/document/add",
+      "regexp": /\\^\\\\/document\\\\/add\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "DELETE",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "/document",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/document/delete",
+      "regexp": /\\^\\\\/document\\\\/delete\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "/document",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/document/hide",
+      "regexp": /\\^\\\\/document\\\\/hide\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;
