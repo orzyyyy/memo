@@ -65,6 +65,7 @@ export default class MarkdownController {
     const timeStamp = new Date().getTime();
     const id = md5(timeStamp.toString());
     const writeFilesPaths = getWriteMappingPaths(category, id);
+    service.initHtmlTemplate(category, id);
     service.updateMapping({
       id,
       title,
