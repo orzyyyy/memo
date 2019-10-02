@@ -224,5 +224,15 @@
     "subType": "钢铁",
     "category": "mapping",
     "visible": false
+  },
+  {
+    "createTime": 1570004789513,
+    "modifyTime": 1570004893939,
+    "url": "./assets/markdown/9b427e93191626274dcca8634ee0d67c.md",
+    "id": "9b427e93191626274dcca8634ee0d67c",
+    "title": "resume",
+    "type": "其他",
+    "subType": "个人资料",
+    "category": "markdown"
   }
 ]
