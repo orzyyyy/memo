@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import path from 'path';
 import { omit } from '../utils/omit';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
@@ -39,10 +40,7 @@ export default class DocumentService {
       }
     }
     targetItem = omit(targetItem, removeKeys) as MappingProps;
-    const originMappingItem = this.getOriginMappingItem(
-      targetItem.id,
-      targetItem.category,
-    );
+    const originMappingItem = this.getOriginMappingItem(targetItem.id);
     const writeFilesPaths = getWriteMappingPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
     if (!fs.existsSync(mappingPath)) {
@@ -66,7 +64,7 @@ export default class DocumentService {
     success(`mapping updated => ${targetItem.id}`);
   };
 
-  getOriginMappingItem = (id: string, category?: 'mapping' | 'markdown') => {
+  getOriginMappingItem = (id: string) => {
     const targetArr = readJsonFile(this.config.document.mappingFilePath).filter(
       (item: MappingProps) => item.id === id,
     );
@@ -74,7 +72,6 @@ export default class DocumentService {
     const defaultItem = {
       createTime: time,
       modifyTime: time,
-      url: `./assets/${category}/${id}.json`,
     };
     const targetItem = targetArr.length > 0 ? targetArr[0] : defaultItem;
     return targetItem;
@@ -90,6 +87,43 @@ export default class DocumentService {
       }
     }
     return result;
+  };
+
+  initHtmlTemplate = (category: 'markdown' | 'mapping', originId: string) => {
+    const editorPath = `dist/${category}-editor`;
+    const detailPath = `dist/${category}`;
+    // init dir
+    fs.ensureDirSync(joinWithRootPath([editorPath, originId]));
+    fs.ensureDirSync(joinWithRootPath([detailPath, originId]));
+
+    const ext = category === 'markdown' ? 'md' : 'json';
+    const existsDistDir = fs
+      .readdirSync(joinWithRootPath(editorPath))
+      .filter(item => item !== originId);
+    const targetId = existsDistDir[existsDistDir.length - 1];
+    const editorPrefix = joinWithRootPath([editorPath, targetId]);
+    const detailPrefix = joinWithRootPath([detailPath, targetId]);
+    const targetEditorTemplatePath = path.join(editorPrefix, 'index.html');
+    const targetDetailTemplatePath = path.join(detailPrefix, 'index.html');
+
+    // init document
+    fs.ensureFileSync(
+      joinWithRootPath([editorPath, originId, `${originId}.${ext}`]),
+    );
+    fs.ensureFileSync(
+      joinWithRootPath([detailPath, originId, `${originId}.${ext}`]),
+    );
+    // copy html template
+    fs.createReadStream(targetEditorTemplatePath).pipe(
+      fs.createWriteStream(
+        path.join(joinWithRootPath(editorPath), originId, 'index.html'),
+      ),
+    );
+    fs.createReadStream(targetDetailTemplatePath).pipe(
+      fs.createWriteStream(
+        path.join(joinWithRootPath(detailPath), originId, 'index.html'),
+      ),
+    );
   };
 
   updateContent = (
