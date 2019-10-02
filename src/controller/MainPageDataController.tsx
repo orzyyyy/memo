@@ -18,8 +18,8 @@ export interface SiderProps {
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
-  EditForm: any;
-  ExhentaiList: any;
+  EditForm: typeof EditForm;
+  ExhentaiList: typeof ExhentaiList;
   formVisible: boolean;
   formLoading: boolean;
   formDataItem: FormProps | null;
@@ -181,7 +181,7 @@ const MainPageDataController = () => {
   };
 
   const renderContent = () => {
-    if (isExhentai && ExhentaiList) {
+    if (isExhentai) {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
     return (
@@ -196,10 +196,10 @@ const MainPageDataController = () => {
     );
   };
 
-  const handleMenuClick = (keyPath: string[]) => {
+  const handleMenuClick = (keyPath: string[] = ['', '']) => {
     setSiderOpenKey(keyPath[1]);
     setSiderSelectedKey(keyPath[0]);
-    setIsExhentai(keyPath.length === 1 && keyPath[0] === 'ex-hentai-module');
+    setIsExhentai(keyPath.includes('ex-hentai-module'));
   };
 
   const handleExhentaiSelectChange = async (value: SelectValue) => {
