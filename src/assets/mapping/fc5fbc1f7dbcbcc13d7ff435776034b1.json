@@ -1,6 +1,6 @@
 {
-  "BlockGroup": {},
-  "LineGroup": {
+  "block": {},
+  "line": {
     "line-97570": {
       "fromKey": "tag-68923",
       "toKey": "tag-35852",
@@ -506,7 +506,7 @@
       }
     }
   },
-  "TagGroup": {
+  "tag": {
     "tag-35852": {
       "x": 3496,
       "y": 3364,
@@ -650,10 +650,10 @@
       "input": "热作"
     }
   },
-  "CanvasPosition": {
-    "x": -3078,
-    "y": -3117,
-    "z": 0,
-    "gap": 1
+  "position": {
+    "root": {
+      "x": -3078,
+      "y": -3117
+    }
   }
 }
