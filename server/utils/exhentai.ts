@@ -3,6 +3,16 @@ import fs from 'fs-extra';
 import { dirname, join } from 'path';
 import glob from 'glob';
 import { getTargetResource } from './resource';
+import { trace, error, success } from './log';
+import request from 'request';
+
+const isWin = process.platform === 'win32';
+const { winProxy, linuxProxy, requestTime } = getTargetResource(
+  'server',
+).exhentai;
+request.defaults({
+  proxy: isWin ? winProxy : linuxProxy,
+});
 
 const { listInfoPath, downloadPath } = getTargetResource('server').exhentai;
 
@@ -95,3 +105,53 @@ export const getEmptyRestDetailUrlInfo = () =>
       }
       return false;
     });
+
+export function handleDownloadStream(
+  imageUrl: string[],
+  i: number,
+  counter: number[],
+  prefixPath: string,
+) {
+  const item = imageUrl[i];
+  const pageIndex = i + 1;
+  const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
+  fs.ensureFileSync(targetUrl);
+  trace('download begin: ' + item);
+  const imageStream = fs.createWriteStream(targetUrl);
+  const timer = Date.now();
+  let status = true;
+  request(item)
+    .on('data', function() {
+      const newTimer = Date.now();
+      if (
+        newTimer - timer >= requestTime &&
+        fs.existsSync(targetUrl) &&
+        status
+      ) {
+        imageStream.close();
+        trace(`unlink: ${pageIndex}.jpg`);
+        error('time out at page index: ' + pageIndex);
+        status = false;
+      }
+    })
+    .on('error', function() {
+      error('unexpected error occar, will re-request later');
+      fs.unlinkSync(targetUrl);
+      trace(`unlink: ${pageIndex}.jpg`);
+      handleDownloadStream(imageUrl, i, counter, prefixPath);
+    })
+    .pipe(
+      imageStream.on('finish', function() {
+        if (status) {
+          counter.push(pageIndex);
+          success(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
+          if (counter.length === imageUrl.length) {
+            success('download completed');
+          }
+        } else {
+          fs.unlinkSync(targetUrl);
+          handleDownloadStream(imageUrl, i, counter, prefixPath);
+        }
+      }),
+    );
+}

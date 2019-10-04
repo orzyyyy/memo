@@ -1,10 +1,10 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs-extra';
-import request from 'request';
 import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
 import { joinWithRootPath, getDateStamp } from '../utils/common';
+import { handleDownloadStream } from '../utils/exhentai';
 
 export interface InfoListProps<T> {
   currentResult: T;
@@ -23,9 +23,6 @@ export default class ExhentaiService {
     this.config = getTargetResource('server').exhentai;
     const isWin = process.platform === 'win32';
     this.isWin = isWin;
-    request.defaults({
-      proxy: isWin ? this.config.winProxy : this.config.linuxProxy,
-    });
   }
 
   setExHentaiCookie = async () => {
@@ -241,58 +238,11 @@ export default class ExhentaiService {
   ) => {
     const counter: number[] = [];
     for (let i = 0; i < imageUrl.length; i++) {
-      const item = imageUrl[i];
-      const pageIndex = i + 1;
-      const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
-      fs.ensureFileSync(targetUrl);
-
-      const handleDownloadStream = async () => {
-        trace('download begin: ' + item);
-        const imageStream = fs.createWriteStream(
-          joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`),
-        );
-        const timer = Date.now();
-        let status = true;
-        await request(item)
-          .on('data', () => {
-            const newTimer = Date.now();
-            if (
-              newTimer - timer >= this.config.requestTime &&
-              fs.existsSync(targetUrl) &&
-              status
-            ) {
-              imageStream.close();
-              trace(`unlink: ${pageIndex}.jpg`);
-              error('time out at page index: ' + pageIndex);
-              status = false;
-            }
-          })
-          .on('error', () => {
-            error('unexpected error occar, will re-request later');
-            fs.unlinkSync(targetUrl);
-            trace(`unlink: ${pageIndex}.jpg`);
-            handleDownloadStream();
-          })
-          .pipe(
-            imageStream.on('finish', () => {
-              if (status) {
-                counter.push(pageIndex);
-                success(
-                  `${pageIndex}.jpg ${counter.length}/${imageUrl.length}`,
-                );
-                if (counter.length === imageUrl.length) {
-                  success('download completed');
-                }
-              } else {
-                fs.unlinkSync(targetUrl);
-                handleDownloadStream();
-              }
-            }),
-          );
-      };
-      await handleDownloadStream();
-      if (isBrowserExist && i % 2 === 0) {
+      await handleDownloadStream(imageUrl, i, counter, prefixPath);
+      if (isBrowserExist) {
         await this.browser.close();
+      }
+      if (i % 2 === 0) {
         await this.page.waitFor(this.config.waitTime);
       }
     }
