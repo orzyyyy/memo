@@ -3,7 +3,7 @@ import path from 'path';
 import { omit } from '../utils/omit';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
-import { getWriteMappingPaths } from '../utils/document';
+import { getWriteMappingPaths, DocumentCategoryProps } from '../utils/document';
 import {
   joinWithRootPath,
   readJsonFile,
@@ -12,15 +12,15 @@ import {
 import { success } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 const MappingDefaultValue = {
-  CanvasPosition: {
-    x: -3000,
-    y: -3000,
-    z: 0,
-    gap: 1,
+  position: {
+    root: {
+      x: -3000,
+      y: -3000,
+    },
   },
-  BlockGroup: {},
-  TagGroup: {},
-  LineGroup: {},
+  block: {},
+  tag: {},
+  line: {},
 };
 
 export default class DocumentService {
@@ -32,7 +32,6 @@ export default class DocumentService {
 
   updateMapping = (targetItem: MappingProps, isDelete?: boolean) => {
     const removeKeys = [];
-    // tslint:disable-next-line: forin
     for (const key in targetItem) {
       const value = targetItem[key];
       if (value === undefined) {
@@ -89,7 +88,7 @@ export default class DocumentService {
     return result;
   };
 
-  initHtmlTemplate = (category: 'markdown' | 'mapping', originId: string) => {
+  initHtmlTemplate = (category: DocumentCategoryProps, originId: string) => {
     const editorPath = `dist/${category}-editor`;
     const detailPath = `dist/${category}`;
     // init dir
@@ -127,7 +126,7 @@ export default class DocumentService {
   };
 
   updateContent = (
-    category: 'markdown' | 'mapping',
+    category: DocumentCategoryProps,
     writeFilesPaths: string[],
     content?: any,
   ) => {

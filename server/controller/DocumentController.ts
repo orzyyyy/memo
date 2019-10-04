@@ -1,6 +1,10 @@
 import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
-import { getWriteMappingPaths, updateSider } from '../utils/document';
+import {
+  getWriteMappingPaths,
+  updateSider,
+  DocumentCategoryProps,
+} from '../utils/document';
 import DocumentService from '../service/DocumentService';
 import { Context } from 'koa';
 
@@ -13,7 +17,7 @@ export interface MappingProps {
   url?: string;
   type?: string;
   subType?: string;
-  category?: 'mapping' | 'markdown';
+  category?: DocumentCategoryProps;
   visible?: boolean;
 }
 

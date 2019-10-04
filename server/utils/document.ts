@@ -2,6 +2,8 @@ import fs from 'fs-extra';
 import { MappingProps } from '../controller/DocumentController';
 import { joinWithRootPath, readJsonFile } from './common';
 
+export type DocumentCategoryProps = 'markdown' | 'mapping';
+
 const checkCategory = (category: string) => {
   if (category !== 'mapping' && category !== 'markdown') {
     throw Error('category is neither "mapping" nor "markdown"');
@@ -63,7 +65,7 @@ const updateSider = () => {
 };
 
 const getWriteMappingPaths = (
-  category?: 'markdown' | 'mapping',
+  category?: DocumentCategoryProps,
   id?: string,
 ) => {
   if (!id || !category) {

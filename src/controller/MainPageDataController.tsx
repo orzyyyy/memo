@@ -9,6 +9,7 @@ import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
+import { DocumentCategoryProps } from '../../server/utils/document';
 
 export interface SiderProps {
   key: string;
@@ -48,7 +49,7 @@ const handleListItemClick = ({
   category,
   id,
 }: {
-  category: 'mapping' | 'markdown';
+  category: DocumentCategoryProps;
   id: string;
 }) => {
   history.push(`./${category}/${id}`);

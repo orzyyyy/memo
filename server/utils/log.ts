@@ -6,7 +6,6 @@ const { log } = getTargetResource('server');
 const getTimestamp = () => `[${format(new Date(), log.dateFormat)}] `;
 const logger = (colorFunc: Chalk, prefix: string, content: string) => {
   const message = getTimestamp() + prefix + content;
-  // tslint:disable-next-line: no-console
   console.log(colorFunc(message));
 };
 

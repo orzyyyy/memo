@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useBindKeyDown } from './useBindKeyDown';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
+import { DocumentCategoryProps } from '../../server/utils/document';
 
 export function useFetchDocumentData(
   id: string,
-  type: 'mapping' | 'markdown',
+  type: DocumentCategoryProps,
   onSaveCallback?: (data: DataSource) => void,
 ) {
   const ext = type === 'mapping' ? 'json' : 'md';
