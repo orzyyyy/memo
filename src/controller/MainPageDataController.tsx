@@ -37,7 +37,7 @@ const handleExhentaiDownload = (e: any) => {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(response => response.text())
-    .then(result => result === 'true' && message.success('保存完成'));
+    .then(result => result === 'success' && message.success('保存完成'));
 };
 
 const handleExhentaiLoadList = () => {
@@ -115,18 +115,13 @@ const MainPageDataController = () => {
   };
 
   const handleDelete = async ({ id, category }: MappingProps) => {
-    const response = await fetch('/document/delete', {
+    await fetch('/document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
     });
-    const result = await response.json();
-    if (!result) {
-      console.error('error with delete');
-    } else {
-      getMapping();
-    }
+    getMapping();
   };
 
   const handleEdit = (formDataItem?: any, visible?: boolean) => {
@@ -135,9 +130,6 @@ const MainPageDataController = () => {
   };
 
   const handleSubmit = async (item: FormProps, dataItem?: any) => {
-    if (!item && !dataItem) {
-      return;
-    }
     setFormLoading(true);
     let id: string;
     if (dataItem && dataItem.id) {
@@ -196,7 +188,7 @@ const MainPageDataController = () => {
     );
   };
 
-  const handleMenuClick = (keyPath: string[] = ['', '']) => {
+  const handleMenuClick = (keyPath: string[]) => {
     setSiderOpenKey(keyPath[1]);
     setSiderSelectedKey(keyPath[0]);
     setIsExhentai(keyPath.includes('ex-hentai-module'));

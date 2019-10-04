@@ -14,7 +14,7 @@ const handleDownload = async (item: DownloadProps) => {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(response => response.text())
-    .then(result => result === 'true' && message.success('保存完成'));
+    .then(result => result === 'success' && message.success('保存完成'));
 };
 
 const ExHentaiListDataController = ({
