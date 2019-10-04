@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Route, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
@@ -27,48 +27,52 @@ const bindSocket = () => {
   });
 };
 
-// eslint-disable-next-line no-underscore-dangle
-(window as any).__isLocal && bindSocket();
+const RouterInstance = () => {
+  useEffect(() => {
+    // eslint-disable-next-line no-underscore-dangle
+    (window as any).__isLocal && bindSocket();
+  }, []);
 
-const RouterInstance = () => (
-  <BrowserRouter>
-    <Suspense fallback={<TohoLoading />}>
-      <Router history={history}>
-        <Route path="/" component={MainPageDataController} exact />
-        <Route path="/memo" component={MainPageDataController} exact />
-        <Route
-          path="/mapping/:id"
-          component={MappingDetailDataController}
-          exact
-        />
-        <Route
-          path="/memo/mapping/:id"
-          component={MappingDetailDataController}
-          exact
-        />
-        <Route
-          path="/markdown/edit/:id"
-          component={MarkdownEditorDataController}
-          exact
-        />
-        <Route
-          path="/memo/markdown/edit/:id"
-          component={MarkdownEditorDataController}
-          exact
-        />
-        <Route
-          path="/markdown/:id"
-          component={MarkdownDetailDataController}
-          exact
-        />
-        <Route
-          path="/memo/markdown/:id"
-          component={MarkdownDetailDataController}
-          exact
-        />
-      </Router>
-    </Suspense>
-  </BrowserRouter>
-);
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<TohoLoading />}>
+        <Router history={history}>
+          <Route path="/" component={MainPageDataController} exact />
+          <Route path="/memo" component={MainPageDataController} exact />
+          <Route
+            path="/mapping/:id"
+            component={MappingDetailDataController}
+            exact
+          />
+          <Route
+            path="/memo/mapping/:id"
+            component={MappingDetailDataController}
+            exact
+          />
+          <Route
+            path="/markdown/edit/:id"
+            component={MarkdownEditorDataController}
+            exact
+          />
+          <Route
+            path="/memo/markdown/edit/:id"
+            component={MarkdownEditorDataController}
+            exact
+          />
+          <Route
+            path="/markdown/:id"
+            component={MarkdownDetailDataController}
+            exact
+          />
+          <Route
+            path="/memo/markdown/:id"
+            component={MarkdownDetailDataController}
+            exact
+          />
+        </Router>
+      </Suspense>
+    </BrowserRouter>
+  );
+};
 
 export default RouterInstance;

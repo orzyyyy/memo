@@ -1,0 +1,5 @@
+ignore:
+  - 'src/router'
+  - 'src/index.tsx'
+  - 'nino.koei.js'
+  - 'server/index.ts'
