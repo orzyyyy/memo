@@ -13,6 +13,7 @@ fs.createWriteStream = () => ({
   },
   close: jest.fn(),
 });
+fs.createReadStream = () => 'dist';
 fs.unlinkSync = jest.fn();
 
 module.exports = fs;
