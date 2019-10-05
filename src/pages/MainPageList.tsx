@@ -3,6 +3,7 @@ import { List, Dropdown, Menu } from 'antd';
 import { format } from 'date-fns';
 import { Apartment, FileMarkdown } from '@ant-design/icons';
 import { MappingProps } from '../../server/controller/DocumentController';
+import { DocumentCategoryProps } from '../../server/utils/document';
 
 const MainPageList = ({
   onDelete,
@@ -21,7 +22,7 @@ const MainPageList = ({
     category,
     id,
   }: {
-    category: 'mapping' | 'markdown';
+    category: DocumentCategoryProps;
     id: string;
   }) => void;
 }) => {

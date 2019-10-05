@@ -4,6 +4,7 @@ import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { getPathNameFromUrl } from '../utils';
+import { DocumentCategoryProps } from '../../server/utils/document';
 
 export interface MarkdownEditorDataControllerProps {
   match: any;
@@ -15,7 +16,7 @@ export interface MarkdownEditorSaveProps {
   id: string;
   layout: DataSource;
   format?: boolean;
-  category: 'mapping' | 'markdown';
+  category: DocumentCategoryProps;
 }
 
 export function showMessageAfterFetching(result: any) {

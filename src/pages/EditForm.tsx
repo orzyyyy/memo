@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
 import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
+import { DocumentCategoryProps } from '../../server/utils/document';
 const { Option } = Select;
 
 export interface FormProps {
   title: string;
-  category: 'markdown' | 'mapping';
+  category: DocumentCategoryProps;
   type: string;
   subType: string;
 }
