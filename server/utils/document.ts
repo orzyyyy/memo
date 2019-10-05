@@ -4,12 +4,6 @@ import { joinWithRootPath, readJsonFile } from './common';
 
 export type DocumentCategoryProps = 'markdown' | 'mapping';
 
-const checkCategory = (category: string) => {
-  if (category !== 'mapping' && category !== 'markdown') {
-    throw Error('category is neither "mapping" nor "markdown"');
-  }
-};
-
 const unique = (target: any[]) => {
   const result: any = {};
   target.forEach(item => {
@@ -18,7 +12,7 @@ const unique = (target: any[]) => {
   return Object.keys(result).map(item => JSON.parse(item));
 };
 
-const updateSider = () => {
+export const updateSider = () => {
   const result: MappingProps[] = readJsonFile(
     joinWithRootPath('src/assets/mapping.json'),
   );
@@ -62,16 +56,16 @@ const updateSider = () => {
   fs.outputJSONSync(joinWithRootPath('src/assets/sider.json'), menu, {
     spaces: 2,
   });
+  return menu;
 };
 
-const getWriteMappingPaths = (
+export const getWriteMappingPaths = (
   category?: DocumentCategoryProps,
   id?: string,
 ) => {
   if (!id || !category) {
     return [`src/assets/mapping.json`, `dist/assets/mapping.json`];
   }
-  checkCategory(category);
   const ext = category === 'mapping' ? 'json' : 'md';
   return [
     `src/assets/${category}/${id}.${ext}`,
@@ -79,5 +73,3 @@ const getWriteMappingPaths = (
     `dist/${category}-editor/${id}/${id}.${ext}`,
   ];
 };
-
-export { getWriteMappingPaths, updateSider };

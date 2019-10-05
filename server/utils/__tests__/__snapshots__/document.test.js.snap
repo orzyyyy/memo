@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`util-document getWriteMappingPaths 1`] = `
+Array [
+  "src/assets/mapping.json",
+  "dist/assets/mapping.json",
+]
+`;
+
+exports[`util-document getWriteMappingPaths 2`] = `
+Array [
+  "src/assets/markdown/test-markdown.md",
+  "dist/markdown/test-markdown/test-markdown.md",
+  "dist/markdown-editor/test-markdown/test-markdown.md",
+]
+`;
+
+exports[`util-document getWriteMappingPaths 3`] = `
+Array [
+  "src/assets/mapping/test-mapping.json",
+  "dist/mapping/test-mapping/test-mapping.json",
+  "dist/mapping-editor/test-mapping/test-mapping.json",
+]
+`;
