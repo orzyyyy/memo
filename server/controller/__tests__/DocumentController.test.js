@@ -29,7 +29,7 @@ describe('DocumentController', () => {
       category: 'category',
     };
     const result = await Controller.stack[1].stack[0](defaultPostCtx);
-    expect(result).toBe('f231dea42a90b96811c98b8302823c10');
+    expect(result).toHaveLength(32);
     MockDate.reset();
   });
 

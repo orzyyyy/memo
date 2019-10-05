@@ -14,7 +14,6 @@ describe('ExhentaiService', () => {
   });
 
   afterEach(() => {
-    logSpy.mockReset();
     service = null;
     MockDate.reset();
   });

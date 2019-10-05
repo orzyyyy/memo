@@ -8,6 +8,12 @@ const defaultPostCtx = {
   query: { id: 1 },
 };
 describe('ExhentaiController', () => {
+  const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+
+  afterAll(() => {
+    logSpy.mockRestore();
+  });
+
   it('/', async () => {
     MockDate.set(new Date('2019-04-09T00:00:00'));
     const result = await Controller.stack[0].stack[0](defaultPostCtx);
