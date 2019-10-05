@@ -42,3 +42,24 @@ export const readJsonFile = (url?: string | undefined | null): any => {
 export const getTimeStamp = () => format(new Date(), 'yyyyMMddHHmmss');
 
 export const getDateStamp = () => format(new Date(), 'yyyyMMdd');
+
+export const uniqueByFilter = (arr: any[], fn: Function) =>
+  arr.reduce((acc, v) => {
+    if (!acc.some((x: any) => fn(v, x))) {
+      acc.push(v);
+    }
+    return acc;
+  }, []);
+
+export const search2Object = (search: string) =>
+  JSON.parse(
+    `{"${decodeURIComponent(search.substring(1))
+      .replace(/"/g, '\\"')
+      .replace(/&/g, '","')
+      .replace(/=/g, '":"')}"}`,
+  );
+
+export const object2QueryString = (obj: any) =>
+  Object.keys(obj)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+    .join('&');
