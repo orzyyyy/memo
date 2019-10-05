@@ -35,9 +35,10 @@ export function Request({ url, method }: { url: string; method: HttpMehtod }) {
         const result = await fn(ctx, next);
         if (result !== undefined) {
           ctx.response.body = result;
-          return;
+          return result;
         }
         ctx.response.body = 'success';
+        return 'success';
       });
     };
   };

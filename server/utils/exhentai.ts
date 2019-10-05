@@ -63,8 +63,12 @@ export const getMissedImgInfo = (latestDirPath: string) => {
     i: number;
     name: string;
   }[] = [];
-  fs.readdirSync(latestDirPath).map(item => {
+  const latestDir = fs.readdirSync(latestDirPath);
+  for (const item of latestDir) {
     const prefix = `${latestDirPath}/${item}`;
+    if (!fs.existsSync(`${prefix}/detailImageUrls.json`)) {
+      break;
+    }
     const files = fs
       .readdirSync(prefix)
       .map(f => parseInt(f.replace(/[.jpg|.png]/g, '')))
@@ -84,7 +88,7 @@ export const getMissedImgInfo = (latestDirPath: string) => {
         });
       }
     }
-  });
+  }
   return result;
 };
 
