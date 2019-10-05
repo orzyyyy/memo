@@ -42,9 +42,6 @@ export default class DocumentService {
     const originMappingItem = this.getOriginMappingItem(targetItem.id);
     const writeFilesPaths = getWriteMappingPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
-    if (!fs.existsSync(mappingPath)) {
-      fs.writeFileSync(mappingPath, []);
-    }
     const result: MappingProps[] = readJsonFile(mappingPath);
     const isExistTargetIndex = result.findIndex(
       (item: MappingProps) => item.id === targetItem.id,
@@ -61,6 +58,7 @@ export default class DocumentService {
     }
     writeFilesPaths.map(item => writeIntoJsonFile(item, result, true));
     success(`mapping updated => ${targetItem.id}`);
+    return result;
   };
 
   getOriginMappingItem = (id: string) => {
@@ -79,11 +77,7 @@ export default class DocumentService {
   getOriginContent = (filePath: string, layout: string | any, id: string) => {
     let result = layout;
     if (!layout && id) {
-      try {
-        result = readJsonFile(filePath);
-      } catch (error) {
-        result = fs.readFileSync(joinWithRootPath(filePath));
-      }
+      result = readJsonFile(filePath);
     }
     return result;
   };
@@ -123,6 +117,7 @@ export default class DocumentService {
         path.join(joinWithRootPath(detailPath), originId, 'index.html'),
       ),
     );
+    return targetDetailTemplatePath;
   };
 
   updateContent = (

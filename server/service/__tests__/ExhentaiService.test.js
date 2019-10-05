@@ -1,4 +1,3 @@
-jest.mock('puppeteer-core');
 import Service from '../ExhentaiService';
 import { goto, mockDetail, mockImgUrl } from '../__mocks__/puppeteer-core';
 import { ensureDirSync, ensureFileSync } from '../__mocks__/fs-extra';
