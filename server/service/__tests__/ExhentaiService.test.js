@@ -1,6 +1,6 @@
 jest.mock('puppeteer-core');
 import Service from '../ExhentaiService';
-import { goto, mockDetail } from '../__mocks__/puppeteer-core';
+import { goto, mockDetail, mockImgUrl } from '../__mocks__/puppeteer-core';
 import { ensureDirSync, ensureFileSync } from '../__mocks__/fs-extra';
 import MockDate from 'mockdate';
 
@@ -93,14 +93,15 @@ describe('ExhentaiService', () => {
     expect(result).toEqual(['!@#$% test （——）：；', '!@#$% test （——）：；']);
   });
 
-  // it('downloadImages', async () => {
-  //   await service.downloadImages(
-  //     [
-  //       'https://exhentai.org/t/60/de/60de2c9b39899a3fd7919dda44b6d7b6492cce1a-1853947-1720-2428-jpg_250.jpg',
-  //       'https://exhentai.org/t/ec/02/ec024cb6219e39e5f52c63778b2a1613a2ecd643-3241123-2091-3023-jpg_250.jpg',
-  //     ],
-  //     'prefix',
-  //   );
-  //   expect(ensureFileSync).toHaveBeenCalled();
-  // });
+  it('downloadImages', async () => {
+    await service.downloadImages(mockImgUrl, 'prefix');
+    expect(ensureFileSync).toHaveBeenCalled();
+    await service.downloadImages(mockImgUrl, 'prefix', true);
+    expect(ensureFileSync).toHaveBeenCalled();
+  });
+
+  it('getThumbnailUrlFromDetailPage', async () => {
+    const result = await service.getThumbnailUrlFromDetailPage(mockImgUrl);
+    expect(result).toEqual([...mockDetail, ...mockDetail]);
+  });
 });
