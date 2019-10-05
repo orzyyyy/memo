@@ -21,12 +21,15 @@ fs.createReadStream = jest.fn().mockImplementation(options => {
   return { pipe: jest.fn };
 });
 fs.unlinkSync = jest.fn();
-fs.readdirSync = jest
-  .fn()
-  .mockImplementation(() => [
-    '7a9a2d738fa682b6c2b1abc0471616b2',
-    '84a65e108e3721e07261e6b3c4336ff1',
-  ]);
+fs.readdirSync = jest.fn().mockImplementation(url => {
+  if (!url.includes('sql')) {
+    return [
+      '7a9a2d738fa682b6c2b1abc0471616b2',
+      '84a65e108e3721e07261e6b3c4336ff1',
+    ];
+  }
+  return ['test1.toml'];
+});
 fs.writeFileSync = jest.fn();
 // don't know why, but if mock this function, all test will crash
 // with error => Expected "=", [ \t] or [A-Za-z0-9_\-] but end of input found.
