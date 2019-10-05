@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DocumentService initHtmlTemplate 1`] = `"/home/orzorzorzorz/github/memo/dist/markdown/84a65e108e3721e07261e6b3c4336ff1/index.html"`;
-
 exports[`DocumentService updateContent 1`] = `undefined`;
 
 exports[`DocumentService updateContent 2`] = `undefined`;

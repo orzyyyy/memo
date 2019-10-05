@@ -53,7 +53,13 @@ describe('DocumentService', () => {
       'markdown',
       '7a9a2d738fa682b6c2b1abc0471616b2',
     );
-    expect(result).toMatchSnapshot();
+    expect(result).toBe(
+      path.join(
+        __dirname,
+        '../../../',
+        'dist/markdown/84a65e108e3721e07261e6b3c4336ff1/index.html', // id comes from ../__mocks__/fs-extra.js
+      ),
+    );
   });
 
   it('updateContent', () => {
