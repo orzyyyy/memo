@@ -140,8 +140,6 @@ export default class DocumentService {
     for (const item of writeFilesPaths) {
       if (fs.existsSync(item)) {
         fs.unlinkSync(joinWithRootPath(item));
-      } else {
-        throw Error(`${item} doesn't exist.`);
       }
     }
   };

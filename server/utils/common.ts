@@ -28,6 +28,9 @@ export const readJsonFile = (url?: string | undefined | null): any => {
     error('url is undefined.');
     throw Error;
   }
+  if (!fs.existsSync(url)) {
+    return '';
+  }
   const result = JSON.parse(fs.readFileSync(url).toString());
   if (result.length === 0) {
     error(`file ${url} is empty.`);
