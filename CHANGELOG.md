@@ -6,6 +6,56 @@
 
 ---
 
+## 1.1.1
+
+`2019-10-07`
+
+- 版本主要任务
+
+  - 以 react hooks 重构页面代码
+    - 暂时移除局部页面的按需加载
+  - 覆盖测试用例
+
+- document
+
+  - 增加 `collapsible` 使 Sider 可折叠 [#190](https://github.com/orzyyyy/memo/pull/190)
+  - 从 `react-markdown` 迁移到 `marked` [#204](https://github.com/orzyyyy/memo/pull/204)
+    - 加入 `github-markdown-css`
+  - 增加 `visible` 属性以控制 MainPageList 项的显隐 [#212](https://github.com/orzyyyy/memo/pull/212)
+  - 增加隐藏 MainPageList 项的接口 [#214](https://github.com/orzyyyy/memo/pull/214)
+    - 位于右键菜单中
+  - 设置 `mini-xmind` 默认方向为横向 [d26d526](https://github.com/orzyyyy/memo/commit/d26d5269cd15205960ac6b8c1993d06295dd9948)
+
+- exhentai
+
+  - 增加按钮用于更新 exhentai list [#203](https://github.com/orzyyyy/memo/pull/203)
+  - 重写 exhentai 中 的`/download/status` [#233](https://github.com/orzyyyy/memo/pull/233)
+    - 默认显示最新时间戳目录下所有文件夹的图片缺失情况，以前则是只能指定某个文件夹
+    - 现在不需要再传 `name`
+    - `dateStamp` 可选
+  - 检查图片状态时返回漫画名称 [cdbe9b1](https://github.com/orzyyyy/memo/commit/cdbe9b18559f67f3a9bfa7c43816bfe78de8fb7c)
+
+- 构建
+
+  - 从 CircleCI 迁移到 github actions [#201](https://github.com/orzyyyy/memo/pull/201)
+  - 线上构建时，不再上传 mapping.json 中 `visible` 为 false 的文件 [#213](https://github.com/orzyyyy/memo/pull/213)
+  - 移除 `moment` 的 locales [866b200](https://github.com/orzyyyy/memo/commit/866b200c49f634816c99a92a388b1250db4991fa)
+  - 构建时为每个路由创建 html 模板 [#229](https://github.com/orzyyyy/memo/pull/229) [#230](https://github.com/orzyyyy/memo/pull/230)
+    - 从 HashRouter 迁移到 BrowserRouter
+    - 同时支持 netlify 和 gh-pages [3db201b](https://github.com/orzyyyy/memo/commit/3db201b56cab1c5960200b987b55f3eb46a884d4)
+  - 线上环境压缩 json 文件 [#243](https://github.com/orzyyyy/memo/pull/243)
+  - 现在只会在 release 时 deploy 到 gh-pages，netlify 仍然是合并到 master 时构建 [04b91b3](https://github.com/orzyyyy/memo/commit/04b91b3b39c2f8dbfba0753623a617056fb34f83)
+
+- 其他
+  - 更新 banner [#215](https://github.com/orzyyyy/memo/pull/215)
+  - 增加通用接口查询 mysql [#225](https://github.com/orzyyyy/memo/pull/225) [424fa58](https://github.com/orzyyyy/memo/commit/424fa5877307f23267dc9ab1022193089e685ec6) [6ea552f](https://github.com/orzyyyy/memo/commit/6ea552fe6f2615c461cca2f28ceee5231477efda)
+  - 以 middleware 的方式初始化路由 [#227](https://github.com/orzyyyy/memo/pull/227)
+  - 装饰器 Request 支持默认返回值 [#232](https://github.com/orzyyyy/memo/pull/232)
+    - return 时则返回被 return 的值
+    - 否则返回字符串 `success`
+
+---
+
 ## 1.1.0
 
 `2019-08-24`
