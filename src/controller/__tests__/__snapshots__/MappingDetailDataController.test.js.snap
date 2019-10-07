@@ -3,6 +3,19 @@
 exports[`MappingDetailDataController handleOnSave 1`] = `
 <MappingDetailDataController>
   <MappingDetail
+    dataSource={
+      Object {
+        "block": Object {},
+        "line": Object {},
+        "position": Object {
+          "root": Object {
+            "x": -3000,
+            "y": -3000,
+          },
+        },
+        "tag": Object {},
+      }
+    }
     onChange={[Function]}
   >
     <div
@@ -15,6 +28,7 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
           <ul>
             <li
               draggable={true}
+              key="toolbar-line"
               onDragStart={[Function]}
             >
               <Minus>
@@ -93,6 +107,7 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
             </li>
             <li
               draggable={true}
+              key="toolbar-block"
               onDragStart={[Function]}
             >
               <Border>
@@ -171,6 +186,7 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
             </li>
             <li
               draggable={true}
+              key="toolbar-tag"
               onDragStart={[Function]}
             >
               <Tag>
@@ -252,6 +268,19 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
       </Toolbar>
       <Canvas
         className="canvas-wrapper"
+        data={
+          Object {
+            "block": Object {},
+            "line": Object {},
+            "position": Object {
+              "root": Object {
+                "x": -3000,
+                "y": -3000,
+              },
+            },
+            "tag": Object {},
+          }
+        }
         onChange={[Function]}
       >
         <Draggable
@@ -279,10 +308,8 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
           onStop={[Function]}
           position={
             Object {
-              "gap": 1,
-              "x": 0,
-              "y": 0,
-              "z": 0,
+              "x": -3000,
+              "y": -3000,
             }
           }
           scale={1}
@@ -314,7 +341,7 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
               style={
                 Object {
                   "touchAction": "none",
-                  "transform": "translate(0px,0px)",
+                  "transform": "translate(-3000px,-3000px)",
                 }
               }
               transform={null}
@@ -324,29 +351,27 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
                 lineData={Object {}}
                 offset={
                   Object {
-                    "gap": 1,
-                    "x": 0,
-                    "y": 0,
-                    "z": 0,
+                    "x": -3000,
+                    "y": -3000,
                   }
                 }
                 onChange={[Function]}
                 onContextMenu={[Function]}
+                onWheel={[Function]}
               />
               <TagGroup
                 data={Object {}}
                 lineData={Object {}}
                 onChange={[Function]}
                 onContextMenu={[Function]}
+                onWheel={[Function]}
               />
               <LineGroup
                 data={Object {}}
                 offset={
                   Object {
-                    "gap": 1,
-                    "x": 0,
-                    "y": 0,
-                    "z": 0,
+                    "x": -3000,
+                    "y": -3000,
                   }
                 }
                 orientation="horizonal"
