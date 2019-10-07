@@ -3,8 +3,6 @@ name: deploy
 on:
   schedule:
     - cron: '30 6 * * *'
-  branches:
-    - master
 
 jobs:
   build:
