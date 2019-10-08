@@ -7,9 +7,12 @@ export interface ExHentaiListDataControllerProps {
   dataSource: ExHentaiInfoItem[];
 }
 
-export const handleExhentaiDownload = async (item: DownloadProps) => {
+export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
+  if (!url) {
+    return message.error('地址为空');
+  }
   await fetch('exhentai/download', {
-    body: JSON.stringify(item),
+    body: JSON.stringify({ url }),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
