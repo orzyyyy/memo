@@ -7,14 +7,13 @@ export interface ExHentaiListDataControllerProps {
   dataSource: ExHentaiInfoItem[];
 }
 
-const handleDownload = async (item: DownloadProps) => {
-  fetch('exhentai/download', {
+export const handleExhentaiDownload = async (item: DownloadProps) => {
+  await fetch('exhentai/download', {
     body: JSON.stringify(item),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-  })
-    .then(response => response.text())
-    .then(result => result === 'success' && message.success('保存完成'));
+  });
+  message.success('反应');
 };
 
 const ExHentaiListDataController = ({
@@ -26,7 +25,7 @@ const ExHentaiListDataController = ({
       {!dataSource.length && notify}
       <ExHentaiList
         dataSource={dataSource}
-        onDownload={handleDownload}
+        onDownload={handleExhentaiDownload}
         wrapperHeight={document.body.clientHeight - 48 - 90}
       />
     </>

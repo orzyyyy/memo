@@ -6,7 +6,9 @@ import { message } from 'antd';
 import { SelectValue } from 'antd/lib/select';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
-import ExhentaiList from './ExHentaiListDataController';
+import ExhentaiList, {
+  handleExhentaiDownload,
+} from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps } from '../../server/utils/document';
@@ -29,17 +31,6 @@ export interface MainPageDataControllerState {
   exhentaiDateSet: string[];
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
-
-const handleExhentaiDownload = (e: any) => {
-  const url = e.target.value;
-  fetch('exhentai/download', {
-    body: JSON.stringify({ url }),
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  })
-    .then(response => response.text())
-    .then(result => result === 'success' && message.success('保存完成'));
-};
 
 const handleExhentaiLoadList = () => {
   fetch('exhentai');
@@ -208,7 +199,9 @@ const MainPageDataController = () => {
       <MainPage
         onMenuClick={handleMenuClick}
         menuData={menuData}
-        onExhentaiDownload={handleExhentaiDownload}
+        onExhentaiDownload={(e: any) =>
+          handleExhentaiDownload({ url: e.target.value })
+        }
         renderContent={renderContent}
         isLocal={isLocal}
         exhentaiDateSet={exhentaiDateSet}
