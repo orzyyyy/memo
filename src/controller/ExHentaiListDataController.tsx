@@ -9,7 +9,8 @@ export interface ExHentaiListDataControllerProps {
 
 export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
   if (!url) {
-    return message.error('地址为空');
+    message.error('地址为空');
+    return 'failed';
   }
   await fetch('exhentai/download', {
     body: JSON.stringify({ url }),
@@ -17,6 +18,7 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
     headers: { 'Content-Type': 'application/json' },
   });
   message.success('反应');
+  return 'success';
 };
 
 const ExHentaiListDataController = ({
