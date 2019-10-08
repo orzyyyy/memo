@@ -64,12 +64,16 @@ describe('MainPageDataController', () => {
           exhentaiDetailArr,
         );
 
-        // test `onDownload` in ExHentaiList
-        const result = await wrapper
+        let result = await wrapper
           .find('ExHentaiList')
           .props()
-          .onDownload();
-        expect(result).toBe(undefined);
+          .onDownload({ url: 'test' });
+        expect(result).toBe('success');
+        result = await wrapper
+          .find('ExHentaiList')
+          .props()
+          .onDownload({ url: false });
+        expect(result).toBe('failed');
         done();
       });
     });
@@ -160,7 +164,7 @@ describe('MainPageDataController', () => {
       .find('MainPage')
       .props()
       .onExhentaiDownload({ target: { value: 'test' } });
-    expect(result).toBe(undefined);
+    expect(result).toBe('success');
   });
 
   it('handleExhentaiLoadList', async () => {
