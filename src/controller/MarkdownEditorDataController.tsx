@@ -38,7 +38,7 @@ const MarkdownEditorDataController = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-    const result = await response.json();
+    const result = await response.text();
     showMessageAfterFetching(result);
   };
 
