@@ -47,7 +47,7 @@ exports[`MarkdownEditorDataController handleOnSave 1`] = `
                 }
               }
             >
-              <ReactResizeObserver
+              <ResizeObserver
                 disabled={true}
                 onResize={[Function]}
               >
@@ -63,7 +63,7 @@ exports[`MarkdownEditorDataController handleOnSave 1`] = `
                   }
                   value=""
                 />
-              </ReactResizeObserver>
+              </ResizeObserver>
             </TextArea>
           </div>
         </Col>

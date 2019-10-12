@@ -1140,6 +1140,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={false}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -1242,6 +1243,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -1327,6 +1329,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_category_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_category_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_category_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_category"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_category"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -1362,6 +1392,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_category_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_category_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_category_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_category"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_category"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
@@ -1756,6 +1814,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={false}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -1844,6 +1903,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -1915,6 +1975,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_type_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_type_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_type_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_type"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_type"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -1950,6 +2038,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_type_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_type_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_type_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_type"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_type"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
@@ -2344,6 +2460,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={true}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -2412,6 +2529,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -2463,6 +2581,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_subType_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_subType_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_subType_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_subType"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_subType"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -2498,6 +2644,34 @@ exports[`EditForm empty dataItem 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_subType_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_subType_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_subType_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_subType"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_subType"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
@@ -4103,6 +4277,7 @@ exports[`EditForm render correctly 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={false}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -4205,6 +4380,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -4290,6 +4466,34 @@ exports[`EditForm render correctly 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_category_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_category_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_category_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_category"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_category"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -4325,6 +4529,34 @@ exports[`EditForm render correctly 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_category_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_category_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_category_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_category"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_category"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
@@ -4719,6 +4951,7 @@ exports[`EditForm render correctly 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={false}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -4807,6 +5040,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -4878,6 +5112,34 @@ exports[`EditForm render correctly 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_type_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_type_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_type_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_type"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_type"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -4913,6 +5175,34 @@ exports[`EditForm render correctly 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_type_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_type_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_type_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_type"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_type"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
@@ -5307,6 +5597,7 @@ exports[`EditForm render correctly 1`] = `
                                                             <SelectTrigger
                                                               containerWidth={0}
                                                               empty={true}
+                                                              getTriggerDOMNode={[Function]}
                                                               popupElement={
                                                                 <ForwardRef(OptionList)
                                                                   childrenAsData={true}
@@ -5375,6 +5666,7 @@ exports[`EditForm render correctly 1`] = `
                                                                 focusDelay={0}
                                                                 getDocument={[Function]}
                                                                 getPopupClassNameFromAlign={[Function]}
+                                                                getTriggerDOMNode={[Function]}
                                                                 hideAction={Array []}
                                                                 mask={false}
                                                                 maskClosable={true}
@@ -5426,6 +5718,34 @@ exports[`EditForm render correctly 1`] = `
                                                                   choiceTransitionName="zoom"
                                                                   className=""
                                                                   clearIcon={<CloseCircleFilled />}
+                                                                  domRef={
+                                                                    Object {
+                                                                      "current": <div
+                                                                        class="ant-select-selector"
+                                                                      >
+                                                                        <span
+                                                                          class="ant-select-selection-search"
+                                                                        >
+                                                                          <input
+                                                                            aria-activedescendant="edit-form_subType_list_0"
+                                                                            aria-autocomplete="list"
+                                                                            aria-controls="edit-form_subType_list"
+                                                                            aria-haspopup="listbox"
+                                                                            aria-owns="edit-form_subType_list"
+                                                                            autocomplete="off"
+                                                                            class="ant-select-selection-search-input"
+                                                                            id="edit-form_subType"
+                                                                            role="combobox"
+                                                                            style="opacity: 0;"
+                                                                            value=""
+                                                                          />
+                                                                        </span>
+                                                                        <span
+                                                                          class="ant-select-selection-placeholder"
+                                                                        />
+                                                                      </div>,
+                                                                    }
+                                                                  }
                                                                   id="edit-form_subType"
                                                                   inputElement={null}
                                                                   inputIcon={[Function]}
@@ -5461,6 +5781,34 @@ exports[`EditForm render correctly 1`] = `
                                                                       choiceTransitionName="zoom"
                                                                       className=""
                                                                       clearIcon={<CloseCircleFilled />}
+                                                                      domRef={
+                                                                        Object {
+                                                                          "current": <div
+                                                                            class="ant-select-selector"
+                                                                          >
+                                                                            <span
+                                                                              class="ant-select-selection-search"
+                                                                            >
+                                                                              <input
+                                                                                aria-activedescendant="edit-form_subType_list_0"
+                                                                                aria-autocomplete="list"
+                                                                                aria-controls="edit-form_subType_list"
+                                                                                aria-haspopup="listbox"
+                                                                                aria-owns="edit-form_subType_list"
+                                                                                autocomplete="off"
+                                                                                class="ant-select-selection-search-input"
+                                                                                id="edit-form_subType"
+                                                                                role="combobox"
+                                                                                style="opacity: 0;"
+                                                                                value=""
+                                                                              />
+                                                                            </span>
+                                                                            <span
+                                                                              class="ant-select-selection-placeholder"
+                                                                            />
+                                                                          </div>,
+                                                                        }
+                                                                      }
                                                                       id="edit-form_subType"
                                                                       inputElement={null}
                                                                       inputIcon={[Function]}
