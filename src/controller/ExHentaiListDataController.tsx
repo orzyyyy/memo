@@ -12,6 +12,7 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
     message.error('地址为空');
     return 'failed';
   }
+  message.info('response');
   await fetch('exhentai/download', {
     body: JSON.stringify({ url }),
     method: 'POST',
