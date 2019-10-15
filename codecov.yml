@@ -3,3 +3,4 @@ ignore:
   - 'src/index.tsx'
   - 'nino.koei.js'
   - 'server/index.ts'
+  - 'server/controller'

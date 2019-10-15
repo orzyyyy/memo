@@ -90,7 +90,7 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <Component>
+          <_default>
             <div
               className="MarkdownDetail markdown-body"
             >
@@ -107,7 +107,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                 />
               </div>
             </div>
-          </Component>
+          </_default>
         </div>
       </Col>
       <Col
