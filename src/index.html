@@ -50,13 +50,13 @@
         background-color: #cadff2;
       }
     </style>
-    <%= htmlWebpackPlugin.options.base %>
+    <%= htmlWebpackPlugin.options.base %> <%=
+    htmlWebpackPlugin.options.googleAnalytics %> <%=
+    htmlWebpackPlugin.options.hotjar %>
   </head>
 
   <body>
-    <%= htmlWebpackPlugin.options.googleAnalytics %> <%=
-    htmlWebpackPlugin.options.environment %>
+    <%= htmlWebpackPlugin.options.environment %>
     <div id="root"></div>
-    <%= htmlWebpackPlugin.options.hotjar %>
   </body>
 </html>
