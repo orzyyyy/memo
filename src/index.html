@@ -7,6 +7,28 @@
     <meta http-equiv="Expires" content="0" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta name="author" content="orzyyyy" />
+    <meta
+      name="robots"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      name="google"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      name="googlebot"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      name="verify"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
       * {
         margin: 0;
@@ -36,5 +58,32 @@
       window.__isLocal = <%= htmlWebpackPlugin.options.environment %>;
     </script>
     <div id="root"></div>
+    <script>
+      if (!location.port) {
+        // Enable Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-72788897-1');
+      }
+    </script>
+    <!-- Hotjar Tracking Code for https://orzyyyy.github.io/memo -->
+    <script>
+      (function(h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function() {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 1529640, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
   </body>
 </html>

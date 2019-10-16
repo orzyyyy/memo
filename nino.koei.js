@@ -113,17 +113,24 @@ const getHtmlPluginProps = mappings => {
       ...commonHtmlWebpackProps,
       filename: 'index.html',
       chunks: ['ninoninoni'],
+      title: "orzyyyy's memo",
+      description: "orzyyyy's memo",
     }),
   ];
   const detailPageProps = [];
   const editorPageProps = [];
 
-  mappings.map(({ id, category }) => {
+  mappings.map(({ id, category, title, type, subType }) => {
+    const commonTemplateProps = {
+      title: `${type} - ${subType} - ${title}`,
+      description: `${type} - ${subType}`,
+    };
     switch (category) {
       case 'mapping':
         detailPageProps.push(
           new HtmlWebpackPlugin({
             ...commonHtmlWebpackProps,
+            ...commonTemplateProps,
             filename: `${category}/${id}/index.html`,
             chunks: ['mapping-detail'],
           }),
@@ -131,6 +138,7 @@ const getHtmlPluginProps = mappings => {
         editorPageProps.push(
           new HtmlWebpackPlugin({
             ...commonHtmlWebpackProps,
+            ...commonTemplateProps,
             filename: `mapping-editor/${id}/index.html`,
             chunks: ['mapping-editor'],
           }),
@@ -141,6 +149,7 @@ const getHtmlPluginProps = mappings => {
         detailPageProps.push(
           new HtmlWebpackPlugin({
             ...commonHtmlWebpackProps,
+            ...commonTemplateProps,
             filename: `${category}/${id}/index.html`,
             chunks: ['markdown-detail'],
           }),
@@ -148,6 +157,7 @@ const getHtmlPluginProps = mappings => {
         editorPageProps.push(
           new HtmlWebpackPlugin({
             ...commonHtmlWebpackProps,
+            ...commonTemplateProps,
             filename: `markdown-editor/${id}/index.html`,
             chunks: ['markdown-editor'],
           }),
