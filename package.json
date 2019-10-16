@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.0.0-alpha.8",
-    "@testing-library/react-hooks": "^2.0.3",
+    "@testing-library/react-hooks": "^3.0.0",
     "@types/blueimp-md5": "^2.7.0",
     "@types/fs-extra": "^8.0.0",
     "@types/koa-bodyparser": "^4.3.0",
