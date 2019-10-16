@@ -135,7 +135,9 @@ const commonHtmlWebpackProps = {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-150197808-1');
+        gtag('config', 'UA-150197808-${
+          process.env.PUBLISH_TO === 'github' ? 1 : 2
+        }');
       </script>
     `
       : '',
