@@ -54,21 +54,9 @@
   </head>
 
   <body>
-    <script>
-      window.__isLocal = <%= htmlWebpackPlugin.options.environment %>;
-    </script>
+    <%= htmlWebpackPlugin.options.googleAnalytics %> <%=
+    htmlWebpackPlugin.options.environment %>
     <div id="root"></div>
-    <script>
-      if (!location.port) {
-        // Enable Google Analytics
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-72788897-1');
-      }
-    </script>
     <%= htmlWebpackPlugin.options.hotjar %>
   </body>
 </html>

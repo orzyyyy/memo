@@ -83,7 +83,10 @@ const getCopyPluginProps = mappings => {
 
 const commonHtmlWebpackProps = {
   template: './src/index.html',
-  environment: process.env.BUILD_ENV !== 'prod',
+  environment:
+    process.env.BUILD_ENV !== 'prod'
+      ? '<script>window.__isLocal = 1;</script>'
+      : '',
   base:
     process.env.PUBLISH_TO === 'github'
       ? `<base href="/memo/" />`
@@ -99,24 +102,43 @@ const commonHtmlWebpackProps = {
         </script>`
       : '',
   inject: 'body',
-  hotjar: `
-  <script>
-    (function(h, o, t, j, a, r) {
-      h.hj =
-        h.hj ||
-        function() {
-          (h.hj.q = h.hj.q || []).push(arguments);
-        };
-      h._hjSettings = { hjid: ${
-        process.env.PUBLISH_TO === 'github' ? 1529640 : 1529646
-      }, hjsv: 6 };
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script');
-      r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');</script>
-    `,
+  hotjar:
+    process.env.BUILD_ENV === 'prod'
+      ? `
+      <script>
+        (function(h, o, t, j, a, r) {
+          h.hj =
+            h.hj ||
+            function() {
+              (h.hj.q = h.hj.q || []).push(arguments);
+            };
+          h._hjSettings = { hjid: ${
+            process.env.PUBLISH_TO === 'github' ? 1529640 : 1529646
+          }, hjsv: 6 };
+          a = o.getElementsByTagName('head')[0];
+          r = o.createElement('script');
+          r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      </script>
+    `
+      : '',
+  googleAnalytics:
+    process.env.BUILD_ENV === 'prod'
+      ? `
+      <script>
+        if (!location.port) {
+          // Enable Google Analytics
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'UA-72788897-1');
+        }
+      </script>`
+      : '',
   minify: {
     minifyJS: true,
     minifyCSS: true,
