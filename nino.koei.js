@@ -127,7 +127,9 @@ const commonHtmlWebpackProps = {
   googleAnalytics:
     process.env.BUILD_ENV === 'prod'
       ? `
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197808-1"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197808-${
+        process.env.PUBLISH_TO === 'github' ? 1 : 2
+      }"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
