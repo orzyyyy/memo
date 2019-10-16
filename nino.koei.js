@@ -135,6 +135,7 @@ const commonHtmlWebpackProps = {
 
         gtag('config', 'UA-150197808-1');
       </script>
+    `
       : '',
   minify: {
     minifyJS: true,
