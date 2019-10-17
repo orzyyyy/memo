@@ -5,7 +5,11 @@ describe('useFetchDocumentData', () => {
   const originFetch = window.fetch;
 
   beforeAll(() => {
-    window.fetch = jest.fn(() => Promise.resolve());
+    window.fetch = jest.fn(() =>
+      Promise.resolve({
+        then: resolve => resolve({ text: jest.fn() }),
+      }),
+    );
   });
 
   afterAll(() => {
