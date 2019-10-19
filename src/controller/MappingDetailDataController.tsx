@@ -2,10 +2,7 @@ import React from 'react';
 import MappingDetail from '../pages/MappingDetail';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
-import {
-  MarkdownEditorSaveProps,
-  showMessageAfterFetching,
-} from './MarkdownEditorDataController';
+import { MarkdownEditorSaveProps, showMessageAfterFetching } from './MarkdownEditorDataController';
 import { getPathNameFromUrl } from '../utils';
 
 const MappingDetailDataController = () => {

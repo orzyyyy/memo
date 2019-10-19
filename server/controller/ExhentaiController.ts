@@ -27,9 +27,13 @@ export interface ExHentaiInfoItem {
 
 @Controller('/exhentai')
 export default class ExhentaiController {
+  constructor(private service: ExhentaiService) {
+    this.service = new ExhentaiService();
+  }
+
   @Request({ url: '/', method: 'get' })
   async getThumbnaiInfo() {
-    const service = new ExhentaiService();
+    const service = this.service;
     await service.initBrowser();
     const latestListInfo = await getLatestListInfo();
     const results = await service.fetchListInfo(latestListInfo);
@@ -50,7 +54,7 @@ export default class ExhentaiController {
   @Request({ url: '/download', method: 'post' })
   async downloadImages(ctx: Context) {
     const { url } = ctx.request.body;
-    const service = new ExhentaiService();
+    const service = this.service;
     await service.initBrowser();
     await service.gotoTargetPage(url, true);
     const prefixPath = await service.ensureFolderForSave();
@@ -80,7 +84,7 @@ export default class ExhentaiController {
   @Request({ url: '/download/target', method: 'get' })
   async downloadFromExistUrls(ctx: Context) {
     const { name, dateStamp } = ctx.query;
-    const service = new ExhentaiService();
+    const service = this.service;
     const prefixPath = `exhentai/${dateStamp}/${name}`;
     const detailImageUrls = readJsonFile(
       joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
@@ -111,7 +115,7 @@ export default class ExhentaiController {
 
   @Request({ url: '/sync', method: 'get' })
   async sync() {
-    const service = new ExhentaiService();
+    const service = this.service;
     await service.initBrowser();
     const targetComic = getEmptyRestDetailUrlInfo();
     for (const jsonUrl of targetComic) {

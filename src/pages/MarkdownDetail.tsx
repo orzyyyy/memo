@@ -10,10 +10,7 @@ export interface MarkdownDetailProps {
 export default (props: MarkdownDetailProps) => (
   <div className="MarkdownDetail markdown-body">
     <div className="wrapper">
-      <div
-        className="content"
-        dangerouslySetInnerHTML={{ __html: marked(props.dataSource || '') }}
-      ></div>
+      <div className="content" dangerouslySetInnerHTML={{ __html: marked(props.dataSource || '') }}></div>
     </div>
   </div>
 );

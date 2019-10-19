@@ -11,11 +11,7 @@ export interface MappingDetailProps {
 const MappingDetail = (props: MappingDetailProps) => (
   <div className="mapping">
     <Toolbar />
-    <Canvas
-      data={props.dataSource}
-      className="canvas-wrapper"
-      onChange={props.onChange}
-    />
+    <Canvas data={props.dataSource} className="canvas-wrapper" onChange={props.onChange} />
   </div>
 );
 

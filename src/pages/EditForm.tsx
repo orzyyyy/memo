@@ -87,9 +87,7 @@ const EditForm = ({
   dataItem = { type: '', subType: '', category: '', title: '' },
 }: EditFormProps) => {
   const [form] = Form.useForm();
-  const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(
-    dataItem.type,
-  );
+  const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(dataItem.type);
   const [isEditMode, setEditMode] = useState(false);
 
   const onFinish = ({ type, subType, title, category }: FormProps) => {
@@ -155,9 +153,7 @@ const EditForm = ({
       ) : (
         <Select>
           {selectData
-            .filter(
-              item => item.key === (currentTypeSelectItem || dataItem.type),
-            )
+            .filter(item => item.key === (currentTypeSelectItem || dataItem.type))
             .map(({ children = [] }) =>
               children.map(jtem => (
                 <Option value={jtem.key} key={jtem.key}>
@@ -184,11 +180,7 @@ const EditForm = ({
               </Button>
             </Col>
             <Col span={6}>
-              <Button
-                type="primary"
-                onClick={() => form.submit()}
-                loading={loading}
-              >
+              <Button type="primary" onClick={() => form.submit()} loading={loading}>
                 确定
               </Button>
             </Col>
@@ -212,12 +204,7 @@ const EditForm = ({
   }
 
   return (
-    <Modal
-      visible={visible}
-      title="新建文档"
-      footer={null}
-      onCancel={handleCancel}
-    >
+    <Modal visible={visible} title="新建文档" footer={null} onCancel={handleCancel}>
       <Form
         {...formItemLayout}
         name="edit-form"

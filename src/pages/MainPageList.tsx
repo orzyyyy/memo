@@ -18,41 +18,24 @@ const MainPageList = ({
   onHide?: (dataItem: MappingProps) => void;
   dataSource: MappingProps[];
   onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
-  onListItemClick: ({
-    category,
-    id,
-  }: {
-    category: DocumentCategoryProps;
-    id: string;
-  }) => void;
+  onListItemClick: ({ category, id }: { category: DocumentCategoryProps; id: string }) => void;
 }) => {
   return (
     <List
       dataSource={
-        siderSelectedKey === 'all'
-          ? dataSource
-          : dataSource.filter(item => item.subType === siderSelectedKey)
+        siderSelectedKey === 'all' ? dataSource : dataSource.filter(item => item.subType === siderSelectedKey)
       }
       renderItem={(item: any) => (
         <Dropdown
           overlay={() => (
             <Menu>
-              <Menu.Item
-                key={`add-${item.id}`}
-                onClick={() => onEdit(item, true)}
-              >
+              <Menu.Item key={`add-${item.id}`} onClick={() => onEdit(item, true)}>
                 修改
               </Menu.Item>
-              <Menu.Item
-                key={`hide-${item.id}`}
-                onClick={() => onHide && onHide(item)}
-              >
+              <Menu.Item key={`hide-${item.id}`} onClick={() => onHide && onHide(item)}>
                 隐藏
               </Menu.Item>
-              <Menu.Item
-                key={`delete-${item.id}`}
-                onClick={() => onDelete && onDelete(item)}
-              >
+              <Menu.Item key={`delete-${item.id}`} onClick={() => onDelete && onDelete(item)}>
                 删除
               </Menu.Item>
             </Menu>
