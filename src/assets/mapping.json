@@ -217,18 +217,15 @@
   {
     "createTime": 1568944473443,
     "modifyTime": 1568980642187,
-    "url": "./assets/mapping/fc5fbc1f7dbcbcc13d7ff435776034b1.json",
     "id": "fc5fbc1f7dbcbcc13d7ff435776034b1",
     "title": "种类分布",
     "type": "经营",
-    "subType": "钢铁",
-    "category": "mapping",
-    "visible": false
+    "subType": "材料",
+    "category": "mapping"
   },
   {
     "createTime": 1570004789513,
     "modifyTime": 1570523701677,
-    "url": "./assets/markdown/9b427e93191626274dcca8634ee0d67c.md",
     "id": "9b427e93191626274dcca8634ee0d67c",
     "title": "resume",
     "type": "其他",
@@ -237,7 +234,7 @@
   },
   {
     "createTime": 1571276218886,
-    "modifyTime": 1571278020663,
+    "modifyTime": 1571446048103,
     "id": "9681c099c110874ff452724195c13dea",
     "title": "他和她们、我和他的故事",
     "type": "其他",
