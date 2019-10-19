@@ -22,7 +22,11 @@ export interface MappingProps {
 }
 
 @Controller('/document')
-export default class MarkdownController {
+export default class DocumentController {
+  constructor(private service: DocumentService) {
+    this.service = new DocumentService();
+  }
+
   @Request({ url: '/update', method: 'post' })
   async updateTargetDocument(ctx: Context) {
     const {
@@ -37,7 +41,7 @@ export default class MarkdownController {
     if (!id) {
       throw Error('id is undefined');
     }
-    const service = new DocumentService();
+    const service = this.service;
     // formatted by prettier
     if (format) {
       service.formattedByPrettier(layout);
@@ -65,7 +69,7 @@ export default class MarkdownController {
   @Request({ url: '/add', method: 'post' })
   async initDocument(ctx: Context) {
     const { title, type, subType, category } = ctx.request.body;
-    const service = new DocumentService();
+    const service = this.service;
     const timeStamp = new Date().getTime();
     const id = md5(timeStamp.toString());
     const writeFilesPaths = getWriteMappingPaths(category, id);
@@ -85,7 +89,7 @@ export default class MarkdownController {
   @Request({ url: '/delete', method: 'delete' })
   async deleteTargetDocument(ctx: Context) {
     const { id, category } = ctx.request.body;
-    const service = new DocumentService();
+    const service = this.service;
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.deleteTargetDocument(writeFilesPaths);
     service.updateMapping({ id }, true);
@@ -95,7 +99,7 @@ export default class MarkdownController {
   @Request({ url: '/hide', method: 'post' })
   async hideTargetDocument(ctx: Context) {
     const { id } = ctx.request.body;
-    const service = new DocumentService();
+    const service = this.service;
     const item = service.getOriginMappingItem(id);
     item.visible = false;
     service.updateMapping(item);

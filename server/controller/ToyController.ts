@@ -15,7 +15,7 @@ const common = async (ctx: Context) => {
 };
 
 @Controller('/toy')
-export default class MainPageController {
+export default class ToyController {
   @Request({ url: '/get/:key', method: 'get' })
   async getDataByGet(ctx: Context) {
     return common(ctx);
