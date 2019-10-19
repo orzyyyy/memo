@@ -55,15 +55,7 @@ export default class DocumentController {
       subType,
       category,
     });
-    // update layout for mapping, content for markdown
-    const writeFilesPaths = getWriteMappingPaths(category, id);
-    const originContent = service.getOriginContent(
-      writeFilesPaths[0],
-      layout,
-      id,
-    );
     updateSider();
-    service.updateContent(category, writeFilesPaths, originContent);
   }
 
   @Request({ url: '/add', method: 'post' })
