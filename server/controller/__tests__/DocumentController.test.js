@@ -6,7 +6,7 @@ const defaultPostCtx = {
   response: { body: '' },
 };
 describe('DocumentController', () => {
-  it('/update', async () => {
+  it('/update/mapping', async () => {
     defaultPostCtx.request.body = {
       layout: 'layout',
       id: 'id',
@@ -48,5 +48,17 @@ describe('DocumentController', () => {
     };
     const result = await Controller.stack[3].stack[0](defaultPostCtx);
     expect(result).toBe('success');
+  });
+
+  it('/update/content', async () => {
+    defaultPostCtx.request.body = {
+      layout: 'layout',
+      id: 'id',
+      category: 'category',
+      format: true,
+    };
+    const result = await Controller.stack[4].stack[0](defaultPostCtx);
+    expect(result).toBe(`layout
+`);
   });
 });

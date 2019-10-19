@@ -1,10 +1,6 @@
 import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
-import {
-  getWriteMappingPaths,
-  updateSider,
-  DocumentCategoryProps,
-} from '../utils/document';
+import { getWriteMappingPaths, updateSider, DocumentCategoryProps } from '../utils/document';
 import DocumentService from '../service/DocumentService';
 import { Context } from 'koa';
 
@@ -27,17 +23,9 @@ export default class DocumentController {
     this.service = new DocumentService();
   }
 
-  @Request({ url: '/update', method: 'post' })
-  async updateTargetDocument(ctx: Context) {
-    const {
-      layout,
-      id,
-      title,
-      type,
-      subType,
-      category,
-      format,
-    } = ctx.request.body;
+  @Request({ url: '/update/mapping', method: 'post' })
+  async updateTargetMapping(ctx: Context) {
+    const { layout, id, title, type, subType, category, format } = ctx.request.body;
     if (!id) {
       throw Error('id is undefined');
     }
@@ -96,5 +84,23 @@ export default class DocumentController {
     item.visible = false;
     service.updateMapping(item);
     updateSider();
+  }
+
+  @Request({ url: '/update/content', method: 'post' })
+  async updateTargetContent(ctx: Context) {
+    const { layout, id, format, category } = ctx.request.body;
+    if (!id) {
+      throw Error('id is undefined');
+    }
+    const service = this.service;
+    // update layout for mapping, content for markdown
+    const writeFilesPaths = getWriteMappingPaths(category, id);
+    let content = service.getOriginContent(writeFilesPaths[0], layout, id);
+    // formatted by prettier
+    if (format) {
+      content = service.formattedByPrettier(content);
+    }
+    service.updateContent(category, writeFilesPaths, content);
+    return content;
   }
 }

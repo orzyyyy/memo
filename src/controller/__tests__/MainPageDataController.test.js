@@ -31,7 +31,8 @@ describe('MainPageDataController', () => {
     fetchMock.mock('./assets/exhentai/20190624084116.json', exhentaiDetailArr);
     fetchMock.mock('./assets/exhentai/20190624111055.json', exhentaiDetailArr);
     fetchMock.mock('/document/delete', {});
-    fetchMock.mock('/document/update', {});
+    fetchMock.mock('/document/update/mapping', 'success');
+    fetchMock.mock('/document/update/content', 'content');
     fetchMock.mock('/document/add', 'test');
     fetchMock.mock('/document/hide', 'test');
     fetchMock.mock('/exhentai/download', 'success');
@@ -60,9 +61,7 @@ describe('MainPageDataController', () => {
 
       setTimeout(async () => {
         wrapper.update();
-        expect(wrapper.find('ExHentaiList').props().dataSource).toEqual(
-          exhentaiDetailArr,
-        );
+        expect(wrapper.find('ExHentaiList').props().dataSource).toEqual(exhentaiDetailArr);
 
         let result = await wrapper
           .find('ExHentaiList')
