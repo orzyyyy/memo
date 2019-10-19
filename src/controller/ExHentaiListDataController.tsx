@@ -22,9 +22,7 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
   return 'success';
 };
 
-const ExHentaiListDataController = ({
-  dataSource,
-}: ExHentaiListDataControllerProps) => {
+const ExHentaiListDataController = ({ dataSource }: ExHentaiListDataControllerProps) => {
   const notify = <Empty description={'该页面仅在本地可用'} />;
   return (
     <>

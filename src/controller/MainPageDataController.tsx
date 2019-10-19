@@ -6,9 +6,7 @@ import { message } from 'antd';
 import { SelectValue } from 'antd/lib/select';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
-import ExhentaiList, {
-  handleExhentaiDownload,
-} from './ExHentaiListDataController';
+import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps } from '../../server/utils/document';
@@ -36,13 +34,7 @@ const handleExhentaiLoadList = () => {
   fetch('exhentai');
 };
 
-const handleListItemClick = ({
-  category,
-  id,
-}: {
-  category: DocumentCategoryProps;
-  id: string;
-}) => {
+const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
   history.push(`./${category}/${id}`);
 };
 
@@ -60,10 +52,7 @@ const MainPageDataController = () => {
   const [formDataItem, setFormDataItem] = useState();
   const [isExhentai, setIsExhentai] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
-  const [
-    exhentaiListTargetDataSource,
-    setExhentaiListTargetDataSource,
-  ] = useState([]);
+  const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([]);
   const [siderOpenKey, setSiderOpenKey] = useState('all');
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
   // eslint-disable-next-line no-underscore-dangle
@@ -83,9 +72,7 @@ const MainPageDataController = () => {
     fetch('/exhentai/dateSet')
       .then(response => response.json())
       .then(exhentaiDateSet => {
-        handleExhentaiSelectChange(
-          exhentaiDateSet.length ? exhentaiDateSet[0] : '',
-        );
+        handleExhentaiSelectChange(exhentaiDateSet.length ? exhentaiDateSet[0] : '');
         setExhentaiDateSet(exhentaiDateSet);
       });
   };
@@ -188,9 +175,7 @@ const MainPageDataController = () => {
 
   const handleExhentaiSelectChange = async (value: SelectValue) => {
     const url = `./assets/exhentai/${value}.json`;
-    const exhentaiListTargetDataSource: any = await getExhentaiTargetDataSource(
-      url,
-    );
+    const exhentaiListTargetDataSource: any = await getExhentaiTargetDataSource(url);
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
 
@@ -199,9 +184,7 @@ const MainPageDataController = () => {
       <MainPage
         onMenuClick={handleMenuClick}
         menuData={menuData}
-        onExhentaiDownload={(e: any) =>
-          handleExhentaiDownload({ url: e.target.value })
-        }
+        onExhentaiDownload={(e: any) => handleExhentaiDownload({ url: e.target.value })}
         renderContent={renderContent}
         isLocal={isLocal}
         exhentaiDateSet={exhentaiDateSet}

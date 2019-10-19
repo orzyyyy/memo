@@ -15,11 +15,7 @@ export interface MarkdownEditorState {
 const MarkdownEditor = ({ value, onSave, onChange }: MarkdownEditorProps) => (
   <Row gutter={16} style={{ padding: 15, width: '100%' }}>
     <Col span={12}>
-      <TextArea
-        style={{ height: '90vh', fontSize: 16 }}
-        onChange={e => onChange(e.target.value)}
-        value={value}
-      />
+      <TextArea style={{ height: '90vh', fontSize: 16 }} onChange={e => onChange(e.target.value)} value={value} />
     </Col>
     <Col
       span={12}

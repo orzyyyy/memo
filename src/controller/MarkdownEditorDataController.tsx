@@ -48,13 +48,7 @@ const MarkdownEditorDataController = () => {
     setData(value);
   };
 
-  return (
-    <MarkdownEditor
-      value={data}
-      onChange={handleOnChange}
-      onSave={handleOnSave}
-    />
-  );
+  return <MarkdownEditor value={data} onChange={handleOnChange} onSave={handleOnSave} />;
 };
 
 export default MarkdownEditorDataController;

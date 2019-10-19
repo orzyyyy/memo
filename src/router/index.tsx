@@ -5,18 +5,10 @@ import { createBrowserHistory } from 'history';
 export const history = createBrowserHistory();
 
 import TohoLoading from '../pages/TohoLoading';
-const MainPageDataController = lazy(() =>
-  import('../controller/MainPageDataController'),
-);
-const MappingDetailDataController = lazy(() =>
-  import('../controller/MappingDetailDataController'),
-);
-const MarkdownEditorDataController = lazy(() =>
-  import('../controller/MarkdownEditorDataController'),
-);
-const MarkdownDetailDataController = lazy(() =>
-  import('../controller/MarkdownDetailDataController'),
-);
+const MainPageDataController = lazy(() => import('../controller/MainPageDataController'));
+const MappingDetailDataController = lazy(() => import('../controller/MappingDetailDataController'));
+const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEditorDataController'));
+const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
 
 const bindSocket = () => {
   import('socket.io-client').then(target => {
@@ -39,36 +31,12 @@ const RouterInstance = () => {
         <Router history={history}>
           <Route path="/" component={MainPageDataController} exact />
           <Route path="/memo" component={MainPageDataController} exact />
-          <Route
-            path="/mapping/:id"
-            component={MappingDetailDataController}
-            exact
-          />
-          <Route
-            path="/memo/mapping/:id"
-            component={MappingDetailDataController}
-            exact
-          />
-          <Route
-            path="/markdown/edit/:id"
-            component={MarkdownEditorDataController}
-            exact
-          />
-          <Route
-            path="/memo/markdown/edit/:id"
-            component={MarkdownEditorDataController}
-            exact
-          />
-          <Route
-            path="/markdown/:id"
-            component={MarkdownDetailDataController}
-            exact
-          />
-          <Route
-            path="/memo/markdown/:id"
-            component={MarkdownDetailDataController}
-            exact
-          />
+          <Route path="/mapping/:id" component={MappingDetailDataController} exact />
+          <Route path="/memo/mapping/:id" component={MappingDetailDataController} exact />
+          <Route path="/markdown/edit/:id" component={MarkdownEditorDataController} exact />
+          <Route path="/memo/markdown/edit/:id" component={MarkdownEditorDataController} exact />
+          <Route path="/markdown/:id" component={MarkdownDetailDataController} exact />
+          <Route path="/memo/markdown/:id" component={MarkdownDetailDataController} exact />
         </Router>
       </Suspense>
     </BrowserRouter>

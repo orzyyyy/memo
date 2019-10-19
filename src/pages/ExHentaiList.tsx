@@ -33,29 +33,17 @@ const renderDropdown = ({ onDownload, wrapperHeight, item }: any) => (
     }
     trigger={['contextMenu']}
   >
-    <Card
-      hoverable
-      style={{ height: wrapperHeight / 2 }}
-      onClick={() => openDetail(item.detailUrl)}
-    >
+    <Card hoverable style={{ height: wrapperHeight / 2 }} onClick={() => openDetail(item.detailUrl)}>
       <img alt={item.name} src={item.thumbnailUrl} />
     </Card>
   </Dropdown>
 );
 
-const ExHentaiList = ({
-  dataSource,
-  onDownload,
-  wrapperHeight,
-}: ExHentaiListProps) => (
+const ExHentaiList = ({ dataSource, onDownload, wrapperHeight }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource.map(item => (
       <Col span={4} key={item.detailUrl + '-' + item.postTime}>
-        <LazyLoad
-          height={wrapperHeight}
-          once
-          scrollContainer=".main-page-content-wrapper"
-        >
+        <LazyLoad height={wrapperHeight} once scrollContainer=".main-page-content-wrapper">
           {renderDropdown({ onDownload, wrapperHeight, item })}
         </LazyLoad>
       </Col>

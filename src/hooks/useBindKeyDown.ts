@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 
-export function useBindKeyDown<T>(
-  originData: T,
-  onSaveCallback?: (data: any) => void,
-) {
+export function useBindKeyDown<T>(originData: T, onSaveCallback?: (data: any) => void) {
   useEffect(() => {
     window.addEventListener('keydown', bindKeyDown);
     return () => window.removeEventListener('keydown', bindKeyDown);

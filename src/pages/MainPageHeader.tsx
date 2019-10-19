@@ -30,9 +30,7 @@ const MainPageHeader = ({
     >
       <Select
         style={{ position: 'absolute', width: 160, top: 10, left: 8 }}
-        value={
-          selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')
-        }
+        value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
         onChange={handleSelectChange}
       >
         {exhentaiDateSet.map(timeStamp => (
@@ -41,21 +39,11 @@ const MainPageHeader = ({
           </Option>
         ))}
       </Select>
-      <Button
-        style={{ position: 'absolute', left: 180, top: 10 }}
-        type="dashed"
-        onClick={onExhentaiLoadList}
-      >
+      <Button style={{ position: 'absolute', left: 180, top: 10 }} type="dashed" onClick={onExhentaiLoadList}>
         列表
       </Button>
-      <Input
-        onPressEnter={onExhentaiDownload}
-        style={{ position: 'absolute', right: 80, top: 10, width: 350 }}
-      />
-      <Button
-        style={{ position: 'absolute', right: 24, top: 10 }}
-        onClick={() => onEdit(undefined, true)}
-      >
+      <Input onPressEnter={onExhentaiDownload} style={{ position: 'absolute', right: 80, top: 10, width: 350 }} />
+      <Button style={{ position: 'absolute', right: 24, top: 10 }} onClick={() => onEdit(undefined, true)}>
         <Plus />
       </Button>
     </Header>
