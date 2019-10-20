@@ -14,7 +14,7 @@ const MappingDetailDataController = () => {
       id,
       category: 'mapping',
     };
-    const response = await fetch('/document/update', {
+    const response = await fetch('/document/update/content', {
       method: 'POST',
       body: JSON.stringify(params),
       mode: 'cors',

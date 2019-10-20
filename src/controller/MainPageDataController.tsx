@@ -113,7 +113,7 @@ const MainPageDataController = () => {
     let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
-      await fetch('document/update', {
+      await fetch('document/update/mapping', {
         body: JSON.stringify(Object.assign({}, dataItem, item)),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
