@@ -1,5 +1,5 @@
 import Service from '../ExhentaiService';
-import { goto, mockDetail, mockImgUrl } from '../__mocks__/puppeteer-core';
+import { goto, mockDetail, mockImgUrl, mockComicNamePrefix, mockComicNameSuffix } from '../__mocks__/puppeteer-core';
 import { ensureDirSync, ensureFileSync } from '../__mocks__/fs-extra';
 import MockDate from 'mockdate';
 
@@ -36,12 +36,13 @@ describe('ExhentaiService', () => {
 
   it('getComicName', async () => {
     const result = await service.getComicName();
-    expect(result).toBe('test');
+    expect(result).toBe('test222222222222222222222222222111111111');
+    expect(result.length).toBe(40);
   });
 
   it('ensureFolderForSave', async () => {
     const result = await service.ensureFolderForSave();
-    expect(result).toBe('exhentai/20190409/test');
+    expect(result).toBe('exhentai/20190409/test222222222222222222222222222111111111');
     expect(ensureDirSync).toHaveBeenCalled();
   });
 
@@ -88,7 +89,7 @@ describe('ExhentaiService', () => {
 
   it('fetchImageUrls', async () => {
     const result = await service.fetchImageUrls(['test1', 'test2']);
-    expect(result).toEqual(['!@#$% test （——）：；', '!@#$% test （——）：；']);
+    expect(result).toEqual([mockComicNamePrefix + mockComicNameSuffix, mockComicNamePrefix + mockComicNameSuffix]);
   });
 
   it('downloadImages', async () => {

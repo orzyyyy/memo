@@ -32,13 +32,7 @@ export default class ExhentaiService {
   };
 
   initBrowser = async () => {
-    const {
-      winChromePath,
-      linuxChromePath,
-      winLaunchArgs,
-      linuxLaunchArgs,
-      headless,
-    } = this.config;
+    const { winChromePath, linuxChromePath, winLaunchArgs, linuxLaunchArgs, headless } = this.config;
     const executablePath = this.isWin ? winChromePath : linuxChromePath;
     const launchArgs = this.isWin ? winLaunchArgs : linuxLaunchArgs;
     const browser = await puppeteer.launch({
@@ -72,13 +66,12 @@ export default class ExhentaiService {
   };
 
   getComicName = async () => {
-    const name: any = await this.page.$eval(
-      '#gj',
-      (target: any) => new Promise(resolve => resolve(target.innerText)),
-    );
-    return name
+    const name: any = await this.page.$eval('#gj', (target: any) => new Promise(resolve => resolve(target.innerText)));
+    const result = name
       .replace(/[!@#$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, '')
-      .replace(/\s+/g, '');
+      .replace(/\s+/g, '')
+      .substr(0, 40);
+    return result;
   };
 
   ensureFolderForSave = async () => {
@@ -93,11 +86,7 @@ export default class ExhentaiService {
     return prefixPath;
   };
 
-  getListInfo = async <T>(
-    pageIndex: number,
-    prevResult: T,
-    targetUrl: string,
-  ): Promise<InfoListProps<any>> => {
+  getListInfo = async <T>(pageIndex: number, prevResult: T, targetUrl: string): Promise<InfoListProps<any>> => {
     const timer = Date.now();
     try {
       await this.gotoTargetPage(targetUrl, true);
@@ -117,9 +106,7 @@ export default class ExhentaiService {
         new Promise(resolve => {
           const results: ExHentaiInfoItem[] = [];
           for (const item of wrappers) {
-            const originDate = item.lastChild.innerText
-              .replace(/[^0-9]/gi, '')
-              .substring(0, 12);
+            const originDate = item.lastChild.innerText.replace(/[^0-9]/gi, '').substring(0, 12);
             const year = originDate.substring(0, 4);
             const month = originDate.substring(4, 6) - 1;
             const day = originDate.substring(6, 8);
@@ -142,12 +129,7 @@ export default class ExhentaiService {
     };
   };
 
-  handleFetchWithFailed = async <T>(
-    pageIndex: number,
-    result: T,
-    url: string,
-    getData: Function,
-  ) => {
+  handleFetchWithFailed = async <T>(pageIndex: number, result: T, url: string, getData: Function) => {
     const infoList: InfoListProps<T> = await getData(pageIndex, result, url);
     const { waitTimeAfterError } = this.config;
     if (infoList.failed) {
@@ -170,12 +152,7 @@ export default class ExhentaiService {
 
       let target: ExHentaiInfoItem[] | boolean = true;
       do {
-        target = await this.handleFetchWithFailed(
-          i,
-          results,
-          targetUrl,
-          this.getListInfo,
-        );
+        target = await this.handleFetchWithFailed(i, results, targetUrl, this.getListInfo);
       } while (!target);
       const result: any = target;
       results = [...results, ...result];
@@ -183,9 +160,7 @@ export default class ExhentaiService {
       if (result.length > 0) {
         const currentItem = result[result.length - 1];
         if (currentItem.postTime < postTime) {
-          info(
-            `get newest page now => ${pageIndex}, at ${currentItem.detailUrl}`,
-          );
+          info(`get newest page now => ${pageIndex}, at ${currentItem.detailUrl}`);
           info(`thumbnailUrl is ${currentItem.thumbnailUrl}`);
           break;
         }
@@ -231,11 +206,7 @@ export default class ExhentaiService {
         }),
     );
 
-  downloadImages = async (
-    imageUrl: string[],
-    prefixPath: string,
-    isBrowserExist?: boolean,
-  ) => {
+  downloadImages = async (imageUrl: string[], prefixPath: string, isBrowserExist?: boolean) => {
     const counter: number[] = [];
     for (let i = 0; i < imageUrl.length; i++) {
       await handleDownloadStream(imageUrl, i, counter, prefixPath);
@@ -271,12 +242,7 @@ export default class ExhentaiService {
 
       let target: string[] | boolean = true;
       do {
-        target = await this.handleFetchWithFailed(
-          i,
-          results,
-          item,
-          this.getTargetImageUrl,
-        );
+        target = await this.handleFetchWithFailed(i, results, item, this.getTargetImageUrl);
       } while (!target);
       const result: any = target;
       results.push(result);
@@ -285,11 +251,7 @@ export default class ExhentaiService {
     return results;
   };
 
-  getTargetImageUrl = async <T>(
-    pageIndex: number,
-    prevResult: T,
-    targetUrl: string,
-  ): Promise<InfoListProps<any>> => {
+  getTargetImageUrl = async <T>(pageIndex: number, prevResult: T, targetUrl: string): Promise<InfoListProps<any>> => {
     const timer = Date.now();
     try {
       await this.gotoTargetPage(targetUrl, true);
