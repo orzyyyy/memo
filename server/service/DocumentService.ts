@@ -4,11 +4,7 @@ import { omit } from '../utils/omit';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
 import { getWriteMappingPaths, DocumentCategoryProps } from '../utils/document';
-import {
-  joinWithRootPath,
-  readJsonFile,
-  writeIntoJsonFile,
-} from '../utils/common';
+import { joinWithRootPath, readJsonFile, writeIntoJsonFile } from '../utils/common';
 import { success } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 const MappingDefaultValue = {
@@ -43,9 +39,7 @@ export default class DocumentService {
     const writeFilesPaths = getWriteMappingPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
     const result: MappingProps[] = readJsonFile(mappingPath);
-    const isExistTargetIndex = result.findIndex(
-      (item: MappingProps) => item.id === targetItem.id,
-    );
+    const isExistTargetIndex = result.findIndex((item: MappingProps) => item.id === targetItem.id);
     const newItem = Object.assign({}, originMappingItem, targetItem);
     if (isExistTargetIndex > -1) {
       if (isDelete) {
@@ -62,9 +56,7 @@ export default class DocumentService {
   };
 
   getOriginMappingItem = (id: string) => {
-    const targetArr = readJsonFile(this.config.document.mappingFilePath).filter(
-      (item: MappingProps) => item.id === id,
-    );
+    const targetArr = readJsonFile(this.config.document.mappingFilePath).filter((item: MappingProps) => item.id === id);
     const time = new Date().getTime();
     const defaultItem = {
       createTime: time,
@@ -74,7 +66,7 @@ export default class DocumentService {
     return targetItem;
   };
 
-  getOriginContent = (filePath: string, layout: string | any, id: string) => {
+  getOriginContent = (filePath: string, layout: string | undefined, id: string) => {
     let result = layout;
     if (!layout && id) {
       result = readJsonFile(filePath);
@@ -90,9 +82,7 @@ export default class DocumentService {
     fs.ensureDirSync(joinWithRootPath([detailPath, originId]));
 
     const ext = category === 'markdown' ? 'md' : 'json';
-    const existsDistDir = fs
-      .readdirSync(joinWithRootPath(editorPath))
-      .filter(item => item !== originId);
+    const existsDistDir = fs.readdirSync(joinWithRootPath(editorPath)).filter(item => item !== originId);
     const targetId = existsDistDir[existsDistDir.length - 1];
     const editorPrefix = joinWithRootPath([editorPath, targetId]);
     const detailPrefix = joinWithRootPath([detailPath, targetId]);
@@ -100,22 +90,14 @@ export default class DocumentService {
     const targetDetailTemplatePath = path.join(detailPrefix, 'index.html');
 
     // init document
-    fs.ensureFileSync(
-      joinWithRootPath([editorPath, originId, `${originId}.${ext}`]),
-    );
-    fs.ensureFileSync(
-      joinWithRootPath([detailPath, originId, `${originId}.${ext}`]),
-    );
+    fs.ensureFileSync(joinWithRootPath([editorPath, originId, `${originId}.${ext}`]));
+    fs.ensureFileSync(joinWithRootPath([detailPath, originId, `${originId}.${ext}`]));
     // copy html template
     fs.createReadStream(targetEditorTemplatePath).pipe(
-      fs.createWriteStream(
-        path.join(joinWithRootPath(editorPath), originId, 'index.html'),
-      ),
+      fs.createWriteStream(path.join(joinWithRootPath(editorPath), originId, 'index.html')),
     );
     fs.createReadStream(targetDetailTemplatePath).pipe(
-      fs.createWriteStream(
-        path.join(joinWithRootPath(detailPath), originId, 'index.html'),
-      ),
+      fs.createWriteStream(path.join(joinWithRootPath(detailPath), originId, 'index.html')),
     );
     return targetDetailTemplatePath;
   };
@@ -123,7 +105,7 @@ export default class DocumentService {
   updateContent = (
     category: DocumentCategoryProps,
     writeFilesPaths: string[],
-    content?: any,
+    content?: string | number | undefined,
   ) => {
     for (const item of writeFilesPaths) {
       if (category === 'markdown') {
@@ -144,8 +126,8 @@ export default class DocumentService {
     }
   };
 
-  formattedByPrettier = (content: string) => {
-    return prettier.format(content, {
+  formattedByPrettier = (content: string | undefined) => {
+    return prettier.format(content || '', {
       parser: 'markdown',
     });
   };

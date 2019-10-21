@@ -10,11 +10,7 @@ export const joinWithRootPath = (paths: string | string[]) => {
   return path.join(process.cwd(), paths);
 };
 
-export const writeIntoJsonFile = (
-  url: string,
-  content: any,
-  spaces?: boolean,
-) => {
+export const writeIntoJsonFile = (url: string, content: any, spaces?: boolean) => {
   if (!url.endsWith('.json')) {
     url += '.json';
   }

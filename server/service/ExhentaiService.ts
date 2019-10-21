@@ -12,7 +12,19 @@ export interface InfoListProps<T> {
 }
 
 export default class ExhentaiService {
-  cookie: any[];
+  cookie: {
+    domain: string;
+    expirationDate: number;
+    hostOnly: boolean;
+    httpOnly: boolean;
+    name: string;
+    path: string;
+    secure: boolean;
+    session: boolean;
+    storeId: string | number;
+    value: string;
+    id: number;
+  }[];
   config: any;
   browser: puppeteer.Browser;
   page: puppeteer.Page;
@@ -66,7 +78,10 @@ export default class ExhentaiService {
   };
 
   getComicName = async () => {
-    const name: any = await this.page.$eval('#gj', (target: any) => new Promise(resolve => resolve(target.innerText)));
+    const name: string = await this.page.$eval(
+      '#gj',
+      (target: any) => new Promise(resolve => resolve(target.innerText)),
+    );
     const result = name
       .replace(/[!@#$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, '')
       .replace(/\s+/g, '')
@@ -86,7 +101,11 @@ export default class ExhentaiService {
     return prefixPath;
   };
 
-  getListInfo = async <T>(pageIndex: number, prevResult: T, targetUrl: string): Promise<InfoListProps<any>> => {
+  getListInfo = async <T>(
+    pageIndex: number,
+    prevResult: T,
+    targetUrl: string,
+  ): Promise<InfoListProps<ExHentaiInfoItem[] | T>> => {
     const timer = Date.now();
     try {
       await this.gotoTargetPage(targetUrl, true);
@@ -154,7 +173,7 @@ export default class ExhentaiService {
       do {
         target = await this.handleFetchWithFailed(i, results, targetUrl, this.getListInfo);
       } while (!target);
-      const result: any = target;
+      const result: ExHentaiInfoItem[] = target;
       results = [...results, ...result];
       // compare latest date of comic, break when current comic has been fetched
       if (result.length > 0) {
@@ -240,7 +259,7 @@ export default class ExhentaiService {
       await this.gotoTargetPage(item);
       info(`fetching image url => ${item}`);
 
-      let target: string[] | boolean = true;
+      let target: string | string[] | boolean = true;
       do {
         target = await this.handleFetchWithFailed(i, results, item, this.getTargetImageUrl);
       } while (!target);
