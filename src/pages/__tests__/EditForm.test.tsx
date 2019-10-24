@@ -19,8 +19,9 @@ const menuData = [
   },
 ];
 const dataItem = {
+  id: '',
   title: 'testTitle',
-  category: 'markdown',
+  category: undefined,
   type: 'testType',
   subType: 'testSubType',
 };
@@ -35,14 +36,7 @@ describe('EditForm', () => {
 
   it('render correctly', () => {
     const wrapper = mount(
-      <EditForm
-        visible
-        selectData={menuData}
-        onSubmit={noop}
-        onCancel={noop}
-        loading={false}
-        dataItem={dataItem}
-      />,
+      <EditForm visible selectData={menuData} onSubmit={noop} onCancel={noop} loading={false} dataItem={dataItem} />,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -50,7 +44,7 @@ describe('EditForm', () => {
   it('onSubmit and onCancel works', () => {
     const onSubmit = jest.fn();
     const onCancel = jest.fn();
-    const wrapper = mount(
+    const wrapper: any = mount(
       <EditForm
         visible
         selectData={menuData}
@@ -74,8 +68,17 @@ describe('EditForm', () => {
   });
 
   it('empty dataItem', () => {
+    const onSubmit = jest.fn();
+    const onCancel = jest.fn();
     const wrapper = mount(
-      <EditForm visible selectData={menuData} loading={false} />,
+      <EditForm
+        visible
+        selectData={menuData}
+        loading={false}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        dataItem={dataItem}
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });

@@ -2,9 +2,9 @@
 
 exports[`MarkdownEditor render correctly 1`] = `
 <MarkdownEditor
-  dataSource="testDataSource"
-  onSave={null}
-  targetId="targetId"
+  onChange={[MockFunction]}
+  onSave={[MockFunction]}
+  value="- test"
 >
   <Row
     gutter={16}
@@ -46,6 +46,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                 "height": "90vh",
               }
             }
+            value="- test"
           >
             <ResizeObserver
               disabled={true}
@@ -61,7 +62,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                     "height": "90vh",
                   }
                 }
-                value=""
+                value="- test"
               />
             </ResizeObserver>
           </TextArea>
@@ -90,7 +91,9 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <_default>
+          <_default
+            dataSource="- test"
+          >
             <div
               className="MarkdownDetail markdown-body"
             >
@@ -101,7 +104,10 @@ exports[`MarkdownEditor render correctly 1`] = `
                   className="content"
                   dangerouslySetInnerHTML={
                     Object {
-                      "__html": "",
+                      "__html": "<ul>
+<li>test</li>
+</ul>
+",
                     }
                   }
                 />
@@ -134,7 +140,7 @@ exports[`MarkdownEditor render correctly 1`] = `
             ghost={false}
             htmlType="button"
             loading={false}
-            onClick={null}
+            onClick={[MockFunction]}
           >
             <Wave>
               <button

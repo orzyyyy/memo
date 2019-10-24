@@ -29,6 +29,7 @@ exports[`MainPageHeader render correctly 1`] = `
     ghost={false}
     htmlType="button"
     loading={false}
+    onClick={[MockFunction]}
     style={
       Object {
         "left": 180,
@@ -41,6 +42,7 @@ exports[`MainPageHeader render correctly 1`] = `
     列表
   </Button>
   <Input
+    onPressEnter={[MockFunction]}
     style={
       Object {
         "position": "absolute",

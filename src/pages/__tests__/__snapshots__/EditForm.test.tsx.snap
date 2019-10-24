@@ -2,7 +2,18 @@
 
 exports[`EditForm empty dataItem 1`] = `
 <EditForm
+  dataItem={
+    Object {
+      "category": undefined,
+      "id": "",
+      "subType": "testSubType",
+      "title": "testTitle",
+      "type": "testType",
+    }
+  }
   loading={false}
+  onCancel={[MockFunction]}
+  onSubmit={[MockFunction]}
   selectData={
     Array [
       Object {
@@ -3131,7 +3142,8 @@ exports[`EditForm render correctly 1`] = `
 <EditForm
   dataItem={
     Object {
-      "category": "markdown",
+      "category": undefined,
+      "id": "",
       "subType": "testSubType",
       "title": "testTitle",
       "type": "testType",

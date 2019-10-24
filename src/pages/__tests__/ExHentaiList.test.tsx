@@ -14,8 +14,7 @@ describe('ExHentaiList', () => {
       <ExHentaiList
         dataSource={[
           {
-            name:
-              '[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]',
+            name: '[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]',
             detailUrl: 'https://exhentai.org/g/1430261/17651c12eb/',
             postTime: 1559412420000,
             thumbnailUrl:

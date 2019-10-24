@@ -10,13 +10,9 @@ describe('MarkdownEditor', () => {
   });
 
   it('render correctly', () => {
-    const wrapper = mount(
-      <MarkdownEditor
-        targetId="targetId"
-        dataSource={'testDataSource'}
-        onSave={null}
-      />,
-    );
+    const onSave = jest.fn();
+    const onChange = jest.fn();
+    const wrapper = mount(<MarkdownEditor onSave={onSave} onChange={onChange} value="- test" />);
     expect(wrapper).toMatchSnapshot();
   });
 });

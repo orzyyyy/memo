@@ -16,7 +16,7 @@ describe('DocumentController', () => {
       category: 'category',
       format: 'format',
     };
-    const result = await Controller.stack[0].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[0].stack[0](defaultPostCtx);
     expect(result).toBe('success');
   });
 
@@ -28,7 +28,7 @@ describe('DocumentController', () => {
       subType: 'subType',
       category: 'category',
     };
-    const result = await Controller.stack[1].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[1].stack[0](defaultPostCtx);
     expect(result).toHaveLength(32);
     MockDate.reset();
   });
@@ -38,7 +38,7 @@ describe('DocumentController', () => {
       id: '57ca721de1c14fb189d8bc5f6e14448c',
       category: 'markdown',
     };
-    const result = await Controller.stack[2].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[2].stack[0](defaultPostCtx);
     expect(result).toBe('success');
   });
 
@@ -46,7 +46,7 @@ describe('DocumentController', () => {
     defaultPostCtx.request.body = {
       id: 'id',
     };
-    const result = await Controller.stack[3].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[3].stack[0](defaultPostCtx);
     expect(result).toBe('success');
   });
 
@@ -57,7 +57,7 @@ describe('DocumentController', () => {
       category: 'category',
       format: true,
     };
-    const result = await Controller.stack[4].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[4].stack[0](defaultPostCtx);
     expect(result).toBe(`layout
 `);
   });
