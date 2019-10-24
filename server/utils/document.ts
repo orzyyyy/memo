@@ -2,7 +2,13 @@ import fs from 'fs-extra';
 import { MappingProps } from '../controller/DocumentController';
 import { joinWithRootPath, readJsonFile } from './common';
 
-export type DocumentCategoryProps = 'markdown' | 'mapping';
+export type DocumentCategoryProps = 'markdown' | 'mapping' | undefined;
+export type SiderChildrenProps = { key: string; value: string };
+export type SiderProps = {
+  key: string;
+  title: string;
+  children?: SiderChildrenProps[];
+};
 
 const unique = (target: any[]) => {
   const result: any = {};
@@ -13,9 +19,7 @@ const unique = (target: any[]) => {
 };
 
 export const updateSider = () => {
-  const result: MappingProps[] = readJsonFile(
-    joinWithRootPath('src/assets/mapping.json'),
-  );
+  const result: MappingProps[] = readJsonFile(joinWithRootPath('src/assets/mapping.json'));
 
   let types: string[] = [];
   result.map(item => {
@@ -25,18 +29,18 @@ export const updateSider = () => {
   });
   types = Array.from(new Set(types));
 
-  let menu = [];
+  let menu: SiderProps[] = [];
   for (const type of types) {
     menu.push({
       key: type,
       title: type,
-      children: [] as { key: string; value: string }[],
+      children: [],
     });
   }
   for (const item of result) {
     if (item.visible !== false) {
       for (const menuItem of menu) {
-        if (menuItem.key === item.type && item.subType) {
+        if (menuItem.key === item.type && item.subType && menuItem.children) {
           menuItem.children.push({
             key: item.subType,
             value: item.subType,
@@ -46,23 +50,18 @@ export const updateSider = () => {
     }
   }
   for (const item of menu) {
-    item.children = unique(item.children);
+    if (item.children) {
+      item.children = unique(item.children);
+    }
   }
-  menu = [
-    { key: 'all', title: 'all' },
-    { key: 'ex-hentai-module', title: 'ex-hentai' },
-    ...menu,
-  ];
+  menu = [{ key: 'all', title: 'all' }, { key: 'ex-hentai-module', title: 'ex-hentai' }, ...menu];
   fs.outputJSONSync(joinWithRootPath('src/assets/sider.json'), menu, {
     spaces: 2,
   });
   return menu;
 };
 
-export const getWriteMappingPaths = (
-  category?: DocumentCategoryProps,
-  id?: string,
-) => {
+export const getWriteMappingPaths = (category?: DocumentCategoryProps, id?: string) => {
   if (!id || !category) {
     return [`src/assets/mapping.json`, `dist/assets/mapping.json`];
   }

@@ -8,7 +8,7 @@ export interface DownloadProps {
   name?: string;
 }
 export interface ExHentaiListProps {
-  dataSource: ExHentaiInfoItem[];
+  dataSource?: ExHentaiInfoItem[];
   onDownload: ({ url, name }: DownloadProps) => void;
   wrapperHeight: number;
 }
@@ -17,7 +17,7 @@ const openDetail = (url: string) => {
   window.open(url);
 };
 
-const renderDropdown = ({ onDownload, wrapperHeight, item }: any) => (
+const renderDropdown = ({ onDownload, wrapperHeight, item }: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
   <Dropdown
     overlay={
       <Menu>
@@ -39,7 +39,7 @@ const renderDropdown = ({ onDownload, wrapperHeight, item }: any) => (
   </Dropdown>
 );
 
-const ExHentaiList = ({ dataSource, onDownload, wrapperHeight }: ExHentaiListProps) => (
+const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource.map(item => (
       <Col span={4} key={item.detailUrl + '-' + item.postTime}>

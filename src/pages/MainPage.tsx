@@ -4,12 +4,13 @@ import './css/MainPage.css';
 import { Menu, Layout } from 'antd';
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
-import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
 import MainPageHeader from './MainPageHeader';
+import { MappingProps } from '../../server/controller/DocumentController';
+import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
 
 export interface MainPageProps {
-  onEdit: (dataItem?: any, visible?: boolean) => void;
+  onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
   menuData?: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   renderContent?: () => React.ReactNode;
@@ -52,14 +53,14 @@ const MainPage = ({
       <Sider theme="light" collapsible collapsedWidth={0}>
         <Menu selectedKeys={[siderSelectedKey || '']} mode="inline" onClick={handleMenuClick}>
           {menuData &&
-            menuData.map((item: any) => {
+            menuData.map((item: SiderProps) => {
               const { key, title, children } = item;
               if (!children) {
                 return <Menu.Item key={key}>{title}</Menu.Item>;
               }
               return (
                 <SubMenu key={key} title={title}>
-                  {children.map((jtem: any) => (
+                  {children.map((jtem: SiderChildrenProps) => (
                     <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
                   ))}
                 </SubMenu>

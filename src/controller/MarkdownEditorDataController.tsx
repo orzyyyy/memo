@@ -6,9 +6,6 @@ import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { getPathNameFromUrl } from '../utils';
 import { DocumentCategoryProps } from '../../server/utils/document';
 
-export interface MarkdownEditorDataControllerProps {
-  match: any;
-}
 export interface MarkdownEditorDataControllerState {
   dataSource: string;
 }
@@ -19,7 +16,7 @@ export interface MarkdownEditorSaveProps {
   category: DocumentCategoryProps;
 }
 
-export function showMessageAfterFetching(result: any) {
+export function showMessageAfterFetching(result: string) {
   result ? message.success('保存成功') : message.error('保存失败');
 }
 

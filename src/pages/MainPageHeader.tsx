@@ -17,7 +17,7 @@ const MainPageHeader = ({
 
   const handleSelectChange = (value: SelectValue) => {
     onExhentaiSelectChange(value);
-    setSelectValue(value as any);
+    setSelectValue(value);
   };
 
   return (
