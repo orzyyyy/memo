@@ -11,13 +11,15 @@ export interface ExHentaiListProps {
   dataSource?: ExHentaiInfoItem[];
   onDownload: ({ url, name }: DownloadProps) => void;
   wrapperHeight: number;
+  onDetail: (url: string) => void;
 }
 
-const openDetail = (url: string) => {
-  window.open(url);
-};
-
-const renderDropdown = ({ onDownload, wrapperHeight, item }: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
+const renderDropdown = ({
+  onDownload,
+  wrapperHeight,
+  item,
+  onDetail,
+}: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
   <Dropdown
     overlay={
       <Menu>
@@ -33,18 +35,18 @@ const renderDropdown = ({ onDownload, wrapperHeight, item }: ExHentaiListProps &
     }
     trigger={['contextMenu']}
   >
-    <Card hoverable style={{ height: wrapperHeight / 2 }} onClick={() => openDetail(item.detailUrl)}>
+    <Card hoverable style={{ height: wrapperHeight / 2 }} onClick={() => onDetail(item.detailUrl)}>
       <img alt={item.name} src={item.thumbnailUrl} />
     </Card>
   </Dropdown>
 );
 
-const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight }: ExHentaiListProps) => (
+const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight, onDetail }: ExHentaiListProps) => (
   <Row gutter={16} style={{ width: '100%' }}>
     {dataSource.map(item => (
       <Col span={4} key={item.detailUrl + '-' + item.postTime}>
         <LazyLoad height={wrapperHeight} once scrollContainer=".main-page-content-wrapper">
-          {renderDropdown({ onDownload, wrapperHeight, item })}
+          {renderDropdown({ onDownload, wrapperHeight, item, onDetail })}
         </LazyLoad>
       </Col>
     ))}
