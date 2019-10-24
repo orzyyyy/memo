@@ -3,7 +3,7 @@ import { useResize } from '../useResize';
 
 describe('useResize', () => {
   it('resize works', () => {
-    let result = renderHook(() => useResize()).result;
+    let result: any = renderHook(() => useResize()).result;
     expect(result.current[0]).toBe(0);
     Object.defineProperty(document.body, 'clientWidth', {
       writable: true,
@@ -15,7 +15,7 @@ describe('useResize', () => {
 
     act(() => {
       result.current[3](200);
-      global.dispatchEvent(new Event('resize'));
+      (global as any).dispatchEvent(new Event('resize'));
     });
     expect(result.current[0]).toBe(100);
   });

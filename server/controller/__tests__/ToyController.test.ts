@@ -8,12 +8,12 @@ const defaultPostCtx = {
 };
 describe('ToyController', () => {
   it('/get/:key', async () => {
-    const result = await Controller.stack[0].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[0].stack[0](defaultPostCtx);
     expect(result).toBe('result');
   });
 
   it('/post/:key', async () => {
-    const result = await Controller.stack[1].stack[0](defaultPostCtx);
+    const result = await (Controller as any).stack[1].stack[0](defaultPostCtx);
     expect(result).toBe('result');
   });
 });

@@ -1,11 +1,18 @@
 import Service from '../ExhentaiService';
-import { goto, mockDetail, mockImgUrl, mockComicNamePrefix, mockComicNameSuffix } from '../__mocks__/puppeteer-core';
-import { ensureDirSync, ensureFileSync } from '../__mocks__/fs-extra';
+const {
+  goto,
+  mockDetail,
+  mockImgUrl,
+  mockComicNamePrefix,
+  mockComicNameSuffix,
+} = require('../__mocks__/puppeteer-core');
+const { ensureDirSync, ensureFileSync } = require('../__mocks__/fs-extra');
 import MockDate from 'mockdate';
+import { ExHentaiInfoItem } from '../../controller/ExhentaiController';
 
 describe('ExhentaiService', () => {
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-  let service;
+  let service: Service;
 
   beforeEach(async () => {
     service = new Service();
@@ -14,7 +21,6 @@ describe('ExhentaiService', () => {
   });
 
   afterEach(() => {
-    service = null;
     MockDate.reset();
   });
 
@@ -47,7 +53,7 @@ describe('ExhentaiService', () => {
   });
 
   it('getListInfo', async () => {
-    const result = await service.getListInfo();
+    const result = await service.getListInfo(0, {}, '');
     expect(result).toEqual({
       currentResult: mockDetail,
       failed: false,
@@ -59,7 +65,7 @@ describe('ExhentaiService', () => {
       currentResult: mockDetail,
       failed: false,
     }));
-    let result = await service.handleFetchWithFailed(1, {}, 'test', getData);
+    let result: any = await service.handleFetchWithFailed(1, {}, 'test', getData);
     expect(result).toEqual(mockDetail);
     getData = jest.fn().mockImplementation(() => ({
       currentResult: mockDetail,
@@ -69,11 +75,11 @@ describe('ExhentaiService', () => {
     expect(result).toBe(false);
     getData = jest.fn().mockImplementation(() => []);
     result = await service.handleFetchWithFailed(1, null, 'test', getData);
-    expect(result).toEqual();
+    expect(result).toEqual(undefined);
   });
 
   it('fetchListInfo', async () => {
-    const result = await service.fetchListInfo({ postTime: Date.now() });
+    const result = await service.fetchListInfo({ postTime: Date.now() } as ExHentaiInfoItem);
     expect(result[0]).toMatchSnapshot();
   });
 

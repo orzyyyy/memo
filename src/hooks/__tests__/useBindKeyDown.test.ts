@@ -6,9 +6,7 @@ describe('useBindKeyDown', () => {
     const onSaveCallback = jest.fn();
     const preventDefault = jest.fn();
     const stopPropagation = jest.fn();
-    const { result } = renderHook(() =>
-      useBindKeyDown({ test: 1 }, onSaveCallback),
-    );
+    const { result }: { result: any } = renderHook(() => useBindKeyDown({ test: 1 }, onSaveCallback));
     act(() => {
       result.current({ ctrlKey: true, keyCode: 83, preventDefault });
     });

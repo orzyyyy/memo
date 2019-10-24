@@ -1,15 +1,11 @@
 import Service from '../ToyService';
-import { innerMock } from '../__mocks__/mysql';
+const { innerMock } = require('../__mocks__/mysql');
 
 describe('ToyService', () => {
-  let service;
+  let service: Service;
 
   beforeEach(async () => {
     service = new Service();
-  });
-
-  afterEach(() => {
-    service = null;
   });
 
   it('getDataBySqlKey', async () => {

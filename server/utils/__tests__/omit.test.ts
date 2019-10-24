@@ -1,4 +1,4 @@
-// Forks from https://github.com/benjycui/omit.js
+// Fork from https://github.com/benjycui/omit.js
 import { omit } from '../omit';
 
 describe('omit', () => {

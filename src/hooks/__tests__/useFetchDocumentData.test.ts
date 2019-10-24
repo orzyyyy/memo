@@ -5,9 +5,9 @@ describe('useFetchDocumentData', () => {
   const originFetch = window.fetch;
 
   beforeAll(() => {
-    window.fetch = jest.fn(() =>
+    (window as any).fetch = jest.fn(() =>
       Promise.resolve({
-        then: resolve => resolve({ text: jest.fn() }),
+        then: (resolve: any) => resolve({ text: jest.fn() }),
       }),
     );
   });
@@ -17,9 +17,7 @@ describe('useFetchDocumentData', () => {
   });
 
   it('works', () => {
-    const [data] = renderHook(() =>
-      useFetchDocumentData('mockFile', 'markdown'),
-    ).result.current;
-    expect(data).toBe();
+    const [data] = renderHook(() => useFetchDocumentData('mockFile', 'markdown')).result.current;
+    expect(data).toBe(undefined);
   });
 });

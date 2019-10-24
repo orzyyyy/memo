@@ -1,5 +1,5 @@
 import { updateSider, getWriteMappingPaths } from '../document';
-import sider from '../../../src/assets/sider.json';
+const sider = require('../../../src/assets/sider.json');
 
 describe('util-document', () => {
   it('updateSider', () => {

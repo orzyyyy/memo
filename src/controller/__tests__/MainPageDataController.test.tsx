@@ -2,8 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import MainPageDataController from '../MainPageDataController';
 import fetchMock from 'fetch-mock';
-import mapping from '../../assets/mapping.json';
-import sider from '../../assets/sider.json';
+const mapping = require('../../assets/mapping.json');
+const sider = require('../../assets/sider.json');
 
 describe('MainPageDataController', () => {
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -17,11 +17,11 @@ describe('MainPageDataController', () => {
   ];
 
   beforeAll(() => {
-    global.window.__isLocal = true;
-
+    /* eslint-disable-next-line no-underscore-dangle */
+    (global as any).window.__isLocal = true;
     const scrollWrapperInExhentaiList = document.createElement('div');
     scrollWrapperInExhentaiList.className = 'main-page-content-wrapper';
-    global.document.body.append(scrollWrapperInExhentaiList);
+    (global as any).document.body.append(scrollWrapperInExhentaiList);
   });
 
   beforeEach(() => {
@@ -41,7 +41,8 @@ describe('MainPageDataController', () => {
 
   afterAll(() => {
     errorSpy.mockRestore();
-    global.window.__isLocal = undefined;
+    /* eslint-disable-next-line no-underscore-dangle */
+    (global as any).window.__isLocal = undefined;
   });
 
   afterEach(() => {
@@ -49,7 +50,7 @@ describe('MainPageDataController', () => {
   });
 
   it('fetch data correctly locally', done => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     setTimeout(() => {
       wrapper.update();
       expect(wrapper.find('MainPage').props().menuData).toEqual(sider);
@@ -79,7 +80,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleSubmit - update - mapping', done => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     wrapper
       .find('EditForm')
       .props()
@@ -92,7 +93,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleSubmit - update - markdown', done => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     wrapper
       .find('EditForm')
       .props()
@@ -105,7 +106,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleSubmit - add - mapping', done => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     wrapper
       .find('EditForm')
       .props()
@@ -118,7 +119,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleSubmit - add - markdown', done => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     wrapper
       .find('EditForm')
       .props()
@@ -131,7 +132,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleDelete', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     const result = await wrapper
       .find('MainPageList')
       .props()
@@ -140,7 +141,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleEdit', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     const result = await wrapper
       .find('MainPageList')
       .props()
@@ -149,7 +150,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleHide', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     const result = await wrapper
       .find('MainPageList')
       .props()
@@ -158,7 +159,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleExhentaiDownload', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     const result = await wrapper
       .find('MainPage')
       .props()
@@ -167,7 +168,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleExhentaiLoadList', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     const result = await wrapper
       .find('MainPage')
       .props()
@@ -176,7 +177,7 @@ describe('MainPageDataController', () => {
   });
 
   it('handleListItemClick', async () => {
-    const wrapper = mount(<MainPageDataController />);
+    const wrapper: any = mount(<MainPageDataController />);
     await wrapper
       .find('MainPageList')
       .props()

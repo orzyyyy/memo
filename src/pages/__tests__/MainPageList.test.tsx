@@ -11,7 +11,7 @@ const dataSource = [
     modifyTime: 1559523700429,
     type: '音乐',
     subType: '乐理',
-    category: 'markdown',
+    category: undefined,
   },
   {
     id: '7a73d21c13f1eb55053d4af66e0d057b',
@@ -21,7 +21,7 @@ const dataSource = [
     modifyTime: 1559633639037,
     type: 'Rust',
     subType: '安装',
-    category: 'mapping',
+    category: undefined,
   },
 ];
 
@@ -52,7 +52,7 @@ describe('MainPageList', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
     const onListItemClick = jest.fn();
-    const wrapper = mount(
+    const wrapper: any = mount(
       <MainPageList
         siderSelectedKey="all"
         dataSource={dataSource}
