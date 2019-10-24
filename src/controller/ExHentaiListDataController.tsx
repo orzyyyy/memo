@@ -22,6 +22,10 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
   return 'success';
 };
 
+const onDetail = (url: string) => {
+  window.open(url);
+};
+
 const ExHentaiListDataController = ({ dataSource }: ExHentaiListDataControllerProps) => {
   const notify = <Empty description={'该页面仅在本地可用'} />;
   return (
@@ -31,6 +35,7 @@ const ExHentaiListDataController = ({ dataSource }: ExHentaiListDataControllerPr
         dataSource={dataSource}
         onDownload={handleExhentaiDownload}
         wrapperHeight={document.body.clientHeight - 48 - 90}
+        onDetail={onDetail}
       />
     </>
   );
