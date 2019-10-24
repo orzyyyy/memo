@@ -10,13 +10,8 @@ const fs = require('fs-extra');
 const initMappingFiles = () => {
   const assetsFiles = fs.readdirSync(path.join(__dirname, 'src/assets'));
   const mappingFilePath = path.join(__dirname, 'src/assets/mapping.json');
-  const mappingFile = fs
-    .readJsonSync(mappingFilePath)
-    .filter(item => item.visible !== false);
-
-  const targetFiles = mappingFile.filter(
-    item => !assetsFiles.includes(item.id),
-  );
+  const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
+  const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
 
   if (process.env.BUILD_ENV === 'prod') {
     fs.outputJsonSync(mappingFilePath, mappingFile, {
@@ -83,14 +78,8 @@ const getCopyPluginProps = mappings => {
 
 const commonHtmlWebpackProps = {
   template: './src/index.html',
-  environment:
-    process.env.BUILD_ENV !== 'prod'
-      ? '<script>window.__isLocal = 1;</script>'
-      : '',
-  base:
-    process.env.PUBLISH_TO === 'github'
-      ? `<base href="/memo/" />`
-      : `<base href="/" />`,
+  environment: process.env.BUILD_ENV !== 'prod' ? '<script>window.__isLocal = 1;</script>' : '',
+  base: process.env.PUBLISH_TO === 'github' ? `<base href="/memo/" />` : `<base href="/" />`,
   socket:
     process.env.BUILD_ENV !== 'prod'
       ? `
@@ -112,9 +101,7 @@ const commonHtmlWebpackProps = {
             function() {
               (h.hj.q = h.hj.q || []).push(arguments);
             };
-          h._hjSettings = { hjid: ${
-            process.env.PUBLISH_TO === 'github' ? 1529640 : 1529646
-          }, hjsv: 6 };
+          h._hjSettings = { hjid: ${process.env.PUBLISH_TO === 'github' ? 1529640 : 1529646}, hjsv: 6 };
           a = o.getElementsByTagName('head')[0];
           r = o.createElement('script');
           r.async = 1;
@@ -135,9 +122,7 @@ const commonHtmlWebpackProps = {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-150197808-${
-          process.env.PUBLISH_TO === 'github' ? 1 : 2
-        }');
+        gtag('config', 'UA-150197808-${process.env.PUBLISH_TO === 'github' ? 1 : 2}');
       </script>
     `
       : '',
@@ -157,6 +142,13 @@ const getHtmlPluginProps = mappings => {
       chunks: ['ninoninoni'],
       title: "orzyyyy's memo",
       description: "orzyyyy's memo",
+    }),
+    new HtmlWebpackPlugin({
+      ...commonHtmlWebpackProps,
+      filename: 'stock-shipment/index.html',
+      chunks: ['stock-shipment'],
+      title: "orzyyyy's business",
+      description: "orzyyyy's business",
     }),
   ];
   const detailPageProps = [];
@@ -241,22 +233,11 @@ if (process.env.BUILD_ENV !== 'prod') {
 
 module.exports = {
   entry: {
-    'markdown-detail': path.join(
-      __dirname,
-      'src/router/MarkdownDetailDataController.tsx',
-    ),
-    'markdown-editor': path.join(
-      __dirname,
-      'src/router/MarkdownEditorDataController.tsx',
-    ),
-    'mapping-detail': path.join(
-      __dirname,
-      'src/router/MappingDetailDataController.tsx',
-    ),
-    'mapping-editor': path.join(
-      __dirname,
-      'src/router/MappingDetailDataController.tsx',
-    ),
+    'markdown-detail': path.join(__dirname, 'src/router/MarkdownDetailDataController.tsx'),
+    'markdown-editor': path.join(__dirname, 'src/router/MarkdownEditorDataController.tsx'),
+    'mapping-detail': path.join(__dirname, 'src/router/MappingDetailDataController.tsx'),
+    'mapping-editor': path.join(__dirname, 'src/router/MappingDetailDataController.tsx'),
+    'stock-shipment': path.join(__dirname, 'src/router/StockAndShipmentDataController.tsx'),
     ninoninoni: path.join(__dirname, 'src'),
   },
   plugins,
