@@ -9,13 +9,8 @@ import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
-import { DocumentCategoryProps } from '../../server/utils/document';
+import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 
-export interface SiderProps {
-  key: string;
-  title?: string;
-  children?: { key: string; value: string }[];
-}
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
@@ -52,7 +47,7 @@ const MainPageDataController = () => {
   const [formDataItem, setFormDataItem] = useState();
   const [isExhentai, setIsExhentai] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
-  const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([]);
+  const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
   const [siderOpenKey, setSiderOpenKey] = useState('all');
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
   // eslint-disable-next-line no-underscore-dangle
@@ -108,7 +103,7 @@ const MainPageDataController = () => {
     setFormDataItem(formDataItem);
   };
 
-  const handleSubmit = async (item: FormProps, dataItem?: any) => {
+  const handleSubmit = async (item: FormProps, dataItem?: MappingProps) => {
     setFormLoading(true);
     let id: string;
     if (dataItem && dataItem.id) {
@@ -175,7 +170,7 @@ const MainPageDataController = () => {
 
   const handleExhentaiSelectChange = async (value: SelectValue) => {
     const url = `./assets/exhentai/${value}.json`;
-    const exhentaiListTargetDataSource: any = await getExhentaiTargetDataSource(url);
+    const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await getExhentaiTargetDataSource(url);
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
 
@@ -196,7 +191,7 @@ const MainPageDataController = () => {
       />
       <EditForm
         visible={formVisible}
-        selectData={menuData.filter((item: any) => item.children)}
+        selectData={menuData.filter((item: SiderProps) => item.children)}
         onSubmit={handleSubmit}
         onCancel={handleModalCancel}
         loading={formLoading}

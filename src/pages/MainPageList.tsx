@@ -25,7 +25,7 @@ const MainPageList = ({
       dataSource={
         siderSelectedKey === 'all' ? dataSource : dataSource.filter(item => item.subType === siderSelectedKey)
       }
-      renderItem={(item: any) => (
+      renderItem={(item: MappingProps) => (
         <Dropdown
           overlay={() => (
             <Menu>
@@ -72,8 +72,8 @@ const MainPageList = ({
             )}
             {item.type + ' - ' + item.subType + ' - ' + item.title}
             <div style={{ float: 'right', marginRight: 8 }}>
-              {`${format(new Date(item.createTime), 'yyyy-MM-dd')} / ${format(
-                new Date(item.modifyTime),
+              {`${format(new Date(item.createTime || ''), 'yyyy-MM-dd')} / ${format(
+                new Date(item.modifyTime || ''),
                 'yyyy-MM-dd',
               )}`}
             </div>

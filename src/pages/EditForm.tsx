@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
-import { SiderProps } from '../controller/MainPageDataController';
 import { SelectValue } from 'antd/lib/select';
-import { DocumentCategoryProps } from '../../server/utils/document';
+import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
+import { MappingProps } from '../../server/controller/DocumentController';
+import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 const { Option } = Select;
 
 export interface FormProps {
@@ -15,10 +16,10 @@ export interface FormProps {
 export interface EditFormProps {
   visible: boolean;
   selectData: SiderProps[];
-  onSubmit: (form?: FormProps, dataItem?: any) => void;
+  onSubmit: (form?: FormProps, dataItem?: MappingProps) => void;
   onCancel: () => void;
   loading: boolean;
-  dataItem: any;
+  dataItem: MappingProps;
 }
 export interface EditFormState {
   currentType: SelectValue;
@@ -84,7 +85,7 @@ const EditForm = ({
   selectData,
   onCancel,
   onSubmit,
-  dataItem = { type: '', subType: '', category: '', title: '' },
+  dataItem = { id: '', type: '', subType: '', category: undefined, title: '' },
 }: EditFormProps) => {
   const [form] = Form.useForm();
   const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(dataItem.type);
@@ -94,18 +95,18 @@ const EditForm = ({
     onSubmit({ title, category, type, subType }, dataItem);
   };
 
-  const onFinishFailed = ({ errorFields }: any) => {
-    form.scrollToField(errorFields[0].name);
+  const onFinishFailed = ({ errorFields }: ValidateErrorEntity) => {
+    form.scrollToField(errorFields.name);
     onSubmit();
   };
 
   const handleCancel = () => {
     isInit = true;
-    setCurrentTypeSelectItem(null);
+    setCurrentTypeSelectItem('');
     onCancel();
   };
 
-  const setTypeValue = (type: any) => {
+  const setTypeValue = (type: string) => {
     form.setFieldsValue({ type });
     setCurrentTypeSelectItem(type);
   };
@@ -209,7 +210,7 @@ const EditForm = ({
         {...formItemLayout}
         name="edit-form"
         form={form}
-        onFinish={onFinish as any}
+        onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         onValuesChange={() => (isInit = false)}
       >
