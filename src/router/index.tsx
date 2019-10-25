@@ -10,6 +10,16 @@ const MappingDetailDataController = lazy(() => import('../controller/MappingDeta
 const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEditorDataController'));
 const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
 
+const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element> }[] = [
+  {
+    path: '/',
+    component: MainPageDataController,
+  },
+  { path: '/mapping/:id', component: MappingDetailDataController },
+  { path: '/markdown/edit/:id', component: MarkdownEditorDataController },
+  { path: '/markdown/:id', component: MarkdownDetailDataController },
+];
+
 const bindSocket = () => {
   import('socket.io-client').then(target => {
     const socket = target.default('http://localhost:9099');
@@ -29,14 +39,12 @@ const RouterInstance = () => {
     <BrowserRouter>
       <Suspense fallback={<TohoLoading />}>
         <Router history={history}>
-          <Route path="/" component={MainPageDataController} exact />
-          <Route path="/memo" component={MainPageDataController} exact />
-          <Route path="/mapping/:id" component={MappingDetailDataController} exact />
-          <Route path="/memo/mapping/:id" component={MappingDetailDataController} exact />
-          <Route path="/markdown/edit/:id" component={MarkdownEditorDataController} exact />
-          <Route path="/memo/markdown/edit/:id" component={MarkdownEditorDataController} exact />
-          <Route path="/markdown/:id" component={MarkdownDetailDataController} exact />
-          <Route path="/memo/markdown/:id" component={MarkdownDetailDataController} exact />
+          {routes.map(({ path, component }) => (
+            <>
+              <Route path={path} component={component} exact />
+              <Route path={'/memo' + path} component={component} exact />
+            </>
+          ))}
         </Router>
       </Suspense>
     </BrowserRouter>
