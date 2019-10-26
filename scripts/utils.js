@@ -1,26 +1,23 @@
 const path = require('path');
+const glob = require('glob');
 const fs = require('fs-extra');
 
 const handleWithPrefix = (...args) => path.join(__dirname, '../', ...args);
 
-const compressJSON = (mappingFilePath, mappingFile) => {
-  fs.outputJsonSync(mappingFilePath, mappingFile, {
-    spaces: 0,
-  });
-  const siderFilePath = handleWithPrefix('src/assets/sider.json');
-  const siderFile = fs.readJsonSync(siderFilePath);
-  fs.outputJsonSync(siderFilePath, siderFile, {
-    spaces: 0,
-  });
-  fs.readdirSync(handleWithPrefix('src/assets/mapping')).map(item => {
-    for (const mapping of mappingFile) {
-      if (item.includes(mapping.id)) {
-        const mapPath = handleWithPrefix('src/assets/mapping', item);
-        const mapFile = fs.readJsonSync(mapPath);
-        fs.outputJsonSync(mapPath, mapFile, {
-          spaces: 0,
-        });
+const compressJSON = () => {
+  glob('dist/**/*.json', (error, files) => {
+    if (error) {
+      throw new Error(error);
+    }
+    for (const file of files) {
+      const targetUrl = handleWithPrefix(file);
+      let content = fs.readJsonSync(targetUrl);
+      if (Array.isArray(content)) {
+        content = content.filter(item => item.visible !== false);
       }
+      fs.outputJsonSync(targetUrl, content, {
+        spaces: 0,
+      });
     }
   });
 };

@@ -6,10 +6,9 @@ const fs = require('fs-extra');
 const { author, name } = require('../package.json');
 const { handleWithPrefix, compressJSON } = require('./utils');
 
-const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
-const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
-
 const initMappingFiles = () => {
+  const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
+  const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
   const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
   const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
   return targetFiles;
@@ -21,13 +20,6 @@ const getCopyPluginProps = mappings => {
       from: handleWithPrefix('src/assets'),
       to: handleWithPrefix('dist/assets'),
       ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
-    },
-  ];
-
-  const exhentaiFiles = [
-    {
-      from: handleWithPrefix('src/assets/exhentai'),
-      to: handleWithPrefix('dist/assets/exhentai'),
     },
   ];
 
@@ -47,7 +39,7 @@ const getCopyPluginProps = mappings => {
     });
   });
 
-  return [...assetsFiles, ...exhentaiFiles, ...documentFiles];
+  return [...assetsFiles, ...documentFiles];
 };
 
 const commonHtmlWebpackProps = {
@@ -173,7 +165,7 @@ const plugins = [
     localesToKeep: ['zh-cn'],
   }),
   new PostCompile(() => {
-    compressJSON(mappingFilePath, mappingFile);
+    compressJSON();
   }),
 ];
 
