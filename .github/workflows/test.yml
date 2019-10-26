@@ -17,6 +17,6 @@ jobs:
         run: npm run codecov
 
       - name: upload coverage to codecov
-        uses: codecov/codecov-action@v1.0.2
+        uses: codecov/codecov-action@v1.0.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
