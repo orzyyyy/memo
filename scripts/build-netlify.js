@@ -2,17 +2,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
-const fs = require('fs-extra');
 const { author, name } = require('../package.json');
-const { handleWithPrefix, compressJSON } = require('./utils');
-
-const initMappingFiles = () => {
-  const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
-  const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
-  const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
-  const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
-  return targetFiles;
-};
+const { handleWithPrefix, compressJSON, initMappingFiles } = require('./utils');
 
 const getCopyPluginProps = mappings => {
   const assetsFiles = [
