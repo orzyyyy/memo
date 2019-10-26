@@ -4,6 +4,7 @@ let buildConfig;
 
 switch (process.env.BUILD_ENV) {
   case 'netlify':
+    buildConfig = require(path.join(__dirname, './scripts/build-netlify'));
     break;
 
   case 'business':

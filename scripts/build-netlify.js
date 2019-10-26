@@ -7,10 +7,11 @@ const fs = require('fs-extra');
 const { author, name } = require('../package.json');
 const { handleWithPrefix } = require('./utils');
 
+const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
+const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
+
 const initMappingFiles = () => {
   const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
-  const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
-  const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
   const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
   return targetFiles;
 };
@@ -152,6 +153,26 @@ const plugins = [
   new PostCompile(() => {
     const socket = IO('http://localhost:9099');
     socket.emit('refresh');
+
+    fs.outputJsonSync(mappingFilePath, mappingFile, {
+      spaces: 0,
+    });
+    const siderFilePath = handleWithPrefix('src/assets/sider.json');
+    const siderFile = fs.readJsonSync(siderFilePath);
+    fs.outputJsonSync(siderFilePath, siderFile, {
+      spaces: 0,
+    });
+    fs.readdirSync(handleWithPrefix('src/assets/mapping')).map(item => {
+      for (const mapping of mappingFile) {
+        if (item.includes(mapping.id)) {
+          const mapPath = handleWithPrefix('../src/assets/mapping', item);
+          const mapFile = fs.readJsonSync(mapPath);
+          fs.outputJsonSync(mapPath, mapFile, {
+            spaces: 0,
+          });
+        }
+      }
+    });
   }),
 ];
 
