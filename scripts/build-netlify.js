@@ -2,10 +2,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
-const IO = require('socket.io-client');
 const fs = require('fs-extra');
 const { author, name } = require('../package.json');
-const { handleWithPrefix } = require('./utils');
+const { handleWithPrefix, compressJSON } = require('./utils');
 
 const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
 const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
@@ -53,19 +52,42 @@ const getCopyPluginProps = mappings => {
 
 const commonHtmlWebpackProps = {
   template: handleWithPrefix('src/index.html'),
-  environment: '<script>window.__isLocal = 1;</script>',
+  minify: {
+    minifyJS: true,
+    minifyCSS: true,
+    removeComments: true,
+    collapseWhitespace: true,
+  },
+  environment: '',
   base: '<base href="/" />',
-  socket: `
-    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+  socket: '',
+  inject: 'body',
+  hotjar: `
     <script>
-      io('http://localhost:9099').on('refresh', function() {
-        location.reload();
-      });
+      (function(h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function() {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 1529646, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
   `,
-  inject: 'body',
-  hotjar: '',
-  googleAnalytics: '',
+  googleAnalytics: `
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197808-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-150197808-2');
+    </script>
+  `,
 };
 
 const getHtmlPluginProps = mappings => {
@@ -151,28 +173,7 @@ const plugins = [
     localesToKeep: ['zh-cn'],
   }),
   new PostCompile(() => {
-    const socket = IO('http://localhost:9099');
-    socket.emit('refresh');
-
-    fs.outputJsonSync(mappingFilePath, mappingFile, {
-      spaces: 0,
-    });
-    const siderFilePath = handleWithPrefix('src/assets/sider.json');
-    const siderFile = fs.readJsonSync(siderFilePath);
-    fs.outputJsonSync(siderFilePath, siderFile, {
-      spaces: 0,
-    });
-    fs.readdirSync(handleWithPrefix('src/assets/mapping')).map(item => {
-      for (const mapping of mappingFile) {
-        if (item.includes(mapping.id)) {
-          const mapPath = handleWithPrefix('../src/assets/mapping', item);
-          const mapFile = fs.readJsonSync(mapPath);
-          fs.outputJsonSync(mapPath, mapFile, {
-            spaces: 0,
-          });
-        }
-      }
-    });
+    compressJSON(mappingFilePath, mappingFile);
   }),
 ];
 
