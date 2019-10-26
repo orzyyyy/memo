@@ -10,14 +10,15 @@ const MappingDetailDataController = lazy(() => import('../controller/MappingDeta
 const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEditorDataController'));
 const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
 
-const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element> }[] = [
+const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element>; key: string }[] = [
   {
     path: '/',
     component: MainPageDataController,
+    key: 'main-page',
   },
-  { path: '/mapping/:id', component: MappingDetailDataController },
-  { path: '/markdown/edit/:id', component: MarkdownEditorDataController },
-  { path: '/markdown/:id', component: MarkdownDetailDataController },
+  { path: '/mapping/:id', component: MappingDetailDataController, key: 'mapping-detail' },
+  { path: '/markdown/edit/:id', component: MarkdownEditorDataController, key: 'markdown-edit' },
+  { path: '/markdown/:id', component: MarkdownDetailDataController, key: 'markdown-detail' },
 ];
 
 const bindSocket = () => {
@@ -39,11 +40,11 @@ const RouterInstance = () => {
     <BrowserRouter>
       <Suspense fallback={<TohoLoading />}>
         <Router history={history}>
-          {routes.map(({ path, component }) => (
-            <>
+          {routes.map(({ path, component, key }) => (
+            <React.Fragment key={key}>
               <Route path={path} component={component} exact />
               <Route path={'/memo' + path} component={component} exact />
-            </>
+            </React.Fragment>
           ))}
         </Router>
       </Suspense>
