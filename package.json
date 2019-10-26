@@ -16,8 +16,8 @@
   "license": "MIT",
   "author": "orzyyyy",
   "scripts": {
-    "analyse": "rimraf dist && cross-env BUILD_ENV=analyse nino koei",
     "build": "rimraf dist && cross-env BUILD_ENV=netlify nino koei",
+    "build:analyse": "rimraf dist && cross-env BUILD_ENV=analyse nino koei",
     "build:business": "rimraf dist && cross-env BUILD_ENV=business nino koei",
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
     "clean": "rimraf node_modules package-lock.json bin dist && npm i",
