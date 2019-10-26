@@ -36,17 +36,16 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
   const commonHtmlWebpackProps = {
     template: handleWithPrefix('src/index.html'),
   };
+  const HtmlWebpackPropsForBusiness = new HtmlWebpackPlugin({
+    ...commonHtmlWebpackProps,
+    ...customedHtmlWebpackProps,
+    filename: 'stock-shipment/index.html',
+    chunks: ['stock-shipment'],
+    title: `${author}'s business`,
+    description: `${author}'s business`,
+  });
   if (buildEnv === 'business') {
-    return [
-      new HtmlWebpackPlugin({
-        ...commonHtmlWebpackProps,
-        ...customedHtmlWebpackProps,
-        filename: 'stock-shipment/index.html',
-        chunks: ['stock-shipment'],
-        title: `${author}'s business`,
-        description: `${author}'s business`,
-      }),
-    ];
+    return [HtmlWebpackPropsForBusiness];
   }
 
   const mainPageProps = [
@@ -58,15 +57,11 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
       title: `${author}'s ${name}`,
       description: `${author}'s ${name}`,
     }),
-    new HtmlWebpackPlugin({
-      ...commonHtmlWebpackProps,
-      ...customedHtmlWebpackProps,
-      filename: 'stock-shipment/index.html',
-      chunks: ['stock-shipment'],
-      title: `${author}'s business`,
-      description: `${author}'s business`,
-    }),
   ];
+  // Build `stock-shipment` only in dev and business
+  if (buildEnv === 'dev') {
+    mainPageProps.push(HtmlWebpackPropsForBusiness);
+  }
   const detailPageProps = [];
   const editorPageProps = [];
 
