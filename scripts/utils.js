@@ -4,6 +4,8 @@ const fs = require('fs-extra');
 const { author, name } = require('../package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const buildEnv = process.env.BUILD_ENV;
+
 const handleWithPrefix = (...args) => path.join(__dirname, '../', ...args);
 
 const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
@@ -12,7 +14,6 @@ const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
 const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
 
 const getEntry = () => {
-  const buildEnv = process.env.BUILD_ENV;
   const common = {
     'markdown-detail': handleWithPrefix('src/router/MarkdownDetailDataController.tsx'),
     'markdown-editor': handleWithPrefix('src/router/MarkdownEditorDataController.tsx'),
@@ -35,6 +36,19 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
   const commonHtmlWebpackProps = {
     template: handleWithPrefix('src/index.html'),
   };
+  if (buildEnv === 'business') {
+    return [
+      new HtmlWebpackPlugin({
+        ...commonHtmlWebpackProps,
+        ...customedHtmlWebpackProps,
+        filename: 'stock-shipment/index.html',
+        chunks: ['stock-shipment'],
+        title: `${author}'s business`,
+        description: `${author}'s business`,
+      }),
+    ];
+  }
+
   const mainPageProps = [
     new HtmlWebpackPlugin({
       ...commonHtmlWebpackProps,
