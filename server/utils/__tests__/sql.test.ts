@@ -30,7 +30,7 @@ describe('sql', () => {
         'SELECT * FROM dictionary where value = @value;',
         { value: 'test' },
       ),
-    ).toBe("SELECT * FROM dictionary where value = 'test';");
+    ).toBe('SELECT * FROM dictionary where value = \'test\';');
 
     expect(
       replacePlaceholderWithParams(
@@ -44,7 +44,7 @@ describe('sql', () => {
         'SELECT * FROM dictionary where value = @value and id = @id;',
         { value: 33, id: '' },
       ),
-    ).toBe("SELECT * FROM dictionary where value = 33 and id = '';");
+    ).toBe('SELECT * FROM dictionary where value = 33 and id = \'\';');
 
     expect(
       replacePlaceholderWithParams(

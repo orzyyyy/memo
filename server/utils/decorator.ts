@@ -1,3 +1,4 @@
+/* eslint-disable require-atomic-updates */
 import KoaRouter from 'koa-router';
 import { Context } from 'koa';
 
@@ -11,10 +12,7 @@ export function Controller(prefix: string, notUsedFunctions: string[] = []) {
   return function(target: any) {
     const propsList = Object.getOwnPropertyDescriptors(target.prototype);
     for (const functionName in propsList) {
-      if (
-        functionName !== 'constructor' &&
-        !notUsedFunctions.includes(functionName)
-      ) {
+      if (functionName !== 'constructor' && !notUsedFunctions.includes(functionName)) {
         const fn = propsList[functionName].value;
         fn(router);
       }

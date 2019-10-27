@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import chalk, { Chalk } from 'chalk';
 import { format } from 'date-fns';
 import { getTargetResource } from './resource';

@@ -156,9 +156,9 @@ export default class ExhentaiService {
       await this.page.waitFor(waitTimeAfterError);
       trace('re-request start');
       return false;
-    } else {
-      return infoList.currentResult;
     }
+      return infoList.currentResult;
+
   };
 
   fetchListInfo = async ({ postTime }: ExHentaiInfoItem) => {
