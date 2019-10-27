@@ -1,9 +1,6 @@
 name: site
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:
@@ -21,3 +18,6 @@ jobs:
 
       - name: build for gh-pages
         run: npm run build:gh-pages
+
+      - name: build for business
+        run: npm run build:business
