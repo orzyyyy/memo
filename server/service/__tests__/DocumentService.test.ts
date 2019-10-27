@@ -54,7 +54,7 @@ describe('DocumentService', () => {
     try {
       service.deleteTargetDocument(['7a9a2d738fa682b6c2b1abc0471616b2']);
     } catch (error) {
-      expect(error.message).toBe("7a9a2d738fa682b6c2b1abc0471616b2 doesn't exist.");
+      expect(error.message).toBe('7a9a2d738fa682b6c2b1abc0471616b2 doesn\'t exist.');
     }
     try {
       service.deleteTargetDocument([

@@ -70,7 +70,7 @@ export default class ExhentaiController {
     );
     writeIntoJsonFile(`${prefixPath}/restDetailUrls`, thumbnailUrls);
 
-    info(`start fetching target images`);
+    info('start fetching target images');
 
     const images = await service.fetchImageUrls(thumbnailUrls);
 
@@ -120,7 +120,7 @@ export default class ExhentaiController {
     const targetComic = getEmptyRestDetailUrlInfo();
     for (const jsonUrl of targetComic) {
       const thumbnailUrls = readJsonFile(jsonUrl);
-      info(`start fetching target images`);
+      info('start fetching target images');
 
       const images = await service.fetchImageUrls(thumbnailUrls);
       await service.downloadImages(images, path.dirname(jsonUrl));

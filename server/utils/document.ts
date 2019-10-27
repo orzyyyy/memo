@@ -63,7 +63,7 @@ export const updateSider = () => {
 
 export const getWriteMappingPaths = (category?: DocumentCategoryProps, id?: string) => {
   if (!id || !category) {
-    return [`src/assets/mapping.json`, `dist/assets/mapping.json`];
+    return ['src/assets/mapping.json', 'dist/assets/mapping.json'];
   }
   const ext = category === 'mapping' ? 'json' : 'md';
   return [
