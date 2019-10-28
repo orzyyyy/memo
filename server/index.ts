@@ -1,7 +1,6 @@
 import Koa from 'koa';
 import BodyParser from 'koa-bodyparser';
 import KoaStatic from 'koa-static';
-import { info } from './utils/log';
 import { joinWithRootPath } from './utils/common';
 import { createServer } from 'http';
 import IO from 'socket.io';
@@ -22,10 +21,7 @@ io.on('connection', socket => {
 app.use(BodyParser());
 app.use(
   DecoratorRouter(path.join(__dirname, 'controller'), controllerPath => {
-    if (
-      controllerPath.includes('ToyController') &&
-      process.env.BUILD_ENV !== 'toy'
-    ) {
+    if (controllerPath.includes('ToyController') && process.env.BUILD_ENV !== 'toy') {
       return false;
     }
     return true;
@@ -36,7 +32,6 @@ if (process.env.BUILD_ENV === 'toy') {
   app.use(CheckSqlTomlResource(joinWithRootPath('server/resource/sql')));
 }
 
-info('listen at http://localhost:9099');
 server.listen(9099);
 
 export { server };

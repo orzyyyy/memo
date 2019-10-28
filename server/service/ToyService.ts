@@ -1,10 +1,7 @@
 import mysql, { Connection, FieldInfo } from 'mysql';
 import { getTargetResource } from '../utils/resource';
 import { joinWithRootPath } from '../utils/common';
-import {
-  getAllSqlInstances,
-  SqlInstanceProps,
-} from '../middleware/CheckSqlTomlResource';
+import { getAllSqlInstances, SqlInstanceProps } from '../middleware/CheckSqlTomlResource';
 import { replacePlaceholderWithParams } from '../utils/sql';
 
 export default class ToyService {
@@ -21,8 +18,8 @@ export default class ToyService {
       connect.connect();
 
       const sqlInstance = {};
-      getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(
-        item => Object.assign(sqlInstance, item),
+      getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(item =>
+        Object.assign(sqlInstance, item),
       );
 
       ToyService.connectionInstance = connect;
@@ -48,10 +45,7 @@ export default class ToyService {
     return mysql.createConnection(config);
   };
 
-  getDataBySqlKey = (
-    key: string,
-    query: any,
-  ): Promise<{ result: any; fields: FieldInfo[] | undefined }> => {
+  getDataBySqlKey = (key: string, query: any): Promise<{ result: any; fields: FieldInfo[] | undefined }> => {
     let { sql } = this.sqlInstance[key];
     if (Object.keys(query).length && sql) {
       sql = replacePlaceholderWithParams(sql, query);

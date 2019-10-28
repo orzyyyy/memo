@@ -1,11 +1,6 @@
 import { success, info } from '../utils/log';
 import { Controller, Request } from '../utils/decorator';
-import {
-  writeIntoJsonFile,
-  getTimeStamp,
-  readJsonFile,
-  joinWithRootPath,
-} from '../utils/common';
+import { writeIntoJsonFile, getTimeStamp, readJsonFile, joinWithRootPath } from '../utils/common';
 import ExhentaiService from '../service/ExhentaiService';
 import {
   getLatestListInfo,
@@ -38,10 +33,9 @@ export default class ExhentaiController {
     const latestListInfo = await getLatestListInfo();
     const results = await service.fetchListInfo(latestListInfo);
     const createTime = getTimeStamp();
-    [
-      `src/assets/exhentai/${createTime}`,
-      `dist/assets/exhentai/${createTime}`,
-    ].map(item => writeIntoJsonFile(item, results));
+    [`src/assets/exhentai/${createTime}`, `dist/assets/exhentai/${createTime}`].map(item =>
+      writeIntoJsonFile(item, results),
+    );
     success('fetch completed');
     return `./assets/exhentai/${createTime}.json`;
   }
@@ -61,13 +55,8 @@ export default class ExhentaiController {
 
     info(`start fetching thumbnai urls from: ${url}`);
 
-    const restDetailUrls: string[] = [
-      url,
-      ...(await service.getUrlFromPaginationInfo()),
-    ];
-    const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(
-      restDetailUrls,
-    );
+    const restDetailUrls: string[] = [url, ...(await service.getUrlFromPaginationInfo())];
+    const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(restDetailUrls);
     writeIntoJsonFile(`${prefixPath}/restDetailUrls`, thumbnailUrls);
 
     info('start fetching target images');
@@ -86,9 +75,7 @@ export default class ExhentaiController {
     const { name, dateStamp } = ctx.query;
     const service = this.service;
     const prefixPath = `exhentai/${dateStamp}/${name}`;
-    const detailImageUrls = readJsonFile(
-      joinWithRootPath(`${prefixPath}/detailImageUrls.json`),
-    );
+    const detailImageUrls = readJsonFile(joinWithRootPath(`${prefixPath}/detailImageUrls.json`));
     service.downloadImages(detailImageUrls, prefixPath);
   }
 

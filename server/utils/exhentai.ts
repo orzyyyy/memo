@@ -7,9 +7,7 @@ import { trace, error, success } from './log';
 import request from 'request';
 
 const isWin = process.platform === 'win32';
-const { winProxy, linuxProxy, requestTime } = getTargetResource(
-  'server',
-).exhentai;
+const { winProxy, linuxProxy, requestTime } = getTargetResource('server').exhentai;
 request.defaults({
   proxy: isWin ? winProxy : linuxProxy,
 });
@@ -38,9 +36,7 @@ export const getListFiles = (): string[] => {
   const infoFiles = fs.readdirSync(infoPath);
 
   if (infoFiles.length > 0) {
-    return infoFiles
-      .filter((item: string) => item !== '.gitkeep')
-      .map((item: string) => item.replace('.json', ''));
+    return infoFiles.filter((item: string) => item !== '.gitkeep').map((item: string) => item.replace('.json', ''));
   }
   return [];
 };
@@ -48,9 +44,7 @@ export const getListFiles = (): string[] => {
 export const getLatestDownloadDirName = (dateStamp?: string) => {
   let result = dateStamp;
   if (!dateStamp) {
-    const downloadDir = fs
-      .readdirSync(joinWithRootPath(downloadPath))
-      .filter((item: string) => item !== '.gitkeep');
+    const downloadDir = fs.readdirSync(joinWithRootPath(downloadPath)).filter((item: string) => item !== '.gitkeep');
     result = downloadDir[downloadDir.length - 1];
   }
   return result;
@@ -100,22 +94,15 @@ export const getLatestListInfo = () => {
 };
 
 export const getEmptyRestDetailUrlInfo = () =>
-  glob
-    .sync(joinWithRootPath(downloadPath) + '/**/restDetailUrls.json')
-    .filter(item => {
-      const dirName = dirname(item);
-      if (!fs.existsSync(join(dirName, 'detailImageUrls.json'))) {
-        return true;
-      }
-      return false;
-    });
+  glob.sync(joinWithRootPath(downloadPath) + '/**/restDetailUrls.json').filter(item => {
+    const dirName = dirname(item);
+    if (!fs.existsSync(join(dirName, 'detailImageUrls.json'))) {
+      return true;
+    }
+    return false;
+  });
 
-export function handleDownloadStream(
-  imageUrl: string[],
-  i: number,
-  counter: number[],
-  prefixPath: string,
-) {
+export function handleDownloadStream(imageUrl: string[], i: number, counter: number[], prefixPath: string) {
   const item = imageUrl[i];
   const pageIndex = i + 1;
   const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
@@ -127,11 +114,7 @@ export function handleDownloadStream(
   request(item)
     .on('data', function() {
       const newTimer = Date.now();
-      if (
-        newTimer - timer >= requestTime &&
-        fs.existsSync(targetUrl) &&
-        status
-      ) {
+      if (newTimer - timer >= requestTime && fs.existsSync(targetUrl) && status) {
         imageStream.close();
         trace(`unlink: ${pageIndex}.jpg`);
         error('time out at page index: ' + pageIndex);

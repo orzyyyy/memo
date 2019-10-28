@@ -1,8 +1,5 @@
 // Forks from https://github.com/benjycui/omit.js
-export function omit<T, K extends keyof T>(
-  obj: T,
-  fields: Array<K>,
-): Pick<T, Exclude<keyof T, K>> {
+export function omit<T, K extends keyof T>(obj: T, fields: Array<K>): Pick<T, Exclude<keyof T, K>> {
   const shallowCopy = {
     ...obj,
   };

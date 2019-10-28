@@ -21,10 +21,7 @@ const initResourcePath = (resourcePath: string | string[]) => {
   return paths;
 };
 
-export const getAllSqlInstances = (
-  paths: string[],
-  isInjectPath = true,
-): SqlInstanceProps[] => {
+export const getAllSqlInstances = (paths: string[], isInjectPath = true): SqlInstanceProps[] => {
   const instances = [];
   for (const dirPath of paths) {
     const resourcePath = fs.readdirSync(dirPath);

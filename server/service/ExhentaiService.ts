@@ -157,8 +157,7 @@ export default class ExhentaiService {
       trace('re-request start');
       return false;
     }
-      return infoList.currentResult;
-
+    return infoList.currentResult;
   };
 
   fetchListInfo = async ({ postTime }: ExHentaiInfoItem) => {
