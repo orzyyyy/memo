@@ -1,6 +1,6 @@
 import React from 'react';
-import MarkDownDetail from './MarkdownDetail';
 import { Col, Row, Input, Button } from 'antd';
+import marked from 'marked';
 const { TextArea } = Input;
 
 export interface MarkdownEditorProps {
@@ -26,7 +26,7 @@ const MarkdownEditor = ({ value, onSave, onChange }: MarkdownEditorProps) => (
         fontSize: 16,
       }}
     >
-      <MarkDownDetail dataSource={value} />
+      <div className="content" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
     </Col>
     <Col span={8} push={8} style={{ marginTop: 24 }}>
       <Button block onClick={onSave}>

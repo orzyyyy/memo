@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import { MappingProps } from '../controller/DocumentController';
 import { joinWithRootPath, readJsonFile } from './common';
 
-export type DocumentCategoryProps = 'markdown' | 'mapping' | undefined;
+export type DocumentCategoryProps = 'markdown' | 'mapping' | 'markdown-editor' | 'mapping-editor' | undefined;
 export type SiderChildrenProps = { key: string; value: string };
 export type SiderProps = {
   key: string;

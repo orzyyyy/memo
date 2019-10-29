@@ -183,7 +183,7 @@ const convertMarkdown2Html = () => {
     for (const file of files) {
       const targetUrl = handleWithPrefix(file);
       const content = fs.readFileSync(targetUrl).toString();
-      const result = marked(content || '');
+      const result = file.includes('markdown-editor') ? content : marked(content || '');
       fs.outputFileSync(targetUrl, result);
     }
   });
