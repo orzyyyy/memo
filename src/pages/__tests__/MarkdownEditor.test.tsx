@@ -12,7 +12,7 @@ describe('MarkdownEditor', () => {
   it('render correctly', () => {
     const onSave = jest.fn();
     const onChange = jest.fn();
-    const wrapper = mount(<MarkdownEditor onSave={onSave} onChange={onChange} value="- test" />);
+    const wrapper = mount(<MarkdownEditor onSave={onSave} onChange={onChange} value="<ul><li>test</li></ul>" />);
     expect(wrapper).toMatchSnapshot();
   });
 });
