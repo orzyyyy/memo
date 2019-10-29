@@ -1,7 +1,8 @@
 import React from 'react';
+import StockAndShipment from '../pages/StockAndShipment';
 
 const StockAndShipmentDataController = () => {
-  return <div>stock-shipment</div>;
+  return <StockAndShipment />;
 };
 
 export default StockAndShipmentDataController;
