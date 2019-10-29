@@ -14,10 +14,7 @@ exports[`MarkdownDetail render correctly 1`] = `
         className="content"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<ul>
-<li>test</li>
-</ul>
-",
+            "__html": "- test",
           }
         }
       />

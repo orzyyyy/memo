@@ -91,29 +91,17 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <_default
-            dataSource="- test"
-          >
-            <div
-              className="MarkdownDetail markdown-body"
-            >
-              <div
-                className="wrapper"
-              >
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<ul>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
 <li>test</li>
 </ul>
 ",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </_default>
+              }
+            }
+          />
         </div>
       </Col>
       <Col
