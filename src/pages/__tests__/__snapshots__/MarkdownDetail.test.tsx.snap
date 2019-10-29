@@ -2,7 +2,7 @@
 
 exports[`MarkdownDetail render correctly 1`] = `
 <_default
-  dataSource="- test"
+  dataSource="<ul><li>test</li></ul>"
 >
   <div
     className="MarkdownDetail markdown-body"
@@ -14,7 +14,7 @@ exports[`MarkdownDetail render correctly 1`] = `
         className="content"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "- test",
+            "__html": "<ul><li>test</li></ul>",
           }
         }
       />
