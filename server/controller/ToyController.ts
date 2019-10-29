@@ -21,4 +21,18 @@ export default class ToyController {
     const { result } = await this.service.getDataBySqlKey(key, ctx.request.body);
     return result;
   }
+
+  @Request({ url: '/put/:key', method: 'put' })
+  async getDataByPut(ctx: Context) {
+    const { key } = ctx.params;
+    const { result } = await this.service.getDataBySqlKey(key, ctx.request.body);
+    return result;
+  }
+
+  @Request({ url: '/delete/:key', method: 'delete' })
+  async getDataByDelete(ctx: Context) {
+    const { key } = ctx.params;
+    const { result } = await this.service.getDataBySqlKey(key, ctx.request.body);
+    return result;
+  }
 }
