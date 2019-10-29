@@ -18,7 +18,7 @@ export default class ToyController {
   @Request({ url: '/post/:key', method: 'post' })
   async getDataByPost(ctx: Context) {
     const { key } = ctx.params;
-    const { result } = await this.service.getDataBySqlKey(key, ctx.query);
+    const { result } = await this.service.getDataBySqlKey(key, ctx.request.body);
     return result;
   }
 }
