@@ -39,7 +39,7 @@ const MarkdownEditorDataController = () => {
     showMessageAfterFetching(result);
   };
 
-  const [data, setData] = useFetchDocumentData(id, 'markdown', handleOnSave);
+  const [data, setData] = useFetchDocumentData(id, 'markdown-editor', handleOnSave);
 
   const handleOnChange = (value: string) => {
     setData(value);
