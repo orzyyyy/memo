@@ -19,7 +19,6 @@ const commonHtmlWebpackProps = {
 };
 
 // Don't merge these plugins into utils, for customed plugins
-// const copyPluginProps = getCopyPluginProps();
 const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 
 const plugins = [

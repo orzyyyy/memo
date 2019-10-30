@@ -3,7 +3,6 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const { author, name } = require('../package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const IO = require('socket.io-client');
 
 const buildEnv = process.env.BUILD_ENV;
 
@@ -29,6 +28,7 @@ const getEntry = () => {
     'gh-pages': common,
     dev: common,
     business: { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
+    'business-dev': { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
   };
   return result[buildEnv];
 };
@@ -45,7 +45,7 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
     title: `${author}'s business`,
     description: `${author}'s business`,
   });
-  if (buildEnv === 'business') {
+  if (buildEnv === 'business' || buildEnv === 'business-dev') {
     return [HtmlWebpackPropsForBusiness];
   }
 
@@ -175,9 +175,4 @@ const compressJSON = () => {
   });
 };
 
-const enableLiveReload = () => {
-  const socket = IO('http://localhost:9099');
-  socket.emit('refresh');
-};
-
-module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, enableLiveReload };
+module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry };

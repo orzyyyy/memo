@@ -22,11 +22,11 @@
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
     "clean": "rimraf node_modules package-lock.json bin dist && npm i",
     "codecov": "nino test --codecov",
-    "compile:server": "tsc -p server",
+    "compile:server": "rimraf bin && tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "npm-run-all clean build:gh-pages pub",
     "dev": "rimraf dist && cross-env BUILD_ENV=dev nino koei -w -d",
-    "dev:business": "rimraf dist && cross-env BUILD_ENV=business nino koei -w -d",
+    "dev:business": "rimraf dist && cross-env BUILD_ENV=business-dev nino koei -w -d",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
     "prettier": "nino prettier",
@@ -35,6 +35,7 @@
     "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
     "start": "npm-run-all --parallel server dev",
+    "start:business": "npm-run-all --parallel server dev:business",
     "test": "rimraf bin dist && nino test"
   },
   "pre-commit": [
