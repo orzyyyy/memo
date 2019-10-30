@@ -1,7 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
-const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry, emitLiveReload } = require('./utils');
+const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry } = require('./utils');
+const IO = require('socket.io-client');
+
+const socket = IO('http://localhost:9099');
 
 const commonHtmlWebpackProps = {
   environment: '<script>window.__isLocal = 1;</script>',
@@ -30,7 +33,7 @@ const plugins = [
     localesToKeep: ['zh-cn'],
   }),
   new PostCompile(() => {
-    emitLiveReload();
+    socket.emit('refresh');
     compressJSON();
   }),
 ];

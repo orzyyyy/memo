@@ -2,6 +2,9 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const path = require('path');
 const { compressJSON, getHtmlPluginProps, getEntry, emitLiveReload } = require(path.join(__dirname, './utils'));
+const IO = require('socket.io-client');
+
+const socket = IO('http://localhost:9099');
 
 const commonHtmlWebpackProps = {
   minify: {
@@ -27,7 +30,7 @@ const plugins = [
     localesToKeep: ['zh-cn'],
   }),
   new PostCompile(() => {
-    emitLiveReload();
+    socket.emit('refresh');
     compressJSON();
   }),
 ];
