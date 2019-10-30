@@ -21,7 +21,7 @@ const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Ele
   { path: '/markdown/:id', component: MarkdownDetailDataController, key: 'markdown-detail' },
 ];
 
-const bindSocket = () => {
+export const bindSocket = () => {
   import('socket.io-client').then(target => {
     const socket = target.default('http://localhost:9099');
     socket.on('refresh', () => {
