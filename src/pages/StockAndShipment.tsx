@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, FormControl, InputLabel, Input, FormHelperText, InputAdornment, TextField } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Autocomplete } from '@material-ui/lab';
 
 export type MenuItemOption = {
   text: string;
