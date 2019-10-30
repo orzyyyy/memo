@@ -48,7 +48,9 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           getOptionLabel={(option: MenuItemOption) => option.text}
           value={formData.materialType}
           onChange={handleAutocompleteChange}
-          renderInput={(params: any) => <TextField {...params} margin="normal" label="材料类型" fullWidth />}
+          renderInput={(params: any) => (
+            <TextField {...params} margin="normal" label="材料类型" fullWidth error={formData.materialTypeError} />
+          )}
         />
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
