@@ -7,7 +7,7 @@ const StockAndShipmentDataController = () => {
   // 材料类型菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([{ text: '', value: 0 }]);
   // 材料类型
-  const [materialType, setMaterialType] = useState('' as string | number);
+  const [materialType, setMaterialType] = useState();
   const [materialTypeError, setMaterialTypeError] = useState(false);
   const [materialTypeMessage, setMaterialTypeMessage] = useState('');
   // 材料单价
@@ -36,6 +36,10 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleChange = (item: MenuItemOption, type: FormControlType) => {
+    if (!item) {
+      item = { value: '', text: '' };
+    }
+
     switch (type) {
       // 材料单价
       case 'input':
@@ -45,7 +49,7 @@ const StockAndShipmentDataController = () => {
         break;
 
       // 材料类型
-      case 'select':
+      case 'autoComplete':
         setMaterialType(item.value);
         setMaterialTypeError(item.value === '');
         setMaterialTypeMessage(item.value === '' ? ERROR_MESSAGE : '');

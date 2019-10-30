@@ -1,26 +1,18 @@
 import React from 'react';
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
-  Select,
-  MenuItem,
-  InputAdornment,
-} from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input, FormHelperText, InputAdornment, TextField } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export type MenuItemOption = {
   text: string;
   value: string | number;
 };
-export type FormControlType = 'input' | 'select';
+export type FormControlType = 'input' | 'autoComplete';
 export interface StockAndShipment {
   onChange: (item: MenuItemOption, type: FormControlType) => void;
   onSubmit: () => void;
   formData: {
     // 材料类型
-    materialType: number | string;
+    materialType: number | string | null;
     materialTypeError: boolean;
     materialTypeMessage: string;
     // 材料单价
@@ -34,45 +26,30 @@ export interface StockAndShipment {
 }
 
 const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAndShipment) => {
-  const handleSelectChange = (
+  const handleAutocompleteChange = (
     _: React.ChangeEvent<{
       name?: string | undefined;
       value: unknown;
     }>,
-    child: React.ReactElement,
+    item: MenuItemOption,
   ) => {
-    const { children, value } = child.props;
-    onChange(
-      {
-        text: children,
-        value,
-      },
-      'select',
-    );
+    onChange(item, 'autoComplete');
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(
-      {
-        text: e.target.value,
-        value: e.target.value,
-      },
-      'input',
-    );
+    onChange({ text: e.target.value, value: e.target.value }, 'input');
   };
 
   return (
     <>
       <FormControl fullWidth error={formData.materialTypeError}>
-        <InputLabel>材料类型</InputLabel>
-        <Select value={formData.materialType} onChange={handleSelectChange}>
-          <MenuItem value="">无</MenuItem>
-          {formOptions.materialType.map(({ text, value }) => (
-            <MenuItem value={value} key={text + '-' + value}>
-              {text}
-            </MenuItem>
-          ))}
-        </Select>
+        <Autocomplete
+          options={formOptions.materialType}
+          getOptionLabel={(option: MenuItemOption) => option.text}
+          value={formData.materialType}
+          onChange={handleAutocompleteChange}
+          renderInput={(params: any) => <TextField {...params} margin="normal" label="材料类型" fullWidth />}
+        />
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
 
@@ -81,7 +58,6 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
         <Input
           onChange={handleInputChange}
           value={formData.materialCost}
-          startAdornment={<InputAdornment position="start">￥</InputAdornment>}
           endAdornment={<InputAdornment position="end">元/KG</InputAdornment>}
         />
         <FormHelperText>{formData.materialCostMessage}</FormHelperText>
