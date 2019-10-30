@@ -3,6 +3,7 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const { author, name } = require('../package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const IO = require('socket.io-client');
 
 const buildEnv = process.env.BUILD_ENV;
 
@@ -174,4 +175,9 @@ const compressJSON = () => {
   });
 };
 
-module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry };
+const enableLiveReload = () => {
+  const socket = IO('http://localhost:9099');
+  socket.emit('refresh');
+};
+
+module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, enableLiveReload };
