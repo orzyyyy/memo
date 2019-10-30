@@ -26,6 +26,7 @@
     "d": "npm run compile:server -- --watch",
     "deploy": "npm-run-all clean build:gh-pages pub",
     "dev": "rimraf dist && cross-env BUILD_ENV=dev nino koei -w -d",
+    "dev:business": "rimraf dist && cross-env BUILD_ENV=business nino koei -w -d",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
     "prettier": "nino prettier",
