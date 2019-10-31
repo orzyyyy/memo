@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Button,
@@ -106,6 +107,68 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
     onChange({ text: e.target.value, value: e.target.value }, 'input', key);
   };
 
+  const renderSpecification = () => {
+    return (
+      <>
+        <Grid item xs={4} key="length">
+          <FormControl required className={classes.formControl} error={formData.lengthError}>
+            <InputLabel>长</InputLabel>
+            <Input
+              value={formData.length}
+              onChange={e => handleInputChange(e, 'length')}
+              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+            />
+            <FormHelperText>{formData.lengthMessage}</FormHelperText>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={4} key="width">
+          <FormControl required className={classes.formControl} error={formData.widthError}>
+            <InputLabel>宽</InputLabel>
+            <Input
+              value={formData.width}
+              onChange={e => handleInputChange(e, 'width')}
+              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+            />
+            <FormHelperText>{formData.widthMessage}</FormHelperText>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={4} key="height">
+          <FormControl required className={classes.formControl} error={formData.heightError}>
+            <InputLabel>高</InputLabel>
+            <Input
+              value={formData.height}
+              onChange={e => handleInputChange(e, 'height')}
+              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+            />
+            <FormHelperText>{formData.heightMessage}</FormHelperText>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={6} key="weight">
+          <FormControl required className={classes.formControl} error={formData.weightError}>
+            <InputLabel>实际重量</InputLabel>
+            <Input
+              value={formData.weight}
+              onChange={e => handleInputChange(e, 'weight')}
+              endAdornment={<InputAdornment position="end">kg</InputAdornment>}
+            />
+            <FormHelperText>{formData.weightMessage}</FormHelperText>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={6} key="pre-weight">
+          <FormControl className={classes.formControl} disabled>
+            <InputLabel>预估重量</InputLabel>
+            <Input value={name} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
+            <FormHelperText>计算公式：体积 x 密度</FormHelperText>
+          </FormControl>
+        </Grid>
+      </>
+    );
+  };
+
   return (
     <div className={classes.container}>
       <FormControl required fullWidth className={classes.formControl}>
@@ -119,53 +182,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
         </Select>
       </FormControl>
 
-      <Grid item xs={3}>
-        <FormControl required className={classes.formControl} error={formData.lengthError}>
-          <InputLabel>长</InputLabel>
-          <Input
-            value={formData.length}
-            onChange={e => handleInputChange(e, 'length')}
-            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-          />
-          <FormHelperText>{formData.lengthMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={3}>
-        <FormControl required className={classes.formControl} error={formData.widthError}>
-          <InputLabel>宽</InputLabel>
-          <Input
-            value={formData.width}
-            onChange={e => handleInputChange(e, 'width')}
-            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-          />
-          <FormHelperText>{formData.widthMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={3}>
-        <FormControl required className={classes.formControl} error={formData.heightError}>
-          <InputLabel>高</InputLabel>
-          <Input
-            value={formData.height}
-            onChange={e => handleInputChange(e, 'height')}
-            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-          />
-          <FormHelperText>{formData.heightMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={3}>
-        <FormControl required className={classes.formControl} error={formData.weightError}>
-          <InputLabel>重</InputLabel>
-          <Input
-            value={formData.weight}
-            onChange={e => handleInputChange(e, 'weight')}
-            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-          />
-          <FormHelperText>{formData.weightMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
+      {renderSpecification()}
 
       <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
         <Autocomplete
@@ -187,15 +204,17 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
 
-      <FormControl required fullWidth error={formData.materialCostError} className={classes.formControl}>
-        <InputLabel>单价</InputLabel>
-        <Input
-          onChange={e => handleInputChange(e, 'materialCost')}
-          value={formData.materialCost}
-          endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
-        />
-        <FormHelperText>{formData.materialCostMessage}</FormHelperText>
-      </FormControl>
+      <Grid item xs={6}>
+        <FormControl required fullWidth error={formData.materialCostError} className={classes.formControl}>
+          <InputLabel>单价</InputLabel>
+          <Input
+            onChange={e => handleInputChange(e, 'materialCost')}
+            value={formData.materialCost}
+            endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
+          />
+          <FormHelperText>{formData.materialCostMessage}</FormHelperText>
+        </FormControl>
+      </Grid>
 
       <FormControl fullWidth className={classes.formControl}>
         <Button variant="contained" color="primary" onClick={onSubmit}>
