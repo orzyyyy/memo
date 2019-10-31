@@ -78,20 +78,18 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictWeight = (length: number, width: number, height: number, type: number | string) => {
-    if (length && width && height) {
-      const realLength = length / 2 / 10;
-      const realWidth = width / 10;
-      const realHeight = height / 10;
-      const DENSITE = 7.874;
-      // 圆钢
-      if (type === 0) {
-        const bottomArea = Math.PI * realLength * realLength;
-        setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
-      } else if (type === 1) {
-        // 方钢
-        const bottomArea = realLength * realWidth;
-        setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
-      }
+    const realLength = length / 2 / 10;
+    const realWidth = width / 10;
+    const realHeight = height / 10;
+    const DENSITE = 7.874;
+    // 圆钢
+    if (type === 0 && length && height) {
+      const bottomArea = Math.PI * realLength * realLength;
+      setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
+    } else if (type === 1 && length && width && height) {
+      // 方钢
+      const bottomArea = realLength * realWidth;
+      setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
     }
   };
 

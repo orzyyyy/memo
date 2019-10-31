@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
+import { GridSize } from '@material-ui/core/Grid';
 
 export type MenuItemOption = {
   text: string;
@@ -110,65 +111,65 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
   };
 
   const renderSpecification = () => {
-    return (
-      <>
-        <Grid item xs={4} key="length">
-          <FormControl required className={classes.formControl} error={formData.lengthError}>
-            <InputLabel>长</InputLabel>
-            <Input
-              value={formData.length}
-              onChange={e => handleInputChange(e, 'length')}
-              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-            />
-            <FormHelperText>{formData.lengthMessage}</FormHelperText>
-          </FormControl>
-        </Grid>
-
-        <Grid item xs={4} key="width">
-          <FormControl required className={classes.formControl} error={formData.widthError}>
-            <InputLabel>宽</InputLabel>
-            <Input
-              value={formData.width}
-              onChange={e => handleInputChange(e, 'width')}
-              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-            />
-            <FormHelperText>{formData.widthMessage}</FormHelperText>
-          </FormControl>
-        </Grid>
-
-        <Grid item xs={4} key="height">
-          <FormControl required className={classes.formControl} error={formData.heightError}>
-            <InputLabel>高</InputLabel>
-            <Input
-              value={formData.height}
-              onChange={e => handleInputChange(e, 'height')}
-              endAdornment={<InputAdornment position="end">mm</InputAdornment>}
-            />
-            <FormHelperText>{formData.heightMessage}</FormHelperText>
-          </FormControl>
-        </Grid>
-
-        <Grid item xs={6} key="weight">
-          <FormControl required className={classes.formControl} error={formData.weightError}>
-            <InputLabel>实际重量</InputLabel>
-            <Input
-              value={formData.weight}
-              onChange={e => handleInputChange(e, 'weight')}
-              endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-            />
-            <FormHelperText>{formData.weightMessage}</FormHelperText>
-          </FormControl>
-        </Grid>
-
-        <Grid item xs={6} key="pre-weight">
-          <FormControl className={classes.formControl} disabled>
-            <InputLabel>预估重量</InputLabel>
-            <Input value={formData.predictWeight} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
-            <FormHelperText>计算公式：体积 x 密度</FormHelperText>
-          </FormControl>
-        </Grid>
-      </>
+    const getLengthItem = (xs: GridSize) => (
+      <Grid item xs={xs} key="length">
+        <FormControl required className={classes.formControl} error={formData.lengthError}>
+          <InputLabel>长</InputLabel>
+          <Input
+            value={formData.length}
+            onChange={e => handleInputChange(e, 'length')}
+            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+          />
+          <FormHelperText>{formData.lengthMessage}</FormHelperText>
+        </FormControl>
+      </Grid>
     );
+    const getWidthItem = (xs: GridSize) => (
+      <Grid item xs={xs} key="width">
+        <FormControl required className={classes.formControl} error={formData.widthError}>
+          <InputLabel>宽</InputLabel>
+          <Input
+            value={formData.width}
+            onChange={e => handleInputChange(e, 'width')}
+            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+          />
+          <FormHelperText>{formData.widthMessage}</FormHelperText>
+        </FormControl>
+      </Grid>
+    );
+    const getHeightItem = (xs: GridSize) => (
+      <Grid item xs={xs} key="height">
+        <FormControl required className={classes.formControl} error={formData.heightError}>
+          <InputLabel>高</InputLabel>
+          <Input
+            value={formData.height}
+            onChange={e => handleInputChange(e, 'height')}
+            endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+          />
+          <FormHelperText>{formData.heightMessage}</FormHelperText>
+        </FormControl>
+      </Grid>
+    );
+
+    switch (formData.type) {
+      case 0:
+        return (
+          <>
+            {getLengthItem(6)}
+            {getHeightItem(6)}
+          </>
+        );
+      case 1:
+        return (
+          <>
+            {getLengthItem(4)}
+            {getWidthItem(4)}
+            {getHeightItem(4)}
+          </>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -185,6 +186,26 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
       </FormControl>
 
       {renderSpecification()}
+
+      <Grid item xs={6} key="weight">
+        <FormControl required className={classes.formControl} error={formData.weightError}>
+          <InputLabel>实际重量</InputLabel>
+          <Input
+            value={formData.weight}
+            onChange={e => handleInputChange(e, 'weight')}
+            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
+          />
+          <FormHelperText>{formData.weightMessage}</FormHelperText>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={6} key="pre-weight">
+        <FormControl className={classes.formControl} disabled>
+          <InputLabel>预估重量</InputLabel>
+          <Input value={formData.predictWeight} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
+          <FormHelperText>计算公式：体积 x 密度</FormHelperText>
+        </FormControl>
+      </Grid>
 
       <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
         <Autocomplete

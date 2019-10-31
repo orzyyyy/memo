@@ -2735,7 +2735,7 @@ exports[`StockAndShipment render correctly 1`] = `
                     }
                   >
                     <WithStyles(ForwardRef(FormLabel))
-                      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+                      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
                       classes={
                         Object {
                           "asterisk": "MuiInputLabel-asterisk",
@@ -2745,10 +2745,10 @@ exports[`StockAndShipment render correctly 1`] = `
                           "required": "Mui-required",
                         }
                       }
-                      data-shrink={true}
+                      data-shrink={false}
                     >
                       <ForwardRef(FormLabel)
-                        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+                        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
@@ -2760,11 +2760,11 @@ exports[`StockAndShipment render correctly 1`] = `
                             "root": "MuiFormLabel-root",
                           }
                         }
-                        data-shrink={true}
+                        data-shrink={false}
                       >
                         <label
-                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-disabled Mui-disabled MuiFormLabel-filled"
-                          data-shrink={true}
+                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-disabled Mui-disabled"
+                          data-shrink={false}
                         >
                           预估重量
                         </label>
@@ -2780,7 +2780,6 @@ exports[`StockAndShipment render correctly 1`] = `
                       kg
                     </ForwardRef(WithStyles)>
                   }
-                  value="nodejs"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -2806,7 +2805,6 @@ exports[`StockAndShipment render correctly 1`] = `
                         kg
                       </ForwardRef(WithStyles)>
                     }
-                    value="nodejs"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -2836,7 +2834,6 @@ exports[`StockAndShipment render correctly 1`] = `
                       inputComponent="input"
                       multiline={false}
                       type="text"
-                      value="nodejs"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -2872,7 +2869,6 @@ exports[`StockAndShipment render correctly 1`] = `
                         inputComponent="input"
                         multiline={false}
                         type="text"
-                        value="nodejs"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-disabled Mui-disabled MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -2888,7 +2884,6 @@ exports[`StockAndShipment render correctly 1`] = `
                             onFocus={[Function]}
                             required={false}
                             type="text"
-                            value="nodejs"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"
@@ -2981,7 +2976,7 @@ exports[`StockAndShipment render correctly 1`] = `
                     }
                   >
                     <p
-                      className="MuiFormHelperText-root Mui-disabled MuiFormHelperText-filled"
+                      className="MuiFormHelperText-root Mui-disabled"
                     >
                       计算公式：体积 x 密度
                     </p>
