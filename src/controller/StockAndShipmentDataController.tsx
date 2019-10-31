@@ -35,6 +35,8 @@ const StockAndShipmentDataController = () => {
   const [weight, setWeight] = useState();
   const [weightError, setWeightError] = useState(false);
   const [weightMessage, setWeightMessage] = useState('');
+  // 预估重量
+  const [predictWeight, setPredictWeight] = useState(0);
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
@@ -75,7 +77,7 @@ const StockAndShipmentDataController = () => {
     console.log(params);
   };
 
-  const handleChange = (item: MenuItemOption, type: FormControlType, key: MaterialSpecificationProps) => {
+  const handleChange = (item: MenuItemOption, controlType: FormControlType, key: MaterialSpecificationProps) => {
     if (!item) {
       item = { value: '', text: '' };
     }
@@ -108,11 +110,27 @@ const StockAndShipmentDataController = () => {
       },
     };
 
-    switch (type) {
+    switch (controlType) {
       // 材料单价
       case 'input':
         if (key) {
           inputValidation[key]();
+        }
+
+        if (length && width && height) {
+          const realLength = length / 2 / 10;
+          const realWidth = width / 10;
+          const realHeight = height / 10;
+          const DENSITE = 7.874;
+          // 圆钢
+          if (type === 0) {
+            const bottomArea = Math.PI * realLength * realLength;
+            setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
+          } else if (type === 1) {
+            // 方钢
+            const bottomArea = realLength * realWidth;
+            setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
+          }
         }
         break;
 
@@ -155,6 +173,7 @@ const StockAndShipmentDataController = () => {
         weight,
         weightError,
         weightMessage,
+        predictWeight,
       }}
       formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}

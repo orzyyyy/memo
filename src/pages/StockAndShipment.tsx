@@ -48,6 +48,8 @@ export interface StockAndShipment {
     weight: number | string;
     weightError: boolean;
     weightMessage: string;
+    // 预估重量
+    predictWeight: number;
   };
   formOptions: {
     materialType: MenuItemOption[];
@@ -161,7 +163,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
         <Grid item xs={6} key="pre-weight">
           <FormControl className={classes.formControl} disabled>
             <InputLabel>预估重量</InputLabel>
-            <Input value={name} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
+            <Input value={formData.predictWeight} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
             <FormHelperText>计算公式：体积 x 密度</FormHelperText>
           </FormControl>
         </Grid>
