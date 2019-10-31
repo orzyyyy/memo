@@ -190,6 +190,8 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           getOptionLabel={(option: MenuItemOption) => option.text}
           value={formData.materialType}
           onChange={handleAutocompleteChange}
+          id="material-type"
+          aria-controls="material-type"
           renderInput={(params: any) => (
             <TextField
               {...params}
