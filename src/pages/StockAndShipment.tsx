@@ -28,6 +28,7 @@ export type MaterialSpecificationProps = 'length' | 'width' | 'height' | 'weight
 export interface StockAndShipment {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
+  onSpecificationInputBlur: () => void;
   formData: {
     // 材料类型 1
     type: number | string;
@@ -79,7 +80,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAndShipment) => {
+const StockAndShipment = ({
+  onSubmit,
+  formData,
+  formOptions,
+  onChange,
+  onSpecificationInputBlur,
+}: StockAndShipment) => {
   const classes = useStyles();
 
   const handleAutocompleteChange = (
@@ -125,6 +132,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
             value={formData.length}
             type="number"
             onChange={e => handleInputChange(e, 'length')}
+            onBlur={onSpecificationInputBlur}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
           <FormHelperText>{formData.lengthMessage}</FormHelperText>
@@ -139,6 +147,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
             value={formData.width}
             type="number"
             onChange={e => handleInputChange(e, 'width')}
+            onBlur={onSpecificationInputBlur}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
           <FormHelperText>{formData.widthMessage}</FormHelperText>
@@ -153,6 +162,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
             value={formData.height}
             type="number"
             onChange={e => handleInputChange(e, 'height')}
+            onBlur={onSpecificationInputBlur}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
           <FormHelperText>{formData.heightMessage}</FormHelperText>

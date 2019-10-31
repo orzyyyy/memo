@@ -81,16 +81,29 @@ const StockAndShipmentDataController = () => {
     const realLength = length / 2 / 10;
     const realWidth = width / 10;
     const realHeight = height / 10;
-    const DENSITE = 7.874;
+
+    const calcute = (length: number, width: number, height: number) => {
+      const DENSITE = 7.874;
+      let bottomArea = Math.PI * length * length;
+      // 方钢
+      if (width) {
+        bottomArea = length * width;
+      }
+      // 圆钢
+      return parseFloat(((bottomArea * height * DENSITE) / 1000).toFixed(2));
+    };
+
     // 圆钢
     if (type === 0 && length && height) {
-      const bottomArea = Math.PI * realLength * realLength;
-      setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
+      setPredictWeight(calcute(realLength, realWidth, realHeight));
     } else if (type === 1 && length && width && height) {
       // 方钢
-      const bottomArea = realLength * realWidth;
-      setPredictWeight(parseFloat(((bottomArea * realHeight * DENSITE) / 1000).toFixed(2)));
+      setPredictWeight(calcute(realLength, realWidth, realHeight));
     }
+  };
+
+  const handleSpecificationInputBlur = () => {
+    calcuteForPredictWeight(length, width, height, type);
   };
 
   const handleChange = (item: MenuItemOption, controlType: FormControlType, key: MaterialSpecificationProps) => {
@@ -130,7 +143,6 @@ const StockAndShipmentDataController = () => {
       // 材料单价
       case 'input':
         inputValidation[key]();
-        calcuteForPredictWeight(length, width, height, type);
         break;
 
       case 'select':
@@ -176,6 +188,7 @@ const StockAndShipmentDataController = () => {
       }}
       formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
+      onSpecificationInputBlur={handleSpecificationInputBlur}
     />
   );
 };
