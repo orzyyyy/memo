@@ -4,7 +4,7 @@ exports[`MarkdownEditor render correctly 1`] = `
 <MarkdownEditor
   onChange={[MockFunction]}
   onSave={[MockFunction]}
-  value="- test"
+  value="<ul><li>test</li></ul>"
 >
   <Row
     gutter={16}
@@ -46,7 +46,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                 "height": "90vh",
               }
             }
-            value="- test"
+            value="<ul><li>test</li></ul>"
           >
             <ResizeObserver
               disabled={true}
@@ -62,7 +62,7 @@ exports[`MarkdownEditor render correctly 1`] = `
                     "height": "90vh",
                   }
                 }
-                value="- test"
+                value="<ul><li>test</li></ul>"
               />
             </ResizeObserver>
           </TextArea>
@@ -91,29 +91,14 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
           }
         >
-          <_default
-            dataSource="- test"
-          >
-            <div
-              className="MarkdownDetail markdown-body"
-            >
-              <div
-                className="wrapper"
-              >
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<ul>
-<li>test</li>
-</ul>
-",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </_default>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul><li>test</li></ul>",
+              }
+            }
+          />
         </div>
       </Col>
       <Col

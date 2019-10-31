@@ -10,7 +10,7 @@ describe('MarkdownDetail', () => {
   });
 
   it('render correctly', () => {
-    const wrapper = mount(<MarkdownDetail dataSource={'- test'} />);
+    const wrapper = mount(<MarkdownDetail dataSource="<ul><li>test</li></ul>" />);
     expect(wrapper).toMatchSnapshot();
   });
 });

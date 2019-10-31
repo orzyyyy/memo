@@ -1,8 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
-const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry } = require('./utils');
 const IO = require('socket.io-client');
+const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry, convertMarkdown2Html } = require('./utils');
 
 const socket = IO('http://localhost:9099');
 
@@ -35,6 +35,7 @@ const plugins = [
   new PostCompile(() => {
     socket.emit('refresh');
     compressJSON();
+    convertMarkdown2Html();
   }),
 ];
 

@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 const { author, name } = require('../package.json');
+const marked = require('marked');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const buildEnv = process.env.BUILD_ENV;
@@ -175,4 +176,18 @@ const compressJSON = () => {
   });
 };
 
-module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry };
+const convertMarkdown2Html = () => {
+  glob('dist/**/*.md', (error, files) => {
+    if (error) {
+      throw new Error(error);
+    }
+    for (const file of files) {
+      const targetUrl = handleWithPrefix(file);
+      const content = fs.readFileSync(targetUrl).toString();
+      const result = file.includes('markdown-editor') ? content : marked(content || '');
+      fs.outputFileSync(targetUrl, result);
+    }
+  });
+};
+
+module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, convertMarkdown2Html };

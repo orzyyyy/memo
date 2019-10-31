@@ -90,24 +90,14 @@ exports[`MarkdownEditorDataController handleOnSave 1`] = `
               }
             }
           >
-            <_default>
-              <div
-                className="MarkdownDetail markdown-body"
-              >
-                <div
-                  className="wrapper"
-                >
-                  <div
-                    className="content"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": "",
-                      }
-                    }
-                  />
-                </div>
-              </div>
-            </_default>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "",
+                }
+              }
+            />
           </div>
         </Col>
         <Col
