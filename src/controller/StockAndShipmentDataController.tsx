@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import StockAndShipment, { MenuItemOption, FormControlType } from '../pages/StockAndShipment';
+import StockAndShipment, {
+  MenuItemOption,
+  FormControlType,
+  MaterialSpecificationProps,
+} from '../pages/StockAndShipment';
 
 const ERROR_MESSAGE = '该项不能为空';
 
 const StockAndShipmentDataController = () => {
   // 材料类型菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([{ text: '', value: 0 }]);
-  // 材料类型
+  // 材料类型 1。具体为圆钢、方钢，数据库字段为 type
+  const [type, setType] = useState(0 as string | number);
+  // 材料类型 1 的菜单项
+  const [typeOption, setTypeOption] = useState([{ text: '', value: 0 }]);
+  // 材料类型 2。具体为材质类型，数据库字段为 material_type
   const [materialType, setMaterialType] = useState();
   const [materialTypeError, setMaterialTypeError] = useState(false);
   const [materialTypeMessage, setMaterialTypeMessage] = useState('');
@@ -14,9 +22,24 @@ const StockAndShipmentDataController = () => {
   const [materialCost, setMaterialCost] = useState('' as string | number);
   const [materialCostError, setMaterialCostError] = useState(false);
   const [materialCostMessage, setMaterialCostMessage] = useState('');
+  // 长宽高重
+  const [length, setLength] = useState();
+  const [lengthError, setLengthError] = useState(false);
+  const [lengthMessage, setLengthMessage] = useState('');
+  const [width, setWidth] = useState();
+  const [widthError, setWidthError] = useState(false);
+  const [widthMessage, setWidthMessage] = useState('');
+  const [height, setHeight] = useState();
+  const [heightError, setHeightError] = useState(false);
+  const [heightMessage, setHeightMessage] = useState('');
+  const [weight, setWeight] = useState();
+  const [weightError, setWeightError] = useState(false);
+  const [weightMessage, setWeightMessage] = useState('');
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
+    setTypeOption([{ text: '圆钢', value: 0 }, { text: '方钢', value: 1 }]);
+    setType(0);
   }, []);
 
   const handleSubmit = async () => {
@@ -30,25 +53,74 @@ const StockAndShipmentDataController = () => {
       setMaterialCostError(true);
       setMaterialCostMessage(ERROR_MESSAGE);
     }
-    const params = { materialType, materialCost };
+    // 长宽高重
+    if (!length) {
+      setLengthError(true);
+      setLengthMessage(ERROR_MESSAGE);
+    }
+    if (!width) {
+      setWidthError(true);
+      setWidthMessage(ERROR_MESSAGE);
+    }
+    if (!height) {
+      setHeightError(true);
+      setHeightMessage(ERROR_MESSAGE);
+    }
+    if (!weight) {
+      setWeightError(true);
+      setWeightMessage(ERROR_MESSAGE);
+    }
+    const params = { materialType, materialCost, type, length, width, height, weight };
     // eslint-disable-next-line no-console
     console.log(params);
   };
 
-  const handleChange = (item: MenuItemOption, type: FormControlType) => {
+  const handleChange = (item: MenuItemOption, type: FormControlType, key: MaterialSpecificationProps) => {
     if (!item) {
       item = { value: '', text: '' };
     }
 
-    switch (type) {
-      // 材料单价
-      case 'input':
+    const inputValidation = {
+      materialCost: () => {
         setMaterialCost(item.value);
         setMaterialCostError(item.value === '');
         setMaterialCostMessage(item.value === '' ? ERROR_MESSAGE : '');
+      },
+      length: () => {
+        setLength(item.value);
+        setLengthError(!item.value);
+        setLengthMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      width: () => {
+        setWidth(item.value);
+        setWidthError(!item.value);
+        setWidthMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      height: () => {
+        setHeight(item.value);
+        setHeightError(!item.value);
+        setHeightMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      weight: () => {
+        setWeight(item.value);
+        setWeightError(!item.value);
+        setWeightMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+    };
+
+    switch (type) {
+      // 材料单价
+      case 'input':
+        if (key) {
+          inputValidation[key]();
+        }
         break;
 
-      // 材料类型
+      case 'select':
+        setType(item.value);
+        break;
+
+      // 材料类型 2
       case 'autoComplete':
         setMaterialType(item.value);
         setMaterialTypeError(item.value === '');
@@ -70,8 +142,21 @@ const StockAndShipmentDataController = () => {
         materialCost,
         materialCostError,
         materialCostMessage,
+        type,
+        length,
+        lengthError,
+        lengthMessage,
+        width,
+        widthError,
+        widthMessage,
+        height,
+        heightError,
+        heightMessage,
+        weight,
+        weightError,
+        weightMessage,
       }}
-      formOptions={{ materialType: materialTypeOption }}
+      formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
     />
   );
