@@ -11,6 +11,9 @@ import {
   Select,
   MenuItem,
   Grid,
+  AppBar,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
@@ -70,6 +73,9 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       margin: theme.spacing(1),
     },
+    title: {
+      flexGrow: 1,
+    },
   }),
 );
 
@@ -117,6 +123,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           <InputLabel>长</InputLabel>
           <Input
             value={formData.length}
+            type="number"
             onChange={e => handleInputChange(e, 'length')}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
@@ -130,6 +137,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           <InputLabel>宽</InputLabel>
           <Input
             value={formData.width}
+            type="number"
             onChange={e => handleInputChange(e, 'width')}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
@@ -143,6 +151,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           <InputLabel>高</InputLabel>
           <Input
             value={formData.height}
+            type="number"
             onChange={e => handleInputChange(e, 'height')}
             endAdornment={<InputAdornment position="end">mm</InputAdornment>}
           />
@@ -174,6 +183,13 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
 
   return (
     <div className={classes.container}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            入库
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <FormControl required fullWidth className={classes.formControl}>
         <InputLabel>材料类型 1</InputLabel>
         <Select value={formData.type} onChange={handleSelectChange}>
@@ -193,6 +209,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           <Input
             value={formData.weight}
             onChange={e => handleInputChange(e, 'weight')}
+            type="number"
             endAdornment={<InputAdornment position="end">kg</InputAdornment>}
           />
           <FormHelperText>{formData.weightMessage}</FormHelperText>
@@ -200,9 +217,14 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
       </Grid>
 
       <Grid item xs={6} key="pre-weight">
-        <FormControl className={classes.formControl} disabled>
+        <FormControl className={classes.formControl}>
           <InputLabel>预估重量</InputLabel>
-          <Input value={formData.predictWeight} endAdornment={<InputAdornment position="end">kg</InputAdornment>} />
+          <Input
+            value={formData.predictWeight}
+            readOnly
+            type="number"
+            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
+          />
           <FormHelperText>计算公式：体积 x 密度</FormHelperText>
         </FormControl>
       </Grid>
@@ -235,6 +257,7 @@ const StockAndShipment = ({ onSubmit, formData, formOptions, onChange }: StockAn
           <Input
             onChange={e => handleInputChange(e, 'materialCost')}
             value={formData.materialCost}
+            type="number"
             endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
           />
           <FormHelperText>{formData.materialCostMessage}</FormHelperText>
