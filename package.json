@@ -50,6 +50,8 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.0.0-alpha.8",
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/lab": "^4.0.0-alpha.30",
     "@testing-library/react-hooks": "^3.1.0",
     "@types/blueimp-md5": "^2.7.0",
     "@types/enzyme": "^3.10.3",
