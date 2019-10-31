@@ -21,7 +21,7 @@ const StockAndShipmentDataController = () => {
 
   const handleSubmit = async () => {
     // 材料类型
-    if (!materialType) {
+    if (materialType === undefined) {
       setMaterialTypeError(true);
       setMaterialTypeMessage(ERROR_MESSAGE);
     }
