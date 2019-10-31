@@ -29,6 +29,7 @@ const getEntry = () => {
     'gh-pages': common,
     dev: common,
     business: { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
+    'business-dev': { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
   };
   return result[buildEnv];
 };
@@ -45,7 +46,7 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
     title: `${author}'s business`,
     description: `${author}'s business`,
   });
-  if (buildEnv === 'business') {
+  if (buildEnv === 'business' || buildEnv === 'business-dev') {
     return [HtmlWebpackPropsForBusiness];
   }
 

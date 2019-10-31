@@ -15,7 +15,11 @@ export const replacePlaceholderWithParams = (sql: string, params: any) => {
   for (const item of originVariables) {
     const key = item
       // remove all line break, \r and \n
-      .replace(/[\r\n]/g, '')
+      .replace(/[\r]/g, '')
+      .replace(/[\n]/g, '')
+      // remove all ()
+      /* eslint-disable-next-line no-useless-escape */
+      .replace(/[\()]/g, '')
       // remove all space
       /* eslint-disable-next-line no-useless-escape */
       .replace(/\ +/g, '')

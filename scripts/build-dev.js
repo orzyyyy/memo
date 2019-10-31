@@ -4,6 +4,8 @@ const PostCompile = require('post-compile-webpack-plugin');
 const IO = require('socket.io-client');
 const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry, convertMarkdown2Html } = require('./utils');
 
+const socket = IO('http://localhost:9099');
+
 const commonHtmlWebpackProps = {
   environment: '<script>window.__isLocal = 1;</script>',
   base: '<base href="/" />',
@@ -31,10 +33,7 @@ const plugins = [
     localesToKeep: ['zh-cn'],
   }),
   new PostCompile(() => {
-    // live reload
-    const socket = IO('http://localhost:9099');
     socket.emit('refresh');
-
     compressJSON();
     convertMarkdown2Html();
   }),
