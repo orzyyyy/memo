@@ -6,7 +6,11 @@ const ERROR_MESSAGE = '该项不能为空';
 const StockAndShipmentDataController = () => {
   // 材料类型菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([{ text: '', value: 0 }]);
-  // 材料类型
+  // 材料类型 1。具体为圆钢、方钢，数据库字段为 type
+  const [type, setType] = useState(0 as string | number);
+  // 材料类型 1 的菜单项
+  const [typeOption, setTypeOption] = useState([{ text: '', value: 0 }]);
+  // 材料类型 2。具体为材质类型，数据库字段为 material_type
   const [materialType, setMaterialType] = useState();
   const [materialTypeError, setMaterialTypeError] = useState(false);
   const [materialTypeMessage, setMaterialTypeMessage] = useState('');
@@ -17,6 +21,8 @@ const StockAndShipmentDataController = () => {
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
+    setTypeOption([{ text: '圆钢', value: 0 }, { text: '方钢', value: 1 }]);
+    setType(0);
   }, []);
 
   const handleSubmit = async () => {
@@ -30,7 +36,7 @@ const StockAndShipmentDataController = () => {
       setMaterialCostError(true);
       setMaterialCostMessage(ERROR_MESSAGE);
     }
-    const params = { materialType, materialCost };
+    const params = { materialType, materialCost, type };
     // eslint-disable-next-line no-console
     console.log(params);
   };
@@ -48,7 +54,11 @@ const StockAndShipmentDataController = () => {
         setMaterialCostMessage(item.value === '' ? ERROR_MESSAGE : '');
         break;
 
-      // 材料类型
+      case 'select':
+        setType(item.value);
+        break;
+
+      // 材料类型 2
       case 'autoComplete':
         setMaterialType(item.value);
         setMaterialTypeError(item.value === '');
@@ -70,8 +80,9 @@ const StockAndShipmentDataController = () => {
         materialCost,
         materialCostError,
         materialCostMessage,
+        type,
       }}
-      formOptions={{ materialType: materialTypeOption }}
+      formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
     />
   );
