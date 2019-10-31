@@ -2,7 +2,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const path = require('path');
-const { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry } = require(path.join(__dirname, './utils'));
+const { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, convertMarkdown2Html } = require(path.join(
+  __dirname,
+  './utils',
+));
 
 const commonHtmlWebpackProps = {
   minify: {
@@ -55,6 +58,7 @@ const plugins = [
   }),
   new PostCompile(() => {
     compressJSON();
+    convertMarkdown2Html();
   }),
 ];
 
