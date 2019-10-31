@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import StockAndShipment, { MenuItemOption, FormControlType } from '../pages/StockAndShipment';
+import StockAndShipment, {
+  MenuItemOption,
+  FormControlType,
+  MaterialSpecificationProps,
+} from '../pages/StockAndShipment';
 
 const ERROR_MESSAGE = '该项不能为空';
 
@@ -18,6 +22,19 @@ const StockAndShipmentDataController = () => {
   const [materialCost, setMaterialCost] = useState('' as string | number);
   const [materialCostError, setMaterialCostError] = useState(false);
   const [materialCostMessage, setMaterialCostMessage] = useState('');
+  // 长宽高重
+  const [length, setLength] = useState();
+  const [lengthError, setLengthError] = useState(false);
+  const [lengthMessage, setLengthMessage] = useState('');
+  const [width, setWidth] = useState();
+  const [widthError, setWidthError] = useState(false);
+  const [widthMessage, setWidthMessage] = useState('');
+  const [height, setHeight] = useState();
+  const [heightError, setHeightError] = useState(false);
+  const [heightMessage, setHeightMessage] = useState('');
+  const [weight, setWeight] = useState();
+  const [weightError, setWeightError] = useState(false);
+  const [weightMessage, setWeightMessage] = useState('');
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
@@ -36,22 +53,67 @@ const StockAndShipmentDataController = () => {
       setMaterialCostError(true);
       setMaterialCostMessage(ERROR_MESSAGE);
     }
-    const params = { materialType, materialCost, type };
+    // 长宽高重
+    if (!length) {
+      setLengthError(true);
+      setLengthMessage(ERROR_MESSAGE);
+    }
+    if (!width) {
+      setWidthError(true);
+      setWidthMessage(ERROR_MESSAGE);
+    }
+    if (!height) {
+      setHeightError(true);
+      setHeightMessage(ERROR_MESSAGE);
+    }
+    if (!weight) {
+      setWeightError(true);
+      setWeightMessage(ERROR_MESSAGE);
+    }
+    const params = { materialType, materialCost, type, length, width, height, weight };
     // eslint-disable-next-line no-console
     console.log(params);
   };
 
-  const handleChange = (item: MenuItemOption, type: FormControlType) => {
+  const handleChange = (item: MenuItemOption, type: FormControlType, key: MaterialSpecificationProps) => {
     if (!item) {
       item = { value: '', text: '' };
     }
 
-    switch (type) {
-      // 材料单价
-      case 'input':
+    const inputValidation = {
+      materialCost: () => {
         setMaterialCost(item.value);
         setMaterialCostError(item.value === '');
         setMaterialCostMessage(item.value === '' ? ERROR_MESSAGE : '');
+      },
+      length: () => {
+        setLength(item.value);
+        setLengthError(!item.value);
+        setLengthMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      width: () => {
+        setWidth(item.value);
+        setWidthError(!item.value);
+        setWidthMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      height: () => {
+        setHeight(item.value);
+        setHeightError(!item.value);
+        setHeightMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      weight: () => {
+        setWeight(item.value);
+        setWeightError(!item.value);
+        setWeightMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+    };
+
+    switch (type) {
+      // 材料单价
+      case 'input':
+        if (key) {
+          inputValidation[key]();
+        }
         break;
 
       case 'select':
@@ -81,6 +143,18 @@ const StockAndShipmentDataController = () => {
         materialCostError,
         materialCostMessage,
         type,
+        length,
+        lengthError,
+        lengthMessage,
+        width,
+        widthError,
+        widthMessage,
+        height,
+        heightError,
+        heightMessage,
+        weight,
+        weightError,
+        weightMessage,
       }}
       formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
