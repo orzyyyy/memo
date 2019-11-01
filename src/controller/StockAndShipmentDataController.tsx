@@ -35,6 +35,8 @@ const StockAndShipmentDataController = () => {
   const [weight, setWeight] = useState();
   const [weightError, setWeightError] = useState(false);
   const [weightMessage, setWeightMessage] = useState('');
+  // 预估重量
+  const [predictWeight, setPredictWeight] = useState(0);
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
@@ -75,7 +77,36 @@ const StockAndShipmentDataController = () => {
     console.log(params);
   };
 
-  const handleChange = (item: MenuItemOption, type: FormControlType, key: MaterialSpecificationProps) => {
+  const calcuteForPredictWeight = (length: number, width: number, height: number, type: number | string) => {
+    const realLength = length / 2 / 10;
+    const realWidth = width / 10;
+    const realHeight = height / 10;
+
+    const calcute = (length: number, width: number, height: number) => {
+      const DENSITE = 7.874;
+      let bottomArea = Math.PI * length * length;
+      // 方钢
+      if (width) {
+        bottomArea = length * width;
+      }
+      // 圆钢
+      return parseFloat(((bottomArea * height * DENSITE) / 1000).toFixed(2));
+    };
+
+    // 圆钢
+    if (type === 0 && length && height) {
+      setPredictWeight(calcute(realLength, realWidth, realHeight));
+    } else if (type === 1 && length && width && height) {
+      // 方钢
+      setPredictWeight(calcute(realLength, realWidth, realHeight));
+    }
+  };
+
+  const handleSpecificationInputBlur = () => {
+    calcuteForPredictWeight(length, width, height, type);
+  };
+
+  const handleChange = (item: MenuItemOption, controlType: FormControlType, key: MaterialSpecificationProps) => {
     if (!item) {
       item = { value: '', text: '' };
     }
@@ -108,12 +139,10 @@ const StockAndShipmentDataController = () => {
       },
     };
 
-    switch (type) {
+    switch (controlType) {
       // 材料单价
       case 'input':
-        if (key) {
-          inputValidation[key]();
-        }
+        inputValidation[key]();
         break;
 
       case 'select':
@@ -155,9 +184,11 @@ const StockAndShipmentDataController = () => {
         weight,
         weightError,
         weightMessage,
+        predictWeight,
       }}
       formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
+      onSpecificationInputBlur={handleSpecificationInputBlur}
     />
   );
 };
