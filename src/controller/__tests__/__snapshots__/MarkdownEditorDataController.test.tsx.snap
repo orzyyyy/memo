@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MarkdownEditorDataController handleOnSave 1`] = `
+exports[`MarkdownEditorDataController render correctly 1`] = `
 <MarkdownEditorDataController>
   <MarkdownEditor
     onChange={[Function]}

@@ -54,7 +54,7 @@ const StockAndShipmentDataController = () => {
     setType(0);
   }, []);
 
-  const handleSubmit = async () => {
+  const verifySubmitParams = () => {
     let hasError = false;
     // 材料类型
     if (materialType === undefined) {
@@ -89,17 +89,24 @@ const StockAndShipmentDataController = () => {
       setWeightMessage(ERROR_MESSAGE);
       hasError = true;
     }
+    // 运费
     if (!freight) {
       setFreightError(true);
       setFreightMessage(ERROR_MESSAGE);
       hasError = true;
     }
     const params = { materialType, materialCost, type, length, width, height, weight, freight, description, extraCost };
+    return { hasError, params };
+  };
+
+  const handleSubmit = async () => {
+    const { hasError, params } = verifySubmitParams();
     // eslint-disable-next-line no-console
     console.log(params);
     if (hasError) {
       return;
     }
+    return params;
   };
 
   const calcuteForPredictWeight = (length: number, width: number, height: number, type: number | string) => {

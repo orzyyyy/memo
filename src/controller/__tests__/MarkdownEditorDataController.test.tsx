@@ -19,7 +19,7 @@ describe('MarkdownEditorDataController', () => {
     fetchMock.restore();
   });
 
-  it('handleOnSave', async () => {
+  it('render correctly', async () => {
     const wrapper = mount(<MarkdownEditorDataController />);
     await wrapper.update();
     expect(wrapper).toMatchSnapshot();
