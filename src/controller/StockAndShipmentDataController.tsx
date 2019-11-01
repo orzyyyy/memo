@@ -37,6 +37,14 @@ const StockAndShipmentDataController = () => {
   const [weightMessage, setWeightMessage] = useState('');
   // 预估重量
   const [predictWeight, setPredictWeight] = useState(0);
+  // 运费
+  const [freight, setFreight] = useState('' as string | number);
+  const [freightError, setFreightError] = useState(false);
+  const [freightMessage, setFreightMessage] = useState('');
+  // 其他费用
+  const [extraCost, setExtraCost] = useState('' as string | number);
+  // 备注
+  const [description, setDescription] = useState('' as string | number);
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
@@ -45,36 +53,51 @@ const StockAndShipmentDataController = () => {
   }, []);
 
   const handleSubmit = async () => {
+    let hasError = false;
     // 材料类型
     if (materialType === undefined) {
       setMaterialTypeError(true);
       setMaterialTypeMessage(ERROR_MESSAGE);
+      hasError = true;
     }
     // 材料单价
     if (materialCost === '') {
       setMaterialCostError(true);
       setMaterialCostMessage(ERROR_MESSAGE);
+      hasError = true;
     }
     // 长宽高重
     if (!length) {
       setLengthError(true);
       setLengthMessage(ERROR_MESSAGE);
+      hasError = true;
     }
     if (!width) {
       setWidthError(true);
       setWidthMessage(ERROR_MESSAGE);
+      hasError = true;
     }
     if (!height) {
       setHeightError(true);
       setHeightMessage(ERROR_MESSAGE);
+      hasError = true;
     }
     if (!weight) {
       setWeightError(true);
       setWeightMessage(ERROR_MESSAGE);
+      hasError = true;
     }
-    const params = { materialType, materialCost, type, length, width, height, weight };
+    if (!freight) {
+      setFreightError(true);
+      setFreightMessage(ERROR_MESSAGE);
+      hasError = true;
+    }
+    const params = { materialType, materialCost, type, length, width, height, weight, freight, description, extraCost };
     // eslint-disable-next-line no-console
     console.log(params);
+    if (hasError) {
+      return;
+    }
   };
 
   const calcuteForPredictWeight = (length: number, width: number, height: number, type: number | string) => {
@@ -116,6 +139,17 @@ const StockAndShipmentDataController = () => {
         setMaterialCost(item.value);
         setMaterialCostError(item.value === '');
         setMaterialCostMessage(item.value === '' ? ERROR_MESSAGE : '');
+      },
+      freight: () => {
+        setFreight(item.value);
+        setFreightError(item.value === '');
+        setFreightMessage(item.value === '' ? ERROR_MESSAGE : '');
+      },
+      extraCost: () => {
+        setExtraCost(item.value);
+      },
+      description: () => {
+        setDescription(item.value);
       },
       length: () => {
         setLength(item.value);
@@ -185,6 +219,11 @@ const StockAndShipmentDataController = () => {
         weightError,
         weightMessage,
         predictWeight,
+        freight,
+        freightError,
+        freightMessage,
+        extraCost,
+        description,
       }}
       formOptions={{ materialType: materialTypeOption, type: typeOption }}
       onChange={handleChange}
