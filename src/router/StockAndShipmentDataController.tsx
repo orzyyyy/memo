@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import TohoLoading from '../pages/TohoLoading';
+import MUILoading from '../pages/MUILoading';
 import { bindSocket } from '.';
 
 const StockAndShipmentDataController = lazy(() => import('../controller/StockAndShipmentDataController'));
@@ -12,7 +12,7 @@ const App = () => {
   }, []);
 
   return (
-    <Suspense fallback={<TohoLoading />}>
+    <Suspense fallback={<MUILoading />}>
       <StockAndShipmentDataController />
     </Suspense>
   );
