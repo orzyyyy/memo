@@ -10,10 +10,12 @@ const ERROR_MESSAGE = '该项不能为空';
 const StockAndShipmentDataController = () => {
   // 材料类型菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([{ text: '', value: 0 }]);
-  // 材料类型 1。具体为圆钢、方钢，数据库字段为 type
-  const [type, setType] = useState(0 as string | number);
+  // 出库为 0，入库为 1
+  const [type, setType] = useState(0);
+  // 计算类型。圆钢为 0，方钢为 1，其他为 2
+  const [calcuteType, setCalcuteType] = useState(0 as string | number);
   // 材料类型 1 的菜单项
-  const [typeOption, setTypeOption] = useState([{ text: '', value: 0 }]);
+  const [calcuteTypeOption, setCalcuteTypeOption] = useState([{ text: '', value: 0 }]);
   // 材料类型 2。具体为材质类型，数据库字段为 material_type
   const [materialType, setMaterialType] = useState();
   const [materialTypeError, setMaterialTypeError] = useState(false);
@@ -48,7 +50,7 @@ const StockAndShipmentDataController = () => {
 
   useEffect(() => {
     setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
-    setTypeOption([{ text: '圆钢', value: 0 }, { text: '方钢', value: 1 }]);
+    setCalcuteTypeOption([{ text: '圆钢', value: 0 }, { text: '方钢', value: 1 }, { text: '其他', value: 2 }]);
     setType(0);
   }, []);
 
@@ -129,11 +131,11 @@ const StockAndShipmentDataController = () => {
     calcuteForPredictWeight(length, width, height, type);
   };
 
-  const handleChange = (item: MenuItemOption, controlType: FormControlType, key: MaterialSpecificationProps) => {
-    if (!item) {
-      item = { value: '', text: '' };
-    }
-
+  const handleChange = (
+    item: MenuItemOption = { value: '', text: '' },
+    controlType: FormControlType,
+    key: MaterialSpecificationProps,
+  ) => {
     const inputValidation = {
       materialCost: () => {
         setMaterialCost(item.value);
@@ -180,7 +182,11 @@ const StockAndShipmentDataController = () => {
         break;
 
       case 'select':
-        setType(item.value);
+        setCalcuteType(item.value);
+        break;
+
+      case 'type':
+        setType(type === 0 ? 1 : 0);
         break;
 
       // 材料类型 2
@@ -224,8 +230,9 @@ const StockAndShipmentDataController = () => {
         freightMessage,
         extraCost,
         description,
+        calcuteType,
       }}
-      formOptions={{ materialType: materialTypeOption, type: typeOption }}
+      formOptions={{ materialType: materialTypeOption, calcuteType: calcuteTypeOption }}
       onChange={handleChange}
       onSpecificationInputBlur={handleSpecificationInputBlur}
     />

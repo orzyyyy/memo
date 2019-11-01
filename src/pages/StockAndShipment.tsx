@@ -15,7 +15,9 @@ import {
   Toolbar,
   Typography,
   TextareaAutosize,
+  IconButton,
 } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
 import { GridSize } from '@material-ui/core/Grid';
@@ -24,7 +26,7 @@ export type MenuItemOption = {
   text: string;
   value: string | number;
 };
-export type FormControlType = 'input' | 'autoComplete' | 'select';
+export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
 export type MaterialSpecificationProps =
   | 'length'
   | 'width'
@@ -37,11 +39,14 @@ export type MaterialSpecificationProps =
 export interface StockAndShipment {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
+  // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
   formData: {
-    // 材料类型 1
+    // 出库为 0，入库为 1
     type: number | string;
-    // 材料类型 2
+    // 计算类型。圆钢为 0，方钢为 1，其他为 2
+    calcuteType: number | string;
+    // 材料类型
     materialType: number | string | null;
     materialTypeError: boolean;
     materialTypeMessage: string;
@@ -75,7 +80,7 @@ export interface StockAndShipment {
   };
   formOptions: {
     materialType: MenuItemOption[];
-    type: MenuItemOption[];
+    calcuteType: MenuItemOption[];
   };
 }
 
@@ -87,6 +92,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     root: {
       flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
     },
     formControl: {
       margin: theme.spacing(1),
@@ -119,7 +127,7 @@ const StockAndShipment = ({
   const handleSelectChange = (
     _: React.ChangeEvent<{
       name?: string | undefined;
-      value: unknown;
+      value: string | number;
     }>,
     child: React.ReactElement,
   ) => {
@@ -187,7 +195,7 @@ const StockAndShipment = ({
       </Grid>
     );
 
-    switch (formData.type) {
+    switch (formData.calcuteType) {
       case 0:
         return (
           <>
@@ -212,16 +220,25 @@ const StockAndShipment = ({
     <div className={classes.container}>
       <AppBar position="static">
         <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={() => onChange({ text: '', value: '' }, 'type')}
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
-            入库
+            {formData.type ? '出库' : '入库'}
           </Typography>
         </Toolbar>
       </AppBar>
 
       <FormControl required fullWidth className={classes.formControl}>
-        <InputLabel>材料类型 1</InputLabel>
-        <Select value={formData.type} onChange={handleSelectChange}>
-          {formOptions.type.map(({ text, value }) => (
+        <InputLabel>计算类型</InputLabel>
+        <Select value={formData.calcuteType} onChange={handleSelectChange}>
+          {formOptions.calcuteType.map(({ text, value }) => (
             <MenuItem value={value} key={text + '-' + value}>
               {text}
             </MenuItem>
@@ -244,16 +261,16 @@ const StockAndShipment = ({
         </FormControl>
       </Grid>
 
-      <Grid item xs={6} key="pre-weight">
-        <FormControl className={classes.formControl}>
-          <InputLabel>预估重量</InputLabel>
+      <Grid item xs={6}>
+        <FormControl required error={formData.materialCostError} className={classes.formControl}>
+          <InputLabel>单价</InputLabel>
           <Input
-            value={formData.predictWeight}
-            readOnly
+            onChange={e => handleInputChange(e, 'materialCost')}
+            value={formData.materialCost}
             type="number"
-            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
+            endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
           />
-          <FormHelperText>计算公式：体积 x 密度</FormHelperText>
+          <FormHelperText>{formData.materialCostMessage}</FormHelperText>
         </FormControl>
       </Grid>
 
@@ -280,19 +297,6 @@ const StockAndShipment = ({
       </FormControl>
 
       <Grid item xs={6}>
-        <FormControl required error={formData.materialCostError} className={classes.formControl}>
-          <InputLabel>单价</InputLabel>
-          <Input
-            onChange={e => handleInputChange(e, 'materialCost')}
-            value={formData.materialCost}
-            type="number"
-            endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
-          />
-          <FormHelperText>{formData.materialCostMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={6}>
         <FormControl className={classes.formControl} required error={formData.freightError}>
           <InputLabel>运费</InputLabel>
           <Input
@@ -304,6 +308,21 @@ const StockAndShipment = ({
           <FormHelperText>{formData.freightMessage}</FormHelperText>
         </FormControl>
       </Grid>
+
+      {formData.calcuteType !== 2 && (
+        <Grid item xs={6} key="pre-weight">
+          <FormControl className={classes.formControl}>
+            <InputLabel>预估重量</InputLabel>
+            <Input
+              value={formData.predictWeight}
+              readOnly
+              type="number"
+              endAdornment={<InputAdornment position="end">kg</InputAdornment>}
+            />
+            <FormHelperText>计算公式：体积 x 密度</FormHelperText>
+          </FormControl>
+        </Grid>
+      )}
 
       <Grid item xs={6}>
         <FormControl className={classes.formControl}>
@@ -320,7 +339,7 @@ const StockAndShipment = ({
       <FormControl fullWidth className={classes.formControl}>
         <TextareaAutosize
           placeholder="备注"
-          rows={8}
+          rows={formData.calcuteType === 2 ? 8 : 3}
           onChange={e => handleInputChange(e, 'description')}
           value={formData.description}
         />

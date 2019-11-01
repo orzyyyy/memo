@@ -10,7 +10,8 @@ describe('StockAndShipment', () => {
     materialCost: 100,
     materialCostError: false,
     materialCostMessage: 'error',
-    type: 1,
+    type: 0,
+    calcuteType: 0,
     length: 101,
     lengthError: false,
     lengthMessage: 'error',
@@ -23,18 +24,31 @@ describe('StockAndShipment', () => {
     weight: 104,
     weightError: false,
     weightMessage: 'error',
+    predictWeight: 105,
+    freight: 106,
+    freightError: false,
+    freightMessage: 'error',
+    extraCost: 107,
+    description: '',
   };
 
   const formOptions = {
     materialType: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
-    type: [{ text: 'typeText', value: 'typeValue' }],
+    calcuteType: [{ text: 'typeText', value: 'typeValue' }],
   };
 
   it('render correctly', () => {
     const onChange = jest.fn();
     const onSubmit = jest.fn();
+    const onSpecificationInputBlur = jest.fn();
     const wrapper = mount(
-      <StockAndShipment onChange={onChange} onSubmit={onSubmit} formData={formData} formOptions={formOptions} />,
+      <StockAndShipment
+        onChange={onChange}
+        onSubmit={onSubmit}
+        formData={formData}
+        formOptions={formOptions}
+        onSpecificationInputBlur={onSpecificationInputBlur}
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
