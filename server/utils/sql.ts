@@ -1,6 +1,15 @@
+import { getTimeStamp, getDateStamp } from './common';
+
+const handleWithSystemVariables = (sql: string) => {
+  const timeStamp = getTimeStamp();
+  const dateStamp = getDateStamp();
+  return sql.replace(/@@dateStamp/g, dateStamp).replace(/@@timeStamp/g, timeStamp);
+};
+
 export const replacePlaceholderWithParams = (sql: string, params: any) => {
-  let result = sql;
+  let result = handleWithSystemVariables(sql);
   const variables = [];
+  // these rules are for `@xxx`
   // SELECT * FROM dictionary where value = @value
   // => ['@value']
   // SELECT * FROM dictionary where value = @value;
@@ -11,8 +20,8 @@ export const replacePlaceholderWithParams = (sql: string, params: any) => {
   //  and id = @id;
   // `
   // => ['@value', '@id;\n']
-  const originVariables = sql.match(/@(.+?)[^ ]*/g) || [];
-  for (const item of originVariables) {
+  const customedVariables = sql.match(/@(.+?)[^ ]*/g) || [];
+  for (const item of customedVariables) {
     const key = item
       // remove all line break, \r and \n
       .replace(/[\r]/g, '')
