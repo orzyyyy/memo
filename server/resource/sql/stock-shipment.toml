@@ -1,6 +1,6 @@
 [goods-in]
 sql = """
-  insert into `stock-shipment` (type, length, width, height, weight, patch, material_cost, freight, material_type)
+  insert into `goods_in_and_out` (type, length, width, height, weight, patch, material_cost, freight, material_type)
   values (@type, @length, @width, @height, @weight, @patch, @materialCost, @freight, @materialType)
 """
 method = 'post'
