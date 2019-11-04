@@ -19,18 +19,9 @@ io.on('connection', socket => {
 });
 
 app.use(BodyParser());
-app.use(
-  DecoratorRouter(path.join(__dirname, 'controller'), controllerPath => {
-    if (controllerPath.includes('ToyController') && process.env.BUILD_ENV !== 'toy') {
-      return false;
-    }
-    return true;
-  }),
-);
+app.use(DecoratorRouter(path.join(__dirname, 'controller')));
 app.use(KoaStatic(joinWithRootPath('dist')));
-if (process.env.BUILD_ENV === 'toy') {
-  app.use(CheckSqlTomlResource(joinWithRootPath('server/resource/sql')));
-}
+app.use(CheckSqlTomlResource(joinWithRootPath('server/resource/sql')));
 
 server.listen(9099);
 
