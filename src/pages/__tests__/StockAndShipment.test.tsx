@@ -7,11 +7,13 @@ describe('StockAndShipment', () => {
     materialType: 0,
     materialTypeError: false,
     materialTypeMessage: 'error',
+    materialId: 11,
+    materialIdError: false,
+    materialIdMessage: 'error',
     materialCost: 100,
     materialCostError: false,
     materialCostMessage: 'error',
     type: 0,
-    calcuteType: 0,
     length: 101,
     lengthError: false,
     lengthMessage: 'error',
@@ -34,7 +36,7 @@ describe('StockAndShipment', () => {
 
   const formOptions = {
     materialType: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
-    calcuteType: [{ text: 'typeText', value: 'typeValue' }],
+    materialId: [],
   };
 
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -102,16 +104,16 @@ describe('StockAndShipment', () => {
     wrapper
       .find('ForwardRef(Select)')
       .props()
-      .onChange(null, { props: { children: 'test1', value: 1 } });
+      .onChange({ target: { value: 'test1' } });
     expect(onChange).toHaveBeenCalledWith(
       {
-        text: 'test1',
-        value: 1,
+        text: '',
+        value: 'test1',
       },
       'select',
     );
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
-    expect(wrapper.find('ForwardRef(Select)').props().value).toBe(1);
+    expect(wrapper.find('ForwardRef(Select)').props().value).toBe(0);
   });
 
   it('renderSpecification', () => {
@@ -132,27 +134,21 @@ describe('StockAndShipment', () => {
         .find('label')
         .at(1)
         .text(),
-    ).toBe('长 *');
+    ).toBe('材质 *');
     expect(
       wrapper
         .find('label')
         .at(2)
         .text(),
-    ).toBe('高 *');
-    expect(wrapper.find('label')).toHaveLength(9);
+    ).toBe('实际重量 *');
+    expect(wrapper.find('label')).toHaveLength(7);
 
-    wrapper
-      .find('ForwardRef(Input)')
-      .at(1)
-      .props()
-      .onChange({ target: { value: 1000 }, key: 'length' });
-    expect(onChange).toHaveBeenCalledWith({ text: 1000, value: 1000 }, 'input', 'length');
     wrapper
       .find('ForwardRef(Input)')
       .at(2)
       .props()
       .onChange({ target: { value: 999 }, key: 'height' });
-    expect(onChange).toHaveBeenCalledWith({ text: 999, value: 999 }, 'input', 'height');
+    expect(onChange).toHaveBeenCalledWith({ text: 999, value: 999 }, 'input', 'weight');
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
     expect(
@@ -160,42 +156,23 @@ describe('StockAndShipment', () => {
         .find('label')
         .at(1)
         .text(),
-    ).toBe('长 *');
+    ).toBe('材质 *');
     expect(
       wrapper
         .find('label')
         .at(2)
         .text(),
-    ).toBe('宽 *');
+    ).toBe('实际重量 *');
     expect(
       wrapper
         .find('label')
         .at(3)
         .text(),
-    ).toBe('高 *');
-    expect(wrapper.find('label')).toHaveLength(10);
-
-    wrapper
-      .find('ForwardRef(Input)')
-      .at(1)
-      .props()
-      .onChange({ target: { value: 1000 }, key: 'length' });
-    expect(onChange).toHaveBeenCalledWith({ text: 1000, value: 1000 }, 'input', 'length');
-    wrapper
-      .find('ForwardRef(Input)')
-      .at(2)
-      .props()
-      .onChange({ target: { value: 999 }, key: 'width' });
-    expect(onChange).toHaveBeenCalledWith({ text: 999, value: 999 }, 'input', 'width');
-    wrapper
-      .find('ForwardRef(Input)')
-      .at(3)
-      .props()
-      .onChange({ target: { value: 998 }, key: 'height' });
-    expect(onChange).toHaveBeenCalledWith({ text: 998, value: 998 }, 'input', 'height');
+    ).toBe('高度 *');
+    expect(wrapper.find('label')).toHaveLength(7);
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 2 }) });
-    expect(wrapper.find('label')).toHaveLength(6);
+    expect(wrapper.find('label')).toHaveLength(7);
   });
 
   it('inputs', () => {
@@ -216,7 +193,7 @@ describe('StockAndShipment', () => {
       .at(3)
       .props()
       .onChange({ target: { value: 997 }, key: 'weight' });
-    expect(onChange).toHaveBeenCalledWith({ text: 997, value: 997 }, 'input', 'weight');
+    expect(onChange).toHaveBeenCalledWith({ text: 997, value: 997 }, 'input', 'height');
 
     wrapper
       .find('ForwardRef(Input)')

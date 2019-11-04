@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import StockAndShipment, {
-  MenuItemOption,
-  FormControlType,
-  MaterialSpecificationProps,
-} from '../pages/StockAndShipment';
+import StockAndShipment, { FormControlType, MaterialSpecificationProps } from '../pages/StockAndShipment';
 
 const ERROR_MESSAGE = '该项不能为空';
 
 const StockAndShipmentDataController = () => {
-  // 材料类型菜单项
-  const [materialTypeOption, setMaterialTypeOption] = useState([{ text: '', value: 0 }]);
+  // 类别菜单项
+  const [materialTypeOption, setMaterialTypeOption] = useState([]);
+  // 材质菜单项
+  const [materialIdOption, setMaterialIdOption] = useState([]);
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
-  // 计算类型。圆钢为 0，方钢为 1，其他为 2
-  const [calcuteType, setCalcuteType] = useState(0 as string | number);
-  // 材料类型 1 的菜单项
-  const [calcuteTypeOption, setCalcuteTypeOption] = useState([{ text: '', value: 0 }]);
-  // 材料类型 2。具体为材质类型，数据库字段为 material_type
+  // 类别
   const [materialType, setMaterialType] = useState();
   const [materialTypeError, setMaterialTypeError] = useState(false);
   const [materialTypeMessage, setMaterialTypeMessage] = useState('');
+  // 材质 id
+  const [materialId, setMaterialId] = useState();
+  const [materialIdError, setMaterialIdError] = useState(false);
+  const [materialIdMessage, setMaterialIdMessage] = useState('');
   // 材料单价
   const [materialCost, setMaterialCost] = useState('' as string | number);
   const [materialCostError, setMaterialCostError] = useState(false);
@@ -49,15 +47,19 @@ const StockAndShipmentDataController = () => {
   const [description, setDescription] = useState('' as string | number);
 
   useEffect(() => {
-    setMaterialTypeOption([{ text: '45#', value: 0 }, { text: '40#', value: 1 }, { text: '螺纹钢', value: 2 }]);
-    setCalcuteTypeOption([{ text: '圆钢', value: 0 }, { text: '方钢', value: 1 }, { text: '其他', value: 2 }]);
+    const fetchMaterialType = async () => {
+      const response = await fetch('/toy/get/get-material-type?sign=1');
+      const result = await response.json();
+      setMaterialTypeOption(result);
+    };
+    fetchMaterialType();
     setType(0);
   }, []);
 
   const verifySubmitParams = () => {
     let hasError = false;
     // 材料类型
-    if (materialType === undefined) {
+    if (materialType === '') {
       setMaterialTypeError(true);
       setMaterialTypeMessage(ERROR_MESSAGE);
       hasError = true;
@@ -95,7 +97,19 @@ const StockAndShipmentDataController = () => {
       setFreightMessage(ERROR_MESSAGE);
       hasError = true;
     }
-    const params = { materialType, materialCost, type, length, width, height, weight, freight, description, extraCost };
+    const params = {
+      materialType,
+      materialCost,
+      type,
+      length,
+      width,
+      height,
+      weight,
+      freight,
+      description,
+      extraCost,
+      materialId,
+    };
     return { hasError, params };
   };
 
@@ -138,8 +152,14 @@ const StockAndShipmentDataController = () => {
     calcuteForPredictWeight(length, width, height, type);
   };
 
+  const fetchMaterialIdOption = async (type: number | string) => {
+    const response = await fetch('/toy/get/get-detail?materialType=' + type);
+    const result = await response.json();
+    setMaterialIdOption(result);
+  };
+
   const handleChange = (
-    item: MenuItemOption = { value: '', text: '' },
+    item: any = { value: '', text: '' },
     controlType: FormControlType,
     key: MaterialSpecificationProps,
   ) => {
@@ -183,24 +203,31 @@ const StockAndShipmentDataController = () => {
     };
 
     switch (controlType) {
-      // 材料单价
       case 'input':
         inputValidation[key]();
         break;
 
       case 'select':
-        setCalcuteType(item.value);
+        if (item.value !== '') {
+          fetchMaterialIdOption(item.value);
+        }
+        setMaterialType(item.value);
+        setMaterialTypeError(item.value === '');
+        setMaterialTypeMessage(item.value === '' ? ERROR_MESSAGE : '');
         break;
 
       case 'type':
         setType(type === 0 ? 1 : 0);
         break;
 
-      // 材料类型 2
       case 'autoComplete':
-        setMaterialType(item.value);
-        setMaterialTypeError(item.value === '');
-        setMaterialTypeMessage(item.value === '' ? ERROR_MESSAGE : '');
+        if (item === null) {
+          setMaterialId('');
+          return;
+        }
+        setMaterialId(item.id);
+        setMaterialIdError(item.id === '');
+        setMaterialIdMessage(item.id === '' ? ERROR_MESSAGE : '');
         break;
 
       default:
@@ -215,6 +242,9 @@ const StockAndShipmentDataController = () => {
         materialType,
         materialTypeError,
         materialTypeMessage,
+        materialId,
+        materialIdError,
+        materialIdMessage,
         materialCost,
         materialCostError,
         materialCostMessage,
@@ -237,9 +267,8 @@ const StockAndShipmentDataController = () => {
         freightMessage,
         extraCost,
         description,
-        calcuteType,
       }}
-      formOptions={{ materialType: materialTypeOption, calcuteType: calcuteTypeOption }}
+      formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
       onChange={handleChange}
       onSpecificationInputBlur={handleSpecificationInputBlur}
     />
