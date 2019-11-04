@@ -4,3 +4,13 @@ sql = """
   values (@type, @length, @width, @height, @weight, @patch, @materialCost, @freight, @materialType)
 """
 method = 'post'
+
+[get-detail]
+sql = """
+  select * from material_detail where 类别 = @materialType
+"""
+
+[get-material-type]
+sql = """
+  select text, value from dictionary where sign = @sign
+"""
