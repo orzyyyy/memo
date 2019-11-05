@@ -2050,6 +2050,7 @@ exports[`Inbound render correctly 1`] = `
                   }
                   onBlur={[MockFunction]}
                   onChange={[Function]}
+                  readOnly={false}
                   type="number"
                   value={104}
                 >
@@ -2079,6 +2080,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                     onBlur={[MockFunction]}
                     onChange={[Function]}
+                    readOnly={false}
                     type="number"
                     value={104}
                   >
@@ -2111,6 +2113,7 @@ exports[`Inbound render correctly 1`] = `
                       multiline={false}
                       onBlur={[MockFunction]}
                       onChange={[Function]}
+                      readOnly={false}
                       type="number"
                       value={104}
                     >
@@ -2149,6 +2152,7 @@ exports[`Inbound render correctly 1`] = `
                         multiline={false}
                         onBlur={[MockFunction]}
                         onChange={[Function]}
+                        readOnly={false}
                         type="number"
                         value={104}
                       >
@@ -2164,6 +2168,7 @@ exports[`Inbound render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
+                            readOnly={false}
                             required={true}
                             type="number"
                             value={104}
@@ -2484,6 +2489,7 @@ exports[`Inbound render correctly 1`] = `
                   }
                   onBlur={[MockFunction]}
                   onChange={[Function]}
+                  readOnly={false}
                   type="number"
                   value={103}
                 >
@@ -2513,6 +2519,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                     onBlur={[MockFunction]}
                     onChange={[Function]}
+                    readOnly={false}
                     type="number"
                     value={103}
                   >
@@ -2545,6 +2552,7 @@ exports[`Inbound render correctly 1`] = `
                       multiline={false}
                       onBlur={[MockFunction]}
                       onChange={[Function]}
+                      readOnly={false}
                       type="number"
                       value={103}
                     >
@@ -2583,6 +2591,7 @@ exports[`Inbound render correctly 1`] = `
                         multiline={false}
                         onBlur={[MockFunction]}
                         onChange={[Function]}
+                        readOnly={false}
                         type="number"
                         value={103}
                       >
@@ -2598,6 +2607,7 @@ exports[`Inbound render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
+                            readOnly={false}
                             required={true}
                             type="number"
                             value={103}
@@ -2918,6 +2928,7 @@ exports[`Inbound render correctly 1`] = `
                   }
                   onBlur={[MockFunction]}
                   onChange={[Function]}
+                  readOnly={false}
                   type="number"
                   value={100}
                 >
@@ -2947,6 +2958,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                     onBlur={[MockFunction]}
                     onChange={[Function]}
+                    readOnly={false}
                     type="number"
                     value={100}
                   >
@@ -2979,6 +2991,7 @@ exports[`Inbound render correctly 1`] = `
                       multiline={false}
                       onBlur={[MockFunction]}
                       onChange={[Function]}
+                      readOnly={false}
                       type="number"
                       value={100}
                     >
@@ -3017,6 +3030,7 @@ exports[`Inbound render correctly 1`] = `
                         multiline={false}
                         onBlur={[MockFunction]}
                         onChange={[Function]}
+                        readOnly={false}
                         type="number"
                         value={100}
                       >
@@ -3032,6 +3046,7 @@ exports[`Inbound render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
+                            readOnly={false}
                             required={true}
                             type="number"
                             value={100}
@@ -3352,6 +3367,7 @@ exports[`Inbound render correctly 1`] = `
                   }
                   onBlur={[MockFunction]}
                   onChange={[Function]}
+                  readOnly={false}
                   type="number"
                   value={106}
                 >
@@ -3381,6 +3397,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                     onBlur={[MockFunction]}
                     onChange={[Function]}
+                    readOnly={false}
                     type="number"
                     value={106}
                   >
@@ -3413,6 +3430,7 @@ exports[`Inbound render correctly 1`] = `
                       multiline={false}
                       onBlur={[MockFunction]}
                       onChange={[Function]}
+                      readOnly={false}
                       type="number"
                       value={106}
                     >
@@ -3451,6 +3469,7 @@ exports[`Inbound render correctly 1`] = `
                         multiline={false}
                         onBlur={[MockFunction]}
                         onChange={[Function]}
+                        readOnly={false}
                         type="number"
                         value={106}
                       >
@@ -3466,6 +3485,7 @@ exports[`Inbound render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
+                            readOnly={false}
                             required={true}
                             type="number"
                             value={106}
@@ -3786,6 +3806,7 @@ exports[`Inbound render correctly 1`] = `
                   }
                   onBlur={[MockFunction]}
                   onChange={[Function]}
+                  readOnly={false}
                   type="number"
                   value={106}
                 >
@@ -3815,6 +3836,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                     onBlur={[MockFunction]}
                     onChange={[Function]}
+                    readOnly={false}
                     type="number"
                     value={106}
                   >
@@ -3847,6 +3869,7 @@ exports[`Inbound render correctly 1`] = `
                       multiline={false}
                       onBlur={[MockFunction]}
                       onChange={[Function]}
+                      readOnly={false}
                       type="number"
                       value={106}
                     >
@@ -3885,6 +3908,7 @@ exports[`Inbound render correctly 1`] = `
                         multiline={false}
                         onBlur={[MockFunction]}
                         onChange={[Function]}
+                        readOnly={false}
                         type="number"
                         value={106}
                       >
@@ -3900,6 +3924,7 @@ exports[`Inbound render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
+                            readOnly={false}
                             required={true}
                             type="number"
                             value={106}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Inbound, { FormControlType, MaterialSpecificationProps } from '../pages/Inbound';
+import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -21,7 +22,7 @@ const StockAndShipmentDataController = () => {
   const [materialIdError, setMaterialIdError] = useState(false);
   const [materialIdMessage, setMaterialIdMessage] = useState('');
   // 材料单价
-  const [materialCost, setMaterialCost] = useState('' as string | number);
+  const [materialCost, setMaterialCost] = useState();
   const [materialCostError, setMaterialCostError] = useState(false);
   const [materialCostMessage, setMaterialCostMessage] = useState('');
   // 长宽高重
@@ -47,6 +48,14 @@ const StockAndShipmentDataController = () => {
   const [extraCost, setExtraCost] = useState('' as string | number);
   // 备注
   const [description, setDescription] = useState('' as string | number);
+  // 数量。出库用
+  const [materialQuantity, setMaterialQuantity] = useState(0);
+  const [materialQuantityError, setMaterialQuantityError] = useState(false);
+  const [materialQuantityMessage, setMaterialQuantityMessage] = useState('');
+  // 锯费
+  const [costFee, setCostFee] = useState(0);
+  // 预估总价
+  const [predictPrice, setPredictPrice] = useState(0);
 
   useEffect(() => {
     const fetchMaterialType = async () => {
@@ -55,7 +64,6 @@ const StockAndShipmentDataController = () => {
       setMaterialTypeOption(result);
     };
     fetchMaterialType();
-    setType(0);
   }, []);
 
   const verifySubmitParams = () => {
@@ -111,6 +119,7 @@ const StockAndShipmentDataController = () => {
       description,
       extraCost,
       materialId,
+      materialQuantity,
     };
     return { hasError, params };
   };
@@ -125,7 +134,7 @@ const StockAndShipmentDataController = () => {
     return params;
   };
 
-  const calcuteForPredictWeight = (length: number, width: number, height: number, type: number | string) => {
+  const calcuteForPredictWeight = (length: number, width: number, height: number, quality: number) => {
     const realLength = length / 2 / 10;
     const realWidth = width / 10;
     const realHeight = height / 10;
@@ -138,20 +147,29 @@ const StockAndShipmentDataController = () => {
         bottomArea = length * width;
       }
       // 圆钢
-      return parseFloat(((bottomArea * height * DENSITE) / 1000).toFixed(2));
+      return parseFloat((((bottomArea * height * DENSITE) / 1000) * quality).toFixed(2));
     };
 
+    const result = calcute(realLength, realWidth, realHeight);
+
     // 圆钢
-    if (type === 0 && length && height) {
-      setPredictWeight(calcute(realLength, realWidth, realHeight));
-    } else if (type === 1 && length && width && height) {
+    if (length && height) {
+      setPredictWeight(result);
+    } else if (length && width && height) {
       // 方钢
-      setPredictWeight(calcute(realLength, realWidth, realHeight));
+      setPredictWeight(result);
     }
+    return result;
+  };
+
+  const calcuteForPredictPrice = (predictWeight: number) => {
+    const price = predictWeight * materialCost + materialQuantity * costFee;
+    setPredictPrice(parseFloat(price.toFixed(1)));
   };
 
   const handleSpecificationInputBlur = () => {
-    calcuteForPredictWeight(length, width, height, type);
+    const result = calcuteForPredictWeight(length, width, height, materialQuantity);
+    calcuteForPredictPrice(result);
   };
 
   const fetchMaterialIdOption = async (type: number | string) => {
@@ -203,6 +221,13 @@ const StockAndShipmentDataController = () => {
         setWeightMessage(!item.value ? ERROR_MESSAGE : '');
       },
       predictWeight: () => {},
+      materialQuantity: () => {
+        setMaterialQuantity(item.value);
+        setMaterialQuantityError(!item.value);
+        setMaterialQuantityMessage(!item.value ? ERROR_MESSAGE : '');
+      },
+      costFee: () => {},
+      predictPrice: () => {},
     };
 
     switch (controlType) {
@@ -222,8 +247,12 @@ const StockAndShipmentDataController = () => {
       case 'autoComplete':
         if (item === null) {
           setMaterialId('');
+          setCostFee(0);
+          setMaterialCost(0);
           return;
         }
+        setCostFee(item['锯费']);
+        setMaterialCost(item['单价']);
         setMaterialId(item.id);
         setMaterialIdError(item.id === '');
         setMaterialIdMessage(item.id === '' ? ERROR_MESSAGE : '');
@@ -244,42 +273,86 @@ const StockAndShipmentDataController = () => {
           <Typography variant="h6">{type ? '出库' : '入库'}</Typography>
         </Toolbar>
       </AppBar>
-      <Inbound
-        onSubmit={handleSubmit}
-        formData={{
-          materialType,
-          materialTypeError,
-          materialTypeMessage,
-          materialId,
-          materialIdError,
-          materialIdMessage,
-          materialCost,
-          materialCostError,
-          materialCostMessage,
-          type,
-          length,
-          lengthError,
-          lengthMessage,
-          width,
-          widthError,
-          widthMessage,
-          height,
-          heightError,
-          heightMessage,
-          weight,
-          weightError,
-          weightMessage,
-          predictWeight,
-          freight,
-          freightError,
-          freightMessage,
-          extraCost,
-          description,
-        }}
-        formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
-        onChange={handleChange}
-        onSpecificationInputBlur={handleSpecificationInputBlur}
-      />
+      {type ? (
+        <Outbound
+          onSubmit={handleSubmit}
+          formData={{
+            materialType,
+            materialTypeError,
+            materialTypeMessage,
+            materialId,
+            materialIdError,
+            materialIdMessage,
+            materialCost,
+            materialCostError,
+            materialCostMessage,
+            type,
+            length,
+            lengthError,
+            lengthMessage,
+            width,
+            widthError,
+            widthMessage,
+            height,
+            heightError,
+            heightMessage,
+            weight,
+            weightError,
+            weightMessage,
+            predictWeight,
+            freight,
+            freightError,
+            freightMessage,
+            extraCost,
+            description,
+            materialQuantity,
+            materialQuantityError,
+            materialQuantityMessage,
+            costFee,
+            predictPrice,
+          }}
+          formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
+          onChange={handleChange}
+          onSpecificationInputBlur={handleSpecificationInputBlur}
+        />
+      ) : (
+        <Inbound
+          onSubmit={handleSubmit}
+          formData={{
+            materialType,
+            materialTypeError,
+            materialTypeMessage,
+            materialId,
+            materialIdError,
+            materialIdMessage,
+            materialCost,
+            materialCostError,
+            materialCostMessage,
+            type,
+            length,
+            lengthError,
+            lengthMessage,
+            width,
+            widthError,
+            widthMessage,
+            height,
+            heightError,
+            heightMessage,
+            weight,
+            weightError,
+            weightMessage,
+            predictWeight,
+            freight,
+            freightError,
+            freightMessage,
+            extraCost,
+            description,
+          }}
+          formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
+          onChange={handleChange}
+          onSpecificationInputBlur={handleSpecificationInputBlur}
+        />
+      )}
     </>
   );
 };

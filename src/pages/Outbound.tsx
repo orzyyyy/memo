@@ -17,26 +17,9 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
 import { GridSize } from '@material-ui/core/Grid';
 import { RenderInputParams } from '@material-ui/lab/Autocomplete';
+import { MaterialSpecificationProps, MenuItemOption, FormControlType } from './Inbound';
 
-export type MenuItemOption = {
-  text: string;
-  value: string | number;
-};
-export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
-export type MaterialSpecificationProps =
-  | 'length' // 实际长度
-  | 'width'
-  | 'height'
-  | 'weight'
-  | 'materialCost' // 单价
-  | 'freight' // 运费
-  | 'extraCost'
-  | 'predictWeight' // 预估重量
-  | 'materialQuantity' // 数量
-  | 'costFee' // 锯费
-  | 'predictPrice' // 预估总价
-  | 'description';
-export interface InboundProps {
+export interface OutboundProps {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
@@ -79,6 +62,14 @@ export interface InboundProps {
     extraCost: string | number;
     // 备注
     description: string | number;
+    // 数量。出库用
+    materialQuantity: string | number;
+    materialQuantityError: boolean;
+    materialQuantityMessage: string;
+    // 锯费
+    costFee: string | number;
+    // 预估总价
+    predictPrice: string | number;
   };
   formOptions: {
     materialType: MenuItemOption[];
@@ -107,29 +98,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: InboundProps) => {
+const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: OutboundProps) => {
   const classes = useStyles();
-
-  const handleAutocompleteChange = (
-    _: React.ChangeEvent<{
-      name?: string | undefined;
-      value: unknown;
-    }>,
-    item: any,
-  ) => {
-    onChange(item, 'autoComplete');
-  };
-
-  const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
-    onChange({ text: '', value: e.target.value }, 'select');
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialSpecificationProps,
-  ) => {
-    onChange({ text: e.target.value, value: e.target.value }, 'input', key);
-  };
 
   const getInputItem = ({
     key,
@@ -205,6 +175,27 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
     }
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
+    onChange({ text: '', value: e.target.value }, 'select');
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: MaterialSpecificationProps,
+  ) => {
+    onChange({ text: e.target.value, value: e.target.value }, 'input', key);
+  };
+
+  const handleAutocompleteChange = (
+    _: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>,
+    item: any,
+  ) => {
+    onChange(item, 'autoComplete');
+  };
+
   // 当类别未选择时，不显示材质
   // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
   const materialIdOptions = formOptions.materialId.filter(item => {
@@ -239,7 +230,9 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
           ))}
         </Select>
       </FormControl>
+
       {renderSpecification()}
+
       <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
         <Autocomplete
           options={materialIdOptions}
@@ -254,6 +247,7 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
         />
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
+
       {getInputItem({
         key: 'weight',
         error: formData.weightError,
@@ -263,6 +257,7 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
         xs: 6,
         unit: 'kg',
       })}
+
       {getInputItem({
         key: 'height',
         error: formData.heightError,
@@ -271,44 +266,65 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
         helperText: formData.heightMessage,
         xs: 6,
       })}
+
+      {getInputItem({
+        key: 'materialQuantity',
+        error: formData.materialQuantityError,
+        inputLabel: '数量',
+        inputValue: formData.materialQuantity,
+        helperText: formData.materialQuantityMessage,
+        xs: 6,
+        unit: '个',
+      })}
+
       {getInputItem({
         key: 'materialCost',
-        error: formData.materialCostError,
+        error: false,
         inputLabel: '单价',
         inputValue: formData.materialCost,
-        helperText: formData.materialCostMessage,
+        helperText: '',
         xs: 6,
         unit: '元/kg',
+        readOnly: true,
+        required: false,
       })}
+
       {getInputItem({
-        key: 'freight',
-        error: formData.freightError,
-        inputLabel: '运费',
-        inputValue: formData.freight,
-        helperText: formData.freightMessage,
-        xs: 6,
-        unit: '元',
-      })}
-      {getInputItem({
-        key: 'extraCost',
+        key: 'predictWeight',
         error: false,
-        inputLabel: '其他费用',
-        inputValue: formData.freight,
+        inputLabel: '预估重量',
+        inputValue: formData.predictWeight,
+        helperText: '计算公式：体积 x 密度',
+        xs: 6,
+        unit: 'kg',
+        readOnly: true,
+        required: false,
+      })}
+
+      {getInputItem({
+        key: 'costFee',
+        error: false,
+        inputLabel: '据费',
+        inputValue: formData.costFee,
+        helperText: '',
+        xs: 6,
+        unit: '元/个',
+        readOnly: true,
+        required: false,
+      })}
+
+      {getInputItem({
+        key: 'predictPrice',
+        error: false,
+        inputLabel: '预估总价',
+        inputValue: formData.predictPrice,
         helperText: '',
         xs: 6,
         unit: '元',
+        readOnly: true,
+        required: false,
       })}
-      {(formData.materialType === '0' || formData.materialType === '1') &&
-        getInputItem({
-          key: 'predictWeight',
-          error: false,
-          inputLabel: '预估重量',
-          inputValue: formData.predictWeight,
-          helperText: '计算公式：体积 x 密度',
-          xs: 6,
-          unit: 'kg',
-          readOnly: true,
-        })}
+
       <FormControl fullWidth className={classes.formControl}>
         <TextareaAutosize
           placeholder="备注"
@@ -317,6 +333,7 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
           value={formData.description}
         />
       </FormControl>
+
       <FormControl fullWidth className={classes.formControl}>
         <Button variant="contained" color="primary" onClick={onSubmit}>
           提交
@@ -326,4 +343,4 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
   );
 };
 
-export default Inbound;
+export default Outbound;
