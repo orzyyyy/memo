@@ -2323,6 +2323,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       kg
                     </ForwardRef(WithStyles)>
                   }
+                  onBlur={[MockFunction]}
                   onChange={[Function]}
                   type="number"
                   value={104}
@@ -2351,6 +2352,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         kg
                       </ForwardRef(WithStyles)>
                     }
+                    onBlur={[MockFunction]}
                     onChange={[Function]}
                     type="number"
                     value={104}
@@ -2382,6 +2384,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       fullWidth={false}
                       inputComponent="input"
                       multiline={false}
+                      onBlur={[MockFunction]}
                       onChange={[Function]}
                       type="number"
                       value={104}
@@ -2419,6 +2422,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         fullWidth={false}
                         inputComponent="input"
                         multiline={false}
+                        onBlur={[MockFunction]}
                         onChange={[Function]}
                         type="number"
                         value={104}
@@ -2978,6 +2982,7 @@ exports[`StockAndShipment render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
+      key="materialCost"
       xs={6}
     >
       <ForwardRef(Grid)
@@ -3186,6 +3191,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       元/kg
                     </ForwardRef(WithStyles)>
                   }
+                  onBlur={[MockFunction]}
                   onChange={[Function]}
                   type="number"
                   value={100}
@@ -3214,6 +3220,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         元/kg
                       </ForwardRef(WithStyles)>
                     }
+                    onBlur={[MockFunction]}
                     onChange={[Function]}
                     type="number"
                     value={100}
@@ -3245,6 +3252,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       fullWidth={false}
                       inputComponent="input"
                       multiline={false}
+                      onBlur={[MockFunction]}
                       onChange={[Function]}
                       type="number"
                       value={100}
@@ -3282,6 +3290,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         fullWidth={false}
                         inputComponent="input"
                         multiline={false}
+                        onBlur={[MockFunction]}
                         onChange={[Function]}
                         type="number"
                         value={100}
@@ -3407,6 +3416,7 @@ exports[`StockAndShipment render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
+      key="freight"
       xs={6}
     >
       <ForwardRef(Grid)
@@ -3615,6 +3625,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       元
                     </ForwardRef(WithStyles)>
                   }
+                  onBlur={[MockFunction]}
                   onChange={[Function]}
                   type="number"
                   value={106}
@@ -3643,6 +3654,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         元
                       </ForwardRef(WithStyles)>
                     }
+                    onBlur={[MockFunction]}
                     onChange={[Function]}
                     type="number"
                     value={106}
@@ -3674,6 +3686,7 @@ exports[`StockAndShipment render correctly 1`] = `
                       fullWidth={false}
                       inputComponent="input"
                       multiline={false}
+                      onBlur={[MockFunction]}
                       onChange={[Function]}
                       type="number"
                       value={106}
@@ -3711,6 +3724,7 @@ exports[`StockAndShipment render correctly 1`] = `
                         fullWidth={false}
                         inputComponent="input"
                         multiline={false}
+                        onBlur={[MockFunction]}
                         onChange={[Function]}
                         type="number"
                         value={106}
@@ -3836,6 +3850,7 @@ exports[`StockAndShipment render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
+      key="extraCost"
       xs={6}
     >
       <ForwardRef(Grid)
@@ -3954,6 +3969,8 @@ exports[`StockAndShipment render correctly 1`] = `
         >
           <WithStyles(ForwardRef(FormControl))
             className="makeStyles-formControl-4"
+            error={false}
+            required={true}
           >
             <ForwardRef(FormControl)
               className="makeStyles-formControl-4"
@@ -3965,6 +3982,8 @@ exports[`StockAndShipment render correctly 1`] = `
                   "root": "MuiFormControl-root",
                 }
               }
+              error={false}
+              required={true}
             >
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
@@ -4017,10 +4036,16 @@ exports[`StockAndShipment render correctly 1`] = `
                         data-shrink={true}
                       >
                         <label
-                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
                           data-shrink={true}
                         >
                           其他费用
+                          <span
+                            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                          >
+                             
+                            *
+                          </span>
                         </label>
                       </ForwardRef(FormLabel)>
                     </WithStyles(ForwardRef(FormLabel))>
@@ -4034,9 +4059,10 @@ exports[`StockAndShipment render correctly 1`] = `
                       元
                     </ForwardRef(WithStyles)>
                   }
+                  onBlur={[MockFunction]}
                   onChange={[Function]}
                   type="number"
-                  value={107}
+                  value={106}
                 >
                   <ForwardRef(Input)
                     classes={
@@ -4062,9 +4088,10 @@ exports[`StockAndShipment render correctly 1`] = `
                         元
                       </ForwardRef(WithStyles)>
                     }
+                    onBlur={[MockFunction]}
                     onChange={[Function]}
                     type="number"
-                    value={107}
+                    value={106}
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -4093,9 +4120,10 @@ exports[`StockAndShipment render correctly 1`] = `
                       fullWidth={false}
                       inputComponent="input"
                       multiline={false}
+                      onBlur={[MockFunction]}
                       onChange={[Function]}
                       type="number"
-                      value={107}
+                      value={106}
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -4130,9 +4158,10 @@ exports[`StockAndShipment render correctly 1`] = `
                         fullWidth={false}
                         inputComponent="input"
                         multiline={false}
+                        onBlur={[MockFunction]}
                         onChange={[Function]}
                         type="number"
-                        value={107}
+                        value={106}
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -4146,9 +4175,9 @@ exports[`StockAndShipment render correctly 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            required={false}
+                            required={true}
                             type="number"
-                            value={107}
+                            value={106}
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"
@@ -4225,6 +4254,26 @@ exports[`StockAndShipment render correctly 1`] = `
                     </WithStyles(ForwardRef(InputBase))>
                   </ForwardRef(Input)>
                 </WithStyles(ForwardRef(Input))>
+                <WithStyles(ForwardRef(FormHelperText))>
+                  <ForwardRef(FormHelperText)
+                    classes={
+                      Object {
+                        "contained": "MuiFormHelperText-contained",
+                        "disabled": "Mui-disabled",
+                        "error": "Mui-error",
+                        "filled": "MuiFormHelperText-filled",
+                        "focused": "Mui-focused",
+                        "marginDense": "MuiFormHelperText-marginDense",
+                        "required": "Mui-required",
+                        "root": "MuiFormHelperText-root",
+                      }
+                    }
+                  >
+                    <p
+                      className="MuiFormHelperText-root MuiFormHelperText-filled Mui-required"
+                    />
+                  </ForwardRef(FormHelperText)>
+                </WithStyles(ForwardRef(FormHelperText))>
               </div>
             </ForwardRef(FormControl)>
           </WithStyles(ForwardRef(FormControl))>

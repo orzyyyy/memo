@@ -36,6 +36,7 @@ export type MaterialSpecificationProps =
   | 'materialCost'
   | 'freight'
   | 'extraCost'
+  | 'predictWeight'
   | 'description';
 export interface StockAndShipment {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
@@ -138,13 +139,14 @@ const StockAndShipment = ({
     onChange({ text: e.target.value, value: e.target.value }, 'input', key);
   };
 
-  const getSpecificationItem = ({
+  const getInputItem = ({
     key,
     error,
     inputLabel,
     inputValue,
     helperText,
     xs,
+    unit = 'mm',
   }: {
     key: MaterialSpecificationProps;
     error: boolean;
@@ -152,6 +154,7 @@ const StockAndShipment = ({
     inputValue: string | number;
     helperText: string;
     xs: GridSize;
+    unit?: string;
   }) => (
     <Grid item xs={xs} key={key}>
       <FormControl required className={classes.formControl} error={error}>
@@ -161,7 +164,7 @@ const StockAndShipment = ({
           type="number"
           onChange={e => handleInputChange(e, key)}
           onBlur={onSpecificationInputBlur}
-          endAdornment={<InputAdornment position="end">mm</InputAdornment>}
+          endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
         />
         <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
@@ -171,22 +174,18 @@ const StockAndShipment = ({
   const renderSpecification = () => {
     switch (formData.materialType) {
       case '0':
-        return (
-          <>
-            {getSpecificationItem({
-              key: 'length',
-              error: formData.lengthError,
-              inputLabel: '截面直径',
-              inputValue: formData.length,
-              helperText: formData.lengthMessage,
-              xs: 6,
-            })}
-          </>
-        );
+        return getInputItem({
+          key: 'length',
+          error: formData.lengthError,
+          inputLabel: '截面直径',
+          inputValue: formData.length,
+          helperText: formData.lengthMessage,
+          xs: 6,
+        });
       case '1':
         return (
           <>
-            {getSpecificationItem({
+            {getInputItem({
               key: 'length',
               error: formData.lengthError,
               inputLabel: '截面长度',
@@ -194,7 +193,7 @@ const StockAndShipment = ({
               helperText: formData.lengthMessage,
               xs: 6,
             })}
-            {getSpecificationItem({
+            {getInputItem({
               key: 'width',
               error: formData.widthError,
               inputLabel: '截面宽度',
@@ -278,20 +277,17 @@ const StockAndShipment = ({
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
 
-      <Grid item xs={6} key="weight">
-        <FormControl required className={classes.formControl} error={formData.weightError}>
-          <InputLabel>实际重量</InputLabel>
-          <Input
-            value={formData.weight}
-            onChange={e => handleInputChange(e, 'weight')}
-            type="number"
-            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-          />
-          <FormHelperText>{formData.weightMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
+      {getInputItem({
+        key: 'weight',
+        error: formData.weightError,
+        inputLabel: '实际重量',
+        inputValue: formData.weight,
+        helperText: formData.weightMessage,
+        xs: 6,
+        unit: 'kg',
+      })}
 
-      {getSpecificationItem({
+      {getInputItem({
         key: 'height',
         error: formData.heightError,
         inputLabel: '高度',
@@ -300,56 +296,47 @@ const StockAndShipment = ({
         xs: 6,
       })}
 
-      <Grid item xs={6}>
-        <FormControl required error={formData.materialCostError} className={classes.formControl}>
-          <InputLabel>单价</InputLabel>
-          <Input
-            onChange={e => handleInputChange(e, 'materialCost')}
-            value={formData.materialCost}
-            type="number"
-            endAdornment={<InputAdornment position="end">元/kg</InputAdornment>}
-          />
-          <FormHelperText>{formData.materialCostMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
+      {getInputItem({
+        key: 'materialCost',
+        error: formData.materialCostError,
+        inputLabel: '单价',
+        inputValue: formData.materialCost,
+        helperText: formData.materialCostMessage,
+        xs: 6,
+        unit: '元/kg',
+      })}
 
-      <Grid item xs={6}>
-        <FormControl className={classes.formControl} required error={formData.freightError}>
-          <InputLabel>运费</InputLabel>
-          <Input
-            onChange={e => handleInputChange(e, 'freight')}
-            value={formData.freight}
-            type="number"
-            endAdornment={<InputAdornment position="end">元</InputAdornment>}
-          />
-          <FormHelperText>{formData.freightMessage}</FormHelperText>
-        </FormControl>
-      </Grid>
+      {getInputItem({
+        key: 'freight',
+        error: formData.freightError,
+        inputLabel: '运费',
+        inputValue: formData.freight,
+        helperText: formData.freightMessage,
+        xs: 6,
+        unit: '元',
+      })}
 
-      <Grid item xs={6}>
-        <FormControl className={classes.formControl}>
-          <InputLabel>其他费用</InputLabel>
-          <Input
-            onChange={e => handleInputChange(e, 'extraCost')}
-            value={formData.extraCost}
-            type="number"
-            endAdornment={<InputAdornment position="end">元</InputAdornment>}
-          />
-        </FormControl>
-      </Grid>
+      {getInputItem({
+        key: 'extraCost',
+        error: false,
+        inputLabel: '其他费用',
+        inputValue: formData.freight,
+        helperText: '',
+        xs: 6,
+        unit: '元',
+      })}
 
       {(formData.materialType === '0' || formData.materialType === '1') && (
         <Grid item xs={6} key="pre-weight">
-          <FormControl className={classes.formControl}>
-            <InputLabel>预估重量</InputLabel>
-            <Input
-              value={formData.predictWeight}
-              readOnly
-              type="number"
-              endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-            />
-            <FormHelperText>计算公式：体积 x 密度</FormHelperText>
-          </FormControl>
+          {getInputItem({
+            key: 'predictWeight',
+            error: false,
+            inputLabel: '预估重量',
+            inputValue: formData.predictWeight,
+            helperText: '计算公式：体积 x 密度',
+            xs: 6,
+            unit: 'kg',
+          })}
         </Grid>
       )}
 
