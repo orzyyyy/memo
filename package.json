@@ -62,7 +62,7 @@
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-router": "^7.0.42",
     "@types/koa-static": "^4.0.1",
-    "@types/marked": "^0.6.5",
+    "@types/marked": "^0.7.0",
     "@types/mysql": "^2.15.7",
     "@types/prettier": "^1.18.3",
     "@types/puppeteer-core": "^1.9.0",
