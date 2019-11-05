@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Inbound, { FormControlType, MaterialSpecificationProps } from '../pages/Inbound';
+import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
 
@@ -58,8 +60,8 @@ const StockAndShipmentDataController = () => {
 
   const verifySubmitParams = () => {
     let hasError = false;
-    // 材料类型
-    if (materialType === '') {
+    // 材质
+    if (!materialType) {
       setMaterialTypeError(true);
       setMaterialTypeMessage(ERROR_MESSAGE);
       hasError = true;
@@ -217,10 +219,6 @@ const StockAndShipmentDataController = () => {
         setMaterialTypeMessage(item.value === '' ? ERROR_MESSAGE : '');
         break;
 
-      case 'type':
-        setType(type === 0 ? 1 : 0);
-        break;
-
       case 'autoComplete':
         if (item === null) {
           setMaterialId('');
@@ -237,42 +235,52 @@ const StockAndShipmentDataController = () => {
   };
 
   return (
-    <Inbound
-      onSubmit={handleSubmit}
-      formData={{
-        materialType,
-        materialTypeError,
-        materialTypeMessage,
-        materialId,
-        materialIdError,
-        materialIdMessage,
-        materialCost,
-        materialCostError,
-        materialCostMessage,
-        type,
-        length,
-        lengthError,
-        lengthMessage,
-        width,
-        widthError,
-        widthMessage,
-        height,
-        heightError,
-        heightMessage,
-        weight,
-        weightError,
-        weightMessage,
-        predictWeight,
-        freight,
-        freightError,
-        freightMessage,
-        extraCost,
-        description,
-      }}
-      formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
-      onChange={handleChange}
-      onSpecificationInputBlur={handleSpecificationInputBlur}
-    />
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setType(type === 0 ? 1 : 0)}>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6">{type ? '出库' : '入库'}</Typography>
+        </Toolbar>
+      </AppBar>
+      <Inbound
+        onSubmit={handleSubmit}
+        formData={{
+          materialType,
+          materialTypeError,
+          materialTypeMessage,
+          materialId,
+          materialIdError,
+          materialIdMessage,
+          materialCost,
+          materialCostError,
+          materialCostMessage,
+          type,
+          length,
+          lengthError,
+          lengthMessage,
+          width,
+          widthError,
+          widthMessage,
+          height,
+          heightError,
+          heightMessage,
+          weight,
+          weightError,
+          weightMessage,
+          predictWeight,
+          freight,
+          freightError,
+          freightMessage,
+          extraCost,
+          description,
+        }}
+        formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
+        onChange={handleChange}
+        onSpecificationInputBlur={handleSpecificationInputBlur}
+      />
+    </>
   );
 };
 

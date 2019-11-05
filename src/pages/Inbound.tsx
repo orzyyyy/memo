@@ -11,13 +11,8 @@ import {
   Select,
   MenuItem,
   Grid,
-  AppBar,
-  Toolbar,
-  Typography,
   TextareaAutosize,
-  IconButton,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
 import { GridSize } from '@material-ui/core/Grid';
@@ -226,23 +221,6 @@ const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
 
   return (
     <div className={classes.container}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={() => onChange({ text: '', value: '' }, 'type')}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            {formData.type ? '出库' : '入库'}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
       <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
         <InputLabel>类别</InputLabel>
         <Select value={formData.materialType} onChange={handleSelectChange}>

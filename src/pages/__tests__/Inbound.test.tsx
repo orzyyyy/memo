@@ -63,30 +63,6 @@ describe('Inbound', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('AppBar should work', () => {
-    const onChange = jest.fn();
-    const onSubmit = jest.fn();
-    const onSpecificationInputBlur = jest.fn();
-    const wrapper: any = mount(
-      <Inbound
-        onChange={onChange}
-        onSubmit={onSubmit}
-        formData={formData}
-        formOptions={formOptions}
-        onSpecificationInputBlur={onSpecificationInputBlur}
-      />,
-    );
-    expect(wrapper.find('h6').text()).toBe('入库');
-    wrapper
-      .find('ForwardRef(AppBar)')
-      .find('button')
-      .props()
-      .onClick({ text: '', value: '' }, 'type');
-    expect(onChange).toHaveBeenCalledWith({ text: '', value: '' }, 'type');
-    wrapper.setProps({ formData: Object.assign({}, formData, { type: 1 }) });
-    expect(wrapper.find('h6').text()).toBe('出库');
-  });
-
   it('Select of calcuteType', () => {
     const onChange = jest.fn();
     const onSubmit = jest.fn();
