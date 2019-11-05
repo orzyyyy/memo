@@ -38,7 +38,7 @@ export type MaterialSpecificationProps =
   | 'extraCost'
   | 'predictWeight'
   | 'description';
-export interface StorageProps {
+export interface InboundProps {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Storage = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: StorageProps) => {
+const Inbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: InboundProps) => {
   const classes = useStyles();
 
   const handleAutocompleteChange = (
@@ -352,4 +352,4 @@ const Storage = ({ onSubmit, formData, formOptions, onChange, onSpecificationInp
   );
 };
 
-export default Storage;
+export default Inbound;

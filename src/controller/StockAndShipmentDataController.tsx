@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Storage, { FormControlType, MaterialSpecificationProps } from '../pages/Storage';
+import Inbound, { FormControlType, MaterialSpecificationProps } from '../pages/Inbound';
 
 const ERROR_MESSAGE = '该项不能为空';
 
@@ -237,7 +237,7 @@ const StockAndShipmentDataController = () => {
   };
 
   return (
-    <Storage
+    <Inbound
       onSubmit={handleSubmit}
       formData={{
         materialType,
