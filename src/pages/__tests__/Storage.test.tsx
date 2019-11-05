@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import StockAndShipment from '../StockAndShipment';
+import Storage from '../Storage';
 
-describe('StockAndShipment', () => {
+describe('Storage', () => {
   const formData = {
     materialType: 0,
     materialTypeError: false,
@@ -52,7 +52,7 @@ describe('StockAndShipment', () => {
     const onSubmit = jest.fn();
     const onSpecificationInputBlur = jest.fn();
     const wrapper = mount(
-      <StockAndShipment
+      <Storage
         onChange={onChange}
         onSubmit={onSubmit}
         formData={formData}
@@ -68,7 +68,7 @@ describe('StockAndShipment', () => {
     const onSubmit = jest.fn();
     const onSpecificationInputBlur = jest.fn();
     const wrapper: any = mount(
-      <StockAndShipment
+      <Storage
         onChange={onChange}
         onSubmit={onSubmit}
         formData={formData}
@@ -92,7 +92,7 @@ describe('StockAndShipment', () => {
     const onSubmit = jest.fn();
     const onSpecificationInputBlur = jest.fn();
     const wrapper: any = mount(
-      <StockAndShipment
+      <Storage
         onChange={onChange}
         onSubmit={onSubmit}
         formData={formData}
@@ -121,7 +121,7 @@ describe('StockAndShipment', () => {
     const onSubmit = jest.fn();
     const onSpecificationInputBlur = jest.fn();
     const wrapper: any = mount(
-      <StockAndShipment
+      <Storage
         onChange={onChange}
         onSubmit={onSubmit}
         formData={formData}
@@ -180,7 +180,7 @@ describe('StockAndShipment', () => {
     const onSubmit = jest.fn();
     const onSpecificationInputBlur = jest.fn();
     const wrapper: any = mount(
-      <StockAndShipment
+      <Storage
         onChange={onChange}
         onSubmit={onSubmit}
         formData={formData}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import StockAndShipment, { FormControlType, MaterialSpecificationProps } from '../pages/StockAndShipment';
+import Storage, { FormControlType, MaterialSpecificationProps } from '../pages/Storage';
 
 const ERROR_MESSAGE = '该项不能为空';
 
@@ -200,6 +200,7 @@ const StockAndShipmentDataController = () => {
         setWeightError(!item.value);
         setWeightMessage(!item.value ? ERROR_MESSAGE : '');
       },
+      predictWeight: () => {},
     };
 
     switch (controlType) {
@@ -236,7 +237,7 @@ const StockAndShipmentDataController = () => {
   };
 
   return (
-    <StockAndShipment
+    <Storage
       onSubmit={handleSubmit}
       formData={{
         materialType,

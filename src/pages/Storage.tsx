@@ -38,7 +38,7 @@ export type MaterialSpecificationProps =
   | 'extraCost'
   | 'predictWeight'
   | 'description';
-export interface StockAndShipment {
+export interface StorageProps {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
@@ -109,13 +109,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const StockAndShipment = ({
-  onSubmit,
-  formData,
-  formOptions,
-  onChange,
-  onSpecificationInputBlur,
-}: StockAndShipment) => {
+const Storage = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: StorageProps) => {
   const classes = useStyles();
 
   const handleAutocompleteChange = (
@@ -358,4 +352,4 @@ const StockAndShipment = ({
   );
 };
 
-export default StockAndShipment;
+export default Storage;

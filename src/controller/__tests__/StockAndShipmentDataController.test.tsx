@@ -50,7 +50,7 @@ describe('StockAndShipmentDataController', () => {
   it('onSubmit', async () => {
     const wrapper: any = await shallow(<StockAndShipmentDataController />);
     let result = await wrapper
-      .find('StockAndShipment')
+      .find('Storage')
       .props()
       .onSubmit();
     expect(result).toBeFalsy();

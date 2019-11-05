@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StockAndShipment render correctly 1`] = `
-<StockAndShipment
+exports[`Storage render correctly 1`] = `
+<Storage
   formData={
     Object {
       "description": "",
@@ -4485,5 +4485,5 @@ exports[`StockAndShipment render correctly 1`] = `
       </ForwardRef(FormControl)>
     </WithStyles(ForwardRef(FormControl))>
   </div>
-</StockAndShipment>
+</Storage>
 `;
