@@ -112,6 +112,7 @@ exports[`Inbound render correctly 1`] = `
                   classes={
                     Object {
                       "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                      "colorSecondary": "MuiFormLabel-colorSecondary",
                       "disabled": "Mui-disabled Mui-disabled",
                       "error": "Mui-error Mui-error",
                       "filled": "MuiFormLabel-filled",
@@ -251,6 +252,7 @@ exports[`Inbound render correctly 1`] = `
                 <ForwardRef(Input)
                   classes={
                     Object {
+                      "colorSecondary": "MuiInput-colorSecondary",
                       "disabled": "Mui-disabled",
                       "error": "Mui-error",
                       "focused": "Mui-focused",
@@ -355,6 +357,7 @@ exports[`Inbound render correctly 1`] = `
                   <WithStyles(ForwardRef(InputBase))
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -464,6 +467,7 @@ exports[`Inbound render correctly 1`] = `
                         Object {
                           "adornedEnd": "MuiInputBase-adornedEnd",
                           "adornedStart": "MuiInputBase-adornedStart",
+                          "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                           "disabled": "Mui-disabled Mui-disabled",
                           "error": "Mui-error Mui-error",
                           "focused": "Mui-focused Mui-focused",
@@ -1049,6 +1053,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -1092,6 +1097,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -1122,6 +1128,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -1157,6 +1164,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -1403,6 +1411,7 @@ exports[`Inbound render correctly 1`] = `
                         </ForwardRef(WithStyles)>
                         <ForwardRef(WithStyles)
                           className="MuiAutocomplete-popupIndicator"
+                          disabled={false}
                           onClick={[Function]}
                           onMouseDown={[Function]}
                           tabIndex={-1}
@@ -1414,16 +1423,19 @@ exports[`Inbound render correctly 1`] = `
                       "startAdornment": undefined,
                     }
                   }
+                  disabled={false}
                   error={false}
                   fullWidth={true}
                   inputProps={
                     Object {
+                      "aria-activedescendant": null,
                       "aria-autocomplete": "list",
-                      "aria-controls": "material-id-listbox",
+                      "aria-controls": "material-id-popup",
                       "autoCapitalize": "none",
                       "autoComplete": "disabled",
                       "autoCorrect": "off",
                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                      "disabled": false,
                       "id": "material-id",
                       "onBlur": [Function],
                       "onChange": [Function],
@@ -1431,7 +1443,7 @@ exports[`Inbound render correctly 1`] = `
                       "ref": Object {
                         "current": <input
                           aria-autocomplete="list"
-                          aria-controls="material-id-listbox"
+                          aria-controls="material-id-popup"
                           aria-invalid="false"
                           autocapitalize="none"
                           autocomplete="disabled"
@@ -1445,7 +1457,7 @@ exports[`Inbound render correctly 1`] = `
                         />,
                       },
                       "spellCheck": "false",
-                      "value": undefined,
+                      "value": "",
                     }
                   }
                   label="材质"
@@ -1475,6 +1487,7 @@ exports[`Inbound render correctly 1`] = `
                           </ForwardRef(WithStyles)>
                           <ForwardRef(WithStyles)
                             className="MuiAutocomplete-popupIndicator"
+                            disabled={false}
                             onClick={[Function]}
                             onMouseDown={[Function]}
                             tabIndex={-1}
@@ -1491,16 +1504,19 @@ exports[`Inbound render correctly 1`] = `
                         "root": "MuiTextField-root",
                       }
                     }
+                    disabled={false}
                     error={false}
                     fullWidth={true}
                     inputProps={
                       Object {
+                        "aria-activedescendant": null,
                         "aria-autocomplete": "list",
-                        "aria-controls": "material-id-listbox",
+                        "aria-controls": "material-id-popup",
                         "autoCapitalize": "none",
                         "autoComplete": "disabled",
                         "autoCorrect": "off",
                         "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                        "disabled": false,
                         "id": "material-id",
                         "onBlur": [Function],
                         "onChange": [Function],
@@ -1508,7 +1524,7 @@ exports[`Inbound render correctly 1`] = `
                         "ref": Object {
                           "current": <input
                             aria-autocomplete="list"
-                            aria-controls="material-id-listbox"
+                            aria-controls="material-id-popup"
                             aria-invalid="false"
                             autocapitalize="none"
                             autocomplete="disabled"
@@ -1522,7 +1538,7 @@ exports[`Inbound render correctly 1`] = `
                           />,
                         },
                         "spellCheck": "false",
-                        "value": undefined,
+                        "value": "",
                       }
                     }
                     label="材质"
@@ -1531,6 +1547,8 @@ exports[`Inbound render correctly 1`] = `
                   >
                     <WithStyles(ForwardRef(FormControl))
                       className="MuiTextField-root"
+                      color="primary"
+                      disabled={false}
                       error={false}
                       fullWidth={true}
                       margin="normal"
@@ -1547,6 +1565,8 @@ exports[`Inbound render correctly 1`] = `
                             "root": "MuiFormControl-root",
                           }
                         }
+                        color="primary"
+                        disabled={false}
                         error={false}
                         fullWidth={true}
                         margin="normal"
@@ -1597,6 +1617,7 @@ exports[`Inbound render correctly 1`] = `
                                   classes={
                                     Object {
                                       "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                                      "colorSecondary": "MuiFormLabel-colorSecondary",
                                       "disabled": "Mui-disabled Mui-disabled",
                                       "error": "Mui-error Mui-error",
                                       "filled": "MuiFormLabel-filled",
@@ -1642,6 +1663,7 @@ exports[`Inbound render correctly 1`] = `
                                 </ForwardRef(WithStyles)>
                                 <ForwardRef(WithStyles)
                                   className="MuiAutocomplete-popupIndicator"
+                                  disabled={false}
                                   onClick={[Function]}
                                   onMouseDown={[Function]}
                                   tabIndex={-1}
@@ -1654,12 +1676,14 @@ exports[`Inbound render correctly 1`] = `
                             fullWidth={true}
                             inputProps={
                               Object {
+                                "aria-activedescendant": null,
                                 "aria-autocomplete": "list",
-                                "aria-controls": "material-id-listbox",
+                                "aria-controls": "material-id-popup",
                                 "autoCapitalize": "none",
                                 "autoComplete": "disabled",
                                 "autoCorrect": "off",
                                 "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                                "disabled": false,
                                 "id": "material-id",
                                 "onBlur": [Function],
                                 "onChange": [Function],
@@ -1667,7 +1691,7 @@ exports[`Inbound render correctly 1`] = `
                                 "ref": Object {
                                   "current": <input
                                     aria-autocomplete="list"
-                                    aria-controls="material-id-listbox"
+                                    aria-controls="material-id-popup"
                                     aria-invalid="false"
                                     autocapitalize="none"
                                     autocomplete="disabled"
@@ -1681,7 +1705,7 @@ exports[`Inbound render correctly 1`] = `
                                   />,
                                 },
                                 "spellCheck": "false",
-                                "value": undefined,
+                                "value": "",
                               }
                             }
                           >
@@ -1689,6 +1713,7 @@ exports[`Inbound render correctly 1`] = `
                               className="MuiAutocomplete-inputRoot"
                               classes={
                                 Object {
+                                  "colorSecondary": "MuiInput-colorSecondary",
                                   "disabled": "Mui-disabled",
                                   "error": "Mui-error",
                                   "focused": "Mui-focused",
@@ -1718,6 +1743,7 @@ exports[`Inbound render correctly 1`] = `
                                   </ForwardRef(WithStyles)>
                                   <ForwardRef(WithStyles)
                                     className="MuiAutocomplete-popupIndicator"
+                                    disabled={false}
                                     onClick={[Function]}
                                     onMouseDown={[Function]}
                                     tabIndex={-1}
@@ -1730,12 +1756,14 @@ exports[`Inbound render correctly 1`] = `
                               fullWidth={true}
                               inputProps={
                                 Object {
+                                  "aria-activedescendant": null,
                                   "aria-autocomplete": "list",
-                                  "aria-controls": "material-id-listbox",
+                                  "aria-controls": "material-id-popup",
                                   "autoCapitalize": "none",
                                   "autoComplete": "disabled",
                                   "autoCorrect": "off",
                                   "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                                  "disabled": false,
                                   "id": "material-id",
                                   "onBlur": [Function],
                                   "onChange": [Function],
@@ -1743,7 +1771,7 @@ exports[`Inbound render correctly 1`] = `
                                   "ref": Object {
                                     "current": <input
                                       aria-autocomplete="list"
-                                      aria-controls="material-id-listbox"
+                                      aria-controls="material-id-popup"
                                       aria-invalid="false"
                                       autocapitalize="none"
                                       autocomplete="disabled"
@@ -1757,7 +1785,7 @@ exports[`Inbound render correctly 1`] = `
                                     />,
                                   },
                                   "spellCheck": "false",
-                                  "value": undefined,
+                                  "value": "",
                                 }
                               }
                             >
@@ -1765,6 +1793,7 @@ exports[`Inbound render correctly 1`] = `
                                 className="MuiAutocomplete-inputRoot"
                                 classes={
                                   Object {
+                                    "colorSecondary": "MuiInput-colorSecondary",
                                     "disabled": "Mui-disabled",
                                     "error": "Mui-error",
                                     "focused": "Mui-focused",
@@ -1794,6 +1823,7 @@ exports[`Inbound render correctly 1`] = `
                                     </ForwardRef(WithStyles)>
                                     <ForwardRef(WithStyles)
                                       className="MuiAutocomplete-popupIndicator"
+                                      disabled={false}
                                       onClick={[Function]}
                                       onMouseDown={[Function]}
                                       tabIndex={-1}
@@ -1807,12 +1837,14 @@ exports[`Inbound render correctly 1`] = `
                                 inputComponent="input"
                                 inputProps={
                                   Object {
+                                    "aria-activedescendant": null,
                                     "aria-autocomplete": "list",
-                                    "aria-controls": "material-id-listbox",
+                                    "aria-controls": "material-id-popup",
                                     "autoCapitalize": "none",
                                     "autoComplete": "disabled",
                                     "autoCorrect": "off",
                                     "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                                    "disabled": false,
                                     "id": "material-id",
                                     "onBlur": [Function],
                                     "onChange": [Function],
@@ -1820,7 +1852,7 @@ exports[`Inbound render correctly 1`] = `
                                     "ref": Object {
                                       "current": <input
                                         aria-autocomplete="list"
-                                        aria-controls="material-id-listbox"
+                                        aria-controls="material-id-popup"
                                         aria-invalid="false"
                                         autocapitalize="none"
                                         autocomplete="disabled"
@@ -1834,7 +1866,7 @@ exports[`Inbound render correctly 1`] = `
                                       />,
                                     },
                                     "spellCheck": "false",
-                                    "value": undefined,
+                                    "value": "",
                                   }
                                 }
                                 multiline={false}
@@ -1846,6 +1878,7 @@ exports[`Inbound render correctly 1`] = `
                                     Object {
                                       "adornedEnd": "MuiInputBase-adornedEnd",
                                       "adornedStart": "MuiInputBase-adornedStart",
+                                      "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                                       "disabled": "Mui-disabled Mui-disabled",
                                       "error": "Mui-error Mui-error",
                                       "focused": "Mui-focused Mui-focused",
@@ -1879,6 +1912,7 @@ exports[`Inbound render correctly 1`] = `
                                       </ForwardRef(WithStyles)>
                                       <ForwardRef(WithStyles)
                                         className="MuiAutocomplete-popupIndicator"
+                                        disabled={false}
                                         onClick={[Function]}
                                         onMouseDown={[Function]}
                                         tabIndex={-1}
@@ -1892,12 +1926,14 @@ exports[`Inbound render correctly 1`] = `
                                   inputComponent="input"
                                   inputProps={
                                     Object {
+                                      "aria-activedescendant": null,
                                       "aria-autocomplete": "list",
-                                      "aria-controls": "material-id-listbox",
+                                      "aria-controls": "material-id-popup",
                                       "autoCapitalize": "none",
                                       "autoComplete": "disabled",
                                       "autoCorrect": "off",
                                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
+                                      "disabled": false,
                                       "id": "material-id",
                                       "onBlur": [Function],
                                       "onChange": [Function],
@@ -1905,7 +1941,7 @@ exports[`Inbound render correctly 1`] = `
                                       "ref": Object {
                                         "current": <input
                                           aria-autocomplete="list"
-                                          aria-controls="material-id-listbox"
+                                          aria-controls="material-id-popup"
                                           aria-invalid="false"
                                           autocapitalize="none"
                                           autocomplete="disabled"
@@ -1919,7 +1955,7 @@ exports[`Inbound render correctly 1`] = `
                                         />,
                                       },
                                       "spellCheck": "false",
-                                      "value": undefined,
+                                      "value": "",
                                     }
                                   }
                                   multiline={false}
@@ -1930,8 +1966,9 @@ exports[`Inbound render correctly 1`] = `
                                     onClick={[Function]}
                                   >
                                     <input
+                                      aria-activedescendant={null}
                                       aria-autocomplete="list"
-                                      aria-controls="material-id-listbox"
+                                      aria-controls="material-id-popup"
                                       aria-invalid={false}
                                       autoCapitalize="none"
                                       autoComplete="disabled"
@@ -1946,6 +1983,7 @@ exports[`Inbound render correctly 1`] = `
                                       required={true}
                                       spellCheck="false"
                                       type="text"
+                                      value=""
                                     />
                                     <WithStyles(ForwardRef(IconButton))
                                       className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2097,6 +2135,7 @@ exports[`Inbound render correctly 1`] = `
                                     </WithStyles(ForwardRef(IconButton))>
                                     <WithStyles(ForwardRef(IconButton))
                                       className="MuiAutocomplete-popupIndicator"
+                                      disabled={false}
                                       onClick={[Function]}
                                       onMouseDown={[Function]}
                                       tabIndex={-1}
@@ -2117,6 +2156,7 @@ exports[`Inbound render correctly 1`] = `
                                             "sizeSmall": "MuiIconButton-sizeSmall",
                                           }
                                         }
+                                        disabled={false}
                                         onClick={[Function]}
                                         onMouseDown={[Function]}
                                         tabIndex={-1}
@@ -2453,6 +2493,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -2496,6 +2537,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -2526,6 +2568,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -2561,6 +2604,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -2892,6 +2936,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -2935,6 +2980,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -2965,6 +3011,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -3000,6 +3047,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -3331,6 +3379,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -3374,6 +3423,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -3404,6 +3454,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -3439,6 +3490,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -3770,6 +3822,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -3813,6 +3866,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -3843,6 +3897,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -3878,6 +3933,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -4209,6 +4265,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -4252,6 +4309,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -4282,6 +4340,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -4317,6 +4376,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
@@ -4646,6 +4706,7 @@ exports[`Inbound render correctly 1`] = `
                         classes={
                           Object {
                             "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                            "colorSecondary": "MuiFormLabel-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "filled": "MuiFormLabel-filled",
@@ -4683,6 +4744,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(Input)
                     classes={
                       Object {
+                        "colorSecondary": "MuiInput-colorSecondary",
                         "disabled": "Mui-disabled",
                         "error": "Mui-error",
                         "focused": "Mui-focused",
@@ -4713,6 +4775,7 @@ exports[`Inbound render correctly 1`] = `
                     <WithStyles(ForwardRef(InputBase))
                       classes={
                         Object {
+                          "colorSecondary": "MuiInput-colorSecondary",
                           "disabled": "Mui-disabled",
                           "error": "Mui-error",
                           "focused": "Mui-focused",
@@ -4748,6 +4811,7 @@ exports[`Inbound render correctly 1`] = `
                           Object {
                             "adornedEnd": "MuiInputBase-adornedEnd",
                             "adornedStart": "MuiInputBase-adornedStart",
+                            "colorSecondary": "MuiInputBase-colorSecondary MuiInput-colorSecondary",
                             "disabled": "Mui-disabled Mui-disabled",
                             "error": "Mui-error Mui-error",
                             "focused": "Mui-focused Mui-focused",
