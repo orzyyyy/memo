@@ -10,6 +10,7 @@ describe('ExHentaiList', () => {
   });
 
   it('render correctly', () => {
+    const onDetail = jest.fn();
     const wrapper = shallow(
       <ExHentaiList
         dataSource={[
@@ -23,6 +24,7 @@ describe('ExHentaiList', () => {
         ]}
         wrapperHeight={1000}
         onDownload={() => {}}
+        onDetail={onDetail}
       />,
     );
     expect(wrapper).toMatchSnapshot();

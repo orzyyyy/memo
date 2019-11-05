@@ -26,50 +26,50 @@ export interface OutboundProps {
   onSpecificationInputBlur: () => void;
   formData: {
     // 出库为 0，入库为 1
-    type: number | string;
+    type: number;
     // 材料类型
-    materialType: number | string | null;
+    materialType: number;
     materialTypeError: boolean;
     materialTypeMessage: string;
     // 材质
-    materialId: number | string;
+    materialId: number;
     materialIdError: boolean;
     materialIdMessage: string;
     // 材料单价
-    materialCost: number | string;
+    materialCost: number;
     materialCostError: boolean;
     materialCostMessage: string;
     // 长宽高重
-    length: number | string;
+    length: number;
     lengthError: boolean;
     lengthMessage: string;
-    width: number | string;
+    width: number;
     widthError: boolean;
     widthMessage: string;
-    height: number | string;
+    height: number;
     heightError: boolean;
     heightMessage: string;
-    weight: number | string;
+    weight: number;
     weightError: boolean;
     weightMessage: string;
     // 预估重量
     predictWeight: number;
     // 运费
-    freight: string | number;
+    freight: number;
     freightError: boolean;
     freightMessage: string;
     // 其他费用
-    extraCost: string | number;
+    extraCost: number;
     // 备注
-    description: string | number;
+    description: string;
     // 数量。出库用
-    materialQuantity: string | number;
+    materialQuantity: number;
     materialQuantityError: boolean;
     materialQuantityMessage: string;
     // 锯费
-    costFee: string | number;
+    costFee: number;
     // 预估总价
-    predictPrice: string | number;
+    predictPrice: number;
   };
   formOptions: {
     materialType: MenuItemOption[];
@@ -140,7 +140,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
 
   const renderSpecification = () => {
     switch (formData.materialType) {
-      case '0':
+      case 0:
         return getInputItem({
           key: 'length',
           error: formData.lengthError,
@@ -149,7 +149,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
           helperText: formData.lengthMessage,
           xs: 6,
         });
-      case '1':
+      case 1:
         return (
           <>
             {getInputItem({
@@ -200,13 +200,13 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
   // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
   const materialIdOptions = formOptions.materialId.filter(item => {
     // 圆钢
-    if (formData.materialType === '0') {
+    if (formData.materialType === 0) {
       if (formData.length) {
         return formData.length == item['长'];
       }
       return true;
     } // 方钢
-    else if (formData.materialType === '1') {
+    else if (formData.materialType === 1) {
       if (formData.length && formData.width) {
         return formData.length == item['长'] && formData.width == item['宽'];
       } else if (formData.width) {

@@ -39,17 +39,17 @@ const StockAndShipmentDataController = () => {
   const [weightError, setWeightError] = useState(false);
   const [weightMessage, setWeightMessage] = useState('');
   // 预估重量
-  const [predictWeight, setPredictWeight] = useState(0);
+  const [predictWeight, setPredictWeight] = useState();
   // 运费
-  const [freight, setFreight] = useState('' as string | number);
+  const [freight, setFreight] = useState();
   const [freightError, setFreightError] = useState(false);
   const [freightMessage, setFreightMessage] = useState('');
   // 其他费用
-  const [extraCost, setExtraCost] = useState('' as string | number);
+  const [extraCost, setExtraCost] = useState();
   // 备注
-  const [description, setDescription] = useState('' as string | number);
+  const [description, setDescription] = useState('');
   // 数量。出库用
-  const [materialQuantity, setMaterialQuantity] = useState(0);
+  const [materialQuantity, setMaterialQuantity] = useState();
   const [materialQuantityError, setMaterialQuantityError] = useState(false);
   const [materialQuantityMessage, setMaterialQuantityMessage] = useState('');
   // 锯费
@@ -134,10 +134,15 @@ const StockAndShipmentDataController = () => {
     return params;
   };
 
-  const calcuteForPredictWeight = (length: number, width: number, height: number, quality: number) => {
+  const calcuteForPredictWeight = (length: number, width: number, height: number, quality: number, type: number) => {
     const realLength = length / 2 / 10;
     const realWidth = width / 10;
     const realHeight = height / 10;
+
+    // 入库时数量一定为 undefined，计算会出错，需要处理
+    if (type === 0 && !quality) {
+      quality = 1;
+    }
 
     const calcute = (length: number, width: number, height: number) => {
       const DENSITE = 7.874;
@@ -168,7 +173,7 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleSpecificationInputBlur = () => {
-    const result = calcuteForPredictWeight(length, width, height, materialQuantity);
+    const result = calcuteForPredictWeight(length, width, height, materialQuantity, type);
     calcuteForPredictPrice(result);
   };
 
@@ -236,12 +241,10 @@ const StockAndShipmentDataController = () => {
         break;
 
       case 'select':
-        if (item.value !== '') {
+        if (item.value) {
           fetchMaterialIdOption(item.value);
         }
         setMaterialType(item.value);
-        setMaterialTypeError(item.value === '');
-        setMaterialTypeMessage(item.value === '' ? ERROR_MESSAGE : '');
         break;
 
       case 'autoComplete':
