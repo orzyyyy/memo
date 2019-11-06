@@ -1016,7 +1016,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -1034,6 +1036,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -2456,7 +2459,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -2474,6 +2479,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -2899,7 +2905,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -2917,6 +2925,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -3342,7 +3351,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -3360,6 +3371,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -3785,7 +3797,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -3803,6 +3817,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -4228,7 +4243,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -4246,6 +4263,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -4669,7 +4687,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -4687,6 +4707,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"

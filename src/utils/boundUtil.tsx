@@ -117,6 +117,7 @@ export const getInputItem = ({
   onChange,
   onBlur,
   classes,
+  shrink = false,
 }: {
   key: MaterialSpecificationProps;
   error: boolean;
@@ -130,10 +131,11 @@ export const getInputItem = ({
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: MaterialSpecificationProps) => void;
   onBlur: () => void;
   classes: any;
+  shrink?: boolean;
 }) => (
   <Grid item xs={xs} key={key}>
     <FormControl required={required} className={classes.formControl} error={error}>
-      <InputLabel>{inputLabel}</InputLabel>
+      <InputLabel shrink={shrink || !!inputValue}>{inputLabel}</InputLabel>
       <Input
         value={inputValue}
         type="number"

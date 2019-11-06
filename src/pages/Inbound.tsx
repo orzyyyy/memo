@@ -114,21 +114,20 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         classes,
       })}
 
-      {(formData.materialType === 0 || formData.materialType === 1) &&
-        getInputItem({
-          key: 'predictWeight',
-          error: false,
-          inputLabel: '预估重量',
-          inputValue: formData.predictWeight,
-          helperText: '计算公式：体积 x 密度',
-          xs: 6,
-          unit: 'kg',
-          readOnly: true,
-          required: false,
-          onChange: handleInputChange,
-          onBlur: onSpecificationInputBlur,
-          classes,
-        })}
+      {getInputItem({
+        key: 'predictWeight',
+        error: false,
+        inputLabel: '预估重量',
+        inputValue: formData.predictWeight,
+        helperText: '计算公式：体积 x 密度',
+        xs: 6,
+        unit: 'kg',
+        readOnly: true,
+        required: false,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
+      })}
 
       <FormControl fullWidth className={classes.formControl}>
         <TextareaAutosize
