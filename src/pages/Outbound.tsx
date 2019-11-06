@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Button, FormControl, TextareaAutosize } from '@material-ui/core';
+import { FormControl, TextareaAutosize } from '@material-ui/core';
 import {
   getInputItem,
   CommonBoundFormDataProps,
@@ -8,6 +8,7 @@ import {
   CommonBoundProps,
   useStyles,
   renderPickerForMaterialId,
+  getSubmitButton,
 } from '../utils/boundUtil';
 
 export type OutboundProps = {
@@ -23,7 +24,15 @@ export type OutboundProps = {
   } & CommonBoundFormDataProps;
 } & CommonBoundProps;
 
-const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: OutboundProps) => {
+const Outbound = ({
+  onSubmit,
+  formData,
+  formOptions,
+  onChange,
+  onSpecificationInputBlur,
+  loading,
+  success,
+}: OutboundProps) => {
   const classes = useStyles();
 
   const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
@@ -166,11 +175,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         />
       </FormControl>
 
-      <FormControl fullWidth className={classes.formControl}>
-        <Button variant="contained" color="primary" onClick={onSubmit}>
-          提交
-        </Button>
-      </FormControl>
+      {getSubmitButton({ classes, onSubmit, loading, success })}
     </div>
   );
 };

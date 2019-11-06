@@ -9,10 +9,14 @@ import {
   Select,
   MenuItem,
   TextField,
+  CircularProgress,
+  Button,
 } from '@material-ui/core';
+import clsx from 'clsx';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { GridSize } from '@material-ui/core/Grid';
 import Autocomplete, { RenderInputParams } from '@material-ui/lab/Autocomplete';
+import { green } from '@material-ui/core/colors';
 
 export type MenuItemOption = {
   text: string;
@@ -68,6 +72,8 @@ export type CommonBoundProps = {
   // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
   formOptions: FormOptionsProps;
+  loading: boolean;
+  success: boolean;
 };
 export type MaterialSpecificationProps =
   | 'length' // 实际长度
@@ -100,6 +106,20 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+    },
+    buttonProgress: {
+      color: green[500],
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12,
+    },
+    buttonSuccess: {
+      backgroundColor: green[500],
+      '&:hover': {
+        backgroundColor: green[700],
+      },
     },
   }),
 );
@@ -288,5 +308,29 @@ export const renderPickerForMaterialId = ({
         <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
       </FormControl>
     </>
+  );
+};
+
+export const getSubmitButton = ({
+  classes,
+  onSubmit,
+  loading,
+  success,
+}: {
+  classes: any;
+  onSubmit: () => void;
+  loading: boolean;
+  success: boolean;
+}) => {
+  const buttonClassname = clsx({
+    [classes.buttonSuccess]: success,
+  });
+  return (
+    <FormControl fullWidth className={classes.formControl}>
+      <Button variant="contained" color="primary" className={buttonClassname} disabled={loading} onClick={onSubmit}>
+        保存
+      </Button>
+      {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+    </FormControl>
   );
 };

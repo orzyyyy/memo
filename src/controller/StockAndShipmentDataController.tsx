@@ -8,6 +8,8 @@ import { FormControlType, MaterialSpecificationProps } from '../utils/boundUtil'
 const ERROR_MESSAGE = '该项不能为空';
 
 const StockAndShipmentDataController = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   // 类别菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([]);
   // 材质菜单项
@@ -126,6 +128,7 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     const { hasError, params } = verifySubmitParams();
     if (hasError) {
       return;
@@ -135,9 +138,12 @@ const StockAndShipmentDataController = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-    const result = await response.json();
-    if (result === 'success') {
-    }
+    const result = await response.text();
+    setLoading(false);
+    setSuccess(result === 'success');
+    setTimeout(() => {
+      setSuccess(false);
+    }, 2000);
     return params;
   };
 
@@ -304,6 +310,8 @@ const StockAndShipmentDataController = () => {
     description,
   };
   const commonBoundProps = {
+    loading,
+    success,
     onSubmit: handleSubmit,
     formOptions: { materialType: materialTypeOption, materialId: materialIdOption },
     onChange: handleChange,
