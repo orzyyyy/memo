@@ -50,12 +50,22 @@ export default class ToyService {
     if (Object.keys(query).length && sql) {
       sql = replacePlaceholderWithParams(sql, query);
     }
-    return new Promise((resolve, reject) => {
-      this.connection.query(sql, (error, result, fields) => {
+    const connection = this.connection;
+    return new Promise(resolve => {
+      connection.query(sql, (error, result, fields) => {
         if (error) {
-          reject(error);
+          return connection.rollback(() => {
+            throw error;
+          });
         }
-        resolve({ result, fields });
+        connection.commit(error => {
+          if (error) {
+            return connection.rollback(() => {
+              throw error;
+            });
+          }
+          resolve({ result, fields });
+        });
       });
     });
   };
