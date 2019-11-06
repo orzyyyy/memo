@@ -4,64 +4,25 @@ import {
   Button,
   FormControl,
   InputLabel,
-  Input,
   FormHelperText,
-  InputAdornment,
   TextField,
   Select,
   MenuItem,
-  Grid,
   TextareaAutosize,
 } from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete } from '@material-ui/lab';
-import { GridSize } from '@material-ui/core/Grid';
 import { RenderInputParams } from '@material-ui/lab/Autocomplete';
-import { MaterialSpecificationProps, MenuItemOption, FormControlType } from './Inbound';
+import {
+  getInputItem,
+  CommonBoundFormDataProps,
+  MaterialSpecificationProps,
+  CommonBoundProps,
+  filterMaterialIdOptions,
+  useStyles,
+} from '../utils/boundUtil';
 
-export interface OutboundProps {
-  onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
-  onSubmit: () => void;
-  // 长宽高文本框 blur 时的回调
-  onSpecificationInputBlur: () => void;
+export type OutboundProps = {
   formData: {
-    // 出库为 0，入库为 1
-    type: number;
-    // 材料类型
-    materialType: number;
-    materialTypeError: boolean;
-    materialTypeMessage: string;
-    // 材质
-    materialId: number;
-    materialIdError: boolean;
-    materialIdMessage: string;
-    // 材料单价
-    materialCost: number;
-    materialCostError: boolean;
-    materialCostMessage: string;
-    // 长宽高重
-    length: number;
-    lengthError: boolean;
-    lengthMessage: string;
-    width: number;
-    widthError: boolean;
-    widthMessage: string;
-    height: number;
-    heightError: boolean;
-    heightMessage: string;
-    weight: number;
-    weightError: boolean;
-    weightMessage: string;
-    // 预估重量
-    predictWeight: number;
-    // 运费
-    freight: number;
-    freightError: boolean;
-    freightMessage: string;
-    // 其他费用
-    extraCost: number;
-    // 备注
-    description: string;
     // 数量。出库用
     materialQuantity: number;
     materialQuantityError: boolean;
@@ -70,73 +31,11 @@ export interface OutboundProps {
     costFee: number;
     // 预估总价
     predictPrice: number;
-  };
-  formOptions: {
-    materialType: MenuItemOption[];
-    materialId: any[];
-  };
-}
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    formControl: {
-      margin: theme.spacing(1),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }),
-);
+  } & CommonBoundFormDataProps;
+} & CommonBoundProps;
 
 const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: OutboundProps) => {
   const classes = useStyles();
-
-  const getInputItem = ({
-    key,
-    error,
-    inputLabel,
-    inputValue,
-    helperText,
-    xs,
-    unit = 'mm',
-    readOnly = false,
-    required = true,
-  }: {
-    key: MaterialSpecificationProps;
-    error: boolean;
-    inputLabel: string;
-    inputValue: string | number;
-    helperText: string;
-    xs: GridSize;
-    unit?: string;
-    readOnly?: boolean;
-    required?: boolean;
-  }) => (
-    <Grid item xs={xs} key={key}>
-      <FormControl required={required} className={classes.formControl} error={error}>
-        <InputLabel>{inputLabel}</InputLabel>
-        <Input
-          value={inputValue}
-          type="number"
-          onChange={e => handleInputChange(e, key)}
-          onBlur={onSpecificationInputBlur}
-          endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
-          readOnly={readOnly}
-        />
-        <FormHelperText>{helperText}</FormHelperText>
-      </FormControl>
-    </Grid>
-  );
 
   const renderSpecification = () => {
     switch (formData.materialType) {
@@ -148,6 +47,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
           inputValue: formData.length,
           helperText: formData.lengthMessage,
           xs: 6,
+          onChange: handleInputChange,
+          onBlur: onSpecificationInputBlur,
+          classes,
         });
       case 1:
         return (
@@ -159,6 +61,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
               inputValue: formData.length,
               helperText: formData.lengthMessage,
               xs: 6,
+              onChange: handleInputChange,
+              onBlur: onSpecificationInputBlur,
+              classes,
             })}
             {getInputItem({
               key: 'width',
@@ -167,6 +72,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
               inputValue: formData.width,
               helperText: formData.widthMessage,
               xs: 6,
+              onChange: handleInputChange,
+              onBlur: onSpecificationInputBlur,
+              classes,
             })}
           </>
         );
@@ -196,27 +104,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
     onChange(item, 'autoComplete');
   };
 
-  // 当类别未选择时，不显示材质
-  // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
-  const materialIdOptions = formOptions.materialId.filter(item => {
-    // 圆钢
-    if (formData.materialType === 0) {
-      if (formData.length) {
-        return formData.length == item['长'];
-      }
-      return true;
-    } // 方钢
-    else if (formData.materialType === 1) {
-      if (formData.length && formData.width) {
-        return formData.length == item['长'] && formData.width == item['宽'];
-      } else if (formData.width) {
-        return formData.width == item['宽'];
-      } else if (formData.length) {
-        return formData.length == item['长'];
-      }
-      return true;
-    }
-  });
+  const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
 
   return (
     <div className={classes.container}>
@@ -256,6 +144,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         helperText: formData.weightMessage,
         xs: 6,
         unit: 'kg',
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -265,6 +156,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         inputValue: formData.height,
         helperText: formData.heightMessage,
         xs: 6,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -275,6 +169,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         helperText: formData.materialQuantityMessage,
         xs: 6,
         unit: '个',
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -287,6 +184,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         unit: '元/kg',
         readOnly: true,
         required: false,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -299,6 +199,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         unit: 'kg',
         readOnly: true,
         required: false,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -311,6 +214,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         unit: '元/个',
         readOnly: true,
         required: false,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       {getInputItem({
@@ -323,6 +229,9 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         unit: '元',
         readOnly: true,
         required: false,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
       })}
 
       <FormControl fullWidth className={classes.formControl}>
