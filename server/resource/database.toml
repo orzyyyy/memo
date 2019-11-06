@@ -3,6 +3,7 @@ host = 'localhost'
 user = 'root'
 password = ''
 database = 'toy-box'
+multipleStatements = true
 
 [sign]
 '出入库' = 0

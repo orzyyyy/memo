@@ -132,6 +132,14 @@ const StockAndShipmentDataController = () => {
     if (hasError) {
       return;
     }
+    const response = await fetch('/toy/good/in', {
+      body: JSON.stringify(params),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const result = await response.json();
+    if (result === 'success') {
+    }
     return params;
   };
 

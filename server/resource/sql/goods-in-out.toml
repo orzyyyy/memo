@@ -1,9 +1,18 @@
 [goods-in]
 sql = """
-  insert into `goods_in_and_out` (type, length, width, height, weight, patch, material_cost, freight, material_type)
-  values (@type, @length, @width, @height, @weight, @patch, @materialCost, @freight, @materialType)
+  insert into `goods_in_and_out` (type, height, weight, patch, material_cost, freight, description, extra_cost, material_id)
+  values (@type, @height, @weight, @@dateStamp, @materialCost, @freight, @description, @extraCost, @materialId);
+
+  update `material_detail` set 库存长度 = @newLength, 库存重量 = @newWeight, 单价 = @materialCost
+  where id = @materialId;
 """
 method = 'post'
+
+[get-detail-by-material-id]
+sql = """
+  select * from material_detail where id = @materialId
+"""
+method = 'get'
 
 [get-detail]
 sql = """
