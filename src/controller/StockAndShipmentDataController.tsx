@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Inbound, { FormControlType, MaterialSpecificationProps } from '../pages/Inbound';
+import Inbound from '../pages/Inbound';
 import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { FormControlType, MaterialSpecificationProps } from '../utils/boundUtil';
 
 const ERROR_MESSAGE = '该项不能为空';
 
@@ -266,6 +267,43 @@ const StockAndShipmentDataController = () => {
     }
   };
 
+  const commonFormData = {
+    materialType,
+    materialTypeError,
+    materialTypeMessage,
+    materialId,
+    materialIdError,
+    materialIdMessage,
+    materialCost,
+    materialCostError,
+    materialCostMessage,
+    type,
+    length,
+    lengthError,
+    lengthMessage,
+    width,
+    widthError,
+    widthMessage,
+    height,
+    heightError,
+    heightMessage,
+    weight,
+    weightError,
+    weightMessage,
+    predictWeight,
+    freight,
+    freightError,
+    freightMessage,
+    extraCost,
+    description,
+  };
+  const commonBoundProps = {
+    onSubmit: handleSubmit,
+    formOptions: { materialType: materialTypeOption, materialId: materialIdOption },
+    onChange: handleChange,
+    onSpecificationInputBlur: handleSpecificationInputBlur,
+  };
+
   return (
     <>
       <AppBar position="static">
@@ -278,83 +316,17 @@ const StockAndShipmentDataController = () => {
       </AppBar>
       {type ? (
         <Outbound
-          onSubmit={handleSubmit}
-          formData={{
-            materialType,
-            materialTypeError,
-            materialTypeMessage,
-            materialId,
-            materialIdError,
-            materialIdMessage,
-            materialCost,
-            materialCostError,
-            materialCostMessage,
-            type,
-            length,
-            lengthError,
-            lengthMessage,
-            width,
-            widthError,
-            widthMessage,
-            height,
-            heightError,
-            heightMessage,
-            weight,
-            weightError,
-            weightMessage,
-            predictWeight,
-            freight,
-            freightError,
-            freightMessage,
-            extraCost,
-            description,
+          formData={Object.assign({}, commonFormData, {
             materialQuantity,
             materialQuantityError,
             materialQuantityMessage,
             costFee,
             predictPrice,
-          }}
-          formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
-          onChange={handleChange}
-          onSpecificationInputBlur={handleSpecificationInputBlur}
+          })}
+          {...commonBoundProps}
         />
       ) : (
-        <Inbound
-          onSubmit={handleSubmit}
-          formData={{
-            materialType,
-            materialTypeError,
-            materialTypeMessage,
-            materialId,
-            materialIdError,
-            materialIdMessage,
-            materialCost,
-            materialCostError,
-            materialCostMessage,
-            type,
-            length,
-            lengthError,
-            lengthMessage,
-            width,
-            widthError,
-            widthMessage,
-            height,
-            heightError,
-            heightMessage,
-            weight,
-            weightError,
-            weightMessage,
-            predictWeight,
-            freight,
-            freightError,
-            freightMessage,
-            extraCost,
-            description,
-          }}
-          formOptions={{ materialType: materialTypeOption, materialId: materialIdOption }}
-          onChange={handleChange}
-          onSpecificationInputBlur={handleSpecificationInputBlur}
-        />
+        <Inbound formData={commonFormData} {...commonBoundProps} />
       )}
     </>
   );
