@@ -1,24 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  FormHelperText,
-  TextField,
-  Select,
-  MenuItem,
-  TextareaAutosize,
-} from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
-import { RenderInputParams } from '@material-ui/lab/Autocomplete';
+import { Button, FormControl, TextareaAutosize } from '@material-ui/core';
 import {
   getInputItem,
   CommonBoundFormDataProps,
   MaterialSpecificationProps,
   CommonBoundProps,
-  filterMaterialIdOptions,
   useStyles,
+  renderPickerForMaterialId,
 } from '../utils/boundUtil';
 
 export type OutboundProps = {
@@ -36,52 +25,6 @@ export type OutboundProps = {
 
 const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur }: OutboundProps) => {
   const classes = useStyles();
-
-  const renderSpecification = () => {
-    switch (formData.materialType) {
-      case 0:
-        return getInputItem({
-          key: 'length',
-          error: formData.lengthError,
-          inputLabel: '截面直径',
-          inputValue: formData.length,
-          helperText: formData.lengthMessage,
-          xs: 6,
-          onChange: handleInputChange,
-          onBlur: onSpecificationInputBlur,
-          classes,
-        });
-      case 1:
-        return (
-          <>
-            {getInputItem({
-              key: 'length',
-              error: formData.lengthError,
-              inputLabel: '截面长度',
-              inputValue: formData.length,
-              helperText: formData.lengthMessage,
-              xs: 6,
-              onChange: handleInputChange,
-              onBlur: onSpecificationInputBlur,
-              classes,
-            })}
-            {getInputItem({
-              key: 'width',
-              error: formData.widthError,
-              inputLabel: '截面宽度',
-              inputValue: formData.width,
-              helperText: formData.widthMessage,
-              xs: 6,
-              onChange: handleInputChange,
-              onBlur: onSpecificationInputBlur,
-              classes,
-            })}
-          </>
-        );
-      default:
-        return null;
-    }
-  };
 
   const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
     onChange({ text: '', value: e.target.value }, 'select');
@@ -104,37 +47,17 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
     onChange(item, 'autoComplete');
   };
 
-  const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
-
   return (
     <div className={classes.container}>
-      <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
-        <InputLabel>类别</InputLabel>
-        <Select value={formData.materialType} onChange={handleSelectChange}>
-          {formOptions.materialType.map(({ text, value }) => (
-            <MenuItem value={value} key={text + '-' + value}>
-              {text}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {renderSpecification()}
-
-      <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
-        <Autocomplete
-          options={materialIdOptions}
-          getOptionLabel={(option: any) => option['材质']}
-          value={formData.materialId}
-          onChange={handleAutocompleteChange}
-          id="material-id"
-          aria-controls="material-id"
-          renderInput={(params: RenderInputParams) => (
-            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialTypeError} />
-          )}
-        />
-        <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
-      </FormControl>
+      {renderPickerForMaterialId({
+        formOptions,
+        formData,
+        classes,
+        handleSelectChange,
+        handleAutocompleteChange,
+        handleInputChange,
+        onSpecificationInputBlur,
+      })}
 
       {getInputItem({
         key: 'weight',

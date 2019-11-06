@@ -1,7 +1,18 @@
 import React from 'react';
-import { FormControl, InputLabel, Input, FormHelperText, InputAdornment, Grid } from '@material-ui/core';
+import {
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+  InputAdornment,
+  Grid,
+  Select,
+  MenuItem,
+  TextField,
+} from '@material-ui/core';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { GridSize } from '@material-ui/core/Grid';
+import Autocomplete, { RenderInputParams } from '@material-ui/lab/Autocomplete';
 
 export type MenuItemOption = {
   text: string;
@@ -46,16 +57,17 @@ export type CommonBoundFormDataProps = {
   // 备注
   description: string;
 };
+export type FormOptionsProps = {
+  materialType: MenuItemOption[];
+  materialId: any[];
+};
 export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
 export type CommonBoundProps = {
   onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
-  formOptions: {
-    materialType: MenuItemOption[];
-    materialId: any[];
-  };
+  formOptions: FormOptionsProps;
 };
 export type MaterialSpecificationProps =
   | 'length' // 实际长度
@@ -158,5 +170,117 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
     }
   });
 
+const renderSpecification = ({
+  handleInputChange,
+  formData,
+  onSpecificationInputBlur,
+  classes,
+}: {
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: MaterialSpecificationProps,
+  ) => void;
+  formData: CommonBoundFormDataProps;
+  onSpecificationInputBlur: () => void;
+  classes: any;
+}) => {
+  switch (formData.materialType) {
+    case 0:
+      return getInputItem({
+        key: 'length',
+        error: formData.lengthError,
+        inputLabel: '截面直径',
+        inputValue: formData.length,
+        helperText: formData.lengthMessage,
+        xs: 6,
+        onChange: handleInputChange,
+        onBlur: onSpecificationInputBlur,
+        classes,
+      });
+    case 1:
+      return (
+        <>
+          {getInputItem({
+            key: 'length',
+            error: formData.lengthError,
+            inputLabel: '截面长度',
+            inputValue: formData.length,
+            helperText: formData.lengthMessage,
+            xs: 6,
+            onChange: handleInputChange,
+            onBlur: onSpecificationInputBlur,
+            classes,
+          })}
+          {getInputItem({
+            key: 'width',
+            error: formData.widthError,
+            inputLabel: '截面宽度',
+            inputValue: formData.width,
+            helperText: formData.widthMessage,
+            xs: 6,
+            onChange: handleInputChange,
+            onBlur: onSpecificationInputBlur,
+            classes,
+          })}
+        </>
+      );
+    default:
+      return null;
+  }
+};
+
 // 确认材质
-export const renderPickerForMaterialId = () => {};
+export const renderPickerForMaterialId = ({
+  formOptions,
+  formData,
+  classes,
+  handleSelectChange,
+  handleAutocompleteChange,
+  handleInputChange,
+  onSpecificationInputBlur,
+}: {
+  formOptions: FormOptionsProps;
+  formData: CommonBoundFormDataProps;
+  classes: any;
+  handleSelectChange: (e: React.ChangeEvent<{ name?: string | undefined; value: number }>) => void;
+  handleAutocompleteChange: (_: React.ChangeEvent<{ name?: string | undefined; value: unknown }>, item: any) => void;
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: MaterialSpecificationProps,
+  ) => void;
+  onSpecificationInputBlur: () => void;
+}) => {
+  const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
+
+  return (
+    <>
+      <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
+        <InputLabel>类别</InputLabel>
+        <Select value={formData.materialType} onChange={handleSelectChange}>
+          {formOptions.materialType.map(({ text, value }) => (
+            <MenuItem value={value} key={text + '-' + value}>
+              {text}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
+      {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
+
+      <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
+        <Autocomplete
+          options={materialIdOptions}
+          getOptionLabel={(option: any) => option['材质']}
+          value={formData.materialId}
+          onChange={handleAutocompleteChange}
+          id="material-id"
+          aria-controls="material-id"
+          renderInput={(params: RenderInputParams) => (
+            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialTypeError} />
+          )}
+        />
+        <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
+      </FormControl>
+    </>
+  );
+};
