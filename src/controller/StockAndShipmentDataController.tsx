@@ -87,7 +87,7 @@ const StockAndShipmentDataController = () => {
       setLengthMessage(ERROR_MESSAGE);
       hasError = true;
     }
-    if (!width) {
+    if (!width && materialType !== '0') {
       setWidthError(true);
       setWidthMessage(ERROR_MESSAGE);
       hasError = true;
@@ -127,8 +127,6 @@ const StockAndShipmentDataController = () => {
 
   const handleSubmit = async () => {
     const { hasError, params } = verifySubmitParams();
-    // eslint-disable-next-line no-console
-    console.log(params);
     if (hasError) {
       return;
     }
