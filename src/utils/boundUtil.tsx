@@ -149,16 +149,18 @@ export const getInputItem = ({
 
 // 当类别未选择时，不显示材质
 // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
-export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) =>
-  materialIds.filter(item => {
+export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) => {
+  const materialType = parseInt('' + formData.materialType);
+
+  return materialIds.filter(item => {
     // 圆钢
-    if (formData.materialType === 0) {
+    if (materialType === 0) {
       if (formData.length) {
         return formData.length == item['长'];
       }
       return true;
     } // 方钢
-    else if (formData.materialType === 1) {
+    else if (materialType === 1) {
       if (formData.length && formData.width) {
         return formData.length == item['长'] && formData.width == item['宽'];
       } else if (formData.width) {
@@ -169,6 +171,7 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
       return true;
     }
   });
+};
 
 const renderSpecification = ({
   handleInputChange,
@@ -184,7 +187,8 @@ const renderSpecification = ({
   onSpecificationInputBlur: () => void;
   classes: any;
 }) => {
-  switch (formData.materialType) {
+  const materialType = parseInt('' + formData.materialType);
+  switch (materialType) {
     case 0:
       return getInputItem({
         key: 'length',
