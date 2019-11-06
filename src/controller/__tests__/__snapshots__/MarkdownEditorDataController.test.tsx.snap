@@ -47,14 +47,36 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
                 }
               }
             >
-              <ResizeObserver
-                disabled={true}
-                onResize={[Function]}
+              <ClearableLabeledInput
+                element={
+                  <ResizableTextArea
+                    onChange={[Function]}
+                    onKeyDown={[Function]}
+                    prefixCls="ant-input"
+                    style={
+                      Object {
+                        "fontSize": 16,
+                        "height": "90vh",
+                      }
+                    }
+                  />
+                }
+                handleReset={[Function]}
+                inputType="text"
+                onChange={[Function]}
+                prefixCls="ant-input"
+                style={
+                  Object {
+                    "fontSize": 16,
+                    "height": "90vh",
+                  }
+                }
+                value=""
               >
-                <textarea
-                  className="ant-input"
+                <ResizableTextArea
                   onChange={[Function]}
                   onKeyDown={[Function]}
+                  prefixCls="ant-input"
                   style={
                     Object {
                       "fontSize": 16,
@@ -62,8 +84,26 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
                     }
                   }
                   value=""
-                />
-              </ResizeObserver>
+                >
+                  <ResizeObserver
+                    disabled={true}
+                    onResize={[Function]}
+                  >
+                    <textarea
+                      className="ant-input"
+                      onChange={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "fontSize": 16,
+                          "height": "90vh",
+                        }
+                      }
+                      value=""
+                    />
+                  </ResizeObserver>
+                </ResizableTextArea>
+              </ClearableLabeledInput>
             </TextArea>
           </div>
         </Col>

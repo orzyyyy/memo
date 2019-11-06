@@ -48,14 +48,37 @@ exports[`MarkdownEditor render correctly 1`] = `
             }
             value="<ul><li>test</li></ul>"
           >
-            <ResizeObserver
-              disabled={true}
-              onResize={[Function]}
+            <ClearableLabeledInput
+              element={
+                <ResizableTextArea
+                  onChange={[Function]}
+                  onKeyDown={[Function]}
+                  prefixCls="ant-input"
+                  style={
+                    Object {
+                      "fontSize": 16,
+                      "height": "90vh",
+                    }
+                  }
+                  value="<ul><li>test</li></ul>"
+                />
+              }
+              handleReset={[Function]}
+              inputType="text"
+              onChange={[Function]}
+              prefixCls="ant-input"
+              style={
+                Object {
+                  "fontSize": 16,
+                  "height": "90vh",
+                }
+              }
+              value="<ul><li>test</li></ul>"
             >
-              <textarea
-                className="ant-input"
+              <ResizableTextArea
                 onChange={[Function]}
                 onKeyDown={[Function]}
+                prefixCls="ant-input"
                 style={
                   Object {
                     "fontSize": 16,
@@ -63,8 +86,26 @@ exports[`MarkdownEditor render correctly 1`] = `
                   }
                 }
                 value="<ul><li>test</li></ul>"
-              />
-            </ResizeObserver>
+              >
+                <ResizeObserver
+                  disabled={true}
+                  onResize={[Function]}
+                >
+                  <textarea
+                    className="ant-input"
+                    onChange={[Function]}
+                    onKeyDown={[Function]}
+                    style={
+                      Object {
+                        "fontSize": 16,
+                        "height": "90vh",
+                      }
+                    }
+                    value="<ul><li>test</li></ul>"
+                  />
+                </ResizeObserver>
+              </ResizableTextArea>
+            </ClearableLabeledInput>
           </TextArea>
         </div>
       </Col>

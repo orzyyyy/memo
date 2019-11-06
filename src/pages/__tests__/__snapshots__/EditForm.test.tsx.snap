@@ -850,6 +850,7 @@ exports[`EditForm empty dataItem 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_title"
@@ -881,6 +882,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -930,6 +932,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -939,14 +942,33 @@ exports[`EditForm empty dataItem 1`] = `
                                                       onChange={[Function]}
                                                       type="text"
                                                     >
-                                                      <input
-                                                        className="ant-input"
+                                                      <ClearableLabeledInput
+                                                        element={
+                                                          <input
+                                                            className="ant-input"
+                                                            id="edit-form_title"
+                                                            onChange={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            type="text"
+                                                          />
+                                                        }
+                                                        handleReset={[Function]}
                                                         id="edit-form_title"
+                                                        inputType="input"
                                                         onChange={[Function]}
-                                                        onKeyDown={[Function]}
+                                                        prefixCls="ant-input"
                                                         type="text"
                                                         value=""
-                                                      />
+                                                      >
+                                                        <input
+                                                          className="ant-input"
+                                                          id="edit-form_title"
+                                                          onChange={[Function]}
+                                                          onKeyDown={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        />
+                                                      </ClearableLabeledInput>
                                                     </Input>
                                                   </div>
                                                   <ForwardRef
@@ -1012,6 +1034,7 @@ exports[`EditForm empty dataItem 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_category"
@@ -1043,6 +1066,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -1092,6 +1116,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -1686,6 +1711,7 @@ exports[`EditForm empty dataItem 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_type"
@@ -1717,6 +1743,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -1766,6 +1793,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -2332,6 +2360,7 @@ exports[`EditForm empty dataItem 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_subType"
@@ -2363,6 +2392,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -2412,6 +2442,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -2915,6 +2946,7 @@ exports[`EditForm empty dataItem 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               prefixCls="ant-form"
@@ -2944,6 +2976,7 @@ exports[`EditForm empty dataItem 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -2953,6 +2986,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                     >
                                                       <div
                                                         className="ant-row"
+                                                        style={Object {}}
                                                       >
                                                         <Col
                                                           push={3}
@@ -2960,6 +2994,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                         >
                                                           <div
                                                             className="ant-col ant-col-6 ant-col-push-3"
+                                                            style={Object {}}
                                                           >
                                                             <Button
                                                               block={false}
@@ -2990,6 +3025,7 @@ exports[`EditForm empty dataItem 1`] = `
                                                         >
                                                           <div
                                                             className="ant-col ant-col-12 ant-col-push-12"
+                                                            style={Object {}}
                                                           >
                                                             <Row
                                                               gutter={18}
@@ -3988,6 +4024,7 @@ exports[`EditForm render correctly 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_title"
@@ -4019,6 +4056,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -4068,6 +4106,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -4077,14 +4116,33 @@ exports[`EditForm render correctly 1`] = `
                                                       onChange={[Function]}
                                                       type="text"
                                                     >
-                                                      <input
-                                                        className="ant-input"
+                                                      <ClearableLabeledInput
+                                                        element={
+                                                          <input
+                                                            className="ant-input"
+                                                            id="edit-form_title"
+                                                            onChange={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            type="text"
+                                                          />
+                                                        }
+                                                        handleReset={[Function]}
                                                         id="edit-form_title"
+                                                        inputType="input"
                                                         onChange={[Function]}
-                                                        onKeyDown={[Function]}
+                                                        prefixCls="ant-input"
                                                         type="text"
                                                         value=""
-                                                      />
+                                                      >
+                                                        <input
+                                                          className="ant-input"
+                                                          id="edit-form_title"
+                                                          onChange={[Function]}
+                                                          onKeyDown={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        />
+                                                      </ClearableLabeledInput>
                                                     </Input>
                                                   </div>
                                                   <ForwardRef
@@ -4150,6 +4208,7 @@ exports[`EditForm render correctly 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_category"
@@ -4181,6 +4240,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -4230,6 +4290,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -4824,6 +4885,7 @@ exports[`EditForm render correctly 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_type"
@@ -4855,6 +4917,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -4904,6 +4967,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -5470,6 +5534,7 @@ exports[`EditForm render correctly 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               htmlFor="edit-form_subType"
@@ -5501,6 +5566,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                                                  style={Object {}}
                                                 >
                                                   <label
                                                     className="ant-form-item-required"
@@ -5550,6 +5616,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -6053,6 +6120,7 @@ exports[`EditForm render correctly 1`] = `
                                         >
                                           <div
                                             className="ant-row-flex ant-form-item"
+                                            style={Object {}}
                                           >
                                             <FormItemLabel
                                               prefixCls="ant-form"
@@ -6082,6 +6150,7 @@ exports[`EditForm render correctly 1`] = `
                                               >
                                                 <div
                                                   className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                                                  style={Object {}}
                                                 >
                                                   <div
                                                     className="ant-form-item-control-input"
@@ -6091,6 +6160,7 @@ exports[`EditForm render correctly 1`] = `
                                                     >
                                                       <div
                                                         className="ant-row"
+                                                        style={Object {}}
                                                       >
                                                         <Col
                                                           push={3}
@@ -6098,6 +6168,7 @@ exports[`EditForm render correctly 1`] = `
                                                         >
                                                           <div
                                                             className="ant-col ant-col-6 ant-col-push-3"
+                                                            style={Object {}}
                                                           >
                                                             <Button
                                                               block={false}
@@ -6128,6 +6199,7 @@ exports[`EditForm render correctly 1`] = `
                                                         >
                                                           <div
                                                             className="ant-col ant-col-12 ant-col-push-12"
+                                                            style={Object {}}
                                                           >
                                                             <Row
                                                               gutter={18}
