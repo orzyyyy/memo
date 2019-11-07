@@ -280,6 +280,21 @@ const StockAndShipmentDataController = () => {
     setSubmitFailed(false);
     setSubmitSuccess(false);
     setLoading(false);
+    // clean up
+    setMaterialType('');
+    setMaterialId('');
+    setMaterialCost('');
+    setLength('');
+    setWidth('');
+    setHeight('');
+    setWeight('');
+    setPredictWeight('');
+    setFreight('');
+    setExtraCost('');
+    setDescription('');
+    setMaterialQuantity('');
+    setCostFee(0);
+    setPredictPrice(0);
   };
 
   const commonFormData = {

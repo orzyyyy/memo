@@ -45,6 +45,7 @@ exports[`Inbound render correctly 1`] = `
       ],
     }
   }
+  loading={false}
   onChange={[MockFunction]}
   onSpecificationInputBlur={[MockFunction]}
   onSubmit={[MockFunction]}
@@ -5065,6 +5066,7 @@ exports[`Inbound render correctly 1`] = `
         >
           <WithStyles(ForwardRef(Button))
             color="primary"
+            disabled={false}
             onClick={[MockFunction]}
             variant="contained"
           >
@@ -5102,6 +5104,7 @@ exports[`Inbound render correctly 1`] = `
                 }
               }
               color="primary"
+              disabled={false}
               onClick={[MockFunction]}
               variant="contained"
             >

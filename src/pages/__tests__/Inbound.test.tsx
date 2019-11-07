@@ -58,6 +58,7 @@ describe('Inbound', () => {
         formData={formData}
         formOptions={formOptions}
         onSpecificationInputBlur={onSpecificationInputBlur}
+        loading={false}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -74,6 +75,7 @@ describe('Inbound', () => {
         formData={formData}
         formOptions={formOptions}
         onSpecificationInputBlur={onSpecificationInputBlur}
+        loading={false}
       />,
     );
     expect(wrapper.find('ForwardRef(Select)').props().value).toBe(0);
@@ -103,6 +105,7 @@ describe('Inbound', () => {
         formData={formData}
         formOptions={formOptions}
         onSpecificationInputBlur={onSpecificationInputBlur}
+        loading={false}
       />,
     );
     expect(
