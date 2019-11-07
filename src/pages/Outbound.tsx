@@ -24,15 +24,7 @@ export type OutboundProps = {
   } & CommonBoundFormDataProps;
 } & CommonBoundProps;
 
-const Outbound = ({
-  onSubmit,
-  formData,
-  formOptions,
-  onChange,
-  onSpecificationInputBlur,
-  loading,
-  success,
-}: OutboundProps) => {
+const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur, loading }: OutboundProps) => {
   const classes = useStyles();
 
   const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
@@ -175,7 +167,7 @@ const Outbound = ({
         />
       </FormControl>
 
-      {getSubmitButton({ classes, onSubmit, loading, success })}
+      {getSubmitButton({ classes, onSubmit, loading })}
     </div>
   );
 };

@@ -15,15 +15,7 @@ export type InboundProps = {
   formData: CommonBoundFormDataProps;
 } & CommonBoundProps;
 
-const Inbound = ({
-  onSubmit,
-  formData,
-  onChange,
-  onSpecificationInputBlur,
-  formOptions,
-  loading,
-  success,
-}: InboundProps) => {
+const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formOptions, loading }: InboundProps) => {
   const classes = useStyles();
 
   const handleAutocompleteChange = (
@@ -147,7 +139,7 @@ const Inbound = ({
         />
       </FormControl>
 
-      {getSubmitButton({ classes, onSubmit, loading, success })}
+      {getSubmitButton({ classes, onSubmit, loading })}
     </div>
   );
 };

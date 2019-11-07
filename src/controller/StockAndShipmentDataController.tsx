@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Inbound from '../pages/Inbound';
 import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import { FormControlType, MaterialSpecificationProps, renderMessage } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
-import { FormControlType, MaterialSpecificationProps } from '../utils/boundUtil';
 
 const ERROR_MESSAGE = '该项不能为空';
 
 const StockAndShipmentDataController = () => {
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitFailed, setSubmitFailed] = useState(false);
   // 类别菜单项
   const [materialTypeOption, setMaterialTypeOption] = useState([]);
   // 材质菜单项
@@ -139,11 +140,7 @@ const StockAndShipmentDataController = () => {
       headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.text();
-    setLoading(false);
-    setSuccess(result === 'success');
-    setTimeout(() => {
-      setSuccess(false);
-    }, 2000);
+    result === 'success' ? setSubmitSuccess(true) : setSubmitFailed(true);
     return params;
   };
 
@@ -279,6 +276,12 @@ const StockAndShipmentDataController = () => {
     }
   };
 
+  const hanldeCloseMessage = () => {
+    setSubmitFailed(false);
+    setSubmitSuccess(false);
+    setLoading(false);
+  };
+
   const commonFormData = {
     materialType,
     materialTypeError,
@@ -311,7 +314,6 @@ const StockAndShipmentDataController = () => {
   };
   const commonBoundProps = {
     loading,
-    success,
     onSubmit: handleSubmit,
     formOptions: { materialType: materialTypeOption, materialId: materialIdOption },
     onChange: handleChange,
@@ -328,6 +330,10 @@ const StockAndShipmentDataController = () => {
           <Typography variant="h6">{type ? '出库' : '入库'}</Typography>
         </Toolbar>
       </AppBar>
+
+      {renderMessage({ type: 'success', message: '保存成功', open: submitSuccess, onClose: hanldeCloseMessage })}
+      {renderMessage({ type: 'failed', message: '保存失败', open: submitFailed, onClose: hanldeCloseMessage })}
+
       {type ? (
         <Outbound
           formData={Object.assign({}, commonFormData, {

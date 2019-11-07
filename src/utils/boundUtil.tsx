@@ -11,8 +11,13 @@ import {
   TextField,
   CircularProgress,
   Button,
+  Snackbar,
+  SnackbarContent,
+  IconButton,
 } from '@material-ui/core';
-import clsx from 'clsx';
+import CloseIcon from '@material-ui/icons/Close';
+import ErrorIcon from '@material-ui/icons/Error';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { GridSize } from '@material-ui/core/Grid';
 import Autocomplete, { RenderInputParams } from '@material-ui/lab/Autocomplete';
@@ -73,7 +78,6 @@ export type CommonBoundProps = {
   onSpecificationInputBlur: () => void;
   formOptions: FormOptionsProps;
   loading: boolean;
-  success: boolean;
 };
 export type MaterialSpecificationProps =
   | 'length' // 实际长度
@@ -108,18 +112,34 @@ export const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     buttonProgress: {
-      color: green[500],
       position: 'absolute',
       top: '50%',
       left: '50%',
       marginTop: -12,
-      marginLeft: -12,
+      marginLeft: -50,
     },
     buttonSuccess: {
       backgroundColor: green[500],
       '&:hover': {
         backgroundColor: green[700],
       },
+    },
+    success: {
+      backgroundColor: green[600],
+    },
+    failed: {
+      backgroundColor: theme.palette.error.dark,
+    },
+    icon: {
+      fontSize: 20,
+    },
+    iconVariant: {
+      opacity: 0.9,
+      marginRight: theme.spacing(1),
+    },
+    message: {
+      display: 'flex',
+      alignItems: 'center',
     },
   }),
 );
@@ -315,22 +335,59 @@ export const getSubmitButton = ({
   classes,
   onSubmit,
   loading,
-  success,
 }: {
   classes: any;
   onSubmit: () => void;
   loading: boolean;
-  success: boolean;
 }) => {
-  const buttonClassname = clsx({
-    [classes.buttonSuccess]: success,
-  });
   return (
     <FormControl fullWidth className={classes.formControl}>
-      <Button variant="contained" color="primary" className={buttonClassname} disabled={loading} onClick={onSubmit}>
+      <Button variant="contained" color="primary" disabled={loading} onClick={onSubmit}>
         保存
       </Button>
       {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
     </FormControl>
+  );
+};
+
+export const renderMessage = ({
+  type,
+  message,
+  open,
+  onClose,
+}: {
+  type: 'success' | 'failed';
+  message: string;
+  open: boolean;
+  onClose: () => void;
+}) => {
+  const classes = useStyles();
+  return (
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      open={open}
+    >
+      <SnackbarContent
+        className={classes[type]}
+        message={
+          <span className={classes.message}>
+            {type === 'success' ? (
+              <CheckCircleIcon className={classes.iconVariant} />
+            ) : (
+              <ErrorIcon className={classes.iconVariant} />
+            )}
+            <span>{message}</span>
+          </span>
+        }
+        action={[
+          <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
+            <CloseIcon className={classes.icon} />
+          </IconButton>,
+        ]}
+      />
+    </Snackbar>
   );
 };

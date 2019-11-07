@@ -5064,13 +5064,11 @@ exports[`Inbound render correctly 1`] = `
           className="MuiFormControl-root makeStyles-formControl-4 MuiFormControl-fullWidth"
         >
           <WithStyles(ForwardRef(Button))
-            className=""
             color="primary"
             onClick={[MockFunction]}
             variant="contained"
           >
             <ForwardRef(Button)
-              className=""
               classes={
                 Object {
                   "colorInherit": "MuiButton-colorInherit",
