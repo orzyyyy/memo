@@ -62,7 +62,7 @@ export default class ToyController {
     const params = ctx.request.body;
     const materialDetail = await this.service.getDataBySqlKey(
       'get-material-type-by-detail',
-      Object.assign({ 类别: -1, 材质: -1, 长: -1, 宽: -1, 高: -1 }, params),
+      Object.assign({ 类别: -1, 材质: -1, 长: -1, 宽: -1, 高: -1, 卖出方式: 0, 圆钢种类: 0 }, params),
     );
     if (materialDetail.result.length) {
       return '当前规格已存在';
