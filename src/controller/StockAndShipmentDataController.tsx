@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Inbound from '../pages/Inbound';
 import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
-import { FormControlType, MaterialSpecificationProps, renderMessage } from '../utils/boundUtil';
+import {
+  FormControlType,
+  renderMessage,
+  MaterialInputSpecificationProps,
+  MaterialSelectSpecificationProps,
+} from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
@@ -15,6 +20,8 @@ const StockAndShipmentDataController = () => {
   const [materialTypeOption, setMaterialTypeOption] = useState([]);
   // 材质菜单项
   const [materialIdOption, setMaterialIdOption] = useState([]);
+  // 圆钢类型菜单项
+  const [roundType, setRoundType] = useState([]);
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
@@ -60,6 +67,10 @@ const StockAndShipmentDataController = () => {
   const [costFee, setCostFee] = useState(0);
   // 预估总价
   const [predictPrice, setPredictPrice] = useState(0);
+  // 圆钢种类
+  const [round, setRound] = useState(-1);
+  const [roundError, setRoundError] = useState(false);
+  const [roundMessage, setRoundMessage] = useState('');
 
   useEffect(() => {
     const fetchMaterialType = async () => {
@@ -67,7 +78,14 @@ const StockAndShipmentDataController = () => {
       const result = await response.json();
       setMaterialTypeOption(result);
     };
+    const fetchRoundType = async () => {
+      const response = await fetch('/toy/get/get-material-type?sign=10');
+      const result = await response.json();
+      setRoundType(result);
+    };
+
     fetchMaterialType();
+    fetchRoundType();
   }, []);
 
   const verifySubmitParams = () => {
@@ -79,7 +97,7 @@ const StockAndShipmentDataController = () => {
       hasError = true;
     }
     // 材料单价
-    if (materialCost === '') {
+    if (!materialCost) {
       setMaterialCostError(true);
       setMaterialCostMessage(ERROR_MESSAGE);
       hasError = true;
@@ -105,10 +123,14 @@ const StockAndShipmentDataController = () => {
       setWeightMessage(ERROR_MESSAGE);
       hasError = true;
     }
-    // 运费
     if (!freight) {
       setFreightError(true);
       setFreightMessage(ERROR_MESSAGE);
+      hasError = true;
+    }
+    if (round === -1) {
+      setRoundError(true);
+      setRoundMessage(ERROR_MESSAGE);
       hasError = true;
     }
     const params = {
@@ -124,6 +146,7 @@ const StockAndShipmentDataController = () => {
       extraCost,
       materialId,
       materialQuantity,
+      round,
     };
     return { hasError, params };
   };
@@ -134,6 +157,7 @@ const StockAndShipmentDataController = () => {
     if (hasError) {
       return;
     }
+
     const response = await fetch('/toy/good/in', {
       body: JSON.stringify(params),
       method: 'POST',
@@ -196,13 +220,13 @@ const StockAndShipmentDataController = () => {
   const handleChange = (
     item: any = { value: '', text: '' },
     controlType: FormControlType,
-    key: MaterialSpecificationProps,
+    key: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
   ) => {
     const inputValidation = {
       materialCost: () => {
         setMaterialCost(item.value);
-        setMaterialCostError(item.value === '');
-        setMaterialCostMessage(item.value === '' ? ERROR_MESSAGE : '');
+        setMaterialCostError(!item.value);
+        setMaterialCostMessage(!item.value ? ERROR_MESSAGE : '');
       },
       freight: () => {
         setFreight(item.value);
@@ -243,18 +267,31 @@ const StockAndShipmentDataController = () => {
       },
       costFee: () => {},
       predictPrice: () => {},
+      round: () => {
+        setRound(item.value);
+        setRoundError(item.value === -1);
+        setRoundMessage(item.value === -1 ? ERROR_MESSAGE : '');
+      },
+    };
+    const selectValidation = {
+      materialType: () => {
+        setMaterialType(item.value);
+      },
+      roundType: () => {
+        setRound(item.value);
+      },
     };
 
     switch (controlType) {
       case 'input':
-        inputValidation[key]();
+        inputValidation[key as MaterialInputSpecificationProps]();
         break;
 
       case 'select':
         if (item.value) {
           fetchMaterialIdOption(item.value);
         }
-        setMaterialType(item.value);
+        selectValidation[key as MaterialSelectSpecificationProps]();
         break;
 
       case 'autoComplete':
@@ -326,11 +363,14 @@ const StockAndShipmentDataController = () => {
     freightMessage,
     extraCost,
     description,
+    round,
+    roundError,
+    roundMessage,
   };
   const commonBoundProps = {
     loading,
     onSubmit: handleSubmit,
-    formOptions: { materialType: materialTypeOption, materialId: materialIdOption },
+    formOptions: { materialType: materialTypeOption, materialId: materialIdOption, roundType },
     onChange: handleChange,
     onSpecificationInputBlur: handleSpecificationInputBlur,
   };

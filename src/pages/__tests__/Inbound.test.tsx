@@ -32,11 +32,15 @@ describe('Inbound', () => {
     freightMessage: 'error',
     extraCost: 107,
     description: '',
+    round: 0,
+    roundError: false,
+    roundMessage: 'error',
   };
 
   const formOptions = {
     materialType: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
     materialId: [],
+    roundType: [],
   };
 
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -78,9 +82,15 @@ describe('Inbound', () => {
         loading={false}
       />,
     );
-    expect(wrapper.find('ForwardRef(Select)').props().value).toBe(0);
+    expect(
+      wrapper
+        .find('ForwardRef(Select)')
+        .first()
+        .props().value,
+    ).toBe(0);
     wrapper
       .find('ForwardRef(Select)')
+      .first()
       .props()
       .onChange({ target: { value: 'test1' } });
     expect(onChange).toHaveBeenCalledWith(
@@ -89,9 +99,15 @@ describe('Inbound', () => {
         value: 'test1',
       },
       'select',
+      'materialType',
     );
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
-    expect(wrapper.find('ForwardRef(Select)').props().value).toBe(0);
+    expect(
+      wrapper
+        .find('ForwardRef(Select)')
+        .first()
+        .props().value,
+    ).toBe(0);
   });
 
   it('renderSpecification', () => {
@@ -119,8 +135,14 @@ describe('Inbound', () => {
         .find('label')
         .at(2)
         .text(),
+    ).toBe('圆钢类别 *');
+    expect(
+      wrapper
+        .find('label')
+        .at(3)
+        .text(),
     ).toBe('材质 *');
-    expect(wrapper.find('label')).toHaveLength(9);
+    expect(wrapper.find('label')).toHaveLength(10);
 
     // wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
     // expect(
@@ -144,7 +166,7 @@ describe('Inbound', () => {
     // expect(wrapper.find('label')).toHaveLength(7);
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 2 }) });
-    expect(wrapper.find('label')).toHaveLength(9);
+    expect(wrapper.find('label')).toHaveLength(10);
   });
 
   // it('inputs', () => {

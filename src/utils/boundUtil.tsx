@@ -65,21 +65,30 @@ export type CommonBoundFormDataProps = {
   extraCost: number;
   // 备注
   description: string;
+  // 圆钢种类
+  round: number;
+  roundError: boolean;
+  roundMessage: string;
 };
 export type FormOptionsProps = {
   materialType: MenuItemOption[];
   materialId: any[];
+  roundType: MenuItemOption[];
 };
 export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
 export type CommonBoundProps = {
-  onChange: (item: MenuItemOption, type: FormControlType, key?: MaterialSpecificationProps) => void;
+  onChange: (
+    item: MenuItemOption,
+    type: FormControlType,
+    key?: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
+  ) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
   formOptions: FormOptionsProps;
   loading: boolean;
 };
-export type MaterialSpecificationProps =
+export type MaterialInputSpecificationProps =
   | 'length' // 实际长度
   | 'width'
   | 'height'
@@ -91,7 +100,9 @@ export type MaterialSpecificationProps =
   | 'materialQuantity' // 数量
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价
-  | 'description';
+  | 'description'
+  | 'round';
+export type MaterialSelectSpecificationProps = 'materialType' | 'roundType';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -159,7 +170,7 @@ export const getInputItem = ({
   classes,
   shrink = false,
 }: {
-  key: MaterialSpecificationProps;
+  key: MaterialInputSpecificationProps;
   error: boolean;
   inputLabel: string;
   inputValue: string | number;
@@ -168,7 +179,10 @@ export const getInputItem = ({
   unit?: string;
   readOnly?: boolean;
   required?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: MaterialSpecificationProps) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: MaterialInputSpecificationProps,
+  ) => void;
   onBlur: () => void;
   classes: any;
   shrink?: boolean;
@@ -223,7 +237,7 @@ const renderSpecification = ({
 }: {
   handleInputChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialSpecificationProps,
+    key: MaterialInputSpecificationProps,
   ) => void;
   formData: CommonBoundFormDataProps;
   onSpecificationInputBlur: () => void;
@@ -232,17 +246,21 @@ const renderSpecification = ({
   const materialType = parseInt('' + formData.materialType);
   switch (materialType) {
     case 0:
-      return getInputItem({
-        key: 'length',
-        error: formData.lengthError,
-        inputLabel: '截面直径',
-        inputValue: formData.length,
-        helperText: formData.lengthMessage,
-        xs: 6,
-        onChange: handleInputChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-      });
+      return (
+        <>
+          {getInputItem({
+            key: 'length',
+            error: formData.lengthError,
+            inputLabel: '截面直径',
+            inputValue: formData.length,
+            helperText: formData.lengthMessage,
+            xs: 6,
+            onChange: handleInputChange,
+            onBlur: onSpecificationInputBlur,
+            classes,
+          })}
+        </>
+      );
     case 1:
       return (
         <>
@@ -288,21 +306,22 @@ export const renderPickerForMaterialId = ({
   formOptions: FormOptionsProps;
   formData: CommonBoundFormDataProps;
   classes: any;
-  handleSelectChange: (e: React.ChangeEvent<{ name?: string | undefined; value: number }>) => void;
+  handleSelectChange: (e: React.ChangeEvent<{ value: unknown }>, key: MaterialSelectSpecificationProps) => void;
   handleAutocompleteChange: (_: React.ChangeEvent<{ name?: string | undefined; value: unknown }>, item: any) => void;
   handleInputChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialSpecificationProps,
+    key: MaterialInputSpecificationProps,
   ) => void;
   onSpecificationInputBlur: () => void;
 }) => {
   const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
+  const materialType = parseInt('' + formData.materialType);
 
   return (
     <>
       <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
         <InputLabel>类别</InputLabel>
-        <Select value={formData.materialType} onChange={handleSelectChange}>
+        <Select value={formData.materialType} onChange={e => handleSelectChange(e, 'materialType')}>
           {formOptions.materialType.map(({ text, value }) => (
             <MenuItem value={value} key={text + '-' + value}>
               {text}
@@ -312,6 +331,21 @@ export const renderPickerForMaterialId = ({
       </FormControl>
 
       {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
+
+      {materialType === 0 && (
+        <Grid item xs={6} key="round">
+          <FormControl required fullWidth className={classes.formControl} error={formData.roundError}>
+            <InputLabel shrink={formData.round !== -1}>圆钢类别</InputLabel>
+            <Select value={formData.round} onChange={e => handleSelectChange(e, 'roundType')}>
+              {formOptions.roundType.map(({ text, value }) => (
+                <MenuItem value={value} key={text + '-' + value}>
+                  {text}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+      )}
 
       <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
         <Autocomplete

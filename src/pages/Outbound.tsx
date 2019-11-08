@@ -4,11 +4,12 @@ import { FormControl, TextareaAutosize } from '@material-ui/core';
 import {
   getInputItem,
   CommonBoundFormDataProps,
-  MaterialSpecificationProps,
+  MaterialInputSpecificationProps,
   CommonBoundProps,
   useStyles,
   renderPickerForMaterialId,
   getSubmitButton,
+  MaterialSelectSpecificationProps,
 } from '../utils/boundUtil';
 
 export type OutboundProps = {
@@ -27,13 +28,13 @@ export type OutboundProps = {
 const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur, loading }: OutboundProps) => {
   const classes = useStyles();
 
-  const handleSelectChange = (e: React.ChangeEvent<{ name?: string | undefined; value: string | number }>) => {
-    onChange({ text: '', value: e.target.value }, 'select');
+  const handleSelectChange = (e: React.ChangeEvent<{ value: number }>, key: MaterialSelectSpecificationProps) => {
+    onChange({ text: '', value: e.target.value }, 'select', key);
   };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialSpecificationProps,
+    key: MaterialInputSpecificationProps,
   ) => {
     onChange({ text: e.target.value, value: e.target.value }, 'input', key);
   };
