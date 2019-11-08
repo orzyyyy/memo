@@ -54,4 +54,19 @@ export default class ToyController {
     params.newWeight = originWeight + params.weight * updateStatus;
     await this.service.getDataBySqlKey('goods-in', params);
   }
+
+  // 更新材料类型
+  // 入库前先检查目标数据是否已经存在
+  @Request({ url: '/good/type/in', method: 'post' })
+  async addMaterialType(ctx: Context) {
+    const params = ctx.request.body;
+    const materialDetail = await this.service.getDataBySqlKey(
+      'get-material-type-by-detail',
+      Object.assign({ 类别: -1, 材质: -1, 长: -1, 宽: -1, 高: -1 }, params),
+    );
+    if (materialDetail.result.length) {
+      return '当前规格已存在';
+    }
+    await this.service.getDataBySqlKey('add-material-type', params);
+  }
 }

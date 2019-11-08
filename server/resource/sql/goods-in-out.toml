@@ -8,6 +8,20 @@ sql = """
 """
 method = 'post'
 
+[add-material-type]
+sql = """
+  insert into `material_detail` (类别, 材质, 单价, 锯费, 长, 宽, 高)
+  values (@类别, @材质, @单价, @锯费, @长, @宽, @高)
+"""
+method = 'post'
+
+[get-material-type-by-detail]
+sql = """
+  select * from `material_detail`
+  where 长 = @长 and 宽 = @宽 and 高 = @高 and 类别 = @类别 and 材质 = @材质
+"""
+method = 'get'
+
 [get-detail-by-material-id]
 sql = """
   select * from material_detail where id = @materialId
