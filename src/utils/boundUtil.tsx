@@ -69,11 +69,16 @@ export type CommonBoundFormDataProps = {
   round: number;
   roundError: boolean;
   roundMessage: string;
+  // 卖出类型。零售 / 批量
+  sellType: number;
+  sellTypeError: boolean;
+  sellTypeMessage: string;
 };
 export type FormOptionsProps = {
   materialType: MenuItemOption[];
   materialId: any[];
   roundType: MenuItemOption[];
+  sellType: MenuItemOption[];
 };
 export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
 export type CommonBoundProps = {
@@ -102,7 +107,7 @@ export type MaterialInputSpecificationProps =
   | 'predictPrice' // 预估总价
   | 'description'
   | 'round';
-export type MaterialSelectSpecificationProps = 'materialType' | 'roundType';
+export type MaterialSelectSpecificationProps = 'materialType' | 'roundType' | 'sellType';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -319,16 +324,31 @@ export const renderPickerForMaterialId = ({
 
   return (
     <>
-      <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
-        <InputLabel>类别</InputLabel>
-        <Select value={formData.materialType} onChange={e => handleSelectChange(e, 'materialType')}>
-          {formOptions.materialType.map(({ text, value }) => (
-            <MenuItem value={value} key={text + '-' + value}>
-              {text}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <Grid item xs={6}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
+          <InputLabel>类别</InputLabel>
+          <Select value={formData.materialType} onChange={e => handleSelectChange(e, 'materialType')}>
+            {formOptions.materialType.map(({ text, value }) => (
+              <MenuItem value={value} key={text + '-' + value}>
+                {text}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={6}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.sellTypeError}>
+          <InputLabel>卖出类型</InputLabel>
+          <Select value={formData.sellType} onChange={e => handleSelectChange(e, 'sellType')}>
+            {formOptions.sellType.map(({ text, value }) => (
+              <MenuItem value={value} key={text + '-' + value}>
+                {text}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
 
       {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
 

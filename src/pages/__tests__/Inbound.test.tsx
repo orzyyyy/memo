@@ -35,12 +35,16 @@ describe('Inbound', () => {
     round: 0,
     roundError: false,
     roundMessage: 'error',
+    sellType: 0,
+    sellTypeError: false,
+    sellTypeMessage: 'error',
   };
 
   const formOptions = {
     materialType: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
     materialId: [],
     roundType: [],
+    sellType: [],
   };
 
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -127,22 +131,34 @@ describe('Inbound', () => {
     expect(
       wrapper
         .find('label')
+        .at(0)
+        .text(),
+    ).toBe('类别 *');
+    expect(
+      wrapper
+        .find('label')
         .at(1)
         .text(),
-    ).toBe('截面直径 *');
+    ).toBe('卖出类型 *');
     expect(
       wrapper
         .find('label')
         .at(2)
         .text(),
-    ).toBe('圆钢类别 *');
+    ).toBe('截面直径 *');
     expect(
       wrapper
         .find('label')
         .at(3)
         .text(),
+    ).toBe('圆钢类别 *');
+    expect(
+      wrapper
+        .find('label')
+        .at(4)
+        .text(),
     ).toBe('材质 *');
-    expect(wrapper.find('label')).toHaveLength(10);
+    expect(wrapper.find('label')).toHaveLength(11);
 
     // wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
     // expect(
@@ -166,7 +182,7 @@ describe('Inbound', () => {
     // expect(wrapper.find('label')).toHaveLength(7);
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 2 }) });
-    expect(wrapper.find('label')).toHaveLength(10);
+    expect(wrapper.find('label')).toHaveLength(11);
   });
 
   // it('inputs', () => {

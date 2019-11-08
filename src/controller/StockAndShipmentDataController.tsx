@@ -21,7 +21,9 @@ const StockAndShipmentDataController = () => {
   // 材质菜单项
   const [materialIdOption, setMaterialIdOption] = useState([]);
   // 圆钢类型菜单项
-  const [roundType, setRoundType] = useState([]);
+  const [roundTypeOption, setRoundTypeOption] = useState([]);
+  // 卖出类型菜单项
+  const [sellTypeOption, setSellTypeOption] = useState([]);
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
@@ -71,6 +73,10 @@ const StockAndShipmentDataController = () => {
   const [round, setRound] = useState(-1);
   const [roundError, setRoundError] = useState(false);
   const [roundMessage, setRoundMessage] = useState('');
+  // 卖出类型
+  const [sellType, setSellType] = useState(-1);
+  const [sellTypeError, setSellTypeError] = useState(false);
+  const [sellTypeMessage, setSellTypeMessage] = useState('');
 
   useEffect(() => {
     const fetchMaterialType = async () => {
@@ -81,9 +87,15 @@ const StockAndShipmentDataController = () => {
     const fetchRoundType = async () => {
       const response = await fetch('/toy/get/get-material-type?sign=10');
       const result = await response.json();
-      setRoundType(result);
+      setRoundTypeOption(result);
+    };
+    const fetchSellType = async () => {
+      const response = await fetch('/toy/get/get-material-type?sign=9');
+      const result = await response.json();
+      setSellTypeOption(result);
     };
 
+    fetchSellType();
     fetchMaterialType();
     fetchRoundType();
   }, []);
@@ -133,6 +145,11 @@ const StockAndShipmentDataController = () => {
       setRoundMessage(ERROR_MESSAGE);
       hasError = true;
     }
+    if (sellType === -1) {
+      setSellTypeError(true);
+      setSellTypeMessage(ERROR_MESSAGE);
+      hasError = true;
+    }
     const params = {
       materialType,
       materialCost,
@@ -147,6 +164,7 @@ const StockAndShipmentDataController = () => {
       materialId,
       materialQuantity,
       round,
+      sellType,
     };
     return { hasError, params };
   };
@@ -280,6 +298,9 @@ const StockAndShipmentDataController = () => {
       roundType: () => {
         setRound(item.value);
       },
+      sellType: () => {
+        setSellType(item.value);
+      },
     };
 
     switch (controlType) {
@@ -366,11 +387,19 @@ const StockAndShipmentDataController = () => {
     round,
     roundError,
     roundMessage,
+    sellType,
+    sellTypeError,
+    sellTypeMessage,
   };
   const commonBoundProps = {
     loading,
     onSubmit: handleSubmit,
-    formOptions: { materialType: materialTypeOption, materialId: materialIdOption, roundType },
+    formOptions: {
+      materialType: materialTypeOption,
+      materialId: materialIdOption,
+      roundType: roundTypeOption,
+      sellType: sellTypeOption,
+    },
     onChange: handleChange,
     onSpecificationInputBlur: handleSpecificationInputBlur,
   };
