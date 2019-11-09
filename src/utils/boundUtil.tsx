@@ -27,15 +27,14 @@ export type MenuItemOption = {
   text: string;
   value: number | string;
 };
+export type NumberFormItemProps = { value: number; error: boolean; message: string };
 export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
   // 材料类型
-  materialType: { value: number; error: boolean; message: string };
+  materialType: NumberFormItemProps;
   // 材质
-  materialId: number;
-  materialIdError: boolean;
-  materialIdMessage: string;
+  materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
   materialCost: number;
   materialCostError: boolean;
@@ -209,9 +208,8 @@ export const getInputItem = ({
 // 当类别未选择时，不显示材质
 // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
 export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) => {
-  const materialType = parseInt('' + formData.materialType);
-
-  return materialIds.filter(item => {
+  const materialType = parseInt('' + formData.materialType.value);
+  const result = materialIds.filter(item => {
     // 圆钢
     if (materialType === 0) {
       if (formData.length) {
@@ -230,6 +228,7 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
       return true;
     }
   });
+  return result;
 };
 
 const renderSpecification = ({
@@ -364,19 +363,17 @@ export const renderPickerForMaterialId = ({
         </Grid>
       )}
 
-      <FormControl fullWidth error={formData.materialIdError} className={classes.formControl}>
+      <FormControl fullWidth error={formData.materialId.error} className={classes.formControl}>
         <Autocomplete
           options={materialIdOptions}
-          getOptionLabel={(option: any) => option['材质']}
-          value={formData.materialId}
+          getOptionLabel={(option: any) => option.text}
+          value={formData.materialId.value}
           onChange={handleAutocompleteChange}
-          id="material-id"
-          aria-controls="material-id"
           renderInput={(params: RenderInputParams) => (
-            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialIdError} />
+            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialId.error} />
           )}
         />
-        <FormHelperText>{formData.materialIdMessage}</FormHelperText>
+        <FormHelperText>{formData.materialId.message}</FormHelperText>
       </FormControl>
     </>
   );

@@ -11,6 +11,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
+const NUMBER_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
 
 const StockAndShipmentDataController = () => {
   const [loading, setLoading] = useState(false);
@@ -27,11 +28,11 @@ const StockAndShipmentDataController = () => {
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
-  const [materialType, setMaterialType] = useState({ value: -1, error: false, message: '' });
+  const [materialType, setMaterialType] = useState(NUMBER_FORM_ITEM_DEFAULT_VALUE);
   // 材质 id
-  const [materialId, setMaterialId] = useState();
-  const [materialIdError, setMaterialIdError] = useState(false);
-  const [materialIdMessage, setMaterialIdMessage] = useState('');
+  const [materialId, setMaterialId] = useState(
+    Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
+  );
   // 材料单价
   const [materialCost, setMaterialCost] = useState();
   const [materialCostError, setMaterialCostError] = useState(false);
@@ -148,7 +149,7 @@ const StockAndShipmentDataController = () => {
       freight,
       description,
       extraCost,
-      materialId,
+      materialId: materialId.value.value,
       materialQuantity,
       round,
       sellType,
@@ -219,7 +220,11 @@ const StockAndShipmentDataController = () => {
   const fetchMaterialIdOption = async (type: number | string) => {
     const response = await fetch('/toy/get/get-detail?materialType=' + type);
     const result = await response.json();
-    setMaterialIdOption(result);
+    const target: any = [];
+    result.map((item: any) => {
+      target.push({ value: item.id, text: item['材质'], costFee: item['锯费'], materialCost: item['单价'] });
+    });
+    setMaterialIdOption(target);
   };
 
   const handleChange = (
@@ -301,17 +306,15 @@ const StockAndShipmentDataController = () => {
         break;
 
       case 'autoComplete':
-        if (item === null) {
-          setMaterialId('');
-          setCostFee(0);
-          setMaterialCost(0);
-          return;
-        }
-        setCostFee(item['锯费']);
-        setMaterialCost(item['单价']);
-        setMaterialId(item.id);
-        setMaterialIdError(item.id === '');
-        setMaterialIdMessage(item.id === '' ? ERROR_MESSAGE : '');
+        setCostFee(item ? item.costFee : 0);
+        setMaterialCost(item ? item.materialCost : 0);
+        setMaterialId(
+          Object.assign({
+            value: { text: item.text, value: item.value },
+            error: !item.value,
+            message: !item.value ? ERROR_MESSAGE : '',
+          }),
+        );
         break;
 
       default:
@@ -324,8 +327,8 @@ const StockAndShipmentDataController = () => {
     setSubmitSuccess(false);
     setLoading(false);
     // clean up
-    setMaterialType({ value: -1, error: false, message: '' });
-    setMaterialId('');
+    setMaterialType(NUMBER_FORM_ITEM_DEFAULT_VALUE);
+    setMaterialId(Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
     setMaterialCost('');
     setLength('');
     setWidth('');
@@ -343,8 +346,6 @@ const StockAndShipmentDataController = () => {
   const commonFormData = {
     materialType,
     materialId,
-    materialIdError,
-    materialIdMessage,
     materialCost,
     materialCostError,
     materialCostMessage,
