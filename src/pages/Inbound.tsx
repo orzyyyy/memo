@@ -54,10 +54,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'weight',
-        error: formData.weightError,
+        error: formData.weight.error,
         inputLabel: '实际重量',
-        inputValue: formData.weight,
-        helperText: formData.weightMessage,
+        inputValue: formData.weight.value,
+        helperText: formData.weight.message,
         xs: 6,
         unit: 'kg',
         onChange: handleInputChange,
@@ -67,10 +67,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'height',
-        error: formData.heightError,
+        error: formData.height.error,
         inputLabel: '高度',
-        inputValue: formData.height,
-        helperText: formData.heightMessage,
+        inputValue: formData.height.value,
+        helperText: formData.height.message,
         xs: 6,
         onChange: handleInputChange,
         onBlur: onSpecificationInputBlur,
@@ -79,10 +79,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'materialCost',
-        error: formData.materialCostError,
+        error: formData.materialCost.error,
         inputLabel: '单价',
-        inputValue: formData.materialCost,
-        helperText: formData.materialCostMessage,
+        inputValue: formData.materialCost.value,
+        helperText: formData.materialCost.message,
         xs: 6,
         unit: '元/kg',
         onChange: handleInputChange,
@@ -92,10 +92,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'freight',
-        error: formData.freightError,
+        error: formData.freight.error,
         inputLabel: '运费',
-        inputValue: formData.freight,
-        helperText: formData.freightMessage,
+        inputValue: formData.freight.value,
+        helperText: formData.freight.message,
         xs: 6,
         unit: '元',
         onChange: handleInputChange,

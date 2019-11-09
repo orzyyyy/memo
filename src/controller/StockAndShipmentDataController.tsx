@@ -11,6 +11,8 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
+const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
+const INPUT_FORM_ITEM_DEFAULT_VALUE = { value: '', error: false, message: '' };
 
 const StockAndShipmentDataController = () => {
   const [loading, setLoading] = useState(false);
@@ -27,155 +29,117 @@ const StockAndShipmentDataController = () => {
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
-  const [materialType, setMaterialType] = useState();
-  const [materialTypeError, setMaterialTypeError] = useState(false);
-  const [materialTypeMessage, setMaterialTypeMessage] = useState('');
+  const [materialType, setMaterialType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
   // 材质 id
-  const [materialId, setMaterialId] = useState();
-  const [materialIdError, setMaterialIdError] = useState(false);
-  const [materialIdMessage, setMaterialIdMessage] = useState('');
+  const [materialId, setMaterialId] = useState(
+    Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
+  );
   // 材料单价
-  const [materialCost, setMaterialCost] = useState();
-  const [materialCostError, setMaterialCostError] = useState(false);
-  const [materialCostMessage, setMaterialCostMessage] = useState('');
+  const [materialCost, setMaterialCost] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 长宽高重
-  const [length, setLength] = useState();
-  const [lengthError, setLengthError] = useState(false);
-  const [lengthMessage, setLengthMessage] = useState('');
-  const [width, setWidth] = useState();
-  const [widthError, setWidthError] = useState(false);
-  const [widthMessage, setWidthMessage] = useState('');
-  const [height, setHeight] = useState();
-  const [heightError, setHeightError] = useState(false);
-  const [heightMessage, setHeightMessage] = useState('');
-  const [weight, setWeight] = useState();
-  const [weightError, setWeightError] = useState(false);
-  const [weightMessage, setWeightMessage] = useState('');
+  const [length, setLength] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [width, setWidth] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [height, setHeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [weight, setWeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 预估重量
   const [predictWeight, setPredictWeight] = useState();
   // 运费
-  const [freight, setFreight] = useState();
-  const [freightError, setFreightError] = useState(false);
-  const [freightMessage, setFreightMessage] = useState('');
+  const [freight, setFreight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 其他费用
   const [extraCost, setExtraCost] = useState();
   // 备注
   const [description, setDescription] = useState('');
   // 数量。出库用
-  const [materialQuantity, setMaterialQuantity] = useState();
-  const [materialQuantityError, setMaterialQuantityError] = useState(false);
-  const [materialQuantityMessage, setMaterialQuantityMessage] = useState('');
+  const [materialQuantity, setMaterialQuantity] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 锯费
   const [costFee, setCostFee] = useState(0);
   // 预估总价
   const [predictPrice, setPredictPrice] = useState(0);
   // 圆钢种类
-  const [round, setRound] = useState(-1);
-  const [roundError, setRoundError] = useState(false);
-  const [roundMessage, setRoundMessage] = useState('');
+  const [round, setRound] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
   // 卖出类型
-  const [sellType, setSellType] = useState(-1);
-  const [sellTypeError, setSellTypeError] = useState(false);
-  const [sellTypeMessage, setSellTypeMessage] = useState('');
+  const [sellType, setSellType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
 
   useEffect(() => {
-    const fetchMaterialType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=1');
+    const fetcher = async (sign: number, callback: (result: any) => void) => {
+      const response = await fetch('/toy/get/get-material-type?sign=' + sign);
       const result = await response.json();
-      setMaterialTypeOption(result);
-    };
-    const fetchRoundType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=10');
-      const result = await response.json();
-      setRoundTypeOption(result);
-    };
-    const fetchSellType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=9');
-      const result = await response.json();
-      setSellTypeOption(result);
+      callback(await result);
     };
 
-    fetchSellType();
-    fetchMaterialType();
-    fetchRoundType();
+    fetcher(1, setMaterialTypeOption);
+    fetcher(10, setRoundTypeOption);
+    fetcher(9, setSellTypeOption);
   }, []);
 
   const verifySubmitParams = () => {
     let hasError = false;
     // 材质
-    if (!materialType) {
-      setMaterialTypeError(true);
-      setMaterialTypeMessage(ERROR_MESSAGE);
+    if (materialType.value === -1) {
+      setMaterialType(Object.assign({}, materialType, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     // 材料单价
-    if (!materialCost) {
-      setMaterialCostError(true);
-      setMaterialCostMessage(ERROR_MESSAGE);
+    if (materialCost.value === '') {
+      setMaterialCost(Object.assign({}, materialCost, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     // 长宽高重
-    if (!length) {
-      setLengthError(true);
-      setLengthMessage(ERROR_MESSAGE);
+    if (length.value === '') {
+      setLength(Object.assign({}, length, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!width && materialType !== '0') {
-      setWidthError(true);
-      setWidthMessage(ERROR_MESSAGE);
+    if (width.value === '' && materialType.value !== -1) {
+      setWidth(Object.assign({}, width, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!height) {
-      setHeightError(true);
-      setHeightMessage(ERROR_MESSAGE);
+    if (height.value === '') {
+      setHeight(Object.assign({}, height, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!weight) {
-      setWeightError(true);
-      setWeightMessage(ERROR_MESSAGE);
+    if (weight.value === '') {
+      setHeight(Object.assign({}, weight, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!freight) {
-      setFreightError(true);
-      setFreightMessage(ERROR_MESSAGE);
+    if (freight.value !== '') {
+      setFreight(Object.assign({}, freight, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (round === -1) {
-      setRoundError(true);
-      setRoundMessage(ERROR_MESSAGE);
+    if (round.value === -1) {
+      setRound(Object.assign({}, round, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (sellType === -1) {
-      setSellTypeError(true);
-      setSellTypeMessage(ERROR_MESSAGE);
+    if (sellType.value === -1) {
+      setSellType(Object.assign({}, sellType, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
+    }
+    if (materialId.value.value === -1) {
+      setMaterialId(Object.assign({}, materialId, { error: true, message: ERROR_MESSAGE }));
     }
     const params = {
-      materialType,
-      materialCost,
+      materialType: materialType.value,
+      materialCost: materialCost.value,
       type,
-      length,
-      width,
-      height,
-      weight,
-      freight,
+      height: height.value,
+      weight: weight.value,
+      freight: freight.value,
       description,
       extraCost,
-      materialId,
-      materialQuantity,
-      round,
-      sellType,
+      materialId: materialId.value.value,
+      materialQuantity: materialQuantity.value,
+      round: round.value,
+      sellType: sellType.value,
     };
     return { hasError, params };
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
     const { hasError, params } = verifySubmitParams();
     if (hasError) {
       return;
     }
 
+    setLoading(true);
     const response = await fetch('/toy/good/in', {
       body: JSON.stringify(params),
       method: 'POST',
@@ -220,19 +184,36 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictPrice = (predictWeight: number) => {
-    const price = predictWeight * materialCost + materialQuantity * costFee;
+    const price = predictWeight * parseFloat(materialCost.value) + parseFloat(materialQuantity.value) * costFee;
     setPredictPrice(parseFloat(price.toFixed(1)));
   };
 
   const handleSpecificationInputBlur = () => {
-    const result = calcuteForPredictWeight(length, width, height, materialQuantity, type);
+    const result = calcuteForPredictWeight(
+      parseFloat(length.value),
+      parseFloat(width.value),
+      parseFloat(height.value),
+      parseFloat(materialQuantity.value),
+      type,
+    );
     calcuteForPredictPrice(result);
   };
 
   const fetchMaterialIdOption = async (type: number | string) => {
     const response = await fetch('/toy/get/get-detail?materialType=' + type);
     const result = await response.json();
-    setMaterialIdOption(result);
+    const target: any = [];
+    result.map((item: any) => {
+      target.push({
+        value: item.id,
+        text: item['材质'],
+        costFee: item['锯费'],
+        materialCost: item['单价'],
+        length: item['长'],
+        width: item['宽'],
+      });
+    });
+    setMaterialIdOption(target);
   };
 
   const handleChange = (
@@ -240,16 +221,17 @@ const StockAndShipmentDataController = () => {
     controlType: FormControlType,
     key: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
   ) => {
+    const inputDefaultValue = {
+      value: item.value,
+      error: item.value === '',
+      message: item.value === '' ? ERROR_MESSAGE : '',
+    };
     const inputValidation = {
       materialCost: () => {
-        setMaterialCost(item.value);
-        setMaterialCostError(!item.value);
-        setMaterialCostMessage(!item.value ? ERROR_MESSAGE : '');
+        setMaterialCost(inputDefaultValue);
       },
       freight: () => {
-        setFreight(item.value);
-        setFreightError(item.value === '');
-        setFreightMessage(item.value === '' ? ERROR_MESSAGE : '');
+        setFreight(inputDefaultValue);
       },
       extraCost: () => {
         setExtraCost(item.value);
@@ -258,49 +240,28 @@ const StockAndShipmentDataController = () => {
         setDescription(item.value);
       },
       length: () => {
-        setLength(item.value);
-        setLengthError(!item.value);
-        setLengthMessage(!item.value ? ERROR_MESSAGE : '');
+        setLength(inputDefaultValue);
       },
       width: () => {
-        setWidth(item.value);
-        setWidthError(!item.value);
-        setWidthMessage(!item.value ? ERROR_MESSAGE : '');
+        setWidth(inputDefaultValue);
       },
       height: () => {
-        setHeight(item.value);
-        setHeightError(!item.value);
-        setHeightMessage(!item.value ? ERROR_MESSAGE : '');
+        setHeight(inputDefaultValue);
       },
       weight: () => {
-        setWeight(item.value);
-        setWeightError(!item.value);
-        setWeightMessage(!item.value ? ERROR_MESSAGE : '');
+        setWeight(inputDefaultValue);
       },
       predictWeight: () => {},
       materialQuantity: () => {
-        setMaterialQuantity(item.value);
-        setMaterialQuantityError(!item.value);
-        setMaterialQuantityMessage(!item.value ? ERROR_MESSAGE : '');
+        setMaterialQuantity(inputDefaultValue);
       },
       costFee: () => {},
       predictPrice: () => {},
-      round: () => {
-        setRound(item.value);
-        setRoundError(item.value === -1);
-        setRoundMessage(item.value === -1 ? ERROR_MESSAGE : '');
-      },
     };
     const selectValidation = {
-      materialType: () => {
-        setMaterialType(item.value);
-      },
-      roundType: () => {
-        setRound(item.value);
-      },
-      sellType: () => {
-        setSellType(item.value);
-      },
+      materialType: () => setMaterialType(Object.assign({}, materialType, { value: item.value })),
+      roundType: () => setRound(Object.assign({}, round, { value: item.value })),
+      sellType: () => setSellType(Object.assign({}, sellType, { value: item.value })),
     };
 
     switch (controlType) {
@@ -309,24 +270,22 @@ const StockAndShipmentDataController = () => {
         break;
 
       case 'select':
-        if (item.value) {
+        if (item.value !== -1) {
           fetchMaterialIdOption(item.value);
         }
         selectValidation[key as MaterialSelectSpecificationProps]();
         break;
 
       case 'autoComplete':
-        if (item === null) {
-          setMaterialId('');
-          setCostFee(0);
-          setMaterialCost(0);
-          return;
-        }
-        setCostFee(item['锯费']);
-        setMaterialCost(item['单价']);
-        setMaterialId(item.id);
-        setMaterialIdError(item.id === '');
-        setMaterialIdMessage(item.id === '' ? ERROR_MESSAGE : '');
+        setCostFee(item ? item.costFee : 0);
+        setMaterialCost({ value: item ? item.materialCost : 0, error: false, message: '' });
+        setMaterialId(
+          Object.assign({
+            value: { text: item.text, value: item.value },
+            error: !item.value,
+            message: !item.value ? ERROR_MESSAGE : '',
+          }),
+        );
         break;
 
       default:
@@ -339,57 +298,39 @@ const StockAndShipmentDataController = () => {
     setSubmitSuccess(false);
     setLoading(false);
     // clean up
-    setMaterialType('');
-    setMaterialId('');
-    setMaterialCost('');
-    setLength('');
-    setWidth('');
-    setHeight('');
-    setWeight('');
+    setMaterialType(SELECT_FORM_ITEM_DEFAULT_VALUE);
+    setMaterialId(Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
+    setMaterialCost(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setLength(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setWidth(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setHeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setWeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setPredictWeight('');
-    setFreight('');
+    setFreight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setExtraCost('');
     setDescription('');
-    setMaterialQuantity('');
+    setMaterialQuantity(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setCostFee(0);
     setPredictPrice(0);
+    setSellType(SELECT_FORM_ITEM_DEFAULT_VALUE);
+    setRound(SELECT_FORM_ITEM_DEFAULT_VALUE);
   };
 
   const commonFormData = {
     materialType,
-    materialTypeError,
-    materialTypeMessage,
     materialId,
-    materialIdError,
-    materialIdMessage,
     materialCost,
-    materialCostError,
-    materialCostMessage,
     type,
     length,
-    lengthError,
-    lengthMessage,
     width,
-    widthError,
-    widthMessage,
     height,
-    heightError,
-    heightMessage,
     weight,
-    weightError,
-    weightMessage,
     predictWeight,
     freight,
-    freightError,
-    freightMessage,
     extraCost,
     description,
     round,
-    roundError,
-    roundMessage,
     sellType,
-    sellTypeError,
-    sellTypeMessage,
   };
   const commonBoundProps = {
     loading,
@@ -422,8 +363,6 @@ const StockAndShipmentDataController = () => {
         <Outbound
           formData={Object.assign({}, commonFormData, {
             materialQuantity,
-            materialQuantityError,
-            materialQuantityMessage,
             costFee,
             predictPrice,
           })}

@@ -10,14 +10,13 @@ import {
   renderPickerForMaterialId,
   getSubmitButton,
   MaterialSelectSpecificationProps,
+  InputFormItemProps,
 } from '../utils/boundUtil';
 
 export type OutboundProps = {
   formData: {
     // 数量。出库用
-    materialQuantity: number;
-    materialQuantityError: boolean;
-    materialQuantityMessage: string;
+    materialQuantity: InputFormItemProps;
     // 锯费
     costFee: number;
     // 预估总价
@@ -63,10 +62,10 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
 
       {getInputItem({
         key: 'weight',
-        error: formData.weightError,
+        error: formData.weight.error,
         inputLabel: '实际重量',
-        inputValue: formData.weight,
-        helperText: formData.weightMessage,
+        inputValue: formData.weight.value,
+        helperText: formData.weight.message,
         xs: 6,
         unit: 'kg',
         onChange: handleInputChange,
@@ -76,10 +75,10 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
 
       {getInputItem({
         key: 'height',
-        error: formData.heightError,
+        error: formData.height.error,
         inputLabel: '高度',
-        inputValue: formData.height,
-        helperText: formData.heightMessage,
+        inputValue: formData.height.value,
+        helperText: formData.height.message,
         xs: 6,
         onChange: handleInputChange,
         onBlur: onSpecificationInputBlur,
@@ -88,10 +87,10 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
 
       {getInputItem({
         key: 'materialQuantity',
-        error: formData.materialQuantityError,
+        error: formData.materialQuantity.error,
         inputLabel: '数量',
-        inputValue: formData.materialQuantity,
-        helperText: formData.materialQuantityMessage,
+        inputValue: formData.materialQuantity.value,
+        helperText: formData.materialQuantity.message,
         xs: 6,
         unit: '个',
         onChange: handleInputChange,
@@ -103,7 +102,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         key: 'materialCost',
         error: false,
         inputLabel: '单价',
-        inputValue: formData.materialCost,
+        inputValue: formData.materialCost.value,
         helperText: '',
         xs: 6,
         unit: '元/kg',

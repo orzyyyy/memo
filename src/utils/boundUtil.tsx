@@ -27,52 +27,34 @@ export type MenuItemOption = {
   text: string;
   value: number | string;
 };
+export type SelectFormItemProps = { value: number; error: boolean; message: string };
+export type InputFormItemProps = { value: string; error: boolean; message: string };
 export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
   // 材料类型
-  materialType: number;
-  materialTypeError: boolean;
-  materialTypeMessage: string;
+  materialType: SelectFormItemProps;
   // 材质
-  materialId: number;
-  materialIdError: boolean;
-  materialIdMessage: string;
+  materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
-  materialCost: number;
-  materialCostError: boolean;
-  materialCostMessage: string;
+  materialCost: InputFormItemProps;
   // 长宽高重
-  length: number;
-  lengthError: boolean;
-  lengthMessage: string;
-  width: number;
-  widthError: boolean;
-  widthMessage: string;
-  height: number;
-  heightError: boolean;
-  heightMessage: string;
-  weight: number;
-  weightError: boolean;
-  weightMessage: string;
+  length: InputFormItemProps;
+  width: InputFormItemProps;
+  height: InputFormItemProps;
+  weight: InputFormItemProps;
   // 预估重量
   predictWeight: number;
   // 运费
-  freight: number;
-  freightError: boolean;
-  freightMessage: string;
+  freight: InputFormItemProps;
   // 其他费用
   extraCost: number;
   // 备注
   description: string;
   // 圆钢种类
-  round: number;
-  roundError: boolean;
-  roundMessage: string;
+  round: SelectFormItemProps;
   // 卖出类型。零售 / 批量
-  sellType: number;
-  sellTypeError: boolean;
-  sellTypeMessage: string;
+  sellType: SelectFormItemProps;
 };
 export type FormOptionsProps = {
   materialType: MenuItemOption[];
@@ -105,8 +87,7 @@ export type MaterialInputSpecificationProps =
   | 'materialQuantity' // 数量
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价
-  | 'description'
-  | 'round';
+  | 'description';
 export type MaterialSelectSpecificationProps = 'materialType' | 'roundType' | 'sellType';
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -210,28 +191,29 @@ export const getInputItem = ({
 
 // 当类别未选择时，不显示材质
 // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
+// todo: 需要增加卖出类型和圆钢类型的过滤条件
 export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) => {
-  const materialType = parseInt('' + formData.materialType);
-
-  return materialIds.filter(item => {
+  const materialType = parseInt('' + formData.materialType.value);
+  const result = materialIds.filter(item => {
     // 圆钢
     if (materialType === 0) {
-      if (formData.length) {
-        return formData.length == item['长'];
+      if (formData.length.value) {
+        return formData.length.value == item.length;
       }
       return true;
     } // 方钢
     else if (materialType === 1) {
-      if (formData.length && formData.width) {
-        return formData.length == item['长'] && formData.width == item['宽'];
-      } else if (formData.width) {
-        return formData.width == item['宽'];
-      } else if (formData.length) {
-        return formData.length == item['长'];
+      if (formData.length.value && formData.width.value) {
+        return formData.length.value == item.length && formData.width.value == item.width;
+      } else if (formData.width.value) {
+        return formData.width.value == item.width;
+      } else if (formData.length.value) {
+        return formData.length.value == item.length;
       }
       return true;
     }
   });
+  return result;
 };
 
 const renderSpecification = ({
@@ -248,17 +230,16 @@ const renderSpecification = ({
   onSpecificationInputBlur: () => void;
   classes: any;
 }) => {
-  const materialType = parseInt('' + formData.materialType);
-  switch (materialType) {
+  switch (parseInt(formData.materialType.value + '')) {
     case 0:
       return (
         <>
           {getInputItem({
             key: 'length',
-            error: formData.lengthError,
+            error: formData.length.error,
             inputLabel: '截面直径',
-            inputValue: formData.length,
-            helperText: formData.lengthMessage,
+            inputValue: formData.length.value,
+            helperText: formData.length.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,
@@ -271,10 +252,10 @@ const renderSpecification = ({
         <>
           {getInputItem({
             key: 'length',
-            error: formData.lengthError,
+            error: formData.length.error,
             inputLabel: '截面长度',
-            inputValue: formData.length,
-            helperText: formData.lengthMessage,
+            inputValue: formData.length.value,
+            helperText: formData.length.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,
@@ -282,10 +263,10 @@ const renderSpecification = ({
           })}
           {getInputItem({
             key: 'width',
-            error: formData.widthError,
+            error: formData.width.error,
             inputLabel: '截面宽度',
-            inputValue: formData.width,
-            helperText: formData.widthMessage,
+            inputValue: formData.width.value,
+            helperText: formData.width.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,
@@ -320,14 +301,14 @@ export const renderPickerForMaterialId = ({
   onSpecificationInputBlur: () => void;
 }) => {
   const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
-  const materialType = parseInt('' + formData.materialType);
+  const materialType = parseInt('' + formData.materialType.value);
 
   return (
     <>
       <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
-          <InputLabel>类别</InputLabel>
-          <Select value={formData.materialType} onChange={e => handleSelectChange(e, 'materialType')}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.materialType.error}>
+          <InputLabel shrink={formData.materialType.value !== -1}>类别</InputLabel>
+          <Select value={formData.materialType.value} onChange={e => handleSelectChange(e, 'materialType')}>
             {formOptions.materialType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -338,9 +319,9 @@ export const renderPickerForMaterialId = ({
       </Grid>
 
       <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.sellTypeError}>
-          <InputLabel>卖出类型</InputLabel>
-          <Select value={formData.sellType} onChange={e => handleSelectChange(e, 'sellType')}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
+          <InputLabel shrink={formData.sellType.value !== -1}>卖出类型</InputLabel>
+          <Select value={formData.sellType.value} onChange={e => handleSelectChange(e, 'sellType')}>
             {formOptions.sellType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -353,10 +334,10 @@ export const renderPickerForMaterialId = ({
       {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
 
       {materialType === 0 && (
-        <Grid item xs={6} key="round">
-          <FormControl required fullWidth className={classes.formControl} error={formData.roundError}>
-            <InputLabel shrink={formData.round !== -1}>圆钢类别</InputLabel>
-            <Select value={formData.round} onChange={e => handleSelectChange(e, 'roundType')}>
+        <Grid item xs={6} key="roundType">
+          <FormControl required fullWidth className={classes.formControl} error={formData.round.error}>
+            <InputLabel shrink={formData.round.value !== -1}>圆钢类别</InputLabel>
+            <Select value={formData.round.value} onChange={e => handleSelectChange(e, 'roundType')}>
               {formOptions.roundType.map(({ text, value }) => (
                 <MenuItem value={value} key={text + '-' + value}>
                   {text}
@@ -367,19 +348,19 @@ export const renderPickerForMaterialId = ({
         </Grid>
       )}
 
-      <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
+      <FormControl fullWidth error={formData.materialId.error} className={classes.formControl}>
         <Autocomplete
           options={materialIdOptions}
-          getOptionLabel={(option: any) => option['材质']}
-          value={formData.materialId}
+          getOptionLabel={(option: any) => option.text}
+          value={formData.materialId.value}
           onChange={handleAutocompleteChange}
           id="material-id"
           aria-controls="material-id"
           renderInput={(params: RenderInputParams) => (
-            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialTypeError} />
+            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialId.error} />
           )}
         />
-        <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
+        <FormHelperText>{formData.materialId.message}</FormHelperText>
       </FormControl>
     </>
   );
