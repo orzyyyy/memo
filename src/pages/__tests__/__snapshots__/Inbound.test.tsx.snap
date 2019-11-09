@@ -9,16 +9,20 @@ exports[`Inbound render correctly 1`] = `
       "freight": 106,
       "freightError": false,
       "freightMessage": "error",
-      "height": 103,
-      "heightError": false,
-      "heightMessage": "error",
-      "length": 101,
-      "lengthError": false,
-      "lengthMessage": "error",
+      "height": Object {
+        "error": false,
+        "message": "error",
+        "value": "103",
+      },
+      "length": Object {
+        "error": false,
+        "message": "error",
+        "value": "101",
+      },
       "materialCost": Object {
         "error": false,
         "message": "error",
-        "value": 100,
+        "value": "100",
       },
       "materialId": Object {
         "error": false,
@@ -41,12 +45,16 @@ exports[`Inbound render correctly 1`] = `
       "sellTypeError": false,
       "sellTypeMessage": "error",
       "type": 0,
-      "weight": 104,
-      "weightError": false,
-      "weightMessage": "error",
-      "width": 102,
-      "widthError": false,
-      "widthMessage": "error",
+      "weight": Object {
+        "error": false,
+        "message": "error",
+        "value": "104",
+      },
+      "width": Object {
+        "error": false,
+        "message": "error",
+        "value": "102",
+      },
     }
   }
   formOptions={
@@ -2161,7 +2169,7 @@ exports[`Inbound render correctly 1`] = `
                   onChange={[Function]}
                   readOnly={false}
                   type="number"
-                  value={101}
+                  value="101"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -2192,7 +2200,7 @@ exports[`Inbound render correctly 1`] = `
                     onChange={[Function]}
                     readOnly={false}
                     type="number"
-                    value={101}
+                    value="101"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -2226,7 +2234,7 @@ exports[`Inbound render correctly 1`] = `
                       onChange={[Function]}
                       readOnly={false}
                       type="number"
-                      value={101}
+                      value="101"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -2266,7 +2274,7 @@ exports[`Inbound render correctly 1`] = `
                         onChange={[Function]}
                         readOnly={false}
                         type="number"
-                        value={101}
+                        value="101"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -2283,7 +2291,7 @@ exports[`Inbound render correctly 1`] = `
                             readOnly={false}
                             required={true}
                             type="number"
-                            value={101}
+                            value="101"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"
@@ -4539,7 +4547,7 @@ exports[`Inbound render correctly 1`] = `
                   onChange={[Function]}
                   readOnly={false}
                   type="number"
-                  value={104}
+                  value="104"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -4570,7 +4578,7 @@ exports[`Inbound render correctly 1`] = `
                     onChange={[Function]}
                     readOnly={false}
                     type="number"
-                    value={104}
+                    value="104"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -4604,7 +4612,7 @@ exports[`Inbound render correctly 1`] = `
                       onChange={[Function]}
                       readOnly={false}
                       type="number"
-                      value={104}
+                      value="104"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -4644,7 +4652,7 @@ exports[`Inbound render correctly 1`] = `
                         onChange={[Function]}
                         readOnly={false}
                         type="number"
-                        value={104}
+                        value="104"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -4661,7 +4669,7 @@ exports[`Inbound render correctly 1`] = `
                             readOnly={false}
                             required={true}
                             type="number"
-                            value={104}
+                            value="104"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"
@@ -4985,7 +4993,7 @@ exports[`Inbound render correctly 1`] = `
                   onChange={[Function]}
                   readOnly={false}
                   type="number"
-                  value={103}
+                  value="103"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -5016,7 +5024,7 @@ exports[`Inbound render correctly 1`] = `
                     onChange={[Function]}
                     readOnly={false}
                     type="number"
-                    value={103}
+                    value="103"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -5050,7 +5058,7 @@ exports[`Inbound render correctly 1`] = `
                       onChange={[Function]}
                       readOnly={false}
                       type="number"
-                      value={103}
+                      value="103"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -5090,7 +5098,7 @@ exports[`Inbound render correctly 1`] = `
                         onChange={[Function]}
                         readOnly={false}
                         type="number"
-                        value={103}
+                        value="103"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -5107,7 +5115,7 @@ exports[`Inbound render correctly 1`] = `
                             readOnly={false}
                             required={true}
                             type="number"
-                            value={103}
+                            value="103"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"
@@ -5431,7 +5439,7 @@ exports[`Inbound render correctly 1`] = `
                   onChange={[Function]}
                   readOnly={false}
                   type="number"
-                  value={100}
+                  value="100"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -5462,7 +5470,7 @@ exports[`Inbound render correctly 1`] = `
                     onChange={[Function]}
                     readOnly={false}
                     type="number"
-                    value={100}
+                    value="100"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -5496,7 +5504,7 @@ exports[`Inbound render correctly 1`] = `
                       onChange={[Function]}
                       readOnly={false}
                       type="number"
-                      value={100}
+                      value="100"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -5536,7 +5544,7 @@ exports[`Inbound render correctly 1`] = `
                         onChange={[Function]}
                         readOnly={false}
                         type="number"
-                        value={100}
+                        value="100"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -5553,7 +5561,7 @@ exports[`Inbound render correctly 1`] = `
                             readOnly={false}
                             required={true}
                             type="number"
-                            value={100}
+                            value="100"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"

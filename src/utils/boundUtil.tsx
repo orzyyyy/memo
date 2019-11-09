@@ -39,18 +39,10 @@ export type CommonBoundFormDataProps = {
   // 材料单价
   materialCost: InputFormItemProps;
   // 长宽高重
-  length: number;
-  lengthError: boolean;
-  lengthMessage: string;
-  width: number;
-  widthError: boolean;
-  widthMessage: string;
-  height: number;
-  heightError: boolean;
-  heightMessage: string;
-  weight: number;
-  weightError: boolean;
-  weightMessage: string;
+  length: InputFormItemProps;
+  width: InputFormItemProps;
+  height: InputFormItemProps;
+  weight: InputFormItemProps;
   // 预估重量
   predictWeight: number;
   // 运费
@@ -211,18 +203,18 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
   const result = materialIds.filter(item => {
     // 圆钢
     if (materialType === 0) {
-      if (formData.length) {
-        return formData.length == item['长'];
+      if (formData.length.value) {
+        return formData.length.value == item.length;
       }
       return true;
     } // 方钢
     else if (materialType === 1) {
-      if (formData.length && formData.width) {
-        return formData.length == item['长'] && formData.width == item['宽'];
-      } else if (formData.width) {
-        return formData.width == item['宽'];
-      } else if (formData.length) {
-        return formData.length == item['长'];
+      if (formData.length.value && formData.width.value) {
+        return formData.length.value == item.length && formData.width.value == item.width;
+      } else if (formData.width.value) {
+        return formData.width.value == item.width;
+      } else if (formData.length.value) {
+        return formData.length.value == item.length;
       }
       return true;
     }
@@ -250,10 +242,10 @@ const renderSpecification = ({
         <>
           {getInputItem({
             key: 'length',
-            error: formData.lengthError,
+            error: formData.length.error,
             inputLabel: '截面直径',
-            inputValue: formData.length,
-            helperText: formData.lengthMessage,
+            inputValue: formData.length.value,
+            helperText: formData.length.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,
@@ -266,10 +258,10 @@ const renderSpecification = ({
         <>
           {getInputItem({
             key: 'length',
-            error: formData.lengthError,
+            error: formData.length.error,
             inputLabel: '截面长度',
-            inputValue: formData.length,
-            helperText: formData.lengthMessage,
+            inputValue: formData.length.value,
+            helperText: formData.length.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,
@@ -277,10 +269,10 @@ const renderSpecification = ({
           })}
           {getInputItem({
             key: 'width',
-            error: formData.widthError,
+            error: formData.width.error,
             inputLabel: '截面宽度',
-            inputValue: formData.width,
-            helperText: formData.widthMessage,
+            inputValue: formData.width.value,
+            helperText: formData.width.message,
             xs: 6,
             onChange: handleInputChange,
             onBlur: onSpecificationInputBlur,

@@ -54,10 +54,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'weight',
-        error: formData.weightError,
+        error: formData.weight.error,
         inputLabel: '实际重量',
-        inputValue: formData.weight,
-        helperText: formData.weightMessage,
+        inputValue: formData.weight.value,
+        helperText: formData.weight.message,
         xs: 6,
         unit: 'kg',
         onChange: handleInputChange,
@@ -67,10 +67,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'height',
-        error: formData.heightError,
+        error: formData.height.error,
         inputLabel: '高度',
-        inputValue: formData.height,
-        helperText: formData.heightMessage,
+        inputValue: formData.height.value,
+        helperText: formData.height.message,
         xs: 6,
         onChange: handleInputChange,
         onBlur: onSpecificationInputBlur,

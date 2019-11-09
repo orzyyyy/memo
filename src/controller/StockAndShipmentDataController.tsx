@@ -37,18 +37,10 @@ const StockAndShipmentDataController = () => {
   // 材料单价
   const [materialCost, setMaterialCost] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 长宽高重
-  const [length, setLength] = useState();
-  const [lengthError, setLengthError] = useState(false);
-  const [lengthMessage, setLengthMessage] = useState('');
-  const [width, setWidth] = useState();
-  const [widthError, setWidthError] = useState(false);
-  const [widthMessage, setWidthMessage] = useState('');
-  const [height, setHeight] = useState();
-  const [heightError, setHeightError] = useState(false);
-  const [heightMessage, setHeightMessage] = useState('');
-  const [weight, setWeight] = useState();
-  const [weightError, setWeightError] = useState(false);
-  const [weightMessage, setWeightMessage] = useState('');
+  const [length, setLength] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [width, setWidth] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [height, setHeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
+  const [weight, setWeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 预估重量
   const [predictWeight, setPredictWeight] = useState();
   // 运费
@@ -101,24 +93,20 @@ const StockAndShipmentDataController = () => {
       hasError = true;
     }
     // 长宽高重
-    if (!length) {
-      setLengthError(true);
-      setLengthMessage(ERROR_MESSAGE);
+    if (length.value === '') {
+      setLength(Object.assign({}, length, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!width && materialType.value !== -1) {
-      setWidthError(true);
-      setWidthMessage(ERROR_MESSAGE);
+    if (width.value === '' && materialType.value !== -1) {
+      setWidth(Object.assign({}, width, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!height) {
-      setHeightError(true);
-      setHeightMessage(ERROR_MESSAGE);
+    if (height.value === '') {
+      setHeight(Object.assign({}, height, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!weight) {
-      setWeightError(true);
-      setWeightMessage(ERROR_MESSAGE);
+    if (weight.value === '') {
+      setHeight(Object.assign({}, weight, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     if (!freight) {
@@ -143,10 +131,8 @@ const StockAndShipmentDataController = () => {
       materialType: materialType.value,
       materialCost: materialCost.value,
       type,
-      length,
-      width,
-      height,
-      weight,
+      height: height.value,
+      weight: weight.value,
       freight,
       description,
       extraCost,
@@ -214,7 +200,13 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleSpecificationInputBlur = () => {
-    const result = calcuteForPredictWeight(length, width, height, materialQuantity, type);
+    const result = calcuteForPredictWeight(
+      parseFloat(length.value),
+      parseFloat(width.value),
+      parseFloat(height.value),
+      materialQuantity,
+      type,
+    );
     calcuteForPredictPrice(result);
   };
 
@@ -223,7 +215,14 @@ const StockAndShipmentDataController = () => {
     const result = await response.json();
     const target: any = [];
     result.map((item: any) => {
-      target.push({ value: item.id, text: item['材质'], costFee: item['锯费'], materialCost: item['单价'] });
+      target.push({
+        value: item.id,
+        text: item['材质'],
+        costFee: item['锯费'],
+        materialCost: item['单价'],
+        length: item['长'],
+        width: item['宽'],
+      });
     });
     setMaterialIdOption(target);
   };
@@ -233,9 +232,14 @@ const StockAndShipmentDataController = () => {
     controlType: FormControlType,
     key: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
   ) => {
+    const inputDefaultValue = {
+      value: item.value,
+      error: item.value === '',
+      message: item.value === '' ? ERROR_MESSAGE : '',
+    };
     const inputValidation = {
       materialCost: () => {
-        setMaterialCost({ value: item.value, error: !item.value, message: !item.value ? ERROR_MESSAGE : '' });
+        setMaterialCost(inputDefaultValue);
       },
       freight: () => {
         setFreight(item.value);
@@ -249,24 +253,16 @@ const StockAndShipmentDataController = () => {
         setDescription(item.value);
       },
       length: () => {
-        setLength(item.value);
-        setLengthError(!item.value);
-        setLengthMessage(!item.value ? ERROR_MESSAGE : '');
+        setLength(inputDefaultValue);
       },
       width: () => {
-        setWidth(item.value);
-        setWidthError(!item.value);
-        setWidthMessage(!item.value ? ERROR_MESSAGE : '');
+        setWidth(inputDefaultValue);
       },
       height: () => {
-        setHeight(item.value);
-        setHeightError(!item.value);
-        setHeightMessage(!item.value ? ERROR_MESSAGE : '');
+        setHeight(inputDefaultValue);
       },
       weight: () => {
-        setWeight(item.value);
-        setWeightError(!item.value);
-        setWeightMessage(!item.value ? ERROR_MESSAGE : '');
+        setWeight(inputDefaultValue);
       },
       predictWeight: () => {},
       materialQuantity: () => {
@@ -298,7 +294,7 @@ const StockAndShipmentDataController = () => {
         break;
 
       case 'select':
-        if (item.value) {
+        if (item.value !== -1) {
           fetchMaterialIdOption(item.value);
         }
         selectValidation[key as MaterialSelectSpecificationProps]();
@@ -329,10 +325,10 @@ const StockAndShipmentDataController = () => {
     setMaterialType(NUMBER_FORM_ITEM_DEFAULT_VALUE);
     setMaterialId(Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
     setMaterialCost(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setLength('');
-    setWidth('');
-    setHeight('');
-    setWeight('');
+    setLength(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setWidth(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setHeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
+    setWeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setPredictWeight('');
     setFreight('');
     setExtraCost('');
@@ -348,17 +344,9 @@ const StockAndShipmentDataController = () => {
     materialCost,
     type,
     length,
-    lengthError,
-    lengthMessage,
     width,
-    widthError,
-    widthMessage,
     height,
-    heightError,
-    heightMessage,
     weight,
-    weightError,
-    weightMessage,
     predictWeight,
     freight,
     freightError,
