@@ -21,9 +21,11 @@ exports[`Inbound render correctly 1`] = `
       "materialId": 11,
       "materialIdError": false,
       "materialIdMessage": "error",
-      "materialType": 0,
-      "materialTypeError": false,
-      "materialTypeMessage": "error",
+      "materialType": Object {
+        "error": false,
+        "message": "error",
+        "value": 0,
+      },
       "predictWeight": 105,
       "round": 0,
       "roundError": false,
@@ -202,7 +204,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4 MuiFormControl-fullWidth"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -220,6 +224,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
@@ -1147,7 +1152,9 @@ exports[`Inbound render correctly 1`] = `
               <div
                 className="MuiFormControl-root makeStyles-formControl-4 MuiFormControl-fullWidth"
               >
-                <WithStyles(ForwardRef(InputLabel))>
+                <WithStyles(ForwardRef(InputLabel))
+                  shrink={true}
+                >
                   <ForwardRef(InputLabel)
                     classes={
                       Object {
@@ -1165,6 +1172,7 @@ exports[`Inbound render correctly 1`] = `
                         "shrink": "MuiInputLabel-shrink",
                       }
                     }
+                    shrink={true}
                   >
                     <WithStyles(ForwardRef(FormLabel))
                       className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"

@@ -31,9 +31,7 @@ export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
   // 材料类型
-  materialType: number;
-  materialTypeError: boolean;
-  materialTypeMessage: string;
+  materialType: { value: number; error: boolean; message: string };
   // 材质
   materialId: number;
   materialIdError: boolean;
@@ -248,8 +246,7 @@ const renderSpecification = ({
   onSpecificationInputBlur: () => void;
   classes: any;
 }) => {
-  const materialType = parseInt('' + formData.materialType);
-  switch (materialType) {
+  switch (parseInt(formData.materialType.value + '')) {
     case 0:
       return (
         <>
@@ -320,14 +317,14 @@ export const renderPickerForMaterialId = ({
   onSpecificationInputBlur: () => void;
 }) => {
   const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
-  const materialType = parseInt('' + formData.materialType);
+  const materialType = parseInt('' + formData.materialType.value);
 
   return (
     <>
       <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.materialTypeError}>
-          <InputLabel>类别</InputLabel>
-          <Select value={formData.materialType} onChange={e => handleSelectChange(e, 'materialType')}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.materialType.error}>
+          <InputLabel shrink={formData.materialType.value !== -1}>类别</InputLabel>
+          <Select value={formData.materialType.value} onChange={e => handleSelectChange(e, 'materialType')}>
             {formOptions.materialType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -367,7 +364,7 @@ export const renderPickerForMaterialId = ({
         </Grid>
       )}
 
-      <FormControl fullWidth error={formData.materialTypeError} className={classes.formControl}>
+      <FormControl fullWidth error={formData.materialIdError} className={classes.formControl}>
         <Autocomplete
           options={materialIdOptions}
           getOptionLabel={(option: any) => option['材质']}
@@ -376,10 +373,10 @@ export const renderPickerForMaterialId = ({
           id="material-id"
           aria-controls="material-id"
           renderInput={(params: RenderInputParams) => (
-            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialTypeError} />
+            <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialIdError} />
           )}
         />
-        <FormHelperText>{formData.materialTypeMessage}</FormHelperText>
+        <FormHelperText>{formData.materialIdMessage}</FormHelperText>
       </FormControl>
     </>
   );

@@ -27,9 +27,7 @@ const StockAndShipmentDataController = () => {
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
-  const [materialType, setMaterialType] = useState();
-  const [materialTypeError, setMaterialTypeError] = useState(false);
-  const [materialTypeMessage, setMaterialTypeMessage] = useState('');
+  const [materialType, setMaterialType] = useState({ value: -1, error: false, message: '' });
   // 材质 id
   const [materialId, setMaterialId] = useState();
   const [materialIdError, setMaterialIdError] = useState(false);
@@ -93,9 +91,8 @@ const StockAndShipmentDataController = () => {
   const verifySubmitParams = () => {
     let hasError = false;
     // 材质
-    if (!materialType) {
-      setMaterialTypeError(true);
-      setMaterialTypeMessage(ERROR_MESSAGE);
+    if (materialType.value === -1) {
+      setMaterialType(Object.assign({}, materialType, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     // 材料单价
@@ -110,7 +107,7 @@ const StockAndShipmentDataController = () => {
       setLengthMessage(ERROR_MESSAGE);
       hasError = true;
     }
-    if (!width && materialType !== '0') {
+    if (!width && materialType.value !== -1) {
       setWidthError(true);
       setWidthMessage(ERROR_MESSAGE);
       hasError = true;
@@ -141,7 +138,7 @@ const StockAndShipmentDataController = () => {
       hasError = true;
     }
     const params = {
-      materialType,
+      materialType: materialType.value,
       materialCost,
       type,
       length,
@@ -282,9 +279,7 @@ const StockAndShipmentDataController = () => {
       },
     };
     const selectValidation = {
-      materialType: () => {
-        setMaterialType(item.value);
-      },
+      materialType: () => setMaterialType(Object.assign({}, materialType, { value: item.value })),
       roundType: () => {
         setRound(item.value);
       },
@@ -329,7 +324,7 @@ const StockAndShipmentDataController = () => {
     setSubmitSuccess(false);
     setLoading(false);
     // clean up
-    setMaterialType('');
+    setMaterialType({ value: -1, error: false, message: '' });
     setMaterialId('');
     setMaterialCost('');
     setLength('');
@@ -347,8 +342,6 @@ const StockAndShipmentDataController = () => {
 
   const commonFormData = {
     materialType,
-    materialTypeError,
-    materialTypeMessage,
     materialId,
     materialIdError,
     materialIdMessage,
