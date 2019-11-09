@@ -138,6 +138,9 @@ const StockAndShipmentDataController = () => {
       setSellTypeMessage(ERROR_MESSAGE);
       hasError = true;
     }
+    if (materialId.value.value === -1) {
+      setMaterialId(Object.assign({}, materialId, { error: true, message: ERROR_MESSAGE }));
+    }
     const params = {
       materialType: materialType.value,
       materialCost,
