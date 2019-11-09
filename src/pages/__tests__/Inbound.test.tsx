@@ -13,17 +13,11 @@ describe('Inbound', () => {
     height: { value: '103', error: false, message: 'error' },
     weight: { value: '104', error: false, message: 'error' },
     predictWeight: 105,
-    freight: 106,
-    freightError: false,
-    freightMessage: 'error',
+    freight: { value: '106', error: false, message: 'error' },
     extraCost: 107,
     description: '',
-    round: 0,
-    roundError: false,
-    roundMessage: 'error',
-    sellType: 0,
-    sellTypeError: false,
-    sellTypeMessage: 'error',
+    round: { value: 0, error: false, message: 'error' },
+    sellType: { value: 0, error: false, message: 'error' },
   };
 
   const formOptions = {

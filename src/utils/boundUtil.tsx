@@ -27,13 +27,13 @@ export type MenuItemOption = {
   text: string;
   value: number | string;
 };
-export type NumberFormItemProps = { value: number; error: boolean; message: string };
+export type SelectFormItemProps = { value: number; error: boolean; message: string };
 export type InputFormItemProps = { value: string; error: boolean; message: string };
 export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
   // 材料类型
-  materialType: NumberFormItemProps;
+  materialType: SelectFormItemProps;
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
@@ -46,21 +46,15 @@ export type CommonBoundFormDataProps = {
   // 预估重量
   predictWeight: number;
   // 运费
-  freight: number;
-  freightError: boolean;
-  freightMessage: string;
+  freight: InputFormItemProps;
   // 其他费用
   extraCost: number;
   // 备注
   description: string;
   // 圆钢种类
-  round: number;
-  roundError: boolean;
-  roundMessage: string;
+  round: SelectFormItemProps;
   // 卖出类型。零售 / 批量
-  sellType: number;
-  sellTypeError: boolean;
-  sellTypeMessage: string;
+  sellType: SelectFormItemProps;
 };
 export type FormOptionsProps = {
   materialType: MenuItemOption[];
@@ -93,8 +87,7 @@ export type MaterialInputSpecificationProps =
   | 'materialQuantity' // 数量
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价
-  | 'description'
-  | 'round';
+  | 'description';
 export type MaterialSelectSpecificationProps = 'materialType' | 'roundType' | 'sellType';
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -198,6 +191,7 @@ export const getInputItem = ({
 
 // 当类别未选择时，不显示材质
 // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
+// todo: 需要增加卖出类型和圆钢类型的过滤条件
 export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) => {
   const materialType = parseInt('' + formData.materialType.value);
   const result = materialIds.filter(item => {
@@ -325,9 +319,9 @@ export const renderPickerForMaterialId = ({
       </Grid>
 
       <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.sellTypeError}>
-          <InputLabel shrink={formData.sellType !== -1}>卖出类型</InputLabel>
-          <Select value={formData.sellType} onChange={e => handleSelectChange(e, 'sellType')}>
+        <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
+          <InputLabel shrink={formData.sellType.value !== -1}>卖出类型</InputLabel>
+          <Select value={formData.sellType.value} onChange={e => handleSelectChange(e, 'sellType')}>
             {formOptions.sellType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -340,10 +334,10 @@ export const renderPickerForMaterialId = ({
       {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
 
       {materialType === 0 && (
-        <Grid item xs={6} key="round">
-          <FormControl required fullWidth className={classes.formControl} error={formData.roundError}>
-            <InputLabel shrink={formData.round !== -1}>圆钢类别</InputLabel>
-            <Select value={formData.round} onChange={e => handleSelectChange(e, 'roundType')}>
+        <Grid item xs={6} key="roundType">
+          <FormControl required fullWidth className={classes.formControl} error={formData.round.error}>
+            <InputLabel shrink={formData.round.value !== -1}>圆钢类别</InputLabel>
+            <Select value={formData.round.value} onChange={e => handleSelectChange(e, 'roundType')}>
               {formOptions.roundType.map(({ text, value }) => (
                 <MenuItem value={value} key={text + '-' + value}>
                   {text}

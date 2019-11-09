@@ -6,9 +6,11 @@ exports[`Inbound render correctly 1`] = `
     Object {
       "description": "",
       "extraCost": 107,
-      "freight": 106,
-      "freightError": false,
-      "freightMessage": "error",
+      "freight": Object {
+        "error": false,
+        "message": "error",
+        "value": "106",
+      },
       "height": Object {
         "error": false,
         "message": "error",
@@ -38,12 +40,16 @@ exports[`Inbound render correctly 1`] = `
         "value": 0,
       },
       "predictWeight": 105,
-      "round": 0,
-      "roundError": false,
-      "roundMessage": "error",
-      "sellType": 0,
-      "sellTypeError": false,
-      "sellTypeMessage": "error",
+      "round": Object {
+        "error": false,
+        "message": "error",
+        "value": 0,
+      },
+      "sellType": Object {
+        "error": false,
+        "message": "error",
+        "value": 0,
+      },
       "type": 0,
       "weight": Object {
         "error": false,
@@ -2398,7 +2404,7 @@ exports[`Inbound render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
-      key="round"
+      key="roundType"
       xs={6}
     >
       <ForwardRef(Grid)
@@ -5885,7 +5891,7 @@ exports[`Inbound render correctly 1`] = `
                   onChange={[Function]}
                   readOnly={false}
                   type="number"
-                  value={106}
+                  value="106"
                 >
                   <ForwardRef(Input)
                     classes={
@@ -5916,7 +5922,7 @@ exports[`Inbound render correctly 1`] = `
                     onChange={[Function]}
                     readOnly={false}
                     type="number"
-                    value={106}
+                    value="106"
                   >
                     <WithStyles(ForwardRef(InputBase))
                       classes={
@@ -5950,7 +5956,7 @@ exports[`Inbound render correctly 1`] = `
                       onChange={[Function]}
                       readOnly={false}
                       type="number"
-                      value={106}
+                      value="106"
                     >
                       <ForwardRef(InputBase)
                         classes={
@@ -5990,7 +5996,7 @@ exports[`Inbound render correctly 1`] = `
                         onChange={[Function]}
                         readOnly={false}
                         type="number"
-                        value={106}
+                        value="106"
                       >
                         <div
                           className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
@@ -6007,7 +6013,7 @@ exports[`Inbound render correctly 1`] = `
                             readOnly={false}
                             required={true}
                             type="number"
-                            value={106}
+                            value="106"
                           />
                           <WithStyles(ForwardRef(InputAdornment))
                             position="end"

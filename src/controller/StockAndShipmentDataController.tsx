@@ -11,7 +11,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
-const NUMBER_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
+const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
 const INPUT_FORM_ITEM_DEFAULT_VALUE = { value: '', error: false, message: '' };
 
 const StockAndShipmentDataController = () => {
@@ -29,10 +29,10 @@ const StockAndShipmentDataController = () => {
   // 出库为 0，入库为 1
   const [type, setType] = useState(0);
   // 类别
-  const [materialType, setMaterialType] = useState(NUMBER_FORM_ITEM_DEFAULT_VALUE);
+  const [materialType, setMaterialType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
   // 材质 id
   const [materialId, setMaterialId] = useState(
-    Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
+    Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
   );
   // 材料单价
   const [materialCost, setMaterialCost] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
@@ -44,29 +44,21 @@ const StockAndShipmentDataController = () => {
   // 预估重量
   const [predictWeight, setPredictWeight] = useState();
   // 运费
-  const [freight, setFreight] = useState();
-  const [freightError, setFreightError] = useState(false);
-  const [freightMessage, setFreightMessage] = useState('');
+  const [freight, setFreight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 其他费用
   const [extraCost, setExtraCost] = useState();
   // 备注
   const [description, setDescription] = useState('');
   // 数量。出库用
-  const [materialQuantity, setMaterialQuantity] = useState();
-  const [materialQuantityError, setMaterialQuantityError] = useState(false);
-  const [materialQuantityMessage, setMaterialQuantityMessage] = useState('');
+  const [materialQuantity, setMaterialQuantity] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 锯费
   const [costFee, setCostFee] = useState(0);
   // 预估总价
   const [predictPrice, setPredictPrice] = useState(0);
   // 圆钢种类
-  const [round, setRound] = useState(-1);
-  const [roundError, setRoundError] = useState(false);
-  const [roundMessage, setRoundMessage] = useState('');
+  const [round, setRound] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
   // 卖出类型
-  const [sellType, setSellType] = useState(-1);
-  const [sellTypeError, setSellTypeError] = useState(false);
-  const [sellTypeMessage, setSellTypeMessage] = useState('');
+  const [sellType, setSellType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
 
   useEffect(() => {
     const fetcher = async (sign: number, callback: (result: any) => void) => {
@@ -109,19 +101,16 @@ const StockAndShipmentDataController = () => {
       setHeight(Object.assign({}, weight, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (!freight) {
-      setFreightError(true);
-      setFreightMessage(ERROR_MESSAGE);
+    if (freight.value !== '') {
+      setFreight(Object.assign({}, freight, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (round === -1) {
-      setRoundError(true);
-      setRoundMessage(ERROR_MESSAGE);
+    if (round.value === -1) {
+      setRound(Object.assign({}, round, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
-    if (sellType === -1) {
-      setSellTypeError(true);
-      setSellTypeMessage(ERROR_MESSAGE);
+    if (sellType.value === -1) {
+      setSellType(Object.assign({}, sellType, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     if (materialId.value.value === -1) {
@@ -133,13 +122,13 @@ const StockAndShipmentDataController = () => {
       type,
       height: height.value,
       weight: weight.value,
-      freight,
+      freight: freight.value,
       description,
       extraCost,
       materialId: materialId.value.value,
-      materialQuantity,
-      round,
-      sellType,
+      materialQuantity: materialQuantity.value,
+      round: round.value,
+      sellType: sellType.value,
     };
     return { hasError, params };
   };
@@ -195,7 +184,7 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictPrice = (predictWeight: number) => {
-    const price = predictWeight * parseFloat(materialCost.value) + materialQuantity * costFee;
+    const price = predictWeight * parseFloat(materialCost.value) + parseFloat(materialQuantity.value) * costFee;
     setPredictPrice(parseFloat(price.toFixed(1)));
   };
 
@@ -204,7 +193,7 @@ const StockAndShipmentDataController = () => {
       parseFloat(length.value),
       parseFloat(width.value),
       parseFloat(height.value),
-      materialQuantity,
+      parseFloat(materialQuantity.value),
       type,
     );
     calcuteForPredictPrice(result);
@@ -242,9 +231,7 @@ const StockAndShipmentDataController = () => {
         setMaterialCost(inputDefaultValue);
       },
       freight: () => {
-        setFreight(item.value);
-        setFreightError(item.value === '');
-        setFreightMessage(item.value === '' ? ERROR_MESSAGE : '');
+        setFreight(inputDefaultValue);
       },
       extraCost: () => {
         setExtraCost(item.value);
@@ -266,26 +253,15 @@ const StockAndShipmentDataController = () => {
       },
       predictWeight: () => {},
       materialQuantity: () => {
-        setMaterialQuantity(item.value);
-        setMaterialQuantityError(!item.value);
-        setMaterialQuantityMessage(!item.value ? ERROR_MESSAGE : '');
+        setMaterialQuantity(inputDefaultValue);
       },
       costFee: () => {},
       predictPrice: () => {},
-      round: () => {
-        setRound(item.value);
-        setRoundError(item.value === -1);
-        setRoundMessage(item.value === -1 ? ERROR_MESSAGE : '');
-      },
     };
     const selectValidation = {
       materialType: () => setMaterialType(Object.assign({}, materialType, { value: item.value })),
-      roundType: () => {
-        setRound(item.value);
-      },
-      sellType: () => {
-        setSellType(item.value);
-      },
+      roundType: () => setRound(Object.assign({}, round, { value: item.value })),
+      sellType: () => setSellType(Object.assign({}, sellType, { value: item.value })),
     };
 
     switch (controlType) {
@@ -322,20 +298,22 @@ const StockAndShipmentDataController = () => {
     setSubmitSuccess(false);
     setLoading(false);
     // clean up
-    setMaterialType(NUMBER_FORM_ITEM_DEFAULT_VALUE);
-    setMaterialId(Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
+    setMaterialType(SELECT_FORM_ITEM_DEFAULT_VALUE);
+    setMaterialId(Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
     setMaterialCost(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setLength(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setWidth(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setHeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setWeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setPredictWeight('');
-    setFreight('');
+    setFreight(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setExtraCost('');
     setDescription('');
-    setMaterialQuantity('');
+    setMaterialQuantity(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setCostFee(0);
     setPredictPrice(0);
+    setSellType(SELECT_FORM_ITEM_DEFAULT_VALUE);
+    setRound(SELECT_FORM_ITEM_DEFAULT_VALUE);
   };
 
   const commonFormData = {
@@ -349,16 +327,10 @@ const StockAndShipmentDataController = () => {
     weight,
     predictWeight,
     freight,
-    freightError,
-    freightMessage,
     extraCost,
     description,
     round,
-    roundError,
-    roundMessage,
     sellType,
-    sellTypeError,
-    sellTypeMessage,
   };
   const commonBoundProps = {
     loading,
@@ -391,8 +363,6 @@ const StockAndShipmentDataController = () => {
         <Outbound
           formData={Object.assign({}, commonFormData, {
             materialQuantity,
-            materialQuantityError,
-            materialQuantityMessage,
             costFee,
             predictPrice,
           })}

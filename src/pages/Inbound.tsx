@@ -92,10 +92,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'freight',
-        error: formData.freightError,
+        error: formData.freight.error,
         inputLabel: '运费',
-        inputValue: formData.freight,
-        helperText: formData.freightMessage,
+        inputValue: formData.freight.value,
+        helperText: formData.freight.message,
         xs: 6,
         unit: '元',
         onChange: handleInputChange,
