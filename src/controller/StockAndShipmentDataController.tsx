@@ -79,25 +79,15 @@ const StockAndShipmentDataController = () => {
   const [sellTypeMessage, setSellTypeMessage] = useState('');
 
   useEffect(() => {
-    const fetchMaterialType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=1');
+    const fetcher = async (sign: number, callback: (result: any) => void) => {
+      const response = await fetch('/toy/get/get-material-type?sign=' + sign);
       const result = await response.json();
-      setMaterialTypeOption(result);
-    };
-    const fetchRoundType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=10');
-      const result = await response.json();
-      setRoundTypeOption(result);
-    };
-    const fetchSellType = async () => {
-      const response = await fetch('/toy/get/get-material-type?sign=9');
-      const result = await response.json();
-      setSellTypeOption(result);
+      callback(await result);
     };
 
-    fetchSellType();
-    fetchMaterialType();
-    fetchRoundType();
+    fetcher(1, setMaterialTypeOption);
+    fetcher(10, setRoundTypeOption);
+    fetcher(9, setSellTypeOption);
   }, []);
 
   const verifySubmitParams = () => {

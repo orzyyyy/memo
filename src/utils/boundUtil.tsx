@@ -339,7 +339,7 @@ export const renderPickerForMaterialId = ({
 
       <Grid item xs={6}>
         <FormControl required fullWidth className={classes.formControl} error={formData.sellTypeError}>
-          <InputLabel>卖出类型</InputLabel>
+          <InputLabel shrink={formData.sellType !== -1}>卖出类型</InputLabel>
           <Select value={formData.sellType} onChange={e => handleSelectChange(e, 'sellType')}>
             {formOptions.sellType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
