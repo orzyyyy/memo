@@ -15,3 +15,6 @@ jobs:
 
       - name: lint
         run: npm run lint
+
+      - name: tsc
+        run: npm run tsc
