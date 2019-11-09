@@ -369,6 +369,8 @@ export const renderPickerForMaterialId = ({
           getOptionLabel={(option: any) => option.text}
           value={formData.materialId.value}
           onChange={handleAutocompleteChange}
+          id="material-id"
+          aria-controls="material-id"
           renderInput={(params: RenderInputParams) => (
             <TextField {...params} fullWidth margin="normal" required label="材质" error={formData.materialId.error} />
           )}

@@ -3326,12 +3326,15 @@ exports[`Inbound render correctly 1`] = `
           className="MuiFormControl-root makeStyles-formControl-4 MuiFormControl-fullWidth"
         >
           <WithStyles(ForwardRef(Autocomplete))
+            aria-controls="material-id"
             getOptionLabel={[Function]}
+            id="material-id"
             onChange={[Function]}
             options={Array []}
             renderInput={[Function]}
           >
             <ForwardRef(Autocomplete)
+              aria-controls="material-id"
               classes={
                 Object {
                   "clearIndicator": "MuiAutocomplete-clearIndicator",
@@ -3355,11 +3358,13 @@ exports[`Inbound render correctly 1`] = `
                 }
               }
               getOptionLabel={[Function]}
+              id="material-id"
               onChange={[Function]}
               options={Array []}
               renderInput={[Function]}
             >
               <div
+                aria-controls="material-id"
                 aria-expanded={false}
                 aria-owns={null}
                 className="MuiAutocomplete-root"
@@ -3369,7 +3374,7 @@ exports[`Inbound render correctly 1`] = `
                 <WithStyles(ForwardRef(TextField))
                   InputLabelProps={
                     Object {
-                      "id": "mui-autocomplete-4478-label",
+                      "id": "material-id-label",
                     }
                   }
                   InputProps={
@@ -3407,26 +3412,26 @@ exports[`Inbound render correctly 1`] = `
                     Object {
                       "aria-activedescendant": null,
                       "aria-autocomplete": "list",
-                      "aria-controls": "mui-autocomplete-4478-popup",
+                      "aria-controls": "material-id-popup",
                       "autoCapitalize": "none",
                       "autoComplete": "disabled",
                       "autoCorrect": "off",
                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                       "disabled": false,
-                      "id": "mui-autocomplete-4478",
+                      "id": "material-id",
                       "onBlur": [Function],
                       "onChange": [Function],
                       "onFocus": [Function],
                       "ref": Object {
                         "current": <input
                           aria-autocomplete="list"
-                          aria-controls="mui-autocomplete-4478-popup"
+                          aria-controls="material-id-popup"
                           aria-invalid="false"
                           autocapitalize="none"
                           autocomplete="disabled"
                           autocorrect="off"
                           class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                          id="mui-autocomplete-4478"
+                          id="material-id"
                           required=""
                           spellcheck="false"
                           type="text"
@@ -3444,7 +3449,7 @@ exports[`Inbound render correctly 1`] = `
                   <ForwardRef(TextField)
                     InputLabelProps={
                       Object {
-                        "id": "mui-autocomplete-4478-label",
+                        "id": "material-id-label",
                       }
                     }
                     InputProps={
@@ -3487,26 +3492,26 @@ exports[`Inbound render correctly 1`] = `
                       Object {
                         "aria-activedescendant": null,
                         "aria-autocomplete": "list",
-                        "aria-controls": "mui-autocomplete-4478-popup",
+                        "aria-controls": "material-id-popup",
                         "autoCapitalize": "none",
                         "autoComplete": "disabled",
                         "autoCorrect": "off",
                         "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                         "disabled": false,
-                        "id": "mui-autocomplete-4478",
+                        "id": "material-id",
                         "onBlur": [Function],
                         "onChange": [Function],
                         "onFocus": [Function],
                         "ref": Object {
                           "current": <input
                             aria-autocomplete="list"
-                            aria-controls="mui-autocomplete-4478-popup"
+                            aria-controls="material-id-popup"
                             aria-invalid="false"
                             autocapitalize="none"
                             autocomplete="disabled"
                             autocorrect="off"
                             class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                            id="mui-autocomplete-4478"
+                            id="material-id"
                             required=""
                             spellcheck="false"
                             type="text"
@@ -3551,7 +3556,7 @@ exports[`Inbound render correctly 1`] = `
                           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
                         >
                           <WithStyles(ForwardRef(InputLabel))
-                            id="mui-autocomplete-4478-label"
+                            id="material-id-label"
                           >
                             <ForwardRef(InputLabel)
                               classes={
@@ -3570,7 +3575,7 @@ exports[`Inbound render correctly 1`] = `
                                   "shrink": "MuiInputLabel-shrink",
                                 }
                               }
-                              id="mui-autocomplete-4478-label"
+                              id="material-id-label"
                             >
                               <WithStyles(ForwardRef(FormLabel))
                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
@@ -3584,7 +3589,7 @@ exports[`Inbound render correctly 1`] = `
                                   }
                                 }
                                 data-shrink={false}
-                                id="mui-autocomplete-4478-label"
+                                id="material-id-label"
                               >
                                 <ForwardRef(FormLabel)
                                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
@@ -3601,12 +3606,12 @@ exports[`Inbound render correctly 1`] = `
                                     }
                                   }
                                   data-shrink={false}
-                                  id="mui-autocomplete-4478-label"
+                                  id="material-id-label"
                                 >
                                   <label
                                     className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-required Mui-required"
                                     data-shrink={false}
-                                    id="mui-autocomplete-4478-label"
+                                    id="material-id-label"
                                   >
                                     材质
                                     <span
@@ -3652,26 +3657,26 @@ exports[`Inbound render correctly 1`] = `
                               Object {
                                 "aria-activedescendant": null,
                                 "aria-autocomplete": "list",
-                                "aria-controls": "mui-autocomplete-4478-popup",
+                                "aria-controls": "material-id-popup",
                                 "autoCapitalize": "none",
                                 "autoComplete": "disabled",
                                 "autoCorrect": "off",
                                 "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                 "disabled": false,
-                                "id": "mui-autocomplete-4478",
+                                "id": "material-id",
                                 "onBlur": [Function],
                                 "onChange": [Function],
                                 "onFocus": [Function],
                                 "ref": Object {
                                   "current": <input
                                     aria-autocomplete="list"
-                                    aria-controls="mui-autocomplete-4478-popup"
+                                    aria-controls="material-id-popup"
                                     aria-invalid="false"
                                     autocapitalize="none"
                                     autocomplete="disabled"
                                     autocorrect="off"
                                     class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                                    id="mui-autocomplete-4478"
+                                    id="material-id"
                                     required=""
                                     spellcheck="false"
                                     type="text"
@@ -3732,26 +3737,26 @@ exports[`Inbound render correctly 1`] = `
                                 Object {
                                   "aria-activedescendant": null,
                                   "aria-autocomplete": "list",
-                                  "aria-controls": "mui-autocomplete-4478-popup",
+                                  "aria-controls": "material-id-popup",
                                   "autoCapitalize": "none",
                                   "autoComplete": "disabled",
                                   "autoCorrect": "off",
                                   "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                   "disabled": false,
-                                  "id": "mui-autocomplete-4478",
+                                  "id": "material-id",
                                   "onBlur": [Function],
                                   "onChange": [Function],
                                   "onFocus": [Function],
                                   "ref": Object {
                                     "current": <input
                                       aria-autocomplete="list"
-                                      aria-controls="mui-autocomplete-4478-popup"
+                                      aria-controls="material-id-popup"
                                       aria-invalid="false"
                                       autocapitalize="none"
                                       autocomplete="disabled"
                                       autocorrect="off"
                                       class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                                      id="mui-autocomplete-4478"
+                                      id="material-id"
                                       required=""
                                       spellcheck="false"
                                       type="text"
@@ -3813,26 +3818,26 @@ exports[`Inbound render correctly 1`] = `
                                   Object {
                                     "aria-activedescendant": null,
                                     "aria-autocomplete": "list",
-                                    "aria-controls": "mui-autocomplete-4478-popup",
+                                    "aria-controls": "material-id-popup",
                                     "autoCapitalize": "none",
                                     "autoComplete": "disabled",
                                     "autoCorrect": "off",
                                     "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                     "disabled": false,
-                                    "id": "mui-autocomplete-4478",
+                                    "id": "material-id",
                                     "onBlur": [Function],
                                     "onChange": [Function],
                                     "onFocus": [Function],
                                     "ref": Object {
                                       "current": <input
                                         aria-autocomplete="list"
-                                        aria-controls="mui-autocomplete-4478-popup"
+                                        aria-controls="material-id-popup"
                                         aria-invalid="false"
                                         autocapitalize="none"
                                         autocomplete="disabled"
                                         autocorrect="off"
                                         class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                                        id="mui-autocomplete-4478"
+                                        id="material-id"
                                         required=""
                                         spellcheck="false"
                                         type="text"
@@ -3902,26 +3907,26 @@ exports[`Inbound render correctly 1`] = `
                                     Object {
                                       "aria-activedescendant": null,
                                       "aria-autocomplete": "list",
-                                      "aria-controls": "mui-autocomplete-4478-popup",
+                                      "aria-controls": "material-id-popup",
                                       "autoCapitalize": "none",
                                       "autoComplete": "disabled",
                                       "autoCorrect": "off",
                                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                       "disabled": false,
-                                      "id": "mui-autocomplete-4478",
+                                      "id": "material-id",
                                       "onBlur": [Function],
                                       "onChange": [Function],
                                       "onFocus": [Function],
                                       "ref": Object {
                                         "current": <input
                                           aria-autocomplete="list"
-                                          aria-controls="mui-autocomplete-4478-popup"
+                                          aria-controls="material-id-popup"
                                           aria-invalid="false"
                                           autocapitalize="none"
                                           autocomplete="disabled"
                                           autocorrect="off"
                                           class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
-                                          id="mui-autocomplete-4478"
+                                          id="material-id"
                                           required=""
                                           spellcheck="false"
                                           type="text"
@@ -3942,14 +3947,14 @@ exports[`Inbound render correctly 1`] = `
                                     <input
                                       aria-activedescendant={null}
                                       aria-autocomplete="list"
-                                      aria-controls="mui-autocomplete-4478-popup"
+                                      aria-controls="material-id-popup"
                                       aria-invalid={false}
                                       autoCapitalize="none"
                                       autoComplete="disabled"
                                       autoCorrect="off"
                                       className="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                       disabled={false}
-                                      id="mui-autocomplete-4478"
+                                      id="material-id"
                                       onAnimationStart={[Function]}
                                       onBlur={[Function]}
                                       onChange={[Function]}
