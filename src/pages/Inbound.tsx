@@ -79,10 +79,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
 
       {getInputItem({
         key: 'materialCost',
-        error: formData.materialCostError,
+        error: formData.materialCost.error,
         inputLabel: '单价',
-        inputValue: formData.materialCost,
-        helperText: formData.materialCostMessage,
+        inputValue: formData.materialCost.value,
+        helperText: formData.materialCost.message,
         xs: 6,
         unit: '元/kg',
         onChange: handleInputChange,

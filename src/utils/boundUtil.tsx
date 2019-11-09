@@ -28,6 +28,7 @@ export type MenuItemOption = {
   value: number | string;
 };
 export type NumberFormItemProps = { value: number; error: boolean; message: string };
+export type InputFormItemProps = { value: string; error: boolean; message: string };
 export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
@@ -36,9 +37,7 @@ export type CommonBoundFormDataProps = {
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
-  materialCost: number;
-  materialCostError: boolean;
-  materialCostMessage: string;
+  materialCost: InputFormItemProps;
   // 长宽高重
   length: number;
   lengthError: boolean;

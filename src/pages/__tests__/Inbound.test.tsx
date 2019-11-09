@@ -5,12 +5,8 @@ import Inbound from '../Inbound';
 describe('Inbound', () => {
   const formData = {
     materialType: { value: 0, error: false, message: 'error' },
-    materialId: 11,
-    materialIdError: false,
-    materialIdMessage: 'error',
-    materialCost: 100,
-    materialCostError: false,
-    materialCostMessage: 'error',
+    materialId: { value: { value: 0, text: 'text' }, error: false, message: 'error' },
+    materialCost: { value: 100, error: false, message: 'error' },
     type: 0,
     length: 101,
     lengthError: false,

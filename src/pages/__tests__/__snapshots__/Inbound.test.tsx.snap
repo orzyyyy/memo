@@ -15,12 +15,19 @@ exports[`Inbound render correctly 1`] = `
       "length": 101,
       "lengthError": false,
       "lengthMessage": "error",
-      "materialCost": 100,
-      "materialCostError": false,
-      "materialCostMessage": "error",
-      "materialId": 11,
-      "materialIdError": false,
-      "materialIdMessage": "error",
+      "materialCost": Object {
+        "error": false,
+        "message": "error",
+        "value": 100,
+      },
+      "materialId": Object {
+        "error": false,
+        "message": "error",
+        "value": Object {
+          "text": "text",
+          "value": 0,
+        },
+      },
       "materialType": Object {
         "error": false,
         "message": "error",
@@ -3308,6 +3315,7 @@ exports[`Inbound render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(FormControl))
       className="makeStyles-formControl-4"
+      error={false}
       fullWidth={true}
     >
       <ForwardRef(FormControl)
@@ -3320,6 +3328,7 @@ exports[`Inbound render correctly 1`] = `
             "root": "MuiFormControl-root",
           }
         }
+        error={false}
         fullWidth={true}
       >
         <div
@@ -3332,6 +3341,12 @@ exports[`Inbound render correctly 1`] = `
             onChange={[Function]}
             options={Array []}
             renderInput={[Function]}
+            value={
+              Object {
+                "text": "text",
+                "value": 0,
+              }
+            }
           >
             <ForwardRef(Autocomplete)
               aria-controls="material-id"
@@ -3362,6 +3377,12 @@ exports[`Inbound render correctly 1`] = `
               onChange={[Function]}
               options={Array []}
               renderInput={[Function]}
+              value={
+                Object {
+                  "text": "text",
+                  "value": 0,
+                }
+              }
             >
               <div
                 aria-controls="material-id"
@@ -3382,7 +3403,7 @@ exports[`Inbound render correctly 1`] = `
                       "className": "MuiAutocomplete-inputRoot",
                       "endAdornment": <React.Fragment>
                         <ForwardRef(WithStyles)
-                          className="MuiAutocomplete-clearIndicator"
+                          className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                           onClick={[Function]}
                           onMouseDown={[Function]}
                           tabIndex={-1}
@@ -3407,6 +3428,7 @@ exports[`Inbound render correctly 1`] = `
                     }
                   }
                   disabled={false}
+                  error={false}
                   fullWidth={true}
                   inputProps={
                     Object {
@@ -3435,11 +3457,11 @@ exports[`Inbound render correctly 1`] = `
                           required=""
                           spellcheck="false"
                           type="text"
-                          value=""
+                          value="text"
                         />,
                       },
                       "spellCheck": "false",
-                      "value": "",
+                      "value": "text",
                     }
                   }
                   label="材质"
@@ -3457,7 +3479,7 @@ exports[`Inbound render correctly 1`] = `
                         "className": "MuiAutocomplete-inputRoot",
                         "endAdornment": <React.Fragment>
                           <ForwardRef(WithStyles)
-                            className="MuiAutocomplete-clearIndicator"
+                            className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                             onClick={[Function]}
                             onMouseDown={[Function]}
                             tabIndex={-1}
@@ -3487,6 +3509,7 @@ exports[`Inbound render correctly 1`] = `
                       }
                     }
                     disabled={false}
+                    error={false}
                     fullWidth={true}
                     inputProps={
                       Object {
@@ -3515,11 +3538,11 @@ exports[`Inbound render correctly 1`] = `
                             required=""
                             spellcheck="false"
                             type="text"
-                            value=""
+                            value="text"
                           />,
                         },
                         "spellCheck": "false",
-                        "value": "",
+                        "value": "text",
                       }
                     }
                     label="材质"
@@ -3530,6 +3553,7 @@ exports[`Inbound render correctly 1`] = `
                       className="MuiTextField-root"
                       color="primary"
                       disabled={false}
+                      error={false}
                       fullWidth={true}
                       margin="normal"
                       required={true}
@@ -3547,6 +3571,7 @@ exports[`Inbound render correctly 1`] = `
                         }
                         color="primary"
                         disabled={false}
+                        error={false}
                         fullWidth={true}
                         margin="normal"
                         required={true}
@@ -3578,7 +3603,7 @@ exports[`Inbound render correctly 1`] = `
                               id="material-id-label"
                             >
                               <WithStyles(ForwardRef(FormLabel))
-                                className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                                className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                                 classes={
                                   Object {
                                     "asterisk": "MuiInputLabel-asterisk",
@@ -3588,11 +3613,11 @@ exports[`Inbound render correctly 1`] = `
                                     "required": "Mui-required",
                                   }
                                 }
-                                data-shrink={false}
+                                data-shrink={true}
                                 id="material-id-label"
                               >
                                 <ForwardRef(FormLabel)
-                                  className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                                  className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                                   classes={
                                     Object {
                                       "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
@@ -3605,12 +3630,12 @@ exports[`Inbound render correctly 1`] = `
                                       "root": "MuiFormLabel-root",
                                     }
                                   }
-                                  data-shrink={false}
+                                  data-shrink={true}
                                   id="material-id-label"
                                 >
                                   <label
-                                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-required Mui-required"
-                                    data-shrink={false}
+                                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                                    data-shrink={true}
                                     id="material-id-label"
                                   >
                                     材质
@@ -3630,7 +3655,7 @@ exports[`Inbound render correctly 1`] = `
                             endAdornment={
                               <React.Fragment>
                                 <ForwardRef(WithStyles)
-                                  className="MuiAutocomplete-clearIndicator"
+                                  className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                   onClick={[Function]}
                                   onMouseDown={[Function]}
                                   tabIndex={-1}
@@ -3680,11 +3705,11 @@ exports[`Inbound render correctly 1`] = `
                                     required=""
                                     spellcheck="false"
                                     type="text"
-                                    value=""
+                                    value="text"
                                   />,
                                 },
                                 "spellCheck": "false",
-                                "value": "",
+                                "value": "text",
                               }
                             }
                           >
@@ -3710,7 +3735,7 @@ exports[`Inbound render correctly 1`] = `
                               endAdornment={
                                 <React.Fragment>
                                   <ForwardRef(WithStyles)
-                                    className="MuiAutocomplete-clearIndicator"
+                                    className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                     onClick={[Function]}
                                     onMouseDown={[Function]}
                                     tabIndex={-1}
@@ -3760,11 +3785,11 @@ exports[`Inbound render correctly 1`] = `
                                       required=""
                                       spellcheck="false"
                                       type="text"
-                                      value=""
+                                      value="text"
                                     />,
                                   },
                                   "spellCheck": "false",
-                                  "value": "",
+                                  "value": "text",
                                 }
                               }
                             >
@@ -3790,7 +3815,7 @@ exports[`Inbound render correctly 1`] = `
                                 endAdornment={
                                   <React.Fragment>
                                     <ForwardRef(WithStyles)
-                                      className="MuiAutocomplete-clearIndicator"
+                                      className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                       onClick={[Function]}
                                       onMouseDown={[Function]}
                                       tabIndex={-1}
@@ -3841,11 +3866,11 @@ exports[`Inbound render correctly 1`] = `
                                         required=""
                                         spellcheck="false"
                                         type="text"
-                                        value=""
+                                        value="text"
                                       />,
                                     },
                                     "spellCheck": "false",
-                                    "value": "",
+                                    "value": "text",
                                   }
                                 }
                                 multiline={false}
@@ -3879,7 +3904,7 @@ exports[`Inbound render correctly 1`] = `
                                   endAdornment={
                                     <React.Fragment>
                                       <ForwardRef(WithStyles)
-                                        className="MuiAutocomplete-clearIndicator"
+                                        className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                         onClick={[Function]}
                                         onMouseDown={[Function]}
                                         tabIndex={-1}
@@ -3930,11 +3955,11 @@ exports[`Inbound render correctly 1`] = `
                                           required=""
                                           spellcheck="false"
                                           type="text"
-                                          value=""
+                                          value="text"
                                         />,
                                       },
                                       "spellCheck": "false",
-                                      "value": "",
+                                      "value": "text",
                                     }
                                   }
                                   multiline={false}
@@ -3962,17 +3987,17 @@ exports[`Inbound render correctly 1`] = `
                                       required={true}
                                       spellCheck="false"
                                       type="text"
-                                      value=""
+                                      value="text"
                                     />
                                     <WithStyles(ForwardRef(IconButton))
-                                      className="MuiAutocomplete-clearIndicator"
+                                      className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                       onClick={[Function]}
                                       onMouseDown={[Function]}
                                       tabIndex={-1}
                                       title="Clear"
                                     >
                                       <ForwardRef(IconButton)
-                                        className="MuiAutocomplete-clearIndicator"
+                                        className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                         classes={
                                           Object {
                                             "colorInherit": "MuiIconButton-colorInherit",
@@ -3993,7 +4018,7 @@ exports[`Inbound render correctly 1`] = `
                                       >
                                         <WithStyles(ForwardRef(ButtonBase))
                                           centerRipple={true}
-                                          className="MuiIconButton-root MuiAutocomplete-clearIndicator"
+                                          className="MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                           disabled={false}
                                           focusRipple={true}
                                           onClick={[Function]}
@@ -4003,7 +4028,7 @@ exports[`Inbound render correctly 1`] = `
                                         >
                                           <ForwardRef(ButtonBase)
                                             centerRipple={true}
-                                            className="MuiIconButton-root MuiAutocomplete-clearIndicator"
+                                            className="MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                             classes={
                                               Object {
                                                 "disabled": "Mui-disabled",
@@ -4019,7 +4044,7 @@ exports[`Inbound render correctly 1`] = `
                                             title="Clear"
                                           >
                                             <button
-                                              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                                              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                                               disabled={false}
                                               onBlur={[Function]}
                                               onClick={[Function]}
@@ -4287,7 +4312,9 @@ exports[`Inbound render correctly 1`] = `
             >
               <p
                 className="MuiFormHelperText-root"
-              />
+              >
+                error
+              </p>
             </ForwardRef(FormHelperText)>
           </WithStyles(ForwardRef(FormHelperText))>
         </div>

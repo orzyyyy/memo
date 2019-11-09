@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const ERROR_MESSAGE = '该项不能为空';
 const NUMBER_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
+const INPUT_FORM_ITEM_DEFAULT_VALUE = { value: '', error: false, message: '' };
 
 const StockAndShipmentDataController = () => {
   const [loading, setLoading] = useState(false);
@@ -34,9 +35,7 @@ const StockAndShipmentDataController = () => {
     Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
   );
   // 材料单价
-  const [materialCost, setMaterialCost] = useState();
-  const [materialCostError, setMaterialCostError] = useState(false);
-  const [materialCostMessage, setMaterialCostMessage] = useState('');
+  const [materialCost, setMaterialCost] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
   // 长宽高重
   const [length, setLength] = useState();
   const [lengthError, setLengthError] = useState(false);
@@ -97,9 +96,8 @@ const StockAndShipmentDataController = () => {
       hasError = true;
     }
     // 材料单价
-    if (!materialCost) {
-      setMaterialCostError(true);
-      setMaterialCostMessage(ERROR_MESSAGE);
+    if (materialCost.value === '') {
+      setMaterialCost(Object.assign({}, materialCost, { error: true, message: ERROR_MESSAGE }));
       hasError = true;
     }
     // 长宽高重
@@ -143,7 +141,7 @@ const StockAndShipmentDataController = () => {
     }
     const params = {
       materialType: materialType.value,
-      materialCost,
+      materialCost: materialCost.value,
       type,
       length,
       width,
@@ -161,12 +159,12 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
     const { hasError, params } = verifySubmitParams();
     if (hasError) {
       return;
     }
 
+    setLoading(true);
     const response = await fetch('/toy/good/in', {
       body: JSON.stringify(params),
       method: 'POST',
@@ -211,7 +209,7 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictPrice = (predictWeight: number) => {
-    const price = predictWeight * materialCost + materialQuantity * costFee;
+    const price = predictWeight * parseFloat(materialCost.value) + materialQuantity * costFee;
     setPredictPrice(parseFloat(price.toFixed(1)));
   };
 
@@ -237,9 +235,7 @@ const StockAndShipmentDataController = () => {
   ) => {
     const inputValidation = {
       materialCost: () => {
-        setMaterialCost(item.value);
-        setMaterialCostError(!item.value);
-        setMaterialCostMessage(!item.value ? ERROR_MESSAGE : '');
+        setMaterialCost({ value: item.value, error: !item.value, message: !item.value ? ERROR_MESSAGE : '' });
       },
       freight: () => {
         setFreight(item.value);
@@ -310,7 +306,7 @@ const StockAndShipmentDataController = () => {
 
       case 'autoComplete':
         setCostFee(item ? item.costFee : 0);
-        setMaterialCost(item ? item.materialCost : 0);
+        setMaterialCost({ value: item ? item.materialCost : 0, error: false, message: '' });
         setMaterialId(
           Object.assign({
             value: { text: item.text, value: item.value },
@@ -332,7 +328,7 @@ const StockAndShipmentDataController = () => {
     // clean up
     setMaterialType(NUMBER_FORM_ITEM_DEFAULT_VALUE);
     setMaterialId(Object.assign({}, NUMBER_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
-    setMaterialCost('');
+    setMaterialCost(INPUT_FORM_ITEM_DEFAULT_VALUE);
     setLength('');
     setWidth('');
     setHeight('');
@@ -350,8 +346,6 @@ const StockAndShipmentDataController = () => {
     materialType,
     materialId,
     materialCost,
-    materialCostError,
-    materialCostMessage,
     type,
     length,
     lengthError,
