@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Inbound from '../pages/Inbound';
 import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
@@ -170,17 +170,16 @@ const statefulReducer = (
     if (action.data.value === validStr) {
       return { ...state, [action.key]: { value: validStr, error: true, message: ERROR_MESSAGE } };
     }
-    return {
+    const result = {
       ...state,
       [action.key]: {
         value:
-          action.type === 'autoComplete'
-            ? { text: action.data.value.text, value: action.data.value.value }
-            : action.data.value,
+          action.type === 'autoComplete' ? { text: action.data.text, value: action.data.value } : action.data.value,
         error: action.data.value === validStr,
         message: action.data.value === validStr ? ERROR_MESSAGE : '',
       },
     };
+    return result;
   };
 
   switch (action.type) {
@@ -240,10 +239,6 @@ const StockAndShipmentDataController = () => {
   const [stateless, statelessDispatch] = useReducer(statelessReducer, initialStateless as any);
   const [viewState, viewStateDispatch] = useReducer(viewStateReducer, initialViewState as any);
   const [menuOptionState, menuOptionDispatch] = useReducer(menuOptionReducer, initialMenuOptionState as any);
-  // 材质 id
-  const [materialId, setMaterialId] = useState(
-    Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
-  );
 
   useEffect(() => {
     const fetcher = async (sign: number, callback: (result: any) => void) => {
@@ -268,6 +263,7 @@ const StockAndShipmentDataController = () => {
       freight,
       round,
       sellType,
+      materialId,
       materialQuantity,
     } = stateful;
     statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
@@ -282,8 +278,7 @@ const StockAndShipmentDataController = () => {
     statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
     statefulDispatch({ type: 'select', key: 'round', data: round });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
-
-    setMaterialId(Object.assign({}, materialId, { error: true, message: ERROR_MESSAGE }));
+    statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId.value });
 
     const params = {
       materialType: materialType.value,
@@ -402,7 +397,7 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleChange = ({ item, controllType, key, stateType }: OnChangeProps) => {
-    const handleWithState = (type: 'input' | 'select') => {
+    const handleWithState = (type: FormControlType) => {
       if (stateType === 'stateful') {
         statefulDispatch({
           type,
@@ -428,14 +423,7 @@ const StockAndShipmentDataController = () => {
 
       case 'autoComplete':
         statelessDispatch({ type: 'costFee', data: item ? item.costFee : 0 });
-        handleWithState('input');
-        setMaterialId(
-          Object.assign({
-            value: { text: item.text, value: item.value },
-            error: !item.value,
-            message: !item.value ? ERROR_MESSAGE : '',
-          }),
-        );
+        handleWithState(controllType);
         break;
 
       default:
@@ -455,6 +443,7 @@ const StockAndShipmentDataController = () => {
       materialType,
       sellType,
       round,
+      materialId,
     } = stateful;
     viewStateDispatch({ type: 'reset' });
 
@@ -475,13 +464,12 @@ const StockAndShipmentDataController = () => {
     statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
     statefulDispatch({ type: 'select', key: 'round', data: round });
-
-    setMaterialId(Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
+    statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId });
   };
 
   const commonFormData = {
     materialType: stateful.materialType,
-    materialId,
+    materialId: stateful.materialId,
     materialCost: stateful.materialCost,
     type: stateless.type,
     length: stateful.length,

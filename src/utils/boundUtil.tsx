@@ -386,7 +386,7 @@ export const renderPickerForMaterialId = ({
           getOptionLabel={(option: any) => option.text}
           value={formData.materialId.value}
           onChange={(_: any, item: any) =>
-            onChange({ item, controllType: 'autoComplete', key: 'round', stateType: 'stateful' })
+            onChange({ item, controllType: 'autoComplete', key: 'materialId', stateType: 'stateful' })
           }
           id="material-id"
           aria-controls="material-id"
