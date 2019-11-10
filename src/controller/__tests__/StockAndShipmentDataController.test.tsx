@@ -36,7 +36,9 @@ describe('StockAndShipmentDataController', () => {
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
   const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
 
-  beforeEach(() => {});
+  beforeEach(() => {
+    fetchMock.mock('/toy/good/in', 'success');
+  });
 
   afterAll(() => {
     errorSpy.mockRestore();
@@ -49,11 +51,22 @@ describe('StockAndShipmentDataController', () => {
 
   it('onSubmit', async () => {
     const wrapper: any = await shallow(<StockAndShipmentDataController />);
-    let result = await wrapper
+    const result = await wrapper
       .find('Inbound')
       .props()
       .onSubmit();
-    expect(result).toBeFalsy();
+    expect(result).toEqual({
+      description: '',
+      extraCost: 0,
+      freight: '',
+      height: '',
+      materialCost: '',
+      materialId: -1,
+      materialQuantity: '',
+      materialType: -1,
+      type: 0,
+      weight: '',
+    });
   });
 
   it('AppBar should work', () => {

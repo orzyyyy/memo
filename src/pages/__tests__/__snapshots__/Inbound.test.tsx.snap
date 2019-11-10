@@ -34,6 +34,11 @@ exports[`Inbound render correctly 1`] = `
           "value": 0,
         },
       },
+      "materialQuantity": Object {
+        "error": false,
+        "message": "error",
+        "value": "107",
+      },
       "materialType": Object {
         "error": false,
         "message": "error",
@@ -2404,7 +2409,7 @@ exports[`Inbound render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
-      key="roundType"
+      key="round"
       xs={6}
     >
       <ForwardRef(Grid)

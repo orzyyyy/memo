@@ -18,6 +18,7 @@ describe('Inbound', () => {
     description: '',
     round: { value: 0, error: false, message: 'error' },
     sellType: { value: 0, error: false, message: 'error' },
+    materialQuantity: { value: '107', error: false, message: 'error' },
   };
 
   const formOptions = {
@@ -77,14 +78,12 @@ describe('Inbound', () => {
       .first()
       .props()
       .onChange({ target: { value: 'test1' } });
-    expect(onChange).toHaveBeenCalledWith(
-      {
-        text: '',
-        value: 'test1',
-      },
-      'select',
-      'materialType',
-    );
+    expect(onChange).toHaveBeenCalledWith({
+      controllType: 'select',
+      item: { text: 'test1', value: 'test1' },
+      key: 'materialType',
+      stateType: 'stateful',
+    });
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
     expect(
       wrapper

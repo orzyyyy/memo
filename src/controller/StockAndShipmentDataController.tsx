@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import Inbound from '../pages/Inbound';
 import Outbound from '../pages/Outbound';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import {
   FormControlType,
   renderMessage,
-  MaterialInputSpecificationProps,
-  MaterialSelectSpecificationProps,
+  MenuItemOption,
+  SelectFormItemProps,
+  InputFormItemProps,
 } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -14,51 +15,235 @@ const ERROR_MESSAGE = '该项不能为空';
 const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
 const INPUT_FORM_ITEM_DEFAULT_VALUE = { value: '', error: false, message: '' };
 
-const StockAndShipmentDataController = () => {
-  const [loading, setLoading] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitFailed, setSubmitFailed] = useState(false);
-  // 类别菜单项
-  const [materialTypeOption, setMaterialTypeOption] = useState([]);
-  // 材质菜单项
-  const [materialIdOption, setMaterialIdOption] = useState([]);
-  // 圆钢类型菜单项
-  const [roundTypeOption, setRoundTypeOption] = useState([]);
-  // 卖出类型菜单项
-  const [sellTypeOption, setSellTypeOption] = useState([]);
-  // 出库为 0，入库为 1
-  const [type, setType] = useState(0);
+export type FormItemStatus = 'stateful' | 'stateless';
+
+// 菜单项
+export interface MenuOptionProps {
   // 类别
-  const [materialType, setMaterialType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
+  materialTypeOption: MenuItemOption[];
+  // 材质
+  materialIdOption: any[];
+  // 圆钢类型
+  roundTypeOption: MenuItemOption[];
+  // 卖出类型
+  sellTypeOption: MenuItemOption[];
+}
+
+// 控制页面返回状态的属性
+export interface ViewProps {
+  loading: boolean;
+  submitSuccess: boolean;
+  submitFailed: boolean;
+}
+
+export interface OnChangeProps {
+  item: any;
+  controllType: FormControlType;
+  key: FormStatelessFields | FormStatefulFields;
+  stateType: FormItemStatus;
+}
+
+export interface FormStatelessProps {
+  // 出库为 0，入库为 1
+  type: number;
+  // 预估重量
+  predictWeight: number;
+  // 其他费用
+  extraCost: number;
+  // 备注
+  description: string;
+  // 锯费
+  costFee: number;
+  // 预估总价
+  predictPrice: number;
+}
+
+export interface FormStatefulProps {
+  // 材料类型
+  materialType: SelectFormItemProps;
+  // 材质
+  materialId: { value: { text: string; value: any }; error: boolean; message: string };
+  // 材料单价
+  materialCost: InputFormItemProps;
+  // 长宽高重
+  length: InputFormItemProps;
+  width: InputFormItemProps;
+  height: InputFormItemProps;
+  weight: InputFormItemProps;
+  // 运费
+  freight: InputFormItemProps;
+  // 数量。出库用
+  materialQuantity: InputFormItemProps;
+  // 圆钢种类
+  round: SelectFormItemProps;
+  // 卖出类型。零售 / 批量
+  sellType: SelectFormItemProps;
+}
+
+export type FormStatefulFields =
+  | 'materialType' // 类别
+  | 'materialCost' // 材料单价
+  | 'length' // 长宽高重
+  | 'width'
+  | 'height'
+  | 'weight'
+  | 'freight' // 运费
+  | 'round' // 圆钢类型
+  | 'sellType' // 卖出类型
+  | 'materialId' // 材质
+  | 'materialQuantity'; // 数量。出库用
+
+export type FormStatelessFields =
+  | 'type' // 出库为 0，入库为 1
+  | 'predictWeight' // 预估重量
+  | 'extraCost' // 其他费用
+  | 'description' // 备注
+  | 'costFee' // 锯费
+  | 'predictPrice'; // 预估总价
+
+// 需要管理表单状态的业务属性
+const initialStateful: FormStatefulProps = {
+  // 类别
+  materialType: SELECT_FORM_ITEM_DEFAULT_VALUE,
+  // 材质
+  materialId: Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
+  // 材料单价
+  materialCost: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  // 长宽高重
+  length: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  width: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  height: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  weight: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  // 运费
+  freight: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  // 数量。出库用
+  materialQuantity: INPUT_FORM_ITEM_DEFAULT_VALUE,
+  // 圆钢种类
+  round: SELECT_FORM_ITEM_DEFAULT_VALUE,
+  // 卖出类型
+  sellType: SELECT_FORM_ITEM_DEFAULT_VALUE,
+};
+
+// 不需要表单状态的业务属性
+const initialStateless: FormStatelessProps = {
+  // 出库为 0，入库为 1
+  type: 0,
+  // 预估重量
+  predictWeight: 0,
+  // 其他费用
+  extraCost: 0,
+  // 备注
+  description: '',
+  // 锯费
+  costFee: 0,
+  // 预估总价
+  predictPrice: 0,
+};
+
+const initialViewState: ViewProps = {
+  loading: false,
+  submitSuccess: false,
+  submitFailed: false,
+};
+
+// 菜单项
+const initialMenuOptionState: MenuOptionProps = {
+  // 类别菜单项
+  materialTypeOption: [],
+  // 材质菜单项
+  materialIdOption: [],
+  // 圆钢类型菜单项
+  roundTypeOption: [],
+  // 卖出类型菜单项
+  sellTypeOption: [],
+};
+
+const statefulReducer = (
+  state: FormStatefulProps,
+  action: {
+    data: any;
+    type: FormControlType;
+    key: FormStatefulFields;
+  },
+) => {
+  const getReturn = (validStr: string | number) => {
+    if (action.data.value === validStr) {
+      return { ...state, [action.key]: { value: validStr, error: true, message: ERROR_MESSAGE } };
+    }
+    return {
+      ...state,
+      [action.key]: {
+        value:
+          action.type === 'autoComplete'
+            ? { text: action.data.value.text, value: action.data.value.value }
+            : action.data.value,
+        error: action.data.value === validStr,
+        message: action.data.value === validStr ? ERROR_MESSAGE : '',
+      },
+    };
+  };
+
+  switch (action.type) {
+    case 'input':
+      return getReturn('');
+
+    case 'select':
+    case 'autoComplete':
+      return getReturn(-1);
+
+    default:
+      throw new Error(`Unknown type "${action.type}" in statefulReducer.`);
+  }
+};
+
+const statelessReducer = (
+  state: FormStatelessProps,
+  action: {
+    type: FormStatelessFields;
+    data: any;
+  },
+) => ({ ...state, [action.type]: action.data });
+
+const viewStateReducer = (state: ViewProps, action: { type: 'reset' | 'success' | 'failed' | 'loading' }) => {
+  switch (action.type) {
+    case 'loading':
+      return { loading: true, submitSuccess: false, submitFailed: false };
+
+    case 'reset':
+      return { loading: false, submitSuccess: false, submitFailed: false };
+
+    case 'success':
+      return { ...state, submitSuccess: true };
+
+    case 'failed':
+      return { ...state, submitFailed: true };
+
+    default:
+      throw new Error(`Unknown type "${action.type}" in viewStateReducer.`);
+  }
+};
+
+const menuOptionReducer = (
+  state: MenuOptionProps,
+  action: {
+    type:
+      | 'materialTypeOption' // 类别
+      | 'roundTypeOption' // 圆钢类型
+      | 'sellTypeOption' // 卖出类型
+      | 'materialIdOption'; // 材质
+    data: any;
+  },
+) => ({ ...state, [action.type]: action.data });
+
+const StockAndShipmentDataController = () => {
+  const [stateful, statefulDispatch] = useReducer(statefulReducer, initialStateful as any);
+  const [stateless, statelessDispatch] = useReducer(statelessReducer, initialStateless as any);
+  const [viewState, viewStateDispatch] = useReducer(viewStateReducer, initialViewState as any);
+  const [menuOptionState, menuOptionDispatch] = useReducer(menuOptionReducer, initialMenuOptionState as any);
   // 材质 id
   const [materialId, setMaterialId] = useState(
     Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
   );
-  // 材料单价
-  const [materialCost, setMaterialCost] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  // 长宽高重
-  const [length, setLength] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  const [width, setWidth] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  const [height, setHeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  const [weight, setWeight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  // 预估重量
-  const [predictWeight, setPredictWeight] = useState();
-  // 运费
-  const [freight, setFreight] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  // 其他费用
-  const [extraCost, setExtraCost] = useState();
-  // 备注
-  const [description, setDescription] = useState('');
-  // 数量。出库用
-  const [materialQuantity, setMaterialQuantity] = useState(INPUT_FORM_ITEM_DEFAULT_VALUE);
-  // 锯费
-  const [costFee, setCostFee] = useState(0);
-  // 预估总价
-  const [predictPrice, setPredictPrice] = useState(0);
-  // 圆钢种类
-  const [round, setRound] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
-  // 卖出类型
-  const [sellType, setSellType] = useState(SELECT_FORM_ITEM_DEFAULT_VALUE);
 
   useEffect(() => {
     const fetcher = async (sign: number, callback: (result: any) => void) => {
@@ -67,69 +252,62 @@ const StockAndShipmentDataController = () => {
       callback(await result);
     };
 
-    fetcher(1, setMaterialTypeOption);
-    fetcher(10, setRoundTypeOption);
-    fetcher(9, setSellTypeOption);
+    fetcher(1, data => menuOptionDispatch({ type: 'materialTypeOption', data }));
+    fetcher(10, data => menuOptionDispatch({ type: 'roundTypeOption', data }));
+    fetcher(9, data => menuOptionDispatch({ type: 'sellTypeOption', data }));
   }, []);
 
   const verifySubmitParams = () => {
-    let hasError = false;
-    // 材质
-    if (materialType.value === -1) {
-      setMaterialType(Object.assign({}, materialType, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    // 材料单价
-    if (materialCost.value === '') {
-      setMaterialCost(Object.assign({}, materialCost, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    // 长宽高重
-    if (length.value === '') {
-      setLength(Object.assign({}, length, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
+    const {
+      materialType,
+      materialCost,
+      length,
+      width,
+      height,
+      weight,
+      freight,
+      round,
+      sellType,
+      materialQuantity,
+    } = stateful;
+    statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
+    statefulDispatch({ type: 'input', key: 'materialCost', data: materialCost });
+    statefulDispatch({ type: 'input', key: 'length', data: length });
     if (width.value === '' && materialType.value !== -1) {
-      setWidth(Object.assign({}, width, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
+      statefulDispatch({ type: 'input', key: 'width', data: width });
     }
-    if (height.value === '') {
-      setHeight(Object.assign({}, height, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    if (weight.value === '') {
-      setHeight(Object.assign({}, weight, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    if (freight.value !== '') {
-      setFreight(Object.assign({}, freight, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    if (round.value === -1) {
-      setRound(Object.assign({}, round, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    if (sellType.value === -1) {
-      setSellType(Object.assign({}, sellType, { error: true, message: ERROR_MESSAGE }));
-      hasError = true;
-    }
-    if (materialId.value.value === -1) {
-      setMaterialId(Object.assign({}, materialId, { error: true, message: ERROR_MESSAGE }));
-    }
+    statefulDispatch({ type: 'input', key: 'height', data: height });
+    statefulDispatch({ type: 'input', key: 'weight', data: weight });
+    statefulDispatch({ type: 'input', key: 'freight', data: freight });
+    statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
+    statefulDispatch({ type: 'select', key: 'round', data: round });
+    statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
+
+    setMaterialId(Object.assign({}, materialId, { error: true, message: ERROR_MESSAGE }));
+
     const params = {
       materialType: materialType.value,
       materialCost: materialCost.value,
-      type,
+      type: stateless.type,
       height: height.value,
       weight: weight.value,
       freight: freight.value,
-      description,
-      extraCost,
+      description: stateless.description,
+      extraCost: stateless.extraCost,
       materialId: materialId.value.value,
       materialQuantity: materialQuantity.value,
-      round: round.value,
-      sellType: sellType.value,
     };
+
+    let hasError = false;
+
+    for (const key in stateful) {
+      const { error } = stateful[key as FormStatefulFields];
+      if (error) {
+        hasError = true;
+        break;
+      }
+    }
+
     return { hasError, params };
   };
 
@@ -139,14 +317,14 @@ const StockAndShipmentDataController = () => {
       return;
     }
 
-    setLoading(true);
+    viewStateDispatch({ type: 'loading' });
     const response = await fetch('/toy/good/in', {
       body: JSON.stringify(params),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.text();
-    result === 'success' ? setSubmitSuccess(true) : setSubmitFailed(true);
+    viewStateDispatch({ type: result === 'success' ? 'success' : 'failed' });
     return params;
   };
 
@@ -155,7 +333,7 @@ const StockAndShipmentDataController = () => {
     const realWidth = width / 10;
     const realHeight = height / 10;
 
-    // 入库时数量一定为 undefined，计算会出错，需要处理
+    // 入库时数量一定为 undefined，计算会出错，需要单独处理
     if (type === 0 && !quality) {
       quality = 1;
     }
@@ -173,30 +351,37 @@ const StockAndShipmentDataController = () => {
 
     const result = calcute(realLength, realWidth, realHeight);
 
-    // 圆钢
-    if (length && height) {
-      setPredictWeight(result);
-    } else if (length && width && height) {
-      // 方钢
-      setPredictWeight(result);
+    if ((length && width && height) || (length && height)) {
+      statelessDispatch({ type: 'predictWeight', data: result });
     }
     return result;
   };
 
-  const calcuteForPredictPrice = (predictWeight: number) => {
-    const price = predictWeight * parseFloat(materialCost.value) + parseFloat(materialQuantity.value) * costFee;
-    setPredictPrice(parseFloat(price.toFixed(1)));
+  const calcuteForPredictPrice = (
+    predictWeight: number,
+    costFee: number,
+    materialCost: number,
+    materialQuantity: number,
+  ) => {
+    const price = predictWeight * materialCost + materialQuantity * costFee;
+    statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
   };
 
   const handleSpecificationInputBlur = () => {
+    const { length, width, height, materialQuantity } = stateful;
     const result = calcuteForPredictWeight(
       parseFloat(length.value),
       parseFloat(width.value),
       parseFloat(height.value),
       parseFloat(materialQuantity.value),
-      type,
+      stateless.type,
     );
-    calcuteForPredictPrice(result);
+    calcuteForPredictPrice(
+      result,
+      stateless.costFee,
+      parseFloat(stateful.materialCost.value),
+      parseFloat(materialQuantity.value),
+    );
   };
 
   const fetchMaterialIdOption = async (type: number | string) => {
@@ -213,72 +398,37 @@ const StockAndShipmentDataController = () => {
         width: item['宽'],
       });
     });
-    setMaterialIdOption(target);
+    menuOptionDispatch({ type: 'materialIdOption', data: target });
   };
 
-  const handleChange = (
-    item: any = { value: '', text: '' },
-    controlType: FormControlType,
-    key: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
-  ) => {
-    const inputDefaultValue = {
-      value: item.value,
-      error: item.value === '',
-      message: item.value === '' ? ERROR_MESSAGE : '',
-    };
-    const inputValidation = {
-      materialCost: () => {
-        setMaterialCost(inputDefaultValue);
-      },
-      freight: () => {
-        setFreight(inputDefaultValue);
-      },
-      extraCost: () => {
-        setExtraCost(item.value);
-      },
-      description: () => {
-        setDescription(item.value);
-      },
-      length: () => {
-        setLength(inputDefaultValue);
-      },
-      width: () => {
-        setWidth(inputDefaultValue);
-      },
-      height: () => {
-        setHeight(inputDefaultValue);
-      },
-      weight: () => {
-        setWeight(inputDefaultValue);
-      },
-      predictWeight: () => {},
-      materialQuantity: () => {
-        setMaterialQuantity(inputDefaultValue);
-      },
-      costFee: () => {},
-      predictPrice: () => {},
-    };
-    const selectValidation = {
-      materialType: () => setMaterialType(Object.assign({}, materialType, { value: item.value })),
-      roundType: () => setRound(Object.assign({}, round, { value: item.value })),
-      sellType: () => setSellType(Object.assign({}, sellType, { value: item.value })),
+  const handleChange = ({ item, controllType, key, stateType }: OnChangeProps) => {
+    const handleWithState = (type: 'input' | 'select') => {
+      if (stateType === 'stateful') {
+        statefulDispatch({
+          type,
+          key: key as FormStatefulFields,
+          data: item,
+        });
+      } else if (stateType === 'stateless') {
+        statelessDispatch({ type: key as FormStatelessFields, data: item.value });
+      }
     };
 
-    switch (controlType) {
+    switch (controllType) {
       case 'input':
-        inputValidation[key as MaterialInputSpecificationProps]();
+        handleWithState(controllType);
         break;
 
       case 'select':
-        if (item.value !== -1) {
+        if (item.value !== -1 && key === 'materialType') {
           fetchMaterialIdOption(item.value);
         }
-        selectValidation[key as MaterialSelectSpecificationProps]();
+        handleWithState(controllType);
         break;
 
       case 'autoComplete':
-        setCostFee(item ? item.costFee : 0);
-        setMaterialCost({ value: item ? item.materialCost : 0, error: false, message: '' });
+        statelessDispatch({ type: 'costFee', data: item ? item.costFee : 0 });
+        handleWithState('input');
         setMaterialId(
           Object.assign({
             value: { text: item.text, value: item.value },
@@ -294,52 +444,66 @@ const StockAndShipmentDataController = () => {
   };
 
   const hanldeCloseMessage = () => {
-    setSubmitFailed(false);
-    setSubmitSuccess(false);
-    setLoading(false);
-    // clean up
-    setMaterialType(SELECT_FORM_ITEM_DEFAULT_VALUE);
+    const {
+      materialQuantity,
+      materialCost,
+      length,
+      width,
+      height,
+      weight,
+      freight,
+      materialType,
+      sellType,
+      round,
+    } = stateful;
+    viewStateDispatch({ type: 'reset' });
+
+    statelessDispatch({ type: 'predictWeight', data: 0 });
+    statelessDispatch({ type: 'extraCost', data: 0 });
+    statelessDispatch({ type: 'description', data: '' });
+    statelessDispatch({ type: 'costFee', data: 0 });
+    statelessDispatch({ type: 'predictPrice', data: 0 });
+
+    statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
+    statefulDispatch({ type: 'input', key: 'materialCost', data: materialCost });
+    statefulDispatch({ type: 'input', key: 'length', data: length });
+    statefulDispatch({ type: 'input', key: 'width', data: width });
+    statefulDispatch({ type: 'input', key: 'height', data: height });
+    statefulDispatch({ type: 'input', key: 'weight', data: weight });
+    statefulDispatch({ type: 'input', key: 'freight', data: freight });
+
+    statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
+    statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
+    statefulDispatch({ type: 'select', key: 'round', data: round });
+
     setMaterialId(Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }));
-    setMaterialCost(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setLength(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setWidth(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setHeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setWeight(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setPredictWeight('');
-    setFreight(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setExtraCost('');
-    setDescription('');
-    setMaterialQuantity(INPUT_FORM_ITEM_DEFAULT_VALUE);
-    setCostFee(0);
-    setPredictPrice(0);
-    setSellType(SELECT_FORM_ITEM_DEFAULT_VALUE);
-    setRound(SELECT_FORM_ITEM_DEFAULT_VALUE);
   };
 
   const commonFormData = {
-    materialType,
+    materialType: stateful.materialType,
     materialId,
-    materialCost,
-    type,
-    length,
-    width,
-    height,
-    weight,
-    predictWeight,
-    freight,
-    extraCost,
-    description,
-    round,
-    sellType,
+    materialCost: stateful.materialCost,
+    type: stateless.type,
+    length: stateful.length,
+    width: stateful.width,
+    height: stateful.height,
+    weight: stateful.weight,
+    predictWeight: stateless.predictWeight,
+    freight: stateful.freight,
+    extraCost: stateless.extraCost,
+    description: stateless.description,
+    round: stateful.round,
+    sellType: stateful.sellType,
+    materialQuantity: stateful.materialQuantity,
   };
   const commonBoundProps = {
-    loading,
+    loading: viewState.loading,
     onSubmit: handleSubmit,
     formOptions: {
-      materialType: materialTypeOption,
-      materialId: materialIdOption,
-      roundType: roundTypeOption,
-      sellType: sellTypeOption,
+      materialType: menuOptionState.materialTypeOption,
+      materialId: menuOptionState.materialIdOption,
+      roundType: menuOptionState.roundTypeOption,
+      sellType: menuOptionState.sellTypeOption,
     },
     onChange: handleChange,
     onSpecificationInputBlur: handleSpecificationInputBlur,
@@ -349,22 +513,36 @@ const StockAndShipmentDataController = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setType(type === 0 ? 1 : 0)}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => statelessDispatch({ type: 'type', data: stateless.type === 0 ? 1 : 0 })}
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">{type ? '出库' : '入库'}</Typography>
+          <Typography variant="h6">{stateless.type ? '出库' : '入库'}</Typography>
         </Toolbar>
       </AppBar>
 
-      {renderMessage({ type: 'success', message: '保存成功', open: submitSuccess, onClose: hanldeCloseMessage })}
-      {renderMessage({ type: 'failed', message: '保存失败', open: submitFailed, onClose: hanldeCloseMessage })}
+      {renderMessage({
+        type: 'success',
+        message: '保存成功',
+        open: viewState.submitSuccess,
+        onClose: hanldeCloseMessage,
+      })}
+      {renderMessage({
+        type: 'failed',
+        message: '保存失败',
+        open: viewState.submitFailed,
+        onClose: hanldeCloseMessage,
+      })}
 
-      {type ? (
+      {stateless.type ? (
         <Outbound
           formData={Object.assign({}, commonFormData, {
-            materialQuantity,
-            costFee,
-            predictPrice,
+            costFee: stateless.costFee,
+            predictPrice: stateless.predictPrice,
           })}
           {...commonBoundProps}
         />

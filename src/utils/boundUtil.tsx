@@ -22,6 +22,7 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { GridSize } from '@material-ui/core/Grid';
 import Autocomplete, { RenderInputParams } from '@material-ui/lab/Autocomplete';
 import { green } from '@material-ui/core/colors';
+import { FormItemStatus, OnChangeProps } from '../controller/StockAndShipmentDataController';
 
 export type MenuItemOption = {
   text: string;
@@ -47,6 +48,8 @@ export type CommonBoundFormDataProps = {
   predictWeight: number;
   // 运费
   freight: InputFormItemProps;
+  // 数量。出库用
+  materialQuantity: InputFormItemProps;
   // 其他费用
   extraCost: number;
   // 备注
@@ -62,13 +65,9 @@ export type FormOptionsProps = {
   roundType: MenuItemOption[];
   sellType: MenuItemOption[];
 };
-export type FormControlType = 'input' | 'autoComplete' | 'select' | 'type';
+export type FormControlType = 'input' | 'autoComplete' | 'select';
 export type CommonBoundProps = {
-  onChange: (
-    item: MenuItemOption,
-    type: FormControlType,
-    key?: MaterialInputSpecificationProps | MaterialSelectSpecificationProps,
-  ) => void;
+  onChange: (item: OnChangeProps) => void;
   onSubmit: () => void;
   // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
@@ -155,6 +154,7 @@ export const getInputItem = ({
   onBlur,
   classes,
   shrink = false,
+  stateType,
 }: {
   key: MaterialInputSpecificationProps;
   error: boolean;
@@ -165,13 +165,11 @@ export const getInputItem = ({
   unit?: string;
   readOnly?: boolean;
   required?: boolean;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialInputSpecificationProps,
-  ) => void;
+  onChange: (item: OnChangeProps) => void;
   onBlur: () => void;
   classes: any;
   shrink?: boolean;
+  stateType: FormItemStatus;
 }) => (
   <Grid item xs={xs} key={key}>
     <FormControl required={required} className={classes.formControl} error={error}>
@@ -179,7 +177,9 @@ export const getInputItem = ({
       <Input
         value={inputValue}
         type="number"
-        onChange={e => onChange(e, key)}
+        onChange={e =>
+          onChange({ item: { text: e.target.value, value: e.target.value }, controllType: 'input', key, stateType })
+        }
         onBlur={onBlur}
         endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
         readOnly={readOnly}
@@ -217,15 +217,12 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
 };
 
 const renderSpecification = ({
-  handleInputChange,
+  onChange,
   formData,
   onSpecificationInputBlur,
   classes,
 }: {
-  handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialInputSpecificationProps,
-  ) => void;
+  onChange: (item: OnChangeProps) => void;
   formData: CommonBoundFormDataProps;
   onSpecificationInputBlur: () => void;
   classes: any;
@@ -241,9 +238,10 @@ const renderSpecification = ({
             inputValue: formData.length.value,
             helperText: formData.length.message,
             xs: 6,
-            onChange: handleInputChange,
+            onChange,
             onBlur: onSpecificationInputBlur,
             classes,
+            stateType: 'stateful',
           })}
         </>
       );
@@ -257,9 +255,10 @@ const renderSpecification = ({
             inputValue: formData.length.value,
             helperText: formData.length.message,
             xs: 6,
-            onChange: handleInputChange,
+            onChange,
             onBlur: onSpecificationInputBlur,
             classes,
+            stateType: 'stateful',
           })}
           {getInputItem({
             key: 'width',
@@ -268,9 +267,10 @@ const renderSpecification = ({
             inputValue: formData.width.value,
             helperText: formData.width.message,
             xs: 6,
-            onChange: handleInputChange,
+            onChange,
             onBlur: onSpecificationInputBlur,
             classes,
+            stateType: 'stateful',
           })}
         </>
       );
@@ -284,21 +284,14 @@ export const renderPickerForMaterialId = ({
   formOptions,
   formData,
   classes,
-  handleSelectChange,
-  handleAutocompleteChange,
-  handleInputChange,
   onSpecificationInputBlur,
+  onChange,
 }: {
   formOptions: FormOptionsProps;
   formData: CommonBoundFormDataProps;
   classes: any;
-  handleSelectChange: (e: React.ChangeEvent<{ value: unknown }>, key: MaterialSelectSpecificationProps) => void;
-  handleAutocompleteChange: (_: React.ChangeEvent<{ name?: string | undefined; value: unknown }>, item: any) => void;
-  handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialInputSpecificationProps,
-  ) => void;
   onSpecificationInputBlur: () => void;
+  onChange: (item: OnChangeProps) => void;
 }) => {
   const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
   const materialType = parseInt('' + formData.materialType.value);
@@ -308,7 +301,20 @@ export const renderPickerForMaterialId = ({
       <Grid item xs={6}>
         <FormControl required fullWidth className={classes.formControl} error={formData.materialType.error}>
           <InputLabel shrink={formData.materialType.value !== -1}>类别</InputLabel>
-          <Select value={formData.materialType.value} onChange={e => handleSelectChange(e, 'materialType')}>
+          <Select
+            value={formData.materialType.value}
+            onChange={e =>
+              onChange({
+                item: {
+                  text: e.target.value,
+                  value: e.target.value,
+                },
+                controllType: 'select',
+                key: 'materialType',
+                stateType: 'stateful',
+              })
+            }
+          >
             {formOptions.materialType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -321,7 +327,20 @@ export const renderPickerForMaterialId = ({
       <Grid item xs={6}>
         <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
           <InputLabel shrink={formData.sellType.value !== -1}>卖出类型</InputLabel>
-          <Select value={formData.sellType.value} onChange={e => handleSelectChange(e, 'sellType')}>
+          <Select
+            value={formData.sellType.value}
+            onChange={e =>
+              onChange({
+                item: {
+                  text: e.target.value,
+                  value: e.target.value,
+                },
+                controllType: 'select',
+                key: 'sellType',
+                stateType: 'stateful',
+              })
+            }
+          >
             {formOptions.sellType.map(({ text, value }) => (
               <MenuItem value={value} key={text + '-' + value}>
                 {text}
@@ -331,13 +350,26 @@ export const renderPickerForMaterialId = ({
         </FormControl>
       </Grid>
 
-      {renderSpecification({ handleInputChange, formData, onSpecificationInputBlur, classes })}
+      {renderSpecification({ onChange, formData, onSpecificationInputBlur, classes })}
 
       {materialType === 0 && (
-        <Grid item xs={6} key="roundType">
+        <Grid item xs={6} key="round">
           <FormControl required fullWidth className={classes.formControl} error={formData.round.error}>
             <InputLabel shrink={formData.round.value !== -1}>圆钢类别</InputLabel>
-            <Select value={formData.round.value} onChange={e => handleSelectChange(e, 'roundType')}>
+            <Select
+              value={formData.round.value}
+              onChange={e =>
+                onChange({
+                  item: {
+                    text: e.target.value,
+                    value: e.target.value,
+                  },
+                  controllType: 'select',
+                  key: 'round',
+                  stateType: 'stateful',
+                })
+              }
+            >
               {formOptions.roundType.map(({ text, value }) => (
                 <MenuItem value={value} key={text + '-' + value}>
                   {text}
@@ -353,7 +385,9 @@ export const renderPickerForMaterialId = ({
           options={materialIdOptions}
           getOptionLabel={(option: any) => option.text}
           value={formData.materialId.value}
-          onChange={handleAutocompleteChange}
+          onChange={(_: any, item: any) =>
+            onChange({ item, controllType: 'autoComplete', key: 'round', stateType: 'stateful' })
+          }
           id="material-id"
           aria-controls="material-id"
           renderInput={(params: RenderInputParams) => (

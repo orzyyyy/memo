@@ -4,12 +4,10 @@ import { FormControl, TextareaAutosize } from '@material-ui/core';
 import {
   getInputItem,
   CommonBoundFormDataProps,
-  MaterialInputSpecificationProps,
   CommonBoundProps,
   useStyles,
   renderPickerForMaterialId,
   getSubmitButton,
-  MaterialSelectSpecificationProps,
 } from '../utils/boundUtil';
 
 export type InboundProps = {
@@ -19,36 +17,13 @@ export type InboundProps = {
 const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formOptions, loading }: InboundProps) => {
   const classes = useStyles();
 
-  const handleAutocompleteChange = (
-    _: React.ChangeEvent<{
-      name?: string | undefined;
-      value: unknown;
-    }>,
-    item: any,
-  ) => {
-    onChange(item, 'autoComplete');
-  };
-
-  const handleSelectChange = (e: React.ChangeEvent<{ value: number }>, key: MaterialSelectSpecificationProps) => {
-    onChange({ text: '', value: e.target.value }, 'select', key);
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: MaterialInputSpecificationProps,
-  ) => {
-    onChange({ text: e.target.value, value: e.target.value }, 'input', key);
-  };
-
   return (
     <div className={classes.container}>
       {renderPickerForMaterialId({
         formOptions,
         formData,
         classes,
-        handleSelectChange,
-        handleAutocompleteChange,
-        handleInputChange,
+        onChange,
         onSpecificationInputBlur,
       })}
 
@@ -60,9 +35,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         helperText: formData.weight.message,
         xs: 6,
         unit: 'kg',
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
+        stateType: 'stateful',
       })}
 
       {getInputItem({
@@ -72,9 +48,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         inputValue: formData.height.value,
         helperText: formData.height.message,
         xs: 6,
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
+        stateType: 'stateful',
       })}
 
       {getInputItem({
@@ -85,9 +62,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         helperText: formData.materialCost.message,
         xs: 6,
         unit: '元/kg',
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
+        stateType: 'stateful',
       })}
 
       {getInputItem({
@@ -98,9 +76,10 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         helperText: formData.freight.message,
         xs: 6,
         unit: '元',
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
+        stateType: 'stateful',
       })}
 
       {getInputItem({
@@ -111,10 +90,11 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         helperText: '',
         xs: 6,
         unit: '元',
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
         required: false,
+        stateType: 'stateless',
       })}
 
       {getInputItem({
@@ -127,16 +107,24 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         unit: 'kg',
         readOnly: true,
         required: false,
-        onChange: handleInputChange,
+        onChange,
         onBlur: onSpecificationInputBlur,
         classes,
+        stateType: 'stateless',
       })}
 
       <FormControl fullWidth className={classes.formControl}>
         <TextareaAutosize
           placeholder="备注"
           rows={8}
-          onChange={e => handleInputChange(e, 'description')}
+          onChange={e =>
+            onChange({
+              item: { text: e.target.value, value: e.target.value },
+              controllType: 'input',
+              key: 'description',
+              stateType: 'stateless',
+            })
+          }
           value={formData.description}
         />
       </FormControl>
