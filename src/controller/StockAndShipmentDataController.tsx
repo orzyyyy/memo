@@ -130,15 +130,15 @@ const initialStateless: FormStatelessProps = {
   // 出库为 0，入库为 1
   type: 0,
   // 预估重量
-  predictWeight: 0,
+  predictWeight: '' as any,
   // 其他费用
-  extraCost: 0,
+  extraCost: '' as any,
   // 备注
-  description: '',
+  description: '' as any,
   // 锯费
-  costFee: 0,
+  costFee: '' as any,
   // 预估总价
-  predictPrice: 0,
+  predictPrice: '' as any,
 };
 
 const initialViewState: ViewProps = {
