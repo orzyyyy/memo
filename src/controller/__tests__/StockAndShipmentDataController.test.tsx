@@ -55,18 +55,7 @@ describe('StockAndShipmentDataController', () => {
       .find('Inbound')
       .props()
       .onSubmit();
-    expect(result).toEqual({
-      description: '',
-      extraCost: 0,
-      freight: '',
-      height: '',
-      materialCost: '',
-      materialId: -1,
-      materialQuantity: '',
-      materialType: -1,
-      type: 0,
-      weight: '',
-    });
+    expect(result).toBeFalsy();
   });
 
   it('AppBar should work', () => {

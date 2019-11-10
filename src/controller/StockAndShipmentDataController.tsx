@@ -10,6 +10,7 @@ import {
   InputFormItemProps,
 } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
+import omit from 'omit.js';
 
 const ERROR_MESSAGE = '该项不能为空';
 const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
@@ -293,11 +294,11 @@ const StockAndShipmentDataController = () => {
       materialQuantity: materialQuantity.value,
     };
 
+    // todo: 本来应该遍历 stateful，看 error 是否为 true 来判断表单项是否有误
+    // 但因为 stateful 此时尚未更新，所以暂时用硬编码来判断
     let hasError = false;
-
-    for (const key in stateful) {
-      const { error } = stateful[key as FormStatefulFields];
-      if (error) {
+    for (const value of Object.values(omit(params, ['description', 'freight', 'extraCost']))) {
+      if (!value || value === -1) {
         hasError = true;
         break;
       }
