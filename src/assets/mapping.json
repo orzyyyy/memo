@@ -230,7 +230,8 @@
     "title": "resume",
     "type": "其他",
     "subType": "个人资料",
-    "category": "markdown"
+    "category": "markdown",
+    "visible": false
   },
   {
     "createTime": 1571276218886,
@@ -243,11 +244,20 @@
   },
   {
     "createTime": 1572524120815,
-    "modifyTime": 1573113294371,
+    "modifyTime": 1573431931659,
     "id": "76f663e411865e7811cf56576abbd3e6",
     "title": "业务问题及解决方案",
     "type": "经营",
     "subType": "记录",
+    "category": "markdown"
+  },
+  {
+    "createTime": 1573431918741,
+    "modifyTime": 1573472574790,
+    "id": "867507c5d6c8e4a29ed2b5151a9f9d6a",
+    "title": "对简单表单中大量状态进行分类重构的记录",
+    "type": "编程",
+    "subType": "其他",
     "category": "markdown"
   }
 ]
