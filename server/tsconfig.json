@@ -13,5 +13,6 @@
     "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "outDir": "../bin"
-  }
+  },
+  "exclude": ["**/__tests__/*"]
 }

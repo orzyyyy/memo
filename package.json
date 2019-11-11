@@ -36,7 +36,7 @@
     "sort": "npx sort-package-json",
     "start": "npm-run-all --parallel server dev",
     "start:business": "npm-run-all --parallel server dev:business",
-    "test": "rimraf bin dist && nino test",
+    "test": "nino test",
     "tsc": "tsc"
   },
   "pre-commit": [

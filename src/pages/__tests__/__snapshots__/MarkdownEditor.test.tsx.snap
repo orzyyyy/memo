@@ -133,7 +133,7 @@ exports[`MarkdownEditor render correctly 1`] = `
           }
         >
           <div
-            className="content"
+            className="content markdown-body"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<ul><li>test</li></ul>",
