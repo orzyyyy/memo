@@ -118,7 +118,7 @@ describe('Inbound', () => {
         .find('label')
         .at(1)
         .text(),
-    ).toBe('卖出类型 *');
+    ).toBe('卖出方式 *');
     expect(
       wrapper
         .find('label')

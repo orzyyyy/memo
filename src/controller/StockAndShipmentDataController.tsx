@@ -26,7 +26,7 @@ export interface MenuOptionProps {
   materialIdOption: any[];
   // 圆钢类型
   roundTypeOption: MenuItemOption[];
-  // 卖出类型
+  // 卖出方式
   sellTypeOption: MenuItemOption[];
 }
 
@@ -77,7 +77,7 @@ export interface FormStatefulProps {
   materialQuantity: InputFormItemProps;
   // 圆钢种类
   round: SelectFormItemProps;
-  // 卖出类型。零售 / 批量
+  // 卖出方式。零售 / 批量
   sellType: SelectFormItemProps;
 }
 
@@ -90,7 +90,7 @@ export type FormStatefulFields =
   | 'weight'
   | 'freight' // 运费
   | 'round' // 圆钢类型
-  | 'sellType' // 卖出类型
+  | 'sellType' // 卖出方式
   | 'materialId' // 材质
   | 'materialQuantity'; // 数量。出库用
 
@@ -121,7 +121,7 @@ const initialStateful: FormStatefulProps = {
   materialQuantity: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 圆钢种类
   round: SELECT_FORM_ITEM_DEFAULT_VALUE,
-  // 卖出类型
+  // 卖出方式
   sellType: SELECT_FORM_ITEM_DEFAULT_VALUE,
 };
 
@@ -155,7 +155,7 @@ const initialMenuOptionState: MenuOptionProps = {
   materialIdOption: [],
   // 圆钢类型菜单项
   roundTypeOption: [],
-  // 卖出类型菜单项
+  // 卖出方式菜单项
   sellTypeOption: [],
 };
 
@@ -229,7 +229,7 @@ const menuOptionReducer = (
     type:
       | 'materialTypeOption' // 类别
       | 'roundTypeOption' // 圆钢类型
-      | 'sellTypeOption' // 卖出类型
+      | 'sellTypeOption' // 卖出方式
       | 'materialIdOption'; // 材质
     data: any;
   },
@@ -392,6 +392,8 @@ const StockAndShipmentDataController = () => {
         materialCost: item['单价'],
         length: item['长'],
         width: item['宽'],
+        sellType: item['卖出方式'],
+        round: item['圆钢种类'],
       });
     });
     menuOptionDispatch({ type: 'materialIdOption', data: target });

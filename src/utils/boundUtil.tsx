@@ -56,7 +56,7 @@ export type CommonBoundFormDataProps = {
   description: string;
   // 圆钢种类
   round: SelectFormItemProps;
-  // 卖出类型。零售 / 批量
+  // 卖出方式。零售 / 批量
   sellType: SelectFormItemProps;
 };
 export type FormOptionsProps = {
@@ -191,28 +191,30 @@ export const getInputItem = ({
 
 // 当类别未选择时，不显示材质
 // 选择类别后，如果没有输入规格（长、宽）时，则不过滤
-// todo: 需要增加卖出类型和圆钢类型的过滤条件
+// 增加卖出方式和圆钢类型的过滤条件
 export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoundFormDataProps) => {
   const materialType = parseInt('' + formData.materialType.value);
-  const result = materialIds.filter(item => {
-    // 圆钢
-    if (materialType === 0) {
-      if (formData.length.value) {
-        return formData.length.value == item.length;
+  const result = materialIds
+    .filter(item => {
+      // 圆钢
+      if (materialType === 0) {
+        if (formData.length.value) {
+          return formData.length.value == item.length;
+        }
+        return true;
+      } // 方钢
+      else if (materialType === 1) {
+        if (formData.length.value && formData.width.value) {
+          return formData.length.value == item.length && formData.width.value == item.width;
+        } else if (formData.width.value) {
+          return formData.width.value == item.width;
+        } else if (formData.length.value) {
+          return formData.length.value == item.length;
+        }
+        return true;
       }
-      return true;
-    } // 方钢
-    else if (materialType === 1) {
-      if (formData.length.value && formData.width.value) {
-        return formData.length.value == item.length && formData.width.value == item.width;
-      } else if (formData.width.value) {
-        return formData.width.value == item.width;
-      } else if (formData.length.value) {
-        return formData.length.value == item.length;
-      }
-      return true;
-    }
-  });
+    })
+    .filter(item => item.sellType == formData.sellType.value && item.round == formData.round.value);
   return result;
 };
 
@@ -326,7 +328,7 @@ export const renderPickerForMaterialId = ({
 
       <Grid item xs={6}>
         <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
-          <InputLabel shrink={formData.sellType.value !== -1}>卖出类型</InputLabel>
+          <InputLabel shrink={formData.sellType.value !== -1}>卖出方式</InputLabel>
           <Select
             value={formData.sellType.value}
             onChange={e =>

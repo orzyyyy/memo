@@ -1233,7 +1233,7 @@ exports[`Inbound render correctly 1`] = `
                           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
                           data-shrink={true}
                         >
-                          卖出类型
+                          卖出方式
                           <span
                             className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
                           >
