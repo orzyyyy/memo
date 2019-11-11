@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Input, Button } from 'antd';
 import marked from 'marked';
 const { TextArea } = Input;
+import 'github-markdown-css/github-markdown.css';
 
 export interface MarkdownEditorProps {
   onSave: () => void;
@@ -17,16 +18,8 @@ const MarkdownEditor = ({ value, onSave, onChange }: MarkdownEditorProps) => (
     <Col span={12}>
       <TextArea style={{ height: '90vh', fontSize: 16 }} onChange={e => onChange(e.target.value)} value={value} />
     </Col>
-    <Col
-      span={12}
-      style={{
-        height: '90vh',
-        overflow: 'auto',
-        paddingLeft: 24,
-        fontSize: 16,
-      }}
-    >
-      <div className="content" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
+    <Col span={12} style={{ height: '90vh', overflow: 'auto', paddingLeft: 24, fontSize: 16 }}>
+      <div className="content markdown-body" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
     </Col>
     <Col span={8} push={8} style={{ marginTop: 24 }}>
       <Button block onClick={onSave}>
