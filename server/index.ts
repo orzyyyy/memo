@@ -21,7 +21,7 @@ io.on('connection', socket => {
 app.use(BodyParser());
 app.use(DecoratorRouter(path.join(__dirname, 'controller')));
 app.use(KoaStatic(joinWithRootPath('dist')));
-app.use(CheckSqlTomlResource(joinWithRootPath('bin/resource/sql')));
+app.use(CheckSqlTomlResource(path.join(__dirname, 'resource/sql')));
 
 server.listen(9099);
 
