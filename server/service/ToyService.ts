@@ -1,6 +1,6 @@
 import mysql, { Connection, FieldInfo } from 'mysql';
 import { getTargetResource } from '../utils/resource';
-import { joinWithRootPath } from '../utils/common';
+import path from 'path';
 import { getAllSqlInstances, SqlInstanceProps } from '../middleware/CheckSqlTomlResource';
 import { replacePlaceholderWithParams } from '../utils/sql';
 
@@ -18,7 +18,7 @@ export default class ToyService {
       connect.connect();
 
       const sqlInstance = {};
-      getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(item =>
+      getAllSqlInstances([path.join(__dirname, '../resource/sql')], false).map(item =>
         Object.assign(sqlInstance, item),
       );
 
