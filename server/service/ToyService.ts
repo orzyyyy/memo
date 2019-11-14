@@ -18,9 +18,7 @@ export default class ToyService {
       connect.connect();
 
       const sqlInstance = {};
-      getAllSqlInstances([joinWithRootPath('server/resource/sql')], false).map(item =>
-        Object.assign(sqlInstance, item),
-      );
+      getAllSqlInstances([joinWithRootPath('bin/resource/sql')], false).map(item => Object.assign(sqlInstance, item));
 
       ToyService.connectionInstance = connect;
       ToyService.sqlIns = sqlInstance;
