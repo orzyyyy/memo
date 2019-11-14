@@ -8,6 +8,11 @@ exports[`MainPage render correctly 1`] = `
     collapsedWidth={0}
     collapsible={true}
     theme="light"
+    zeroWidthTriggerStyle={
+      Object {
+        "top": "calc(100vh - 65px)",
+      }
+    }
   >
     <Menu
       mode="inline"

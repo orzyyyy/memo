@@ -50,7 +50,7 @@ const MainPage = ({
 
   const renderSider = () => {
     return (
-      <Sider theme="light" collapsible collapsedWidth={0}>
+      <Sider theme="light" collapsible collapsedWidth={0} zeroWidthTriggerStyle={{ top: 'calc(100vh - 65px)' }}>
         <Menu selectedKeys={[siderSelectedKey || '']} mode="inline" onClick={handleMenuClick}>
           {menuData &&
             menuData.map((item: SiderProps) => {
