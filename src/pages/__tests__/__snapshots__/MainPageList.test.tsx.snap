@@ -92,18 +92,13 @@ exports[`MainPageList render correctly 1`] = `
                   ]
                 }
               >
-                <Dropdown
+                <ForwardRef(Dropdown)
                   alignPoint={true}
-                  defaultVisible={false}
                   mouseEnterDelay={0.15}
                   mouseLeaveDelay={0.1}
-                  onVisibleChange={[Function]}
                   overlay={[Function]}
-                  overlayClassName=""
-                  overlayStyle={Object {}}
                   placement="bottomLeft"
                   prefixCls="ant-dropdown"
-                  showAction={Array []}
                   transitionName="slide-up"
                   trigger={
                     Array [
@@ -233,7 +228,6 @@ exports[`MainPageList render correctly 1`] = `
                       }
                     }
                     defaultPopupVisible={false}
-                    defaultVisible={false}
                     destroyPopupOnHide={false}
                     focusDelay={0}
                     getDocument={[Function]}
@@ -249,7 +243,6 @@ exports[`MainPageList render correctly 1`] = `
                     mouseLeaveDelay={0.1}
                     onPopupAlign={[Function]}
                     onPopupVisibleChange={[Function]}
-                    onVisibleChange={[Function]}
                     overlay={[Function]}
                     popup={[Function]}
                     popupAlign={Object {}}
@@ -257,9 +250,9 @@ exports[`MainPageList render correctly 1`] = `
                     popupPlacement="bottomLeft"
                     popupStyle={Object {}}
                     popupTransitionName="slide-up"
-                    popupVisible={false}
                     prefixCls="ant-dropdown"
                     showAction={Array []}
+                    stretch=""
                   >
                     <Item
                       className="list-item ant-dropdown-trigger"
@@ -290,7 +283,7 @@ exports[`MainPageList render correctly 1`] = `
                       </li>
                     </Item>
                   </Trigger>
-                </Dropdown>
+                </ForwardRef(Dropdown)>
               </Dropdown>
               <Dropdown
                 key="list-item-1"
@@ -304,18 +297,13 @@ exports[`MainPageList render correctly 1`] = `
                   ]
                 }
               >
-                <Dropdown
+                <ForwardRef(Dropdown)
                   alignPoint={true}
-                  defaultVisible={false}
                   mouseEnterDelay={0.15}
                   mouseLeaveDelay={0.1}
-                  onVisibleChange={[Function]}
                   overlay={[Function]}
-                  overlayClassName=""
-                  overlayStyle={Object {}}
                   placement="bottomLeft"
                   prefixCls="ant-dropdown"
-                  showAction={Array []}
                   transitionName="slide-up"
                   trigger={
                     Array [
@@ -445,7 +433,6 @@ exports[`MainPageList render correctly 1`] = `
                       }
                     }
                     defaultPopupVisible={false}
-                    defaultVisible={false}
                     destroyPopupOnHide={false}
                     focusDelay={0}
                     getDocument={[Function]}
@@ -461,7 +448,6 @@ exports[`MainPageList render correctly 1`] = `
                     mouseLeaveDelay={0.1}
                     onPopupAlign={[Function]}
                     onPopupVisibleChange={[Function]}
-                    onVisibleChange={[Function]}
                     overlay={[Function]}
                     popup={[Function]}
                     popupAlign={Object {}}
@@ -469,9 +455,9 @@ exports[`MainPageList render correctly 1`] = `
                     popupPlacement="bottomLeft"
                     popupStyle={Object {}}
                     popupTransitionName="slide-up"
-                    popupVisible={false}
                     prefixCls="ant-dropdown"
                     showAction={Array []}
+                    stretch=""
                   >
                     <Item
                       className="list-item ant-dropdown-trigger"
@@ -502,7 +488,7 @@ exports[`MainPageList render correctly 1`] = `
                       </li>
                     </Item>
                   </Trigger>
-                </Dropdown>
+                </ForwardRef(Dropdown)>
               </Dropdown>
             </ul>
           </div>
