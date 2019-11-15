@@ -10,15 +10,15 @@ method = 'post'
 
 [add-material-type]
 sql = """
-  insert into `material_detail` (类别, 材质, 单价, 锯费, 长, 宽, 高, 卖出方式, 圆钢种类, 制作标准, 制作方式)
-  values (@类别, @材质, @单价, @锯费, @长, @宽, @高, @卖出方式, @圆钢种类, @制作标准, @制作方式)
+  insert into `material_detail` (类别1, 类别2, 类别3, 类别4, 材质, 单价, 锯费, 长, 宽, 高, 卖出方式, 制作标准, 制作方式, 产地, 处理工艺)
+  values (@类别1, @类别2, @类别3, @类别4, @材质, @单价, @锯费, @长, @宽, @高, @卖出方式, @制作标准, @制作方式, @产地, @处理工艺)
 """
 method = 'post'
 
 [get-material-type-by-detail]
 sql = """
   select * from `material_detail`
-  where 长 = @长 and 宽 = @宽 and 高 = @高 and 类别 = @类别 and 材质 = @材质 and 卖出方式 = @卖出方式 and 圆钢种类 = @圆钢种类 and 制作标准 = @制作标准 and 制作方式 = @制作方式
+  where 长 = @长 and 宽 = @宽 and 高 = @高 and 类别1 = @类别1 and 类别2 = @类别2 and 类别3 = @类别3 and 类别4 = @类别4 and 材质 = @材质 and 卖出方式 = @卖出方式 and 制作标准 = @制作标准 and 制作方式 = @制作方式 and 产地 = @产地 and 处理工艺 = @处理工艺 and 产地 = @产地
 """
 method = 'get'
 

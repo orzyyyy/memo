@@ -60,16 +60,30 @@ export default class ToyController {
   @Request({ url: '/good/type/in', method: 'post' })
   async addMaterialType(ctx: Context) {
     const params = ctx.request.body;
-    const materialDetail = await this.service.getDataBySqlKey(
-      'get-material-type-by-detail',
-      Object.assign(
-        { 类别: -1, 材质: -1, 长: -1, 宽: -1, 高: -1, 卖出方式: 0, 圆钢种类: 0, 制作标准: 0, 制作方式: 0 },
-        params,
-      ),
+    const realParams = Object.assign(
+      {
+        材质: 0,
+        长: 0,
+        宽: 0,
+        高: 0,
+        卖出方式: 0,
+        制作标准: 0,
+        制作方式: 0,
+        处理工艺: 0,
+        单价: 0,
+        锯费: 0,
+        产地: '',
+        类别1: 0,
+        类别2: 0,
+        类别3: 0,
+        类别4: 0,
+      },
+      params,
     );
+    const materialDetail = await this.service.getDataBySqlKey('get-material-type-by-detail', realParams);
     if (materialDetail.result.length) {
       return '当前规格已存在';
     }
-    await this.service.getDataBySqlKey('add-material-type', params);
+    await this.service.getDataBySqlKey('add-material-type', realParams);
   }
 }

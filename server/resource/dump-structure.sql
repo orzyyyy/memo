@@ -31,7 +31,7 @@ CREATE TABLE `dictionary` (
   `description` text,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `goods_in_and_out` (
   `modify_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `material_id` int(11) DEFAULT NULL COMMENT '材料类别',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,25 +67,26 @@ DROP TABLE IF EXISTS `material_detail`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `material_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `类别` int(11) DEFAULT '-1' COMMENT 'sign = 1',
-  `材质` varchar(45) DEFAULT '-1',
-  `制作方式` int(11) DEFAULT '-1',
-  `制作标准` int(11) DEFAULT '-1',
-  `处理工艺` int(11) DEFAULT '-1',
-  `模套分类` int(11) DEFAULT '-1',
-  `单价` decimal(9,2) DEFAULT '-1.00',
-  `锯费` decimal(9,2) DEFAULT '-1.00',
-  `长` decimal(9,2) DEFAULT '-1.00',
-  `宽` decimal(9,2) DEFAULT '-1.00',
-  `高` decimal(9,2) DEFAULT '-1.00',
-  `产地` varchar(45) DEFAULT '-1',
+  `类别1` int(11) DEFAULT '0' COMMENT 'sign = 1',
+  `类别2` int(11) DEFAULT '0',
+  `类别3` int(11) DEFAULT '0',
+  `类别4` int(11) DEFAULT '0',
+  `材质` varchar(45) DEFAULT '0',
+  `制作方式` int(11) DEFAULT '0',
+  `制作标准` int(11) DEFAULT '0',
+  `处理工艺` int(11) DEFAULT '0',
+  `单价` decimal(9,2) DEFAULT '0.00',
+  `锯费` decimal(9,2) DEFAULT '0.00',
+  `长` decimal(9,2) DEFAULT '0.00',
+  `宽` decimal(9,2) DEFAULT '0.00',
+  `高` decimal(9,2) DEFAULT '0.00',
+  `产地` varchar(45) DEFAULT '',
   `库存长度` decimal(9,2) DEFAULT '0.00',
   `库存重量` decimal(9,2) DEFAULT '0.00',
   `卖出方式` int(11) DEFAULT '0',
-  `圆钢种类` int(11) DEFAULT '0',
   `是否校准` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1768 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -97,4 +98,4 @@ CREATE TABLE `material_detail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-11 15:26:18
+-- Dump completed on 2019-11-15 16:54:29
