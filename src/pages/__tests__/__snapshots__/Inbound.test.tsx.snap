@@ -3432,7 +3432,7 @@ exports[`Inbound render correctly 1`] = `
                           tabIndex={-1}
                           title="Clear"
                         >
-                          <Memo(CloseIcon)
+                          <UNDEFINED
                             fontSize="small"
                           />
                         </ForwardRef(WithStyles)>
@@ -3444,7 +3444,7 @@ exports[`Inbound render correctly 1`] = `
                           tabIndex={-1}
                           title="Open popup"
                         >
-                          <Memo(ArrowDropDownIcon) />
+                          <UNDEFINED />
                         </ForwardRef(WithStyles)>
                       </React.Fragment>,
                       "ref": [Function],
@@ -3509,7 +3509,7 @@ exports[`Inbound render correctly 1`] = `
                             tabIndex={-1}
                             title="Clear"
                           >
-                            <Memo(CloseIcon)
+                            <UNDEFINED
                               fontSize="small"
                             />
                           </ForwardRef(WithStyles)>
@@ -3521,7 +3521,7 @@ exports[`Inbound render correctly 1`] = `
                             tabIndex={-1}
                             title="Open popup"
                           >
-                            <Memo(ArrowDropDownIcon) />
+                            <UNDEFINED />
                           </ForwardRef(WithStyles)>
                         </React.Fragment>,
                         "ref": [Function],
@@ -3691,7 +3691,7 @@ exports[`Inbound render correctly 1`] = `
                                   tabIndex={-1}
                                   title="Clear"
                                 >
-                                  <Memo(CloseIcon)
+                                  <UNDEFINED
                                     fontSize="small"
                                   />
                                 </ForwardRef(WithStyles)>
@@ -3703,7 +3703,7 @@ exports[`Inbound render correctly 1`] = `
                                   tabIndex={-1}
                                   title="Open popup"
                                 >
-                                  <Memo(ArrowDropDownIcon) />
+                                  <UNDEFINED />
                                 </ForwardRef(WithStyles)>
                               </React.Fragment>
                             }
@@ -3772,7 +3772,7 @@ exports[`Inbound render correctly 1`] = `
                                     tabIndex={-1}
                                     title="Clear"
                                   >
-                                    <Memo(CloseIcon)
+                                    <UNDEFINED
                                       fontSize="small"
                                     />
                                   </ForwardRef(WithStyles)>
@@ -3784,7 +3784,7 @@ exports[`Inbound render correctly 1`] = `
                                     tabIndex={-1}
                                     title="Open popup"
                                   >
-                                    <Memo(ArrowDropDownIcon) />
+                                    <UNDEFINED />
                                   </ForwardRef(WithStyles)>
                                 </React.Fragment>
                               }
@@ -3853,7 +3853,7 @@ exports[`Inbound render correctly 1`] = `
                                       tabIndex={-1}
                                       title="Clear"
                                     >
-                                      <Memo(CloseIcon)
+                                      <UNDEFINED
                                         fontSize="small"
                                       />
                                     </ForwardRef(WithStyles)>
@@ -3865,7 +3865,7 @@ exports[`Inbound render correctly 1`] = `
                                       tabIndex={-1}
                                       title="Open popup"
                                     >
-                                      <Memo(ArrowDropDownIcon) />
+                                      <UNDEFINED />
                                     </ForwardRef(WithStyles)>
                                   </React.Fragment>
                                 }
@@ -3942,7 +3942,7 @@ exports[`Inbound render correctly 1`] = `
                                         tabIndex={-1}
                                         title="Clear"
                                       >
-                                        <Memo(CloseIcon)
+                                        <UNDEFINED
                                           fontSize="small"
                                         />
                                       </ForwardRef(WithStyles)>
@@ -3954,7 +3954,7 @@ exports[`Inbound render correctly 1`] = `
                                         tabIndex={-1}
                                         title="Open popup"
                                       >
-                                        <Memo(ArrowDropDownIcon) />
+                                        <UNDEFINED />
                                       </ForwardRef(WithStyles)>
                                     </React.Fragment>
                                   }
