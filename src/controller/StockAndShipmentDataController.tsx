@@ -24,8 +24,6 @@ export interface MenuOptionProps {
   materialTypeOption: MenuItemOption[];
   // 材质
   materialIdOption: any[];
-  // 圆钢类型
-  roundTypeOption: MenuItemOption[];
   // 卖出方式
   sellTypeOption: MenuItemOption[];
 }
@@ -60,7 +58,7 @@ export interface FormStatelessProps {
 }
 
 export interface FormStatefulProps {
-  // 材料类型
+  // 类别
   materialType: SelectFormItemProps;
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
@@ -75,8 +73,6 @@ export interface FormStatefulProps {
   freight: InputFormItemProps;
   // 数量。出库用
   materialQuantity: InputFormItemProps;
-  // 圆钢种类
-  round: SelectFormItemProps;
   // 卖出方式。零售 / 批量
   sellType: SelectFormItemProps;
 }
@@ -89,7 +85,6 @@ export type FormStatefulFields =
   | 'height'
   | 'weight'
   | 'freight' // 运费
-  | 'round' // 圆钢类型
   | 'sellType' // 卖出方式
   | 'materialId' // 材质
   | 'materialQuantity'; // 数量。出库用
@@ -119,8 +114,6 @@ const initialStateful: FormStatefulProps = {
   freight: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 数量。出库用
   materialQuantity: INPUT_FORM_ITEM_DEFAULT_VALUE,
-  // 圆钢种类
-  round: SELECT_FORM_ITEM_DEFAULT_VALUE,
   // 卖出方式
   sellType: SELECT_FORM_ITEM_DEFAULT_VALUE,
 };
@@ -153,8 +146,6 @@ const initialMenuOptionState: MenuOptionProps = {
   materialTypeOption: [],
   // 材质菜单项
   materialIdOption: [],
-  // 圆钢类型菜单项
-  roundTypeOption: [],
   // 卖出方式菜单项
   sellTypeOption: [],
 };
@@ -228,7 +219,6 @@ const menuOptionReducer = (
   action: {
     type:
       | 'materialTypeOption' // 类别
-      | 'roundTypeOption' // 圆钢类型
       | 'sellTypeOption' // 卖出方式
       | 'materialIdOption'; // 材质
     data: any;
@@ -249,7 +239,6 @@ const StockAndShipmentDataController = () => {
     };
 
     fetcher(1, data => menuOptionDispatch({ type: 'materialTypeOption', data }));
-    fetcher(10, data => menuOptionDispatch({ type: 'roundTypeOption', data }));
     fetcher(9, data => menuOptionDispatch({ type: 'sellTypeOption', data }));
   }, []);
 
@@ -262,7 +251,6 @@ const StockAndShipmentDataController = () => {
       height,
       weight,
       freight,
-      round,
       sellType,
       materialId,
       materialQuantity,
@@ -277,7 +265,6 @@ const StockAndShipmentDataController = () => {
     statefulDispatch({ type: 'input', key: 'weight', data: weight });
     statefulDispatch({ type: 'input', key: 'freight', data: freight });
     statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
-    statefulDispatch({ type: 'select', key: 'round', data: round });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
     statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId.value });
 
@@ -393,7 +380,6 @@ const StockAndShipmentDataController = () => {
         length: item['长'],
         width: item['宽'],
         sellType: item['卖出方式'],
-        round: item['圆钢种类'],
       });
     });
     menuOptionDispatch({ type: 'materialIdOption', data: target });
@@ -445,7 +431,6 @@ const StockAndShipmentDataController = () => {
       freight,
       materialType,
       sellType,
-      round,
       materialId,
     } = stateful;
     viewStateDispatch({ type: 'reset' });
@@ -466,7 +451,6 @@ const StockAndShipmentDataController = () => {
 
     statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
-    statefulDispatch({ type: 'select', key: 'round', data: round });
     statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId });
   };
 
@@ -483,7 +467,6 @@ const StockAndShipmentDataController = () => {
     freight: stateful.freight,
     extraCost: stateless.extraCost,
     description: stateless.description,
-    round: stateful.round,
     sellType: stateful.sellType,
     materialQuantity: stateful.materialQuantity,
   };
@@ -493,7 +476,6 @@ const StockAndShipmentDataController = () => {
     formOptions: {
       materialType: menuOptionState.materialTypeOption,
       materialId: menuOptionState.materialIdOption,
-      roundType: menuOptionState.roundTypeOption,
       sellType: menuOptionState.sellTypeOption,
     },
     onChange: handleChange,

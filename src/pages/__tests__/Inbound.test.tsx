@@ -130,14 +130,8 @@ describe('Inbound', () => {
         .find('label')
         .at(3)
         .text(),
-    ).toBe('圆钢类别 *');
-    expect(
-      wrapper
-        .find('label')
-        .at(4)
-        .text(),
     ).toBe('材质 *');
-    expect(wrapper.find('label')).toHaveLength(11);
+    expect(wrapper.find('label')).toHaveLength(10);
 
     // wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 1 }) });
     // expect(
@@ -161,7 +155,7 @@ describe('Inbound', () => {
     // expect(wrapper.find('label')).toHaveLength(7);
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 2 }) });
-    expect(wrapper.find('label')).toHaveLength(11);
+    expect(wrapper.find('label')).toHaveLength(10);
   });
 
   // it('inputs', () => {

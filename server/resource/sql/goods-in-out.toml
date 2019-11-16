@@ -30,7 +30,7 @@ method = 'get'
 
 [get-detail]
 sql = """
-  select * from material_detail where 类别 = @materialType
+  select * from material_detail where 类别1 = @materialType
 """
 
 [get-material-type]

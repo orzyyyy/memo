@@ -33,7 +33,7 @@ export type InputFormItemProps = { value: string; error: boolean; message: strin
 export type CommonBoundFormDataProps = {
   // 出库为 0，入库为 1
   type: number;
-  // 材料类型
+  // 类别
   materialType: SelectFormItemProps;
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
@@ -54,15 +54,12 @@ export type CommonBoundFormDataProps = {
   extraCost: number;
   // 备注
   description: string;
-  // 圆钢种类
-  round: SelectFormItemProps;
   // 卖出方式。零售 / 批量
   sellType: SelectFormItemProps;
 };
 export type FormOptionsProps = {
   materialType: MenuItemOption[];
   materialId: any[];
-  roundType: MenuItemOption[];
   sellType: MenuItemOption[];
 };
 export type FormControlType = 'input' | 'autoComplete' | 'select';
@@ -87,7 +84,7 @@ export type MaterialInputSpecificationProps =
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价
   | 'description';
-export type MaterialSelectSpecificationProps = 'materialType' | 'roundType' | 'sellType';
+export type MaterialSelectSpecificationProps = 'materialType' | 'sellType';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -155,6 +152,7 @@ export const getInputItem = ({
   classes,
   shrink = false,
   stateType,
+  fullWidth = false,
 }: {
   key: MaterialInputSpecificationProps;
   error: boolean;
@@ -170,9 +168,10 @@ export const getInputItem = ({
   classes: any;
   shrink?: boolean;
   stateType: FormItemStatus;
+  fullWidth?: boolean;
 }) => (
   <Grid item xs={xs} key={key}>
-    <FormControl required={required} className={classes.formControl} error={error}>
+    <FormControl required={required} fullWidth={fullWidth} className={classes.formControl} error={error}>
       <InputLabel shrink={shrink || !!inputValue}>{inputLabel}</InputLabel>
       <Input
         value={inputValue}
@@ -213,8 +212,16 @@ export const filterMaterialIdOptions = (materialIds: any[], formData: CommonBoun
         }
         return true;
       }
+      // 管子
+      else if (materialType === 2) {
+        return false;
+      }
+      // 冲头
+      else if (materialType === 3) {
+        return false;
+      }
     })
-    .filter(item => item.sellType == formData.sellType.value && item.round == formData.round.value);
+    .filter(item => item.sellType == formData.sellType.value);
   return result;
 };
 
@@ -296,91 +303,55 @@ export const renderPickerForMaterialId = ({
   onChange: (item: OnChangeProps) => void;
 }) => {
   const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
-  const materialType = parseInt('' + formData.materialType.value);
 
   return (
     <>
-      <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.materialType.error}>
-          <InputLabel shrink={formData.materialType.value !== -1}>类别</InputLabel>
-          <Select
-            value={formData.materialType.value}
-            onChange={e =>
-              onChange({
-                item: {
-                  text: e.target.value,
-                  value: e.target.value,
-                },
-                controllType: 'select',
-                key: 'materialType',
-                stateType: 'stateful',
-              })
-            }
-          >
-            {formOptions.materialType.map(({ text, value }) => (
-              <MenuItem value={value} key={text + '-' + value}>
-                {text}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Grid>
+      <FormControl required fullWidth className={classes.formControl} error={formData.materialType.error}>
+        <InputLabel shrink={formData.materialType.value !== -1}>类别</InputLabel>
+        <Select
+          value={formData.materialType.value}
+          onChange={e =>
+            onChange({
+              item: { text: e.target.value, value: e.target.value },
+              controllType: 'select',
+              key: 'materialType',
+              stateType: 'stateful',
+            })
+          }
+        >
+          {formOptions.materialType.map(({ text, value }) => (
+            <MenuItem value={value} key={text + '-' + value}>
+              {text}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
-      <Grid item xs={6}>
-        <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
-          <InputLabel shrink={formData.sellType.value !== -1}>卖出方式</InputLabel>
-          <Select
-            value={formData.sellType.value}
-            onChange={e =>
-              onChange({
-                item: {
-                  text: e.target.value,
-                  value: e.target.value,
-                },
-                controllType: 'select',
-                key: 'sellType',
-                stateType: 'stateful',
-              })
-            }
-          >
-            {formOptions.sellType.map(({ text, value }) => (
-              <MenuItem value={value} key={text + '-' + value}>
-                {text}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Grid>
+      <FormControl required fullWidth className={classes.formControl} error={formData.sellType.error}>
+        <InputLabel shrink={formData.sellType.value !== -1}>卖出方式</InputLabel>
+        <Select
+          value={formData.sellType.value}
+          onChange={e =>
+            onChange({
+              item: {
+                text: e.target.value,
+                value: e.target.value,
+              },
+              controllType: 'select',
+              key: 'sellType',
+              stateType: 'stateful',
+            })
+          }
+        >
+          {formOptions.sellType.map(({ text, value }) => (
+            <MenuItem value={value} key={text + '-' + value}>
+              {text}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       {renderSpecification({ onChange, formData, onSpecificationInputBlur, classes })}
-
-      {materialType === 0 && (
-        <Grid item xs={6} key="round">
-          <FormControl required fullWidth className={classes.formControl} error={formData.round.error}>
-            <InputLabel shrink={formData.round.value !== -1}>圆钢类别</InputLabel>
-            <Select
-              value={formData.round.value}
-              onChange={e =>
-                onChange({
-                  item: {
-                    text: e.target.value,
-                    value: e.target.value,
-                  },
-                  controllType: 'select',
-                  key: 'round',
-                  stateType: 'stateful',
-                })
-              }
-            >
-              {formOptions.roundType.map(({ text, value }) => (
-                <MenuItem value={value} key={text + '-' + value}>
-                  {text}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-      )}
 
       <FormControl fullWidth error={formData.materialId.error} className={classes.formControl}>
         <Autocomplete
