@@ -62,6 +62,8 @@ jobs:
       - name: build for business
         run: npm run build:business
 
+    needs: setup
+
   case:
     runs-on: ubuntu-latest
 
