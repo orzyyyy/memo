@@ -13,11 +13,9 @@ jobs:
       - name: create package-lock.json
         run: npm i --package-lock-only
 
-      - name: cache package-lock.json
-        uses: actions/cache@v1
-        with:
-          path: package-lock.json
-          key: package-lock-${{ github.sha }}
+      - name: cache key of package-lock.json
+        env:
+          PACKAGE_LOCK_JSON_CONTEXT: ${{ hashFiles('**/package-lock.json') }}
 
       - name: cache node_modules
         id: node_modules_cache_id
@@ -44,7 +42,9 @@ jobs:
           key: package-lock-${{ github.sha }}
 
       - name: debug
-        run: ls -l
+        run: |
+          ls -l
+          echo "$PACKAGE_LOCK_JSON_CONTEXT"
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
