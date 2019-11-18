@@ -14,7 +14,7 @@ jobs:
         run: npm i --package-lock-only
 
       - name: cache key of package-lock.json
-        run: ls -l
+        run: echo "$PACKAGE_LOCK_JSON_CONTEXT"
         env:
           PACKAGE_LOCK_JSON_CONTEXT: ${{ hashFiles('**/package-lock.json') }}
 
@@ -43,9 +43,7 @@ jobs:
           key: package-lock-${{ github.sha }}
 
       - name: debug
-        run: |
-          ls -l
-          echo "$PACKAGE_LOCK_JSON_CONTEXT"
+        run: echo "$PACKAGE_LOCK_JSON_CONTEXT"
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
