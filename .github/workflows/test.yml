@@ -12,9 +12,9 @@ jobs:
 
       - name: cache package-lock.json
         uses: actions/cache@v1
-          with:
-            path: package-lock.json
-            key: package-lock-${{ github.sha }}
+        with:
+          path: package-lock.json
+          key: package-lock-${{ github.sha }}
 
       - name: create package-lock.json
         run: npm i --package-lock-only
@@ -39,9 +39,9 @@ jobs:
 
       - name: restore cache from package-lock.json
         uses: actions/cache@v1
-          with:
-            path: package-lock.json
-            key: package-lock-${{ github.sha }}
+        with:
+          path: package-lock.json
+          key: package-lock-${{ github.sha }}
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
@@ -66,9 +66,9 @@ jobs:
 
       - name: restore cache from package-lock.json
         uses: actions/cache@v1
-          with:
-            path: package-lock.json
-            key: package-lock-${{ github.sha }}
+        with:
+          path: package-lock.json
+          key: package-lock-${{ github.sha }}
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
@@ -96,9 +96,9 @@ jobs:
 
       - name: restore cache from package-lock.json
         uses: actions/cache@v1
-          with:
-            path: package-lock.json
-            key: package-lock-${{ github.sha }}
+        with:
+          path: package-lock.json
+          key: package-lock-${{ github.sha }}
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
