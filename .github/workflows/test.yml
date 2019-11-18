@@ -3,20 +3,84 @@ name: test
 on: [push]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package.json') }}
+
       - name: install
         run: npm install
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package.json') }}
+
+      - name: lint
+        run: npm run lint
+
+      - name: tsc
+        run: npm run tsc
+
+    needs: setup
+
+  site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package.json') }}
+
+      - name: build for netlify
+        run: npm run build
+
+      - name: build for gh-pages
+        run: npm run build:gh-pages
+
+      - name: build for business
+        run: npm run build:business
+
+  case:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: test with reporting coverage
         run: npm run codecov
 
       - name: upload coverage to codecov
-        uses: codecov/codecov-action@v1.0.3
+        uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+    needs: setup
