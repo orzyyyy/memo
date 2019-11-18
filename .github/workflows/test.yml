@@ -43,6 +43,9 @@ jobs:
           path: package-lock.json
           key: package-lock-${{ github.sha }}
 
+      - name: debug
+        run: npm ls
+
       - name: restore cache from node_modules
         uses: actions/cache@v1
         with:
