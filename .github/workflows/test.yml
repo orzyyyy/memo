@@ -10,14 +10,14 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: create package-lock.json
+        run: npm i --package-lock-only
+
       - name: cache package-lock.json
         uses: actions/cache@v1
         with:
           path: package-lock.json
           key: package-lock-${{ github.sha }}
-
-      - name: create package-lock.json
-        run: npm i --package-lock-only
 
       - name: cache node_modules
         id: node_modules_cache_id
@@ -44,7 +44,7 @@ jobs:
           key: package-lock-${{ github.sha }}
 
       - name: debug
-        run: npm ls
+        run: ls -l
 
       - name: restore cache from node_modules
         uses: actions/cache@v1
