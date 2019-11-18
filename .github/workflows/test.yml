@@ -70,7 +70,7 @@ jobs:
       - name: restore cache from package-lock.json
         uses: actions/cache@v1
         with:
-          path: package-lock.json
+          path: package-temp-dir
           key: lock-${{ github.sha }}
 
       - name: restore cache from node_modules
@@ -100,7 +100,7 @@ jobs:
       - name: restore cache from package-lock.json
         uses: actions/cache@v1
         with:
-          path: package-lock.json
+          path: package-temp-dir
           key: lock-${{ github.sha }}
 
       - name: restore cache from node_modules
