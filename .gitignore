@@ -9,3 +9,4 @@
 /exhentai/**/detailImageUrls.json
 /bin
 package-lock.json
+*.log
