@@ -10,3 +10,4 @@
 /bin
 package-lock.json
 *.log
+profiles
