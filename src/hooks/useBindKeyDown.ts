@@ -1,20 +1,22 @@
 import { useEffect } from 'react';
 
+async function bindKeyDown<T>(e: KeyboardEvent, originData: T, onSaveCallback?: (data: T) => void) {
+  const { ctrlKey, keyCode } = e;
+  // ctrl + s
+  if (ctrlKey && keyCode === 83) {
+    e.preventDefault();
+    onSaveCallback && (await onSaveCallback(originData));
+  } else {
+    e.stopPropagation();
+  }
+}
+
 export function useBindKeyDown<T>(originData: T, onSaveCallback?: (data: T) => void) {
   useEffect(() => {
-    window.addEventListener('keydown', bindKeyDown);
-    return () => window.removeEventListener('keydown', bindKeyDown);
-  }, [originData]);
+    const listener = (e: KeyboardEvent) => bindKeyDown(e, originData, onSaveCallback);
+    window.addEventListener('keydown', listener);
+    return () => window.removeEventListener('keydown', listener);
+  }, [originData, onSaveCallback]);
 
-  async function bindKeyDown(e: KeyboardEvent) {
-    const { ctrlKey, keyCode } = e;
-    // ctrl + s
-    if (ctrlKey && keyCode === 83) {
-      e.preventDefault();
-      onSaveCallback && (await onSaveCallback(originData));
-    } else {
-      e.stopPropagation();
-    }
-  }
   return bindKeyDown;
 }

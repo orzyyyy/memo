@@ -66,7 +66,7 @@ const TohoLoading = (props: TohoLoadingProps) => {
     return () => {
       clearTimeout(netaToggleTimer);
     };
-  }, [isDotLoadingCompleted, currentNetaIndex]);
+  }, [isDotLoadingCompleted, currentNetaIndex, currentNeta.length]);
 
   const handleLoadingDot = () => {
     let counter = 3;

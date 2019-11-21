@@ -2,7 +2,7 @@
 
 exports[`MarkdownDetailDataController handleOnSave 1`] = `
 <MarkdownDetailDataController>
-  <_default>
+  <MarkdownDetail>
     <div
       className="MarkdownDetail markdown-body"
     >
@@ -19,6 +19,6 @@ exports[`MarkdownDetailDataController handleOnSave 1`] = `
         />
       </div>
     </div>
-  </_default>
+  </MarkdownDetail>
 </MarkdownDetailDataController>
 `;
