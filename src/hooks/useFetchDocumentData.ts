@@ -29,7 +29,7 @@ export function useFetchDocumentData(
       setData(result);
     };
     fetchData();
-  }, [id]);
+  }, [id, type, url]);
 
   return [data, setData];
 }

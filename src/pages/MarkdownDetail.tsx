@@ -6,10 +6,12 @@ export interface MarkdownDetailProps {
   dataSource: string;
 }
 
-export default (props: MarkdownDetailProps) => (
+const MarkdownDetail = (props: MarkdownDetailProps) => (
   <div className="MarkdownDetail markdown-body">
     <div className="wrapper">
       <div className="content" dangerouslySetInnerHTML={{ __html: props.dataSource || '' }} />
     </div>
   </div>
 );
+
+export default MarkdownDetail;

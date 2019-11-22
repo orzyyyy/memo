@@ -56,21 +56,21 @@ const MainPageDataController = () => {
   useResize();
 
   useEffect(() => {
+    const getExhentaiDateSet = () => {
+      fetch('/exhentai/dateSet')
+        .then(response => response.json())
+        .then(exhentaiDateSet => {
+          handleExhentaiSelectChange(exhentaiDateSet.length ? exhentaiDateSet[0] : '');
+          setExhentaiDateSet(exhentaiDateSet);
+        });
+    };
+
     if (isLocal) {
       getExhentaiDateSet();
     }
     getSider();
     getMapping();
-  }, []);
-
-  const getExhentaiDateSet = () => {
-    fetch('/exhentai/dateSet')
-      .then(response => response.json())
-      .then(exhentaiDateSet => {
-        handleExhentaiSelectChange(exhentaiDateSet.length ? exhentaiDateSet[0] : '');
-        setExhentaiDateSet(exhentaiDateSet);
-      });
-  };
+  }, [isLocal]);
 
   const getMapping = async () => {
     const response = await fetch('./assets/mapping.json');

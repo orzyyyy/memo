@@ -403,6 +403,7 @@ export const renderMessage = ({
   open: boolean;
   onClose: () => void;
 }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
     <Snackbar
