@@ -8,7 +8,7 @@ const socket = IO('http://localhost:9099');
 
 const commonHtmlWebpackProps = {
   environment: '<script>window.__isLocal = 1;</script>',
-  base: '<base href="/" />',
+  base: '/',
   socket: `
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
     <script>
