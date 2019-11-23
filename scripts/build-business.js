@@ -11,7 +11,7 @@ const commonHtmlWebpackProps = {
     collapseWhitespace: true,
   },
   environment: '',
-  base: '/',
+  baseTag: '<base href="/">',
   socket: '',
   inject: 'body',
   hotjar: '',
