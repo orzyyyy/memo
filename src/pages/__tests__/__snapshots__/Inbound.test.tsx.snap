@@ -2272,12 +2272,12 @@ exports[`Inbound render correctly 1`] = `
                           />
                         </ForwardRef(WithStyles)>
                         <ForwardRef(WithStyles)
-                          aria-label="Open popup"
+                          aria-label="Open"
                           className="MuiAutocomplete-popupIndicator"
                           disabled={false}
                           onClick={[Function]}
                           tabIndex={-1}
-                          title="Open popup"
+                          title="Open"
                         >
                           <UNDEFINED />
                         </ForwardRef(WithStyles)>
@@ -2296,7 +2296,7 @@ exports[`Inbound render correctly 1`] = `
                       "aria-autocomplete": "list",
                       "aria-controls": null,
                       "autoCapitalize": "none",
-                      "autoComplete": "disabled",
+                      "autoComplete": "off",
                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                       "disabled": false,
                       "id": "material-id",
@@ -2309,7 +2309,7 @@ exports[`Inbound render correctly 1`] = `
                           aria-autocomplete="list"
                           aria-invalid="false"
                           autocapitalize="none"
-                          autocomplete="disabled"
+                          autocomplete="off"
                           class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                           id="material-id"
                           required=""
@@ -2349,12 +2349,12 @@ exports[`Inbound render correctly 1`] = `
                             />
                           </ForwardRef(WithStyles)>
                           <ForwardRef(WithStyles)
-                            aria-label="Open popup"
+                            aria-label="Open"
                             className="MuiAutocomplete-popupIndicator"
                             disabled={false}
                             onClick={[Function]}
                             tabIndex={-1}
-                            title="Open popup"
+                            title="Open"
                           >
                             <UNDEFINED />
                           </ForwardRef(WithStyles)>
@@ -2378,7 +2378,7 @@ exports[`Inbound render correctly 1`] = `
                         "aria-autocomplete": "list",
                         "aria-controls": null,
                         "autoCapitalize": "none",
-                        "autoComplete": "disabled",
+                        "autoComplete": "off",
                         "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                         "disabled": false,
                         "id": "material-id",
@@ -2391,7 +2391,7 @@ exports[`Inbound render correctly 1`] = `
                             aria-autocomplete="list"
                             aria-invalid="false"
                             autocapitalize="none"
-                            autocomplete="disabled"
+                            autocomplete="off"
                             class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                             id="material-id"
                             required=""
@@ -2531,12 +2531,12 @@ exports[`Inbound render correctly 1`] = `
                                   />
                                 </ForwardRef(WithStyles)>
                                 <ForwardRef(WithStyles)
-                                  aria-label="Open popup"
+                                  aria-label="Open"
                                   className="MuiAutocomplete-popupIndicator"
                                   disabled={false}
                                   onClick={[Function]}
                                   tabIndex={-1}
-                                  title="Open popup"
+                                  title="Open"
                                 >
                                   <UNDEFINED />
                                 </ForwardRef(WithStyles)>
@@ -2550,7 +2550,7 @@ exports[`Inbound render correctly 1`] = `
                                 "aria-autocomplete": "list",
                                 "aria-controls": null,
                                 "autoCapitalize": "none",
-                                "autoComplete": "disabled",
+                                "autoComplete": "off",
                                 "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                 "disabled": false,
                                 "id": "material-id",
@@ -2563,7 +2563,7 @@ exports[`Inbound render correctly 1`] = `
                                     aria-autocomplete="list"
                                     aria-invalid="false"
                                     autocapitalize="none"
-                                    autocomplete="disabled"
+                                    autocomplete="off"
                                     class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                     id="material-id"
                                     required=""
@@ -2612,12 +2612,12 @@ exports[`Inbound render correctly 1`] = `
                                     />
                                   </ForwardRef(WithStyles)>
                                   <ForwardRef(WithStyles)
-                                    aria-label="Open popup"
+                                    aria-label="Open"
                                     className="MuiAutocomplete-popupIndicator"
                                     disabled={false}
                                     onClick={[Function]}
                                     tabIndex={-1}
-                                    title="Open popup"
+                                    title="Open"
                                   >
                                     <UNDEFINED />
                                   </ForwardRef(WithStyles)>
@@ -2631,7 +2631,7 @@ exports[`Inbound render correctly 1`] = `
                                   "aria-autocomplete": "list",
                                   "aria-controls": null,
                                   "autoCapitalize": "none",
-                                  "autoComplete": "disabled",
+                                  "autoComplete": "off",
                                   "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                   "disabled": false,
                                   "id": "material-id",
@@ -2644,7 +2644,7 @@ exports[`Inbound render correctly 1`] = `
                                       aria-autocomplete="list"
                                       aria-invalid="false"
                                       autocapitalize="none"
-                                      autocomplete="disabled"
+                                      autocomplete="off"
                                       class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                       id="material-id"
                                       required=""
@@ -2693,12 +2693,12 @@ exports[`Inbound render correctly 1`] = `
                                       />
                                     </ForwardRef(WithStyles)>
                                     <ForwardRef(WithStyles)
-                                      aria-label="Open popup"
+                                      aria-label="Open"
                                       className="MuiAutocomplete-popupIndicator"
                                       disabled={false}
                                       onClick={[Function]}
                                       tabIndex={-1}
-                                      title="Open popup"
+                                      title="Open"
                                     >
                                       <UNDEFINED />
                                     </ForwardRef(WithStyles)>
@@ -2713,7 +2713,7 @@ exports[`Inbound render correctly 1`] = `
                                     "aria-autocomplete": "list",
                                     "aria-controls": null,
                                     "autoCapitalize": "none",
-                                    "autoComplete": "disabled",
+                                    "autoComplete": "off",
                                     "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                     "disabled": false,
                                     "id": "material-id",
@@ -2726,7 +2726,7 @@ exports[`Inbound render correctly 1`] = `
                                         aria-autocomplete="list"
                                         aria-invalid="false"
                                         autocapitalize="none"
-                                        autocomplete="disabled"
+                                        autocomplete="off"
                                         class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                         id="material-id"
                                         required=""
@@ -2782,12 +2782,12 @@ exports[`Inbound render correctly 1`] = `
                                         />
                                       </ForwardRef(WithStyles)>
                                       <ForwardRef(WithStyles)
-                                        aria-label="Open popup"
+                                        aria-label="Open"
                                         className="MuiAutocomplete-popupIndicator"
                                         disabled={false}
                                         onClick={[Function]}
                                         tabIndex={-1}
-                                        title="Open popup"
+                                        title="Open"
                                       >
                                         <UNDEFINED />
                                       </ForwardRef(WithStyles)>
@@ -2802,7 +2802,7 @@ exports[`Inbound render correctly 1`] = `
                                       "aria-autocomplete": "list",
                                       "aria-controls": null,
                                       "autoCapitalize": "none",
-                                      "autoComplete": "disabled",
+                                      "autoComplete": "off",
                                       "className": "MuiAutocomplete-input MuiAutocomplete-inputFocused",
                                       "disabled": false,
                                       "id": "material-id",
@@ -2815,7 +2815,7 @@ exports[`Inbound render correctly 1`] = `
                                           aria-autocomplete="list"
                                           aria-invalid="false"
                                           autocapitalize="none"
-                                          autocomplete="disabled"
+                                          autocomplete="off"
                                           class="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                           id="material-id"
                                           required=""
@@ -2841,7 +2841,7 @@ exports[`Inbound render correctly 1`] = `
                                       aria-controls={null}
                                       aria-invalid={false}
                                       autoCapitalize="none"
-                                      autoComplete="disabled"
+                                      autoComplete="off"
                                       autoFocus={false}
                                       className="MuiInputBase-input MuiInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd"
                                       disabled={false}
@@ -3006,15 +3006,15 @@ exports[`Inbound render correctly 1`] = `
                                       </ForwardRef(IconButton)>
                                     </WithStyles(ForwardRef(IconButton))>
                                     <WithStyles(ForwardRef(IconButton))
-                                      aria-label="Open popup"
+                                      aria-label="Open"
                                       className="MuiAutocomplete-popupIndicator"
                                       disabled={false}
                                       onClick={[Function]}
                                       tabIndex={-1}
-                                      title="Open popup"
+                                      title="Open"
                                     >
                                       <ForwardRef(IconButton)
-                                        aria-label="Open popup"
+                                        aria-label="Open"
                                         className="MuiAutocomplete-popupIndicator"
                                         classes={
                                           Object {
@@ -3032,20 +3032,20 @@ exports[`Inbound render correctly 1`] = `
                                         disabled={false}
                                         onClick={[Function]}
                                         tabIndex={-1}
-                                        title="Open popup"
+                                        title="Open"
                                       >
                                         <WithStyles(ForwardRef(ButtonBase))
-                                          aria-label="Open popup"
+                                          aria-label="Open"
                                           centerRipple={true}
                                           className="MuiIconButton-root MuiAutocomplete-popupIndicator"
                                           disabled={false}
                                           focusRipple={true}
                                           onClick={[Function]}
                                           tabIndex={-1}
-                                          title="Open popup"
+                                          title="Open"
                                         >
                                           <ForwardRef(ButtonBase)
-                                            aria-label="Open popup"
+                                            aria-label="Open"
                                             centerRipple={true}
                                             className="MuiIconButton-root MuiAutocomplete-popupIndicator"
                                             classes={
@@ -3059,10 +3059,10 @@ exports[`Inbound render correctly 1`] = `
                                             focusRipple={true}
                                             onClick={[Function]}
                                             tabIndex={-1}
-                                            title="Open popup"
+                                            title="Open"
                                           >
                                             <button
-                                              aria-label="Open popup"
+                                              aria-label="Open"
                                               className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
                                               disabled={false}
                                               onBlur={[Function]}
@@ -3078,7 +3078,7 @@ exports[`Inbound render correctly 1`] = `
                                               onTouchMove={[Function]}
                                               onTouchStart={[Function]}
                                               tabIndex={-1}
-                                              title="Open popup"
+                                              title="Open"
                                               type="button"
                                             >
                                               <span
