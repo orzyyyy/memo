@@ -3,8 +3,10 @@ const PostCompile = require('post-compile-webpack-plugin');
 const path = require('path');
 const { compressJSON, getHtmlPluginProps, getEntry } = require(path.join(__dirname, './utils'));
 const IO = require('socket.io-client');
+const open = require('open');
 
 const socket = IO('http://localhost:9099');
+let isBrowserExists = false;
 
 const commonHtmlWebpackProps = {
   minify: {
@@ -29,9 +31,13 @@ const plugins = [
   new MomentLocalesPlugin({
     localesToKeep: ['zh-cn'],
   }),
-  new PostCompile(() => {
+  new PostCompile(async () => {
     socket.emit('refresh');
     compressJSON();
+    if (!isBrowserExists) {
+      isBrowserExists = true;
+      await open('http://localhost:9099/stock-shipment');
+    }
   }),
 ];
 

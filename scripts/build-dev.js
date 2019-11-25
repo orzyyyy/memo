@@ -3,8 +3,10 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const IO = require('socket.io-client');
 const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry, convertMarkdown2Html } = require('./utils');
+const open = require('open');
 
 const socket = IO('http://localhost:9099');
+let isBrowserExists = false;
 
 const commonHtmlWebpackProps = {
   environment: '<script>window.__isLocal = 1;</script>',
@@ -32,10 +34,14 @@ const plugins = [
   new MomentLocalesPlugin({
     localesToKeep: ['zh-cn'],
   }),
-  new PostCompile(() => {
+  new PostCompile(async () => {
     socket.emit('refresh');
     compressJSON();
     convertMarkdown2Html();
+    if (!isBrowserExists) {
+      isBrowserExists = true;
+      await open('http://localhost:9099');
+    }
   }),
 ];
 
