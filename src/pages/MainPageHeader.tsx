@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Input, Select, Layout } from 'antd';
+import { Button, Input, Select } from 'antd';
 import { MainPageProps } from './MainPage';
 import { Plus } from '@ant-design/icons';
 import { SelectValue } from 'antd/lib/select';
 const { Option } = Select;
-const { Header } = Layout;
 
 const MainPageHeader = ({
   onExhentaiDownload,
@@ -21,13 +20,7 @@ const MainPageHeader = ({
   };
 
   return (
-    <Header
-      style={{
-        background: 'rgba(0, 0, 0, 0)',
-        height: 48,
-        position: 'relative',
-      }}
-    >
+    <header style={{ height: 48, position: 'relative' }}>
       <Select
         style={{ position: 'absolute', width: 160, top: 10, left: 8 }}
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
@@ -46,7 +39,7 @@ const MainPageHeader = ({
       <Button style={{ position: 'absolute', right: 24, top: 10 }} onClick={() => onEdit(undefined, true)}>
         <Plus />
       </Button>
-    </Header>
+    </header>
   );
 };
 
