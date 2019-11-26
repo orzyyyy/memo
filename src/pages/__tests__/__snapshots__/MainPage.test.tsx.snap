@@ -1,19 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainPage render correctly 1`] = `
-<Adapter
-  className="MainPage"
->
-  <Sider
-    collapsedWidth={0}
-    collapsible={true}
-    theme="light"
-    zeroWidthTriggerStyle={
-      Object {
-        "top": "calc(100vh - 65px)",
-      }
+<div
+  style={
+    Object {
+      "display": "grid",
+      "gridTemplateColumns": "16% 84%",
     }
-  >
+  }
+>
+  <aside>
     <Menu
       mode="inline"
       onClick={[Function]}
@@ -44,28 +40,26 @@ exports[`MainPage render correctly 1`] = `
         </MenuItem>
       </SubMenu>
     </Menu>
-  </Sider>
-  <Adapter>
-    <Adapter
+  </aside>
+  <div
+    style={
+      Object {
+        "display": "grid",
+        "gridTemplateRows": "5% 90% 10%",
+      }
+    }
+  >
+    <div
+      className="main-page-content-wrapper"
       style={
         Object {
+          "height": -90,
           "marginLeft": 8,
+          "padding": "8px 16px 8px 8px",
         }
       }
-    >
-      <div
-        className="main-page-content-wrapper"
-        style={
-          Object {
-            "background": "#fff",
-            "height": -90,
-            "overflow": "auto",
-            "padding": "8px 16px 8px 8px",
-          }
-        }
-      />
-    </Adapter>
-    <Adapter
+    />
+    <footer
       style={
         Object {
           "textAlign": "center",
@@ -78,7 +72,7 @@ exports[`MainPage render correctly 1`] = `
       <div>
         打开电脑，打开 github。pull request 写得很菜，连 core 都在喷你，但忽然就不孤独了
       </div>
-    </Adapter>
-  </Adapter>
-</Adapter>
+    </footer>
+  </div>
+</div>
 `;
