@@ -276,7 +276,6 @@
     "title": "pac list",
     "type": "其他",
     "subType": "记录",
-    "category": "markdown",
-    "visible": false
+    "category": "markdown"
   }
 ]
