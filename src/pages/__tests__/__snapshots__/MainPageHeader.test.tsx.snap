@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainPageHeader render correctly 1`] = `
-<Adapter
+<header
   style={
     Object {
-      "background": "rgba(0, 0, 0, 0)",
       "height": 48,
       "position": "relative",
     }
@@ -69,5 +68,5 @@ exports[`MainPageHeader render correctly 1`] = `
   >
     <Plus />
   </Button>
-</Adapter>
+</header>
 `;
