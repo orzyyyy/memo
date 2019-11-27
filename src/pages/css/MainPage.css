@@ -33,3 +33,21 @@
   list-style: none;
   transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
+.MainPage .icon-apartment {
+  -webkit-mask-image: url(../svg/apartment.svg);
+  mask-image: url(../svg/apartment.svg);
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.MainPage .icon-file-markdown {
+  -webkit-mask-image: url(../svg/file-markdown.svg);
+  mask-image: url(../svg/file-markdown.svg);
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}

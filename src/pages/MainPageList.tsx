@@ -1,6 +1,5 @@
 import React from 'react';
 import { format } from 'date-fns';
-import { Apartment, FileMarkdown } from '@ant-design/icons';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { DocumentCategoryProps } from '../../server/utils/document';
 
@@ -64,10 +63,8 @@ const MainPageList = ({
             className="list-item"
             onClick={() => onListItemClick({ category: item.category, id: item.id })}
           >
-            {item.category === 'mapping' && <Apartment style={{ marginRight: 10, fontSize: 16, color: '#108ee9' }} />}
-            {item.category === 'markdown' && (
-              <FileMarkdown style={{ marginRight: 10, fontSize: 16, color: '#87d068' }} />
-            )}
+            {item.category === 'mapping' && <div style={{ background: '#108ee9' }} className="icon-apartment" />}
+            {item.category === 'markdown' && <div style={{ background: '#87d068' }} className="icon-file-markdown" />}
             {item.type + ' - ' + item.subType + ' - ' + item.title}
             <div style={{ float: 'right', marginRight: 8 }}>
               {`${format(new Date(item.createTime || ''), 'yyyy-MM-dd')} / ${format(
