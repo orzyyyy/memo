@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './css/MainPage.css';
-import { Menu } from 'antd';
-const { SubMenu } = Menu;
 import { SelectValue } from 'antd/lib/select';
 import MainPageHeader from './MainPageHeader';
 import { MappingProps } from '../../server/controller/DocumentController';
@@ -10,7 +8,7 @@ import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
 
 export interface MainPageProps {
   onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
-  menuData?: SiderProps[];
+  menuData: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   renderContent?: () => React.ReactNode;
   onMenuClick?: (keyPath: string[]) => void;
@@ -43,29 +41,55 @@ const MainPage = ({
   onExhentaiSelectChange,
   onExhentaiLoadList,
 }: MainPageProps) => {
-  const handleMenuClick = ({ keyPath }: { keyPath: string[] }) => {
-    onMenuClick && onMenuClick(keyPath);
+  const handleMenuClick = (item: SiderProps, jtem?: SiderChildrenProps) => {
+    onMenuClick && onMenuClick([jtem ? jtem.key : item.key, item.key]);
   };
 
   const renderSider = () => {
     return (
       <aside>
-        <Menu selectedKeys={[siderSelectedKey || '']} mode="inline" onClick={handleMenuClick}>
-          {menuData &&
-            menuData.map((item: SiderProps) => {
-              const { key, title, children } = item;
-              if (!children) {
-                return <Menu.Item key={key}>{title}</Menu.Item>;
-              }
+        <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+          {menuData.map((item: SiderProps) => {
+            const { key, title, children } = item;
+            if (!children) {
               return (
-                <SubMenu key={key} title={title}>
-                  {children.map((jtem: SiderChildrenProps) => (
-                    <Menu.Item key={jtem.key}>{jtem.value}</Menu.Item>
-                  ))}
-                </SubMenu>
+                <li
+                  key={key}
+                  style={{
+                    cursor: 'pointer',
+                    background: siderSelectedKey === key ? '#e6f7ff' : '',
+                    height: 40,
+                    lineHeight: '40px',
+                  }}
+                  onClick={() => handleMenuClick(item)}
+                >
+                  {title}
+                </li>
               );
-            })}
-        </Menu>
+            }
+            return (
+              <li key={key}>
+                {title}
+                {children.map((jtem: SiderChildrenProps) => (
+                  <ul key={jtem.key}>
+                    <li
+                      style={{
+                        paddingLeft: 24,
+                        cursor: 'pointer',
+                        background: siderSelectedKey === jtem.key ? '#e6f7ff' : '',
+                        height: 40,
+                        lineHeight: '40px',
+                      }}
+                      onClick={() => handleMenuClick(item, jtem)}
+                    >
+                      {jtem.value}
+                    </li>
+                  </ul>
+                ))}
+              </li>
+            );
+          })}
+        </ul>
       </aside>
     );
   };
@@ -88,7 +112,7 @@ const MainPage = ({
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '16% 84%' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '16% 84%' }} className="MainPage">
       {renderSider()}
       <div style={{ gridTemplateRows: '5% 90% 10%' }}>
         {isLocal && (
@@ -98,6 +122,7 @@ const MainPage = ({
             exhentaiDateSet={exhentaiDateSet}
             onExhentaiSelectChange={onExhentaiSelectChange}
             onExhentaiLoadList={onExhentaiLoadList}
+            menuData={[]}
           />
         )}
         {renderRealContent()}
