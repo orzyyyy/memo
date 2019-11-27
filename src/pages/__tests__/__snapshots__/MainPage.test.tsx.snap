@@ -104,7 +104,7 @@ exports[`MainPage render correctly 1`] = `
         Object {
           "height": -90,
           "marginLeft": 8,
-          "padding": "8px 16px 8px 8px",
+          "overflow": "auto",
         }
       }
     />

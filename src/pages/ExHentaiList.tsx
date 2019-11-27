@@ -1,6 +1,5 @@
 import React from 'react';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
-import { Row, Col, Card, Dropdown, Menu } from 'antd';
 import LazyLoad from 'react-lazyload';
 
 export interface DownloadProps {
@@ -14,43 +13,26 @@ export interface ExHentaiListProps {
   onDetail: (url: string) => void;
 }
 
-const renderDropdown = ({
-  onDownload,
-  wrapperHeight,
-  item,
-  onDetail,
-}: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
-  <Dropdown
-    overlay={
-      <Menu>
-        <Menu.Item
-          key="download"
-          onClick={() => {
-            onDownload({ url: item.detailUrl });
-          }}
-        >
-          download
-        </Menu.Item>
-      </Menu>
-    }
-    trigger={['contextMenu']}
+const renderImg = ({ onDownload, wrapperHeight, item, onDetail }: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
+  <div
+    style={{ height: wrapperHeight / 2 }}
+    onClick={() => onDetail(item.detailUrl)}
+    onContextMenu={() => onDownload({ url: item.detailUrl })}
   >
-    <Card hoverable style={{ height: wrapperHeight / 2 }} onClick={() => onDetail(item.detailUrl)}>
-      <img alt={item.name} src={item.thumbnailUrl} />
-    </Card>
-  </Dropdown>
+    <img alt={item.name} src={item.thumbnailUrl} style={{ height: '100%' }} />
+  </div>
 );
 
 const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight, onDetail }: ExHentaiListProps) => (
-  <Row gutter={16} style={{ width: '100%' }}>
+  <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 20%)', margin: 0 }}>
     {dataSource.map(item => (
-      <Col span={4} key={item.detailUrl + '-' + item.postTime}>
+      <li key={item.detailUrl + '-' + item.postTime}>
         <LazyLoad height={wrapperHeight} once scrollContainer=".main-page-content-wrapper">
-          {renderDropdown({ onDownload, wrapperHeight, item, onDetail })}
+          {renderImg({ onDownload, wrapperHeight, item, onDetail })}
         </LazyLoad>
-      </Col>
+      </li>
     ))}
-  </Row>
+  </ul>
 );
 
 export default ExHentaiList;
