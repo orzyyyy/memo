@@ -46,7 +46,7 @@ describe('MainPageHeader', () => {
       .find('button')
       .at(1)
       .props()
-      .onClick();
+      .onClick({ pageX: 0, pageY: 0 });
     expect(onEdit).toHaveBeenCalled();
   });
 });

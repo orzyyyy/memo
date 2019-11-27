@@ -50,6 +50,7 @@ const MainPageDataController = () => {
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
   const [siderOpenKey, setSiderOpenKey] = useState('all');
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+  const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
   // eslint-disable-next-line no-underscore-dangle
   const isLocal = (window as any).__isLocal;
 
@@ -98,7 +99,8 @@ const MainPageDataController = () => {
     getMapping();
   };
 
-  const handleEdit = (formDataItem?: any, visible?: boolean) => {
+  const handleEdit = (formDataItem?: any, visible?: boolean, pageInfo?: any) => {
+    setPageInfo(pageInfo);
     setFormVisible(!!visible);
     setFormDataItem(formDataItem);
   };
@@ -197,6 +199,7 @@ const MainPageDataController = () => {
         onCancel={handleModalCancel}
         loading={formLoading}
         dataItem={formDataItem}
+        pageInfo={pageInfo}
       />
     </>
   );

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { Form, Input, Modal, Select, Button, Row, Col } from 'antd';
+import { Form, Input, Select, Button, Row, Col } from 'antd';
+import Dialog from 'rc-dialog';
+import 'rc-dialog/assets/index.css';
 import { SelectValue } from 'antd/lib/select';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import { MappingProps } from '../../server/controller/DocumentController';
@@ -20,6 +22,7 @@ export interface EditFormProps {
   onCancel: () => void;
   loading: boolean;
   dataItem: MappingProps;
+  pageInfo: { x: number; y: number };
 }
 export interface EditFormState {
   currentType: SelectValue;
@@ -85,6 +88,7 @@ const EditForm = ({
   selectData,
   onCancel,
   onSubmit,
+  pageInfo,
   dataItem = { id: '', type: '', subType: '', category: undefined, title: '' },
 }: EditFormProps) => {
   const [form] = Form.useForm();
@@ -205,7 +209,15 @@ const EditForm = ({
   }
 
   return (
-    <Modal visible={visible} title="新建文档" footer={null} onCancel={handleCancel}>
+    <Dialog
+      visible={visible}
+      title="新建文档"
+      footer={null}
+      onClose={handleCancel}
+      animation="zoom"
+      maskAnimation="fade"
+      mousePosition={pageInfo}
+    >
       <Form
         {...formItemLayout}
         name="edit-form"
@@ -220,7 +232,7 @@ const EditForm = ({
         {renderSubType()}
         {renderConfirmButtonGroup()}
       </Form>
-    </Modal>
+    </Dialog>
   );
 };
 

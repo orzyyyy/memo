@@ -16,7 +16,7 @@ const MainPageList = ({
   onDelete?: (dataItem: MappingProps) => void;
   onHide?: (dataItem: MappingProps) => void;
   dataSource: MappingProps[];
-  onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
+  onEdit: (dataItem?: MappingProps, visible?: boolean, pageInfo?: { x: number; y: number }) => void;
   onListItemClick: ({ category, id }: { category: DocumentCategoryProps; id: string }) => void;
   isLocal: boolean;
 }) => {

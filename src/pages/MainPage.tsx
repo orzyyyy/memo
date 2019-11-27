@@ -7,7 +7,7 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
 
 export interface MainPageProps {
-  onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
+  onEdit: (dataItem?: MappingProps, visible?: boolean, pageInfo?: { x: number; y: number }) => void;
   menuData: SiderProps[];
   onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   renderContent?: () => React.ReactNode;
