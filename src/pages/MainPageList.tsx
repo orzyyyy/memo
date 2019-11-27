@@ -27,13 +27,13 @@ const MainPageList = ({
     <ul>
       {data.map(item => {
         const buttonGroup = (
-          <span>
+          <div style={{ float: 'right', marginRight: 8 }}>
             <a
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 onEdit(item, true);
               }}
-              style={{ marginLeft: 16 }}
+              style={{ marginRight: 16 }}
             >
               修改
             </a>
@@ -42,7 +42,7 @@ const MainPageList = ({
                 e.stopPropagation();
                 onHide && onHide(item);
               }}
-              style={{ marginLeft: 16 }}
+              style={{ marginRight: 16 }}
             >
               隐藏
             </a>
@@ -51,11 +51,11 @@ const MainPageList = ({
                 e.stopPropagation();
                 onDelete && onDelete(item);
               }}
-              style={{ marginLeft: 16 }}
+              style={{ marginRight: 16 }}
             >
               删除
             </a>
-          </span>
+          </div>
         );
 
         return (
@@ -69,13 +69,13 @@ const MainPageList = ({
               <FileMarkdown style={{ marginRight: 10, fontSize: 16, color: '#87d068' }} />
             )}
             {item.type + ' - ' + item.subType + ' - ' + item.title}
-            {isLocal && buttonGroup}
             <div style={{ float: 'right', marginRight: 8 }}>
               {`${format(new Date(item.createTime || ''), 'yyyy-MM-dd')} / ${format(
                 new Date(item.modifyTime || ''),
                 'yyyy-MM-dd',
               )}`}
             </div>
+            {isLocal && buttonGroup}
           </li>
         );
       })}
