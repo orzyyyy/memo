@@ -48,7 +48,7 @@ const MainPage = ({
   const renderSider = () => {
     return (
       <aside>
-        <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+        <ul style={{ marginTop: 8 }}>
           {menuData.map((item: SiderProps) => {
             const { key, title, children } = item;
             if (!children) {
@@ -60,6 +60,7 @@ const MainPage = ({
                     background: siderSelectedKey === key ? '#e6f7ff' : '',
                     height: 40,
                     lineHeight: '40px',
+                    paddingLeft: 24,
                   }}
                   onClick={() => handleMenuClick(item)}
                 >
@@ -68,13 +69,13 @@ const MainPage = ({
               );
             }
             return (
-              <li key={key}>
+              <li key={key} style={{ paddingLeft: 24 }}>
                 {title}
                 {children.map((jtem: SiderChildrenProps) => (
-                  <ul key={jtem.key}>
+                  <ul key={jtem.key} style={{ marginLeft: -24 }}>
                     <li
                       style={{
-                        paddingLeft: 24,
+                        paddingLeft: 48,
                         cursor: 'pointer',
                         background: siderSelectedKey === jtem.key ? '#e6f7ff' : '',
                         height: 40,
@@ -112,7 +113,7 @@ const MainPage = ({
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '16% 84%' }} className="MainPage">
+    <div style={{ display: 'grid', gridTemplateColumns: '15% 85%' }} className="MainPage">
       {renderSider()}
       <div style={{ gridTemplateRows: '5% 90% 10%' }}>
         {isLocal && (
