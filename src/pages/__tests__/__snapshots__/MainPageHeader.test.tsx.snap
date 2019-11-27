@@ -12,54 +12,32 @@ exports[`MainPageHeader render correctly 1`] = `
     }
   }
 >
-  <select
+  <Select
     onChange={[Function]}
     style={
       Object {
-        "background": "white",
-        "border": "1px solid #e8e8e8",
-        "height": 40,
         "width": 140,
       }
     }
     value=""
   />
-  <input
+  <Input
     onKeyDown={[Function]}
     style={
       Object {
-        "background": "white",
-        "border": "1px solid #e8e8e8",
-        "height": 40,
         "width": 280,
       }
     }
   />
-  <button
+  <Button
     onClick={[MockFunction]}
-    style={
-      Object {
-        "background": "white",
-        "border": "1px solid #e8e8e8",
-        "height": 40,
-        "width": 80,
-      }
-    }
   >
     列表
-  </button>
-  <button
+  </Button>
+  <Button
     onClick={[Function]}
-    style={
-      Object {
-        "background": "white",
-        "border": "1px solid #e8e8e8",
-        "height": 40,
-        "width": 80,
-      }
-    }
   >
     +
-  </button>
+  </Button>
 </header>
 `;

@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { Form, Input, Select, Button, Row, Col } from 'antd';
+import { Form, Row, Col } from 'antd';
 import Dialog from 'rc-dialog';
 import 'rc-dialog/assets/index.css';
 import { SelectValue } from 'antd/lib/select';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
-const { Option } = Select;
+import Button from '../component/Button';
+import Input from '../component/Input';
+import Select from '../component/Select';
 
 export interface FormProps {
   title: string;
@@ -55,7 +57,7 @@ const renderTitle = () => (
       },
     ]}
   >
-    <Input />
+    <Input style={{ width: '100%' }} />
   </Form.Item>
 );
 
@@ -72,11 +74,11 @@ const renderCategory = (isEditMode: boolean) => (
     ]}
   >
     {isEditMode ? (
-      <Input />
+      <Input style={{ width: '100%' }} />
     ) : (
-      <Select>
-        <Option value="markdown">markdown</Option>
-        <Option value="mapping">mapping</Option>
+      <Select style={{ width: '100%' }}>
+        <option value="markdown">markdown</option>
+        <option value="mapping">mapping</option>
       </Select>
     )}
   </Form.Item>
@@ -110,7 +112,8 @@ const EditForm = ({
     onCancel();
   };
 
-  const setTypeValue = (type: string) => {
+  const setTypeValue = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const type = e.target.value;
     form.setFieldsValue({ type });
     setCurrentTypeSelectItem(type);
   };
@@ -128,13 +131,13 @@ const EditForm = ({
       ]}
     >
       {isEditMode ? (
-        <Input />
+        <Input style={{ width: '100%' }} />
       ) : (
-        <Select onChange={setTypeValue}>
+        <Select style={{ width: '100%' }} onChange={setTypeValue}>
           {selectData.map(item => (
-            <Option value={item.key} key={`type-${item.key}`}>
+            <option value={item.key} key={`type-${item.key}`}>
               {item.title}
-            </Option>
+            </option>
           ))}
         </Select>
       )}
@@ -154,16 +157,16 @@ const EditForm = ({
       ]}
     >
       {isEditMode ? (
-        <Input />
+        <Input style={{ width: '100%' }} />
       ) : (
-        <Select>
+        <Select style={{ width: '100%' }}>
           {selectData
             .filter(item => item.key === (currentTypeSelectItem || dataItem.type))
             .map(({ children = [] }) =>
               children.map(jtem => (
-                <Option value={jtem.key} key={jtem.key}>
+                <option value={jtem.key} key={jtem.key}>
                   {jtem.value}
-                </Option>
+                </option>
               )),
             )}
         </Select>
@@ -180,12 +183,10 @@ const EditForm = ({
         <Col span={12} push={12}>
           <Row gutter={18}>
             <Col span={9}>
-              <Button type="danger" onClick={() => form.resetFields()}>
-                清空
-              </Button>
+              <Button onClick={() => form.resetFields()}>清空</Button>
             </Col>
             <Col span={6}>
-              <Button type="primary" onClick={() => form.submit()} loading={loading}>
+              <Button onClick={() => form.submit()} disabled={loading}>
                 确定
               </Button>
             </Col>
