@@ -43,6 +43,7 @@ describe('MainPageList', () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onListItemClick={onListItemClick}
+        isLocal
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -62,6 +63,7 @@ describe('MainPageList', () => {
         onEdit={onEdit}
         onHide={onHide}
         onListItemClick={onListItemClick}
+        isLocal
       />,
     );
     wrapper

@@ -26,6 +26,7 @@ exports[`MainPageList render correctly 1`] = `
       },
     ]
   }
+  isLocal={true}
   onDelete={[MockFunction]}
   onEdit={[MockFunction]}
   onListItemClick={[MockFunction]}

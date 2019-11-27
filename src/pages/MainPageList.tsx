@@ -11,6 +11,7 @@ const MainPageList = ({
   siderSelectedKey,
   dataSource,
   onListItemClick,
+  isLocal,
 }: {
   siderSelectedKey: string;
   onDelete?: (dataItem: MappingProps) => void;
@@ -18,6 +19,7 @@ const MainPageList = ({
   dataSource: MappingProps[];
   onEdit: (dataItem?: MappingProps, visible?: boolean) => void;
   onListItemClick: ({ category, id }: { category: DocumentCategoryProps; id: string }) => void;
+  isLocal: boolean;
 }) => {
   const data = siderSelectedKey === 'all' ? dataSource : dataSource.filter(item => item.subType === siderSelectedKey);
 
@@ -67,7 +69,7 @@ const MainPageList = ({
               <FileMarkdown style={{ marginRight: 10, fontSize: 16, color: '#87d068' }} />
             )}
             {item.type + ' - ' + item.subType + ' - ' + item.title}
-            {buttonGroup}
+            {isLocal && buttonGroup}
             <div style={{ float: 'right', marginRight: 8 }}>
               {`${format(new Date(item.createTime || ''), 'yyyy-MM-dd')} / ${format(
                 new Date(item.modifyTime || ''),
