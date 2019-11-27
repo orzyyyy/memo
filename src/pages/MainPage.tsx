@@ -21,7 +21,7 @@ export interface MainPageProps {
 }
 
 const renderFooter = () => (
-  <footer style={{ textAlign: 'center' }}>
+  <footer style={{ textAlign: 'center', marginTop: 16 }}>
     <div>
       你睡了一下午，醒的时候屋子里黑漆漆、一点声音都没有。抬头望望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机。打开后屏幕亮起，干净，没有一条消息
     </div>
