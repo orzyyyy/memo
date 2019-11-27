@@ -4,69 +4,62 @@ exports[`MainPageHeader render correctly 1`] = `
 <header
   style={
     Object {
+      "alignItems": "center",
+      "display": "flex",
       "height": 48,
-      "position": "relative",
+      "marginLeft": 16,
+      "marginTop": 8,
     }
   }
 >
-  <Select
-    choiceTransitionName="zoom"
+  <select
     onChange={[Function]}
     style={
       Object {
-        "left": 8,
-        "position": "absolute",
-        "top": 10,
-        "width": 160,
+        "background": "white",
+        "border": "1px solid rgb(169, 169, 169)",
+        "height": 40,
+        "width": 140,
       }
     }
-    transitionName="slide-up"
     value=""
   />
-  <Button
-    block={false}
-    ghost={false}
-    htmlType="button"
-    loading={false}
+  <input
+    onKeyDown={[Function]}
+    style={
+      Object {
+        "background": "white",
+        "border": "1px solid rgb(169, 169, 169)",
+        "height": 40,
+        "width": 280,
+      }
+    }
+  />
+  <button
     onClick={[MockFunction]}
     style={
       Object {
-        "left": 180,
-        "position": "absolute",
-        "top": 10,
+        "background": "white",
+        "border": "1px solid rgb(169, 169, 169)",
+        "height": 40,
+        "width": 80,
       }
     }
-    type="dashed"
   >
     列表
-  </Button>
-  <Input
-    onPressEnter={[MockFunction]}
-    style={
-      Object {
-        "position": "absolute",
-        "right": 80,
-        "top": 10,
-        "width": 350,
-      }
-    }
-    type="text"
-  />
-  <Button
-    block={false}
-    ghost={false}
-    htmlType="button"
-    loading={false}
+  </button>
+  <button
     onClick={[Function]}
     style={
       Object {
-        "position": "absolute",
-        "right": 24,
-        "top": 10,
+        "background": "white",
+        "border": "1px solid rgb(169, 169, 169)",
+        "height": 40,
+        "width": 80,
       }
     }
   >
-    <Plus />
-  </Button>
+    +
+  </button>
 </header>
 `;
