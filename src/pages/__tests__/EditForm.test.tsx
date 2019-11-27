@@ -36,7 +36,15 @@ describe('EditForm', () => {
 
   it('render correctly', () => {
     const wrapper = mount(
-      <EditForm visible selectData={menuData} onSubmit={noop} onCancel={noop} loading={false} dataItem={dataItem} />,
+      <EditForm
+        pageInfo={{ x: 0, y: 0 }}
+        visible
+        selectData={menuData}
+        onSubmit={noop}
+        onCancel={noop}
+        loading={false}
+        dataItem={dataItem}
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -52,6 +60,7 @@ describe('EditForm', () => {
         onCancel={onCancel}
         loading={false}
         dataItem={dataItem}
+        pageInfo={{ x: 0, y: 0 }}
       />,
     );
     wrapper
@@ -61,9 +70,9 @@ describe('EditForm', () => {
       .onFinish(dataItem, dataItem);
     expect(onSubmit).toHaveBeenCalled();
     wrapper
-      .find('Modal')
+      .find('Dialog')
       .props()
-      .onCancel();
+      .onClose();
     expect(onCancel).toHaveBeenCalled();
   });
 
@@ -78,6 +87,7 @@ describe('EditForm', () => {
         onSubmit={onSubmit}
         onCancel={onCancel}
         dataItem={dataItem}
+        pageInfo={{ x: 0, y: 0 }}
       />,
     );
     expect(wrapper).toMatchSnapshot();

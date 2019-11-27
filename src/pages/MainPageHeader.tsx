@@ -47,7 +47,10 @@ const MainPageHeader = ({
       <button style={commonStyle} onClick={onExhentaiLoadList}>
         列表
       </button>
-      <button style={commonStyle} onClick={() => onEdit(undefined, true)}>
+      <button
+        style={commonStyle}
+        onClick={(e: React.MouseEvent) => onEdit(undefined, true, { x: e.pageX, y: e.pageY })}
+      >
         +
       </button>
     </header>
