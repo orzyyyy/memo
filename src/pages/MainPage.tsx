@@ -74,7 +74,7 @@ const MainPage = ({
     const headerHeight = isLocal ? 48 : 0;
     const wrapperHeight = document.body.clientHeight - 90 - headerHeight;
     return (
-      <div
+      <main
         style={{
           padding: '8px 16px 8px 8px',
           height: wrapperHeight,
@@ -83,14 +83,14 @@ const MainPage = ({
         className="main-page-content-wrapper"
       >
         {renderContent && renderContent()}
-      </div>
+      </main>
     );
   };
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '16% 84%' }}>
       {renderSider()}
-      <div style={{ display: 'grid', gridTemplateRows: '5% 90% 10%' }}>
+      <div style={{ gridTemplateRows: '5% 90% 10%' }}>
         {isLocal && (
           <MainPageHeader
             onExhentaiDownload={onExhentaiDownload}
