@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { Form, Row, Col } from 'antd';
+import { Form } from 'antd';
 import Dialog from 'rc-dialog';
 import 'rc-dialog/assets/index.css';
 import { SelectValue } from 'antd/lib/select';
@@ -175,25 +175,14 @@ const EditForm = ({
   );
 
   const renderConfirmButtonGroup = () => (
-    <Form.Item>
-      <Row>
-        <Col span={6} push={3}>
-          <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
-        </Col>
-        <Col span={12} push={12}>
-          <Row gutter={18}>
-            <Col span={9}>
-              <Button onClick={() => form.resetFields()}>清空</Button>
-            </Col>
-            <Col span={6}>
-              <Button onClick={() => form.submit()} disabled={loading}>
-                确定
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Form.Item>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 25%)' }}>
+      <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
+      <div />
+      <Button onClick={() => form.resetFields()}>清空</Button>
+      <Button onClick={() => form.submit()} disabled={loading}>
+        确定
+      </Button>
+    </div>
   );
 
   const formValues = form.getFieldsValue();
