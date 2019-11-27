@@ -112,20 +112,23 @@ const MainPage = ({
     );
   };
 
+  const renderHeader = () =>
+    isLocal && (
+      <MainPageHeader
+        onExhentaiDownload={onExhentaiDownload}
+        onEdit={onEdit}
+        exhentaiDateSet={exhentaiDateSet}
+        onExhentaiSelectChange={onExhentaiSelectChange}
+        onExhentaiLoadList={onExhentaiLoadList}
+        menuData={[]}
+      />
+    );
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '15% 85%' }} className="MainPage">
       {renderSider()}
       <div style={{ gridTemplateRows: '5% 90% 10%' }}>
-        {isLocal && (
-          <MainPageHeader
-            onExhentaiDownload={onExhentaiDownload}
-            onEdit={onEdit}
-            exhentaiDateSet={exhentaiDateSet}
-            onExhentaiSelectChange={onExhentaiSelectChange}
-            onExhentaiLoadList={onExhentaiLoadList}
-            menuData={[]}
-          />
-        )}
+        {renderHeader()}
         {renderRealContent()}
         {renderFooter()}
       </div>
