@@ -21,6 +21,7 @@ describe('MainPageHeader', () => {
         onExhentaiSelectChange={onExhentaiSelectChange}
         onExhentaiLoadList={onExhentaiLoadList}
         exhentaiDateSet={[]}
+        menuData={[]}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -38,6 +39,7 @@ describe('MainPageHeader', () => {
         onExhentaiSelectChange={onExhentaiSelectChange}
         onExhentaiLoadList={onExhentaiLoadList}
         exhentaiDateSet={[]}
+        menuData={[]}
       />,
     );
     wrapper
