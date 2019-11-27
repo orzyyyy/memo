@@ -39,38 +39,6 @@ exports[`MainPageList render correctly 1`] = `
       onClick={[Function]}
     >
       音乐 - 乐理 - 音程表
-      <span>
-        <a
-          onClick={[Function]}
-          style={
-            Object {
-              "marginLeft": 16,
-            }
-          }
-        >
-          修改
-        </a>
-        <a
-          onClick={[Function]}
-          style={
-            Object {
-              "marginLeft": 16,
-            }
-          }
-        >
-          隐藏
-        </a>
-        <a
-          onClick={[Function]}
-          style={
-            Object {
-              "marginLeft": 16,
-            }
-          }
-        >
-          删除
-        </a>
-      </span>
       <div
         style={
           Object {
@@ -81,19 +49,19 @@ exports[`MainPageList render correctly 1`] = `
       >
         2019-06-03 / 2019-06-03
       </div>
-    </li>
-    <li
-      className="list-item"
-      key="list-item-7a73d21c13f1eb55053d4af66e0d057b"
-      onClick={[Function]}
-    >
-      Rust - 安装 - windows 下安装 rust
-      <span>
+      <div
+        style={
+          Object {
+            "float": "right",
+            "marginRight": 8,
+          }
+        }
+      >
         <a
           onClick={[Function]}
           style={
             Object {
-              "marginLeft": 16,
+              "marginRight": 16,
             }
           }
         >
@@ -103,7 +71,7 @@ exports[`MainPageList render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "marginLeft": 16,
+              "marginRight": 16,
             }
           }
         >
@@ -113,13 +81,20 @@ exports[`MainPageList render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "marginLeft": 16,
+              "marginRight": 16,
             }
           }
         >
           删除
         </a>
-      </span>
+      </div>
+    </li>
+    <li
+      className="list-item"
+      key="list-item-7a73d21c13f1eb55053d4af66e0d057b"
+      onClick={[Function]}
+    >
+      Rust - 安装 - windows 下安装 rust
       <div
         style={
           Object {
@@ -129,6 +104,45 @@ exports[`MainPageList render correctly 1`] = `
         }
       >
         2019-06-04 / 2019-06-04
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+            "marginRight": 8,
+          }
+        }
+      >
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginRight": 16,
+            }
+          }
+        >
+          修改
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginRight": 16,
+            }
+          }
+        >
+          隐藏
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginRight": 16,
+            }
+          }
+        >
+          删除
+        </a>
       </div>
     </li>
   </ul>
