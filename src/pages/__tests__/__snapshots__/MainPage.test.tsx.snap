@@ -2,6 +2,7 @@
 
 exports[`MainPage render correctly 1`] = `
 <div
+  className="MainPage"
   style={
     Object {
       "display": "grid",
@@ -10,36 +11,70 @@ exports[`MainPage render correctly 1`] = `
   }
 >
   <aside>
-    <Menu
-      mode="inline"
-      onClick={[Function]}
-      selectedKeys={
-        Array [
-          "all",
-        ]
+    <ul
+      style={
+        Object {
+          "marginTop": 8,
+          "paddingLeft": 24,
+        }
       }
     >
-      <MenuItem
+      <li
         key="all"
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "#e6f7ff",
+            "cursor": "pointer",
+            "height": 40,
+            "lineHeight": "40px",
+          }
+        }
       >
         all
-      </MenuItem>
-      <SubMenu
+      </li>
+      <li
         key="读书"
-        title="读书"
       >
-        <MenuItem
+        读书
+        <ul
           key="摘抄"
         >
-          摘抄
-        </MenuItem>
-        <MenuItem
+          <li
+            onClick={[Function]}
+            style={
+              Object {
+                "background": "",
+                "cursor": "pointer",
+                "height": 40,
+                "lineHeight": "40px",
+                "paddingLeft": 24,
+              }
+            }
+          >
+            摘抄
+          </li>
+        </ul>
+        <ul
           key="思路"
         >
-          思路
-        </MenuItem>
-      </SubMenu>
-    </Menu>
+          <li
+            onClick={[Function]}
+            style={
+              Object {
+                "background": "",
+                "cursor": "pointer",
+                "height": 40,
+                "lineHeight": "40px",
+                "paddingLeft": 24,
+              }
+            }
+          >
+            思路
+          </li>
+        </ul>
+      </li>
+    </ul>
   </aside>
   <div
     style={

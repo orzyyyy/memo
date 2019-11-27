@@ -67,8 +67,8 @@ describe('MainPage', () => {
       />,
     );
     wrapper
-      .find('MenuItem')
-      .at(1)
+      .find('li')
+      .first()
       .simulate('click');
     expect(onMenuClick).toHaveBeenCalled();
   });
