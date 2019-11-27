@@ -239,58 +239,24 @@ exports[`EditForm empty dataItem 1`] = `
                             </div>
                           </div>
                           <div
-                            class="ant-row-flex ant-form-item"
+                            style="display: grid; grid-template-columns: repeat(4, 25%);"
                           >
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                             >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <div
-                                  class="ant-row"
-                                >
-                                  <div
-                                    class="ant-col ant-col-6 ant-col-push-3"
-                                  >
-                                    <button
-                                      style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                    >
-                                      编辑
-                                    </button>
-                                  </div>
-                                  <div
-                                    class="ant-col ant-col-12 ant-col-push-12"
-                                  >
-                                    <div
-                                      class="ant-row"
-                                      style="margin-left: -9px; margin-right: -9px;"
-                                    >
-                                      <div
-                                        class="ant-col ant-col-9"
-                                        style="padding-left: 9px; padding-right: 9px;"
-                                      >
-                                        <button
-                                          style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                        >
-                                          清空
-                                        </button>
-                                      </div>
-                                      <div
-                                        class="ant-col ant-col-6"
-                                        style="padding-left: 9px; padding-right: 9px;"
-                                      >
-                                        <button
-                                          style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                        >
-                                          确定
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                              编辑
+                            </button>
+                            <div />
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            >
+                              清空
+                            </button>
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            >
+                              确定
+                            </button>
                           </div>
                         </form>
                       </div>
@@ -1248,206 +1214,69 @@ exports[`EditForm empty dataItem 1`] = `
                                       </Row>
                                     </Field>
                                   </FormItem>
-                                  <FormItem>
-                                    <Field
-                                      onReset={[Function]}
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
+                                  <div
+                                    style={
+                                      Object {
+                                        "display": "grid",
+                                        "gridTemplateColumns": "repeat(4, 25%)",
+                                      }
+                                    }
+                                  >
+                                    <Button
+                                      onClick={[Function]}
                                     >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
+                                      <button
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
                                       >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            prefixCls="ant-form"
-                                            required={false}
-                                          />
-                                          <FormItemInput
-                                            errors={Array []}
-                                            name={Array []}
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Row
-                                                    gutter={0}
-                                                  >
-                                                    <div
-                                                      className="ant-row"
-                                                      style={Object {}}
-                                                    >
-                                                      <Col
-                                                        push={3}
-                                                        span={6}
-                                                      >
-                                                        <div
-                                                          className="ant-col ant-col-6 ant-col-push-3"
-                                                          style={Object {}}
-                                                        >
-                                                          <Button
-                                                            onClick={[Function]}
-                                                          >
-                                                            <button
-                                                              onClick={[Function]}
-                                                              style={
-                                                                Object {
-                                                                  "background": "white",
-                                                                  "border": "1px solid #e8e8e8",
-                                                                  "height": 32,
-                                                                  "width": 80,
-                                                                }
-                                                              }
-                                                            >
-                                                              编辑
-                                                            </button>
-                                                          </Button>
-                                                        </div>
-                                                      </Col>
-                                                      <Col
-                                                        push={12}
-                                                        span={12}
-                                                      >
-                                                        <div
-                                                          className="ant-col ant-col-12 ant-col-push-12"
-                                                          style={Object {}}
-                                                        >
-                                                          <Row
-                                                            gutter={18}
-                                                          >
-                                                            <div
-                                                              className="ant-row"
-                                                              style={
-                                                                Object {
-                                                                  "marginLeft": -9,
-                                                                  "marginRight": -9,
-                                                                }
-                                                              }
-                                                            >
-                                                              <Col
-                                                                span={9}
-                                                              >
-                                                                <div
-                                                                  className="ant-col ant-col-9"
-                                                                  style={
-                                                                    Object {
-                                                                      "paddingLeft": 9,
-                                                                      "paddingRight": 9,
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <Button
-                                                                    onClick={[Function]}
-                                                                  >
-                                                                    <button
-                                                                      onClick={[Function]}
-                                                                      style={
-                                                                        Object {
-                                                                          "background": "white",
-                                                                          "border": "1px solid #e8e8e8",
-                                                                          "height": 32,
-                                                                          "width": 80,
-                                                                        }
-                                                                      }
-                                                                    >
-                                                                      清空
-                                                                    </button>
-                                                                  </Button>
-                                                                </div>
-                                                              </Col>
-                                                              <Col
-                                                                span={6}
-                                                              >
-                                                                <div
-                                                                  className="ant-col ant-col-6"
-                                                                  style={
-                                                                    Object {
-                                                                      "paddingLeft": 9,
-                                                                      "paddingRight": 9,
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <Button
-                                                                    disabled={false}
-                                                                    onClick={[Function]}
-                                                                  >
-                                                                    <button
-                                                                      disabled={false}
-                                                                      onClick={[Function]}
-                                                                      style={
-                                                                        Object {
-                                                                          "background": "white",
-                                                                          "border": "1px solid #e8e8e8",
-                                                                          "height": 32,
-                                                                          "width": 80,
-                                                                        }
-                                                                      }
-                                                                    >
-                                                                      确定
-                                                                    </button>
-                                                                  </Button>
-                                                                </div>
-                                                              </Col>
-                                                            </div>
-                                                          </Row>
-                                                        </div>
-                                                      </Col>
-                                                    </div>
-                                                  </Row>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
+                                        编辑
+                                      </button>
+                                    </Button>
+                                    <div />
+                                    <Button
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
+                                      >
+                                        清空
+                                      </button>
+                                    </Button>
+                                    <Button
+                                      disabled={false}
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
+                                      >
+                                        确定
+                                      </button>
+                                    </Button>
+                                  </div>
                                 </form>
                               </ForwardRef(Form)>
                             </ForwardRef(InternalForm)>
@@ -1717,58 +1546,24 @@ exports[`EditForm render correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            class="ant-row-flex ant-form-item"
+                            style="display: grid; grid-template-columns: repeat(4, 25%);"
                           >
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                             >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <div
-                                  class="ant-row"
-                                >
-                                  <div
-                                    class="ant-col ant-col-6 ant-col-push-3"
-                                  >
-                                    <button
-                                      style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                    >
-                                      编辑
-                                    </button>
-                                  </div>
-                                  <div
-                                    class="ant-col ant-col-12 ant-col-push-12"
-                                  >
-                                    <div
-                                      class="ant-row"
-                                      style="margin-left: -9px; margin-right: -9px;"
-                                    >
-                                      <div
-                                        class="ant-col ant-col-9"
-                                        style="padding-left: 9px; padding-right: 9px;"
-                                      >
-                                        <button
-                                          style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                        >
-                                          清空
-                                        </button>
-                                      </div>
-                                      <div
-                                        class="ant-col ant-col-6"
-                                        style="padding-left: 9px; padding-right: 9px;"
-                                      >
-                                        <button
-                                          style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                                        >
-                                          确定
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                              编辑
+                            </button>
+                            <div />
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            >
+                              清空
+                            </button>
+                            <button
+                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            >
+                              确定
+                            </button>
                           </div>
                         </form>
                       </div>
@@ -2726,206 +2521,69 @@ exports[`EditForm render correctly 1`] = `
                                       </Row>
                                     </Field>
                                   </FormItem>
-                                  <FormItem>
-                                    <Field
-                                      onReset={[Function]}
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
+                                  <div
+                                    style={
+                                      Object {
+                                        "display": "grid",
+                                        "gridTemplateColumns": "repeat(4, 25%)",
+                                      }
+                                    }
+                                  >
+                                    <Button
+                                      onClick={[Function]}
                                     >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
+                                      <button
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
                                       >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            prefixCls="ant-form"
-                                            required={false}
-                                          />
-                                          <FormItemInput
-                                            errors={Array []}
-                                            name={Array []}
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Row
-                                                    gutter={0}
-                                                  >
-                                                    <div
-                                                      className="ant-row"
-                                                      style={Object {}}
-                                                    >
-                                                      <Col
-                                                        push={3}
-                                                        span={6}
-                                                      >
-                                                        <div
-                                                          className="ant-col ant-col-6 ant-col-push-3"
-                                                          style={Object {}}
-                                                        >
-                                                          <Button
-                                                            onClick={[Function]}
-                                                          >
-                                                            <button
-                                                              onClick={[Function]}
-                                                              style={
-                                                                Object {
-                                                                  "background": "white",
-                                                                  "border": "1px solid #e8e8e8",
-                                                                  "height": 32,
-                                                                  "width": 80,
-                                                                }
-                                                              }
-                                                            >
-                                                              编辑
-                                                            </button>
-                                                          </Button>
-                                                        </div>
-                                                      </Col>
-                                                      <Col
-                                                        push={12}
-                                                        span={12}
-                                                      >
-                                                        <div
-                                                          className="ant-col ant-col-12 ant-col-push-12"
-                                                          style={Object {}}
-                                                        >
-                                                          <Row
-                                                            gutter={18}
-                                                          >
-                                                            <div
-                                                              className="ant-row"
-                                                              style={
-                                                                Object {
-                                                                  "marginLeft": -9,
-                                                                  "marginRight": -9,
-                                                                }
-                                                              }
-                                                            >
-                                                              <Col
-                                                                span={9}
-                                                              >
-                                                                <div
-                                                                  className="ant-col ant-col-9"
-                                                                  style={
-                                                                    Object {
-                                                                      "paddingLeft": 9,
-                                                                      "paddingRight": 9,
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <Button
-                                                                    onClick={[Function]}
-                                                                  >
-                                                                    <button
-                                                                      onClick={[Function]}
-                                                                      style={
-                                                                        Object {
-                                                                          "background": "white",
-                                                                          "border": "1px solid #e8e8e8",
-                                                                          "height": 32,
-                                                                          "width": 80,
-                                                                        }
-                                                                      }
-                                                                    >
-                                                                      清空
-                                                                    </button>
-                                                                  </Button>
-                                                                </div>
-                                                              </Col>
-                                                              <Col
-                                                                span={6}
-                                                              >
-                                                                <div
-                                                                  className="ant-col ant-col-6"
-                                                                  style={
-                                                                    Object {
-                                                                      "paddingLeft": 9,
-                                                                      "paddingRight": 9,
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <Button
-                                                                    disabled={false}
-                                                                    onClick={[Function]}
-                                                                  >
-                                                                    <button
-                                                                      disabled={false}
-                                                                      onClick={[Function]}
-                                                                      style={
-                                                                        Object {
-                                                                          "background": "white",
-                                                                          "border": "1px solid #e8e8e8",
-                                                                          "height": 32,
-                                                                          "width": 80,
-                                                                        }
-                                                                      }
-                                                                    >
-                                                                      确定
-                                                                    </button>
-                                                                  </Button>
-                                                                </div>
-                                                              </Col>
-                                                            </div>
-                                                          </Row>
-                                                        </div>
-                                                      </Col>
-                                                    </div>
-                                                  </Row>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
+                                        编辑
+                                      </button>
+                                    </Button>
+                                    <div />
+                                    <Button
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
+                                      >
+                                        清空
+                                      </button>
+                                    </Button>
+                                    <Button
+                                      disabled={false}
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "background": "white",
+                                            "border": "1px solid #e8e8e8",
+                                            "height": 32,
+                                            "width": 80,
+                                          }
+                                        }
+                                      >
+                                        确定
+                                      </button>
+                                    </Button>
+                                  </div>
                                 </form>
                               </ForwardRef(Form)>
                             </ForwardRef(InternalForm)>
