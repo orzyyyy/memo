@@ -158,6 +158,7 @@ const MainPageDataController = () => {
         dataSource={dataSource}
         onEdit={handleEdit}
         onHide={handleHide}
+        isLocal={isLocal}
       />
     );
   };
