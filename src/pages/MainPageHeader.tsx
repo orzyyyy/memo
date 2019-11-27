@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, Select } from 'antd';
 import { MainPageProps } from './MainPage';
-import { Plus } from '@ant-design/icons';
-import { SelectValue } from 'antd/lib/select';
-const { Option } = Select;
 
 const MainPageHeader = ({
   onExhentaiDownload,
@@ -14,31 +10,46 @@ const MainPageHeader = ({
 }: MainPageProps) => {
   const [selectValue, setSelectValue] = useState();
 
-  const handleSelectChange = (value: SelectValue) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
     onExhentaiSelectChange(value);
     setSelectValue(value);
   };
 
+  const hanldeKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const value = (e.target as any).value;
+    if (e.key === 'Enter' && value) {
+      onExhentaiDownload(value);
+    }
+  };
+
+  const commonStyle = {
+    background: 'white',
+    height: 40,
+    width: 80,
+    border: '1px solid rgb(169, 169, 169)',
+  };
+
   return (
-    <header style={{ height: 48, position: 'relative' }}>
-      <Select
-        style={{ position: 'absolute', width: 160, top: 10, left: 8 }}
+    <header style={{ height: 48, display: 'flex', alignItems: 'center', marginLeft: 16, marginTop: 8 }}>
+      <select
+        style={{ ...commonStyle, width: 140 }}
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
         onChange={handleSelectChange}
       >
         {exhentaiDateSet.map(timeStamp => (
-          <Option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`}>
+          <option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`}>
             {timeStamp}
-          </Option>
+          </option>
         ))}
-      </Select>
-      <Button style={{ position: 'absolute', left: 180, top: 10 }} type="dashed" onClick={onExhentaiLoadList}>
+      </select>
+      <input onKeyDown={hanldeKeyDown} style={{ ...commonStyle, width: 280 }} />
+      <button style={commonStyle} onClick={onExhentaiLoadList}>
         列表
-      </Button>
-      <Input onPressEnter={onExhentaiDownload} style={{ position: 'absolute', right: 80, top: 10, width: 350 }} />
-      <Button style={{ position: 'absolute', right: 24, top: 10 }} onClick={() => onEdit(undefined, true)}>
-        <Plus />
-      </Button>
+      </button>
+      <button style={commonStyle} onClick={() => onEdit(undefined, true)}>
+        +
+      </button>
     </header>
   );
 };

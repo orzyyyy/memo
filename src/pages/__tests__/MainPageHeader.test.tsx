@@ -43,7 +43,7 @@ describe('MainPageHeader', () => {
       />,
     );
     wrapper
-      .find('Button')
+      .find('button')
       .at(1)
       .props()
       .onClick();
