@@ -6,184 +6,33 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
     onChange={[Function]}
     onSave={[Function]}
   >
-    <Row
-      gutter={16}
+    <div
       style={
         Object {
-          "padding": 15,
-          "width": "100%",
+          "display": "grid",
+          "fontSize": 16,
+          "gridTemplateColumns": "50% 50%",
+          "padding": 24,
         }
       }
     >
-      <div
-        className="ant-row"
+      <textarea
+        onChange={[Function]}
         style={
           Object {
-            "marginLeft": -8,
-            "marginRight": -8,
-            "padding": 15,
-            "width": "100%",
+            "marginRight": 24,
           }
         }
-      >
-        <Col
-          span={12}
-        >
-          <div
-            className="ant-col ant-col-12"
-            style={
-              Object {
-                "paddingLeft": 8,
-                "paddingRight": 8,
-              }
-            }
-          >
-            <TextArea
-              onChange={[Function]}
-              style={
-                Object {
-                  "fontSize": 16,
-                  "height": "90vh",
-                }
-              }
-            >
-              <ClearableLabeledInput
-                element={
-                  <ResizableTextArea
-                    onChange={[Function]}
-                    onKeyDown={[Function]}
-                    prefixCls="ant-input"
-                    style={
-                      Object {
-                        "fontSize": 16,
-                        "height": "90vh",
-                      }
-                    }
-                  />
-                }
-                handleReset={[Function]}
-                inputType="text"
-                onChange={[Function]}
-                prefixCls="ant-input"
-                style={
-                  Object {
-                    "fontSize": 16,
-                    "height": "90vh",
-                  }
-                }
-                value=""
-              >
-                <ResizableTextArea
-                  onChange={[Function]}
-                  onKeyDown={[Function]}
-                  prefixCls="ant-input"
-                  style={
-                    Object {
-                      "fontSize": 16,
-                      "height": "90vh",
-                    }
-                  }
-                  value=""
-                >
-                  <ResizeObserver
-                    disabled={true}
-                    onResize={[Function]}
-                  >
-                    <textarea
-                      className="ant-input"
-                      onChange={[Function]}
-                      onKeyDown={[Function]}
-                      style={
-                        Object {
-                          "fontSize": 16,
-                          "height": "90vh",
-                        }
-                      }
-                      value=""
-                    />
-                  </ResizeObserver>
-                </ResizableTextArea>
-              </ClearableLabeledInput>
-            </TextArea>
-          </div>
-        </Col>
-        <Col
-          span={12}
-          style={
-            Object {
-              "fontSize": 16,
-              "height": "90vh",
-              "overflow": "auto",
-              "paddingLeft": 24,
-            }
+      />
+      <div
+        className="content markdown-body"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
           }
-        >
-          <div
-            className="ant-col ant-col-12"
-            style={
-              Object {
-                "fontSize": 16,
-                "height": "90vh",
-                "overflow": "auto",
-                "paddingLeft": 24,
-                "paddingRight": 8,
-              }
-            }
-          >
-            <div
-              className="content markdown-body"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "",
-                }
-              }
-            />
-          </div>
-        </Col>
-        <Col
-          push={8}
-          span={8}
-          style={
-            Object {
-              "marginTop": 24,
-            }
-          }
-        >
-          <div
-            className="ant-col ant-col-8 ant-col-push-8"
-            style={
-              Object {
-                "marginTop": 24,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-              }
-            }
-          >
-            <Button
-              block={true}
-              ghost={false}
-              htmlType="button"
-              loading={false}
-              onClick={[Function]}
-            >
-              <Wave>
-                <button
-                  className="ant-btn ant-btn-block"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <span
-                    key=".0"
-                  >
-                    提 交
-                  </span>
-                </button>
-              </Wave>
-            </Button>
-          </div>
-        </Col>
-      </div>
-    </Row>
+        }
+      />
+    </div>
   </MarkdownEditor>
 </MarkdownEditorDataController>
 `;
