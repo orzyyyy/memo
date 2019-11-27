@@ -111,6 +111,7 @@ exports[`MainPage render correctly 1`] = `
     <footer
       style={
         Object {
+          "marginTop": 16,
           "textAlign": "center",
         }
       }
