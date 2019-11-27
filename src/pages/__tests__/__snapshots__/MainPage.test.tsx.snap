@@ -44,12 +44,11 @@ exports[`MainPage render correctly 1`] = `
   <div
     style={
       Object {
-        "display": "grid",
         "gridTemplateRows": "5% 90% 10%",
       }
     }
   >
-    <div
+    <main
       className="main-page-content-wrapper"
       style={
         Object {
