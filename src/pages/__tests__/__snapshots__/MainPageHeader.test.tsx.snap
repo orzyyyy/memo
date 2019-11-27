@@ -17,7 +17,7 @@ exports[`MainPageHeader render correctly 1`] = `
     style={
       Object {
         "background": "white",
-        "border": "1px solid rgb(169, 169, 169)",
+        "border": "1px solid #e8e8e8",
         "height": 40,
         "width": 140,
       }
@@ -29,7 +29,7 @@ exports[`MainPageHeader render correctly 1`] = `
     style={
       Object {
         "background": "white",
-        "border": "1px solid rgb(169, 169, 169)",
+        "border": "1px solid #e8e8e8",
         "height": 40,
         "width": 280,
       }
@@ -40,7 +40,7 @@ exports[`MainPageHeader render correctly 1`] = `
     style={
       Object {
         "background": "white",
-        "border": "1px solid rgb(169, 169, 169)",
+        "border": "1px solid #e8e8e8",
         "height": 40,
         "width": 80,
       }
@@ -53,7 +53,7 @@ exports[`MainPageHeader render correctly 1`] = `
     style={
       Object {
         "background": "white",
-        "border": "1px solid rgb(169, 169, 169)",
+        "border": "1px solid #e8e8e8",
         "height": 40,
         "width": 80,
       }
