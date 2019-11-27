@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { MainPageProps } from './MainPage';
+import Button from '../component/Button';
+import Input from '../component/Input';
+import Select from '../component/Select';
 
 const MainPageHeader = ({
   onExhentaiDownload,
@@ -23,36 +26,22 @@ const MainPageHeader = ({
     }
   };
 
-  const commonStyle = {
-    background: 'white',
-    height: 40,
-    width: 80,
-    border: '1px solid #e8e8e8',
-  };
-
   return (
     <header style={{ height: 48, display: 'flex', alignItems: 'center', marginLeft: 16, marginTop: 8 }}>
-      <select
-        style={{ ...commonStyle, width: 140 }}
+      <Select
+        style={{ width: 140 }}
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
         onChange={handleSelectChange}
       >
         {exhentaiDateSet.map(timeStamp => (
-          <option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`}>
+          <option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`} style={{ height: 40 }}>
             {timeStamp}
           </option>
         ))}
-      </select>
-      <input onKeyDown={hanldeKeyDown} style={{ ...commonStyle, width: 280 }} />
-      <button style={commonStyle} onClick={onExhentaiLoadList}>
-        列表
-      </button>
-      <button
-        style={commonStyle}
-        onClick={(e: React.MouseEvent) => onEdit(undefined, true, { x: e.pageX, y: e.pageY })}
-      >
-        +
-      </button>
+      </Select>
+      <Input onKeyDown={hanldeKeyDown} style={{ width: 280 }} />
+      <Button onClick={onExhentaiLoadList}>列表</Button>
+      <Button onClick={(e: React.MouseEvent) => onEdit(undefined, true, { x: e.pageX, y: e.pageY })}>+</Button>
     </header>
   );
 };
