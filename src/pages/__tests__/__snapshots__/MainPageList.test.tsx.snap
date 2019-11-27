@@ -31,470 +31,105 @@ exports[`MainPageList render correctly 1`] = `
   onListItemClick={[MockFunction]}
   siderSelectedKey="all"
 >
-  <List
-    bordered={false}
-    dataSource={
-      Array [
-        Object {
-          "category": undefined,
-          "createTime": 1559522075108,
-          "id": "32e89f38116080d6b7608cf2137f3c96",
-          "modifyTime": 1559523700429,
-          "subType": "乐理",
-          "title": "音程表",
-          "type": "音乐",
-          "url": "./assets/mapping/32e89f38116080d6b7608cf2137f3c96.json",
-        },
-        Object {
-          "category": undefined,
-          "createTime": 1559617097664,
-          "id": "7a73d21c13f1eb55053d4af66e0d057b",
-          "modifyTime": 1559633639037,
-          "subType": "安装",
-          "title": "windows 下安装 rust",
-          "type": "Rust",
-          "url": "./assets/mapping/7a73d21c13f1eb55053d4af66e0d057b.json",
-        },
-      ]
-    }
-    loading={false}
-    pagination={false}
-    renderItem={[Function]}
-    split={true}
-  >
-    <div
-      className="ant-list ant-list-split"
+  <ul>
+    <li
+      className="list-item"
+      key="list-item-32e89f38116080d6b7608cf2137f3c96"
+      onClick={[Function]}
     >
-      <Spin
-        size="default"
-        spinning={false}
-        wrapperClassName=""
-      >
-        <div
-          className="ant-spin-nested-loading"
+      音乐 - 乐理 - 音程表
+      <span>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
         >
-          <div
-            className="ant-spin-container"
-            key="container"
-          >
-            <ul
-              className="ant-list-items"
-            >
-              <Dropdown
-                key="list-item-0"
-                mouseEnterDelay={0.15}
-                mouseLeaveDelay={0.1}
-                overlay={[Function]}
-                placement="bottomLeft"
-                trigger={
-                  Array [
-                    "contextMenu",
-                  ]
-                }
-              >
-                <ForwardRef(Dropdown)
-                  alignPoint={true}
-                  mouseEnterDelay={0.15}
-                  mouseLeaveDelay={0.1}
-                  overlay={[Function]}
-                  placement="bottomLeft"
-                  prefixCls="ant-dropdown"
-                  transitionName="slide-up"
-                  trigger={
-                    Array [
-                      "contextMenu",
-                    ]
-                  }
-                >
-                  <Trigger
-                    action={
-                      Array [
-                        "contextMenu",
-                      ]
-                    }
-                    afterPopupVisibleChange={[Function]}
-                    alignPoint={true}
-                    blurDelay={0.15}
-                    builtinPlacements={
-                      Object {
-                        "bottomCenter": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tc",
-                            "bc",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "bottomLeft": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tl",
-                            "bl",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "bottomRight": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tr",
-                            "br",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topCenter": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "bc",
-                            "tc",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topLeft": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "bl",
-                            "tl",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topRight": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "br",
-                            "tr",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                      }
-                    }
-                    defaultPopupVisible={false}
-                    destroyPopupOnHide={false}
-                    focusDelay={0}
-                    getDocument={[Function]}
-                    getPopupClassNameFromAlign={[Function]}
-                    hideAction={
-                      Array [
-                        "click",
-                      ]
-                    }
-                    mask={false}
-                    maskClosable={true}
-                    mouseEnterDelay={0.15}
-                    mouseLeaveDelay={0.1}
-                    onPopupAlign={[Function]}
-                    onPopupVisibleChange={[Function]}
-                    overlay={[Function]}
-                    popup={[Function]}
-                    popupAlign={Object {}}
-                    popupClassName=""
-                    popupPlacement="bottomLeft"
-                    popupStyle={Object {}}
-                    popupTransitionName="slide-up"
-                    prefixCls="ant-dropdown"
-                    showAction={Array []}
-                    stretch=""
-                  >
-                    <Item
-                      className="list-item ant-dropdown-trigger"
-                      key="trigger"
-                      onClick={[Function]}
-                      onContextMenu={[Function]}
-                      onMouseDown={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <li
-                        className="ant-list-item list-item ant-dropdown-trigger ant-list-item-no-flex"
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onMouseDown={[Function]}
-                        onTouchStart={[Function]}
-                      >
-                        音乐 - 乐理 - 音程表
-                        <div
-                          style={
-                            Object {
-                              "float": "right",
-                              "marginRight": 8,
-                            }
-                          }
-                        >
-                          2019-06-03 / 2019-06-03
-                        </div>
-                      </li>
-                    </Item>
-                  </Trigger>
-                </ForwardRef(Dropdown)>
-              </Dropdown>
-              <Dropdown
-                key="list-item-1"
-                mouseEnterDelay={0.15}
-                mouseLeaveDelay={0.1}
-                overlay={[Function]}
-                placement="bottomLeft"
-                trigger={
-                  Array [
-                    "contextMenu",
-                  ]
-                }
-              >
-                <ForwardRef(Dropdown)
-                  alignPoint={true}
-                  mouseEnterDelay={0.15}
-                  mouseLeaveDelay={0.1}
-                  overlay={[Function]}
-                  placement="bottomLeft"
-                  prefixCls="ant-dropdown"
-                  transitionName="slide-up"
-                  trigger={
-                    Array [
-                      "contextMenu",
-                    ]
-                  }
-                >
-                  <Trigger
-                    action={
-                      Array [
-                        "contextMenu",
-                      ]
-                    }
-                    afterPopupVisibleChange={[Function]}
-                    alignPoint={true}
-                    blurDelay={0.15}
-                    builtinPlacements={
-                      Object {
-                        "bottomCenter": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tc",
-                            "bc",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "bottomLeft": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tl",
-                            "bl",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "bottomRight": Object {
-                          "offset": Array [
-                            0,
-                            4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "tr",
-                            "br",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topCenter": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "bc",
-                            "tc",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topLeft": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "bl",
-                            "tl",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                        "topRight": Object {
-                          "offset": Array [
-                            0,
-                            -4,
-                          ],
-                          "overflow": Object {
-                            "adjustX": 1,
-                            "adjustY": 1,
-                          },
-                          "points": Array [
-                            "br",
-                            "tr",
-                          ],
-                          "targetOffset": Array [
-                            0,
-                            0,
-                          ],
-                        },
-                      }
-                    }
-                    defaultPopupVisible={false}
-                    destroyPopupOnHide={false}
-                    focusDelay={0}
-                    getDocument={[Function]}
-                    getPopupClassNameFromAlign={[Function]}
-                    hideAction={
-                      Array [
-                        "click",
-                      ]
-                    }
-                    mask={false}
-                    maskClosable={true}
-                    mouseEnterDelay={0.15}
-                    mouseLeaveDelay={0.1}
-                    onPopupAlign={[Function]}
-                    onPopupVisibleChange={[Function]}
-                    overlay={[Function]}
-                    popup={[Function]}
-                    popupAlign={Object {}}
-                    popupClassName=""
-                    popupPlacement="bottomLeft"
-                    popupStyle={Object {}}
-                    popupTransitionName="slide-up"
-                    prefixCls="ant-dropdown"
-                    showAction={Array []}
-                    stretch=""
-                  >
-                    <Item
-                      className="list-item ant-dropdown-trigger"
-                      key="trigger"
-                      onClick={[Function]}
-                      onContextMenu={[Function]}
-                      onMouseDown={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <li
-                        className="ant-list-item list-item ant-dropdown-trigger ant-list-item-no-flex"
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onMouseDown={[Function]}
-                        onTouchStart={[Function]}
-                      >
-                        Rust - 安装 - windows 下安装 rust
-                        <div
-                          style={
-                            Object {
-                              "float": "right",
-                              "marginRight": 8,
-                            }
-                          }
-                        >
-                          2019-06-04 / 2019-06-04
-                        </div>
-                      </li>
-                    </Item>
-                  </Trigger>
-                </ForwardRef(Dropdown)>
-              </Dropdown>
-            </ul>
-          </div>
-        </div>
-      </Spin>
-    </div>
-  </List>
+          修改
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
+        >
+          隐藏
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
+        >
+          删除
+        </a>
+      </span>
+      <div
+        style={
+          Object {
+            "float": "right",
+            "marginRight": 8,
+          }
+        }
+      >
+        2019-06-03 / 2019-06-03
+      </div>
+    </li>
+    <li
+      className="list-item"
+      key="list-item-7a73d21c13f1eb55053d4af66e0d057b"
+      onClick={[Function]}
+    >
+      Rust - 安装 - windows 下安装 rust
+      <span>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
+        >
+          修改
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
+        >
+          隐藏
+        </a>
+        <a
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 16,
+            }
+          }
+        >
+          删除
+        </a>
+      </span>
+      <div
+        style={
+          Object {
+            "float": "right",
+            "marginRight": 8,
+          }
+        }
+      >
+        2019-06-04 / 2019-06-04
+      </div>
+    </li>
+  </ul>
 </MainPageList>
 `;

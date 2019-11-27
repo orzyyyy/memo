@@ -52,33 +52,39 @@ describe('MainPageList', () => {
     const onDelete = jest.fn();
     const onEdit = jest.fn();
     const onListItemClick = jest.fn();
+    const onHide = jest.fn();
+    const stopPropagation = jest.fn();
     const wrapper: any = mount(
       <MainPageList
         siderSelectedKey="all"
         dataSource={dataSource}
         onDelete={onDelete}
         onEdit={onEdit}
+        onHide={onHide}
         onListItemClick={onListItemClick}
       />,
     );
     wrapper
-      .find('Item')
-      .first()
-      .simulate('contextmenu');
-    wrapper
-      .find('.ant-dropdown-menu-item')
+      .find('a')
       .first()
       .props()
-      .onClick();
+      .onClick({ stopPropagation });
     expect(onEdit).toHaveBeenCalled();
+    expect(stopPropagation).toHaveBeenCalled();
     wrapper
-      .find('.ant-dropdown-menu-item')
-      .last()
+      .find('a')
+      .at(1)
       .props()
-      .onClick();
+      .onClick({ stopPropagation });
+    expect(onHide).toHaveBeenCalled();
+    wrapper
+      .find('a')
+      .at(2)
+      .props()
+      .onClick({ stopPropagation });
     expect(onDelete).toHaveBeenCalled();
     wrapper
-      .find('Item')
+      .find('.list-item')
       .first()
       .simulate('click');
     expect(onListItemClick).toHaveBeenCalled();
