@@ -1,5 +1,4 @@
 import React from 'react';
-import { message } from 'antd';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
 import { DataSource } from 'mini-xmind/lib/canvas/core';
@@ -17,7 +16,7 @@ export interface MarkdownEditorSaveProps {
 }
 
 export function showMessageAfterFetching(result: string) {
-  result ? message.success('保存成功') : message.error('保存失败');
+  result ? alert('保存成功') : alert('保存失败');
 }
 
 const MarkdownEditorDataController = () => {
