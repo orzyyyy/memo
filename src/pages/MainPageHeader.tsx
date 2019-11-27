@@ -27,7 +27,7 @@ const MainPageHeader = ({
     background: 'white',
     height: 40,
     width: 80,
-    border: '1px solid rgb(169, 169, 169)',
+    border: '1px solid #e8e8e8',
   };
 
   return (
