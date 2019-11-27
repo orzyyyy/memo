@@ -99,14 +99,7 @@ const MainPage = ({
     const headerHeight = isLocal ? 48 : 0;
     const wrapperHeight = document.body.clientHeight - 90 - headerHeight;
     return (
-      <main
-        style={{
-          padding: '8px 16px 8px 8px',
-          height: wrapperHeight,
-          marginLeft: 8,
-        }}
-        className="main-page-content-wrapper"
-      >
+      <main style={{ height: wrapperHeight, marginLeft: 8, overflow: 'auto' }} className="main-page-content-wrapper">
         {renderContent && renderContent()}
       </main>
     );
