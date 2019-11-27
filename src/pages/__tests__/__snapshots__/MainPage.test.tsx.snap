@@ -6,7 +6,7 @@ exports[`MainPage render correctly 1`] = `
   style={
     Object {
       "display": "grid",
-      "gridTemplateColumns": "16% 84%",
+      "gridTemplateColumns": "15% 85%",
     }
   }
 >
@@ -15,7 +15,6 @@ exports[`MainPage render correctly 1`] = `
       style={
         Object {
           "marginTop": 8,
-          "paddingLeft": 24,
         }
       }
     >
@@ -28,6 +27,7 @@ exports[`MainPage render correctly 1`] = `
             "cursor": "pointer",
             "height": 40,
             "lineHeight": "40px",
+            "paddingLeft": 24,
           }
         }
       >
@@ -35,10 +35,20 @@ exports[`MainPage render correctly 1`] = `
       </li>
       <li
         key="读书"
+        style={
+          Object {
+            "paddingLeft": 24,
+          }
+        }
       >
         读书
         <ul
           key="摘抄"
+          style={
+            Object {
+              "marginLeft": -24,
+            }
+          }
         >
           <li
             onClick={[Function]}
@@ -48,7 +58,7 @@ exports[`MainPage render correctly 1`] = `
                 "cursor": "pointer",
                 "height": 40,
                 "lineHeight": "40px",
-                "paddingLeft": 24,
+                "paddingLeft": 48,
               }
             }
           >
@@ -57,6 +67,11 @@ exports[`MainPage render correctly 1`] = `
         </ul>
         <ul
           key="思路"
+          style={
+            Object {
+              "marginLeft": -24,
+            }
+          }
         >
           <li
             onClick={[Function]}
@@ -66,7 +81,7 @@ exports[`MainPage render correctly 1`] = `
                 "cursor": "pointer",
                 "height": 40,
                 "lineHeight": "40px",
-                "paddingLeft": 24,
+                "paddingLeft": 48,
               }
             }
           >
