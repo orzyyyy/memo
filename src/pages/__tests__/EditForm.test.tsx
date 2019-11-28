@@ -49,33 +49,6 @@ describe('EditForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('onSubmit and onCancel works', () => {
-    const onSubmit = jest.fn();
-    const onCancel = jest.fn();
-    const wrapper: any = mount(
-      <EditForm
-        visible
-        selectData={menuData}
-        onSubmit={onSubmit}
-        onCancel={onCancel}
-        loading={false}
-        dataItem={dataItem}
-        pageInfo={{ x: 0, y: 0 }}
-      />,
-    );
-    wrapper
-      .find('#edit-form')
-      .first()
-      .props()
-      .onFinish(dataItem, dataItem);
-    expect(onSubmit).toHaveBeenCalled();
-    wrapper
-      .find('Dialog')
-      .props()
-      .onClose();
-    expect(onCancel).toHaveBeenCalled();
-  });
-
   it('empty dataItem', () => {
     const onSubmit = jest.fn();
     const onCancel = jest.fn();

@@ -42,7 +42,41 @@ exports[`EditForm empty dataItem 1`] = `
 >
   <Component
     animation="zoom"
-    footer={null}
+    bodyStyle={
+      Object {
+        "height": 260,
+      }
+    }
+    footer={
+      <div
+        style={
+          Object {
+            "display": "grid",
+            "gridTemplateColumns": "repeat(4, 25%)",
+          }
+        }
+      >
+        <React.Fragment>
+          <Button
+            onClick={[Function]}
+          >
+            编辑
+          </Button>
+          <div />
+          <Button
+            onClick={[Function]}
+          >
+            清空
+          </Button>
+          <Button
+            disabled={false}
+            onClick={[Function]}
+          >
+            确定
+          </Button>
+        </React.Fragment>
+      </div>
+    }
     maskAnimation="fade"
     mousePosition={
       Object {
@@ -68,7 +102,7 @@ exports[`EditForm empty dataItem 1`] = `
                   class="rc-dialog-mask rc-dialog-fade-appear"
                 />
                 <div
-                  aria-labelledby="rcDialogTitle2"
+                  aria-labelledby="rcDialogTitle1"
                   class="rc-dialog-wrap "
                   role="dialog"
                   tabindex="-1"
@@ -100,165 +134,85 @@ exports[`EditForm empty dataItem 1`] = `
                       >
                         <div
                           class="rc-dialog-title"
-                          id="rcDialogTitle2"
+                          id="rcDialogTitle1"
                         >
                           新建文档
                         </div>
                       </div>
                       <div
                         class="rc-dialog-body"
+                        style="height: 260px;"
                       >
-                        <form
-                          class="ant-form ant-form-horizontal"
-                          id="edit-form"
+                        <div
+                          style="display: grid; grid-template-columns: 15% 85%; grid-template-rows: repeat(4, 25%);"
                         >
-                          <div
-                            class="ant-row-flex ant-form-item"
+                          <span>
+                            标题
+                          </span>
+                          <input
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            value="testTitle"
+                          />
+                          <span>
+                            显示类别
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                            <option
+                              value="markdown"
                             >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_title"
-                                title="标题"
-                              >
-                                标题
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                              markdown
+                            </option>
+                            <option
+                              value="mapping"
                             >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <input
-                                  id="edit-form_title"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                  value=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                              mapping
+                            </option>
+                          </select>
+                          <span>
+                            文档类别
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                            <option
+                              value="读书"
                             >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_category"
-                                title="显示类别"
-                              >
-                                显示类别
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_category"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                >
-                                  <option
-                                    value="markdown"
-                                  >
-                                    markdown
-                                  </option>
-                                  <option
-                                    value="mapping"
-                                  >
-                                    mapping
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                              读书
+                            </option>
+                          </select>
+                          <span>
+                            文档子类
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="rc-dialog-footer"
+                      >
+                        <div
+                          style="display: grid; grid-template-columns: repeat(4, 25%);"
+                        >
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                            >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_type"
-                                title="文档类别"
-                              >
-                                文档类别
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_type"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                >
-                                  <option
-                                    value="读书"
-                                  >
-                                    读书
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                            编辑
+                          </button>
+                          <div />
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                            >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_subType"
-                                title="文档子类"
-                              >
-                                文档子类
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_subType"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            style="display: grid; grid-template-columns: repeat(4, 25%);"
+                            清空
+                          </button>
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              编辑
-                            </button>
-                            <div />
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              清空
-                            </button>
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              确定
-                            </button>
-                          </div>
-                        </form>
+                            确定
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -274,10 +228,44 @@ exports[`EditForm empty dataItem 1`] = `
         >
           <Dialog
             animation="zoom"
+            bodyStyle={
+              Object {
+                "height": 260,
+              }
+            }
             className=""
             closable={true}
             destroyOnClose={false}
-            footer={null}
+            footer={
+              <div
+                style={
+                  Object {
+                    "display": "grid",
+                    "gridTemplateColumns": "repeat(4, 25%)",
+                  }
+                }
+              >
+                <React.Fragment>
+                  <Button
+                    onClick={[Function]}
+                  >
+                    编辑
+                  </Button>
+                  <div />
+                  <Button
+                    onClick={[Function]}
+                  >
+                    清空
+                  </Button>
+                  <Button
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    确定
+                  </Button>
+                </React.Fragment>
+              </div>
+            }
             getContainer={[Function]}
             getOpenCount={[Function]}
             keyboard={true}
@@ -334,7 +322,7 @@ exports[`EditForm empty dataItem 1`] = `
                 </AnimateChild>
               </Animate>
               <div
-                aria-labelledby="rcDialogTitle2"
+                aria-labelledby="rcDialogTitle1"
                 className="rc-dialog-wrap "
                 onClick={[Function]}
                 onKeyDown={[Function]}
@@ -413,873 +401,213 @@ exports[`EditForm empty dataItem 1`] = `
                           >
                             <div
                               className="rc-dialog-title"
-                              id="rcDialogTitle2"
+                              id="rcDialogTitle1"
                             >
                               新建文档
                             </div>
                           </div>
                           <div
                             className="rc-dialog-body"
+                            style={
+                              Object {
+                                "height": 260,
+                              }
+                            }
                           >
-                            <ForwardRef(InternalForm)
-                              form={
+                            <div
+                              style={
                                 Object {
-                                  "__INTERNAL__": Object {
-                                    "name": "edit-form",
-                                  },
-                                  "getFieldError": [Function],
-                                  "getFieldValue": [Function],
-                                  "getFieldsError": [Function],
-                                  "getFieldsValue": [Function],
-                                  "getInternalHooks": [Function],
-                                  "isFieldTouched": [Function],
-                                  "isFieldValidating": [Function],
-                                  "isFieldsTouched": [Function],
-                                  "isFieldsValidating": [Function],
-                                  "resetFields": [Function],
-                                  "scrollToField": [Function],
-                                  "setFields": [Function],
-                                  "setFieldsValue": [Function],
-                                  "submit": [Function],
-                                  "validateFields": [Function],
-                                }
-                              }
-                              labelCol={
-                                Object {
-                                  "sm": Object {
-                                    "span": 4,
-                                  },
-                                  "xs": Object {
-                                    "span": 4,
-                                  },
-                                }
-                              }
-                              name="edit-form"
-                              onFinish={[Function]}
-                              onFinishFailed={[Function]}
-                              onValuesChange={[Function]}
-                              wrapperCol={
-                                Object {
-                                  "sm": Object {
-                                    "span": 20,
-                                  },
-                                  "xs": Object {
-                                    "span": 24,
-                                  },
+                                  "display": "grid",
+                                  "gridRowGap": 16,
+                                  "gridTemplateColumns": "15% 85%",
+                                  "gridTemplateRows": "repeat(4, 25%)",
                                 }
                               }
                             >
-                              <ForwardRef(Form)
-                                className="ant-form ant-form-horizontal"
-                                form={
+                              <span>
+                                标题
+                              </span>
+                              <Input
+                                onChange={[Function]}
+                                style={
                                   Object {
-                                    "__INTERNAL__": Object {
-                                      "name": "edit-form",
-                                    },
-                                    "getFieldError": [Function],
-                                    "getFieldValue": [Function],
-                                    "getFieldsError": [Function],
-                                    "getFieldsValue": [Function],
-                                    "getInternalHooks": [Function],
-                                    "isFieldTouched": [Function],
-                                    "isFieldValidating": [Function],
-                                    "isFieldsTouched": [Function],
-                                    "isFieldsValidating": [Function],
-                                    "resetFields": [Function],
-                                    "scrollToField": [Function],
-                                    "setFields": [Function],
-                                    "setFieldsValue": [Function],
-                                    "submit": [Function],
-                                    "validateFields": [Function],
+                                    "width": "100%",
                                   }
                                 }
-                                id="edit-form"
-                                name="edit-form"
-                                onFinish={[Function]}
-                                onFinishFailed={[Function]}
-                                onValuesChange={[Function]}
+                                value="testTitle"
                               >
-                                <form
-                                  className="ant-form ant-form-horizontal"
-                                  id="edit-form"
-                                  onSubmit={[Function]}
+                                <input
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
+                                    }
+                                  }
+                                  value="testTitle"
+                                />
+                              </Input>
+                              <span>
+                                显示类别
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
+                                    }
+                                  }
                                 >
-                                  <FormItem
-                                    label="标题"
-                                    name="title"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "标题不能为空",
-                                          "required": true,
-                                        },
-                                      ]
-                                    }
+                                  <option
+                                    value="markdown"
                                   >
-                                    <Field
-                                      label="标题"
-                                      name="title"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "标题不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_title"
-                                            label="标题"
-                                            name="title"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "标题不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_title"
-                                                  title="标题"
-                                                >
-                                                  标题
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="标题"
-                                            name={
-                                              Array [
-                                                "title",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "标题不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Input
-                                                    id="edit-form_title"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <input
-                                                      id="edit-form_title"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    />
-                                                  </Input>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="显示类别"
-                                    name="category"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "显示类别不能为空",
-                                          "required": true,
-                                        },
-                                      ]
-                                    }
+                                    markdown
+                                  </option>
+                                  <option
+                                    value="mapping"
                                   >
-                                    <Field
-                                      label="显示类别"
-                                      name="category"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "显示类别不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_category"
-                                            label="显示类别"
-                                            name="category"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "显示类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_category"
-                                                  title="显示类别"
-                                                >
-                                                  显示类别
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="显示类别"
-                                            name={
-                                              Array [
-                                                "category",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "显示类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_category"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_category"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    >
-                                                      <option
-                                                        value="markdown"
-                                                      >
-                                                        markdown
-                                                      </option>
-                                                      <option
-                                                        value="mapping"
-                                                      >
-                                                        mapping
-                                                      </option>
-                                                    </select>
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="文档类别"
-                                    name="type"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "文档类别不能为空",
-                                          "required": true,
-                                        },
-                                      ]
+                                    mapping
+                                  </option>
+                                </select>
+                              </Select>
+                              <span>
+                                文档类别
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                                value="testType"
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
                                     }
+                                  }
+                                  value="testType"
+                                >
+                                  <option
+                                    key="type-读书"
+                                    value="读书"
                                   >
-                                    <Field
-                                      label="文档类别"
-                                      name="type"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "文档类别不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_type"
-                                            label="文档类别"
-                                            name="type"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_type"
-                                                  title="文档类别"
-                                                >
-                                                  文档类别
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="文档类别"
-                                            name={
-                                              Array [
-                                                "type",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_type"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_type"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    >
-                                                      <option
-                                                        key="type-读书"
-                                                        value="读书"
-                                                      >
-                                                        读书
-                                                      </option>
-                                                    </select>
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="文档子类"
-                                    name="subType"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "文档子类不能为空",
-                                          "required": true,
-                                        },
-                                      ]
+                                    读书
+                                  </option>
+                                </select>
+                              </Select>
+                              <span>
+                                文档子类
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                                value="testSubType"
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
                                     }
-                                  >
-                                    <Field
-                                      label="文档子类"
-                                      name="subType"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "文档子类不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_subType"
-                                            label="文档子类"
-                                            name="subType"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档子类不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_subType"
-                                                  title="文档子类"
-                                                >
-                                                  文档子类
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="文档子类"
-                                            name={
-                                              Array [
-                                                "subType",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档子类不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_subType"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_subType"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    />
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <div
-                                    style={
-                                      Object {
-                                        "display": "grid",
-                                        "gridTemplateColumns": "repeat(4, 25%)",
-                                      }
+                                  }
+                                  value="testSubType"
+                                />
+                              </Select>
+                            </div>
+                          </div>
+                          <div
+                            className="rc-dialog-footer"
+                          >
+                            <div
+                              style={
+                                Object {
+                                  "display": "grid",
+                                  "gridTemplateColumns": "repeat(4, 25%)",
+                                }
+                              }
+                            >
+                              <Button
+                                onClick={[Function]}
+                              >
+                                <button
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
                                     }
-                                  >
-                                    <Button
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        编辑
-                                      </button>
-                                    </Button>
-                                    <div />
-                                    <Button
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        清空
-                                      </button>
-                                    </Button>
-                                    <Button
-                                      disabled={false}
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        disabled={false}
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        确定
-                                      </button>
-                                    </Button>
-                                  </div>
-                                </form>
-                              </ForwardRef(Form)>
-                            </ForwardRef(InternalForm)>
+                                  }
+                                >
+                                  编辑
+                                </button>
+                              </Button>
+                              <div />
+                              <Button
+                                onClick={[Function]}
+                              >
+                                <button
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
+                                    }
+                                  }
+                                >
+                                  清空
+                                </button>
+                              </Button>
+                              <Button
+                                disabled={false}
+                                onClick={[Function]}
+                              >
+                                <button
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
+                                    }
+                                  }
+                                >
+                                  确定
+                                </button>
+                              </Button>
+                            </div>
                           </div>
                         </div>
                         <div
@@ -1349,7 +677,41 @@ exports[`EditForm render correctly 1`] = `
 >
   <Component
     animation="zoom"
-    footer={null}
+    bodyStyle={
+      Object {
+        "height": 260,
+      }
+    }
+    footer={
+      <div
+        style={
+          Object {
+            "display": "grid",
+            "gridTemplateColumns": "repeat(4, 25%)",
+          }
+        }
+      >
+        <React.Fragment>
+          <Button
+            onClick={[Function]}
+          >
+            编辑
+          </Button>
+          <div />
+          <Button
+            onClick={[Function]}
+          >
+            清空
+          </Button>
+          <Button
+            disabled={false}
+            onClick={[Function]}
+          >
+            确定
+          </Button>
+        </React.Fragment>
+      </div>
+    }
     maskAnimation="fade"
     mousePosition={
       Object {
@@ -1414,158 +776,78 @@ exports[`EditForm render correctly 1`] = `
                       </div>
                       <div
                         class="rc-dialog-body"
+                        style="height: 260px;"
                       >
-                        <form
-                          class="ant-form ant-form-horizontal"
-                          id="edit-form"
+                        <div
+                          style="display: grid; grid-template-columns: 15% 85%; grid-template-rows: repeat(4, 25%);"
                         >
-                          <div
-                            class="ant-row-flex ant-form-item"
+                          <span>
+                            标题
+                          </span>
+                          <input
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            value="testTitle"
+                          />
+                          <span>
+                            显示类别
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                            <option
+                              value="markdown"
                             >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_title"
-                                title="标题"
-                              >
-                                标题
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
+                              markdown
+                            </option>
+                            <option
+                              value="mapping"
                             >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <input
-                                  id="edit-form_title"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                  value=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                              mapping
+                            </option>
+                          </select>
+                          <span>
+                            文档类别
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
+                            <option
+                              value="读书"
                             >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_category"
-                                title="显示类别"
-                              >
-                                显示类别
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_category"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                >
-                                  <option
-                                    value="markdown"
-                                  >
-                                    markdown
-                                  </option>
-                                  <option
-                                    value="mapping"
-                                  >
-                                    mapping
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                              读书
+                            </option>
+                          </select>
+                          <span>
+                            文档子类
+                          </span>
+                          <select
+                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="rc-dialog-footer"
+                      >
+                        <div
+                          style="display: grid; grid-template-columns: repeat(4, 25%);"
+                        >
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                            >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_type"
-                                title="文档类别"
-                              >
-                                文档类别
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_type"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                >
-                                  <option
-                                    value="读书"
-                                  >
-                                    读书
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-row-flex ant-form-item"
+                            编辑
+                          </button>
+                          <div />
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <div
-                              class="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                            >
-                              <label
-                                class="ant-form-item-required"
-                                for="edit-form_subType"
-                                title="文档子类"
-                              >
-                                文档子类
-                              </label>
-                            </div>
-                            <div
-                              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                            >
-                              <div
-                                class="ant-form-item-control-input"
-                              >
-                                <select
-                                  id="edit-form_subType"
-                                  style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            style="display: grid; grid-template-columns: repeat(4, 25%);"
+                            清空
+                          </button>
+                          <button
+                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
                           >
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              编辑
-                            </button>
-                            <div />
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              清空
-                            </button>
-                            <button
-                              style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
-                            >
-                              确定
-                            </button>
-                          </div>
-                        </form>
+                            确定
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1581,10 +863,44 @@ exports[`EditForm render correctly 1`] = `
         >
           <Dialog
             animation="zoom"
+            bodyStyle={
+              Object {
+                "height": 260,
+              }
+            }
             className=""
             closable={true}
             destroyOnClose={false}
-            footer={null}
+            footer={
+              <div
+                style={
+                  Object {
+                    "display": "grid",
+                    "gridTemplateColumns": "repeat(4, 25%)",
+                  }
+                }
+              >
+                <React.Fragment>
+                  <Button
+                    onClick={[Function]}
+                  >
+                    编辑
+                  </Button>
+                  <div />
+                  <Button
+                    onClick={[Function]}
+                  >
+                    清空
+                  </Button>
+                  <Button
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    确定
+                  </Button>
+                </React.Fragment>
+              </div>
+            }
             getContainer={[Function]}
             getOpenCount={[Function]}
             keyboard={true}
@@ -1727,866 +1043,206 @@ exports[`EditForm render correctly 1`] = `
                           </div>
                           <div
                             className="rc-dialog-body"
+                            style={
+                              Object {
+                                "height": 260,
+                              }
+                            }
                           >
-                            <ForwardRef(InternalForm)
-                              form={
+                            <div
+                              style={
                                 Object {
-                                  "__INTERNAL__": Object {
-                                    "name": "edit-form",
-                                  },
-                                  "getFieldError": [Function],
-                                  "getFieldValue": [Function],
-                                  "getFieldsError": [Function],
-                                  "getFieldsValue": [Function],
-                                  "getInternalHooks": [Function],
-                                  "isFieldTouched": [Function],
-                                  "isFieldValidating": [Function],
-                                  "isFieldsTouched": [Function],
-                                  "isFieldsValidating": [Function],
-                                  "resetFields": [Function],
-                                  "scrollToField": [Function],
-                                  "setFields": [Function],
-                                  "setFieldsValue": [Function],
-                                  "submit": [Function],
-                                  "validateFields": [Function],
-                                }
-                              }
-                              labelCol={
-                                Object {
-                                  "sm": Object {
-                                    "span": 4,
-                                  },
-                                  "xs": Object {
-                                    "span": 4,
-                                  },
-                                }
-                              }
-                              name="edit-form"
-                              onFinish={[Function]}
-                              onFinishFailed={[Function]}
-                              onValuesChange={[Function]}
-                              wrapperCol={
-                                Object {
-                                  "sm": Object {
-                                    "span": 20,
-                                  },
-                                  "xs": Object {
-                                    "span": 24,
-                                  },
+                                  "display": "grid",
+                                  "gridRowGap": 16,
+                                  "gridTemplateColumns": "15% 85%",
+                                  "gridTemplateRows": "repeat(4, 25%)",
                                 }
                               }
                             >
-                              <ForwardRef(Form)
-                                className="ant-form ant-form-horizontal"
-                                form={
+                              <span>
+                                标题
+                              </span>
+                              <Input
+                                onChange={[Function]}
+                                style={
                                   Object {
-                                    "__INTERNAL__": Object {
-                                      "name": "edit-form",
-                                    },
-                                    "getFieldError": [Function],
-                                    "getFieldValue": [Function],
-                                    "getFieldsError": [Function],
-                                    "getFieldsValue": [Function],
-                                    "getInternalHooks": [Function],
-                                    "isFieldTouched": [Function],
-                                    "isFieldValidating": [Function],
-                                    "isFieldsTouched": [Function],
-                                    "isFieldsValidating": [Function],
-                                    "resetFields": [Function],
-                                    "scrollToField": [Function],
-                                    "setFields": [Function],
-                                    "setFieldsValue": [Function],
-                                    "submit": [Function],
-                                    "validateFields": [Function],
+                                    "width": "100%",
                                   }
                                 }
-                                id="edit-form"
-                                name="edit-form"
-                                onFinish={[Function]}
-                                onFinishFailed={[Function]}
-                                onValuesChange={[Function]}
+                                value="testTitle"
                               >
-                                <form
-                                  className="ant-form ant-form-horizontal"
-                                  id="edit-form"
-                                  onSubmit={[Function]}
+                                <input
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
+                                    }
+                                  }
+                                  value="testTitle"
+                                />
+                              </Input>
+                              <span>
+                                显示类别
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
+                                    }
+                                  }
                                 >
-                                  <FormItem
-                                    label="标题"
-                                    name="title"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "标题不能为空",
-                                          "required": true,
-                                        },
-                                      ]
-                                    }
+                                  <option
+                                    value="markdown"
                                   >
-                                    <Field
-                                      label="标题"
-                                      name="title"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "标题不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_title"
-                                            label="标题"
-                                            name="title"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "标题不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_title"
-                                                  title="标题"
-                                                >
-                                                  标题
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="标题"
-                                            name={
-                                              Array [
-                                                "title",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "标题不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Input
-                                                    id="edit-form_title"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <input
-                                                      id="edit-form_title"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    />
-                                                  </Input>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="显示类别"
-                                    name="category"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "显示类别不能为空",
-                                          "required": true,
-                                        },
-                                      ]
-                                    }
+                                    markdown
+                                  </option>
+                                  <option
+                                    value="mapping"
                                   >
-                                    <Field
-                                      label="显示类别"
-                                      name="category"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "显示类别不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_category"
-                                            label="显示类别"
-                                            name="category"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "显示类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_category"
-                                                  title="显示类别"
-                                                >
-                                                  显示类别
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="显示类别"
-                                            name={
-                                              Array [
-                                                "category",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "显示类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_category"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_category"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    >
-                                                      <option
-                                                        value="markdown"
-                                                      >
-                                                        markdown
-                                                      </option>
-                                                      <option
-                                                        value="mapping"
-                                                      >
-                                                        mapping
-                                                      </option>
-                                                    </select>
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="文档类别"
-                                    name="type"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "文档类别不能为空",
-                                          "required": true,
-                                        },
-                                      ]
+                                    mapping
+                                  </option>
+                                </select>
+                              </Select>
+                              <span>
+                                文档类别
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                                value="testType"
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
                                     }
+                                  }
+                                  value="testType"
+                                >
+                                  <option
+                                    key="type-读书"
+                                    value="读书"
                                   >
-                                    <Field
-                                      label="文档类别"
-                                      name="type"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "文档类别不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_type"
-                                            label="文档类别"
-                                            name="type"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_type"
-                                                  title="文档类别"
-                                                >
-                                                  文档类别
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="文档类别"
-                                            name={
-                                              Array [
-                                                "type",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档类别不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_type"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_type"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    >
-                                                      <option
-                                                        key="type-读书"
-                                                        value="读书"
-                                                      >
-                                                        读书
-                                                      </option>
-                                                    </select>
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <FormItem
-                                    label="文档子类"
-                                    name="subType"
-                                    required={true}
-                                    rules={
-                                      Array [
-                                        Object {
-                                          "message": "文档子类不能为空",
-                                          "required": true,
-                                        },
-                                      ]
+                                    读书
+                                  </option>
+                                </select>
+                              </Select>
+                              <span>
+                                文档子类
+                              </span>
+                              <Select
+                                onChange={[Function]}
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                                value="testSubType"
+                              >
+                                <select
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": "100%",
                                     }
-                                  >
-                                    <Field
-                                      label="文档子类"
-                                      name="subType"
-                                      onReset={[Function]}
-                                      required={true}
-                                      rules={
-                                        Array [
-                                          Object {
-                                            "message": "文档子类不能为空",
-                                            "required": true,
-                                          },
-                                        ]
-                                      }
-                                      trigger="onChange"
-                                      validateTrigger="onChange"
-                                      valuePropName="value"
-                                    >
-                                      <Row
-                                        className="ant-form-item"
-                                        gutter={0}
-                                        key="row"
-                                        type="flex"
-                                      >
-                                        <div
-                                          className="ant-row-flex ant-form-item"
-                                          style={Object {}}
-                                        >
-                                          <FormItemLabel
-                                            htmlFor="edit-form_subType"
-                                            label="文档子类"
-                                            name="subType"
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档子类不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Col
-                                              className="ant-form-item-label"
-                                              sm={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 4,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-label ant-col-xs-4 ant-col-sm-4"
-                                                style={Object {}}
-                                              >
-                                                <label
-                                                  className="ant-form-item-required"
-                                                  htmlFor="edit-form_subType"
-                                                  title="文档子类"
-                                                >
-                                                  文档子类
-                                                </label>
-                                              </div>
-                                            </Col>
-                                          </FormItemLabel>
-                                          <FormItemInput
-                                            errors={Array []}
-                                            label="文档子类"
-                                            name={
-                                              Array [
-                                                "subType",
-                                              ]
-                                            }
-                                            onDomErrorVisibleChange={[Function]}
-                                            prefixCls="ant-form"
-                                            required={true}
-                                            rules={
-                                              Array [
-                                                Object {
-                                                  "message": "文档子类不能为空",
-                                                  "required": true,
-                                                },
-                                              ]
-                                            }
-                                            touched={false}
-                                            validateStatus=""
-                                            validating={false}
-                                          >
-                                            <Col
-                                              className="ant-form-item-control"
-                                              sm={
-                                                Object {
-                                                  "span": 20,
-                                                }
-                                              }
-                                              xs={
-                                                Object {
-                                                  "span": 24,
-                                                }
-                                              }
-                                            >
-                                              <div
-                                                className="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-20"
-                                                style={Object {}}
-                                              >
-                                                <div
-                                                  className="ant-form-item-control-input"
-                                                >
-                                                  <Select
-                                                    id="edit-form_subType"
-                                                    onChange={[Function]}
-                                                    style={
-                                                      Object {
-                                                        "width": "100%",
-                                                      }
-                                                    }
-                                                  >
-                                                    <select
-                                                      id="edit-form_subType"
-                                                      onChange={[Function]}
-                                                      style={
-                                                        Object {
-                                                          "background": "white",
-                                                          "border": "1px solid #e8e8e8",
-                                                          "height": 32,
-                                                          "width": "100%",
-                                                        }
-                                                      }
-                                                    />
-                                                  </Select>
-                                                </div>
-                                                <ForwardRef
-                                                  motionAppear={true}
-                                                  motionName="show-help"
-                                                  onLeaveEnd={[Function]}
-                                                  removeOnLeave={true}
-                                                  visible={false}
-                                                >
-                                                  <CSSMotion
-                                                    internalRef={null}
-                                                    motionAppear={true}
-                                                    motionEnter={true}
-                                                    motionLeave={true}
-                                                    motionName="show-help"
-                                                    onLeaveEnd={[Function]}
-                                                    removeOnLeave={true}
-                                                    visible={false}
-                                                  />
-                                                </ForwardRef>
-                                              </div>
-                                            </Col>
-                                          </FormItemInput>
-                                        </div>
-                                      </Row>
-                                    </Field>
-                                  </FormItem>
-                                  <div
-                                    style={
-                                      Object {
-                                        "display": "grid",
-                                        "gridTemplateColumns": "repeat(4, 25%)",
-                                      }
+                                  }
+                                  value="testSubType"
+                                />
+                              </Select>
+                            </div>
+                          </div>
+                          <div
+                            className="rc-dialog-footer"
+                          >
+                            <div
+                              style={
+                                Object {
+                                  "display": "grid",
+                                  "gridTemplateColumns": "repeat(4, 25%)",
+                                }
+                              }
+                            >
+                              <Button
+                                onClick={[Function]}
+                              >
+                                <button
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
                                     }
-                                  >
-                                    <Button
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        编辑
-                                      </button>
-                                    </Button>
-                                    <div />
-                                    <Button
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        清空
-                                      </button>
-                                    </Button>
-                                    <Button
-                                      disabled={false}
-                                      onClick={[Function]}
-                                    >
-                                      <button
-                                        disabled={false}
-                                        onClick={[Function]}
-                                        style={
-                                          Object {
-                                            "background": "white",
-                                            "border": "1px solid #e8e8e8",
-                                            "height": 32,
-                                            "width": 80,
-                                          }
-                                        }
-                                      >
-                                        确定
-                                      </button>
-                                    </Button>
-                                  </div>
-                                </form>
-                              </ForwardRef(Form)>
-                            </ForwardRef(InternalForm)>
+                                  }
+                                >
+                                  编辑
+                                </button>
+                              </Button>
+                              <div />
+                              <Button
+                                onClick={[Function]}
+                              >
+                                <button
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
+                                    }
+                                  }
+                                >
+                                  清空
+                                </button>
+                              </Button>
+                              <Button
+                                disabled={false}
+                                onClick={[Function]}
+                              >
+                                <button
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "background": "white",
+                                      "border": "1px solid #e8e8e8",
+                                      "height": 32,
+                                      "width": 80,
+                                    }
+                                  }
+                                >
+                                  确定
+                                </button>
+                              </Button>
+                            </div>
                           </div>
                         </div>
                         <div
