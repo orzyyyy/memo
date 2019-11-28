@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
-import { message } from 'antd';
-import { SelectValue } from 'antd/lib/select';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
@@ -115,7 +113,7 @@ const MainPageDataController = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
-      message.success(`${item.category} 更新完成`);
+      alert(`${item.category} 更新完成`);
     } else {
       const response = await fetch('document/add', {
         body: JSON.stringify(item),
@@ -123,7 +121,7 @@ const MainPageDataController = () => {
         headers: { 'Content-Type': 'application/json' },
       });
       id = await response.text();
-      message.success(`${item.category} 初始化完成`);
+      alert(`${item.category} 初始化完成`);
     }
     handleModalCancel();
     if (item.category === 'mapping') {
@@ -141,7 +139,7 @@ const MainPageDataController = () => {
     });
     getSider();
     getMapping();
-    message.success('隐藏完成');
+    alert('隐藏完成');
   };
 
   const handleModalCancel = () => {
@@ -171,7 +169,7 @@ const MainPageDataController = () => {
     setIsExhentai(keyPath.includes('ex-hentai-module'));
   };
 
-  const handleExhentaiSelectChange = async (value: SelectValue) => {
+  const handleExhentaiSelectChange = async (value: string) => {
     const url = `./assets/exhentai/${value}.json`;
     const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await getExhentaiTargetDataSource(url);
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
