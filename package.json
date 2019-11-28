@@ -27,21 +27,22 @@
     "deploy": "npm-run-all clean build:gh-pages pub",
     "dev": "rimraf dist && cross-env BUILD_ENV=dev nino koei -w -d",
     "dev:business": "rimraf dist && cross-env BUILD_ENV=business-dev nino koei -w -d",
+    "go": "pm2 start",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
+    "log": "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 1.1.1..HEAD",
     "pre:server": "rimraf bin && node scripts/copy-resource",
     "prettier": "nino prettier",
     "pub": "gh-pages -d dist",
+    "restart": "pm2 restart memo-server",
     "run:server": "node bin",
     "server": "npm-run-all pre:server compile:server run:server",
     "sort": "npx sort-package-json",
     "start": "npm-run-all --parallel server dev",
     "start:business": "npm-run-all --parallel server dev:business",
+    "stop": "pm2 stop memo-server",
     "test": "nino test",
-    "tsc": "tsc",
-    "go": "pm2 start",
-    "restart": "pm2 restart memo-server",
-    "stop": "pm2 stop memo-server"
+    "tsc": "tsc"
   },
   "pre-commit": [
     "lint-staged"
