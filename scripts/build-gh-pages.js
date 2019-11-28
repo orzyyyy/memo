@@ -1,5 +1,4 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const path = require('path');
 const { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, convertMarkdown2Html } = require(path.join(
@@ -53,9 +52,6 @@ const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 const plugins = [
   ...htmlPluginProps,
   new CopyWebpackPlugin(copyPluginProps),
-  new MomentLocalesPlugin({
-    localesToKeep: ['zh-cn'],
-  }),
   new PostCompile(() => {
     compressJSON();
     convertMarkdown2Html();

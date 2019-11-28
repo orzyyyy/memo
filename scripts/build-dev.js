@@ -1,5 +1,4 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const PostCompile = require('post-compile-webpack-plugin');
 const IO = require('socket.io-client');
 const { getCopyPluginProps, getHtmlPluginProps, compressJSON, getEntry, convertMarkdown2Html } = require('./utils');
@@ -31,9 +30,6 @@ const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 const plugins = [
   ...htmlPluginProps,
   new CopyWebpackPlugin(copyPluginProps),
-  new MomentLocalesPlugin({
-    localesToKeep: ['zh-cn'],
-  }),
   new PostCompile(async () => {
     socket.emit('refresh');
     compressJSON();
