@@ -10,7 +10,7 @@ import {
   InputFormItemProps,
 } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
-import omit from 'omit.js';
+import { omit } from '../../server/utils/omit';
 
 const ERROR_MESSAGE = '该项不能为空';
 const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };

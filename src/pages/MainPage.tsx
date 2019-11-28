@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './css/MainPage.css';
-import { SelectValue } from 'antd/lib/select';
 import MainPageHeader from './MainPageHeader';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
@@ -14,7 +13,7 @@ export interface MainPageProps {
   onMenuClick?: (keyPath: string[]) => void;
   isLocal?: boolean;
   exhentaiDateSet: string[];
-  onExhentaiSelectChange: (value: SelectValue) => void;
+  onExhentaiSelectChange: (value: string) => void;
   siderOpenKey?: string;
   siderSelectedKey?: string;
   onExhentaiLoadList: () => void;

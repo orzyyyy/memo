@@ -1,7 +1,6 @@
 import React from 'react';
 import ExHentaiList, { DownloadProps } from '../pages/ExHentaiList';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
-import { Empty, message } from 'antd';
 
 export interface ExHentaiListDataControllerProps {
   dataSource: ExHentaiInfoItem[];
@@ -9,16 +8,16 @@ export interface ExHentaiListDataControllerProps {
 
 export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
   if (!url) {
-    message.error('地址为空');
+    alert('地址为空');
     return 'failed';
   }
-  message.info('response');
+  alert('response before post');
   await fetch('exhentai/download', {
     body: JSON.stringify({ url }),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-  message.success('反应');
+  alert('response after post');
   return 'success';
 };
 
@@ -27,7 +26,7 @@ const onDetail = (url: string) => {
 };
 
 const ExHentaiListDataController = ({ dataSource }: ExHentaiListDataControllerProps) => {
-  const notify = <Empty description={'该页面仅在本地可用'} />;
+  const notify = <span>该页面仅在本地可用</span>;
   return (
     <>
       {!dataSource.length && notify}
