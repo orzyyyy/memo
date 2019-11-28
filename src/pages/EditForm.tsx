@@ -1,7 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import Dialog from 'rc-dialog';
 import 'rc-dialog/assets/index.css';
-import { SelectValue } from 'antd/lib/select';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import { MappingProps } from '../../server/controller/DocumentController';
 import Button from '../component/Button';
@@ -24,7 +23,7 @@ export interface EditFormProps {
   pageInfo: { x: number; y: number };
 }
 export interface EditFormState {
-  currentType: SelectValue;
+  currentType: string;
   extraTypeSelectItem: string;
   extraSubTypeSelectItem: string;
 }
