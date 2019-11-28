@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import { Form } from 'antd';
+import React, { useState, useReducer, useEffect } from 'react';
 import Dialog from 'rc-dialog';
 import 'rc-dialog/assets/index.css';
 import { SelectValue } from 'antd/lib/select';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import { MappingProps } from '../../server/controller/DocumentController';
-import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 import Button from '../component/Button';
 import Input from '../component/Input';
 import Select from '../component/Select';
@@ -32,57 +29,25 @@ export interface EditFormState {
   extraSubTypeSelectItem: string;
 }
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 4 },
-    sm: { span: 4 },
+const formDataReducer = (
+  state: FormProps,
+  action: {
+    data: any;
+    key: 'type' | 'subType' | 'category' | 'title';
   },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 20 },
-  },
+) => {
+  return {
+    ...state,
+    [action.key]: action.data,
+  };
 };
 
-let isInit = true;
-
-const renderTitle = () => (
-  <Form.Item
-    label="标题"
-    name="title"
-    required
-    rules={[
-      {
-        required: true,
-        message: '标题不能为空',
-      },
-    ]}
-  >
-    <Input style={{ width: '100%' }} />
-  </Form.Item>
-);
-
-const renderCategory = (isEditMode: boolean) => (
-  <Form.Item
-    label="显示类别"
-    name="category"
-    required
-    rules={[
-      {
-        required: true,
-        message: '显示类别不能为空',
-      },
-    ]}
-  >
-    {isEditMode ? (
-      <Input style={{ width: '100%' }} />
-    ) : (
-      <Select style={{ width: '100%' }}>
-        <option value="markdown">markdown</option>
-        <option value="mapping">mapping</option>
-      </Select>
-    )}
-  </Form.Item>
-);
+const initialFormData = {
+  title: '',
+  type: '',
+  subType: '',
+  category: '',
+};
 
 const EditForm = ({
   visible,
@@ -93,135 +58,180 @@ const EditForm = ({
   pageInfo,
   dataItem = { id: '', type: '', subType: '', category: undefined, title: '' },
 }: EditFormProps) => {
-  const [form] = Form.useForm();
   const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(dataItem.type);
   const [isEditMode, setEditMode] = useState(false);
+  const [formData, formDataDispatch] = useReducer(formDataReducer, initialFormData as any);
 
-  const onFinish = ({ type, subType, title, category }: FormProps) => {
-    onSubmit({ title, category, type, subType }, dataItem);
+  useEffect(() => {
+    formDataDispatch({ key: 'category', data: dataItem.category });
+    formDataDispatch({ key: 'type', data: dataItem.type });
+    formDataDispatch({ key: 'subType', data: dataItem.subType });
+    formDataDispatch({ key: 'title', data: dataItem.title });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
+
+  const reset = () => {
+    formDataDispatch({ key: 'title', data: '' });
+    formDataDispatch({ key: 'category', data: '' });
+    formDataDispatch({ key: 'subType', data: '' });
+    formDataDispatch({ key: 'type', data: '' });
   };
 
-  const onFinishFailed = ({ errorFields }: ValidateErrorEntity) => {
-    form.scrollToField(errorFields.name);
-    onSubmit();
+  const submit = () => {
+    onSubmit(formData, dataItem);
   };
 
   const handleCancel = () => {
-    isInit = true;
     setCurrentTypeSelectItem('');
     onCancel();
   };
 
   const setTypeValue = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const type = e.target.value;
-    form.setFieldsValue({ type });
     setCurrentTypeSelectItem(type);
+    formDataDispatch({ key: 'type', data: e.target.value });
   };
 
-  const renderType = () => (
-    <Form.Item
-      label="文档类别"
-      name="type"
-      required
-      rules={[
-        {
-          required: true,
-          message: '文档类别不能为空',
-        },
-      ]}
-    >
+  const renderTitle = () => (
+    <>
+      <span>标题</span>
+      <Input
+        style={{ width: '100%' }}
+        value={formData.title}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => formDataDispatch({ key: 'title', data: e.target.value })}
+      />
+    </>
+  );
+
+  const renderCategory = (isEditMode: boolean) => (
+    <>
       {isEditMode ? (
-        <Input style={{ width: '100%' }} />
+        <>
+          <span>显示类别</span>
+          <Input
+            style={{ width: '100%' }}
+            value={formData.category}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              formDataDispatch({ key: 'category', data: e.target.value })
+            }
+          />
+        </>
       ) : (
-        <Select style={{ width: '100%' }} onChange={setTypeValue}>
-          {selectData.map(item => (
-            <option value={item.key} key={`type-${item.key}`}>
-              {item.title}
-            </option>
-          ))}
-        </Select>
+        <>
+          <span>显示类别</span>
+          <Select
+            style={{ width: '100%' }}
+            value={formData.category}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              formDataDispatch({ key: 'category', data: e.target.value })
+            }
+          >
+            <option value="markdown">markdown</option>
+            <option value="mapping">mapping</option>
+          </Select>
+        </>
       )}
-    </Form.Item>
+    </>
+  );
+
+  const renderType = () => (
+    <>
+      {isEditMode ? (
+        <>
+          <span>文档类别</span>
+          <Input
+            style={{ width: '100%' }}
+            value={formData.type}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              formDataDispatch({ key: 'type', data: e.target.value })
+            }
+          />
+        </>
+      ) : (
+        <>
+          <span>文档类别</span>
+          <Select style={{ width: '100%' }} onChange={setTypeValue} value={formData.type}>
+            {selectData.map(item => (
+              <option value={item.key} key={`type-${item.key}`}>
+                {item.title}
+              </option>
+            ))}
+          </Select>
+        </>
+      )}
+    </>
   );
 
   const renderSubType = () => (
-    <Form.Item
-      label="文档子类"
-      name="subType"
-      required
-      rules={[
-        {
-          required: true,
-          message: '文档子类不能为空',
-        },
-      ]}
-    >
+    <>
       {isEditMode ? (
-        <Input style={{ width: '100%' }} />
+        <>
+          <span>文档子类</span>
+          <Input
+            style={{ width: '100%' }}
+            value={formData.subType}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              formDataDispatch({ key: 'subType', data: e.target.value })
+            }
+          />
+        </>
       ) : (
-        <Select style={{ width: '100%' }}>
-          {selectData
-            .filter(item => item.key === (currentTypeSelectItem || dataItem.type))
-            .map(({ children = [] }) =>
-              children.map(jtem => (
-                <option value={jtem.key} key={jtem.key}>
-                  {jtem.value}
-                </option>
-              )),
-            )}
-        </Select>
+        <>
+          <span>文档子类</span>
+          <Select
+            style={{ width: '100%' }}
+            value={formData.subType}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              formDataDispatch({ key: 'subType', data: e.target.value })
+            }
+          >
+            {selectData
+              .filter(item => item.key === (currentTypeSelectItem || dataItem.type))
+              .map(({ children = [] }) =>
+                children.map(jtem => (
+                  <option value={jtem.key} key={jtem.key}>
+                    {jtem.value}
+                  </option>
+                )),
+              )}
+          </Select>
+        </>
       )}
-    </Form.Item>
+    </>
   );
 
   const renderConfirmButtonGroup = () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 25%)' }}>
+    <>
       <Button onClick={() => setEditMode(!isEditMode)}>编辑</Button>
       <div />
-      <Button onClick={() => form.resetFields()}>清空</Button>
-      <Button onClick={() => form.submit()} disabled={loading}>
+      <Button onClick={reset}>清空</Button>
+      <Button onClick={submit} disabled={loading}>
         确定
       </Button>
-    </div>
+    </>
   );
-
-  const formValues = form.getFieldsValue();
-  if (!dataItem.id) {
-    if (isInit) {
-      form.resetFields();
-    } else {
-      form.setFieldsValue(Object.assign({}, dataItem, formValues));
-    }
-  } else {
-    isInit
-      ? form.setFieldsValue(Object.assign({}, formValues, dataItem))
-      : form.setFieldsValue(Object.assign({}, dataItem, formValues));
-  }
 
   return (
     <Dialog
       visible={visible}
       title="新建文档"
-      footer={null}
       onClose={handleCancel}
       animation="zoom"
       maskAnimation="fade"
       mousePosition={pageInfo}
+      bodyStyle={{ height: 260 }}
+      footer={
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 25%)' }}>{renderConfirmButtonGroup()}</div>
+      }
     >
-      <Form
-        {...formItemLayout}
-        name="edit-form"
-        form={form}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        onValuesChange={() => (isInit = false)}
+      <div
+        style={{ display: 'grid', gridTemplateColumns: '15% 85%', gridTemplateRows: 'repeat(4, 25%)', gridRowGap: 16 }}
       >
         {renderTitle()}
         {renderCategory(isEditMode)}
         {renderType()}
         {renderSubType()}
-        {renderConfirmButtonGroup()}
-      </Form>
+      </div>
     </Dialog>
   );
 };
