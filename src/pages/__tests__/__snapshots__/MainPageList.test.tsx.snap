@@ -30,6 +30,7 @@ exports[`MainPageList render correctly 1`] = `
   onDelete={[MockFunction]}
   onEdit={[MockFunction]}
   onListItemClick={[MockFunction]}
+  siderOpenKey="all"
   siderSelectedKey="all"
 >
   <ul>
