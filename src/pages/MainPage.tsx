@@ -44,56 +44,52 @@ const MainPage = ({
     onMenuClick && onMenuClick([jtem ? jtem.key : item.key, item.key]);
   };
 
-  const renderSider = () => {
-    return (
-      <aside>
-        <ul style={{ marginTop: 8 }}>
-          {menuData.map((item: SiderProps) => {
-            const { key, title, children } = item;
-            if (!children) {
-              return (
-                <li
-                  key={key}
-                  style={{
-                    cursor: 'pointer',
-                    background: siderSelectedKey === key ? '#e6f7ff' : '',
-                    height: 40,
-                    lineHeight: '40px',
-                    paddingLeft: 24,
-                  }}
-                  onClick={() => handleMenuClick(item)}
-                >
-                  {title}
-                </li>
-              );
-            }
+  const renderSider = () => (
+    <aside>
+      <ul style={{ marginTop: 8 }}>
+        {menuData.map((item: SiderProps) => {
+          if (!item.children) {
             return (
-              <li key={key} style={{ paddingLeft: 24 }}>
-                {title}
-                {children.map((jtem: SiderChildrenProps) => (
-                  <ul key={jtem.key} style={{ marginLeft: -24 }}>
-                    <li
-                      style={{
-                        paddingLeft: 48,
-                        cursor: 'pointer',
-                        background: siderSelectedKey === jtem.key ? '#e6f7ff' : '',
-                        height: 40,
-                        lineHeight: '40px',
-                      }}
-                      onClick={() => handleMenuClick(item, jtem)}
-                    >
-                      {jtem.value}
-                    </li>
-                  </ul>
-                ))}
+              <li
+                key={item.key}
+                style={{
+                  cursor: 'pointer',
+                  background: siderSelectedKey === item.key ? '#e6f7ff' : '',
+                  height: 40,
+                  lineHeight: '40px',
+                  paddingLeft: 24,
+                }}
+                onClick={() => handleMenuClick(item)}
+              >
+                {item.title}
               </li>
             );
-          })}
-        </ul>
-      </aside>
-    );
-  };
-
+          }
+          return (
+            <li key={item.key} style={{ paddingLeft: 24 }}>
+              {item.title}
+              {item.children.map((jtem: SiderChildrenProps) => (
+                <ul key={`${item.key}-${jtem.key}`} style={{ marginLeft: -24 }}>
+                  <li
+                    style={{
+                      paddingLeft: 48,
+                      cursor: 'pointer',
+                      background: siderSelectedKey === jtem.key ? '#e6f7ff' : '',
+                      height: 40,
+                      lineHeight: '40px',
+                    }}
+                    onClick={() => handleMenuClick(item, jtem)}
+                  >
+                    {jtem.value}
+                  </li>
+                </ul>
+              ))}
+            </li>
+          );
+        })}
+      </ul>
+    </aside>
+  );
   const renderRealContent = () => {
     const headerHeight = isLocal ? 48 : 0;
     const wrapperHeight = document.body.clientHeight - 90 - headerHeight;

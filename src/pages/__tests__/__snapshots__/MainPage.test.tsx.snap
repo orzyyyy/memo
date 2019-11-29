@@ -43,7 +43,7 @@ exports[`MainPage render correctly 1`] = `
       >
         读书
         <ul
-          key="摘抄"
+          key="读书-摘抄"
           style={
             Object {
               "marginLeft": -24,
@@ -66,7 +66,7 @@ exports[`MainPage render correctly 1`] = `
           </li>
         </ul>
         <ul
-          key="思路"
+          key="读书-思路"
           style={
             Object {
               "marginLeft": -24,
