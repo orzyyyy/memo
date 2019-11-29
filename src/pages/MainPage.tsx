@@ -39,6 +39,7 @@ const MainPage = ({
   exhentaiDateSet,
   onExhentaiSelectChange,
   onExhentaiLoadList,
+  siderOpenKey,
 }: MainPageProps) => {
   const handleMenuClick = (item: SiderProps, jtem?: SiderChildrenProps) => {
     onMenuClick && onMenuClick([jtem ? jtem.key : item.key, item.key]);
@@ -74,7 +75,7 @@ const MainPage = ({
                     style={{
                       paddingLeft: 48,
                       cursor: 'pointer',
-                      background: siderSelectedKey === jtem.key ? '#e6f7ff' : '',
+                      background: siderSelectedKey === jtem.key && siderOpenKey === item.key ? '#e6f7ff' : '',
                       height: 40,
                       lineHeight: '40px',
                     }}
