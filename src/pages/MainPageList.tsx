@@ -11,6 +11,7 @@ const MainPageList = ({
   dataSource,
   onListItemClick,
   isLocal,
+  siderOpenKey,
 }: {
   siderSelectedKey: string;
   onDelete?: (dataItem: MappingProps) => void;
@@ -19,8 +20,12 @@ const MainPageList = ({
   onEdit: (dataItem?: MappingProps, visible?: boolean, pageInfo?: { x: number; y: number }) => void;
   onListItemClick: ({ category, id }: { category: DocumentCategoryProps; id: string }) => void;
   isLocal: boolean;
+  siderOpenKey: string;
 }) => {
-  const data = siderSelectedKey === 'all' ? dataSource : dataSource.filter(item => item.subType === siderSelectedKey);
+  const data =
+    siderSelectedKey === 'all'
+      ? dataSource
+      : dataSource.filter(item => item.subType === siderSelectedKey && item.type === siderOpenKey);
 
   return (
     <ul>

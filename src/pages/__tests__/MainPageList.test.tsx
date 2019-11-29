@@ -44,6 +44,7 @@ describe('MainPageList', () => {
         onEdit={onEdit}
         onListItemClick={onListItemClick}
         isLocal
+        siderOpenKey={'all'}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -64,6 +65,7 @@ describe('MainPageList', () => {
         onHide={onHide}
         onListItemClick={onListItemClick}
         isLocal
+        siderOpenKey={'all'}
       />,
     );
     wrapper

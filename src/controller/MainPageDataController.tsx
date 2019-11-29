@@ -159,6 +159,7 @@ const MainPageDataController = () => {
         onEdit={handleEdit}
         onHide={handleHide}
         isLocal={isLocal}
+        siderOpenKey={siderOpenKey}
       />
     );
   };
