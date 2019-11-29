@@ -167,7 +167,11 @@ const compressJSON = () => {
       const targetUrl = handleWithPrefix(file);
       let content = fs.readJsonSync(targetUrl);
       if (Array.isArray(content)) {
-        content = content.filter(item => item.visible !== false);
+        content = content.filter(item => {
+          // hide exhentai list online
+          const shouldHideExhentaiList = buildEnv === 'dev' ? true : item.key !== 'ex-hentai-module';
+          return item.visible !== false && shouldHideExhentaiList;
+        });
       }
       fs.outputJsonSync(targetUrl, content, {
         spaces: 0,
