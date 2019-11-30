@@ -22,7 +22,7 @@ const MainPageHeader = ({
   const hanldeKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const value = (e.target as any).value;
     if (e.key === 'Enter' && value) {
-      onExhentaiDownload(value);
+      onExhentaiDownload({ url: value });
     }
   };
 

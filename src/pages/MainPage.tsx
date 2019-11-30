@@ -4,11 +4,12 @@ import './css/MainPage.css';
 import MainPageHeader from './MainPageHeader';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
+import { DownloadProps } from './ExHentaiList';
 
 export interface MainPageProps {
   onEdit: (dataItem?: MappingProps, visible?: boolean, pageInfo?: { x: number; y: number }) => void;
   menuData: SiderProps[];
-  onExhentaiDownload: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onExhentaiDownload: (value: DownloadProps) => void;
   renderContent?: () => React.ReactNode;
   onMenuClick?: (keyPath: string[]) => void;
   isLocal?: boolean;

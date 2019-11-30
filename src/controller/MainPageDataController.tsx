@@ -181,7 +181,7 @@ const MainPageDataController = () => {
       <MainPage
         onMenuClick={handleMenuClick}
         menuData={menuData}
-        onExhentaiDownload={(e: any) => handleExhentaiDownload({ url: e.target.value })}
+        onExhentaiDownload={handleExhentaiDownload}
         renderContent={renderContent}
         isLocal={isLocal}
         exhentaiDateSet={exhentaiDateSet}

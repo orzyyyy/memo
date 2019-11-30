@@ -163,7 +163,7 @@ describe('MainPageDataController', () => {
     const result = await wrapper
       .find('MainPage')
       .props()
-      .onExhentaiDownload({ target: { value: 'test' } });
+      .onExhentaiDownload({ url: 'test' });
     expect(result).toBe('success');
   });
 
