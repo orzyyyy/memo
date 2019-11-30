@@ -30,7 +30,6 @@
 .MainPage li {
   margin-top: 8px;
   margin-bottom: 8px;
-  list-style: none;
   transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
