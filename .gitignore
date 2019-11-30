@@ -1,5 +1,6 @@
 /node_modules/
 *.rar
+*.zip
 *.map
 /coverage/
 /dist/
