@@ -11,13 +11,7 @@ exports[`MainPage render correctly 1`] = `
   }
 >
   <aside>
-    <ul
-      style={
-        Object {
-          "marginTop": 8,
-        }
-      }
-    >
+    <ul>
       <li
         key="all"
         onClick={[Function]}
@@ -44,11 +38,6 @@ exports[`MainPage render correctly 1`] = `
         读书
         <ul
           key="读书-摘抄"
-          style={
-            Object {
-              "marginLeft": -24,
-            }
-          }
         >
           <li
             onClick={[Function]}
@@ -58,7 +47,7 @@ exports[`MainPage render correctly 1`] = `
                 "cursor": "pointer",
                 "height": 40,
                 "lineHeight": "40px",
-                "paddingLeft": 48,
+                "paddingLeft": 24,
               }
             }
           >
@@ -67,11 +56,6 @@ exports[`MainPage render correctly 1`] = `
         </ul>
         <ul
           key="读书-思路"
-          style={
-            Object {
-              "marginLeft": -24,
-            }
-          }
         >
           <li
             onClick={[Function]}
@@ -81,7 +65,7 @@ exports[`MainPage render correctly 1`] = `
                 "cursor": "pointer",
                 "height": 40,
                 "lineHeight": "40px",
-                "paddingLeft": 48,
+                "paddingLeft": 24,
               }
             }
           >

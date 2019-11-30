@@ -47,7 +47,7 @@ const MainPage = ({
 
   const renderSider = () => (
     <aside>
-      <ul style={{ marginTop: 8 }}>
+      <ul>
         {menuData.map((item: SiderProps) => {
           if (!item.children) {
             return (
@@ -70,10 +70,10 @@ const MainPage = ({
             <li key={item.key} style={{ paddingLeft: 24 }}>
               {item.title}
               {item.children.map((jtem: SiderChildrenProps) => (
-                <ul key={`${item.key}-${jtem.key}`} style={{ marginLeft: -24 }}>
+                <ul key={`${item.key}-${jtem.key}`}>
                   <li
                     style={{
-                      paddingLeft: 48,
+                      paddingLeft: 24,
                       cursor: 'pointer',
                       background: siderSelectedKey === jtem.key && siderOpenKey === item.key ? '#e6f7ff' : '',
                       height: 40,
