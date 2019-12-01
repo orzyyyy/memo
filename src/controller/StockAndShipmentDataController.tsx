@@ -43,7 +43,7 @@ export interface OnChangeProps {
 }
 
 export interface FormStatelessProps {
-  // 出库为 0，入库为 1
+  // 出库为 1，入库为 0
   type: number;
   // 预估重量
   predictWeight: number;
@@ -55,6 +55,8 @@ export interface FormStatelessProps {
   costFee: number;
   // 预估总价
   predictPrice: number;
+  // 出库时的单价
+  materialCost: number;
 }
 
 export interface FormStatefulProps {
@@ -90,12 +92,13 @@ export type FormStatefulFields =
   | 'materialQuantity'; // 数量。出库用
 
 export type FormStatelessFields =
-  | 'type' // 出库为 0，入库为 1
+  | 'type' // 出库为 1，入库为 0
   | 'predictWeight' // 预估重量
   | 'extraCost' // 其他费用
   | 'description' // 备注
   | 'costFee' // 锯费
-  | 'predictPrice'; // 预估总价
+  | 'predictPrice' // 预估总价
+  | 'materialCost'; // 出库时单价
 
 // 需要管理表单状态的业务属性
 const initialStateful: FormStatefulProps = {
@@ -120,7 +123,7 @@ const initialStateful: FormStatefulProps = {
 
 // 不需要表单状态的业务属性
 const initialStateless: FormStatelessProps = {
-  // 出库为 0，入库为 1
+  // 出库为 1，入库为 0
   type: 0,
   // 预估重量
   predictWeight: '' as any,
@@ -132,6 +135,8 @@ const initialStateless: FormStatelessProps = {
   costFee: '' as any,
   // 预估总价
   predictPrice: '' as any,
+  // 出库时的单价
+  materialCost: '' as any,
 };
 
 const initialViewState: ViewProps = {
@@ -388,6 +393,12 @@ const StockAndShipmentDataController = () => {
   const handleChange = ({ item, controllType, key, stateType }: OnChangeProps) => {
     const handleWithState = (type: FormControlType) => {
       if (stateType === 'stateful') {
+        if (controllType === 'autoComplete' && stateless.type === 1) {
+          statelessDispatch({
+            type: 'materialCost',
+            data: item.materialCost,
+          });
+        }
         statefulDispatch({
           type,
           key: key as FormStatefulFields,
@@ -457,7 +468,7 @@ const StockAndShipmentDataController = () => {
   const commonFormData = {
     materialType: stateful.materialType,
     materialId: stateful.materialId,
-    materialCost: stateful.materialCost,
+    materialCost: stateless.type === 0 ? stateful.materialCost : (stateless.materialCost as any),
     type: stateless.type,
     length: stateful.length,
     width: stateful.width,
