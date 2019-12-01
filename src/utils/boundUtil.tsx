@@ -31,7 +31,7 @@ export type MenuItemOption = {
 export type SelectFormItemProps = { value: number; error: boolean; message: string };
 export type InputFormItemProps = { value: string; error: boolean; message: string };
 export type CommonBoundFormDataProps = {
-  // 出库为 0，入库为 1
+  // 出库为 1，入库为 0
   type: number;
   // 类别
   materialType: SelectFormItemProps;

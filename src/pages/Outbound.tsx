@@ -19,6 +19,8 @@ export type OutboundProps = {
     costFee: number;
     // 预估总价
     predictPrice: number;
+    // 单价
+    materialCost: any;
   } & CommonBoundFormDataProps;
 } & CommonBoundProps;
 
@@ -80,7 +82,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         key: 'materialCost',
         error: false,
         inputLabel: '单价',
-        inputValue: formData.materialCost.value,
+        inputValue: formData.materialCost,
         helperText: '',
         xs: 6,
         unit: '元/kg',
