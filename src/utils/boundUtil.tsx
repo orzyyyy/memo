@@ -172,7 +172,7 @@ export const getInputItem = ({
 }) => (
   <Grid item xs={xs} key={key}>
     <FormControl required={required} fullWidth={fullWidth} className={classes.formControl} error={error}>
-      <InputLabel shrink={shrink || !!inputValue}>{inputLabel}</InputLabel>
+      <InputLabel shrink={shrink || !!inputValue || inputValue === 0}>{inputLabel}</InputLabel>
       <Input
         value={inputValue}
         type="number"
