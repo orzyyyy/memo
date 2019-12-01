@@ -337,7 +337,7 @@ const StockAndShipmentDataController = () => {
       return parseFloat((((bottomArea * height * DENSITE) / 1000) * quality).toFixed(2));
     };
 
-    const result = calcute(realLength, realWidth, realHeight);
+    const result = calcute(realLength, realWidth, realHeight) || 0;
 
     if ((length && width && height) || (length && height)) {
       statelessDispatch({ type: 'predictWeight', data: result });
@@ -346,10 +346,10 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictPrice = (
-    predictWeight: number,
-    costFee: number,
-    materialCost: number,
-    materialQuantity: number,
+    predictWeight: number = 0,
+    costFee: number = 0,
+    materialCost: number = 0,
+    materialQuantity: number = 0,
   ) => {
     const price = predictWeight * materialCost + materialQuantity * costFee;
     statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });

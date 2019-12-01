@@ -130,7 +130,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         key: 'predictPrice',
         error: false,
         inputLabel: '预估总价',
-        inputValue: formData.predictPrice,
+        inputValue: formData.predictPrice || '',
         helperText: '',
         xs: 6,
         unit: '元',
