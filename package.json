@@ -30,7 +30,7 @@
     "go": "pm2 start",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
-    "log": "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 1.1.1..HEAD",
+    "log": "git log --graph --pretty=format:'http://github.com/orzyyyy/memo/commit/%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 1.1.1..HEAD",
     "pre:server": "rimraf bin && node scripts/copy-resource",
     "prettier": "nino prettier",
     "pub": "gh-pages -d dist",
