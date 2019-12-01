@@ -286,7 +286,6 @@ exports[`Inbound render correctly 1`] = `
                   }
                 }
                 onChange={[Function]}
-                select={true}
                 value={0}
               >
                 <ForwardRef(Input)
@@ -391,7 +390,6 @@ exports[`Inbound render correctly 1`] = `
                     }
                   }
                   onChange={[Function]}
-                  select={true}
                   value={0}
                 >
                   <WithStyles(ForwardRef(InputBase))
@@ -498,7 +496,6 @@ exports[`Inbound render correctly 1`] = `
                     }
                     multiline={false}
                     onChange={[Function]}
-                    select={true}
                     type="text"
                     value={0}
                   >
@@ -519,7 +516,6 @@ exports[`Inbound render correctly 1`] = `
                           "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                           "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                           "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                          "inputSelect": "MuiInputBase-inputSelect",
                           "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                           "marginDense": "MuiInputBase-marginDense",
                           "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -612,7 +608,6 @@ exports[`Inbound render correctly 1`] = `
                       }
                       multiline={false}
                       onChange={[Function]}
-                      select={true}
                       type="text"
                       value={0}
                     >
@@ -640,7 +635,7 @@ exports[`Inbound render correctly 1`] = `
                           }
                           aria-invalid={false}
                           autoWidth={false}
-                          className="MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                          className="MuiInputBase-input MuiInput-input"
                           classes={
                             Object {
                               "disabled": "Mui-disabled",
@@ -670,11 +665,11 @@ exports[`Inbound render correctly 1`] = `
                           <div
                             aria-haspopup="listbox"
                             aria-labelledby=" "
-                            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                             onBlur={[Function]}
-                            onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
+                            onMouseDown={[Function]}
                             role="button"
                             tabIndex={0}
                           >
@@ -746,7 +741,7 @@ exports[`Inbound render correctly 1`] = `
                               <div
                                 aria-haspopup="listbox"
                                 aria-labelledby=" "
-                                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                 role="button"
                                 tabindex="0"
                               >
@@ -778,7 +773,7 @@ exports[`Inbound render correctly 1`] = `
                                 <div
                                   aria-haspopup="listbox"
                                   aria-labelledby=" "
-                                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                   role="button"
                                   tabindex="0"
                                 >
@@ -812,7 +807,7 @@ exports[`Inbound render correctly 1`] = `
                                   <div
                                     aria-haspopup="listbox"
                                     aria-labelledby=" "
-                                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                     role="button"
                                     tabindex="0"
                                   >
@@ -855,7 +850,7 @@ exports[`Inbound render correctly 1`] = `
                                     <div
                                       aria-haspopup="listbox"
                                       aria-labelledby=" "
-                                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                       role="button"
                                       tabindex="0"
                                     >
@@ -1107,7 +1102,6 @@ exports[`Inbound render correctly 1`] = `
                   }
                 }
                 onChange={[Function]}
-                select={true}
                 value={0}
               >
                 <ForwardRef(Input)
@@ -1206,7 +1200,6 @@ exports[`Inbound render correctly 1`] = `
                     }
                   }
                   onChange={[Function]}
-                  select={true}
                   value={0}
                 >
                   <WithStyles(ForwardRef(InputBase))
@@ -1307,7 +1300,6 @@ exports[`Inbound render correctly 1`] = `
                     }
                     multiline={false}
                     onChange={[Function]}
-                    select={true}
                     type="text"
                     value={0}
                   >
@@ -1328,7 +1320,6 @@ exports[`Inbound render correctly 1`] = `
                           "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                           "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                           "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                          "inputSelect": "MuiInputBase-inputSelect",
                           "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                           "marginDense": "MuiInputBase-marginDense",
                           "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -1415,7 +1406,6 @@ exports[`Inbound render correctly 1`] = `
                       }
                       multiline={false}
                       onChange={[Function]}
-                      select={true}
                       type="text"
                       value={0}
                     >
@@ -1443,7 +1433,7 @@ exports[`Inbound render correctly 1`] = `
                           }
                           aria-invalid={false}
                           autoWidth={false}
-                          className="MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                          className="MuiInputBase-input MuiInput-input"
                           classes={
                             Object {
                               "disabled": "Mui-disabled",
@@ -1473,11 +1463,11 @@ exports[`Inbound render correctly 1`] = `
                           <div
                             aria-haspopup="listbox"
                             aria-labelledby=" "
-                            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                             onBlur={[Function]}
-                            onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
+                            onMouseDown={[Function]}
                             role="button"
                             tabIndex={0}
                           >
@@ -1549,7 +1539,7 @@ exports[`Inbound render correctly 1`] = `
                               <div
                                 aria-haspopup="listbox"
                                 aria-labelledby=" "
-                                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                 role="button"
                                 tabindex="0"
                               >
@@ -1581,7 +1571,7 @@ exports[`Inbound render correctly 1`] = `
                                 <div
                                   aria-haspopup="listbox"
                                   aria-labelledby=" "
-                                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                   role="button"
                                   tabindex="0"
                                 >
@@ -1615,7 +1605,7 @@ exports[`Inbound render correctly 1`] = `
                                   <div
                                     aria-haspopup="listbox"
                                     aria-labelledby=" "
-                                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                     role="button"
                                     tabindex="0"
                                   >
@@ -1658,7 +1648,7 @@ exports[`Inbound render correctly 1`] = `
                                     <div
                                       aria-haspopup="listbox"
                                       aria-labelledby=" "
-                                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+                                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                                       role="button"
                                       tabindex="0"
                                     >
@@ -2024,7 +2014,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -2208,6 +2197,7 @@ exports[`Inbound render correctly 1`] = `
                 Object {
                   "clearIndicator": "MuiAutocomplete-clearIndicator",
                   "clearIndicatorDirty": "MuiAutocomplete-clearIndicatorDirty",
+                  "endAdornment": "MuiAutocomplete-endAdornment",
                   "focused": "Mui-focused",
                   "groupLabel": "MuiAutocomplete-groupLabel",
                   "groupUl": "MuiAutocomplete-groupUl",
@@ -2259,7 +2249,9 @@ exports[`Inbound render correctly 1`] = `
                   InputProps={
                     Object {
                       "className": "MuiAutocomplete-inputRoot",
-                      "endAdornment": <React.Fragment>
+                      "endAdornment": <div
+                        className="MuiAutocomplete-endAdornment"
+                      >
                         <ForwardRef(WithStyles)
                           aria-label="Clear"
                           className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2281,7 +2273,7 @@ exports[`Inbound render correctly 1`] = `
                         >
                           <UNDEFINED />
                         </ForwardRef(WithStyles)>
-                      </React.Fragment>,
+                      </div>,
                       "ref": [Function],
                       "startAdornment": undefined,
                     }
@@ -2336,7 +2328,9 @@ exports[`Inbound render correctly 1`] = `
                     InputProps={
                       Object {
                         "className": "MuiAutocomplete-inputRoot",
-                        "endAdornment": <React.Fragment>
+                        "endAdornment": <div
+                          className="MuiAutocomplete-endAdornment"
+                        >
                           <ForwardRef(WithStyles)
                             aria-label="Clear"
                             className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2358,7 +2352,7 @@ exports[`Inbound render correctly 1`] = `
                           >
                             <UNDEFINED />
                           </ForwardRef(WithStyles)>
-                        </React.Fragment>,
+                        </div>,
                         "ref": [Function],
                         "startAdornment": undefined,
                       }
@@ -2518,7 +2512,9 @@ exports[`Inbound render correctly 1`] = `
                             autoFocus={false}
                             className="MuiAutocomplete-inputRoot"
                             endAdornment={
-                              <React.Fragment>
+                              <div
+                                className="MuiAutocomplete-endAdornment"
+                              >
                                 <ForwardRef(WithStyles)
                                   aria-label="Clear"
                                   className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2540,7 +2536,7 @@ exports[`Inbound render correctly 1`] = `
                                 >
                                   <UNDEFINED />
                                 </ForwardRef(WithStyles)>
-                              </React.Fragment>
+                              </div>
                             }
                             fullWidth={true}
                             id="material-id"
@@ -2599,7 +2595,9 @@ exports[`Inbound render correctly 1`] = `
                                 }
                               }
                               endAdornment={
-                                <React.Fragment>
+                                <div
+                                  className="MuiAutocomplete-endAdornment"
+                                >
                                   <ForwardRef(WithStyles)
                                     aria-label="Clear"
                                     className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2621,7 +2619,7 @@ exports[`Inbound render correctly 1`] = `
                                   >
                                     <UNDEFINED />
                                   </ForwardRef(WithStyles)>
-                                </React.Fragment>
+                                </div>
                               }
                               fullWidth={true}
                               id="material-id"
@@ -2680,7 +2678,9 @@ exports[`Inbound render correctly 1`] = `
                                   }
                                 }
                                 endAdornment={
-                                  <React.Fragment>
+                                  <div
+                                    className="MuiAutocomplete-endAdornment"
+                                  >
                                     <ForwardRef(WithStyles)
                                       aria-label="Clear"
                                       className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2702,7 +2702,7 @@ exports[`Inbound render correctly 1`] = `
                                     >
                                       <UNDEFINED />
                                     </ForwardRef(WithStyles)>
-                                  </React.Fragment>
+                                  </div>
                                 }
                                 fullWidth={true}
                                 id="material-id"
@@ -2761,7 +2761,6 @@ exports[`Inbound render correctly 1`] = `
                                       "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                                       "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                                       "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                                      "inputSelect": "MuiInputBase-inputSelect",
                                       "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                                       "marginDense": "MuiInputBase-marginDense",
                                       "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -2769,7 +2768,9 @@ exports[`Inbound render correctly 1`] = `
                                     }
                                   }
                                   endAdornment={
-                                    <React.Fragment>
+                                    <div
+                                      className="MuiAutocomplete-endAdornment"
+                                    >
                                       <ForwardRef(WithStyles)
                                         aria-label="Clear"
                                         className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
@@ -2791,7 +2792,7 @@ exports[`Inbound render correctly 1`] = `
                                       >
                                         <UNDEFINED />
                                       </ForwardRef(WithStyles)>
-                                    </React.Fragment>
+                                    </div>
                                   }
                                   fullWidth={true}
                                   id="material-id"
@@ -2856,301 +2857,305 @@ exports[`Inbound render correctly 1`] = `
                                       type="text"
                                       value="text"
                                     />
-                                    <WithStyles(ForwardRef(IconButton))
-                                      aria-label="Clear"
-                                      className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-                                      onClick={[Function]}
-                                      tabIndex={-1}
-                                      title="Clear"
+                                    <div
+                                      className="MuiAutocomplete-endAdornment"
                                     >
-                                      <ForwardRef(IconButton)
+                                      <WithStyles(ForwardRef(IconButton))
                                         aria-label="Clear"
                                         className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-                                        classes={
-                                          Object {
-                                            "colorInherit": "MuiIconButton-colorInherit",
-                                            "colorPrimary": "MuiIconButton-colorPrimary",
-                                            "colorSecondary": "MuiIconButton-colorSecondary",
-                                            "disabled": "Mui-disabled",
-                                            "edgeEnd": "MuiIconButton-edgeEnd",
-                                            "edgeStart": "MuiIconButton-edgeStart",
-                                            "label": "MuiIconButton-label",
-                                            "root": "MuiIconButton-root",
-                                            "sizeSmall": "MuiIconButton-sizeSmall",
-                                          }
-                                        }
                                         onClick={[Function]}
                                         tabIndex={-1}
                                         title="Clear"
                                       >
-                                        <WithStyles(ForwardRef(ButtonBase))
+                                        <ForwardRef(IconButton)
                                           aria-label="Clear"
-                                          centerRipple={true}
-                                          className="MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-                                          disabled={false}
-                                          focusRipple={true}
+                                          className="MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+                                          classes={
+                                            Object {
+                                              "colorInherit": "MuiIconButton-colorInherit",
+                                              "colorPrimary": "MuiIconButton-colorPrimary",
+                                              "colorSecondary": "MuiIconButton-colorSecondary",
+                                              "disabled": "Mui-disabled",
+                                              "edgeEnd": "MuiIconButton-edgeEnd",
+                                              "edgeStart": "MuiIconButton-edgeStart",
+                                              "label": "MuiIconButton-label",
+                                              "root": "MuiIconButton-root",
+                                              "sizeSmall": "MuiIconButton-sizeSmall",
+                                            }
+                                          }
                                           onClick={[Function]}
                                           tabIndex={-1}
                                           title="Clear"
                                         >
-                                          <ForwardRef(ButtonBase)
+                                          <WithStyles(ForwardRef(ButtonBase))
                                             aria-label="Clear"
                                             centerRipple={true}
                                             className="MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-                                            classes={
-                                              Object {
-                                                "disabled": "Mui-disabled",
-                                                "focusVisible": "Mui-focusVisible",
-                                                "root": "MuiButtonBase-root",
-                                              }
-                                            }
                                             disabled={false}
                                             focusRipple={true}
                                             onClick={[Function]}
                                             tabIndex={-1}
                                             title="Clear"
                                           >
-                                            <button
+                                            <ForwardRef(ButtonBase)
                                               aria-label="Clear"
-                                              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+                                              centerRipple={true}
+                                              className="MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+                                              classes={
+                                                Object {
+                                                  "disabled": "Mui-disabled",
+                                                  "focusVisible": "Mui-focusVisible",
+                                                  "root": "MuiButtonBase-root",
+                                                }
+                                              }
                                               disabled={false}
-                                              onBlur={[Function]}
+                                              focusRipple={true}
                                               onClick={[Function]}
-                                              onDragLeave={[Function]}
-                                              onFocus={[Function]}
-                                              onKeyDown={[Function]}
-                                              onKeyUp={[Function]}
-                                              onMouseDown={[Function]}
-                                              onMouseLeave={[Function]}
-                                              onMouseUp={[Function]}
-                                              onTouchEnd={[Function]}
-                                              onTouchMove={[Function]}
-                                              onTouchStart={[Function]}
                                               tabIndex={-1}
                                               title="Clear"
-                                              type="button"
                                             >
-                                              <span
-                                                className="MuiIconButton-label"
+                                              <button
+                                                aria-label="Clear"
+                                                className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+                                                disabled={false}
+                                                onBlur={[Function]}
+                                                onClick={[Function]}
+                                                onDragLeave={[Function]}
+                                                onFocus={[Function]}
+                                                onKeyDown={[Function]}
+                                                onKeyUp={[Function]}
+                                                onMouseDown={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onMouseUp={[Function]}
+                                                onTouchEnd={[Function]}
+                                                onTouchMove={[Function]}
+                                                onTouchStart={[Function]}
+                                                tabIndex={-1}
+                                                title="Clear"
+                                                type="button"
                                               >
-                                                <ForwardRef
-                                                  fontSize="small"
+                                                <span
+                                                  className="MuiIconButton-label"
                                                 >
-                                                  <WithStyles(ForwardRef(SvgIcon))
+                                                  <ForwardRef
                                                     fontSize="small"
                                                   >
-                                                    <ForwardRef(SvgIcon)
-                                                      classes={
-                                                        Object {
-                                                          "colorAction": "MuiSvgIcon-colorAction",
-                                                          "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                          "colorError": "MuiSvgIcon-colorError",
-                                                          "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                          "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                          "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                          "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                          "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                          "root": "MuiSvgIcon-root",
-                                                        }
-                                                      }
+                                                    <WithStyles(ForwardRef(SvgIcon))
                                                       fontSize="small"
                                                     >
-                                                      <svg
-                                                        aria-hidden="true"
-                                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                                                        focusable="false"
-                                                        role="presentation"
-                                                        viewBox="0 0 24 24"
+                                                      <ForwardRef(SvgIcon)
+                                                        classes={
+                                                          Object {
+                                                            "colorAction": "MuiSvgIcon-colorAction",
+                                                            "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                            "colorError": "MuiSvgIcon-colorError",
+                                                            "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                            "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                            "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                            "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                            "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                            "root": "MuiSvgIcon-root",
+                                                          }
+                                                        }
+                                                        fontSize="small"
                                                       >
-                                                        <path
-                                                          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                                                        />
-                                                      </svg>
-                                                    </ForwardRef(SvgIcon)>
-                                                  </WithStyles(ForwardRef(SvgIcon))>
-                                                </ForwardRef>
-                                              </span>
-                                              <NoSsr>
-                                                <WithStyles(undefined)
-                                                  center={true}
-                                                >
-                                                  <ForwardRef(TouchRipple)
+                                                        <svg
+                                                          aria-hidden="true"
+                                                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                                                          focusable="false"
+                                                          role="presentation"
+                                                          viewBox="0 0 24 24"
+                                                        >
+                                                          <path
+                                                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                                                          />
+                                                        </svg>
+                                                      </ForwardRef(SvgIcon)>
+                                                    </WithStyles(ForwardRef(SvgIcon))>
+                                                  </ForwardRef>
+                                                </span>
+                                                <NoSsr>
+                                                  <WithStyles(undefined)
                                                     center={true}
-                                                    classes={
-                                                      Object {
-                                                        "child": "MuiTouchRipple-child",
-                                                        "childLeaving": "MuiTouchRipple-childLeaving",
-                                                        "childPulsate": "MuiTouchRipple-childPulsate",
-                                                        "ripple": "MuiTouchRipple-ripple",
-                                                        "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                        "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                        "root": "MuiTouchRipple-root",
-                                                      }
-                                                    }
                                                   >
-                                                    <span
-                                                      className="MuiTouchRipple-root"
+                                                    <ForwardRef(TouchRipple)
+                                                      center={true}
+                                                      classes={
+                                                        Object {
+                                                          "child": "MuiTouchRipple-child",
+                                                          "childLeaving": "MuiTouchRipple-childLeaving",
+                                                          "childPulsate": "MuiTouchRipple-childPulsate",
+                                                          "ripple": "MuiTouchRipple-ripple",
+                                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                          "root": "MuiTouchRipple-root",
+                                                        }
+                                                      }
                                                     >
-                                                      <TransitionGroup
-                                                        childFactory={[Function]}
-                                                        component={null}
-                                                        exit={true}
-                                                      />
-                                                    </span>
-                                                  </ForwardRef(TouchRipple)>
-                                                </WithStyles(undefined)>
-                                              </NoSsr>
-                                            </button>
-                                          </ForwardRef(ButtonBase)>
-                                        </WithStyles(ForwardRef(ButtonBase))>
-                                      </ForwardRef(IconButton)>
-                                    </WithStyles(ForwardRef(IconButton))>
-                                    <WithStyles(ForwardRef(IconButton))
-                                      aria-label="Open"
-                                      className="MuiAutocomplete-popupIndicator"
-                                      disabled={false}
-                                      onClick={[Function]}
-                                      tabIndex={-1}
-                                      title="Open"
-                                    >
-                                      <ForwardRef(IconButton)
+                                                      <span
+                                                        className="MuiTouchRipple-root"
+                                                      >
+                                                        <TransitionGroup
+                                                          childFactory={[Function]}
+                                                          component={null}
+                                                          exit={true}
+                                                        />
+                                                      </span>
+                                                    </ForwardRef(TouchRipple)>
+                                                  </WithStyles(undefined)>
+                                                </NoSsr>
+                                              </button>
+                                            </ForwardRef(ButtonBase)>
+                                          </WithStyles(ForwardRef(ButtonBase))>
+                                        </ForwardRef(IconButton)>
+                                      </WithStyles(ForwardRef(IconButton))>
+                                      <WithStyles(ForwardRef(IconButton))
                                         aria-label="Open"
                                         className="MuiAutocomplete-popupIndicator"
-                                        classes={
-                                          Object {
-                                            "colorInherit": "MuiIconButton-colorInherit",
-                                            "colorPrimary": "MuiIconButton-colorPrimary",
-                                            "colorSecondary": "MuiIconButton-colorSecondary",
-                                            "disabled": "Mui-disabled",
-                                            "edgeEnd": "MuiIconButton-edgeEnd",
-                                            "edgeStart": "MuiIconButton-edgeStart",
-                                            "label": "MuiIconButton-label",
-                                            "root": "MuiIconButton-root",
-                                            "sizeSmall": "MuiIconButton-sizeSmall",
-                                          }
-                                        }
                                         disabled={false}
                                         onClick={[Function]}
                                         tabIndex={-1}
                                         title="Open"
                                       >
-                                        <WithStyles(ForwardRef(ButtonBase))
+                                        <ForwardRef(IconButton)
                                           aria-label="Open"
-                                          centerRipple={true}
-                                          className="MuiIconButton-root MuiAutocomplete-popupIndicator"
+                                          className="MuiAutocomplete-popupIndicator"
+                                          classes={
+                                            Object {
+                                              "colorInherit": "MuiIconButton-colorInherit",
+                                              "colorPrimary": "MuiIconButton-colorPrimary",
+                                              "colorSecondary": "MuiIconButton-colorSecondary",
+                                              "disabled": "Mui-disabled",
+                                              "edgeEnd": "MuiIconButton-edgeEnd",
+                                              "edgeStart": "MuiIconButton-edgeStart",
+                                              "label": "MuiIconButton-label",
+                                              "root": "MuiIconButton-root",
+                                              "sizeSmall": "MuiIconButton-sizeSmall",
+                                            }
+                                          }
                                           disabled={false}
-                                          focusRipple={true}
                                           onClick={[Function]}
                                           tabIndex={-1}
                                           title="Open"
                                         >
-                                          <ForwardRef(ButtonBase)
+                                          <WithStyles(ForwardRef(ButtonBase))
                                             aria-label="Open"
                                             centerRipple={true}
                                             className="MuiIconButton-root MuiAutocomplete-popupIndicator"
-                                            classes={
-                                              Object {
-                                                "disabled": "Mui-disabled",
-                                                "focusVisible": "Mui-focusVisible",
-                                                "root": "MuiButtonBase-root",
-                                              }
-                                            }
                                             disabled={false}
                                             focusRipple={true}
                                             onClick={[Function]}
                                             tabIndex={-1}
                                             title="Open"
                                           >
-                                            <button
+                                            <ForwardRef(ButtonBase)
                                               aria-label="Open"
-                                              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+                                              centerRipple={true}
+                                              className="MuiIconButton-root MuiAutocomplete-popupIndicator"
+                                              classes={
+                                                Object {
+                                                  "disabled": "Mui-disabled",
+                                                  "focusVisible": "Mui-focusVisible",
+                                                  "root": "MuiButtonBase-root",
+                                                }
+                                              }
                                               disabled={false}
-                                              onBlur={[Function]}
+                                              focusRipple={true}
                                               onClick={[Function]}
-                                              onDragLeave={[Function]}
-                                              onFocus={[Function]}
-                                              onKeyDown={[Function]}
-                                              onKeyUp={[Function]}
-                                              onMouseDown={[Function]}
-                                              onMouseLeave={[Function]}
-                                              onMouseUp={[Function]}
-                                              onTouchEnd={[Function]}
-                                              onTouchMove={[Function]}
-                                              onTouchStart={[Function]}
                                               tabIndex={-1}
                                               title="Open"
-                                              type="button"
                                             >
-                                              <span
-                                                className="MuiIconButton-label"
+                                              <button
+                                                aria-label="Open"
+                                                className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+                                                disabled={false}
+                                                onBlur={[Function]}
+                                                onClick={[Function]}
+                                                onDragLeave={[Function]}
+                                                onFocus={[Function]}
+                                                onKeyDown={[Function]}
+                                                onKeyUp={[Function]}
+                                                onMouseDown={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onMouseUp={[Function]}
+                                                onTouchEnd={[Function]}
+                                                onTouchMove={[Function]}
+                                                onTouchStart={[Function]}
+                                                tabIndex={-1}
+                                                title="Open"
+                                                type="button"
                                               >
-                                                <ForwardRef>
-                                                  <WithStyles(ForwardRef(SvgIcon))>
-                                                    <ForwardRef(SvgIcon)
+                                                <span
+                                                  className="MuiIconButton-label"
+                                                >
+                                                  <ForwardRef>
+                                                    <WithStyles(ForwardRef(SvgIcon))>
+                                                      <ForwardRef(SvgIcon)
+                                                        classes={
+                                                          Object {
+                                                            "colorAction": "MuiSvgIcon-colorAction",
+                                                            "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                            "colorError": "MuiSvgIcon-colorError",
+                                                            "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                            "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                            "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                            "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                            "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                            "root": "MuiSvgIcon-root",
+                                                          }
+                                                        }
+                                                      >
+                                                        <svg
+                                                          aria-hidden="true"
+                                                          className="MuiSvgIcon-root"
+                                                          focusable="false"
+                                                          role="presentation"
+                                                          viewBox="0 0 24 24"
+                                                        >
+                                                          <path
+                                                            d="M7 10l5 5 5-5z"
+                                                          />
+                                                        </svg>
+                                                      </ForwardRef(SvgIcon)>
+                                                    </WithStyles(ForwardRef(SvgIcon))>
+                                                  </ForwardRef>
+                                                </span>
+                                                <NoSsr>
+                                                  <WithStyles(undefined)
+                                                    center={true}
+                                                  >
+                                                    <ForwardRef(TouchRipple)
+                                                      center={true}
                                                       classes={
                                                         Object {
-                                                          "colorAction": "MuiSvgIcon-colorAction",
-                                                          "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                          "colorError": "MuiSvgIcon-colorError",
-                                                          "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                          "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                          "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                          "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                          "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                          "root": "MuiSvgIcon-root",
+                                                          "child": "MuiTouchRipple-child",
+                                                          "childLeaving": "MuiTouchRipple-childLeaving",
+                                                          "childPulsate": "MuiTouchRipple-childPulsate",
+                                                          "ripple": "MuiTouchRipple-ripple",
+                                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                          "root": "MuiTouchRipple-root",
                                                         }
                                                       }
                                                     >
-                                                      <svg
-                                                        aria-hidden="true"
-                                                        className="MuiSvgIcon-root"
-                                                        focusable="false"
-                                                        role="presentation"
-                                                        viewBox="0 0 24 24"
+                                                      <span
+                                                        className="MuiTouchRipple-root"
                                                       >
-                                                        <path
-                                                          d="M7 10l5 5 5-5z"
+                                                        <TransitionGroup
+                                                          childFactory={[Function]}
+                                                          component={null}
+                                                          exit={true}
                                                         />
-                                                      </svg>
-                                                    </ForwardRef(SvgIcon)>
-                                                  </WithStyles(ForwardRef(SvgIcon))>
-                                                </ForwardRef>
-                                              </span>
-                                              <NoSsr>
-                                                <WithStyles(undefined)
-                                                  center={true}
-                                                >
-                                                  <ForwardRef(TouchRipple)
-                                                    center={true}
-                                                    classes={
-                                                      Object {
-                                                        "child": "MuiTouchRipple-child",
-                                                        "childLeaving": "MuiTouchRipple-childLeaving",
-                                                        "childPulsate": "MuiTouchRipple-childPulsate",
-                                                        "ripple": "MuiTouchRipple-ripple",
-                                                        "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                        "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                        "root": "MuiTouchRipple-root",
-                                                      }
-                                                    }
-                                                  >
-                                                    <span
-                                                      className="MuiTouchRipple-root"
-                                                    >
-                                                      <TransitionGroup
-                                                        childFactory={[Function]}
-                                                        component={null}
-                                                        exit={true}
-                                                      />
-                                                    </span>
-                                                  </ForwardRef(TouchRipple)>
-                                                </WithStyles(undefined)>
-                                              </NoSsr>
-                                            </button>
-                                          </ForwardRef(ButtonBase)>
-                                        </WithStyles(ForwardRef(ButtonBase))>
-                                      </ForwardRef(IconButton)>
-                                    </WithStyles(ForwardRef(IconButton))>
+                                                      </span>
+                                                    </ForwardRef(TouchRipple)>
+                                                  </WithStyles(undefined)>
+                                                </NoSsr>
+                                              </button>
+                                            </ForwardRef(ButtonBase)>
+                                          </WithStyles(ForwardRef(ButtonBase))>
+                                        </ForwardRef(IconButton)>
+                                      </WithStyles(ForwardRef(IconButton))>
+                                    </div>
                                   </div>
                                 </ForwardRef(InputBase)>
                               </WithStyles(ForwardRef(InputBase))>
@@ -3494,7 +3499,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -3942,7 +3946,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -4390,7 +4393,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -4838,7 +4840,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -5280,7 +5281,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
@@ -5720,7 +5720,6 @@ exports[`Inbound render correctly 1`] = `
                             "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
                             "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
                             "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
-                            "inputSelect": "MuiInputBase-inputSelect",
                             "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
                             "marginDense": "MuiInputBase-marginDense",
                             "multiline": "MuiInputBase-multiline MuiInput-multiline",
