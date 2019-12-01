@@ -111,7 +111,7 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
       {getInputItem({
         key: 'costFee',
         error: false,
-        inputLabel: '据费',
+        inputLabel: '锯费',
         inputValue: formData.costFee,
         helperText: '',
         xs: 6,
