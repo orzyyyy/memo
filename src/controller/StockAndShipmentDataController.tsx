@@ -346,10 +346,10 @@ const StockAndShipmentDataController = () => {
   };
 
   const calcuteForPredictPrice = (
-    predictWeight: number = 0,
-    costFee: number = 0,
-    materialCost: number = 0,
-    materialQuantity: number = 0,
+    predictWeight: number,
+    costFee: number,
+    materialCost: number,
+    materialQuantity: number,
   ) => {
     const price = predictWeight * materialCost + materialQuantity * costFee;
     statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
@@ -365,10 +365,10 @@ const StockAndShipmentDataController = () => {
       stateless.type,
     );
     calcuteForPredictPrice(
-      result,
-      stateless.costFee,
-      parseFloat(stateful.materialCost.value),
-      parseFloat(materialQuantity.value),
+      result || 0,
+      stateless.costFee || 0,
+      parseFloat(stateful.materialCost.value) || 0,
+      parseFloat(materialQuantity.value) || 0,
     );
   };
 
