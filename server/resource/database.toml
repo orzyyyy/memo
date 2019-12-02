@@ -1,7 +1,7 @@
 [mysql]
 host = 'localhost'
-user = 'root'
-password = ''
+user = 'orzyyyy'
+password = 'test123456'
 database = 'toy-box'
 multipleStatements = true
 
