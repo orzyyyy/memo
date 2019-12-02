@@ -367,7 +367,7 @@ const StockAndShipmentDataController = () => {
     calcuteForPredictPrice(
       result || 0,
       stateless.costFee || 0,
-      parseFloat(stateful.materialCost.value) || 0,
+      parseFloat(stateless.type === 0 ? stateful.materialCost.value : (stateless.materialCost as any)) || 0,
       parseFloat(materialQuantity.value) || 0,
     );
   };
