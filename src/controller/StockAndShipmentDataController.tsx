@@ -10,7 +10,6 @@ import {
   InputFormItemProps,
 } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
-import { omit } from '../../server/utils/omit';
 
 const ERROR_MESSAGE = '该项不能为空';
 const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
@@ -289,11 +288,8 @@ const StockAndShipmentDataController = () => {
     // todo: 本来应该遍历 stateful，看 error 是否为 true 来判断表单项是否有误
     // 但因为 stateful 此时尚未更新，所以暂时用硬编码来判断
     let hasError = false;
-    for (const value of Object.values(omit(params, ['description', 'freight', 'extraCost']))) {
-      if (!value || value === -1) {
-        hasError = true;
-        break;
-      }
+    if (params.materialId === '' || params.materialId === -1) {
+      hasError = true;
     }
 
     return { hasError, params };
@@ -352,11 +348,11 @@ const StockAndShipmentDataController = () => {
     materialQuantity: number,
   ) => {
     const price = predictWeight * materialCost + materialQuantity * costFee;
-    statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
+    return price;
   };
 
   const handleSpecificationInputBlur = () => {
-    const { length, width, height, materialQuantity } = stateful;
+    const { length, width, height, materialQuantity, materialCost } = stateful;
     const result = calcuteForPredictWeight(
       parseFloat(length.value),
       parseFloat(width.value),
@@ -364,12 +360,13 @@ const StockAndShipmentDataController = () => {
       parseFloat(materialQuantity.value),
       stateless.type,
     );
-    calcuteForPredictPrice(
+    const price = calcuteForPredictPrice(
       result || 0,
       stateless.costFee || 0,
-      parseFloat(stateless.type === 0 ? stateful.materialCost.value : (stateless.materialCost as any)) || 0,
+      parseFloat(stateless.type === 0 ? materialCost.value : (stateless.materialCost as any)) || 0,
       parseFloat(materialQuantity.value) || 0,
     );
+    statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
   };
 
   const fetchMaterialIdOption = async (type: number | string) => {
