@@ -39,13 +39,10 @@ export type CommonBoundFormDataProps = {
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
   materialCost: InputFormItemProps;
-  // 长宽高重
+  // 长宽重
   length: InputFormItemProps;
   width: InputFormItemProps;
-  height: InputFormItemProps;
   weight: InputFormItemProps;
-  // 预估重量
-  predictWeight: number;
   // 运费
   freight: InputFormItemProps;
   // 数量。出库用
@@ -74,7 +71,6 @@ export type CommonBoundProps = {
 export type MaterialInputSpecificationProps =
   | 'length' // 实际长度
   | 'width'
-  | 'height'
   | 'weight'
   | 'materialCost' // 单价
   | 'freight' // 运费

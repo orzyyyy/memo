@@ -42,19 +42,6 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
       })}
 
       {getInputItem({
-        key: 'height',
-        error: formData.height.error,
-        inputLabel: '高度',
-        inputValue: formData.height.value,
-        helperText: formData.height.message,
-        xs: 6,
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        stateType: 'stateful',
-      })}
-
-      {getInputItem({
         key: 'materialCost',
         error: formData.materialCost.error,
         inputLabel: '单价',
@@ -94,22 +81,6 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         onBlur: onSpecificationInputBlur,
         classes,
         required: false,
-        stateType: 'stateless',
-      })}
-
-      {getInputItem({
-        key: 'predictWeight',
-        error: false,
-        inputLabel: '预估重量',
-        inputValue: formData.predictWeight,
-        helperText: '计算公式：体积 x 密度',
-        xs: 6,
-        unit: 'kg',
-        readOnly: true,
-        required: false,
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
         stateType: 'stateless',
       })}
 
