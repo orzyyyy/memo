@@ -52,19 +52,6 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
       })}
 
       {getInputItem({
-        key: 'height',
-        error: formData.height.error,
-        inputLabel: '高度',
-        inputValue: formData.height.value,
-        helperText: formData.height.message,
-        xs: 6,
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        stateType: 'stateful',
-      })}
-
-      {getInputItem({
         key: 'materialQuantity',
         error: formData.materialQuantity.error,
         inputLabel: '数量',
@@ -86,22 +73,6 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         helperText: '',
         xs: 6,
         unit: '元/kg',
-        readOnly: true,
-        required: false,
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        stateType: 'stateless',
-      })}
-
-      {getInputItem({
-        key: 'predictWeight',
-        error: false,
-        inputLabel: '预估重量',
-        inputValue: formData.predictWeight,
-        helperText: '计算公式：体积 x 密度',
-        xs: 6,
-        unit: 'kg',
         readOnly: true,
         required: false,
         onChange,

@@ -68,7 +68,6 @@ export interface FormStatefulProps {
   // 长宽高重
   length: InputFormItemProps;
   width: InputFormItemProps;
-  height: InputFormItemProps;
   weight: InputFormItemProps;
   // 运费
   freight: InputFormItemProps;
@@ -83,7 +82,6 @@ export type FormStatefulFields =
   | 'materialCost' // 材料单价
   | 'length' // 长宽高重
   | 'width'
-  | 'height'
   | 'weight'
   | 'freight' // 运费
   | 'sellType' // 卖出方式
@@ -110,7 +108,6 @@ const initialStateful: FormStatefulProps = {
   // 长宽高重
   length: INPUT_FORM_ITEM_DEFAULT_VALUE,
   width: INPUT_FORM_ITEM_DEFAULT_VALUE,
-  height: INPUT_FORM_ITEM_DEFAULT_VALUE,
   weight: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 运费
   freight: INPUT_FORM_ITEM_DEFAULT_VALUE,
@@ -252,7 +249,6 @@ const StockAndShipmentDataController = () => {
       materialCost,
       length,
       width,
-      height,
       weight,
       freight,
       sellType,
@@ -265,7 +261,6 @@ const StockAndShipmentDataController = () => {
     if (width.value === '' && materialType.value !== -1) {
       statefulDispatch({ type: 'input', key: 'width', data: width });
     }
-    statefulDispatch({ type: 'input', key: 'height', data: height });
     statefulDispatch({ type: 'input', key: 'weight', data: weight });
     statefulDispatch({ type: 'input', key: 'freight', data: freight });
     statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
@@ -276,7 +271,6 @@ const StockAndShipmentDataController = () => {
       materialType: materialType.value,
       materialCost: materialCost.value,
       type: stateless.type,
-      height: height.value,
       weight: weight.value,
       freight: freight.value,
       description: stateless.description,
@@ -312,56 +306,15 @@ const StockAndShipmentDataController = () => {
     return params;
   };
 
-  const calcuteForPredictWeight = (length: number, width: number, height: number, quality: number, type: number) => {
-    const realLength = length / 2 / 10;
-    const realWidth = width / 10;
-    const realHeight = height / 10;
-
-    // 入库时数量一定为 undefined，计算会出错，需要单独处理
-    if (type === 0 && !quality) {
-      quality = 1;
-    }
-
-    const calcute = (length: number, width: number, height: number) => {
-      const DENSITE = 7.874;
-      let bottomArea = Math.PI * length * length;
-      // 方钢
-      if (width) {
-        bottomArea = length * width;
-      }
-      // 圆钢
-      return parseFloat((((bottomArea * height * DENSITE) / 1000) * quality).toFixed(2));
-    };
-
-    const result = calcute(realLength, realWidth, realHeight) || 0;
-
-    if ((length && width && height) || (length && height)) {
-      statelessDispatch({ type: 'predictWeight', data: result });
-    }
-    return result;
-  };
-
-  const calcuteForPredictPrice = (
-    predictWeight: number,
-    costFee: number,
-    materialCost: number,
-    materialQuantity: number,
-  ) => {
-    const price = predictWeight * materialCost + materialQuantity * costFee;
+  const calcuteForPredictPrice = (weight: number, costFee: number, materialCost: number, materialQuantity: number) => {
+    const price = weight * materialCost + materialQuantity * costFee;
     return price;
   };
 
   const handleSpecificationInputBlur = () => {
-    const { length, width, height, materialQuantity, materialCost } = stateful;
-    const result = calcuteForPredictWeight(
-      parseFloat(length.value),
-      parseFloat(width.value),
-      parseFloat(height.value),
-      parseFloat(materialQuantity.value),
-      stateless.type,
-    );
+    const { materialQuantity, materialCost, weight } = stateful;
     const price = calcuteForPredictPrice(
-      result || 0,
+      parseFloat(weight.value) || 0,
       stateless.costFee || 0,
       parseFloat(stateless.type === 0 ? materialCost.value : (stateless.materialCost as any)) || 0,
       parseFloat(materialQuantity.value) || 0,
@@ -434,7 +387,6 @@ const StockAndShipmentDataController = () => {
       materialCost,
       length,
       width,
-      height,
       weight,
       freight,
       materialType,
@@ -453,7 +405,6 @@ const StockAndShipmentDataController = () => {
     statefulDispatch({ type: 'input', key: 'materialCost', data: materialCost });
     statefulDispatch({ type: 'input', key: 'length', data: length });
     statefulDispatch({ type: 'input', key: 'width', data: width });
-    statefulDispatch({ type: 'input', key: 'height', data: height });
     statefulDispatch({ type: 'input', key: 'weight', data: weight });
     statefulDispatch({ type: 'input', key: 'freight', data: freight });
 
@@ -469,7 +420,6 @@ const StockAndShipmentDataController = () => {
     type: stateless.type,
     length: stateful.length,
     width: stateful.width,
-    height: stateful.height,
     weight: stateful.weight,
     predictWeight: stateless.predictWeight,
     freight: stateful.freight,
