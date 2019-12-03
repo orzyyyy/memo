@@ -19,8 +19,6 @@ export type OutboundProps = {
     costFee: number;
     // 预估总价
     predictPrice: number;
-    // 单价
-    materialCost: any;
   } & CommonBoundFormDataProps;
 } & CommonBoundProps;
 

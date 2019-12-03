@@ -41,49 +41,6 @@ const Inbound = ({ onSubmit, formData, onChange, onSpecificationInputBlur, formO
         stateType: 'stateful',
       })}
 
-      {getInputItem({
-        key: 'materialCost',
-        error: formData.materialCost.error,
-        inputLabel: '单价',
-        inputValue: formData.materialCost.value,
-        helperText: formData.materialCost.message,
-        xs: 6,
-        unit: '元/kg',
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        stateType: 'stateful',
-      })}
-
-      {getInputItem({
-        key: 'freight',
-        error: formData.freight.error,
-        inputLabel: '运费',
-        inputValue: formData.freight.value,
-        helperText: formData.freight.message,
-        xs: 6,
-        unit: '元',
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        stateType: 'stateful',
-      })}
-
-      {getInputItem({
-        key: 'extraCost',
-        error: false,
-        inputLabel: '其他费用',
-        inputValue: formData.extraCost,
-        helperText: '',
-        xs: 6,
-        unit: '元',
-        onChange,
-        onBlur: onSpecificationInputBlur,
-        classes,
-        required: false,
-        stateType: 'stateless',
-      })}
-
       <FormControl fullWidth className={classes.formControl}>
         <TextareaAutosize
           placeholder="备注"
