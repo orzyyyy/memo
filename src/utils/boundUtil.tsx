@@ -63,7 +63,6 @@ export type FormControlType = 'input' | 'autoComplete' | 'select';
 export type CommonBoundProps = {
   onChange: (item: OnChangeProps) => void;
   onSubmit: () => void;
-  // 长宽高文本框 blur 时的回调
   onSpecificationInputBlur: () => void;
   formOptions: FormOptionsProps;
   loading: boolean;

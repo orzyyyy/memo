@@ -65,7 +65,7 @@ export interface FormStatefulProps {
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
   materialCost: InputFormItemProps;
-  // 长宽高重
+  // 长宽重
   length: InputFormItemProps;
   width: InputFormItemProps;
   weight: InputFormItemProps;
@@ -80,7 +80,7 @@ export interface FormStatefulProps {
 export type FormStatefulFields =
   | 'materialType' // 类别
   | 'materialCost' // 材料单价
-  | 'length' // 长宽高重
+  | 'length' // 长宽重
   | 'width'
   | 'weight'
   | 'freight' // 运费
@@ -105,7 +105,7 @@ const initialStateful: FormStatefulProps = {
   materialId: Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
   // 材料单价
   materialCost: INPUT_FORM_ITEM_DEFAULT_VALUE,
-  // 长宽高重
+  // 长宽重
   length: INPUT_FORM_ITEM_DEFAULT_VALUE,
   width: INPUT_FORM_ITEM_DEFAULT_VALUE,
   weight: INPUT_FORM_ITEM_DEFAULT_VALUE,

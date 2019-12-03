@@ -3,22 +3,22 @@ sql = """
   insert into `goods_in_and_out` (type, height, weight, patch, material_cost, freight, description, extra_cost, material_id)
   values (@type, @height, @weight, @@dateStamp, @materialCost, @freight, @description, @extraCost, @materialId);
 
-  update `material_detail` set 库存长度 = @newLength, 库存重量 = @newWeight, 单价 = @materialCost
+  update `material_detail` set 库存重量 = @newWeight
   where id = @materialId;
 """
 method = 'post'
 
 [add-material-type]
 sql = """
-  insert into `material_detail` (类别1, 类别2, 类别3, 类别4, 材质, 单价, 锯费, 长, 宽, 高, 卖出方式, 制作标准, 制作方式, 产地, 处理工艺)
-  values (@类别1, @类别2, @类别3, @类别4, @材质, @单价, @锯费, @长, @宽, @高, @卖出方式, @制作标准, @制作方式, @产地, @处理工艺)
+  insert into `material_detail` (类别1, 类别2, 类别3, 类别4, 材质, 单价, 锯费, 长, 宽, 卖出方式, 制作标准, 制作方式, 产地, 处理工艺)
+  values (@类别1, @类别2, @类别3, @类别4, @材质, @单价, @锯费, @长, @宽, @卖出方式, @制作标准, @制作方式, @产地, @处理工艺)
 """
 method = 'post'
 
 [get-material-type-by-detail]
 sql = """
   select * from `material_detail`
-  where 长 = @长 and 宽 = @宽 and 高 = @高 and 类别1 = @类别1 and 类别2 = @类别2 and 类别3 = @类别3 and 类别4 = @类别4 and 材质 = @材质 and 卖出方式 = @卖出方式 and 制作标准 = @制作标准 and 制作方式 = @制作方式 and 产地 = @产地 and 处理工艺 = @处理工艺 and 产地 = @产地
+  where 长 = @长 and 宽 = @宽 and 类别1 = @类别1 and 类别2 = @类别2 and 类别3 = @类别3 and 类别4 = @类别4 and 材质 = @材质 and 卖出方式 = @卖出方式 and 制作标准 = @制作标准 and 制作方式 = @制作方式 and 产地 = @产地 and 处理工艺 = @处理工艺 and 产地 = @产地
 """
 method = 'get'
 
