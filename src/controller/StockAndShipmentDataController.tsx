@@ -244,19 +244,19 @@ const StockAndShipmentDataController = () => {
     statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId.value });
 
     const params = {
-      materialType: materialType.value,
       type: stateless.type,
+      materialId: materialId.value.value,
       weight: weight.value,
       description: stateless.description,
-      extraCost: stateless.extraCost,
-      materialId: materialId.value.value,
-      materialQuantity: materialQuantity.value,
     };
 
     // todo: 本来应该遍历 stateful，看 error 是否为 true 来判断表单项是否有误
     // 但因为 stateful 此时尚未更新，所以暂时用硬编码来判断
     let hasError = false;
     if (params.materialId === '' || params.materialId === -1) {
+      hasError = true;
+    }
+    if (!weight) {
       hasError = true;
     }
 
