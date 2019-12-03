@@ -63,14 +63,10 @@ export interface FormStatefulProps {
   materialType: SelectFormItemProps;
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
-  // 材料单价
-  materialCost: InputFormItemProps;
   // 长宽重
   length: InputFormItemProps;
   width: InputFormItemProps;
   weight: InputFormItemProps;
-  // 运费
-  freight: InputFormItemProps;
   // 数量。出库用
   materialQuantity: InputFormItemProps;
   // 卖出方式。零售 / 批量
@@ -79,19 +75,15 @@ export interface FormStatefulProps {
 
 export type FormStatefulFields =
   | 'materialType' // 类别
-  | 'materialCost' // 材料单价
   | 'length' // 长宽重
   | 'width'
   | 'weight'
-  | 'freight' // 运费
   | 'sellType' // 卖出方式
   | 'materialId' // 材质
   | 'materialQuantity'; // 数量。出库用
 
 export type FormStatelessFields =
   | 'type' // 出库为 1，入库为 0
-  | 'predictWeight' // 预估重量
-  | 'extraCost' // 其他费用
   | 'description' // 备注
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价
@@ -103,14 +95,10 @@ const initialStateful: FormStatefulProps = {
   materialType: SELECT_FORM_ITEM_DEFAULT_VALUE,
   // 材质
   materialId: Object.assign({}, SELECT_FORM_ITEM_DEFAULT_VALUE, { value: { text: '', value: -1 } }),
-  // 材料单价
-  materialCost: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 长宽重
   length: INPUT_FORM_ITEM_DEFAULT_VALUE,
   width: INPUT_FORM_ITEM_DEFAULT_VALUE,
   weight: INPUT_FORM_ITEM_DEFAULT_VALUE,
-  // 运费
-  freight: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 数量。出库用
   materialQuantity: INPUT_FORM_ITEM_DEFAULT_VALUE,
   // 卖出方式
@@ -244,45 +232,31 @@ const StockAndShipmentDataController = () => {
   }, []);
 
   const verifySubmitParams = () => {
-    const {
-      materialType,
-      materialCost,
-      length,
-      width,
-      weight,
-      freight,
-      sellType,
-      materialId,
-      materialQuantity,
-    } = stateful;
+    const { materialType, length, width, weight, sellType, materialId, materialQuantity } = stateful;
     statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
-    statefulDispatch({ type: 'input', key: 'materialCost', data: materialCost });
     statefulDispatch({ type: 'input', key: 'length', data: length });
     if (width.value === '' && materialType.value !== -1) {
       statefulDispatch({ type: 'input', key: 'width', data: width });
     }
     statefulDispatch({ type: 'input', key: 'weight', data: weight });
-    statefulDispatch({ type: 'input', key: 'freight', data: freight });
     statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
     statefulDispatch({ type: 'autoComplete', key: 'materialId', data: materialId.value });
 
     const params = {
-      materialType: materialType.value,
-      materialCost: materialCost.value,
       type: stateless.type,
-      weight: weight.value,
-      freight: freight.value,
-      description: stateless.description,
-      extraCost: stateless.extraCost,
       materialId: materialId.value.value,
-      materialQuantity: materialQuantity.value,
+      weight: weight.value,
+      description: stateless.description,
     };
 
     // todo: 本来应该遍历 stateful，看 error 是否为 true 来判断表单项是否有误
     // 但因为 stateful 此时尚未更新，所以暂时用硬编码来判断
     let hasError = false;
     if (params.materialId === '' || params.materialId === -1) {
+      hasError = true;
+    }
+    if (!weight) {
       hasError = true;
     }
 
@@ -312,11 +286,11 @@ const StockAndShipmentDataController = () => {
   };
 
   const handleSpecificationInputBlur = () => {
-    const { materialQuantity, materialCost, weight } = stateful;
+    const { materialQuantity, weight } = stateful;
     const price = calcuteForPredictPrice(
       parseFloat(weight.value) || 0,
       stateless.costFee || 0,
-      parseFloat(stateless.type === 0 ? materialCost.value : (stateless.materialCost as any)) || 0,
+      parseFloat(stateless.materialCost + ''),
       parseFloat(materialQuantity.value) || 0,
     );
     statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
@@ -382,31 +356,17 @@ const StockAndShipmentDataController = () => {
   };
 
   const hanldeCloseMessage = () => {
-    const {
-      materialQuantity,
-      materialCost,
-      length,
-      width,
-      weight,
-      freight,
-      materialType,
-      sellType,
-      materialId,
-    } = stateful;
+    const { materialQuantity, length, width, weight, materialType, sellType, materialId } = stateful;
     viewStateDispatch({ type: 'reset' });
 
-    statelessDispatch({ type: 'predictWeight', data: 0 });
-    statelessDispatch({ type: 'extraCost', data: 0 });
     statelessDispatch({ type: 'description', data: '' });
     statelessDispatch({ type: 'costFee', data: 0 });
     statelessDispatch({ type: 'predictPrice', data: 0 });
 
     statefulDispatch({ type: 'input', key: 'materialQuantity', data: materialQuantity });
-    statefulDispatch({ type: 'input', key: 'materialCost', data: materialCost });
     statefulDispatch({ type: 'input', key: 'length', data: length });
     statefulDispatch({ type: 'input', key: 'width', data: width });
     statefulDispatch({ type: 'input', key: 'weight', data: weight });
-    statefulDispatch({ type: 'input', key: 'freight', data: freight });
 
     statefulDispatch({ type: 'select', key: 'materialType', data: materialType });
     statefulDispatch({ type: 'select', key: 'sellType', data: sellType });
@@ -416,13 +376,12 @@ const StockAndShipmentDataController = () => {
   const commonFormData = {
     materialType: stateful.materialType,
     materialId: stateful.materialId,
-    materialCost: stateless.type === 0 ? stateful.materialCost : (stateless.materialCost as any),
+    materialCost: stateless.materialCost,
     type: stateless.type,
     length: stateful.length,
     width: stateful.width,
     weight: stateful.weight,
     predictWeight: stateless.predictWeight,
-    freight: stateful.freight,
     extraCost: stateless.extraCost,
     description: stateless.description,
     sellType: stateful.sellType,

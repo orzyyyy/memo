@@ -38,17 +38,13 @@ export type CommonBoundFormDataProps = {
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
-  materialCost: InputFormItemProps;
+  materialCost: number;
   // 长宽重
   length: InputFormItemProps;
   width: InputFormItemProps;
   weight: InputFormItemProps;
-  // 运费
-  freight: InputFormItemProps;
   // 数量。出库用
   materialQuantity: InputFormItemProps;
-  // 其他费用
-  extraCost: number;
   // 备注
   description: string;
   // 卖出方式。零售 / 批量
@@ -72,9 +68,6 @@ export type MaterialInputSpecificationProps =
   | 'width'
   | 'weight'
   | 'materialCost' // 单价
-  | 'freight' // 运费
-  | 'extraCost'
-  | 'predictWeight' // 预估重量
   | 'materialQuantity' // 数量
   | 'costFee' // 锯费
   | 'predictPrice' // 预估总价

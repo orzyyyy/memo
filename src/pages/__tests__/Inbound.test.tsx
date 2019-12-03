@@ -6,15 +6,13 @@ describe('Inbound', () => {
   const formData = {
     materialType: { value: 0, error: false, message: 'error' },
     materialId: { value: { value: 0, text: 'text' }, error: false, message: 'error' },
-    materialCost: { value: '100', error: false, message: 'error' },
+    materialCost: 100,
     type: 0,
     length: { value: '101', error: false, message: 'error' },
     width: { value: '102', error: false, message: 'error' },
     height: { value: '103', error: false, message: 'error' },
     weight: { value: '104', error: false, message: 'error' },
     predictWeight: 105,
-    freight: { value: '106', error: false, message: 'error' },
-    extraCost: 107,
     description: '',
     round: { value: 0, error: false, message: 'error' },
     sellType: { value: 0, error: false, message: 'error' },
@@ -131,9 +129,9 @@ describe('Inbound', () => {
         .at(3)
         .text(),
     ).toBe('材质 *');
-    expect(wrapper.find('label')).toHaveLength(8);
+    expect(wrapper.find('label')).toHaveLength(5);
 
     wrapper.setProps({ formData: Object.assign({}, formData, { calcuteType: 2 }) });
-    expect(wrapper.find('label')).toHaveLength(8);
+    expect(wrapper.find('label')).toHaveLength(5);
   });
 });
