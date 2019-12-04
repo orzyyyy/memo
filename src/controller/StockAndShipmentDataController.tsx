@@ -55,7 +55,7 @@ export interface FormStatelessProps {
   // 预估总价
   predictPrice: number;
   // 出库时的单价
-  materialCost: number;
+  materialCost: string;
 }
 
 export interface FormStatefulProps {
@@ -120,7 +120,7 @@ const initialStateless: FormStatelessProps = {
   // 预估总价
   predictPrice: '' as any,
   // 出库时的单价
-  materialCost: '' as any,
+  materialCost: '',
 };
 
 const initialViewState: ViewProps = {
@@ -256,7 +256,7 @@ const StockAndShipmentDataController = () => {
     if (params.materialId === '' || params.materialId === -1) {
       hasError = true;
     }
-    if (!weight) {
+    if (!weight.value) {
       hasError = true;
     }
 
@@ -290,7 +290,7 @@ const StockAndShipmentDataController = () => {
     const price = calcuteForPredictPrice(
       parseFloat(weight.value) || 0,
       stateless.costFee || 0,
-      parseFloat(stateless.materialCost + ''),
+      parseFloat(stateless.materialCost),
       parseFloat(materialQuantity.value) || 0,
     );
     statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
@@ -329,6 +329,16 @@ const StockAndShipmentDataController = () => {
           data: item,
         });
       } else if (stateType === 'stateless') {
+        if (key === 'materialCost') {
+          const { materialQuantity, weight } = stateful;
+          const price = calcuteForPredictPrice(
+            parseFloat(weight.value) || 0,
+            stateless.costFee || 0,
+            parseFloat(item.value),
+            parseFloat(materialQuantity.value) || 0,
+          );
+          statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
+        }
         statelessDispatch({ type: key as FormStatelessFields, data: item.value });
       }
     };

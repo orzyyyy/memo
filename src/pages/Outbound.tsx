@@ -9,6 +9,7 @@ import {
   renderPickerForMaterialId,
   getSubmitButton,
   InputFormItemProps,
+  getSelectItem,
 } from '../utils/boundUtil';
 
 export type OutboundProps = {
@@ -24,6 +25,7 @@ export type OutboundProps = {
 
 const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur, loading }: OutboundProps) => {
   const classes = useStyles();
+  const materialCostOption = formData.materialCost.split(',').map(item => ({ text: item, value: item }));
 
   return (
     <div className={classes.container}>
@@ -63,19 +65,18 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         stateType: 'stateful',
       })}
 
-      {getInputItem({
+      {getSelectItem({
         key: 'materialCost',
         error: false,
         inputLabel: '单价',
-        inputValue: formData.materialCost,
-        helperText: '',
+        value: materialCostOption.length ? materialCostOption[0].value : '',
+        options: materialCostOption,
         xs: 6,
-        unit: '元/kg',
-        readOnly: true,
+        // unit: '元/kg',
         required: false,
         onChange,
-        onBlur: onSpecificationInputBlur,
         classes,
+        fullWidth: true,
         stateType: 'stateless',
       })}
 
