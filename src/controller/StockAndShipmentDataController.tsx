@@ -5,9 +5,9 @@ import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import {
   FormControlType,
   renderMessage,
-  MenuItemOption,
   SelectFormItemProps,
   InputFormItemProps,
+  FormOptionsProps,
 } from '../utils/boundUtil';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -16,16 +16,6 @@ const SELECT_FORM_ITEM_DEFAULT_VALUE = { value: -1, error: false, message: '' };
 const INPUT_FORM_ITEM_DEFAULT_VALUE = { value: '', error: false, message: '' };
 
 export type FormItemStatus = 'stateful' | 'stateless';
-
-// 菜单项
-export interface MenuOptionProps {
-  // 类别
-  materialTypeOption: MenuItemOption[];
-  // 材质
-  materialIdOption: any[];
-  // 卖出方式
-  sellTypeOption: MenuItemOption[];
-}
 
 // 控制页面返回状态的属性
 export interface ViewProps {
@@ -130,13 +120,14 @@ const initialViewState: ViewProps = {
 };
 
 // 菜单项
-const initialMenuOptionState: MenuOptionProps = {
+const initialMenuOptionState: FormOptionsProps = {
   // 类别菜单项
   materialTypeOption: [],
   // 材质菜单项
   materialIdOption: [],
   // 卖出方式菜单项
   sellTypeOption: [],
+  materialCostOption: [],
 };
 
 const statefulReducer = (
@@ -204,12 +195,13 @@ const viewStateReducer = (state: ViewProps, action: { type: 'reset' | 'success' 
 };
 
 const menuOptionReducer = (
-  state: MenuOptionProps,
+  state: FormOptionsProps,
   action: {
     type:
       | 'materialTypeOption' // 类别
       | 'sellTypeOption' // 卖出方式
-      | 'materialIdOption'; // 材质
+      | 'materialIdOption' // 材质
+      | 'materialCostOption'; // 单价区间
     data: any;
   },
 ) => ({ ...state, [action.type]: action.data });
@@ -318,9 +310,11 @@ const StockAndShipmentDataController = () => {
     const handleWithState = (type: FormControlType) => {
       if (stateType === 'stateful') {
         if (controllType === 'autoComplete' && stateless.type === 1) {
+          const materialCostOption = item.materialCost.split(',').map((item: string) => ({ text: item, value: item }));
+          menuOptionDispatch({ type: 'materialCostOption', data: materialCostOption });
           statelessDispatch({
             type: 'materialCost',
-            data: item.materialCost,
+            data: materialCostOption.length ? materialCostOption[0].value : '',
           });
         }
         statefulDispatch({
@@ -337,6 +331,7 @@ const StockAndShipmentDataController = () => {
             parseFloat(item.value),
             parseFloat(materialQuantity.value) || 0,
           );
+          // 出库时选择单价后重新计算总价
           statelessDispatch({ type: 'predictPrice', data: parseFloat(price.toFixed(1)) });
         }
         statelessDispatch({ type: key as FormStatelessFields, data: item.value });
@@ -401,9 +396,10 @@ const StockAndShipmentDataController = () => {
     loading: viewState.loading,
     onSubmit: handleSubmit,
     formOptions: {
-      materialType: menuOptionState.materialTypeOption,
-      materialId: menuOptionState.materialIdOption,
-      sellType: menuOptionState.sellTypeOption,
+      materialTypeOption: menuOptionState.materialTypeOption,
+      materialIdOption: menuOptionState.materialIdOption,
+      sellTypeOption: menuOptionState.sellTypeOption,
+      materialCostOption: menuOptionState.materialCostOption,
     },
     onChange: handleChange,
     onSpecificationInputBlur: handleSpecificationInputBlur,

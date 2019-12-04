@@ -25,7 +25,6 @@ export type OutboundProps = {
 
 const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationInputBlur, loading }: OutboundProps) => {
   const classes = useStyles();
-  const materialCostOption = formData.materialCost.split(',').map(item => ({ text: item, value: item }));
 
   return (
     <div className={classes.container}>
@@ -69,8 +68,8 @@ const Outbound = ({ onSubmit, formData, formOptions, onChange, onSpecificationIn
         key: 'materialCost',
         error: false,
         inputLabel: '单价',
-        value: materialCostOption.length ? materialCostOption[0].value : '',
-        options: materialCostOption,
+        value: formData.materialCost,
+        options: formOptions.materialCostOption || [],
         xs: 6,
         // unit: '元/kg',
         required: false,

@@ -51,9 +51,12 @@ export type CommonBoundFormDataProps = {
   sellType: SelectFormItemProps;
 };
 export type FormOptionsProps = {
-  materialType: MenuItemOption[];
-  materialId: any[];
-  sellType: MenuItemOption[];
+  materialTypeOption: MenuItemOption[];
+  materialIdOption: any[];
+  sellTypeOption: MenuItemOption[];
+  // 由于单价会有浮动，库表存储格式为 `num1,num2,num3`,
+  // 传入组件时需要先分割成数组
+  materialCostOption?: MenuItemOption[];
 };
 export type FormControlType = 'input' | 'autoComplete' | 'select';
 export type CommonBoundProps = {
@@ -303,35 +306,30 @@ export const getSelectItem = ({
   stateType: FormItemStatus;
   fullWidth?: boolean;
   options: MenuItemOption[];
-}) => {
-  return (
-    <Grid item xs={xs} key={key}>
-      <FormControl required={required} fullWidth={fullWidth} className={classes.formControl} error={error}>
-        <InputLabel shrink={shrink || !!value || value === 0}>{inputLabel}</InputLabel>
-        <Select
-          value={value}
-          onChange={e =>
-            onChange({
-              item: {
-                text: e.target.value,
-                value: e.target.value,
-              },
-              controllType: 'select',
-              key,
-              stateType,
-            })
-          }
-        >
-          {options.map(({ text, value }) => (
-            <MenuItem value={value} key={text + '-' + value}>
-              {text}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Grid>
-  );
-};
+}) => (
+  <Grid item xs={xs} key={key}>
+    <FormControl required={required} fullWidth={fullWidth} className={classes.formControl} error={error}>
+      <InputLabel shrink={shrink || !!value || value === 0}>{inputLabel}</InputLabel>
+      <Select
+        value={value}
+        onChange={e =>
+          onChange({
+            item: { text: e.target.value, value: e.target.value },
+            controllType: 'select',
+            key,
+            stateType,
+          })
+        }
+      >
+        {options.map(({ text, value }) => (
+          <MenuItem value={value} key={text + '-' + value}>
+            {text}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  </Grid>
+);
 
 // 确认材质
 export const renderPickerForMaterialId = ({
@@ -347,7 +345,7 @@ export const renderPickerForMaterialId = ({
   onSpecificationInputBlur: () => void;
   onChange: (item: OnChangeProps) => void;
 }) => {
-  const materialIdOptions = filterMaterialIdOptions(formOptions.materialId, formData);
+  const materialIdOptions = filterMaterialIdOptions(formOptions.materialIdOption, formData);
 
   return (
     <>
@@ -364,7 +362,7 @@ export const renderPickerForMaterialId = ({
             })
           }
         >
-          {formOptions.materialType.map(({ text, value }) => (
+          {formOptions.materialTypeOption.map(({ text, value }) => (
             <MenuItem value={value} key={text + '-' + value}>
               {text}
             </MenuItem>
@@ -388,7 +386,7 @@ export const renderPickerForMaterialId = ({
             })
           }
         >
-          {formOptions.sellType.map(({ text, value }) => (
+          {formOptions.sellTypeOption.map(({ text, value }) => (
             <MenuItem value={value} key={text + '-' + value}>
               {text}
             </MenuItem>
