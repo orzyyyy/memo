@@ -60,15 +60,15 @@ exports[`Inbound render correctly 1`] = `
   }
   formOptions={
     Object {
-      "materialId": Array [],
-      "materialType": Array [
+      "materialCostOption": Array [],
+      "materialIdOption": Array [],
+      "materialTypeOption": Array [
         Object {
           "text": "materialTypeText",
           "value": "materialTypeValue",
         },
       ],
-      "roundType": Array [],
-      "sellType": Array [],
+      "sellTypeOption": Array [],
     }
   }
   loading={false}

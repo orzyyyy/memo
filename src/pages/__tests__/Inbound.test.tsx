@@ -20,10 +20,10 @@ describe('Inbound', () => {
   };
 
   const formOptions = {
-    materialType: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
-    materialId: [],
-    roundType: [],
-    sellType: [],
+    materialTypeOption: [{ text: 'materialTypeText', value: 'materialTypeValue' }],
+    materialIdOption: [],
+    sellTypeOption: [],
+    materialCostOption: [],
   };
 
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
