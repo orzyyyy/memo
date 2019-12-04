@@ -38,7 +38,7 @@ export type CommonBoundFormDataProps = {
   // 材质
   materialId: { value: { text: string; value: any }; error: boolean; message: string };
   // 材料单价
-  materialCost: number;
+  materialCost: string;
   // 长宽重
   length: InputFormItemProps;
   width: InputFormItemProps;
@@ -274,6 +274,63 @@ const renderSpecification = ({
     default:
       return null;
   }
+};
+
+export const getSelectItem = ({
+  key,
+  error,
+  inputLabel,
+  xs,
+  value,
+  required = true,
+  onChange,
+  classes,
+  shrink = false,
+  stateType,
+  fullWidth = false,
+  options,
+}: {
+  key: MaterialInputSpecificationProps;
+  error: boolean;
+  inputLabel: string;
+  xs: GridSize;
+  value: string | number;
+  unit?: string;
+  required?: boolean;
+  onChange: (item: OnChangeProps) => void;
+  classes: any;
+  shrink?: boolean;
+  stateType: FormItemStatus;
+  fullWidth?: boolean;
+  options: MenuItemOption[];
+}) => {
+  return (
+    <Grid item xs={xs} key={key}>
+      <FormControl required={required} fullWidth={fullWidth} className={classes.formControl} error={error}>
+        <InputLabel shrink={shrink || !!value || value === 0}>{inputLabel}</InputLabel>
+        <Select
+          value={value}
+          onChange={e =>
+            onChange({
+              item: {
+                text: e.target.value,
+                value: e.target.value,
+              },
+              controllType: 'select',
+              key,
+              stateType,
+            })
+          }
+        >
+          {options.map(({ text, value }) => (
+            <MenuItem value={value} key={text + '-' + value}>
+              {text}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Grid>
+  );
 };
 
 // 确认材质

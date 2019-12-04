@@ -6,7 +6,7 @@ describe('Inbound', () => {
   const formData = {
     materialType: { value: 0, error: false, message: 'error' },
     materialId: { value: { value: 0, text: 'text' }, error: false, message: 'error' },
-    materialCost: 100,
+    materialCost: '100',
     type: 0,
     length: { value: '101', error: false, message: 'error' },
     width: { value: '102', error: false, message: 'error' },

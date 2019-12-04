@@ -1,7 +1,7 @@
 [goods-in]
 sql = """
-  insert into `goods_in_and_out` (type, weight, patch, material_cost, description, material_id)
-  values (@type, @weight, @@dateStamp, @materialCost, @description, @materialId);
+  insert into `goods_in_and_out` (type, weight, patch, description, material_id)
+  values (@type, @weight, @@dateStamp, @description, @materialId);
 
   update `material_detail` set 库存重量 = @newWeight
   where id = @materialId;

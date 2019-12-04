@@ -15,7 +15,7 @@ exports[`Inbound render correctly 1`] = `
         "message": "error",
         "value": "101",
       },
-      "materialCost": 100,
+      "materialCost": "100",
       "materialId": Object {
         "error": false,
         "message": "error",
