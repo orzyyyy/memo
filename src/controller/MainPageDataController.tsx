@@ -77,7 +77,7 @@ const MainPageDataController = () => {
     setDataSource(
       dataSource
         .filter((item: MappingProps) => item.visible !== false)
-        .sort((a: any, b: any) => b.modifyTime - a.modifyTime),
+        .sort((a: any, b: any) => b.createTime - a.createTime),
     );
   };
 
