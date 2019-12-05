@@ -113,7 +113,6 @@ const MainPageDataController = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
-      alert(`${item.category} 更新完成`);
     } else {
       const response = await fetch('document/add', {
         body: JSON.stringify(item),
@@ -121,7 +120,6 @@ const MainPageDataController = () => {
         headers: { 'Content-Type': 'application/json' },
       });
       id = await response.text();
-      alert(`${item.category} 初始化完成`);
     }
     handleModalCancel();
     if (item.category === 'mapping') {
