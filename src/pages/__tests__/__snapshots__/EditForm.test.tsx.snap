@@ -97,7 +97,9 @@ exports[`EditForm empty dataItem 1`] = `
         <Portal
           containerInfo={
             <div>
-              <div>
+              <div
+                class="rc-dialog-root"
+              >
                 <div
                   class="rc-dialog-mask rc-dialog-fade-appear"
                 />
@@ -236,6 +238,7 @@ exports[`EditForm empty dataItem 1`] = `
             className=""
             closable={true}
             destroyOnClose={false}
+            focusTriggerAfterClose={true}
             footer={
               <div
                 style={
@@ -283,7 +286,9 @@ exports[`EditForm empty dataItem 1`] = `
             title="新建文档"
             visible={true}
           >
-            <div>
+            <div
+              className="rc-dialog-root"
+            >
               <Animate
                 animation={Object {}}
                 component=""
@@ -732,7 +737,9 @@ exports[`EditForm render correctly 1`] = `
         <Portal
           containerInfo={
             <div>
-              <div>
+              <div
+                class="rc-dialog-root"
+              >
                 <div
                   class="rc-dialog-mask rc-dialog-fade-appear"
                 />
@@ -871,6 +878,7 @@ exports[`EditForm render correctly 1`] = `
             className=""
             closable={true}
             destroyOnClose={false}
+            focusTriggerAfterClose={true}
             footer={
               <div
                 style={
@@ -918,7 +926,9 @@ exports[`EditForm render correctly 1`] = `
             title="新建文档"
             visible={true}
           >
-            <div>
+            <div
+              className="rc-dialog-root"
+            >
               <Animate
                 animation={Object {}}
                 component=""
