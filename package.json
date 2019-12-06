@@ -20,7 +20,7 @@
     "build:analyse": "rimraf dist && cross-env BUILD_ENV=analyse nino koei",
     "build:business": "rimraf dist && cross-env BUILD_ENV=business nino koei",
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
-    "clean": "rimraf node_modules package-lock.json bin dist && npm i",
+    "clean": "rimraf node_modules package-lock.json bin dist",
     "codecov": "nino test --codecov",
     "compile:server": "tsc -p server",
     "d": "npm run compile:server -- --watch",
