@@ -31,7 +31,7 @@ CREATE TABLE `dictionary` (
   `description` text,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,18 +44,14 @@ DROP TABLE IF EXISTS `goods_in_and_out`;
 CREATE TABLE `goods_in_and_out` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '批号。每批只会有一次运输消耗',
   `type` int(11) DEFAULT NULL COMMENT '入库 / 出库',
-  `height` decimal(10,2) DEFAULT NULL,
+  `material_id` int(11) DEFAULT NULL COMMENT '材料类别',
   `weight` decimal(10,2) DEFAULT NULL,
   `patch` varchar(45) DEFAULT NULL,
-  `material_cost` decimal(10,2) DEFAULT NULL COMMENT '材料单价',
-  `freight` decimal(10,2) DEFAULT NULL COMMENT '运费',
   `description` varchar(45) DEFAULT NULL,
-  `extra_cost` decimal(10,2) DEFAULT NULL COMMENT '其他费用',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `modify_time` datetime DEFAULT CURRENT_TIMESTAMP,
-  `material_id` int(11) DEFAULT NULL COMMENT '材料类别',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,19 +71,26 @@ CREATE TABLE `material_detail` (
   `制作方式` int(11) DEFAULT '0',
   `制作标准` int(11) DEFAULT '0',
   `处理工艺` int(11) DEFAULT '0',
-  `单价` decimal(9,2) DEFAULT '0.00',
+  `单价` varchar(50) DEFAULT '0.00',
   `锯费` decimal(9,2) DEFAULT '0.00',
   `长` decimal(9,2) DEFAULT '0.00',
   `宽` decimal(9,2) DEFAULT '0.00',
-  `高` decimal(9,2) DEFAULT '0.00',
   `产地` varchar(45) DEFAULT '',
   `库存长度` decimal(9,2) DEFAULT '0.00',
   `库存重量` decimal(9,2) DEFAULT '0.00',
   `卖出方式` int(11) DEFAULT '0',
   `是否校准` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1768 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3209 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping events for database 'toy-box'
+--
+
+--
+-- Dumping routines for database 'toy-box'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -98,4 +101,4 @@ CREATE TABLE `material_detail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-15 16:54:29
+-- Dump completed on 2019-12-06 10:20:50
