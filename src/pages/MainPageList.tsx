@@ -35,7 +35,7 @@ const MainPageList = ({
             <a
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
-                onEdit(item, true);
+                onEdit(item, true, { x: e.pageX, y: e.pageY });
               }}
               style={{ marginRight: 16 }}
             >
