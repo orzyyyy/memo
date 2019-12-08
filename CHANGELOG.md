@@ -6,6 +6,77 @@
 
 ---
 
+## 1.1.2
+
+`2019-12-08`
+
+- 版本主要任务
+
+  - 加入 business
+
+    - 以部分不敏感的实际业务、逐渐抽象状态形成表单通用组件
+    - 结合对实施记录中问题的思考和对业务页面点击轨迹的记录，逐步脱离现有组件库，形成业务化的交互设计
+
+  - 去 ui 库
+
+    - 学习并尝试实现个性化的设计
+
+- ci
+
+  - 使用 peaceiris/actions-gh-pages 部署 gh-pages [a4f6499](http://github.com/orzyyyy/memo/commit/a4f6499)
+  - 每天早上八点部署一次 gh-pages [55a6d80](http://github.com/orzyyyy/memo/commit/55a6d80)
+  - 使用 github action cache
+  - 分别检查对 gh-pages 和 netlify 的检查 [07c5199](http://github.com/orzyyyy/memo/commit/07c5199)
+
+- document
+
+  - view
+
+    - 增加 meta 信息尝试增强 seo [df9c1d8](http://github.com/orzyyyy/memo/commit/df9c1d8)
+    - 增加 google analytics 和 hotjar 的 html 脚本
+    - 修复详情页中 github-markdown 不生效的问题 [e4c08d0](http://github.com/orzyyyy/memo/commit/e4c08d0e80637303a2b74368cd5bc6f2446a65a3)
+    - 移除 antd [b6856e6](http://github.com/orzyyyy/memo/commit/b6856e6723d4f0b30036b33387c3f81873384a8c)
+      - Icon 和 monent.js 无法被 tree-shaking 的问题到 4.0-prepare 仍未解决
+    - list 以创建时间排序，而不是更新时间 [0ea85d8](http://github.com/orzyyyy/memo/commit/0ea85d8105e006ee698a77cfc288eefc54ac6dd3)
+
+  - server
+
+    - 在 service 的构造器中注入实例 [b97e9a4](http://github.com/orzyyyy/memo/commit/b97e9a43bb37429dde4eb538936cee004af7c12f)
+    - 分离 mapping 和 markdown 的更新方法 [520150f](http://github.com/orzyyyy/memo/commit/520150f16ff9e663ef0ee20aba0d635190fa8c33)
+
+- exhentai
+
+  - 修复文件夹名称过长时服务崩溃的问题 [834a80f](http://github.com/orzyyyy/memo/commit/834a80f2272ccd83cf2e55f332c6b2f0b24b0b15)
+  - 线上移除 exhentai 菜单项 [bc715f2](http://github.com/orzyyyy/memo/commit/bc715f22d6bda5c143ab4618b187313f6a2aa6e1)
+
+- business
+
+  - view
+
+    - 实施记录 [76f663e](https://orzyyyy.github.io/memo/markdown/76f663e411865e7811cf56576abbd3e6)
+    - 完成对单一表单复杂状态的重构 [867507c](https://orzyyyy.github.io/memo/markdown/867507c5d6c8e4a29ed2b5151a9f9d6a)
+    - 增加 dev 的 live reload [67c945d](http://github.com/orzyyyy/memo/commit/67c945d1d0be92a406a092fb2367f56769a69311)
+    - 增加 mui 的 loading 页 [76b3c93](http://github.com/orzyyyy/memo/commit/76b3c935dc62e0d4bb08fa1528ba6b25eba26bea)
+
+  - server
+
+    - 增加通用接口，实现只依赖 sql 和数据库连接的增删改查 [838a6cb](http://github.com/orzyyyy/memo/commit/838a6cb820f9507bba504ea538f15add6a311aba)
+    - 增加系统变量，@@dateStamp [49ce44d](http://github.com/orzyyyy/memo/commit/49ce44dbcd5998537c61769970fe18a6892eeb93)
+    - 加入 pm2 [6a62a71](http://github.com/orzyyyy/memo/commit/6a62a71e0a86b8f4df9c187c019bf3619f3fd550)
+
+- 其他
+
+  - 使用 ts/tsx 重构测试用例
+  - 分离构建时的环境变量 [02e9391](http://github.com/orzyyyy/memo/commit/02e93916b71c648ce2d454ed7c70cb6b313de42d)
+
+    - 在 html 中注入变量控制构建环境，而不是在 router 中硬编码
+    - 相关配置的分离
+
+  - 运行测试时，不再运行构建产物中的用例 [f63aa35](http://github.com/orzyyyy/memo/commit/f63aa350cd8cdabff56528d3a55406ac0fb2ca0e)
+  - 构建结束后自动打开本地地址 [6044e62](http://github.com/orzyyyy/memo/commit/6044e620b3d96973d633120b840fec2dd9198fbc)
+
+---
+
 ## 1.1.1
 
 `2019-10-07`
