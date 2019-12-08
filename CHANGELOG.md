@@ -13,9 +13,12 @@
 - 版本主要任务
 
   - 加入 business
+
     - 以部分不敏感的实际业务、逐渐抽象状态形成表单通用组件
     - 结合对实施记录中问题的思考和对业务页面点击轨迹的记录，逐步脱离现有组件库，形成业务化的交互设计
+
   - 去 ui 库
+
     - 学习并尝试实现个性化的设计
 
 - ci
@@ -37,6 +40,7 @@
     - list 以创建时间排序，而不是更新时间 [0ea85d8](http://github.com/orzyyyy/memo/commit/0ea85d8105e006ee698a77cfc288eefc54ac6dd3)
 
   - server
+
     - 在 service 的构造器中注入实例 [b97e9a4](http://github.com/orzyyyy/memo/commit/b97e9a43bb37429dde4eb538936cee004af7c12f)
     - 分离 mapping 和 markdown 的更新方法 [520150f](http://github.com/orzyyyy/memo/commit/520150f16ff9e663ef0ee20aba0d635190fa8c33)
 
@@ -60,11 +64,14 @@
     - 增加系统变量，@@dateStamp [49ce44d](http://github.com/orzyyyy/memo/commit/49ce44dbcd5998537c61769970fe18a6892eeb93)
     - 加入 pm2 [6a62a71](http://github.com/orzyyyy/memo/commit/6a62a71e0a86b8f4df9c187c019bf3619f3fd550)
 
-* 其他
+- 其他
+
   - 使用 ts/tsx 重构测试用例
   - 分离构建时的环境变量 [02e9391](http://github.com/orzyyyy/memo/commit/02e93916b71c648ce2d454ed7c70cb6b313de42d)
+
     - 在 html 中注入变量控制构建环境，而不是在 router 中硬编码
     - 相关配置的分离
+
   - 运行测试时，不再运行构建产物中的用例 [f63aa35](http://github.com/orzyyyy/memo/commit/f63aa350cd8cdabff56528d3a55406ac0fb2ca0e)
   - 构建结束后自动打开本地地址 [6044e62](http://github.com/orzyyyy/memo/commit/6044e620b3d96973d633120b840fec2dd9198fbc)
 
