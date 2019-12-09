@@ -17,6 +17,7 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
       }
     >
       <textarea
+        className="markdown-body"
         onChange={[Function]}
         style={
           Object {
