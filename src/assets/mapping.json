@@ -253,9 +253,9 @@
   },
   {
     "createTime": 1573431918741,
-    "modifyTime": 1573472574790,
+    "modifyTime": 1575848093498,
     "id": "867507c5d6c8e4a29ed2b5151a9f9d6a",
-    "title": "对简单表单中大量状态进行分类重构的记录",
+    "title": "对单一表单中大量状态进行分类重构的记录",
     "type": "编程",
     "subType": "其他",
     "category": "markdown"
