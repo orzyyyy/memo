@@ -42,7 +42,8 @@
     "start:business": "npm-run-all --parallel server dev:business",
     "stop": "pm2 stop memo-server",
     "test": "nino test",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "update-sql": "node scripts/copy-resource && npm run restart"
   },
   "pre-commit": [
     "lint-staged"
