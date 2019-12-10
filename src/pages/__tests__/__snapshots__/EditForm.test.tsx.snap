@@ -283,6 +283,7 @@ exports[`EditForm empty dataItem 1`] = `
             }
             onClose={[Function]}
             prefixCls="rc-dialog"
+            switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
           >
@@ -923,6 +924,7 @@ exports[`EditForm render correctly 1`] = `
             }
             onClose={[Function]}
             prefixCls="rc-dialog"
+            switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
           >
