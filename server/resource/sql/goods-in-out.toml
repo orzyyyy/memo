@@ -33,6 +33,12 @@ sql = """
   select * from material_detail where 类别1 = @materialType
 """
 
+[get-detail-info]
+sql = """
+  select id as value, 材质 as text, 单价 as price, 锯费 as costFee from material_detail
+  where 类别1 = @materialType and 卖出方式 = @sellType and 长 = @length and 宽 = @width
+"""
+
 [get-material-type]
 sql = """
   select text, value from dictionary where sign = @sign
