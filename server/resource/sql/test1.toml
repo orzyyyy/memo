@@ -1,6 +1,0 @@
-[test1]
-sql = """
-  SELECT * FROM dictionary where value = @value and
-  id = @id;
-"""
-method = 'post'

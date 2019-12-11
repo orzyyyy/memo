@@ -21,3 +21,6 @@ dateFormat = 'yyyy-MM-dd HH:mm:ss'
 
 [document]
 mappingFilePath = 'src/assets/mapping.json'
+
+[server]
+port = 9099

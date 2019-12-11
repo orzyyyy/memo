@@ -110,30 +110,6 @@ jobs:
 
     needs: setup
 
-  site-business:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: restore cache from package-lock.json
-        uses: actions/cache@v1
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
-
-      - name: build
-        run: npm run build:business
-
-    needs: setup
-
   case:
     runs-on: ubuntu-latest
 

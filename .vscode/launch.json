@@ -8,8 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/bin/index.js",
-      "env": { "BUILD_ENV": "toy" }
+      "program": "${workspaceFolder}/bin/index.js"
     }
   ]
 }
