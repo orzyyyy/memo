@@ -7,7 +7,6 @@ module.exports = {
       autorestart: true,
       watch: ['bin', 'dist'],
       max_memory_restart: '512M',
-      env: { BUILD_ENV: 'toy' },
       out_file: 'server/log/app-out.log',
       error_file: 'server/log/app-error.log',
     },

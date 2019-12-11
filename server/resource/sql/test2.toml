@@ -1,3 +1,0 @@
-[test2]
-sql = 'SELECT * FROM dictionary where value = 1;'
-method = 'get'

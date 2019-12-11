@@ -20,7 +20,6 @@ const getEntry = () => {
     'markdown-editor': handleWithPrefix('src/router/MarkdownEditorDataController.tsx'),
     'mapping-detail': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
     'mapping-editor': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
-    'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx'),
     ninoninoni: handleWithPrefix('src'),
   };
   const result = {
@@ -28,8 +27,6 @@ const getEntry = () => {
     analyse: common,
     'gh-pages': common,
     dev: common,
-    business: { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
-    'business-dev': { 'stock-shipment': handleWithPrefix('src/router/StockAndShipmentDataController.tsx') },
   };
   return result[buildEnv];
 };
@@ -38,17 +35,6 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
   const commonHtmlWebpackProps = {
     template: handleWithPrefix('src/index.html'),
   };
-  const HtmlWebpackPropsForBusiness = new HtmlWebpackPlugin({
-    ...commonHtmlWebpackProps,
-    ...customedHtmlWebpackProps,
-    filename: 'stock-shipment/index.html',
-    chunks: ['stock-shipment'],
-    title: `${author}'s business`,
-    description: `${author}'s business`,
-  });
-  if (buildEnv === 'business' || buildEnv === 'business-dev') {
-    return [HtmlWebpackPropsForBusiness];
-  }
 
   const mainPageProps = [
     new HtmlWebpackPlugin({
@@ -60,10 +46,6 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
       description: `${author}'s ${name}`,
     }),
   ];
-  // Build `stock-shipment` only in dev and business
-  if (buildEnv === 'dev') {
-    mainPageProps.push(HtmlWebpackPropsForBusiness);
-  }
   const detailPageProps = [];
   const editorPageProps = [];
 

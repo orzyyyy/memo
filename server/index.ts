@@ -6,7 +6,9 @@ import { createServer } from 'http';
 import IO from 'socket.io';
 import path from 'path';
 import DecoratorRouter from './middleware/DecoratorRouter';
-import CheckSqlTomlResource from './middleware/CheckSqlTomlResource';
+import { info } from './utils/log';
+import { getTargetResource } from './utils/resource';
+const config = getTargetResource('server');
 
 const app = new Koa();
 const server = createServer(app.callback());
@@ -21,8 +23,9 @@ io.on('connection', socket => {
 app.use(BodyParser());
 app.use(DecoratorRouter(path.join(__dirname, 'controller')));
 app.use(KoaStatic(joinWithRootPath('dist')));
-app.use(CheckSqlTomlResource(path.join(__dirname, 'resource/sql')));
 
-server.listen(9099);
+const port = config.server.port;
+server.listen(port);
+info(`listen at ${port}.`);
 
 export { server };
