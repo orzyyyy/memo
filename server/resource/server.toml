@@ -23,4 +23,5 @@ dateFormat = 'yyyy-MM-dd HH:mm:ss'
 mappingFilePath = 'src/assets/mapping.json'
 
 [server]
-port = 9099
+devPort = 9099
+prodPort = 9098

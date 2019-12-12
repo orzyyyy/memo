@@ -24,7 +24,7 @@
     "compile:server": "npm run pre:server && tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "npm-run-all clean build:gh-pages pub",
-    "dev": "rimraf dist && cross-env BUILD_ENV=dev nino koei -w -d",
+    "dev": "rimraf dist && nino koei -w -d",
     "go": "pm2 start",
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
@@ -36,7 +36,7 @@
     "run:server": "node bin",
     "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
-    "start": "npm-run-all --parallel server dev",
+    "start": "cross-env BUILD_ENV=dev npm-run-all --parallel server dev",
     "stop": "pm2 stop memo-server",
     "test": "nino test",
     "tsc": "tsc"
