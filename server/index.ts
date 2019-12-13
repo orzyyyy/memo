@@ -27,6 +27,6 @@ app.use(KoaStatic(joinWithRootPath('dist')));
 
 const port = buildEnv === 'dev' ? config.server.devPort : config.server.prodPort;
 server.listen(port);
-info(`listen at ${port}.`);
+info(`listen at http://localhost:${port}/`);
 
 export { server };
