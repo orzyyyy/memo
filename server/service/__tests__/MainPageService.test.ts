@@ -18,6 +18,6 @@ describe('MainPageService', () => {
 
   it('getDist', () => {
     const result = service.getDist();
-    expect(result).toBe('dist');
+    expect(result).toBeTruthy();
   });
 });

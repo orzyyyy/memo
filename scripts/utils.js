@@ -27,6 +27,7 @@ const getEntry = () => {
     analyse: common,
     'gh-pages': common,
     dev: common,
+    private: common,
   };
   return result[buildEnv];
 };
