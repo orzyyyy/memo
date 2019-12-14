@@ -19,6 +19,7 @@
     "build": "rimraf dist && cross-env BUILD_ENV=netlify nino koei",
     "build:analyse": "rimraf dist && cross-env BUILD_ENV=analyse nino koei",
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
+    "build:private": "rimraf dist && cross-env BUILD_ENV=private nino koei",
     "clean": "rimraf node_modules package-lock.json bin dist",
     "codecov": "nino test --codecov",
     "compile:server": "npm run pre:server && tsc -p server",

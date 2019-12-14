@@ -7,6 +7,6 @@ describe('MainPageController', () => {
       response: { body: '' },
       type: '',
     });
-    expect(result).toBe('dist');
+    expect(result).toBeTruthy();
   });
 });
