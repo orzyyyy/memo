@@ -13,5 +13,6 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "outDir": "dist"
-  }
+  },
+  "exclude": ["**/__tests__/*"]
 }
