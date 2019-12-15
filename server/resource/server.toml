@@ -16,9 +16,6 @@ linuxProxy = 'http://127.0.0.1:12333'
 thumbnailClass = '.gdtm a'
 listInfoPath = 'src/assets/exhentai/'
 
-[log]
-dateFormat = 'yyyy-MM-dd HH:mm:ss'
-
 [document]
 mappingFilePath = 'src/assets/mapping.json'
 

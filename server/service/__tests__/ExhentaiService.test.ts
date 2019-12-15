@@ -11,7 +11,6 @@ import MockDate from 'mockdate';
 import { ExHentaiInfoItem } from '../../controller/ExhentaiController';
 
 describe('ExhentaiService', () => {
-  const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
   let service: any;
 
   beforeEach(async () => {
@@ -23,10 +22,6 @@ describe('ExhentaiService', () => {
   afterEach(() => {
     MockDate.reset();
     service = null;
-  });
-
-  afterAll(() => {
-    logSpy.mockRestore();
   });
 
   it('initBrowser and setExHentaiCookie', async () => {
