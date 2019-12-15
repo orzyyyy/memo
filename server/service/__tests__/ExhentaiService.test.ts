@@ -22,6 +22,7 @@ describe('ExhentaiService', () => {
 
   afterEach(() => {
     MockDate.reset();
+    service = null;
   });
 
   afterAll(() => {

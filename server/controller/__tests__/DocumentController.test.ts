@@ -1,4 +1,3 @@
-import Controller from '../DocumentController';
 import MockDate from 'mockdate';
 
 const defaultPostCtx = {
@@ -6,7 +5,17 @@ const defaultPostCtx = {
   response: { body: '' },
 };
 
+let Controller;
+
 describe('DocumentController', () => {
+  beforeEach(() => {
+    Controller = require('../DocumentController').default;
+  });
+
+  afterEach(() => {
+    Controller = null;
+  });
+
   it('/update/mapping', async () => {
     defaultPostCtx.request.body = {
       layout: 'layout',

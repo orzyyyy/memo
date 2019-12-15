@@ -36,7 +36,7 @@
     "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
     "start": "cross-env BUILD_ENV=dev npm-run-all --parallel server dev",
-    "test": "nino test",
+    "test": "cross-env BUILD_ENV=test nino test",
     "tsc": "tsc"
   },
   "pre-commit": [
@@ -102,6 +102,7 @@
     "rimraf": "^3.0.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
+    "supertest": "^4.0.2",
     "toml": "^3.0.0",
     "typescript": "^3.7.2",
     "webpack-bundle-analyzer": "^3.6.0"

@@ -9,6 +9,10 @@ describe('DocumentService', () => {
     service = new Service();
   });
 
+  afterEach(() => {
+    service = null;
+  });
+
   it('updateMapping', () => {
     let result = service.updateMapping({
       id: 'b07b876e6050e333988404e268921906',

@@ -10,6 +10,7 @@ describe('MainPageService', () => {
 
   afterEach(() => {
     logSpy.mockReset();
+    service = null;
   });
 
   afterAll(() => {

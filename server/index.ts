@@ -38,7 +38,7 @@ app.use(DecoratorRouter(path.join(__dirname, 'controller')));
 app.use(KoaStatic(joinWithRootPath('dist')));
 
 const port = buildEnv === 'dev' ? config.server.devPort : config.server.prodPort;
-server.listen(port);
+buildEnv !== 'test' && server.listen(port);
 
 logger.info(`listen at http://localhost:${port}/`);
 
