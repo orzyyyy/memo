@@ -1,6 +1,8 @@
 import { Context } from 'koa';
 import fs from 'fs-extra';
 import path from 'path';
+import { getLogger } from '..';
+const logger = getLogger('server/middleware/DecoratorRouter.ts');
 
 const DecoratorRouter = (controllerRootPath: string, callback?: (url: string) => boolean) => async (
   { app }: Context,
@@ -15,6 +17,8 @@ const DecoratorRouter = (controllerRootPath: string, callback?: (url: string) =>
       if (callback) {
         flag = callback(controller);
       }
+
+      logger.trace(`request from ${controllerPath}`);
 
       if (flag) {
         app.use(require(controller).default.routes());

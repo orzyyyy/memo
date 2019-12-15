@@ -2,6 +2,8 @@ import Service from '../DocumentService';
 import path from 'path';
 const mapping = require('../../../src/assets/mapping.json');
 
+jest.mock('../../middleware/DecoratorRouter', () => jest.fn);
+
 describe('DocumentService', () => {
   let service: any;
 
