@@ -5,6 +5,7 @@ const defaultPostCtx = {
   request: { body: {} },
   response: { body: '' },
 };
+
 describe('DocumentController', () => {
   it('/update/mapping', async () => {
     defaultPostCtx.request.body = {

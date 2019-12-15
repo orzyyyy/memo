@@ -1,6 +1,5 @@
 import path from 'path';
 import fs from 'fs-extra';
-import { error } from './log';
 import { format } from 'date-fns';
 
 export const joinWithRootPath = (paths: string | string[]) => {
@@ -19,17 +18,12 @@ export const writeIntoJsonFile = (url: string, content: any, spaces?: boolean) =
   });
 };
 
-export const readJsonFile = (url?: string | undefined | null): any => {
-  if (!url) {
-    error('url is undefined.');
-    throw Error;
-  }
+export const readJsonFile = (url: string) => {
   if (!fs.existsSync(url)) {
     return '';
   }
   const result = JSON.parse(fs.readFileSync(url).toString());
   if (result.length === 0) {
-    error(`file ${url} is empty.`);
     throw Error;
   }
   return result;

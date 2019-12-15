@@ -1,10 +1,4 @@
-import {
-  joinWithRootPath,
-  getTimeStamp,
-  getDateStamp,
-  readJsonFile,
-  writeIntoJsonFile,
-} from '../common';
+import { joinWithRootPath, getTimeStamp, getDateStamp, readJsonFile, writeIntoJsonFile } from '../common';
 import path from 'path';
 import fs from 'fs-extra';
 import MockDate from 'mockdate';
@@ -16,9 +10,7 @@ describe('util-common', () => {
     expect(joinWithRootPath('/test')).toBe(path.join(cwd + '/test'));
     expect(joinWithRootPath('./test')).toBe(path.join(cwd + '/test'));
     expect(joinWithRootPath(['test'])).toBe(path.join(cwd + '/test'));
-    expect(joinWithRootPath(['test', 'test2'])).toBe(
-      path.join(cwd + '/test/test2'),
-    );
+    expect(joinWithRootPath(['test', 'test2'])).toBe(path.join(cwd + '/test/test2'));
   });
 
   it('getTimeStamp and getDateStamp', () => {
@@ -31,10 +23,7 @@ describe('util-common', () => {
   it('readJsonFile', () => {
     const configFile = readJsonFile(joinWithRootPath('server/tsconfig.json'));
     expect(configFile.compilerOptions.outDir).toBe('../bin');
-    expect(readJsonFile).toThrowError();
-    expect(() =>
-      readJsonFile(path.join(__dirname, './empty.json')),
-    ).toThrowError();
+    expect(() => readJsonFile(path.join(__dirname, './empty.json'))).toThrowError();
   });
 
   it('writeIntoJsonFile', () => {
