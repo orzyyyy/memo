@@ -1,7 +1,16 @@
 import request from 'supertest';
-import { server } from '..';
+
+let server: any;
 
 describe('app entry', () => {
+  beforeEach(() => {
+    server = require('..').server;
+  });
+
+  afterEach(() => {
+    server = null;
+  });
+
   it('app works', done => {
     request(server)
       .get('/test')

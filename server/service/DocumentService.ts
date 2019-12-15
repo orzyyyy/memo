@@ -5,8 +5,10 @@ import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
 import { getWriteMappingPaths, DocumentCategoryProps } from '../utils/document';
 import { joinWithRootPath, readJsonFile, writeIntoJsonFile } from '../utils/common';
-import { success } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
+import { getLogger } from '..';
+const logger = getLogger('server/service/DocumentService.ts');
+
 const MappingDefaultValue = {
   position: {
     root: {
@@ -51,7 +53,7 @@ export default class DocumentService {
       result.push(newItem);
     }
     writeFilesPaths.map(item => writeIntoJsonFile(item, result, true));
-    success(`mapping updated => ${targetItem.id}`);
+    logger.info(`mapping updated => ${targetItem.id}`);
     return result;
   };
 
@@ -114,7 +116,7 @@ export default class DocumentService {
       if (category === 'mapping') {
         writeIntoJsonFile(item, content || MappingDefaultValue, true);
       }
-      success(`written completed => ${item}`);
+      logger.info(`written completed => ${item}`);
     }
   };
 

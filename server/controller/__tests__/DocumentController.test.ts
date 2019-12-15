@@ -1,11 +1,21 @@
-import Controller from '../DocumentController';
 import MockDate from 'mockdate';
 
 const defaultPostCtx = {
   request: { body: {} },
   response: { body: '' },
 };
+
+let Controller: any;
+
 describe('DocumentController', () => {
+  beforeEach(() => {
+    Controller = require('../DocumentController').default;
+  });
+
+  afterEach(() => {
+    Controller = null;
+  });
+
   it('/update/mapping', async () => {
     defaultPostCtx.request.body = {
       layout: 'layout',

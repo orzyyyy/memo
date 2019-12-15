@@ -2,7 +2,7 @@ import Service from '../MainPageService';
 
 describe('MainPageService', () => {
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-  let service: Service;
+  let service: any;
 
   beforeEach(async () => {
     service = new Service();
@@ -10,6 +10,7 @@ describe('MainPageService', () => {
 
   afterEach(() => {
     logSpy.mockReset();
+    service = null;
   });
 
   afterAll(() => {
@@ -17,7 +18,7 @@ describe('MainPageService', () => {
   });
 
   it('getDist', () => {
-    const result = service.getDist();
+    const result: any = service.getDist();
     expect(result).toBeTruthy();
   });
 });

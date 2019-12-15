@@ -1,4 +1,3 @@
-import { success, info } from '../utils/log';
 import { Controller, Request } from '../utils/decorator';
 import { writeIntoJsonFile, getTimeStamp, readJsonFile, joinWithRootPath } from '../utils/common';
 import ExhentaiService from '../service/ExhentaiService';
@@ -12,6 +11,8 @@ import {
 } from '../utils/exhentai';
 import path from 'path';
 import { Context } from 'koa';
+import { getLogger } from '..';
+const logger = getLogger('server/controller/ExhentaiController.ts');
 
 export interface ExHentaiInfoItem {
   name?: string;
@@ -36,7 +37,7 @@ export default class ExhentaiController {
     [`src/assets/exhentai/${createTime}`, `dist/assets/exhentai/${createTime}`].map(item =>
       writeIntoJsonFile(item, results),
     );
-    success('fetch completed');
+    logger.info('fetch completed');
     return `./assets/exhentai/${createTime}.json`;
   }
 
@@ -53,17 +54,17 @@ export default class ExhentaiController {
     await service.gotoTargetPage(url, true);
     const prefixPath = await service.ensureFolderForSave();
 
-    info(`start fetching thumbnai urls from: ${url}`);
+    logger.info(`start fetching thumbnai urls from: ${url}`);
 
     const restDetailUrls: string[] = [url, ...(await service.getUrlFromPaginationInfo())];
     const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(restDetailUrls);
     writeIntoJsonFile(`${prefixPath}/restDetailUrls`, thumbnailUrls);
 
-    info('start fetching target images');
+    logger.info('start fetching target images');
 
     const images = await service.fetchImageUrls(thumbnailUrls);
 
-    success('fetch all image completed');
+    logger.info('fetch all image completed');
 
     writeIntoJsonFile(`${prefixPath}/detailImageUrls`, images);
 
@@ -107,12 +108,12 @@ export default class ExhentaiController {
     const targetComic = getEmptyRestDetailUrlInfo();
     for (const jsonUrl of targetComic) {
       const thumbnailUrls = readJsonFile(jsonUrl);
-      info('start fetching target images');
+      logger.info('start fetching target images');
 
       const images = await service.fetchImageUrls(thumbnailUrls);
       await service.downloadImages(images, path.dirname(jsonUrl));
 
-      success('fetch all image completed');
+      logger.info('fetch all image completed');
     }
   }
 }

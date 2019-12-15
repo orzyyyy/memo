@@ -3,8 +3,9 @@ import fs from 'fs-extra';
 import { dirname, join } from 'path';
 import glob from 'glob';
 import { getTargetResource } from './resource';
-import { trace, error, success } from './log';
 import request from 'request';
+import { getLogger } from '..';
+const logger = getLogger('server/utils/exhentai.ts');
 
 const isWin = process.platform === 'win32';
 const { winProxy, linuxProxy, requestTime } = getTargetResource('server').exhentai;
@@ -107,7 +108,7 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
   const pageIndex = i + 1;
   const targetUrl = joinWithRootPath(`${prefixPath}/${pageIndex}.jpg`);
   fs.ensureFileSync(targetUrl);
-  trace('download begin: ' + item);
+  logger.trace('download begin: ' + item);
   const imageStream = fs.createWriteStream(targetUrl);
   const timer = Date.now();
   let status = true;
@@ -116,24 +117,24 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
       const newTimer = Date.now();
       if (newTimer - timer >= requestTime && fs.existsSync(targetUrl) && status) {
         imageStream.close();
-        trace(`unlink: ${pageIndex}.jpg`);
-        error('time out at page index: ' + pageIndex);
+        logger.trace(`unlink: ${pageIndex}.jpg`);
+        logger.error('time out at page index: ' + pageIndex);
         status = false;
       }
     })
     .on('error', function() {
-      error('unexpected error occar, will re-request later');
+      logger.error('unexpected error occar, will re-request later');
       fs.unlinkSync(targetUrl);
-      trace(`unlink: ${pageIndex}.jpg`);
+      logger.trace(`unlink: ${pageIndex}.jpg`);
       handleDownloadStream(imageUrl, i, counter, prefixPath);
     })
     .pipe(
       imageStream.on('finish', function() {
         if (status) {
           counter.push(pageIndex);
-          success(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
+          logger.info(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);
           if (counter.length === imageUrl.length) {
-            success('download completed');
+            logger.info('download completed');
           }
         } else {
           fs.unlinkSync(targetUrl);

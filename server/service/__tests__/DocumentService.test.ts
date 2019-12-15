@@ -3,10 +3,14 @@ import path from 'path';
 const mapping = require('../../../src/assets/mapping.json');
 
 describe('DocumentService', () => {
-  let service: Service;
+  let service: any;
 
   beforeEach(() => {
     service = new Service();
+  });
+
+  afterEach(() => {
+    service = null;
   });
 
   it('updateMapping', () => {
@@ -24,7 +28,7 @@ describe('DocumentService', () => {
       },
       true,
     );
-    expect(result.filter(item => item.id === 'b07b876e6050e333988404e268921906')).toEqual([]);
+    expect(result.filter((item: any) => item.id === 'b07b876e6050e333988404e268921906')).toEqual([]);
   });
 
   it('getOriginContent', () => {

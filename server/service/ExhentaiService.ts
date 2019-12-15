@@ -1,10 +1,11 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs-extra';
-import { success, info, error, trace } from '../utils/log';
 import { getTargetResource } from '../utils/resource';
 import { ExHentaiInfoItem } from '../controller/ExhentaiController';
 import { joinWithRootPath, getDateStamp } from '../utils/common';
 import { handleDownloadStream } from '../utils/exhentai';
+import { getLogger } from '..';
+const logger = getLogger('server/service/ExhentaiService.ts');
 
 export interface InfoListProps<T> {
   currentResult: T;
@@ -54,14 +55,14 @@ export default class ExhentaiService {
     });
     this.browser = browser;
 
-    success('launch puppeteer');
+    logger.info('launch puppeteer');
 
     const page = await browser.newPage();
     this.page = page;
 
     this.setExHentaiCookie();
 
-    success('set cookie');
+    logger.info('set cookie');
 
     return { page, browser };
   };
@@ -96,7 +97,7 @@ export default class ExhentaiService {
     const folderToSaveImages = joinWithRootPath(prefixPath);
     fs.ensureDirSync(folderToSaveImages);
 
-    success(`check ${prefixPath} for saving images`);
+    logger.info(`check ${prefixPath} for saving images`);
 
     return prefixPath;
   };
@@ -113,7 +114,7 @@ export default class ExhentaiService {
         throw Error('time out at page index: ' + pageIndex);
       }
     } catch (err) {
-      error(err);
+      logger.error(err);
       return {
         currentResult: prevResult,
         failed: true,
@@ -152,9 +153,9 @@ export default class ExhentaiService {
     const infoList: InfoListProps<T> = await getData(pageIndex, result, url);
     const { waitTimeAfterError } = this.config;
     if (infoList.failed) {
-      trace(`re-request after ${waitTimeAfterError} ms`);
+      logger.trace(`re-request after ${waitTimeAfterError} ms`);
       await this.page.waitFor(waitTimeAfterError);
-      trace('re-request start');
+      logger.trace('re-request start');
       return false;
     }
     return infoList.currentResult;
@@ -166,7 +167,7 @@ export default class ExhentaiService {
     for (let i = 0; i < maxPageIndex; i++) {
       const pageIndex = i + 1;
       const targetUrl = this.config.href + i;
-      info(`fetching pageIndex => ${pageIndex}`);
+      logger.info(`fetching pageIndex => ${pageIndex}`);
 
       let target: ExHentaiInfoItem[] | boolean = true;
       do {
@@ -178,13 +179,13 @@ export default class ExhentaiService {
       if (result.length > 0) {
         const currentItem = result[result.length - 1];
         if (currentItem.postTime < postTime) {
-          info(`get newest page now => ${pageIndex}, at ${currentItem.detailUrl}`);
-          info(`thumbnailUrl is ${currentItem.thumbnailUrl}`);
+          logger.info(`get newest page now => ${pageIndex}, at ${currentItem.detailUrl}`);
+          logger.info(`thumbnailUrl is ${currentItem.thumbnailUrl}`);
           break;
         }
       }
 
-      success(`fetch completed => ${pageIndex}`);
+      logger.info(`fetch completed => ${pageIndex}`);
 
       await this.page.waitFor(waitTime);
     }
@@ -244,7 +245,7 @@ export default class ExhentaiService {
       const thumbnailUrls: string[] = await this.getAllThumbnaiUrls();
       result.push(...thumbnailUrls);
 
-      info('image length: ' + result.length);
+      logger.info('image length: ' + result.length);
 
       await this.page.waitFor(this.config.waitTime);
     }
@@ -256,7 +257,7 @@ export default class ExhentaiService {
     for (let i = 0; i < thumbnailUrls.length; i++) {
       const item = thumbnailUrls[i];
       await this.gotoTargetPage(item);
-      info(`fetching image url => ${item}`);
+      logger.info(`fetching image url => ${item}`);
 
       let target: string | string[] | boolean = true;
       do {
@@ -277,7 +278,7 @@ export default class ExhentaiService {
         throw Error('time out at page index: ' + pageIndex);
       }
     } catch (err) {
-      error(err);
+      logger.error(err);
       return {
         currentResult: prevResult,
         failed: true,

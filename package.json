@@ -21,7 +21,7 @@
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
     "build:private": "rimraf dist && cross-env BUILD_ENV=private nino koei",
     "clean": "rimraf node_modules package-lock.json bin dist",
-    "codecov": "nino test --codecov",
+    "codecov": "cross-env BUILD_ENV=test nino test --codecov",
     "compile:server": "npm run pre:server && tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "npm-run-all clean build:gh-pages pub",
@@ -36,7 +36,7 @@
     "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
     "start": "cross-env BUILD_ENV=dev npm-run-all --parallel server dev",
-    "test": "nino test",
+    "test": "cross-env BUILD_ENV=test nino test",
     "tsc": "tsc"
   },
   "pre-commit": [
@@ -85,6 +85,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lint-staged": "^9.4.2",
+    "log4js": "^6.1.0",
     "marked": "^0.8.0",
     "mini-xmind": "^1.4.2",
     "mockdate": "^2.0.5",

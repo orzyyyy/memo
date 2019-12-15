@@ -1,4 +1,3 @@
-import Controller from '../ExhentaiController';
 import MockDate from 'mockdate';
 
 const defaultPostCtx: any = {
@@ -7,7 +6,18 @@ const defaultPostCtx: any = {
   params: { key: 'test1' },
   query: { id: 1 },
 };
+
+let Controller: any;
+
 describe('ExhentaiController', () => {
+  beforeEach(() => {
+    Controller = require('../ExhentaiController').default;
+  });
+
+  afterEach(() => {
+    Controller = null;
+  });
+
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
 
   afterAll(() => {
