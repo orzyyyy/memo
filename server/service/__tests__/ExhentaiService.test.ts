@@ -12,7 +12,7 @@ import { ExHentaiInfoItem } from '../../controller/ExhentaiController';
 
 describe('ExhentaiService', () => {
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-  let service: Service;
+  let service: any;
 
   beforeEach(async () => {
     service = new Service();

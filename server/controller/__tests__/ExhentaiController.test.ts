@@ -7,7 +7,7 @@ const defaultPostCtx: any = {
   query: { id: 1 },
 };
 
-let Controller;
+let Controller: any;
 
 describe('ExhentaiController', () => {
   beforeEach(() => {

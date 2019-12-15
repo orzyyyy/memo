@@ -5,7 +5,7 @@ const defaultPostCtx = {
   response: { body: '' },
 };
 
-let Controller;
+let Controller: any;
 
 describe('DocumentController', () => {
   beforeEach(() => {

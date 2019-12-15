@@ -21,7 +21,7 @@
     "build:gh-pages": "rimraf dist && cross-env BUILD_ENV=gh-pages nino koei",
     "build:private": "rimraf dist && cross-env BUILD_ENV=private nino koei",
     "clean": "rimraf node_modules package-lock.json bin dist",
-    "codecov": "nino test --codecov",
+    "codecov": "cross-env BUILD_ENV=test nino test --codecov",
     "compile:server": "npm run pre:server && tsc -p server",
     "d": "npm run compile:server -- --watch",
     "deploy": "npm-run-all clean build:gh-pages pub",

@@ -1,6 +1,6 @@
 import request from 'supertest';
 
-let server = null;
+let server: any;
 
 describe('app entry', () => {
   beforeEach(() => {

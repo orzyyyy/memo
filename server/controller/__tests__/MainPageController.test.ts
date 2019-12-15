@@ -1,4 +1,4 @@
-let Controller;
+let Controller: any;
 
 describe('MainPageController', () => {
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('MainPageController', () => {
   });
 
   it('return dist', async () => {
-    const result = await (Controller as any).stack[0].stack[0]({
+    const result = await Controller.stack[0].stack[0]({
       request: { body: {} },
       response: { body: '' },
       type: '',
