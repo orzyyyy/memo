@@ -4,4 +4,9 @@ import App from './router';
 
 const MOUNT_NODE = document.getElementById('root');
 
-ReactDOM.render(<App />, MOUNT_NODE);
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  MOUNT_NODE,
+);
