@@ -5,7 +5,6 @@ import { joinWithRootPath } from './utils/common';
 import { createServer } from 'http';
 import IO from 'socket.io';
 import path from 'path';
-import DecoratorRouter from './middleware/DecoratorRouter';
 import { getTargetResource } from './utils/resource';
 import { configure, getLogger } from 'log4js';
 
@@ -18,6 +17,9 @@ configure({
     default: { appenders: ['output', 'console'], level: 'ALL' },
   },
 });
+
+// DecoratorRouter need a logger, so it should not export before logger
+import DecoratorRouter from './middleware/DecoratorRouter';
 
 const logger = getLogger('server/index.ts');
 const config = getTargetResource('server');
