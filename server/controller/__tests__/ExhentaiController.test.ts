@@ -1,3 +1,4 @@
+import Controller from '../ExhentaiController';
 import MockDate from 'mockdate';
 
 const defaultPostCtx: any = {
@@ -7,17 +8,9 @@ const defaultPostCtx: any = {
   query: { id: 1 },
 };
 
-let Controller: any;
+jest.mock('../../middleware/DecoratorRouter', () => jest.fn);
 
 describe('ExhentaiController', () => {
-  beforeEach(() => {
-    Controller = require('../ExhentaiController').default;
-  });
-
-  afterEach(() => {
-    Controller = null;
-  });
-
   const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
 
   afterAll(() => {

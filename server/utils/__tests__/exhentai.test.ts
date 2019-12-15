@@ -1,6 +1,8 @@
 import { handleDownloadStream, getEmptyRestDetailUrlInfo } from '../exhentai';
 import MockDate from 'mockdate';
 
+jest.mock('../../middleware/DecoratorRouter', () => jest.fn);
+
 describe('exhentai', () => {
   it('handleDownloadStream', () => {
     MockDate.set(new Date('2222-04-09T00:00:00'));

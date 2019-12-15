@@ -69,7 +69,6 @@
     "@types/request": "^2.48.3",
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
-    "@types/supertest": "^2.0.8",
     "blueimp-md5": "^2.12.0",
     "chalk": "^3.0.0",
     "core-js": "^3.4.7",
@@ -103,7 +102,6 @@
     "rimraf": "^3.0.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "supertest": "^4.0.2",
     "toml": "^3.0.0",
     "typescript": "^3.7.2",
     "webpack-bundle-analyzer": "^3.6.0"

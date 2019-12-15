@@ -10,6 +10,8 @@ const { ensureDirSync, ensureFileSync } = require('../__mocks__/fs-extra');
 import MockDate from 'mockdate';
 import { ExHentaiInfoItem } from '../../controller/ExhentaiController';
 
+jest.mock('../../middleware/DecoratorRouter', () => jest.fn);
+
 describe('ExhentaiService', () => {
   let service: any;
 
