@@ -33,9 +33,8 @@
     "prettier": "nino prettier",
     "pub": "gh-pages -d dist",
     "run:server": "node bin",
-    "server": "npm-run-all compile:server run:server",
     "sort": "npx sort-package-json",
-    "start": "cross-env BUILD_ENV=dev npm-run-all --parallel server dev",
+    "start": "npm run compile:server && wait-on bin && cross-env BUILD_ENV=dev npm-run-all --parallel run:server dev",
     "test": "cross-env BUILD_ENV=test nino test",
     "tsc": "tsc"
   },
@@ -104,6 +103,7 @@
     "socket.io-client": "^2.3.0",
     "toml": "^3.0.0",
     "typescript": "^3.7.2",
+    "wait-on": "^3.3.0",
     "webpack-bundle-analyzer": "^3.6.0"
   }
 }
