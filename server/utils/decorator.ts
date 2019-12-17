@@ -7,7 +7,7 @@ export type HttpMehtod = 'get' | 'post' | 'put' | 'delete';
 export function Controller(prefix: string, notUsedFunctions: string[] = []) {
   const router: any = new KoaRouter();
   if (prefix) {
-    router.prefix(prefix);
+    router.prefix('/api/memo' + prefix);
   }
   return function(target: any) {
     const propsList = Object.getOwnPropertyDescriptors(target.prototype);

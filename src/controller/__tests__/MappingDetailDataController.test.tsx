@@ -7,7 +7,7 @@ describe('MappingDetailDataController', () => {
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
   beforeEach(() => {
-    fetchMock.mock('/document/update', {});
+    fetchMock.mock('/api/memo/document/update', {});
     fetchMock.mock('/mapping//.json', { test: 1 });
   });
 

@@ -29,7 +29,7 @@ const MarkdownEditorDataController = () => {
       category: 'markdown',
       format: true,
     };
-    const response = await fetch('../document/update/content', {
+    const response = await fetch('/api/memo/document/update/content', {
       body: JSON.stringify(params),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
