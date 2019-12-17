@@ -7,7 +7,7 @@ describe('MarkdownEditorDataController', () => {
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
   beforeEach(() => {
-    fetchMock.mock('/document/update', {});
+    fetchMock.mock('/api/memo/document/update', {});
     fetchMock.mock('/markdown//.md', { test: 1 });
   });
 

@@ -25,18 +25,19 @@ describe('MainPageDataController', () => {
   });
 
   beforeEach(() => {
+    const prefix = '/api/memo';
     fetchMock.mock('./assets/mapping.json', mapping);
     fetchMock.mock('./assets/sider.json', sider);
-    fetchMock.mock('/exhentai/dateSet', ['20190624084116', '20190624111055']);
+    fetchMock.mock(prefix + '/exhentai/dateSet', ['20190624084116', '20190624111055']);
     fetchMock.mock('./assets/exhentai/20190624084116.json', exhentaiDetailArr);
     fetchMock.mock('./assets/exhentai/20190624111055.json', exhentaiDetailArr);
-    fetchMock.mock('/document/delete', {});
-    fetchMock.mock('/document/update/mapping', 'success');
-    fetchMock.mock('/document/update/content', 'content');
-    fetchMock.mock('/document/add', 'test');
-    fetchMock.mock('/document/hide', 'test');
-    fetchMock.mock('/exhentai/download', 'success');
-    fetchMock.mock('/exhentai', 'success');
+    fetchMock.mock(prefix + '/document/delete', {});
+    fetchMock.mock(prefix + '/document/update/mapping', 'success');
+    fetchMock.mock(prefix + '/document/update/content', 'content');
+    fetchMock.mock(prefix + '/document/add', 'test');
+    fetchMock.mock(prefix + '/document/hide', 'test');
+    fetchMock.mock(prefix + '/exhentai/download', 'success');
+    fetchMock.mock(prefix + '/exhentai', 'success');
   });
 
   afterAll(() => {

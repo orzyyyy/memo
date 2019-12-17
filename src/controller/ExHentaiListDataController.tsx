@@ -12,7 +12,7 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
     return 'failed';
   }
   alert('response before post');
-  await fetch('exhentai/download', {
+  await fetch('/api/memo/exhentai/download', {
     body: JSON.stringify({ url }),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

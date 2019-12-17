@@ -24,7 +24,7 @@ export interface MainPageDataControllerState {
 }
 
 const handleExhentaiLoadList = () => {
-  fetch('exhentai');
+  fetch('/api/memo/exhentai');
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
@@ -56,7 +56,7 @@ const MainPageDataController = () => {
 
   useEffect(() => {
     const getExhentaiDateSet = () => {
-      fetch('/exhentai/dateSet')
+      fetch('/api/memo/exhentai/dateSet')
         .then(response => response.json())
         .then(exhentaiDateSet => {
           handleExhentaiSelectChange(exhentaiDateSet.length ? exhentaiDateSet[0] : '');
@@ -88,7 +88,7 @@ const MainPageDataController = () => {
   };
 
   const handleDelete = async ({ id, category }: MappingProps) => {
-    await fetch('/document/delete', {
+    await fetch('/api/memo/document/delete', {
       method: 'DELETE',
       body: JSON.stringify({ id, category }),
       mode: 'cors',
@@ -108,13 +108,13 @@ const MainPageDataController = () => {
     let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
-      await fetch('document/update/mapping', {
+      await fetch('/api/memo/document/update/mapping', {
         body: JSON.stringify(Object.assign({}, dataItem, item)),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
     } else {
-      const response = await fetch('document/add', {
+      const response = await fetch('/api/memo/document/add', {
         body: JSON.stringify(item),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -130,7 +130,7 @@ const MainPageDataController = () => {
   };
 
   const handleHide = async ({ id }: MappingProps) => {
-    await fetch('document/hide', {
+    await fetch('/api/memo/document/hide', {
       body: JSON.stringify({ id }),
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
