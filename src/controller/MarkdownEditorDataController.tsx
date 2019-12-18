@@ -40,8 +40,8 @@ const MarkdownEditorDataController = () => {
 
   const [data, setData] = useFetchDocumentData(id, 'markdown-editor', handleOnSave);
 
-  const handleOnChange = (value: string) => {
-    setData(value);
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setData(e.target.value);
   };
 
   return <MarkdownEditor value={data} onChange={handleOnChange} onSave={handleOnSave} />;
