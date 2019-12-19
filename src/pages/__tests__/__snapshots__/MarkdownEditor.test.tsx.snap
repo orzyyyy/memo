@@ -16,16 +16,19 @@ exports[`MarkdownEditor render correctly 1`] = `
       }
     }
   >
-    <textarea
-      className="markdown-body"
-      onChange={[Function]}
-      style={
-        Object {
-          "marginRight": 24,
+    <LineNumber>
+      <textarea
+        className="markdown-body"
+        onChange={[MockFunction]}
+        onKeyUp={[Function]}
+        style={
+          Object {
+            "marginRight": 24,
+          }
         }
-      }
-      value="<ul><li>test</li></ul>"
-    />
+        value="<ul><li>test</li></ul>"
+      />
+    </LineNumber>
     <div
       className="content markdown-body"
       dangerouslySetInnerHTML={

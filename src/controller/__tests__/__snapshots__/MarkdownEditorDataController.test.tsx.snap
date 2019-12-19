@@ -16,15 +16,18 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
         }
       }
     >
-      <textarea
-        className="markdown-body"
-        onChange={[Function]}
-        style={
-          Object {
-            "marginRight": 24,
+      <LineNumber>
+        <textarea
+          className="markdown-body"
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          style={
+            Object {
+              "marginRight": 24,
+            }
           }
-        }
-      />
+        />
+      </LineNumber>
       <div
         className="content markdown-body"
         dangerouslySetInnerHTML={
