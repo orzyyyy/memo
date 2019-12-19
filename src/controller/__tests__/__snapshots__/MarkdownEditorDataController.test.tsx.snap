@@ -7,29 +7,25 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
     onSave={[Function]}
   >
     <div
-      style={
-        Object {
-          "display": "grid",
-          "fontSize": 16,
-          "gridTemplateColumns": "50% 50%",
-          "padding": 24,
-        }
-      }
+      className="markdown-editor-wrapper"
     >
-      <textarea
-        className="markdown-body"
-        onChange={[Function]}
-        style={
-          Object {
-            "marginRight": 24,
-          }
-        }
-      />
+      <LineNumber>
+        <textarea
+          className="markdown-body"
+          onChange={[Function]}
+          onKeyUp={[Function]}
+        />
+      </LineNumber>
       <div
         className="content markdown-body"
         dangerouslySetInnerHTML={
           Object {
             "__html": "",
+          }
+        }
+        style={
+          Object {
+            "overflow": "auto",
           }
         }
       />
