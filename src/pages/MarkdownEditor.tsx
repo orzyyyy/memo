@@ -23,17 +23,15 @@ const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
   };
 
   return (
-    <div style={{ display: 'grid', fontSize: 16, gridTemplateColumns: '50% 50%', padding: 24 }}>
+    <div className="markdown-editor-wrapper">
       <LineNumber>
-        <textarea
-          style={{ marginRight: 24 }}
-          className="markdown-body"
-          onChange={onChange}
-          value={value}
-          onKeyUp={onKeyUp}
-        />
+        <textarea className="markdown-body" onChange={onChange} value={value} onKeyUp={onKeyUp} />
       </LineNumber>
-      <div className="content markdown-body" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
+      <div
+        className="content markdown-body"
+        style={{ overflow: 'auto' }}
+        dangerouslySetInnerHTML={{ __html: marked(value || '') }}
+      />
     </div>
   );
 };

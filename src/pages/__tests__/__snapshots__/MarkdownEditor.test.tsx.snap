@@ -7,25 +7,13 @@ exports[`MarkdownEditor render correctly 1`] = `
   value="<ul><li>test</li></ul>"
 >
   <div
-    style={
-      Object {
-        "display": "grid",
-        "fontSize": 16,
-        "gridTemplateColumns": "50% 50%",
-        "padding": 24,
-      }
-    }
+    className="markdown-editor-wrapper"
   >
     <LineNumber>
       <textarea
         className="markdown-body"
         onChange={[MockFunction]}
         onKeyUp={[Function]}
-        style={
-          Object {
-            "marginRight": 24,
-          }
-        }
         value="<ul><li>test</li></ul>"
       />
     </LineNumber>
@@ -34,6 +22,11 @@ exports[`MarkdownEditor render correctly 1`] = `
       dangerouslySetInnerHTML={
         Object {
           "__html": "<ul><li>test</li></ul>",
+        }
+      }
+      style={
+        Object {
+          "overflow": "auto",
         }
       }
     />
