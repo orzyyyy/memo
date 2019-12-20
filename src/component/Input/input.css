@@ -1,0 +1,9 @@
+input {
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+input:hover {
+  border: 1px solid rgb(16, 142, 233);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
