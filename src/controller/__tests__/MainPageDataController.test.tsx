@@ -5,7 +5,17 @@ import fetchMock from 'fetch-mock';
 const mapping = require('../../assets/mapping.json');
 const sider = require('../../assets/sider.json');
 
+const originConfirm = window.confirm;
+
 describe('MainPageDataController', () => {
+  beforeEach(() => {
+    window.confirm = () => true;
+  });
+
+  afterEach(() => {
+    window.confirm = originConfirm;
+  });
+
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
   const exhentaiDetailArr = [
     {
@@ -70,11 +80,19 @@ describe('MainPageDataController', () => {
           .props()
           .onDownload({ url: 'test' });
         expect(result).toBe('success');
+
         result = await wrapper
           .find('ExHentaiList')
           .props()
           .onDownload({ url: false });
         expect(result).toBe('failed');
+
+        window.confirm = () => false;
+        result = await wrapper
+          .find('ExHentaiList')
+          .props()
+          .onDownload({ url: 'test' });
+        expect(result).toBe('cancel');
         done();
       });
     });

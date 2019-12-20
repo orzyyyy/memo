@@ -11,7 +11,10 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
     alert('地址为空');
     return 'failed';
   }
-  alert('response before post');
+  const shouldDownload = confirm('是否下载？');
+  if (!shouldDownload) {
+    return 'cancel';
+  }
   await fetch('/api/memo/exhentai/download', {
     body: JSON.stringify({ url }),
     method: 'POST',
