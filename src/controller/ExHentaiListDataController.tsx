@@ -13,7 +13,7 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
   }
   const shouldDownload = confirm('是否下载？');
   if (!shouldDownload) {
-    return 'failed';
+    return 'cancel';
   }
   await fetch('/api/memo/exhentai/download', {
     body: JSON.stringify({ url }),

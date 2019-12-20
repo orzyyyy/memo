@@ -92,7 +92,7 @@ describe('MainPageDataController', () => {
           .find('ExHentaiList')
           .props()
           .onDownload({ url: 'test' });
-        expect(result).toBe('failed');
+        expect(result).toBe('cancel');
         done();
       });
     });
