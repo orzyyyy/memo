@@ -152,14 +152,14 @@ exports[`EditForm empty dataItem 1`] = `
                             标题
                           </span>
                           <input
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 30px; width: 100%; border-radius: 0.25em;"
                             value="testTitle"
                           />
                           <span>
                             显示类别
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           >
                             <option
                               value="markdown"
@@ -176,7 +176,7 @@ exports[`EditForm empty dataItem 1`] = `
                             文档类别
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           >
                             <option
                               value="读书"
@@ -188,7 +188,7 @@ exports[`EditForm empty dataItem 1`] = `
                             文档子类
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           />
                         </div>
                       </div>
@@ -199,18 +199,18 @@ exports[`EditForm empty dataItem 1`] = `
                           style="display: grid; grid-template-columns: repeat(4, 25%);"
                         >
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             编辑
                           </button>
                           <div />
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             清空
                           </button>
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             确定
                           </button>
@@ -446,9 +446,8 @@ exports[`EditForm empty dataItem 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
-                                      "height": 32,
+                                      "borderRadius": "0.25em",
+                                      "height": 30,
                                       "width": "100%",
                                     }
                                   }
@@ -470,8 +469,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -505,8 +503,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -537,8 +534,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -566,8 +562,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -584,8 +579,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -603,8 +597,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -793,14 +786,14 @@ exports[`EditForm render correctly 1`] = `
                             标题
                           </span>
                           <input
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 30px; width: 100%; border-radius: 0.25em;"
                             value="testTitle"
                           />
                           <span>
                             显示类别
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           >
                             <option
                               value="markdown"
@@ -817,7 +810,7 @@ exports[`EditForm render correctly 1`] = `
                             文档类别
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           >
                             <option
                               value="读书"
@@ -829,7 +822,7 @@ exports[`EditForm render correctly 1`] = `
                             文档子类
                           </span>
                           <select
-                            style="background: white; height: 32px; width: 100%; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em;"
                           />
                         </div>
                       </div>
@@ -840,18 +833,18 @@ exports[`EditForm render correctly 1`] = `
                           style="display: grid; grid-template-columns: repeat(4, 25%);"
                         >
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             编辑
                           </button>
                           <div />
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             清空
                           </button>
                           <button
-                            style="background: white; height: 32px; width: 80px; border: 1px solid #e8e8e8;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em;"
                           >
                             确定
                           </button>
@@ -1087,9 +1080,8 @@ exports[`EditForm render correctly 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
-                                      "height": 32,
+                                      "borderRadius": "0.25em",
+                                      "height": 30,
                                       "width": "100%",
                                     }
                                   }
@@ -1111,8 +1103,7 @@ exports[`EditForm render correctly 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1146,8 +1137,7 @@ exports[`EditForm render correctly 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1178,8 +1168,7 @@ exports[`EditForm render correctly 1`] = `
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1207,8 +1196,7 @@ exports[`EditForm render correctly 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -1225,8 +1213,7 @@ exports[`EditForm render correctly 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -1244,8 +1231,7 @@ exports[`EditForm render correctly 1`] = `
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "background": "white",
-                                      "border": "1px solid #e8e8e8",
+                                      "borderRadius": "0.25em",
                                       "height": 32,
                                       "width": 80,
                                     }
