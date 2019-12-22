@@ -2,7 +2,7 @@ name: deploy
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 3 * * *'
 
 jobs:
   build:
@@ -18,11 +18,15 @@ jobs:
       - name: build
         run: npm run build:gh-pages
 
+      - name: change username
+        run: git config --global user.name "peko-bot"
+
+      - name: change email
+        run: git config --global user.email zy410419243+peko-bot@gmail.com
+
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.5.0
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
-        with:
-          emptyCommits: false
