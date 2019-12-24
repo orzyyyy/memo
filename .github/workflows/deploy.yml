@@ -26,5 +26,6 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
         with:
+          emptyCommits: false
           username: 'peko-bot'
           useremail: 'zy410419243+peko-bot@gmail.com'
