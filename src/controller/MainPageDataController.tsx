@@ -8,6 +8,8 @@ import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataControll
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
+import mapping from '../assets/mapping.json';
+import menuData from '../assets/sider.json';
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -22,6 +24,10 @@ export interface MainPageDataControllerState {
   exhentaiDateSet: string[];
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
+
+const dataSource = mapping
+  .filter((item: any) => item.visible !== false)
+  .sort((a: any, b: any) => b.createTime - a.createTime);
 
 const handleExhentaiLoadList = () => {
   fetch('/api/memo/exhentai');
@@ -38,8 +44,6 @@ const getExhentaiTargetDataSource = async (url: string) => {
 };
 
 const MainPageDataController = () => {
-  const [dataSource, setDataSource] = useState([]);
-  const [menuData, setMenuData] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
@@ -67,25 +71,7 @@ const MainPageDataController = () => {
     if (isLocal) {
       getExhentaiDateSet();
     }
-    getSider();
-    getMapping();
   }, [isLocal]);
-
-  const getMapping = async () => {
-    const response = await fetch('./assets/mapping.json');
-    const dataSource = await response.json();
-    setDataSource(
-      dataSource
-        .filter((item: MappingProps) => item.visible !== false)
-        .sort((a: any, b: any) => b.createTime - a.createTime),
-    );
-  };
-
-  const getSider = async () => {
-    const response = await fetch('./assets/sider.json');
-    const menuData = await response.json();
-    setMenuData(menuData);
-  };
 
   const handleDelete = async ({ id, category }: MappingProps) => {
     await fetch('/api/memo/document/delete', {
@@ -94,7 +80,6 @@ const MainPageDataController = () => {
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
     });
-    getMapping();
   };
 
   const handleEdit = (formDataItem?: any, visible?: boolean, pageInfo?: any) => {
@@ -135,8 +120,6 @@ const MainPageDataController = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-    getSider();
-    getMapping();
     alert('隐藏完成');
   };
 
@@ -153,7 +136,7 @@ const MainPageDataController = () => {
         siderSelectedKey={siderSelectedKey}
         onListItemClick={handleListItemClick}
         onDelete={handleDelete}
-        dataSource={dataSource}
+        dataSource={dataSource as any}
         onEdit={handleEdit}
         onHide={handleHide}
         isLocal={isLocal}
