@@ -24,6 +24,9 @@ jobs:
       - name: build
         run: npm run build:gh-pages
 
+      - name: debug
+        run: git config --list
+
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.5.0
         env:
