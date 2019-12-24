@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: set username and email
-        run: |
-          git config --global user.name "peko-bot"
-          git config --global user.email zy410419243+peko-bot@gmail.com
-
       - name: checkout
         uses: actions/checkout@master
 
@@ -34,4 +29,5 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
         with:
-          emptyCommits: false
+          username: 'peko-bot'
+          useremail: 'zy410419243+peko-bot@gmail.com'
