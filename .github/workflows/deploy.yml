@@ -1,8 +1,9 @@
 name: deploy
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -19,10 +20,12 @@ jobs:
         run: npm run build:gh-pages
 
       - name: deploy
-        uses: peaceiris/actions-gh-pages@v2.5.0
+        uses: peaceiris/actions-gh-pages@v2.8.0
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
         with:
           emptyCommits: false
+          username: 'peko-bot'
+          useremail: 'zy410419243+peko-bot@gmail.com'
