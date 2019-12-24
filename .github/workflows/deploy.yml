@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: set username and email
+        run: |
+          git config --global user.name "peko-bot"
+          git config --global user.email zy410419243+peko-bot@gmail.com
+
       - name: checkout
         uses: actions/checkout@master
 
@@ -20,9 +25,6 @@ jobs:
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.5.0
-        run: |
-          git config --global user.name "peko-bot"
-          git config --global user.email zy410419243+peko-bot@gmail.com
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
