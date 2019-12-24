@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches:
-      - ci
+      - master
 
 jobs:
   build:
@@ -18,9 +18,6 @@ jobs:
 
       - name: build
         run: npm run build:gh-pages
-
-      - name: debug
-        run: git config --list
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.8.0-0
