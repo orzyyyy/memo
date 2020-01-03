@@ -56,9 +56,9 @@ export default class ExhentaiController {
 
     logger.info(`start fetching thumbnai urls from: ${url}`);
 
-    const restDetailUrls: string[] = [url, ...(await service.getUrlFromPaginationInfo())];
-    const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(restDetailUrls);
-    writeIntoJsonFile(`${prefixPath}/restDetailUrls`, thumbnailUrls);
+    const list: string[] = [url, ...(await service.getUrlFromPaginationInfo())];
+    const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(list);
+    writeIntoJsonFile(`${prefixPath}/list`, thumbnailUrls);
 
     logger.info('start fetching target images');
 
@@ -66,7 +66,7 @@ export default class ExhentaiController {
 
     logger.info('fetch all image completed');
 
-    writeIntoJsonFile(`${prefixPath}/detailImageUrls`, images);
+    writeIntoJsonFile(`${prefixPath}/detail`, images);
 
     await service.downloadImages(images, prefixPath);
   }
@@ -76,8 +76,8 @@ export default class ExhentaiController {
     const { name, dateStamp } = ctx.query;
     const service = this.service;
     const prefixPath = `exhentai/${dateStamp}/${name}`;
-    const detailImageUrls = readJsonFile(joinWithRootPath(`${prefixPath}/detailImageUrls.json`));
-    service.downloadImages(detailImageUrls, prefixPath);
+    const detail = readJsonFile(joinWithRootPath(`${prefixPath}/detail.json`));
+    service.downloadImages(detail, prefixPath);
   }
 
   @Request({ url: '/download/status', method: 'get' })
@@ -99,21 +99,5 @@ export default class ExhentaiController {
     }
 
     return listFiles;
-  }
-
-  @Request({ url: '/sync', method: 'get' })
-  async sync() {
-    const service = this.service;
-    await service.initBrowser();
-    const targetComic = getEmptyRestDetailUrlInfo();
-    for (const jsonUrl of targetComic) {
-      const thumbnailUrls = readJsonFile(jsonUrl);
-      logger.info('start fetching target images');
-
-      const images = await service.fetchImageUrls(thumbnailUrls);
-      await service.downloadImages(images, path.dirname(jsonUrl));
-
-      logger.info('fetch all image completed');
-    }
   }
 }

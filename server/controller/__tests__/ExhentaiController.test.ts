@@ -51,9 +51,4 @@ describe('ExhentaiController', () => {
     const result = await (Controller as any).stack[5].stack[0](defaultPostCtx);
     expect(result).toEqual(['84a65e108e3721e07261e6b3c4336ff1', '7a9a2d738fa682b6c2b1abc0471616b2']);
   });
-
-  it('/sync', async () => {
-    const result = await (Controller as any).stack[6].stack[0](defaultPostCtx);
-    expect(result).toBe('success');
-  });
 });

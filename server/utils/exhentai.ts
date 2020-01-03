@@ -61,7 +61,7 @@ export const getMissedImgInfo = (latestDirPath: string) => {
   const latestDir = fs.readdirSync(latestDirPath);
   for (const item of latestDir) {
     const prefix = `${latestDirPath}/${item}`;
-    if (!fs.existsSync(`${prefix}/detailImageUrls.json`)) {
+    if (!fs.existsSync(`${prefix}/detail.json`)) {
       break;
     }
     const files = fs
@@ -70,8 +70,8 @@ export const getMissedImgInfo = (latestDirPath: string) => {
       .filter(item => item)
       .sort((a: number, b: number) => a - b)
       .map(item => item.toString());
-    const detail: string[] = readJsonFile(`${prefix}/detailImageUrls.json`);
-    const rest: string[] = readJsonFile(`${prefix}/restDetailUrls.json`);
+    const detail: string[] = readJsonFile(`${prefix}/detail.json`);
+    const rest: string[] = readJsonFile(`${prefix}/list.json`);
 
     for (let i = 1; i < rest.length + 1; i++) {
       if (!files.includes(i.toString())) {
@@ -95,9 +95,9 @@ export const getLatestListInfo = () => {
 };
 
 export const getEmptyRestDetailUrlInfo = () =>
-  glob.sync(joinWithRootPath(downloadPath) + '/**/restDetailUrls.json').filter(item => {
+  glob.sync(joinWithRootPath(downloadPath) + '/**/list.json').filter(item => {
     const dirName = dirname(item);
-    if (!fs.existsSync(join(dirName, 'detailImageUrls.json'))) {
+    if (!fs.existsSync(join(dirName, 'detail.json'))) {
       return true;
     }
     return false;
