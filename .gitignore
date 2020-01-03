@@ -8,6 +8,7 @@
 /exhentai/**/*.jpg
 /exhentai/**/*.png
 /exhentai/**/detailImageUrls.json
+/exhentai/**/detail.json
 /bin
 package-lock.json
 *.log

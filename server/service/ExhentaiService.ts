@@ -238,9 +238,9 @@ export default class ExhentaiService {
     }
   };
 
-  getThumbnailUrlFromDetailPage = async (restDetailUrls: string[]) => {
+  getThumbnailUrlFromDetailPage = async (list: string[]) => {
     const result: string[] = [];
-    for (const item of restDetailUrls) {
+    for (const item of list) {
       await this.gotoTargetPage(item, true);
       const thumbnailUrls: string[] = await this.getAllThumbnaiUrls();
       result.push(...thumbnailUrls);

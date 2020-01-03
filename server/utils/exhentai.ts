@@ -1,7 +1,5 @@
 import { joinWithRootPath, readJsonFile } from './common';
 import fs from 'fs-extra';
-import { dirname, join } from 'path';
-import glob from 'glob';
 import { getTargetResource } from './resource';
 import request from 'request';
 import { getLogger } from '..';
@@ -61,7 +59,7 @@ export const getMissedImgInfo = (latestDirPath: string) => {
   const latestDir = fs.readdirSync(latestDirPath);
   for (const item of latestDir) {
     const prefix = `${latestDirPath}/${item}`;
-    if (!fs.existsSync(`${prefix}/detailImageUrls.json`)) {
+    if (!fs.existsSync(`${prefix}/detail.json`)) {
       break;
     }
     const files = fs
@@ -70,8 +68,8 @@ export const getMissedImgInfo = (latestDirPath: string) => {
       .filter(item => item)
       .sort((a: number, b: number) => a - b)
       .map(item => item.toString());
-    const detail: string[] = readJsonFile(`${prefix}/detailImageUrls.json`);
-    const rest: string[] = readJsonFile(`${prefix}/restDetailUrls.json`);
+    const detail: string[] = readJsonFile(`${prefix}/detail.json`);
+    const rest: string[] = readJsonFile(`${prefix}/list.json`);
 
     for (let i = 1; i < rest.length + 1; i++) {
       if (!files.includes(i.toString())) {
@@ -93,15 +91,6 @@ export const getLatestListInfo = () => {
   const result = readJsonFile(newestListFilePath + '.json');
   return result && result[0];
 };
-
-export const getEmptyRestDetailUrlInfo = () =>
-  glob.sync(joinWithRootPath(downloadPath) + '/**/restDetailUrls.json').filter(item => {
-    const dirName = dirname(item);
-    if (!fs.existsSync(join(dirName, 'detailImageUrls.json'))) {
-      return true;
-    }
-    return false;
-  });
 
 export function handleDownloadStream(imageUrl: string[], i: number, counter: number[], prefixPath: string) {
   const item = imageUrl[i];
