@@ -5,11 +5,9 @@ import {
   getLatestListInfo,
   getLatestListFileName,
   getListFiles,
-  getEmptyRestDetailUrlInfo,
   getLatestDownloadDirName,
   getMissedImgInfo,
 } from '../utils/exhentai';
-import path from 'path';
 import { Context } from 'koa';
 import { getLogger } from '..';
 const logger = getLogger('server/controller/ExhentaiController.ts');

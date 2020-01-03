@@ -1,7 +1,5 @@
 import { joinWithRootPath, readJsonFile } from './common';
 import fs from 'fs-extra';
-import { dirname, join } from 'path';
-import glob from 'glob';
 import { getTargetResource } from './resource';
 import request from 'request';
 import { getLogger } from '..';
@@ -93,15 +91,6 @@ export const getLatestListInfo = () => {
   const result = readJsonFile(newestListFilePath + '.json');
   return result && result[0];
 };
-
-export const getEmptyRestDetailUrlInfo = () =>
-  glob.sync(joinWithRootPath(downloadPath) + '/**/list.json').filter(item => {
-    const dirName = dirname(item);
-    if (!fs.existsSync(join(dirName, 'detail.json'))) {
-      return true;
-    }
-    return false;
-  });
 
 export function handleDownloadStream(imageUrl: string[], i: number, counter: number[], prefixPath: string) {
   const item = imageUrl[i];
