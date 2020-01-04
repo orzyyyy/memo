@@ -2,78 +2,19 @@
 
 exports[`MainPage render correctly 1`] = `
 <div
-  className="MainPage"
-  style={
-    Object {
-      "display": "grid",
-      "gridTemplateColumns": "15% 85%",
-    }
-  }
+  className="main-page"
 >
-  <Sider
-    dataSource={
-      Array [
-        Object {
-          "key": "all",
-          "title": "all",
-        },
-        Object {
-          "children": Array [
-            Object {
-              "key": "摘抄",
-              "value": "摘抄",
-            },
-            Object {
-              "key": "思路",
-              "value": "思路",
-            },
-          ],
-          "key": "读书",
-          "title": "读书",
-        },
-      ]
-    }
-    onClick={[Function]}
-    siderOpenKey=""
-    siderSelectedKey="all"
-  />
-  <div
+  <div />
+  <main
+    className="main-page-content-wrapper"
     style={
       Object {
-        "gridTemplateRows": "5% 90% 10%",
+        "height": -105,
+        "marginLeft": 8,
+        "overflow": "auto",
       }
     }
-  >
-    <main
-      className="main-page-content-wrapper"
-      style={
-        Object {
-          "height": -105,
-          "marginLeft": 8,
-          "overflow": "auto",
-        }
-      }
-    />
-    <footer
-      style={
-        Object {
-          "marginTop": 16,
-          "textAlign": "center",
-        }
-      }
-    >
-      <div>
-        你睡了一下午，醒的时候屋子里黑漆漆、一点声音都没有。抬头望望窗外，天还没完全黑。四处摸了摸，在枕头下找到手机。打开后屏幕亮起，干净，没有一条消息
-      </div>
-      <div>
-        打开电脑，打开 github。pull request 写得很菜，连 core 都在喷你，但忽然就不孤独了
-      </div>
-      <a
-        href="http://www.beian.miit.gov.cn"
-      >
-        IPC证：浙ICP备19050866号-1
-      </a>
-    </footer>
-  </div>
+  />
+  <Footer />
 </div>
 `;

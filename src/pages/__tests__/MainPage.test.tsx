@@ -48,28 +48,4 @@ describe('MainPage', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('onMenuClick works', async () => {
-    const onMenuClick = jest.fn();
-    const onEdit = jest.fn();
-    const onExhentaiDownload = jest.fn();
-    const onExhentaiSelectChange = jest.fn();
-    const onExhentaiLoadList = jest.fn();
-    const wrapper = await mount(
-      <MainPage
-        onEdit={onEdit}
-        onExhentaiDownload={onExhentaiDownload}
-        onExhentaiSelectChange={onExhentaiSelectChange}
-        onExhentaiLoadList={onExhentaiLoadList}
-        exhentaiDateSet={[]}
-        menuData={menuData}
-        onMenuClick={onMenuClick}
-      />,
-    );
-    wrapper
-      .find('li')
-      .first()
-      .simulate('click');
-    expect(onMenuClick).toHaveBeenCalled();
-  });
 });
