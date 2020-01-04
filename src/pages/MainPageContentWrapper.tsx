@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/main-page-content-wrapper.css';
 
 export interface MainPageContentWrapperProps {
   children?: React.ReactElement;
@@ -6,7 +7,7 @@ export interface MainPageContentWrapperProps {
 }
 
 const MainPageContentWrapper = (props: MainPageContentWrapperProps) => (
-  <main style={{ height: props.height, marginLeft: 8, overflow: 'auto' }} className="main-page-content-wrapper">
+  <main style={{ height: props.height }} className="main-page-content-wrapper">
     {props.children}
   </main>
 );

@@ -1,8 +1,10 @@
 .main-page-list .list-item {
   cursor: pointer;
-  height: 40px;
-  line-height: 40px;
   padding: 0px 8px;
+  border: 1px solid #e7e7e7;
+  margin-bottom: -1px;
+  height: 88px;
+  line-height: 88px;
 }
 
 .main-page-list .list-item:hover {
@@ -25,4 +27,11 @@
   height: 20px;
   display: inline-block;
   margin-right: 10px;
+}
+
+.main-page-list {
+  font-size: 21px;
+  list-style: none;
+  border-radius: 4px;
+  margin: 16px;
 }

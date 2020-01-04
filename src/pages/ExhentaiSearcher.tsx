@@ -35,7 +35,7 @@ const ExhentaiSearcher = ({
   return (
     <>
       <Select
-        style={{ width: 140 }}
+        style={{ width: 180 }}
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
         onChange={handleSelectChange}
       >
