@@ -27,7 +27,7 @@ const Sider = ({ siderSelectedKey, onClick, dataSource, siderOpenKey }: Componen
               <li
                 key={item.key}
                 className="sider-item"
-                style={{ background: siderSelectedKey === item.key ? '#e6f7ff' : '' }}
+                style={{ background: siderSelectedKey === item.key ? '#e6f7ff' : '', margin: '8px 0' }}
                 onClick={(event: React.MouseEvent) => onClick({ parent: item, event })}
               >
                 {item.title}
@@ -41,7 +41,10 @@ const Sider = ({ siderSelectedKey, onClick, dataSource, siderOpenKey }: Componen
                 <ul key={`${item.key}-${jtem.key}`}>
                   <li
                     className="sider-item"
-                    style={{ background: siderSelectedKey === jtem.key && siderOpenKey === item.key ? '#e6f7ff' : '' }}
+                    style={{
+                      background: siderSelectedKey === jtem.key && siderOpenKey === item.key ? '#e6f7ff' : '',
+                      margin: '8px 0',
+                    }}
                     onClick={(event: React.MouseEvent) => onClick({ parent: item, children: jtem, event })}
                   >
                     {jtem.value}
