@@ -7,19 +7,18 @@ export interface HeaderProps {
   title: React.ReactElement | string;
   onClick: (item: RightBarProps, e: React.MouseEvent) => void;
   rightBar: RightBarProps[];
-  searchBar?: React.ReactElement;
+  searchBar?: React.ReactElement | null;
   currentKey: string;
 }
 
 const Header = (props: HeaderProps) => {
+  const rightBarLength = props.rightBar.filter(item => item.visible !== false).length;
+
   return (
     <header className="header-wrapper">
       <div>{props.title}</div>
       <div>{props.searchBar}</div>
-      <ul
-        className="nav-list"
-        style={{ gridTemplateColumns: `repeat(${props.rightBar.length}, ${100 / props.rightBar.length}%)` }}
-      >
+      <ul className="nav-list" style={{ gridTemplateColumns: `repeat(${rightBarLength}, ${100 / rightBarLength}%)` }}>
         {props.rightBar.map(
           item =>
             item.visible !== false && (

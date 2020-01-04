@@ -192,18 +192,20 @@ const MainPageDataController = () => {
         currentKey={siderSelectedKey}
         rightBar={[
           { text: '文章', value: 'all' },
-          { text: 'ex-hentai', value: 'ex-hentai-module', visible: isLocal },
+          { text: 'ex-hentai', value: 'ex-hentai-module', visible: !!isLocal },
           { text: '工具', value: 'utils' },
-          { text: '+', value: 'add', visible: isLocal },
+          { text: '+', value: 'add', visible: !!isLocal },
         ]}
         onClick={handleHeaderClick}
         searchBar={
-          <ExhentaiSearcher
-            exhentaiDateSet={exhentaiDateSet}
-            onExhentaiDownload={handleExhentaiDownload}
-            onExhentaiLoadList={handleExhentaiLoadList}
-            onExhentaiSelectChange={handleExhentaiSelectChange}
-          />
+          isLocal ? (
+            <ExhentaiSearcher
+              exhentaiDateSet={exhentaiDateSet}
+              onExhentaiDownload={handleExhentaiDownload}
+              onExhentaiLoadList={handleExhentaiLoadList}
+              onExhentaiSelectChange={handleExhentaiSelectChange}
+            />
+          ) : null
         }
       />
       <MainPageContentWrapper height={document.body.clientHeight - footerHeight - headerHeight}>
