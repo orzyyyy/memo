@@ -2,6 +2,7 @@ import React from 'react';
 import { format } from 'date-fns';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { DocumentCategoryProps } from '../../server/utils/document';
+import './css/main-page-list.css';
 
 const MainPageList = ({
   onDelete,
@@ -28,7 +29,7 @@ const MainPageList = ({
       : dataSource.filter(item => item.subType === siderSelectedKey && item.type === siderOpenKey);
 
   return (
-    <ul>
+    <ul className="main-page-list">
       {data.map(item => {
         const buttonGroup = (
           <div style={{ float: 'right', marginRight: 8 }}>

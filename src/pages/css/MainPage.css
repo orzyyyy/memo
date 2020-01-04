@@ -8,34 +8,3 @@
   display: grid;
   grid-template-rows: 5% auto 10%;
 }
-
-.main-page .list-item {
-  cursor: pointer;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  height: 40px;
-  line-height: 40px;
-  padding: 0px 8px;
-}
-
-.main-page .list-item:hover {
-  background: #e6f7ff;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.main-page .icon-apartment {
-  -webkit-mask-image: url(../svg/apartment.svg);
-  mask-image: url(../svg/apartment.svg);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.main-page .icon-file-markdown {
-  -webkit-mask-image: url(../svg/file-markdown.svg);
-  mask-image: url(../svg/file-markdown.svg);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  margin-right: 10px;
-}

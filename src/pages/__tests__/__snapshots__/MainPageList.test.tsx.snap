@@ -33,7 +33,9 @@ exports[`MainPageList render correctly 1`] = `
   siderOpenKey="all"
   siderSelectedKey="all"
 >
-  <ul>
+  <ul
+    className="main-page-list"
+  >
     <li
       className="list-item"
       key="list-item-32e89f38116080d6b7608cf2137f3c96"
