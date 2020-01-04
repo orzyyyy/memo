@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { MainPageProps } from './MainPage';
 import Button from '../component/Button';
 import Input from '../component/Input';
 import Select from '../component/Select';
+import { DownloadProps } from './ExHentaiList';
+
+export interface ExhentaiSearcherProps {
+  exhentaiDateSet: string[];
+  onExhentaiDownload: ({ url }: DownloadProps) => void;
+  onExhentaiSelectChange: (value: string) => void;
+  onExhentaiLoadList: () => void;
+}
 
 const ExhentaiSearcher = ({
-  onExhentaiDownload,
-  onEdit,
   exhentaiDateSet,
+  onExhentaiDownload,
   onExhentaiSelectChange,
   onExhentaiLoadList,
-}: MainPageProps) => {
+}: ExhentaiSearcherProps) => {
   const [selectValue, setSelectValue] = useState();
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +33,7 @@ const ExhentaiSearcher = ({
   };
 
   return (
-    <header style={{ height: 48, display: 'flex', alignItems: 'center', marginLeft: 16, marginTop: 8 }}>
+    <>
       <Select
         style={{ width: 140 }}
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
@@ -41,8 +47,7 @@ const ExhentaiSearcher = ({
       </Select>
       <Input onKeyDown={hanldeKeyDown} style={{ width: 280 }} />
       <Button onClick={onExhentaiLoadList}>列表</Button>
-      <Button onClick={(e: React.MouseEvent) => onEdit(undefined, true, { x: e.pageX, y: e.pageY })}>+</Button>
-    </header>
+    </>
   );
 };
 

@@ -20,8 +20,8 @@ const Header = (props: HeaderProps) => {
         className="nav-list"
         style={{ gridTemplateColumns: `repeat(${props.rightBar.length}, ${100 / props.rightBar.length}%)` }}
       >
-        {props.rightBar.map(item => {
-          return (
+        {props.rightBar.map(
+          item =>
             item.visible !== false && (
               <li
                 className={item.value === props.currentKey ? 'nav-list-item-active' : 'nav-list-item'}
@@ -30,9 +30,8 @@ const Header = (props: HeaderProps) => {
               >
                 {item.text}
               </li>
-            )
-          );
-        })}
+            ),
+        )}
       </ul>
     </header>
   );

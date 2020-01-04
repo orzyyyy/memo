@@ -3,7 +3,7 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
-import ExhentaiList from './ExHentaiListDataController';
+import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
@@ -13,6 +13,7 @@ import UtilList from '../pages/UtilList';
 import Header, { RightBarProps } from '../component/Header';
 import MainPageContentWrapper from '../pages/MainPageContentWrapper';
 import Footer from '../component/Footer';
+import ExhentaiSearcher from '../pages/ExhentaiSearcher';
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -27,6 +28,9 @@ export interface MainPageDataControllerState {
   exhentaiDateSet: string[];
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
+
+const headerHeight = 48;
+const footerHeight = 91;
 
 const dataSource = mapping
   .filter((item: any) => item.visible !== false)
@@ -54,7 +58,6 @@ const MainPageDataController = () => {
   const [isUtil, setIsUtil] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderOpenKey, setSiderOpenKey] = useState('all');
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
   // eslint-disable-next-line no-underscore-dangle
@@ -157,7 +160,7 @@ const MainPageDataController = () => {
         onEdit={handleEdit}
         onHide={handleHide}
         isLocal={isLocal}
-        siderOpenKey={siderOpenKey}
+        siderOpenKey="all"
       />
     );
   };
@@ -167,9 +170,6 @@ const MainPageDataController = () => {
     const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await getExhentaiTargetDataSource(url);
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
-
-  const headerHeight = 48;
-  const footerHeight = 91;
 
   return (
     <>
@@ -183,6 +183,14 @@ const MainPageDataController = () => {
           { text: '+', value: 'add', visible: isLocal },
         ]}
         onClick={handleHeaderClick}
+        searchBar={
+          <ExhentaiSearcher
+            exhentaiDateSet={exhentaiDateSet}
+            onExhentaiDownload={handleExhentaiDownload}
+            onExhentaiLoadList={handleExhentaiLoadList}
+            onExhentaiSelectChange={handleExhentaiSelectChange}
+          />
+        }
       />
       <MainPageContentWrapper height={document.body.clientHeight - footerHeight - headerHeight}>
         {renderContent()}

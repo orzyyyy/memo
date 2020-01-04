@@ -20,7 +20,6 @@ export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-  alert('response after post');
   return 'success';
 };
 
