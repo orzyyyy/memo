@@ -4,6 +4,7 @@ import './css/MainPage.css';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
 import { DownloadProps } from './ExHentaiList';
+import Sider from '../component/Sider';
 
 export interface MainPageProps {
   onEdit: (dataItem?: MappingProps, visible?: boolean, pageInfo?: { x: number; y: number }) => void;
@@ -30,56 +31,9 @@ const renderFooter = () => (
 );
 
 const MainPage = ({ onMenuClick, siderSelectedKey, menuData, renderContent, isLocal, siderOpenKey }: MainPageProps) => {
-  const handleMenuClick = (item: SiderProps, jtem?: SiderChildrenProps) => {
-    onMenuClick && onMenuClick([jtem ? jtem.key : item.key, item.key]);
+  const handleMenuClick = ({ parent, children }: { parent: SiderProps; children?: SiderChildrenProps }) => {
+    onMenuClick && onMenuClick([children ? children.key : parent.key, parent.key]);
   };
-
-  const renderSider = () => (
-    <aside>
-      <ul>
-        {menuData.map((item: SiderProps) => {
-          if (!item.children) {
-            return (
-              <li
-                key={item.key}
-                style={{
-                  cursor: 'pointer',
-                  background: siderSelectedKey === item.key ? '#e6f7ff' : '',
-                  height: 40,
-                  lineHeight: '40px',
-                  paddingLeft: 24,
-                }}
-                onClick={() => handleMenuClick(item)}
-              >
-                {item.title}
-              </li>
-            );
-          }
-          return (
-            <li key={item.key} style={{ paddingLeft: 24 }}>
-              {item.title}
-              {item.children.map((jtem: SiderChildrenProps) => (
-                <ul key={`${item.key}-${jtem.key}`}>
-                  <li
-                    style={{
-                      paddingLeft: 24,
-                      cursor: 'pointer',
-                      background: siderSelectedKey === jtem.key && siderOpenKey === item.key ? '#e6f7ff' : '',
-                      height: 40,
-                      lineHeight: '40px',
-                    }}
-                    onClick={() => handleMenuClick(item, jtem)}
-                  >
-                    {jtem.value}
-                  </li>
-                </ul>
-              ))}
-            </li>
-          );
-        })}
-      </ul>
-    </aside>
-  );
 
   const renderRealContent = () => {
     const headerHeight = isLocal ? 48 : 0;
@@ -94,9 +48,13 @@ const MainPage = ({ onMenuClick, siderSelectedKey, menuData, renderContent, isLo
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '15% 85%' }} className="MainPage">
-      {renderSider()}
+      <Sider
+        dataSource={menuData}
+        onClick={handleMenuClick}
+        siderOpenKey={siderOpenKey || ''}
+        siderSelectedKey={siderSelectedKey || ''}
+      />
       <div style={{ gridTemplateRows: '5% 90% 10%' }}>
-        {/* {renderHeader()} */}
         {renderRealContent()}
         {renderFooter()}
       </div>
