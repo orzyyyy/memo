@@ -2,13 +2,7 @@
 
 exports[`ExHentaiList render correctly 1`] = `
 <ul
-  style={
-    Object {
-      "display": "grid",
-      "gridTemplateColumns": "repeat(5, 20%)",
-      "margin": 0,
-    }
-  }
+  className="exhentai-list"
 >
   <li
     key="https://exhentai.org/g/1430261/17651c12eb/-1559412420000"

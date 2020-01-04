@@ -1,53 +1,6 @@
-.MainPage img {
-  width: 100%;
-}
-
-.MainPage {
+.main-page {
   height: 100vh;
   min-height: 100vh;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.MainPage .list-item {
-  cursor: pointer;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  height: 40px;
-  line-height: 40px;
-  padding: 0px 8px;
-}
-
-.MainPage .list-item:hover {
-  background: #e6f7ff;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.MainPage ul {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  list-style: none;
-}
-
-.MainPage li {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  overflow: auto;
-}
-
-.MainPage .icon-apartment {
-  -webkit-mask-image: url(../svg/apartment.svg);
-  mask-image: url(../svg/apartment.svg);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.MainPage .icon-file-markdown {
-  -webkit-mask-image: url(../svg/file-markdown.svg);
-  mask-image: url(../svg/file-markdown.svg);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  margin-right: 10px;
+  display: grid;
+  grid-template-rows: 5% auto 10%;
 }

@@ -60,44 +60,6 @@ describe('MainPageDataController', () => {
     fetchMock.restore();
   });
 
-  it('fetch data correctly locally', done => {
-    const wrapper: any = mount(<MainPageDataController />);
-    setTimeout(() => {
-      wrapper.update();
-      expect(wrapper.find('MainPage').props().menuData).toEqual(sider);
-
-      wrapper
-        .find('MainPage')
-        .props()
-        .onMenuClick(['ex-hentai-module']);
-
-      setTimeout(async () => {
-        wrapper.update();
-        expect(wrapper.find('ExHentaiList').props().dataSource).toEqual(exhentaiDetailArr);
-
-        let result = await wrapper
-          .find('ExHentaiList')
-          .props()
-          .onDownload({ url: 'test' });
-        expect(result).toBe('success');
-
-        result = await wrapper
-          .find('ExHentaiList')
-          .props()
-          .onDownload({ url: false });
-        expect(result).toBe('failed');
-
-        window.confirm = () => false;
-        result = await wrapper
-          .find('ExHentaiList')
-          .props()
-          .onDownload({ url: 'test' });
-        expect(result).toBe('cancel');
-        done();
-      });
-    });
-  });
-
   it('handleSubmit - update - mapping', done => {
     const wrapper: any = mount(<MainPageDataController />);
     wrapper
@@ -174,24 +136,6 @@ describe('MainPageDataController', () => {
       .find('MainPageList')
       .props()
       .onHide({ id: 'test' });
-    expect(result).toBe(undefined);
-  });
-
-  it('handleExhentaiDownload', async () => {
-    const wrapper: any = mount(<MainPageDataController />);
-    const result = await wrapper
-      .find('MainPage')
-      .props()
-      .onExhentaiDownload({ url: 'test' });
-    expect(result).toBe('success');
-  });
-
-  it('handleExhentaiLoadList', async () => {
-    const wrapper: any = mount(<MainPageDataController />);
-    const result = await wrapper
-      .find('MainPage')
-      .props()
-      .onExhentaiLoadList();
     expect(result).toBe(undefined);
   });
 

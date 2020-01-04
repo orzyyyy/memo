@@ -152,14 +152,14 @@ exports[`EditForm empty dataItem 1`] = `
                             标题
                           </span>
                           <input
-                            style="height: 30px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                             value="testTitle"
                           />
                           <span>
                             显示类别
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           >
                             <option
                               value="markdown"
@@ -176,7 +176,7 @@ exports[`EditForm empty dataItem 1`] = `
                             文档类别
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           >
                             <option
                               value="读书"
@@ -188,7 +188,7 @@ exports[`EditForm empty dataItem 1`] = `
                             文档子类
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           />
                         </div>
                       </div>
@@ -199,18 +199,18 @@ exports[`EditForm empty dataItem 1`] = `
                           style="display: grid; grid-template-columns: repeat(4, 25%);"
                         >
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             编辑
                           </button>
                           <div />
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             清空
                           </button>
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             确定
                           </button>
@@ -447,7 +447,8 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
-                                      "height": 30,
+                                      "fontSize": 18,
+                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
@@ -470,6 +471,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -504,6 +506,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -535,6 +538,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -563,6 +567,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -580,6 +585,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -598,6 +604,7 @@ exports[`EditForm empty dataItem 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -786,14 +793,14 @@ exports[`EditForm render correctly 1`] = `
                             标题
                           </span>
                           <input
-                            style="height: 30px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                             value="testTitle"
                           />
                           <span>
                             显示类别
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           >
                             <option
                               value="markdown"
@@ -810,7 +817,7 @@ exports[`EditForm render correctly 1`] = `
                             文档类别
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           >
                             <option
                               value="读书"
@@ -822,7 +829,7 @@ exports[`EditForm render correctly 1`] = `
                             文档子类
                           </span>
                           <select
-                            style="height: 32px; width: 100%; border-radius: 0.25em;"
+                            style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
                           />
                         </div>
                       </div>
@@ -833,18 +840,18 @@ exports[`EditForm render correctly 1`] = `
                           style="display: grid; grid-template-columns: repeat(4, 25%);"
                         >
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             编辑
                           </button>
                           <div />
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             清空
                           </button>
                           <button
-                            style="height: 32px; width: 80px; border-radius: 0.25em;"
+                            style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
                           >
                             确定
                           </button>
@@ -1081,7 +1088,8 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
-                                      "height": 30,
+                                      "fontSize": 18,
+                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
@@ -1104,6 +1112,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1138,6 +1147,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1169,6 +1179,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": "100%",
                                     }
@@ -1197,6 +1208,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -1214,6 +1226,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }
@@ -1232,6 +1245,7 @@ exports[`EditForm render correctly 1`] = `
                                   style={
                                     Object {
                                       "borderRadius": "0.25em",
+                                      "fontSize": 18,
                                       "height": 32,
                                       "width": 80,
                                     }

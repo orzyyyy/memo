@@ -1,0 +1,37 @@
+.main-page-list .list-item {
+  cursor: pointer;
+  padding: 0px 8px;
+  border: 1px solid #e7e7e7;
+  margin-bottom: -1px;
+  height: 88px;
+  line-height: 88px;
+}
+
+.main-page-list .list-item:hover {
+  background: #e6f7ff;
+}
+
+.main-page-list .icon-apartment {
+  -webkit-mask-image: url(../svg/apartment.svg);
+  mask-image: url(../svg/apartment.svg);
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.main-page-list .icon-file-markdown {
+  -webkit-mask-image: url(../svg/file-markdown.svg);
+  mask-image: url(../svg/file-markdown.svg);
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.main-page-list {
+  font-size: 21px;
+  list-style: none;
+  border-radius: 4px;
+  margin: 16px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import LazyLoad from 'react-lazyload';
+import './css/exhentai-list.css';
 
 export interface DownloadProps {
   url: string;
@@ -24,7 +25,7 @@ const renderImg = ({ onDownload, wrapperHeight, item, onDetail }: ExHentaiListPr
 );
 
 const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight, onDetail }: ExHentaiListProps) => (
-  <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 20%)', margin: 0 }}>
+  <ul className="exhentai-list">
     {dataSource.map(item => (
       <li key={item.detailUrl + '-' + item.postTime}>
         <LazyLoad height={wrapperHeight} once scrollContainer=".main-page-content-wrapper">
