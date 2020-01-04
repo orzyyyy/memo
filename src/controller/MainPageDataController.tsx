@@ -10,6 +10,7 @@ import { history } from '../router';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import mapping from '../assets/mapping.json';
 import menuData from '../assets/sider.json';
+import UtilList from '../pages/UtilList';
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -48,6 +49,7 @@ const MainPageDataController = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
   const [isExhentai, setIsExhentai] = useState(false);
+  const [isUtil, setIsUtil] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
   const [siderOpenKey, setSiderOpenKey] = useState('all');
@@ -131,6 +133,9 @@ const MainPageDataController = () => {
     if (isExhentai) {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
+    if (isUtil) {
+      return <UtilList />;
+    }
     return (
       <MainPageList
         siderSelectedKey={siderSelectedKey}
@@ -149,6 +154,7 @@ const MainPageDataController = () => {
     setSiderOpenKey(keyPath[1]);
     setSiderSelectedKey(keyPath[0]);
     setIsExhentai(keyPath.includes('ex-hentai-module'));
+    setIsUtil(keyPath.includes('utils'));
   };
 
   const handleExhentaiSelectChange = async (value: string) => {
