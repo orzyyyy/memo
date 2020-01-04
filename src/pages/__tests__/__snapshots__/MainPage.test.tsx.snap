@@ -10,71 +10,33 @@ exports[`MainPage render correctly 1`] = `
     }
   }
 >
-  <aside>
-    <ul>
-      <li
-        key="all"
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "#e6f7ff",
-            "cursor": "pointer",
-            "height": 40,
-            "lineHeight": "40px",
-            "paddingLeft": 24,
-          }
-        }
-      >
-        all
-      </li>
-      <li
-        key="读书"
-        style={
-          Object {
-            "paddingLeft": 24,
-          }
-        }
-      >
-        读书
-        <ul
-          key="读书-摘抄"
-        >
-          <li
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "",
-                "cursor": "pointer",
-                "height": 40,
-                "lineHeight": "40px",
-                "paddingLeft": 24,
-              }
-            }
-          >
-            摘抄
-          </li>
-        </ul>
-        <ul
-          key="读书-思路"
-        >
-          <li
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "",
-                "cursor": "pointer",
-                "height": 40,
-                "lineHeight": "40px",
-                "paddingLeft": 24,
-              }
-            }
-          >
-            思路
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
+  <Sider
+    dataSource={
+      Array [
+        Object {
+          "key": "all",
+          "title": "all",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "key": "摘抄",
+              "value": "摘抄",
+            },
+            Object {
+              "key": "思路",
+              "value": "思路",
+            },
+          ],
+          "key": "读书",
+          "title": "读书",
+        },
+      ]
+    }
+    onClick={[Function]}
+    siderOpenKey=""
+    siderSelectedKey="all"
+  />
   <div
     style={
       Object {
