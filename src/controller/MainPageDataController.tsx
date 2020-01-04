@@ -11,6 +11,7 @@ import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
 import mapping from '../assets/mapping.json';
 import menuData from '../assets/sider.json';
 import UtilList from '../pages/UtilList';
+import Header, { RightBarProps } from '../component/Header';
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -116,6 +117,14 @@ const MainPageDataController = () => {
     location.href = `./markdown-editor/${id}`;
   };
 
+  const handleHeaderClick = (item: RightBarProps, e: React.MouseEvent) => {
+    if (item.value === 'add') {
+      handleEdit(undefined, true, { x: e.pageX, y: e.pageY });
+      return;
+    }
+    setSiderSelectedKey(item.value);
+  };
+
   const handleHide = async ({ id }: MappingProps) => {
     await fetch('/api/memo/document/hide', {
       body: JSON.stringify({ id }),
@@ -165,6 +174,17 @@ const MainPageDataController = () => {
 
   return (
     <>
+      <Header
+        title="title"
+        currentKey={siderSelectedKey}
+        rightBar={[
+          { text: '文章', value: 'all' },
+          { text: 'ex-hentai', value: 'ex-hentai-module', visible: isLocal },
+          { text: '工具', value: 'utils' },
+          { text: '+', value: 'add', visible: isLocal },
+        ]}
+        onClick={handleHeaderClick}
+      />
       <MainPage
         onMenuClick={handleMenuClick}
         menuData={menuData}

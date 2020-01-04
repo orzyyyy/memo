@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './css/MainPage.css';
-import MainPageHeader from './MainPageHeader';
 import { MappingProps } from '../../server/controller/DocumentController';
 import { SiderChildrenProps, SiderProps } from '../../server/utils/document';
 import { DownloadProps } from './ExHentaiList';
@@ -30,19 +29,7 @@ const renderFooter = () => (
   </footer>
 );
 
-const MainPage = ({
-  onMenuClick,
-  siderSelectedKey,
-  menuData,
-  renderContent,
-  isLocal,
-  onExhentaiDownload,
-  onEdit,
-  exhentaiDateSet,
-  onExhentaiSelectChange,
-  onExhentaiLoadList,
-  siderOpenKey,
-}: MainPageProps) => {
+const MainPage = ({ onMenuClick, siderSelectedKey, menuData, renderContent, isLocal, siderOpenKey }: MainPageProps) => {
   const handleMenuClick = (item: SiderProps, jtem?: SiderChildrenProps) => {
     onMenuClick && onMenuClick([jtem ? jtem.key : item.key, item.key]);
   };
@@ -93,6 +80,7 @@ const MainPage = ({
       </ul>
     </aside>
   );
+
   const renderRealContent = () => {
     const headerHeight = isLocal ? 48 : 0;
     const footerHeight = 105;
@@ -104,23 +92,11 @@ const MainPage = ({
     );
   };
 
-  const renderHeader = () =>
-    isLocal && (
-      <MainPageHeader
-        onExhentaiDownload={onExhentaiDownload}
-        onEdit={onEdit}
-        exhentaiDateSet={exhentaiDateSet}
-        onExhentaiSelectChange={onExhentaiSelectChange}
-        onExhentaiLoadList={onExhentaiLoadList}
-        menuData={[]}
-      />
-    );
-
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '15% 85%' }} className="MainPage">
       {renderSider()}
       <div style={{ gridTemplateRows: '5% 90% 10%' }}>
-        {renderHeader()}
+        {/* {renderHeader()} */}
         {renderRealContent()}
         {renderFooter()}
       </div>
