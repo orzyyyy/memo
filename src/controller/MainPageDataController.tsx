@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import MainPage from '../pages/MainPage';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
-import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
+import ExhentaiList from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
@@ -12,6 +11,8 @@ import mapping from '../assets/mapping.json';
 import menuData from '../assets/sider.json';
 import UtilList from '../pages/UtilList';
 import Header, { RightBarProps } from '../component/Header';
+import MainPageContentWrapper from '../pages/MainPageContentWrapper';
+import Footer from '../component/Footer';
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -123,6 +124,8 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
+    setIsExhentai(item.value === 'ex-hentai-module');
+    setIsUtil(item.value === 'utils');
   };
 
   const handleHide = async ({ id }: MappingProps) => {
@@ -159,18 +162,14 @@ const MainPageDataController = () => {
     );
   };
 
-  const handleMenuClick = (keyPath: string[]) => {
-    setSiderOpenKey(keyPath[1]);
-    setSiderSelectedKey(keyPath[0]);
-    setIsExhentai(keyPath.includes('ex-hentai-module'));
-    setIsUtil(keyPath.includes('utils'));
-  };
-
   const handleExhentaiSelectChange = async (value: string) => {
     const url = `./assets/exhentai/${value}.json`;
     const exhentaiListTargetDataSource: ExHentaiInfoItem[] = await getExhentaiTargetDataSource(url);
     setExhentaiListTargetDataSource(exhentaiListTargetDataSource);
   };
+
+  const headerHeight = 48;
+  const footerHeight = 91;
 
   return (
     <>
@@ -185,19 +184,10 @@ const MainPageDataController = () => {
         ]}
         onClick={handleHeaderClick}
       />
-      <MainPage
-        onMenuClick={handleMenuClick}
-        menuData={menuData}
-        onExhentaiDownload={handleExhentaiDownload}
-        renderContent={renderContent}
-        isLocal={isLocal}
-        exhentaiDateSet={exhentaiDateSet}
-        onExhentaiSelectChange={handleExhentaiSelectChange}
-        onEdit={handleEdit}
-        siderOpenKey={siderOpenKey}
-        siderSelectedKey={siderSelectedKey}
-        onExhentaiLoadList={handleExhentaiLoadList}
-      />
+      <MainPageContentWrapper height={document.body.clientHeight - footerHeight - headerHeight}>
+        {renderContent()}
+      </MainPageContentWrapper>
+      <Footer />
       <EditForm
         visible={formVisible}
         selectData={menuData.filter((item: SiderProps) => item.children)}
