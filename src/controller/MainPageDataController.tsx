@@ -15,6 +15,20 @@ import MainPageContentWrapper from '../pages/MainPageContentWrapper';
 import Footer from '../component/Footer';
 import ExhentaiSearcher from '../pages/ExhentaiSearcher';
 
+const neta = [
+  '我裤子动了',
+  '医生那边怎么说？',
+  '嫁了算了，这傻逼看起来还行',
+  '几日不见，胖若两人',
+  '经过组织决定，要有光',
+  '引人入射的爱情故事',
+  '脚踏板轮椅',
+  '走，网吧通宵',
+  '太惨了，vtuber 就算想哭也只能捕捉出笑脸',
+  '明明多穿了一件衣服，却感觉少穿了一件',
+];
+const title = neta[Math.round(Math.random() * 100) % neta.length];
+
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
@@ -174,7 +188,7 @@ const MainPageDataController = () => {
   return (
     <>
       <Header
-        title="title"
+        title={title}
         currentKey={siderSelectedKey}
         rightBar={[
           { text: '文章', value: 'all' },
