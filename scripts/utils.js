@@ -156,9 +156,7 @@ const compressJSON = () => {
           return item.visible !== false && shouldHideExhentaiList;
         });
       }
-      fs.outputJsonSync(targetUrl, content, {
-        spaces: 0,
-      });
+      fs.outputJsonSync(targetUrl, content, { spaces: 0 });
     }
   });
 };
