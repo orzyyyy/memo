@@ -4,7 +4,7 @@ import Button from '../component/Button';
 import Input from '../component/Input';
 import Select from '../component/Select';
 
-const MainPageHeader = ({
+const ExhentaiSearcher = ({
   onExhentaiDownload,
   onEdit,
   exhentaiDateSet,
@@ -46,4 +46,4 @@ const MainPageHeader = ({
   );
 };
 
-export default MainPageHeader;
+export default ExhentaiSearcher;
