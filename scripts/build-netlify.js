@@ -61,4 +61,5 @@ const plugins = [
 module.exports = {
   entry: getEntry(),
   plugins,
+  output: { filename: '[name].[hash].js', chunkFilename: 'vendor/[name].[chunkhash].js' },
 };

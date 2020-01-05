@@ -35,5 +35,5 @@ const plugins = [
 module.exports = {
   entry: getEntry(),
   plugins,
-  output: { publicPath: '/memo/dist/' },
+  output: { publicPath: '/memo/dist/', filename: '[name].[hash].js', chunkFilename: 'vendor/[name].[chunkhash].js' },
 };
