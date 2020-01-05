@@ -55,7 +55,7 @@ const EditForm = ({
   onCancel,
   onSubmit,
   pageInfo,
-  dataItem = { id: '', type: '', subType: '', category: undefined, title: '' },
+  dataItem = { id: '', type: '', subType: '', category: 'markdown', title: '' },
 }: EditFormProps) => {
   const [currentTypeSelectItem, setCurrentTypeSelectItem] = useState(dataItem.type);
   const [isEditMode, setEditMode] = useState(false);
