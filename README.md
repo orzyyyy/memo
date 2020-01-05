@@ -6,7 +6,7 @@
 ## ⌨️ Development
 
 ```bash
-$ git clone https://github.com/orzyyyy/memo.git
+$ git clone git@github.com:orzyyyy/memo.git
 $ cd memo
 $ npm install
 $ npm start
