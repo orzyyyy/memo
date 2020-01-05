@@ -1,7 +1,9 @@
 <h4 align="center">Besides six pence, there is the moon.</h4>
 <p align="center">
-  <a href="https://github.com/orzyyyy/memo/actions"><img alt="GitHub Actions status" src="https://github.com/orzyyyy/memo/workflows/test/badge.svg"></a>
- </p>
+  <a href="https://github.com/orzyyyy/memo/actions">
+    <img alt="GitHub Actions status" src="https://github.com/orzyyyy/memo/workflows/test/badge.svg">
+  </a>
+</p>
 
 ## ⌨️ Development
 
