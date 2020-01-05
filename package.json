@@ -29,7 +29,7 @@
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
     "log": "git log --graph --pretty=format:'[%h](http://github.com/orzyyyy/memo/commit/%H) -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 1.1.3..HEAD",
-    "pre:server": "rimraf bin && node scripts/copy-resource",
+    "pre:server": "rimraf bin && mkdir bin && cp -r server/resource bin/resource",
     "prettier": "nino prettier",
     "pub": "gh-pages -d dist",
     "run:server": "node bin",
