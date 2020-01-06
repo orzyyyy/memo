@@ -13,27 +13,37 @@ export interface ExHentaiListProps {
   onDetail: (url: string) => void;
 }
 
+const patch = 15;
+
 const ExHentaiList = ({ dataSource = [], onDownload, onDetail }: ExHentaiListProps) => {
-  const [realImgInfo, setRealImgInfo] = useState([] as (ExHentaiInfoItem & { height: number })[]);
+  const [realImgInfo, setRealImgInfo] = useState([] as (ExHentaiInfoItem & { height: number; width: number })[]);
 
   useEffect(() => {
-    const getImgHeight = async () => {
-      const result = [];
-      for (const item of dataSource) {
+    const getImgHeight = async (data: ExHentaiInfoItem[]) => {
+      const target = [];
+      for (const item of data) {
         const img = new Image();
         img.src = item.thumbnailUrl;
-        const height: number = await new Promise(resolve => {
+        const params: { width: number; height: number } = await new Promise(resolve => {
           img.onload = () => {
-            resolve(img.height);
+            resolve({ width: img.width, height: img.height });
           };
         });
-        const targetObj = { height, ...item };
-        result.push(targetObj);
+        target.push({ ...params, ...item });
       }
-      setRealImgInfo(result);
+      return target;
     };
 
-    getImgHeight();
+    const updatePatchImg = async (data: ExHentaiInfoItem[], result: any[], patch: number) => {
+      const target = data.splice(0, patch);
+      result = [...result, ...(await getImgHeight(target))];
+      setRealImgInfo(result);
+      if (data.length) {
+        updatePatchImg(data, result, patch);
+      }
+    };
+
+    updatePatchImg(dataSource, [], patch);
   }, [dataSource]);
 
   return (
@@ -44,7 +54,7 @@ const ExHentaiList = ({ dataSource = [], onDownload, onDetail }: ExHentaiListPro
             <img
               alt={item.name}
               src={item.thumbnailUrl}
-              style={{ height: item.height }}
+              style={{ height: item.height, width: item.width }}
               onClick={() => onDetail(item.detailUrl)}
               onContextMenu={() => onDownload({ url: item.detailUrl })}
             />
