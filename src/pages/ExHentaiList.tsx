@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
-import LazyLoad from 'react-lazyload';
 import './css/exhentai-list.css';
 
 export interface DownloadProps {
@@ -14,26 +13,46 @@ export interface ExHentaiListProps {
   onDetail: (url: string) => void;
 }
 
-const renderImg = ({ onDownload, wrapperHeight, item, onDetail }: ExHentaiListProps & { item: ExHentaiInfoItem }) => (
-  <div
-    style={{ height: wrapperHeight / 2 }}
-    onClick={() => onDetail(item.detailUrl)}
-    onContextMenu={() => onDownload({ url: item.detailUrl })}
-  >
-    <img alt={item.name} src={item.thumbnailUrl} style={{ height: '100%' }} />
-  </div>
-);
+const ExHentaiList = ({ dataSource = [], onDownload, onDetail }: ExHentaiListProps) => {
+  const [realImgInfo, setRealImgInfo] = useState([] as (ExHentaiInfoItem & { height: number })[]);
 
-const ExHentaiList = ({ dataSource = [], onDownload, wrapperHeight, onDetail }: ExHentaiListProps) => (
-  <ul className="exhentai-list">
-    {dataSource.map(item => (
-      <li key={item.detailUrl + '-' + item.postTime}>
-        <LazyLoad height={wrapperHeight} once scrollContainer=".main-page-content-wrapper">
-          {renderImg({ onDownload, wrapperHeight, item, onDetail })}
-        </LazyLoad>
-      </li>
-    ))}
-  </ul>
-);
+  useEffect(() => {
+    const getImgHeight = async () => {
+      const result = [];
+      for (const item of dataSource) {
+        const img = new Image();
+        img.src = item.thumbnailUrl;
+        const height: number = await new Promise(resolve => {
+          img.onload = () => {
+            resolve(img.height);
+          };
+        });
+        const targetObj = { height, ...item };
+        result.push(targetObj);
+      }
+      setRealImgInfo(result);
+    };
+
+    getImgHeight();
+  }, [dataSource]);
+
+  return (
+    <ul className="exhentai-list">
+      {realImgInfo.map(item => {
+        return (
+          <li key={item.detailUrl}>
+            <img
+              alt={item.name}
+              src={item.thumbnailUrl}
+              style={{ height: item.height }}
+              onClick={() => onDetail(item.detailUrl)}
+              onContextMenu={() => onDownload({ url: item.detailUrl })}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 export default ExHentaiList;
