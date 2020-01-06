@@ -2,8 +2,5 @@
   display: grid;
   grid-template-columns: repeat(5, 20%);
   list-style: none;
-}
-
-.exhentai-list img {
-  width: 100%;
+  text-align: center;
 }

@@ -3,40 +3,5 @@
 exports[`ExHentaiList render correctly 1`] = `
 <ul
   className="exhentai-list"
->
-  <li
-    key="https://exhentai.org/g/1430261/17651c12eb/-1559412420000"
-  >
-    <LazyLoad
-      height={1000}
-      offset={0}
-      once={true}
-      overflow={false}
-      resize={false}
-      scroll={true}
-      scrollContainer=".main-page-content-wrapper"
-      unmountIfInvisible={false}
-    >
-      <div
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        style={
-          Object {
-            "height": 500,
-          }
-        }
-      >
-        <img
-          alt="[Zakotsu] Amanita Pantherina (COMIC Koh 2018-06) [Chinese] [嗷呜个人汉化] [Digital]"
-          src="https://exhentai.org/t/5b/47/5b47c48abf0fb6c685869520cdb8ab0d97990e4d-1074410-1280-1807-jpg_250.jpg"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-      </div>
-    </LazyLoad>
-  </li>
-</ul>
+/>
 `;
