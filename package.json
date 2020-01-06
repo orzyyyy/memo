@@ -33,6 +33,7 @@
     "prettier": "nino prettier",
     "pub": "gh-pages -d dist",
     "run:server": "node bin",
+    "sort": "npx sort-package-json",
     "start": "npm run compile:server && wait-on bin && cross-env BUILD_ENV=dev npm-run-all --parallel run:server dev",
     "test": "cross-env BUILD_ENV=test nino test",
     "tsc": "tsc"
@@ -44,7 +45,10 @@
     "*.{ts,tsx}": [
       "npm run prettier",
       "npm run lint",
-      "npx sort-package-json",
+      "git add"
+    ],
+    "package.json": [
+      "npm run sort",
       "git add"
     ]
   },
