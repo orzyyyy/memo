@@ -29,6 +29,16 @@ const neta = [
 ];
 const title = neta[Math.round(Math.random() * 100) % neta.length];
 
+// eslint-disable-next-line no-underscore-dangle
+const isLocal = (window as any).__isLocal;
+
+export const rightBar = [
+  { text: '文章', value: 'article' },
+  { text: 'ex-hentai', value: 'ex-hentai', visible: !!isLocal },
+  { text: '工具', value: 'utils' },
+  { text: '+', value: 'add', visible: !!isLocal },
+];
+
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
   menuData: SiderProps[];
@@ -74,8 +84,6 @@ const MainPageDataController = () => {
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
   const [siderSelectedKey, setSiderSelectedKey] = useState('all');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
-  // eslint-disable-next-line no-underscore-dangle
-  const isLocal = (window as any).__isLocal;
 
   useResize();
 
@@ -92,7 +100,7 @@ const MainPageDataController = () => {
     if (isLocal) {
       getExhentaiDateSet();
     }
-  }, [isLocal]);
+  }, []);
 
   const handleDelete = async ({ id, category }: MappingProps) => {
     await fetch('/api/memo/document/delete', {
@@ -190,12 +198,7 @@ const MainPageDataController = () => {
       <Header
         title={title}
         currentKey={siderSelectedKey}
-        rightBar={[
-          { text: '文章', value: 'all' },
-          { text: 'ex-hentai', value: 'ex-hentai-module', visible: !!isLocal },
-          { text: '工具', value: 'utils' },
-          { text: '+', value: 'add', visible: !!isLocal },
-        ]}
+        rightBar={rightBar}
         onClick={handleHeaderClick}
         searchBar={
           isLocal ? (
