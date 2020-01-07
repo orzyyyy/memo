@@ -8,11 +8,9 @@ const MainPageList = ({
   onDelete,
   onEdit,
   onHide,
-  siderSelectedKey,
   dataSource,
   onListItemClick,
   isLocal,
-  siderOpenKey,
 }: {
   siderSelectedKey: string;
   onDelete?: (dataItem: MappingProps) => void;
@@ -23,14 +21,9 @@ const MainPageList = ({
   isLocal: boolean;
   siderOpenKey: string;
 }) => {
-  const data =
-    siderSelectedKey === 'all'
-      ? dataSource
-      : dataSource.filter(item => item.subType === siderSelectedKey && item.type === siderOpenKey);
-
   return (
     <ul className="main-page-list">
-      {data.map(item => {
+      {dataSource.map(item => {
         const buttonGroup = (
           <div style={{ float: 'right', marginRight: 8 }}>
             <a

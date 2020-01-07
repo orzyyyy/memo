@@ -14,6 +14,7 @@ import Header, { RightBarProps } from '../component/Header';
 import MainPageContentWrapper from '../pages/MainPageContentWrapper';
 import Footer from '../component/Footer';
 import ExhentaiSearcher from '../pages/ExhentaiSearcher';
+let rightBar = require('../assets/rightBar.json');
 
 const neta = [
   '我裤子动了',
@@ -32,12 +33,10 @@ const title = neta[Math.round(Math.random() * 100) % neta.length];
 // eslint-disable-next-line no-underscore-dangle
 const isLocal = (window as any).__isLocal;
 
-export const rightBar = [
-  { text: '文章', value: 'article' },
-  { text: 'ex-hentai', value: 'ex-hentai', visible: !!isLocal },
-  { text: '工具', value: 'utils' },
-  { text: '+', value: 'add', visible: !!isLocal },
-];
+rightBar = rightBar.map((item: { text: string; value: string; visible?: boolean }) => {
+  item.visible = !!isLocal;
+  return item;
+});
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -82,7 +81,7 @@ const MainPageDataController = () => {
   const [isUtil, setIsUtil] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+  const [siderSelectedKey, setSiderSelectedKey] = useState('article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
@@ -149,7 +148,7 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
-    setIsExhentai(item.value === 'ex-hentai-module');
+    setIsExhentai(item.value === 'ex-hentai');
     setIsUtil(item.value === 'utils');
   };
 
