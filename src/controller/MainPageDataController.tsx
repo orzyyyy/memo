@@ -137,10 +137,12 @@ const MainPageDataController = () => {
     }
     handleModalCancel();
     if (item.category === 'mapping') {
-      location.href = `./mapping/${id}`;
+      history.push(`./mapping/${id}`);
+
       return;
     }
     location.href = `./markdown-editor/${id}`;
+    history.push(`./mapping/${id}`);
   };
 
   const handleHeaderClick = (item: RightBarProps, e: React.MouseEvent) => {
@@ -149,7 +151,7 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
-    location.href = `./${item.value}`;
+    history.push(`./${item.value}`);
   };
 
   const handleHide = async ({ id }: MappingProps) => {
