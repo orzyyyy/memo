@@ -76,12 +76,13 @@ const getExhentaiTargetDataSource = async (url: string) => {
 };
 
 const MainPageDataController = () => {
+  const preifx = location.pathname.includes('memo') ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState(location.pathname.split('/')[1] || 'article');
+  const [siderSelectedKey, setSiderSelectedKey] = useState(preifx || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
