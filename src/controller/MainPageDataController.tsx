@@ -81,7 +81,7 @@ const MainPageDataController = () => {
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState(location.pathname.replace('/', '') || 'article');
+  const [siderSelectedKey, setSiderSelectedKey] = useState(location.pathname.split('/')[1] || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
