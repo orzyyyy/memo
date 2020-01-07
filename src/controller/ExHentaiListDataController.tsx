@@ -4,6 +4,7 @@ import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 
 export interface ExHentaiListDataControllerProps {
   dataSource: ExHentaiInfoItem[];
+  isLocal: boolean;
 }
 
 export const handleExhentaiDownload = async ({ url }: DownloadProps) => {
@@ -27,11 +28,11 @@ const onDetail = (url: string) => {
   window.open(url);
 };
 
-const ExHentaiListDataController = ({ dataSource }: ExHentaiListDataControllerProps) => {
+const ExHentaiListDataController = ({ dataSource, isLocal }: ExHentaiListDataControllerProps) => {
   const notify = <span>该页面仅在本地可用</span>;
   return (
     <>
-      {!dataSource.length && notify}
+      {!isLocal && !dataSource.length && notify}
       <ExHentaiList
         dataSource={dataSource}
         onDownload={handleExhentaiDownload}

@@ -149,6 +149,7 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
+    location.href = `./${item.value}`;
   };
 
   const handleHide = async ({ id }: MappingProps) => {
@@ -166,7 +167,7 @@ const MainPageDataController = () => {
 
   const renderContent = () => {
     if (siderSelectedKey === 'ex-hentai') {
-      return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
+      return <ExhentaiList isLocal={isLocal} dataSource={exhentaiListTargetDataSource} />;
     }
     if (siderSelectedKey === 'utils') {
       return <UtilList />;
