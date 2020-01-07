@@ -11,11 +11,11 @@ const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEd
 const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
 
 const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element>; key: string }[] = [
-  {
-    path: '/',
-    component: MainPageDataController,
-    key: 'main-page',
-  },
+  { path: '/', component: MainPageDataController, key: 'main-page' },
+  { path: '/ex-hentai', component: MainPageDataController, key: 'main-page-ex-hentai' },
+  { path: '/article', component: MainPageDataController, key: 'main-page-article' },
+  { path: '/article-add', component: MainPageDataController, key: 'main-page-article-add' },
+  { path: '/utils', component: MainPageDataController, key: 'main-page-utils' },
   { path: '/mapping/:id', component: MappingDetailDataController, key: 'mapping-detail' },
   { path: '/markdown/edit/:id', component: MarkdownEditorDataController, key: 'markdown-edit' },
   { path: '/markdown/:id', component: MarkdownDetailDataController, key: 'markdown-detail' },

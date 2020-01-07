@@ -9,6 +9,7 @@ const buildEnv = process.env.BUILD_ENV;
 
 const handleWithPrefix = (...args) => path.join(__dirname, '../', ...args);
 
+const rightBar = require(handleWithPrefix('src/assets/rightBar.json'));
 const mappingFilePath = handleWithPrefix('src/assets/mapping.json');
 const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible !== false);
 const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
@@ -47,6 +48,20 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
       description: `${author}'s ${name}`,
     }),
   ];
+  // render for rightBar
+  for (const item of rightBar) {
+    mainPageProps.push(
+      new HtmlWebpackPlugin({
+        ...commonHtmlWebpackProps,
+        ...customedHtmlWebpackProps,
+        filename: `${item.value}/index.html`,
+        chunks: ['ninoninoni'],
+        title: `${author}'s ${name}`,
+        description: `${author}'s ${name}`,
+      }),
+    );
+  }
+
   const detailPageProps = [];
   const editorPageProps = [];
 

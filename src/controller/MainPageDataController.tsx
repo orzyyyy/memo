@@ -14,6 +14,7 @@ import Header, { RightBarProps } from '../component/Header';
 import MainPageContentWrapper from '../pages/MainPageContentWrapper';
 import Footer from '../component/Footer';
 import ExhentaiSearcher from '../pages/ExhentaiSearcher';
+let rightBar = require('../assets/rightBar.json');
 
 const neta = [
   '我裤子动了',
@@ -28,6 +29,16 @@ const neta = [
   '明明多穿了一件衣服，却感觉少穿了一件',
 ];
 const title = neta[Math.round(Math.random() * 100) % neta.length];
+
+// eslint-disable-next-line no-underscore-dangle
+const isLocal = (window as any).__isLocal;
+
+rightBar = rightBar.map((item: { text: string; value: string; visible?: boolean }) => {
+  if (item.value === 'add' || item.value === 'ex-hentai') {
+    item.visible = !!isLocal;
+  }
+  return item;
+});
 
 export interface MainPageDataControllerState {
   dataSource: MappingProps[];
@@ -68,14 +79,10 @@ const MainPageDataController = () => {
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
-  const [isExhentai, setIsExhentai] = useState(false);
-  const [isUtil, setIsUtil] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState('all');
+  const [siderSelectedKey, setSiderSelectedKey] = useState(location.pathname.replace('/', '') || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
-  // eslint-disable-next-line no-underscore-dangle
-  const isLocal = (window as any).__isLocal;
 
   useResize();
 
@@ -92,7 +99,7 @@ const MainPageDataController = () => {
     if (isLocal) {
       getExhentaiDateSet();
     }
-  }, [isLocal]);
+  }, []);
 
   const handleDelete = async ({ id, category }: MappingProps) => {
     await fetch('/api/memo/document/delete', {
@@ -141,8 +148,6 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
-    setIsExhentai(item.value === 'ex-hentai-module');
-    setIsUtil(item.value === 'utils');
   };
 
   const handleHide = async ({ id }: MappingProps) => {
@@ -159,10 +164,10 @@ const MainPageDataController = () => {
   };
 
   const renderContent = () => {
-    if (isExhentai) {
+    if (siderSelectedKey === 'ex-hentai') {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
-    if (isUtil) {
+    if (siderSelectedKey === 'utils') {
       return <UtilList />;
     }
     return (
@@ -190,12 +195,7 @@ const MainPageDataController = () => {
       <Header
         title={title}
         currentKey={siderSelectedKey}
-        rightBar={[
-          { text: '文章', value: 'all' },
-          { text: 'ex-hentai', value: 'ex-hentai-module', visible: !!isLocal },
-          { text: '工具', value: 'utils' },
-          { text: '+', value: 'add', visible: !!isLocal },
-        ]}
+        rightBar={rightBar}
         onClick={handleHeaderClick}
         searchBar={
           isLocal ? (
