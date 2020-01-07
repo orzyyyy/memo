@@ -79,11 +79,9 @@ const MainPageDataController = () => {
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
-  const [isExhentai, setIsExhentai] = useState(false);
-  const [isUtil, setIsUtil] = useState(false);
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState('article');
+  const [siderSelectedKey, setSiderSelectedKey] = useState(location.pathname.replace('/', '') || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
@@ -150,8 +148,6 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
-    setIsExhentai(item.value === 'ex-hentai');
-    setIsUtil(item.value === 'utils');
   };
 
   const handleHide = async ({ id }: MappingProps) => {
@@ -168,10 +164,10 @@ const MainPageDataController = () => {
   };
 
   const renderContent = () => {
-    if (isExhentai) {
+    if (siderSelectedKey === 'ex-hentai') {
       return <ExhentaiList dataSource={exhentaiListTargetDataSource} />;
     }
-    if (isUtil) {
+    if (siderSelectedKey === 'utils') {
       return <UtilList />;
     }
     return (
