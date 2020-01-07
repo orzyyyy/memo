@@ -68,7 +68,7 @@ describe('MainPageDataController', () => {
       .onSubmit({ category: 'mapping' }, { id: 'test' });
     setTimeout(() => {
       wrapper.update();
-      expect(location.href).toBe('http://localhost/');
+      expect(location.href).toBe('http://localhost/mapping/test');
       done();
     });
   });
@@ -81,7 +81,7 @@ describe('MainPageDataController', () => {
       .onSubmit({ category: 'markdown' }, { id: 'test' });
     setTimeout(() => {
       wrapper.update();
-      expect(location.href).toBe('http://localhost/');
+      expect(location.href).toBe('http://localhost/markdown-editor/test');
       done();
     });
   });
@@ -94,7 +94,7 @@ describe('MainPageDataController', () => {
       .onSubmit({ category: 'mapping' });
     setTimeout(() => {
       wrapper.update();
-      expect(location.href).toBe('http://localhost/');
+      expect(location.href).toBe('http://localhost/mapping/test');
       done();
     });
   });
@@ -107,7 +107,7 @@ describe('MainPageDataController', () => {
       .onSubmit({ category: 'markdown' });
     setTimeout(() => {
       wrapper.update();
-      expect(location.href).toBe('http://localhost/');
+      expect(location.href).toBe('http://localhost/markdown-editor/test');
       done();
     });
   });
@@ -145,6 +145,6 @@ describe('MainPageDataController', () => {
       .find('MainPageList')
       .props()
       .onListItemClick({ id: 'test', category: 'markdown' });
-    expect(location.pathname).toBe('/markdown/test');
+    expect(location.pathname).toBe('/markdown-editor/markdown/test');
   });
 });
