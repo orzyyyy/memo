@@ -34,7 +34,9 @@ const title = neta[Math.round(Math.random() * 100) % neta.length];
 const isLocal = (window as any).__isLocal;
 
 rightBar = rightBar.map((item: { text: string; value: string; visible?: boolean }) => {
-  item.visible = !!isLocal;
+  if (item.value === 'add' || item.value === 'ex-hentai') {
+    item.visible = !!isLocal;
+  }
   return item;
 });
 
