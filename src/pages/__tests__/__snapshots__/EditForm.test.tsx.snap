@@ -171,6 +171,11 @@ exports[`EditForm empty dataItem 1`] = `
                             >
                               mapping
                             </option>
+                            <option
+                              value="utils"
+                            >
+                              utils
+                            </option>
                           </select>
                           <span>
                             文档类别
@@ -486,6 +491,11 @@ exports[`EditForm empty dataItem 1`] = `
                                     value="mapping"
                                   >
                                     mapping
+                                  </option>
+                                  <option
+                                    value="utils"
+                                  >
+                                    utils
                                   </option>
                                 </select>
                               </Select>
@@ -812,6 +822,11 @@ exports[`EditForm render correctly 1`] = `
                             >
                               mapping
                             </option>
+                            <option
+                              value="utils"
+                            >
+                              utils
+                            </option>
                           </select>
                           <span>
                             文档类别
@@ -1127,6 +1142,11 @@ exports[`EditForm render correctly 1`] = `
                                     value="mapping"
                                   >
                                     mapping
+                                  </option>
+                                  <option
+                                    value="utils"
+                                  >
+                                    utils
                                   </option>
                                 </select>
                               </Select>
