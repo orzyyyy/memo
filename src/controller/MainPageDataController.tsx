@@ -54,6 +54,8 @@ export interface MainPageDataControllerState {
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
 
+const isGhPages = location.pathname.includes('memo');
+const prefix = isGhPages ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
 const headerHeight = 48;
 const footerHeight = 91;
 
@@ -66,7 +68,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.push(`./${category}/${id}`);
+  history.push(`${isGhPages ? '/memo' : ''}/${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -76,7 +78,6 @@ const getExhentaiTargetDataSource = async (url: string) => {
 };
 
 const MainPageDataController = () => {
-  const prefix = location.pathname.includes('memo') ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
@@ -138,15 +139,15 @@ const MainPageDataController = () => {
     handleModalCancel();
     switch (item.category) {
       case 'mapping':
-        history.push(`./mapping/${id}`);
+        history.push(`${isGhPages ? '/memo' : ''}/mapping/${id}`);
         break;
 
       case 'markdown':
-        history.push(`./markdown-editor/${id}`);
+        history.push(`${isGhPages ? '/memo' : ''}/markdown-editor/${id}`);
         break;
 
       case 'utils':
-        history.push(`./utils/${id}`);
+        history.push(`${isGhPages ? '/memo' : ''}/utils/${id}`);
         break;
 
       default:
