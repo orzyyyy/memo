@@ -10,6 +10,5 @@
 /exhentai/**/detailImageUrls.json
 /exhentai/**/detail.json
 /bin
-package-lock.json
 *.log
 profiles
