@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Upload from '../component/Upload';
+import { UploadFile } from '../component/Upload/Uploader';
 
 const SlicingImage = () => {
-  return (
-    <Upload
-      fileList={[
-        {
-          url: 'https://peko-bot.github.io/chika-component/assets/d19f18a8ly1g0akzu7cq5j20u016gnpe.jpg',
-          name: 'test',
-          id: 1,
-        },
-      ]}
-      style={{ padding: 6 }}
-    />
-  );
+  const [fileList, setFileList] = useState([] as UploadFile[]);
+
+  const onChange = (file: UploadFile) => {
+    setFileList([...fileList, file]);
+  };
+
+  const onClick = (file: UploadFile) => {
+    setFileList(fileList.filter(item => item.id !== file.id));
+  };
+
+  return <Upload fileList={fileList} onChange={onChange} uploaderVisible={fileList.length === 0} onClick={onClick} />;
 };
 
 export default SlicingImage;

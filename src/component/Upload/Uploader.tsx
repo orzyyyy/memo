@@ -3,13 +3,13 @@ import './css/Uploader.css';
 import { isImageUrl } from './utils';
 
 export interface UploadFile {
-  id: string | number;
+  id: string;
   url: string;
   name: string;
   error?: boolean;
 }
 export interface UploaderProps {
-  onChange?: (file: File) => void;
+  onChange?: (file: UploadFile) => void;
   accept?: string;
   multiple?: boolean;
   renderPlusItem?: () => void;
