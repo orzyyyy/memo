@@ -70,7 +70,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.push(`${ghPagesPrefix}/${category}/${id}`);
+  history.replace(`${ghPagesPrefix}/${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -141,15 +141,15 @@ const MainPageDataController = () => {
     handleModalCancel();
     switch (item.category) {
       case 'mapping':
-        history.push(`${ghPagesPrefix}/mapping/${id}`);
+        history.replace(`${ghPagesPrefix}/mapping/${id}`);
         break;
 
       case 'markdown':
-        history.push(`${ghPagesPrefix}/markdown-editor/${id}`);
+        history.replace(`${ghPagesPrefix}/markdown-editor/${id}`);
         break;
 
       case 'utils':
-        history.push(`${ghPagesPrefix}/utils/${id}`);
+        history.replace(`${ghPagesPrefix}/utils/${id}`);
         break;
 
       default:
@@ -163,7 +163,11 @@ const MainPageDataController = () => {
       return;
     }
     setSiderSelectedKey(item.value);
-    history.push(`${ghPagesPrefix}/${item.value}`);
+    // This line will cause stuck when toggling with the nav
+    // Have worked on this for my afternoon, but can't find a way to fix
+    // history.replace(`${ghPagesPrefix}/${item.value}`);
+    // Use this to hack
+    location.href = `${ghPagesPrefix}/${item.value}`;
   };
 
   const handleHide = async ({ id }: MappingProps) => {
