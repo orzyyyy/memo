@@ -127,6 +127,7 @@ const EditForm = ({
           >
             <option value="markdown">markdown</option>
             <option value="mapping">mapping</option>
+            <option value="utils">utils</option>
           </Select>
         </>
       )}
@@ -228,8 +229,8 @@ const EditForm = ({
       >
         {renderTitle()}
         {renderCategory(isEditMode)}
-        {renderType()}
-        {renderSubType()}
+        {formData.category !== 'utils' && renderType()}
+        {formData.category !== 'utils' && renderSubType()}
       </div>
     </Dialog>
   );
