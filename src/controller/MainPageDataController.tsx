@@ -59,7 +59,7 @@ const footerHeight = 91;
 
 const dataSource = mapping
   .filter((item: any) => item.visible !== false)
-  .sort((a: any, b: any) => b.createTime - a.createTime);
+  .sort((a: any, b: any) => b.createTime - a.createTime) as MappingProps[];
 
 const handleExhentaiLoadList = () => {
   fetch('/api/memo/exhentai');
@@ -181,14 +181,19 @@ const MainPageDataController = () => {
       return <ExhentaiList isLocal={isLocal} dataSource={exhentaiListTargetDataSource} />;
     }
     if (siderSelectedKey === 'utils') {
-      return <UtilList />;
+      return (
+        <UtilList
+          dataSource={dataSource.filter(item => item.category === 'utils')}
+          onListItemClick={handleListItemClick}
+        />
+      );
     }
     return (
       <MainPageList
         siderSelectedKey={siderSelectedKey}
         onListItemClick={handleListItemClick}
         onDelete={handleDelete}
-        dataSource={dataSource as any}
+        dataSource={dataSource.filter(item => item.category !== 'utils')}
         onEdit={handleEdit}
         onHide={handleHide}
         isLocal={isLocal}

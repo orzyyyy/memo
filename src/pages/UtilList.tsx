@@ -1,7 +1,27 @@
 import React from 'react';
+import './css/util-list.css';
+import { MappingProps } from '../../server/controller/DocumentController';
+import { DocumentCategoryProps } from '../../server/utils/document';
 
-const UtilList = () => {
-  return <>utillist</>;
-};
+export interface UtilListProps {
+  dataSource: MappingProps[];
+  onListItemClick: ({ category, id }: { category?: DocumentCategoryProps; id: string }) => void;
+}
+
+const UtilList = ({ dataSource, onListItemClick }: UtilListProps) => (
+  <ul className="util-list">
+    {dataSource.map(item => {
+      return (
+        <li
+          key={`list-item-${item.id}`}
+          className="list-item"
+          onClick={() => onListItemClick({ category: item.category, id: item.id })}
+        >
+          {item.title}
+        </li>
+      );
+    })}
+  </ul>
+);
 
 export default UtilList;

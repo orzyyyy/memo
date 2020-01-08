@@ -5,7 +5,6 @@ import DocumentService from '../service/DocumentService';
 import { Context } from 'koa';
 
 export interface MappingProps {
-  [x: string]: number | string | undefined | null | boolean;
   createTime?: number;
   modifyTime?: number;
   id: string;

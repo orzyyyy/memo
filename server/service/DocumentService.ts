@@ -31,12 +31,12 @@ export default class DocumentService {
   updateMapping = (targetItem: MappingProps, isDelete?: boolean) => {
     const removeKeys = [];
     for (const key in targetItem) {
-      const value = targetItem[key];
+      const value = (targetItem as any)[key];
       if (value === undefined) {
         removeKeys.push(key);
       }
     }
-    targetItem = omit(targetItem, removeKeys) as MappingProps;
+    targetItem = omit(targetItem, removeKeys as any) as MappingProps;
     const originMappingItem = this.getOriginMappingItem(targetItem.id);
     const writeFilesPaths = getWriteMappingPaths();
     const mappingPath = joinWithRootPath(writeFilesPaths[0]);
