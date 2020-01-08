@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import Upload from '../Upload';
 
 const fileList = [
-  { id: 1, url: 'test1', error: false, name: 'test1' },
-  { id: 2, url: 'test2', error: false, name: 'test2' },
+  { id: '1', url: 'test1', error: false, name: 'test1' },
+  { id: '2', url: 'test2', error: false, name: 'test2' },
 ];
 
 describe('Upload', () => {
@@ -20,7 +20,7 @@ describe('Upload', () => {
       .find('.upload-item')
       .at(0)
       .simulate('click');
-    expect(onClick).toBeCalledWith({ id: 1, url: 'test1', error: false, name: 'test1' });
+    expect(onClick).toBeCalledWith({ id: '1', url: 'test1', error: false, name: 'test1' });
   });
 
   it('status error should work correctly', () => {

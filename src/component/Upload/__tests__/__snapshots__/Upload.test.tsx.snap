@@ -6,13 +6,13 @@ exports[`Upload render correctly 1`] = `
     Array [
       Object {
         "error": false,
-        "id": 1,
+        "id": "1",
         "name": "test1",
         "url": "test1",
       },
       Object {
         "error": false,
-        "id": 2,
+        "id": "2",
         "name": "test2",
         "url": "test2",
       },
@@ -27,13 +27,13 @@ exports[`Upload render correctly 1`] = `
         Array [
           Object {
             "error": false,
-            "id": 1,
+            "id": "1",
             "name": "test1",
             "url": "test1",
           },
           Object {
             "error": false,
-            "id": 2,
+            "id": "2",
             "name": "test2",
             "url": "test2",
           },
@@ -75,13 +75,13 @@ exports[`Upload render correctly 1`] = `
               Array [
                 Object {
                   "error": false,
-                  "id": 1,
+                  "id": "1",
                   "name": "test1",
                   "url": "test1",
                 },
                 Object {
                   "error": false,
-                  "id": 2,
+                  "id": "2",
                   "name": "test2",
                   "url": "test2",
                 },
