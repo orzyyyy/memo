@@ -18,7 +18,7 @@ const UploadView = ({
   multiple,
   onClick,
   onPress,
-  uploaderVisible,
+  uploaderVisible = true,
 }: UploadViewProps) => {
   let timer: ReturnType<typeof setTimeout>;
 
