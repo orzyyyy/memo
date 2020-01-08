@@ -13,10 +13,9 @@ export interface UploaderProps {
   accept?: string;
   multiple?: boolean;
   renderPlusItem?: () => void;
-  fileList?: UploadFile[];
 }
 
-const Uploader = ({ renderPlusItem, multiple, onChange }: UploaderProps) => {
+const Uploader = ({ renderPlusItem, multiple, onChange, ...rest }: UploaderProps) => {
   let uploadInput: React.RefObject<HTMLInputElement> = useRef(null);
 
   const triggerInputUpload = () => {
@@ -60,6 +59,7 @@ const Uploader = ({ renderPlusItem, multiple, onChange }: UploaderProps) => {
             style={{ display: 'none' }}
             onChange={onFileChange}
             multiple={multiple}
+            {...rest}
           />
           {renderPlusItem ? renderPlusItem() : plusItem}
         </span>

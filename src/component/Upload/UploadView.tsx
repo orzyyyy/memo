@@ -14,11 +14,10 @@ export interface UploadViewProps extends UploaderProps {
 const UploadView = ({
   fileList = [],
   onChange,
-  accept,
-  multiple,
   onClick,
   onPress,
   uploaderVisible = true,
+  ...rest
 }: UploadViewProps) => {
   let timer: ReturnType<typeof setTimeout>;
 
@@ -65,7 +64,7 @@ const UploadView = ({
             </div>
           );
         })}
-        {uploaderVisible && <Uploader fileList={fileList} onChange={onChange} accept={accept} multiple={multiple} />}
+        {uploaderVisible && <Uploader onChange={onChange} {...rest} />}
       </div>
     </div>
   );
