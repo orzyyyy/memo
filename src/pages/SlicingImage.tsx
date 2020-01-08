@@ -13,7 +13,15 @@ const SlicingImage = () => {
     setFileList(fileList.filter(item => item.id !== file.id));
   };
 
-  return <Upload fileList={fileList} onChange={onChange} uploaderVisible={fileList.length === 0} onClick={onClick} />;
+  return (
+    <Upload
+      fileList={fileList}
+      onChange={onChange}
+      uploaderVisible={fileList.length === 0}
+      onClick={onClick}
+      accept="image/*"
+    />
+  );
 };
 
 export default SlicingImage;
