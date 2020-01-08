@@ -66,7 +66,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.push(`/${category}/${id}`);
+  history.push(`./${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -138,15 +138,15 @@ const MainPageDataController = () => {
     handleModalCancel();
     switch (item.category) {
       case 'mapping':
-        history.push(`/mapping/${id}`);
+        history.push(`./mapping/${id}`);
         break;
 
       case 'markdown':
-        history.push(`/markdown-editor/${id}`);
+        history.push(`./markdown-editor/${id}`);
         break;
 
       case 'utils':
-        history.push(`/utils/${id}`);
+        history.push(`./utils/${id}`);
         break;
 
       default:
