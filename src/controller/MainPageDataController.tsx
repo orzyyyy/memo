@@ -54,6 +54,10 @@ export interface MainPageDataControllerState {
   exhentaiListTargetDataSource: ExHentaiInfoItem[];
 }
 
+const isGhPages = location.pathname.includes('memo');
+const prefix = isGhPages ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
+const ghPagesPrefix = isGhPages ? '/memo' : '';
+
 const headerHeight = 48;
 const footerHeight = 91;
 
@@ -66,7 +70,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.push(`/${category}/${id}`);
+  history.replace(`${ghPagesPrefix}/${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -76,13 +80,15 @@ const getExhentaiTargetDataSource = async (url: string) => {
 };
 
 const MainPageDataController = () => {
-  const prefix = location.pathname.includes('memo') ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState(prefix || 'article');
+  const [
+    siderSelectedKey,
+    //  setSiderSelectedKey
+  ] = useState(prefix || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
@@ -138,15 +144,15 @@ const MainPageDataController = () => {
     handleModalCancel();
     switch (item.category) {
       case 'mapping':
-        history.push(`/mapping/${id}`);
+        history.replace(`${ghPagesPrefix}/mapping/${id}`);
         break;
 
       case 'markdown':
-        history.push(`/markdown-editor/${id}`);
+        history.replace(`${ghPagesPrefix}/markdown-editor/${id}`);
         break;
 
       case 'utils':
-        history.push(`/utils/${id}`);
+        history.replace(`${ghPagesPrefix}/utils/${id}`);
         break;
 
       default:
@@ -159,8 +165,12 @@ const MainPageDataController = () => {
       handleEdit(undefined, true, { x: e.pageX, y: e.pageY });
       return;
     }
-    setSiderSelectedKey(item.value);
-    history.push(`/${item.value}`);
+    // This line will cause stuck when toggling with the nav
+    // Have worked on this for my afternoon, but can't find a way to fix
+    // history.replace(`${ghPagesPrefix}/${item.value}`);
+    // Use this to hack
+    location.href = `${ghPagesPrefix}/${item.value}`;
+    // setSiderSelectedKey(item.value);
   };
 
   const handleHide = async ({ id }: MappingProps) => {
