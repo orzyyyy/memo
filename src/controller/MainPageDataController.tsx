@@ -85,7 +85,10 @@ const MainPageDataController = () => {
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState(prefix || 'article');
+  const [
+    siderSelectedKey,
+    //  setSiderSelectedKey
+  ] = useState(prefix || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();
@@ -167,7 +170,7 @@ const MainPageDataController = () => {
     // history.replace(`${ghPagesPrefix}/${item.value}`);
     // Use this to hack
     location.href = `${ghPagesPrefix}/${item.value}`;
-    setSiderSelectedKey(item.value);
+    // setSiderSelectedKey(item.value);
   };
 
   const handleHide = async ({ id }: MappingProps) => {
