@@ -15,12 +15,27 @@ const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible
 const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
 const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
 
+const handleWithUtils = () => {
+  const templateContent = fs
+    .readFileSync(handleWithPrefix('dist/utils/index.html'))
+    .toString()
+    .replace('../ninoninoni.', '../../ninoninoni.');
+  mappingFile
+    .filter(item => item.category === 'utils')
+    .map(item => {
+      const id = item.id;
+      fs.ensureDirSync(handleWithPrefix(`dist/utils/${id}`));
+      fs.outputFileSync(handleWithPrefix(`dist/utils/${id}/index.html`), templateContent);
+    });
+};
+
 const getEntry = () => {
   const common = {
     'markdown-detail': handleWithPrefix('src/router/MarkdownDetailDataController.tsx'),
     'markdown-editor': handleWithPrefix('src/router/MarkdownEditorDataController.tsx'),
     'mapping-detail': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
     'mapping-editor': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
+    'slicing-image': handleWithPrefix('src/router/SlicingImage.tsx'),
     ninoninoni: handleWithPrefix('src'),
   };
   const result = {
@@ -64,51 +79,43 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
 
   const detailPageProps = [];
   const editorPageProps = [];
+  const utilsPageProps = [];
 
   targetFiles.map(({ id, category, title, type, subType }) => {
     const commonTemplateProps = {
       title: `${type} - ${subType} - ${title}`,
       description: `${type} - ${subType}`,
     };
+    const props = { ...commonHtmlWebpackProps, ...customedHtmlWebpackProps, ...commonTemplateProps };
     switch (category) {
       case 'mapping':
         detailPageProps.push(
-          new HtmlWebpackPlugin({
-            ...commonHtmlWebpackProps,
-            ...customedHtmlWebpackProps,
-            ...commonTemplateProps,
-            filename: `${category}/${id}/index.html`,
-            chunks: ['mapping-detail'],
-          }),
+          new HtmlWebpackPlugin({ ...props, filename: `${category}/${id}/index.html`, chunks: ['mapping-detail'] }),
         );
         editorPageProps.push(
-          new HtmlWebpackPlugin({
-            ...commonHtmlWebpackProps,
-            ...customedHtmlWebpackProps,
-            ...commonTemplateProps,
-            filename: `mapping-editor/${id}/index.html`,
-            chunks: ['mapping-editor'],
-          }),
+          new HtmlWebpackPlugin({ ...props, filename: `mapping-editor/${id}/index.html`, chunks: ['mapping-editor'] }),
         );
         break;
 
       case 'markdown':
         detailPageProps.push(
-          new HtmlWebpackPlugin({
-            ...commonHtmlWebpackProps,
-            ...customedHtmlWebpackProps,
-            ...commonTemplateProps,
-            filename: `${category}/${id}/index.html`,
-            chunks: ['markdown-detail'],
-          }),
+          new HtmlWebpackPlugin({ ...props, filename: `${category}/${id}/index.html`, chunks: ['markdown-detail'] }),
         );
         editorPageProps.push(
           new HtmlWebpackPlugin({
-            ...commonHtmlWebpackProps,
-            ...customedHtmlWebpackProps,
-            ...commonTemplateProps,
+            ...props,
             filename: `markdown-editor/${id}/index.html`,
             chunks: ['markdown-editor'],
+          }),
+        );
+        break;
+
+      case 'utils':
+        utilsPageProps.push(
+          new HtmlWebpackPlugin({
+            ...props,
+            filename: `utils/${id}/index.html`,
+            chunks: ['slicing-image'],
           }),
         );
         break;
@@ -118,7 +125,7 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
     }
   });
 
-  return [...mainPageProps, ...detailPageProps, ...editorPageProps];
+  return [...mainPageProps, ...detailPageProps, ...editorPageProps, ...utilsPageProps];
 };
 
 const getCopyPluginProps = (shouldCopyExhentai = false) => {
@@ -139,18 +146,20 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
     : [];
   const documentFiles = [];
   targetFiles.map(({ id, category }) => {
-    const ext = category === 'mapping' ? 'json' : 'md';
-    const src = `src/assets/${category}/${id}.${ext}`;
-    const dist = `dist/${category}/${id}/${id}.${ext}`;
-    const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
-    documentFiles.push({
-      from: handleWithPrefix(src),
-      to: handleWithPrefix(dist),
-    });
-    documentFiles.push({
-      from: handleWithPrefix(src),
-      to: handleWithPrefix(distEditor),
-    });
+    if (category !== 'utils') {
+      const ext = category === 'mapping' ? 'json' : 'md';
+      const src = `src/assets/${category}/${id}.${ext}`;
+      const dist = `dist/${category}/${id}/${id}.${ext}`;
+      const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
+      documentFiles.push({
+        from: handleWithPrefix(src),
+        to: handleWithPrefix(dist),
+      });
+      documentFiles.push({
+        from: handleWithPrefix(src),
+        to: handleWithPrefix(distEditor),
+      });
+    }
   });
 
   return [...assetsFiles, ...exhentaiFiles, ...documentFiles];
@@ -190,4 +199,11 @@ const convertMarkdown2Html = () => {
   });
 };
 
-module.exports = { compressJSON, getCopyPluginProps, getHtmlPluginProps, getEntry, convertMarkdown2Html };
+module.exports = {
+  compressJSON,
+  getCopyPluginProps,
+  getHtmlPluginProps,
+  getEntry,
+  convertMarkdown2Html,
+  handleWithUtils,
+};

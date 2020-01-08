@@ -9,11 +9,7 @@ const MappingDetailDataController = () => {
   const id: string = getPathNameFromUrl();
 
   const handleOnSave = async (newData: DataSource) => {
-    const params: MarkdownEditorSaveProps = {
-      layout: newData,
-      id,
-      category: 'mapping',
-    };
+    const params: MarkdownEditorSaveProps = { layout: newData, id, category: 'mapping' };
     const response = await fetch('/api/memo/document/update/content', {
       method: 'POST',
       body: JSON.stringify(params),
@@ -26,17 +22,7 @@ const MappingDetailDataController = () => {
 
   let [data, setData] = useFetchDocumentData(id, 'mapping', handleOnSave);
   if (!data) {
-    data = {
-      position: {
-        root: {
-          x: -3000,
-          y: -3000,
-        },
-      },
-      block: {},
-      tag: {},
-      line: {},
-    };
+    data = { position: { root: { x: -3000, y: -3000 } }, block: {}, tag: {}, line: {} };
   }
 
   const handleOnChange = (data: DataSource) => {

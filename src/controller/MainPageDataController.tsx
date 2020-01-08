@@ -21,12 +21,12 @@ const neta = [
   '医生那边怎么说？',
   '嫁了算了，这傻逼看起来还行',
   '几日不见，胖若两人',
-  '经过组织决定，要有光',
+  '经过组织讨论，决定要有光',
   '引人入射的爱情故事',
-  '脚踏板轮椅',
+  '脚踏板轮椅，蓝色品质，50 一辆，童叟无欺',
   '走，网吧通宵',
-  '太惨了，vtuber 就算想哭也只能捕捉出笑脸',
-  '明明多穿了一件衣服，却感觉少穿了一件',
+  '太惨了，vtuber 就算哭也只能捕捉出笑脸',
+  '有的人明明多穿了一件，却感觉少了一件',
 ];
 const title = neta[Math.round(Math.random() * 100) % neta.length];
 
@@ -66,7 +66,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.push(`./${category}/${id}`);
+  history.push(`/${category}/${id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -76,13 +76,13 @@ const getExhentaiTargetDataSource = async (url: string) => {
 };
 
 const MainPageDataController = () => {
-  const preifx = location.pathname.includes('memo') ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
+  const prefix = location.pathname.includes('memo') ? location.pathname.split('/')[2] : location.pathname.split('/')[1];
   const [formVisible, setFormVisible] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [siderSelectedKey, setSiderSelectedKey] = useState(preifx || 'article');
+  const [siderSelectedKey, setSiderSelectedKey] = useState(prefix || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
 
   useResize();

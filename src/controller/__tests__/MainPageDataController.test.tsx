@@ -145,6 +145,6 @@ describe('MainPageDataController', () => {
       .find('MainPageList')
       .props()
       .onListItemClick({ id: 'test', category: 'markdown' });
-    expect(location.pathname).toBe('/markdown-editor/markdown/test');
+    expect(location.pathname).toBe('/markdown/test');
   });
 });
