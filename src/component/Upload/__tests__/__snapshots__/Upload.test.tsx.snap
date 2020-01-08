@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload render correctly 1`] = `
+<Upload
+  fileList={
+    Array [
+      Object {
+        "error": false,
+        "id": 1,
+        "name": "test1",
+        "url": "test1",
+      },
+      Object {
+        "error": false,
+        "id": 2,
+        "name": "test2",
+        "url": "test2",
+      },
+    ]
+  }
+>
+  <div
+    className="upload"
+  >
+    <UploadView
+      fileList={
+        Array [
+          Object {
+            "error": false,
+            "id": 1,
+            "name": "test1",
+            "url": "test1",
+          },
+          Object {
+            "error": false,
+            "id": 2,
+            "name": "test2",
+            "url": "test2",
+          },
+        ]
+      }
+    >
+      <div
+        className="uploadView"
+      >
+        <div
+          className="upload-view-list"
+        >
+          <div
+            className="upload-item"
+            key="upload-item-1"
+            onClick={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+          >
+            <img
+              src="test1"
+            />
+          </div>
+          <div
+            className="upload-item"
+            key="upload-item-2"
+            onClick={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+          >
+            <img
+              src="test2"
+            />
+          </div>
+          <Uploader
+            fileList={
+              Array [
+                Object {
+                  "error": false,
+                  "id": 1,
+                  "name": "test1",
+                  "url": "test1",
+                },
+                Object {
+                  "error": false,
+                  "id": 2,
+                  "name": "test2",
+                  "url": "test2",
+                },
+              ]
+            }
+          >
+            <div
+              className="uploader"
+            >
+              <div
+                className="upload-item"
+                onClick={[Function]}
+              >
+                <span
+                  className="upload-button"
+                >
+                  <input
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    type="file"
+                  />
+                  <i
+                    className="plus-icon"
+                  >
+                    +
+                  </i>
+                </span>
+              </div>
+            </div>
+          </Uploader>
+        </div>
+      </div>
+    </UploadView>
+  </div>
+</Upload>
+`;

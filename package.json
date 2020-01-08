@@ -55,6 +55,7 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
     "@types/blueimp-md5": "^2.7.0",
+    "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.3",
     "@types/fetch-mock": "^7.3.1",
     "@types/fs-extra": "^8.0.1",
@@ -73,6 +74,7 @@
     "@types/socket.io-client": "^1.4.32",
     "blueimp-md5": "^2.12.0",
     "chalk": "^3.0.0",
+    "classnames": "^2.2.6",
     "core-js": "^3.4.7",
     "cross-env": "^6.0.3",
     "date-fns": "^2.6.0",

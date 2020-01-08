@@ -1,0 +1,15 @@
+.uploadView .upload-view-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vw;
+}
+
+.uploadView .upload-view-list .upload-item {
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.uploadView .upload-view-list .upload-item img {
+  width: 100%;
+  height: 100%;
+}

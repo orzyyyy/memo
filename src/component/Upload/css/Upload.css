@@ -1,0 +1,18 @@
+.upload .upload-item {
+  border: 1px dashed #d9d9d9;
+  width: 26vw;
+  height: 26vw;
+  border-radius: 4px;
+  background-color: #fafafa;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  vertical-align: top;
+  display: table;
+  padding: 5px;
+  margin: 1vw;
+}
+
+.upload .upload-item-error {
+  border: 1px dashed red;
+}
