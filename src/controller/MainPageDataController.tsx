@@ -136,11 +136,22 @@ const MainPageDataController = () => {
       id = await response.text();
     }
     handleModalCancel();
-    if (item.category === 'mapping') {
-      history.push(`/mapping/${id}`);
-      return;
+    switch (item.category) {
+      case 'mapping':
+        history.push(`/mapping/${id}`);
+        break;
+
+      case 'markdown':
+        history.push(`/markdown-editor/${id}`);
+        break;
+
+      case 'utils':
+        history.push(`/utils/${id}`);
+        break;
+
+      default:
+        break;
     }
-    history.push(`/markdown-editor/${id}`);
   };
 
   const handleHeaderClick = (item: RightBarProps, e: React.MouseEvent) => {

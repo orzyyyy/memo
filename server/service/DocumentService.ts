@@ -77,11 +77,19 @@ export default class DocumentService {
   };
 
   initHtmlTemplate = (category: DocumentCategoryProps, originId: string) => {
+    let templatePath = '';
+    if (category === 'utils') {
+      const targetPath = path.join(joinWithRootPath(`dist/utils/${originId}`), 'index.html');
+      fs.ensureDirSync(joinWithRootPath(`dist/utils/${originId}`));
+      templatePath = path.join(joinWithRootPath('dist/utils/index.html'));
+      const templateContent = fs.readFileSync(templatePath).toString();
+      fs.outputFileSync(targetPath, templateContent.replace('../ninoninoni.js', '../../ninoninoni.js'));
+      return targetPath;
+    }
     const editorPath = `dist/${category}-editor`;
     const detailPath = `dist/${category}`;
     const ext = category === 'markdown' ? 'md' : 'json';
     const arr = [editorPath, detailPath];
-    let templatePath = '';
     // init dir
     arr.map(item => {
       fs.ensureDirSync(joinWithRootPath([item, originId]));
