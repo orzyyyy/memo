@@ -162,12 +162,12 @@ const MainPageDataController = () => {
       handleEdit(undefined, true, { x: e.pageX, y: e.pageY });
       return;
     }
-    setSiderSelectedKey(item.value);
     // This line will cause stuck when toggling with the nav
     // Have worked on this for my afternoon, but can't find a way to fix
     // history.replace(`${ghPagesPrefix}/${item.value}`);
     // Use this to hack
     location.href = `${ghPagesPrefix}/${item.value}`;
+    setSiderSelectedKey(item.value);
   };
 
   const handleHide = async ({ id }: MappingProps) => {
