@@ -79,29 +79,22 @@ export default class DocumentService {
   initHtmlTemplate = (category: DocumentCategoryProps, originId: string) => {
     const editorPath = `dist/${category}-editor`;
     const detailPath = `dist/${category}`;
-    // init dir
-    fs.ensureDirSync(joinWithRootPath([editorPath, originId]));
-    fs.ensureDirSync(joinWithRootPath([detailPath, originId]));
-
     const ext = category === 'markdown' ? 'md' : 'json';
-    const existsDistDir = fs.readdirSync(joinWithRootPath(editorPath)).filter(item => item !== originId);
-    const targetId = existsDistDir[existsDistDir.length - 1];
-    const editorPrefix = joinWithRootPath([editorPath, targetId]);
-    const detailPrefix = joinWithRootPath([detailPath, targetId]);
-    const targetEditorTemplatePath = path.join(editorPrefix, 'index.html');
-    const targetDetailTemplatePath = path.join(detailPrefix, 'index.html');
+    const arr = [editorPath, detailPath];
+    let templatePath = '';
+    // init dir
+    arr.map(item => {
+      fs.ensureDirSync(joinWithRootPath([item, originId]));
+      const existsDistDir = fs.readdirSync(joinWithRootPath(editorPath)).filter(item => item !== originId);
+      const targetId = existsDistDir[existsDistDir.length - 1];
+      templatePath = path.join(joinWithRootPath([item, targetId]), 'index.html');
+      // init document
+      fs.ensureFileSync(joinWithRootPath([item, originId, `${originId}.${ext}`]));
+      // copy html template
+      fs.copyFileSync(templatePath, path.join(joinWithRootPath([item, originId]), 'index.html'));
+    });
 
-    // init document
-    fs.ensureFileSync(joinWithRootPath([editorPath, originId, `${originId}.${ext}`]));
-    fs.ensureFileSync(joinWithRootPath([detailPath, originId, `${originId}.${ext}`]));
-    // copy html template
-    fs.createReadStream(targetEditorTemplatePath).pipe(
-      fs.createWriteStream(path.join(joinWithRootPath(editorPath), originId, 'index.html')),
-    );
-    fs.createReadStream(targetDetailTemplatePath).pipe(
-      fs.createWriteStream(path.join(joinWithRootPath(detailPath), originId, 'index.html')),
-    );
-    return targetDetailTemplatePath;
+    return templatePath;
   };
 
   updateContent = (
