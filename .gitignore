@@ -12,3 +12,4 @@
 /bin
 *.log
 profiles
+package-lock.json

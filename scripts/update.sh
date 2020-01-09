@@ -2,6 +2,6 @@
 
 git pull --rebase
 npm run clean
-cnpm ci
+cnpm i
 npm run build:private
 npm run restart
