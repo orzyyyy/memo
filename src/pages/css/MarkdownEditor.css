@@ -4,5 +4,13 @@
   grid-template-columns: 50% 50%;
   padding: 24px;
   height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+.markdown-body {
+  overflow: hidden;
+}
+
+.markdown-body:hover {
   overflow: auto;
 }
