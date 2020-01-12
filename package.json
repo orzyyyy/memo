@@ -24,7 +24,7 @@
     "build:gh-pages": "cross-env BUILD_ENV=gh-pages npm run build:common",
     "build:prepare": "rimraf _dist",
     "build:private": "cross-env BUILD_ENV=private npm run build:common",
-    "clean": "rimraf node_modules dist",
+    "clean": "rimraf node_modules _dist",
     "codecov": "cross-env BUILD_ENV=test nino test --codecov",
     "compile:server": "npm run pre:server && tsc -p server",
     "d": "npm run compile:server -- --watch",
