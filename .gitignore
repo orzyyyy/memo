@@ -13,3 +13,4 @@
 *.log
 profiles
 package-lock.json
+/_dist/

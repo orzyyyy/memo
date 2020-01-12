@@ -15,6 +15,8 @@ const mappingFile = fs.readJsonSync(mappingFilePath).filter(item => item.visible
 const assetsFiles = fs.readdirSync(handleWithPrefix('src/assets'));
 const targetFiles = mappingFile.filter(item => !assetsFiles.includes(item.id));
 
+const distPrefix = buildEnv === 'dev' ? 'dist' : '_dist';
+
 const handleWithUtils = () => {
   const templateContent = fs
     .readFileSync(handleWithPrefix('dist/utils/index.html'))
@@ -24,8 +26,8 @@ const handleWithUtils = () => {
     .filter(item => item.category === 'utils')
     .map(item => {
       const id = item.id;
-      fs.ensureDirSync(handleWithPrefix(`dist/utils/${id}`));
-      fs.outputFileSync(handleWithPrefix(`dist/utils/${id}/index.html`), templateContent);
+      fs.ensureDirSync(handleWithPrefix(`${distPrefix}/utils/${id}`));
+      fs.outputFileSync(handleWithPrefix(`${distPrefix}/utils/${id}/index.html`), templateContent);
     });
 };
 
@@ -132,7 +134,7 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
   const assetsFiles = [
     {
       from: handleWithPrefix('src/assets'),
-      to: handleWithPrefix('dist/assets'),
+      to: handleWithPrefix(distPrefix + '/assets'),
       ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
     },
   ];
@@ -140,7 +142,7 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
     ? [
         {
           from: handleWithPrefix('src/assets/exhentai'),
-          to: handleWithPrefix('dist/assets/exhentai'),
+          to: handleWithPrefix(distPrefix + '/assets/exhentai'),
         },
       ]
     : [];
@@ -149,8 +151,8 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
     if (category !== 'utils') {
       const ext = category === 'mapping' ? 'json' : 'md';
       const src = `src/assets/${category}/${id}.${ext}`;
-      const dist = `dist/${category}/${id}/${id}.${ext}`;
-      const distEditor = `dist/${category}-editor/${id}/${id}.${ext}`;
+      const dist = `${distPrefix}/${category}/${id}/${id}.${ext}`;
+      const distEditor = `${distPrefix}/${category}-editor/${id}/${id}.${ext}`;
       documentFiles.push({
         from: handleWithPrefix(src),
         to: handleWithPrefix(dist),
@@ -166,7 +168,7 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
 };
 
 const compressJSON = () => {
-  glob('dist/**/*.json', (error, files) => {
+  glob(distPrefix + '/**/*.json', (error, files) => {
     if (error) {
       throw new Error(error);
     }
@@ -186,7 +188,7 @@ const compressJSON = () => {
 };
 
 const convertMarkdown2Html = () => {
-  glob('dist/**/*.md', (error, files) => {
+  glob(distPrefix + '/**/*.md', (error, files) => {
     if (error) {
       throw new Error(error);
     }
