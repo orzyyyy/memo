@@ -24,11 +24,6 @@ exports[`MarkdownEditor render correctly 1`] = `
           "__html": "<ul><li>test</li></ul>",
         }
       }
-      style={
-        Object {
-          "overflow": "auto",
-        }
-      }
     />
   </div>
 </MarkdownEditor>

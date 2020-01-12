@@ -27,11 +27,7 @@ const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
       <LineNumber>
         <textarea className="markdown-body" onChange={onChange} value={value} onKeyUp={onKeyUp} />
       </LineNumber>
-      <div
-        className="content markdown-body"
-        style={{ overflow: 'auto' }}
-        dangerouslySetInnerHTML={{ __html: marked(value || '') }}
-      />
+      <div className="content markdown-body" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
     </div>
   );
 };

@@ -23,11 +23,6 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
             "__html": "",
           }
         }
-        style={
-          Object {
-            "overflow": "auto",
-          }
-        }
       />
     </div>
   </MarkdownEditor>
