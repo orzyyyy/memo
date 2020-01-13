@@ -39,13 +39,15 @@ const ExhentaiSearcher = ({
         value={selectValue || (exhentaiDateSet.length ? exhentaiDateSet[0] : '')}
         onChange={handleSelectChange}
       >
-        {exhentaiDateSet.map(timeStamp => (
-          <option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`} style={{ height: 40 }}>
-            {timeStamp}
-          </option>
-        ))}
+        {exhentaiDateSet.map(timeStamp => {
+          return (
+            <option value={timeStamp} key={`exhentai-time-stamp-${timeStamp}`} style={{ height: 40 }}>
+              {`${timeStamp.slice(0, 4)}-${timeStamp.slice(4, 6)}-${timeStamp.slice(6, 8)}`}
+            </option>
+          );
+        })}
       </Select>
-      <Input onKeyDown={hanldeKeyDown} style={{ width: 280 }} />
+      <Input onKeyDown={hanldeKeyDown} style={{ width: 370 }} />
       <Button onClick={onExhentaiLoadList}>列表</Button>
     </>
   );
