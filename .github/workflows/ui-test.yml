@@ -1,4 +1,4 @@
-name: test
+name: ui-test
 
 on: [push]
 
@@ -55,9 +55,7 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
 
       - name: test
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ARGOS_TOKEN }}
-        run: ARGOS_COMMIT=${{ github.sha }} ARGOS_BRANCH=${{ github.head_ref }} \
-          argos upload tmp/output/chrome --ignore **/*.diff.png --token $ARGOS_TOKEN || true
+        run: ARGOS_COMMIT=${{ github.sha }} ARGOS_BRANCH=${{ github.ref }} \
+          argos upload tmp/output/chrome --ignore **/*.diff.png --token ${{ secrets.ARGOS_TOKEN }} || true
 
     needs: setup
