@@ -55,7 +55,6 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
 
       - name: test
-        run: ARGOS_COMMIT=${{ github.sha }} ARGOS_BRANCH=${{ github.ref }} \
-          argos upload tmp/output/chrome --ignore **/*.diff.png --token ${{ secrets.ARGOS_TOKEN }} || true
+        run: argos upload imgs --ignore **/*.diff.png --token ${{ secrets.ARGOS_TOKEN }} --branch=${{ github.ref }} --commit=${{ github.sha }}
 
     needs: setup
