@@ -15,5 +15,3 @@ jobs:
 
       - name: test
         run: argos upload imgs --ignore **/*.diff.png --token ${{ secrets.ARGOS_TOKEN }} --branch=${{ github.ref }} --commit=${{ github.sha }}
-
-    needs: setup
