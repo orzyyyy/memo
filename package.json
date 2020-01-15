@@ -16,7 +16,7 @@
   "license": "MIT",
   "author": "orzyyyy",
   "scripts": {
-    "argos": "argos upload imgs",
+    "argos": "argos upload tests/imgs",
     "build": "cross-env BUILD_ENV=netlify npm run build:common",
     "build:analyse": "cross-env BUILD_ENV=analyse npm run build:common",
     "build:common": "npm-run-all build:prepare build:content build:completed",
