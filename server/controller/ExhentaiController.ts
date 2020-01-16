@@ -2,8 +2,8 @@ import { Controller, Request } from '../utils/decorator';
 import { writeIntoJsonFile, getTimeStamp, readJsonFile, joinWithRootPath } from '../utils/common';
 import ExhentaiService from '../service/ExhentaiService';
 import {
-  getLatestListInfo,
-  getLatestListFileName,
+  getListInfo,
+  getListFileName,
   getListFiles,
   getLatestDownloadDirName,
   getMissedImgInfo,
@@ -29,8 +29,8 @@ export default class ExhentaiController {
   async getThumbnaiInfo() {
     const service = this.service;
     await service.initBrowser();
-    const latestListInfo = await getLatestListInfo();
-    const results = await service.fetchListInfo(latestListInfo);
+    const listInfo = await getListInfo('latest');
+    const results = await service.fetchListInfo(listInfo);
     const createTime = getTimeStamp();
     [`src/assets/exhentai/${createTime}`, `dist/assets/exhentai/${createTime}`].map(item =>
       writeIntoJsonFile(item, results),
@@ -41,7 +41,7 @@ export default class ExhentaiController {
 
   @Request({ url: '/getLatestSet', method: 'get' })
   async getLatestExHentaiSet() {
-    return `./assets/exhentai/${getLatestListFileName()}.json`;
+    return `./assets/exhentai/${getListFileName('latest')}.json`;
   }
 
   @Request({ url: '/download', method: 'post' })

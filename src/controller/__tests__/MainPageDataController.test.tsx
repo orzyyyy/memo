@@ -48,6 +48,7 @@ describe('MainPageDataController', () => {
     fetchMock.mock(prefix + '/document/hide', 'test');
     fetchMock.mock(prefix + '/exhentai/download', 'success');
     fetchMock.mock(prefix + '/exhentai/list/latest', 'success');
+    fetchMock.mock(prefix + '/exhentai/list/oldest', 'success');
   });
 
   afterAll(() => {

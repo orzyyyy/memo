@@ -5,6 +5,8 @@ import request from 'request';
 import { getLogger } from '..';
 const logger = getLogger('server/utils/exhentai.ts');
 
+export type ListProps = 'oldest' | 'latest';
+
 const isWin = process.platform === 'win32';
 const { winProxy, linuxProxy, requestTime } = getTargetResource('server').exhentai;
 request.defaults({
@@ -13,7 +15,7 @@ request.defaults({
 
 const { listInfoPath, downloadPath } = getTargetResource('server').exhentai;
 
-export const getLatestListFileName = () => {
+export const getListFileName = (flag: ListProps) => {
   const infoPath = joinWithRootPath(listInfoPath);
   const infoFiles = fs.readdirSync(infoPath);
 
@@ -23,7 +25,8 @@ export const getLatestListFileName = () => {
       .map((item: string) => parseInt(item, 10))
       .sort((a: number, b: number) => b - a);
     if (result.length > 0) {
-      return result[0].toString();
+      const index = flag === 'latest' ? 0 : result.length - 1;
+      return result[index].toString();
     }
     return null;
   }
@@ -85,8 +88,8 @@ export const getMissedImgInfo = (latestDirPath: string) => {
   return result;
 };
 
-export const getLatestListInfo = () => {
-  const tempPath = getLatestListFileName() || '';
+export const getListInfo = (flag: ListProps) => {
+  const tempPath = getListFileName(flag);
   const newestListFilePath = joinWithRootPath(listInfoPath + tempPath);
   const result = readJsonFile(newestListFilePath + '.json');
   return result && result[0];
