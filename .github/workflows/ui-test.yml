@@ -36,4 +36,4 @@ jobs:
         run: npm ci
 
       - name: test
-        run: npm run argos -- --ignore **/*.diff.png --token=${{ secrets.ARGOS_TOKEN }} --branch=${{ github.ref }} --commit=${{ github.event.pull_request.head.ref }}
+        run: npm run argos -- --ignore **/*.diff.png --token=${{ secrets.ARGOS_TOKEN }} --branch=${{ github.base_ref }} --commit=${{ github.event.pull_request.head.ref }}
