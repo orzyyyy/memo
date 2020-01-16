@@ -41,4 +41,4 @@ jobs:
           echo https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$(jq .pull_request.number "$GITHUB_EVENT_PATH")
 
       - name: test
-        run: npm run argos -- --ignore **/*.diff.png --token=${{ secrets.ARGOS_TOKEN }} --branch=${{ github.ref }} --commit=${{ github.event.pull_request.head.ref }}
+        run: npm run argos -- --ignore **/*.diff.png --token=${{ secrets.ARGOS_TOKEN }} --branch=${{ github.ref }} --commit=${{ github.event.pull_request.head.base }}
