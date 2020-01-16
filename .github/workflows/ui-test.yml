@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: install
         run: |
@@ -17,6 +19,6 @@ jobs:
 
       - name: test
         run: |
+          git branch $(curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$(jq .pull_request.number "$GITHUB_EVENT_PATH") | jq -r '.base.ref')
           git checkout $(curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$(jq .pull_request.number "$GITHUB_EVENT_PATH") | jq -r '.base.ref')
-          git branch
           npm run argos -- --ignore **/*.diff.png --token=${{ secrets.ARGOS_TOKEN }} --branch=${{ github.event.pull_request.head.ref }} --commit=${{ github.sha }}
