@@ -10,12 +10,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: get merged branch name
+      - name: install
         run: |
-          curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$pull_request_number | jq -r '.base.ref'
-          echo https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$pull_request_number
-        env:
-          pull_request_number: echo $(jq .pull_request.number "$GITHUB_EVENT_PATH")
+          npm i argos-cli
+          git branch
+          git checkout -b curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$(jq .pull_request.number "$GITHUB_EVENT_PATH") | jq -r '.base.ref' origin curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$(jq .pull_request.number "$GITHUB_EVENT_PATH") | jq -r '.base.ref'
+          git branch
 
       - name: test
         run: |
