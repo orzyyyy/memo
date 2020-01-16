@@ -38,6 +38,7 @@ jobs:
       - name: get merged branch name
         run: |
           curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$pull_request_number | jq -r '.base.ref'
+          echo https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$pull_request_number
         env:
           pull_request_number: jq .pull_request.number "$GITHUB_EVENT_PATH"
 
