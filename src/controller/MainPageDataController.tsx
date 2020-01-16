@@ -66,7 +66,7 @@ const dataSource = mapping
   .sort((a: any, b: any) => b.createTime - a.createTime) as MappingProps[];
 
 const handleExhentaiLoadList = () => {
-  fetch('/api/memo/exhentai');
+  fetch('/api/memo/exhentai/list/latest');
 };
 
 const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {

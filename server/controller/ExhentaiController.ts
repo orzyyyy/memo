@@ -25,7 +25,7 @@ export default class ExhentaiController {
     this.service = new ExhentaiService();
   }
 
-  @Request({ url: '/', method: 'get' })
+  @Request({ url: '/list/latest', method: 'get' })
   async getThumbnaiInfo() {
     const service = this.service;
     await service.initBrowser();
