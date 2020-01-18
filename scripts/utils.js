@@ -5,7 +5,7 @@ const { author, name } = require('../package.json');
 const marked = require('marked');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const buildEnv = process.env.BUILD_ENV;
+const buildEnv = process.env.BUILD_ENV || 'dev';
 
 const handleWithPrefix = (...args) => path.join(__dirname, '../', ...args);
 
