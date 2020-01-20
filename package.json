@@ -48,12 +48,10 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run prettier",
-      "npm run lint",
-      "git add"
+      "npm run lint"
     ],
     "package.json": [
-      "npm run sort",
-      "git add"
+      "npm run sort"
     ]
   },
   "dependencies": {
