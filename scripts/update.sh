@@ -5,6 +5,6 @@ git pull --rebase
 git checkout .
 git pull --rebase
 npm run clean
-npm i
+cnpm i
 npm run build:private
 npm run restart
