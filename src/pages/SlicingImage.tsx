@@ -90,7 +90,7 @@ const SlicingImage = () => {
         ))}
       </div>
       <Button onClick={handleDownload}>下载</Button>
-      <p>
+      <div>
         用作 github profile 左下角的 organization icon，就像
         <a href="https://github.com/orzyyyy">这个</a>
         一样。
@@ -110,7 +110,7 @@ const SlicingImage = () => {
           <li>3. 把每个 icon 缩放进 35 * 35 的格子，并渲染到预览框</li>
           <li>4. 下载时为每个 icon 创建 a 标签</li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 .uploadView .upload-view-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1vw;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
 }
 
 .uploadView .upload-view-list .upload-item {
