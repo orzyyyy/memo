@@ -37,7 +37,7 @@ const getEntry = () => {
     'markdown-editor': handleWithPrefix('src/router/MarkdownEditorDataController.tsx'),
     'mapping-detail': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
     'mapping-editor': handleWithPrefix('src/router/MappingDetailDataController.tsx'),
-    'slicing-image': handleWithPrefix('src/router/SlicingImage.tsx'),
+    'util-wrapper': handleWithPrefix('src/router/UtilWrapper.tsx'),
     ninoninoni: handleWithPrefix('src'),
   };
   const result = {
@@ -83,7 +83,7 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
   const editorPageProps = [];
   const utilsPageProps = [];
 
-  targetFiles.map(({ id, category, title, type, subType }) => {
+  targetFiles.map(({ id, category, title, type, subType, key }) => {
     const commonTemplateProps = {
       title: `${type} - ${subType} - ${title}`,
       description: `${type} - ${subType}`,
@@ -116,8 +116,8 @@ const getHtmlPluginProps = customedHtmlWebpackProps => {
         utilsPageProps.push(
           new HtmlWebpackPlugin({
             ...props,
-            filename: `utils/${id}/index.html`,
-            chunks: ['slicing-image'],
+            filename: `utils/${key}/index.html`,
+            chunks: ['util-wrapper'],
           }),
         );
         break;

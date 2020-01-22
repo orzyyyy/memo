@@ -49,7 +49,7 @@ export default class DocumentController {
 
   @Request({ url: '/add', method: 'post' })
   async initDocument(ctx: Context) {
-    const { title, type, subType, category } = ctx.request.body;
+    const { title, type, subType, category, key } = ctx.request.body;
     const service = this.service;
     const timeStamp = new Date().getTime();
     const id = md5(timeStamp.toString());
@@ -61,6 +61,7 @@ export default class DocumentController {
       type,
       subType,
       category,
+      key,
     });
     service.updateContent(category, writeFilesPaths);
     updateSider();

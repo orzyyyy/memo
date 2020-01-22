@@ -69,8 +69,8 @@ const handleExhentaiLoadList = () => {
   fetch('/api/memo/exhentai/list/latest');
 };
 
-const handleListItemClick = ({ category, id }: { category: DocumentCategoryProps; id: string }) => {
-  history.replace(`${ghPagesPrefix}/${category}/${id}`);
+const handleListItemClick = ({ category, id, key }: { category: DocumentCategoryProps; id: string; key?: string }) => {
+  history.replace(`${ghPagesPrefix}/${category}/${key ? key : id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -152,7 +152,7 @@ const MainPageDataController = () => {
         break;
 
       case 'utils':
-        history.replace(`${ghPagesPrefix}/utils/${id}`);
+        history.replace(`${ghPagesPrefix}/utils/${dataItem?.key}`);
         break;
 
       default:
