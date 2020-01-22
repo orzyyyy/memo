@@ -4,7 +4,7 @@ import { omit } from '../utils/omit';
 import prettier from 'prettier';
 import { MappingProps } from '../controller/DocumentController';
 import { getWriteMappingPaths, DocumentCategoryProps } from '../utils/document';
-import { joinWithRootPath, readJsonFile, writeIntoJsonFile } from '../utils/common';
+import { joinWithRootPath, readJsonFile, writeIntoJsonFile, camelCase } from '../utils/common';
 import { getTargetResource } from '../utils/resource';
 import { getLogger } from '..';
 const logger = getLogger('server/service/DocumentService.ts');
@@ -76,19 +76,40 @@ export default class DocumentService {
     return result;
   };
 
-  initHtmlTemplate = (category: DocumentCategoryProps, originId: string, isUtil?: boolean) => {
+  initHtmlTemplate = (category: DocumentCategoryProps, originId: string) => {
     let templatePath = '';
     if (category === 'utils') {
+      // generate html
       const targetPath = path.join(joinWithRootPath(`dist/utils/${originId}`), 'index.html');
       fs.ensureDirSync(joinWithRootPath(`dist/utils/${originId}`));
       templatePath = path.join(joinWithRootPath('dist/utils/index.html'));
       const templateContent = fs.readFileSync(templatePath).toString();
+      fs.outputFileSync(targetPath, templateContent.replace('../ninoninoni.js', '../../util-wrapper.js'));
+      const exportName = camelCase(originId);
+      // generate document
+      fs.outputFileSync(`src/assets/document/${originId}.md`, '- Description');
+      // generate css
+      fs.outputFileSync(`src/pages/css/${originId}.css`, `.${originId} {}`);
+      // generate tsx
       fs.outputFileSync(
-        targetPath,
-        templateContent.replace('../ninoninoni.js', isUtil ? '../../ninoninoni.js' : '../../util-wrapper.js'),
+        joinWithRootPath(`src/pages/${exportName}.tsx`),
+        `
+import React from 'react';
+import './css/${originId}.css';
+
+const ${exportName} = ({ innerHTML }: { innerHTML: string }) => {
+  return <div className="${originId}">
+    ${exportName}
+    <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
+  </div>;
+}
+
+export default ${exportName};
+      `,
       );
       return targetPath;
     }
+
     const editorPath = `dist/${category}-editor`;
     const detailPath = `dist/${category}`;
     const ext = category === 'markdown' ? 'md' : 'json';

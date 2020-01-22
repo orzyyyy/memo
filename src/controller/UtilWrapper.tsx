@@ -23,7 +23,7 @@ const UtilWrapper = () => {
     };
 
     loadModule();
-  });
+  }, [utilName, moduleName]);
 
   return currentUtil ? currentUtil : null;
 };
