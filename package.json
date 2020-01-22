@@ -101,7 +101,7 @@
     "fetch-mock": "^8.3.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
+    "koa-router": "^8.0.6",
     "koa-static": "^5.0.0",
     "lint-staged": "^10.0.0",
     "log4js": "^6.1.0",
