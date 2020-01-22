@@ -9,7 +9,7 @@ export interface UploadFile {
   error?: boolean;
 }
 export interface UploaderProps {
-  onChange?: (file: UploadFile) => void;
+  onChange?: (fileList: UploadFile[]) => void;
   accept?: string;
   multiple?: boolean;
   renderPlusItem?: () => void;
@@ -27,24 +27,31 @@ const Uploader = ({ renderPlusItem, multiple, onChange, ...rest }: UploaderProps
     element.value = '';
   };
 
-  const onFileChange = (e: any, callback?: Function) => {
-    const file = e.target.files.length ? e.target.files[0] : null;
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      const result = { url: reader.result };
-      file.url = null;
-      if (isImageUrl(result)) {
-        file.url = reader.result;
-      }
-      file.id = file.size.toString() + new Date().getTime();
-      if (onChange) {
-        onChange(file);
-      }
-      if (callback) {
-        callback(file);
-      }
-    };
+  const onFileChange = async (e: any, callback?: Function) => {
+    const files = e.target.files;
+    let fileList = [];
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      const target: UploadFile = await new Promise(resolve => {
+        reader.onloadend = () => {
+          const result = { url: reader.result };
+          file.url = null;
+          if (isImageUrl(result)) {
+            file.url = reader.result;
+          }
+          file.id = file.size.toString() + new Date().getTime();
+          resolve(file);
+        };
+      });
+      fileList.push(target);
+    }
+    if (onChange) {
+      onChange(fileList);
+    }
+    if (callback) {
+      callback(fileList);
+    }
   };
 
   const plusItem = <i className="plus-icon">+</i>;
