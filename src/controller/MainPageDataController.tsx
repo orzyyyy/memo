@@ -152,7 +152,7 @@ const MainPageDataController = () => {
         break;
 
       case 'utils':
-        history.replace(`${ghPagesPrefix}/utils/${dataItem?.key}`);
+        history.replace(`${ghPagesPrefix}/utils/${id}`);
         break;
 
       default:

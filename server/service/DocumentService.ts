@@ -76,14 +76,17 @@ export default class DocumentService {
     return result;
   };
 
-  initHtmlTemplate = (category: DocumentCategoryProps, originId: string) => {
+  initHtmlTemplate = (category: DocumentCategoryProps, originId: string, isUtil?: boolean) => {
     let templatePath = '';
     if (category === 'utils') {
       const targetPath = path.join(joinWithRootPath(`dist/utils/${originId}`), 'index.html');
       fs.ensureDirSync(joinWithRootPath(`dist/utils/${originId}`));
       templatePath = path.join(joinWithRootPath('dist/utils/index.html'));
       const templateContent = fs.readFileSync(templatePath).toString();
-      fs.outputFileSync(targetPath, templateContent.replace('../ninoninoni.js', '../../ninoninoni.js'));
+      fs.outputFileSync(
+        targetPath,
+        templateContent.replace('../ninoninoni.js', isUtil ? '../../ninoninoni.js' : '../../util-wrapper.js'),
+      );
       return targetPath;
     }
     const editorPath = `dist/${category}-editor`;

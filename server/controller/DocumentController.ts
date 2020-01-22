@@ -52,7 +52,7 @@ export default class DocumentController {
     const { title, type, subType, category, key } = ctx.request.body;
     const service = this.service;
     const timeStamp = new Date().getTime();
-    const id = md5(timeStamp.toString());
+    const id = key || md5(timeStamp.toString());
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.initHtmlTemplate(category, id);
     service.updateMapping({
