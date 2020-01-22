@@ -61,9 +61,9 @@ const SlicingImage = ({ innerHTML }: { innerHTML: string }) => {
     }, 1000);
   };
 
-  const onChange = (file: UploadFile) => {
-    setFileList([...fileList, file]);
-    img2Canvas(file.url, 7, 2);
+  const onChange = (changedFileList: UploadFile[]) => {
+    setFileList([...fileList, ...changedFileList]);
+    img2Canvas(changedFileList[0].url, 7, 2);
   };
 
   const onClick = (file: UploadFile) => {
