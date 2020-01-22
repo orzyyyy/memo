@@ -321,7 +321,8 @@
     "title": "7 x 2 碎图",
     "type": "",
     "subType": "",
-    "category": "utils"
+    "category": "utils",
+    "key": "slice-image"
   },
   {
     "createTime": 1579054115826,

@@ -14,6 +14,8 @@ export interface MappingProps {
   subType?: string;
   category?: DocumentCategoryProps;
   visible?: boolean;
+  // use for documentation of utils, such as `assets/document/slice-image.md`
+  key?: string;
 }
 
 @Controller('/document')

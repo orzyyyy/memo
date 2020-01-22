@@ -9,7 +9,7 @@ const MainPageDataController = lazy(() => import('../controller/MainPageDataCont
 const MappingDetailDataController = lazy(() => import('../controller/MappingDetailDataController'));
 const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEditorDataController'));
 const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
-const SlicingImage = lazy(() => import('../pages/SlicingImage'));
+const SlicingImage = lazy(() => import('../controller/SlicingImage'));
 
 const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element>; key: string }[] = [
   { path: '/', component: MainPageDataController, key: 'main-page' },
