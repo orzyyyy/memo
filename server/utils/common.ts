@@ -53,3 +53,15 @@ export const object2QueryString = (obj: any) =>
   Object.keys(obj)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
     .join('&');
+
+export const camelCase = (value: string) => {
+  return (
+    value
+      // 形如 a-b 会被替换为 aB
+      .replace(/-\w/g, (_, i) => {
+        return value.charAt(i + 1).toUpperCase();
+      })
+      // 首字母大写
+      .replace(/^\S/, s => s.toUpperCase())
+  );
+};

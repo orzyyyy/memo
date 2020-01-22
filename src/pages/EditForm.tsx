@@ -12,6 +12,7 @@ export interface FormProps {
   category: DocumentCategoryProps;
   type: string;
   subType: string;
+  key?: string;
 }
 export interface EditFormProps {
   visible: boolean;
@@ -32,7 +33,7 @@ const formDataReducer = (
   state: FormProps,
   action: {
     data: any;
-    key: 'type' | 'subType' | 'category' | 'title';
+    key: 'type' | 'subType' | 'category' | 'title' | 'key';
   },
 ) => {
   return {
@@ -46,6 +47,7 @@ const initialFormData = {
   type: '',
   subType: '',
   category: '',
+  key: '',
 };
 
 const EditForm = ({
@@ -211,6 +213,19 @@ const EditForm = ({
     </>
   );
 
+  const renderKey = () => {
+    return (
+      <>
+        <span>utils key</span>
+        <Input
+          style={{ width: '100%' }}
+          value={formData.key}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => formDataDispatch({ key: 'key', data: e.target.value })}
+        />
+      </>
+    );
+  };
+
   return (
     <Dialog
       visible={visible}
@@ -231,6 +246,7 @@ const EditForm = ({
         {renderCategory(isEditMode)}
         {formData.category !== 'utils' && renderType()}
         {formData.category !== 'utils' && renderSubType()}
+        {formData.category === 'utils' && renderKey()}
       </div>
     </Dialog>
   );

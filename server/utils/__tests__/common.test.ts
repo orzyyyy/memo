@@ -1,4 +1,4 @@
-import { joinWithRootPath, getTimeStamp, getDateStamp, readJsonFile, writeIntoJsonFile } from '../common';
+import { joinWithRootPath, getTimeStamp, getDateStamp, readJsonFile, writeIntoJsonFile, camelCase } from '../common';
 import path from 'path';
 import fs from 'fs-extra';
 import MockDate from 'mockdate';
@@ -35,5 +35,9 @@ describe('util-common', () => {
     writeIntoJsonFile('server/utils/__tests__/test-write', { test: 1 });
     expect(outputJSON).toHaveBeenCalled();
     fs.outputJSON = originFunc;
+  });
+
+  it('camelCase', () => {
+    expect(camelCase('slicing-image')).toBe('SlicingImage');
   });
 });
