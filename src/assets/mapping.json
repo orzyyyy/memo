@@ -332,5 +332,15 @@
     "type": "其他",
     "subType": "自省",
     "category": "markdown"
+  },
+  {
+    "createTime": 1579676574018,
+    "modifyTime": 1579676574018,
+    "id": "upload",
+    "title": "上传文件",
+    "type": "",
+    "subType": "",
+    "category": "utils",
+    "key": "upload"
   }
 ]
