@@ -1,5 +1,5 @@
 import Koa from 'koa';
-import BodyParser from 'koa-bodyparser';
+import body from 'koa-body';
 import KoaStatic from 'koa-static';
 import { joinWithRootPath } from './utils/common';
 import { createServer } from 'http';
@@ -35,7 +35,7 @@ io.on('connection', socket => {
   });
 });
 
-app.use(BodyParser());
+app.use(body({ multipart: true, formLimit: 1024 * 1024 * 1024 }));
 app.use(DecoratorRouter(path.join(__dirname, 'controller')));
 app.use(KoaStatic(joinWithRootPath('dist')));
 
