@@ -1,5 +1,4 @@
-/* eslint-disable require-atomic-updates */
-import KoaRouter from 'koa-router';
+import KoaRouter from '@koa/router';
 import { Context } from 'koa';
 
 export type HttpMehtod = 'get' | 'post' | 'put' | 'delete';
