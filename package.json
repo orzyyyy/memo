@@ -58,7 +58,7 @@
     "chalk": "^3.0.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.2",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "date-fns": "^2.9.0",
     "fs-extra": "^8.1.0",
     "github-markdown-css": "^3.0.1",
