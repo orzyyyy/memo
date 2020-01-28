@@ -15,7 +15,6 @@ const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Ele
   { path: '/', component: MainPageDataController, key: 'main-page' },
   { path: '/ex-hentai', component: MainPageDataController, key: 'main-page-ex-hentai' },
   { path: '/article', component: MainPageDataController, key: 'main-page-article' },
-  { path: '/article-add', component: MainPageDataController, key: 'main-page-article-add' },
   { path: '/utils', component: MainPageDataController, key: 'main-page-utils' },
   { path: '/utils/:id', component: UtilWrapper, key: 'main-page-utils-detail' },
   { path: '/mapping/:id', component: MappingDetailDataController, key: 'mapping-detail' },
