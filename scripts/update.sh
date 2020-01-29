@@ -7,4 +7,5 @@ git pull --rebase
 npm run clean
 cnpm i
 npm run build:private
+npm run compile:server
 npm run restart
