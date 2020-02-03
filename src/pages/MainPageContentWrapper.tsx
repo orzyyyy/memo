@@ -6,10 +6,12 @@ export interface MainPageContentWrapperProps {
   height: number;
 }
 
-const MainPageContentWrapper = (props: MainPageContentWrapperProps) => (
-  <main style={{ height: props.height }} className="main-page-content-wrapper">
-    {props.children}
-  </main>
-);
+const MainPageContentWrapper = (props: MainPageContentWrapperProps) => {
+  return (
+    <main style={{ height: props.height }} className="main-page-content-wrapper">
+      {props.children}
+    </main>
+  );
+};
 
 export default MainPageContentWrapper;
