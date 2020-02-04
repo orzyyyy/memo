@@ -10,7 +10,6 @@ module.exports = {
       out_file: 'server/log/pm2-out.log',
       error_file: 'server/log/pm2-error.log',
       log_date_format: 'yyyy-MM-DD HH:mm Z',
-      max_memory_restart: '1000M',
     },
   ],
 };
