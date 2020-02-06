@@ -1,8 +1,7 @@
 <ul>
-<li>作用</li>
-</ul>
+<li><p>作用</p>
 <p>用作 github profile 左下角的 organization icon，就像<a href="https://github.com/orzyyyy">这个</a>一样。</p>
-<ul>
+</li>
 <li><p>用法</p>
 <ol>
 <li>首先你得申请 14 个 organization。以 0- 开头可以防止在加入正经的 organization 时，被展示的 icon 被分隔的问题</li>
