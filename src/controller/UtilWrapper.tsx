@@ -11,7 +11,7 @@ const UtilWrapper = () => {
 
   useEffect(() => {
     const fetchDocument = async () => {
-      const response = await fetch(`../assets/document/${utilName}.md`);
+      const response = await fetch(`./assets/document/${utilName}.md`);
       const result = await response.text();
       return marked(result || '');
     };
