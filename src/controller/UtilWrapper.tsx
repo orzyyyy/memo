@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getPathNameFromUrl, camelCase } from '../utils';
 import marked from 'marked';
+import 'github-markdown-css/github-markdown.css';
 
 const UtilWrapper = () => {
   const utilName: string = getPathNameFromUrl();
@@ -18,7 +19,7 @@ const UtilWrapper = () => {
     const loadModule = () => {
       import(`../pages/${moduleName}.tsx`).then(async target => {
         const result = await fetchDocument();
-        setCurrentUtil(<target.default innerHTML={result} />);
+        setCurrentUtil(<target.default innerHTML={result} className="markdown-body" />);
       });
     };
 

@@ -4,7 +4,12 @@ import Upload from '../component/Upload';
 import { UploadFile } from '../component/Upload/Uploader';
 import Button from '../component/Button';
 
-const SlicingImage = ({ innerHTML }: { innerHTML: string }) => {
+export interface BaseDocumentProps {
+  innerHTML: string;
+  className?: string;
+}
+
+const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   const canvasRow = [...Array(7).keys()];
   const canvasSet1: any = {};
   const canvasSet2: any = {};
@@ -71,7 +76,7 @@ const SlicingImage = ({ innerHTML }: { innerHTML: string }) => {
   };
 
   return (
-    <div className="slicing-image">
+    <div className={`slicing-image ${className}`}>
       <Upload
         fileList={fileList}
         onChange={onChange}

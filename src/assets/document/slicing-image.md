@@ -1,6 +1,6 @@
 - 作用
 
-用作 github profile 左下角的 organization icon，就像[这个](https://github.com/orzyyyy)一样。
+  用作 github profile 左下角的 organization icon，就像[这个](https://github.com/orzyyyy)一样。
 
 - 用法
 
