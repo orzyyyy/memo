@@ -31,6 +31,7 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   for (let i = 0; i < defaultRowNum; i++) {
     const col: ColProps = {};
     for (let j = 0; j < defaultColNum; j++) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       col[j] = useRef<HTMLCanvasElement>(null);
     }
     canvasArr.push(col);
@@ -68,11 +69,13 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
       link.click();
     };
     for (let i = 0; i < canvasArr.length; i++) {
-      const item = canvasArr[i];
-      for (let j = 0; j < Object.values(item).length; j++) {
-        const jtem = Object.values(item)[j];
-        download(jtem, j, i);
-      }
+      setTimeout(() => {
+        const item = canvasArr[i];
+        for (let j = 0; j < Object.values(item).length; j++) {
+          const jtem = Object.values(item)[j];
+          download(jtem, j, i);
+        }
+      }, 500);
     }
   };
 
