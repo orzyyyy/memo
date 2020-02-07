@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useMemo } from 'react';
 import './css/slicing-image.css';
 import Upload from '../component/Upload';
 import { UploadFile } from '../component/Upload/Uploader';
@@ -11,31 +11,37 @@ export interface BaseDocumentProps {
 }
 export type ColProps = { [key: number]: React.RefObject<HTMLCanvasElement> };
 
-const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
-  const [fileList, setFileList] = useState([] as UploadFile[]);
-  const [rowNum, setRowNum] = useState(2);
-  const [colNum, setColNum] = useState(7);
-  // there is a bug
-  // at the beginning, the rendering data of canvas is like
-  // [
-  //   [col, col, col, ...] => this is row1
-  //   [col, col, col, ...] => this is row2
-  // ]
-  // react can not find refs of these canvas elements
-  // but it works when the data is like
-  // [
-  //   { 0: col, 1: col, 2: col } => this is row1
-  //   { 0: col, 1: col, 2: col } => this is row2
-  // ]
-  // this is the meaning of `ColProps`
-  const canvasArr: ColProps[] = [];
+// there is a bug
+// at the beginning, the rendering data of canvas is like
+// [
+//   [col, col, col, ...] => this is row1
+//   [col, col, col, ...] => this is row2
+// ]
+// react can not find refs of these canvas elements
+// but it works when the data is like
+// [
+//   { 0: col, 1: col, 2: col } => this is row1
+//   { 0: col, 1: col, 2: col } => this is row2
+// ]
+// this is the meaning of `ColProps`
+const generateCanvasRefArr = (rowNum: number, colNum: number) => {
+  const result: ColProps[] = [];
   for (let i = 0; i < rowNum; i++) {
     const col: ColProps = {};
     for (let j = 0; j < colNum; j++) {
       col[j] = createRef<HTMLCanvasElement>();
     }
-    canvasArr.push(col);
+    result.push(col);
   }
+  return result;
+};
+
+const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
+  const [fileList, setFileList] = useState([] as UploadFile[]);
+  const [rowNum, setRowNum] = useState(2);
+  const [colNum, setColNum] = useState(7);
+  const canvasArr = generateCanvasRefArr(rowNum, colNum);
+  const canvasRef = useMemo(() => canvasArr, [rowNum, colNum]);
 
   const img2Canvas = async (url: string, row: number, col: number) => {
     const image = new Image();
@@ -68,13 +74,13 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
       link.href = img;
       link.click();
     };
-    for (let i = 0; i < canvasArr.length; i++) {
-      const item = canvasArr[i];
+    for (let i = 0; i < canvasRef.length; i++) {
+      const item = canvasRef[i];
       for (let j = 0; j < Object.values(item).length; j++) {
         const jtem = Object.values(item)[j];
         // for chrome, it seems that it can only download 10 pictures at a time.
         // so hack for it, when download 9, sleep for 1 second.
-        if (counter % 9 === 0) {
+        if (counter % 7 === 0 && counter !== 0) {
           setTimeout(() => {
             download(jtem, j, i);
           }, 1000);
@@ -97,11 +103,10 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
 
   const renderCanvas = () => {
     const result = [];
-    for (let i = 0; i < canvasArr.length; i++) {
-      const rows = canvasArr[i];
+    for (let i = 0; i < rowNum; i++) {
       result.push(<div style={{ marginTop: i === 0 ? 0 : -6 }} key={`${i}-placeholder`} />);
       for (let j = 0; j < colNum; j++) {
-        result.push(<canvas ref={rows[j]} width="35" height="35" key={`${i}-${j}`} />);
+        result.push(<canvas ref={canvasRef[i][j]} width="35" height="35" key={`${i}-${j}`} />);
       }
     }
     return result;
