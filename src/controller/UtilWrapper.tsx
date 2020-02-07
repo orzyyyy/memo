@@ -6,7 +6,6 @@ import 'github-markdown-css/github-markdown.css';
 const UtilWrapper = () => {
   const utilName: string = getPathNameFromUrl();
   const moduleName = camelCase(utilName);
-
   const [currentUtil, setCurrentUtil] = useState();
 
   useEffect(() => {
@@ -19,7 +18,13 @@ const UtilWrapper = () => {
     const loadModule = () => {
       import(`../pages/${moduleName}.tsx`).then(async target => {
         const result = await fetchDocument();
-        setCurrentUtil(<target.default innerHTML={result} className="markdown-body" />);
+        const renderDocument = () => <div dangerouslySetInnerHTML={{ __html: result }} className="markdown-body" />;
+        setCurrentUtil(
+          <div style={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
+            <target.default innerHTML={result} />
+            {renderDocument()}
+          </div>,
+        );
       });
     };
 

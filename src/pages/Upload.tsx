@@ -3,9 +3,8 @@ import './css/upload.css';
 import { UploadFile } from '../component/Upload/Uploader';
 import Upload from '../component/Upload';
 import Button from '../component/Button';
-import { BaseDocumentProps } from './SlicingImage';
 
-const UploadView = ({ innerHTML, className }: BaseDocumentProps) => {
+const UploadView = () => {
   const [fileList, setFileList] = useState([] as UploadFile[]);
   const [response, setResponse] = useState('');
 
@@ -25,11 +24,10 @@ const UploadView = ({ innerHTML, className }: BaseDocumentProps) => {
   };
 
   return (
-    <div className={`upload ${className}`}>
+    <div className="upload">
       <Upload fileList={fileList} onChange={onChange} uploaderVisible={fileList.length === 0} multiple />
       <Button onClick={onSubmit}>上传</Button>
       <>{response}</>
-      <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
     </div>
   );
 };

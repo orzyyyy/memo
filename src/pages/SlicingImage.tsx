@@ -5,10 +5,6 @@ import { UploadFile } from '../component/Upload/Uploader';
 import Button from '../component/Button';
 import Input from '../component/Input';
 
-export interface BaseDocumentProps {
-  innerHTML: string;
-  className?: string;
-}
 export type ColProps = { [key: number]: React.RefObject<HTMLCanvasElement> };
 
 // there is a bug
@@ -36,7 +32,7 @@ const generateCanvasRefArr = (rowNum: number, colNum: number) => {
   return result;
 };
 
-const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
+const SlicingImage = () => {
   const [fileList, setFileList] = useState([] as UploadFile[]);
   const [rowNum, setRowNum] = useState(2);
   const [colNum, setColNum] = useState(7);
@@ -127,7 +123,7 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   };
 
   return (
-    <div className={`slicing-image ${className}`}>
+    <div className="slicing-image">
       <span>行：</span>
       <Input type="number" value={rowNum} onChange={e => onInputChange(e, 'row')} />
       <span>列：</span>
@@ -141,7 +137,6 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
       />
       <div>{renderCanvas()}</div>
       <Button onClick={handleDownload}>下载</Button>
-      <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
     </div>
   );
 };
