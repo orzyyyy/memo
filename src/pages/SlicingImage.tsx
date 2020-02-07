@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, createRef } from 'react';
 import './css/slicing-image.css';
 import Upload from '../component/Upload';
 import { UploadFile } from '../component/Upload/Uploader';
 import Button from '../component/Button';
+import Input from '../component/Input';
 
 export interface BaseDocumentProps {
   innerHTML: string;
@@ -10,10 +11,10 @@ export interface BaseDocumentProps {
 }
 export type ColProps = { [key: number]: React.RefObject<HTMLCanvasElement> };
 
-const defaultColNum = 7;
-const defaultRowNum = 2;
-
 const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
+  const [fileList, setFileList] = useState([] as UploadFile[]);
+  const [rowNum, setRowNum] = useState(2);
+  const [colNum, setColNum] = useState(7);
   // there is a bug
   // at the beginning, the rendering data of canvas is like
   // [
@@ -28,15 +29,13 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   // ]
   // this is the meaning of `ColProps`
   const canvasArr: ColProps[] = [];
-  for (let i = 0; i < defaultRowNum; i++) {
+  for (let i = 0; i < rowNum; i++) {
     const col: ColProps = {};
-    for (let j = 0; j < defaultColNum; j++) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      col[j] = useRef<HTMLCanvasElement>(null);
+    for (let j = 0; j < colNum; j++) {
+      col[j] = createRef<HTMLCanvasElement>();
     }
     canvasArr.push(col);
   }
-  const [fileList, setFileList] = useState([] as UploadFile[]);
 
   const img2Canvas = async (url: string, row: number, col: number) => {
     const image = new Image();
@@ -87,9 +86,9 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
     }
   };
 
-  const onChange = (changedFileList: UploadFile[]) => {
+  const onUploaderChange = (changedFileList: UploadFile[]) => {
     setFileList([...fileList, ...changedFileList]);
-    img2Canvas(changedFileList[0].url, defaultColNum, defaultRowNum);
+    img2Canvas(changedFileList[0].url, colNum, rowNum);
   };
 
   const onClick = (file: UploadFile) => {
@@ -101,18 +100,38 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
     for (let i = 0; i < canvasArr.length; i++) {
       const rows = canvasArr[i];
       result.push(<div style={{ marginTop: i === 0 ? 0 : -6 }} key={`${i}-placeholder`} />);
-      for (let j = 0; j < defaultColNum; j++) {
+      for (let j = 0; j < colNum; j++) {
         result.push(<canvas ref={rows[j]} width="35" height="35" key={`${i}-${j}`} />);
       }
     }
     return result;
   };
 
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'row' | 'col') => {
+    const value = e.target.value;
+    switch (type) {
+      case 'row':
+        setRowNum(parseInt(value));
+        break;
+
+      case 'col':
+        setColNum(parseInt(value));
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <div className={`slicing-image ${className}`}>
+      <span>行：</span>
+      <Input type="number" value={rowNum} onChange={e => onInputChange(e, 'row')} />
+      <span>列：</span>
+      <Input type="number" value={colNum} onChange={e => onInputChange(e, 'col')} />
       <Upload
         fileList={fileList}
-        onChange={onChange}
+        onChange={onUploaderChange}
         uploaderVisible={fileList.length === 0}
         onClick={onClick}
         accept="image/*"
