@@ -65,8 +65,7 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
     });
   };
 
-  const handleDownload = () => {
-    let counter = 0;
+  const handleDownload = async () => {
     const download = (set: any, i: number, row: number) => {
       const img = set.current.toDataURL('image/png');
       const link = document.createElement('a');
@@ -79,15 +78,13 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
       for (let j = 0; j < Object.values(item).length; j++) {
         const jtem = Object.values(item)[j];
         // for chrome, it seems that it can only download 10 pictures at a time.
-        // so hack for it, when download 9, sleep for 1 second.
-        if (counter % 7 === 0 && counter !== 0) {
-          setTimeout(() => {
-            download(jtem, j, i);
-          }, 1000);
-        } else {
+        // so hack for it, when download completed, sleep for 100ms.
+        await new Promise(resolve => {
           download(jtem, j, i);
-        }
-        counter++;
+          setTimeout(() => {
+            resolve();
+          }, 100);
+        });
       }
     }
   };
