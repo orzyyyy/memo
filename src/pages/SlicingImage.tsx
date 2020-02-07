@@ -41,7 +41,7 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   const [rowNum, setRowNum] = useState(2);
   const [colNum, setColNum] = useState(7);
   const canvasArr = generateCanvasRefArr(rowNum, colNum);
-  const canvasRef = useMemo(() => canvasArr, [rowNum, colNum]);
+  const canvasRef = useMemo(() => canvasArr, [canvasArr]);
 
   const img2Canvas = async (url: string, row: number, col: number) => {
     const image = new Image();
