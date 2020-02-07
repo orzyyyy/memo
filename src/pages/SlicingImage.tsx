@@ -11,7 +11,7 @@ export interface BaseDocumentProps {
 export type ColProps = { [key: number]: React.RefObject<HTMLCanvasElement> };
 
 const defaultColNum = 7;
-const defaultRowNum = 4;
+const defaultRowNum = 2;
 
 const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
   // there is a bug
@@ -69,13 +69,11 @@ const SlicingImage = ({ innerHTML, className }: BaseDocumentProps) => {
       link.click();
     };
     for (let i = 0; i < canvasArr.length; i++) {
-      setTimeout(() => {
-        const item = canvasArr[i];
-        for (let j = 0; j < Object.values(item).length; j++) {
-          const jtem = Object.values(item)[j];
-          download(jtem, j, i);
-        }
-      }, 500);
+      const item = canvasArr[i];
+      for (let j = 0; j < Object.values(item).length; j++) {
+        const jtem = Object.values(item)[j];
+        download(jtem, j, i);
+      }
     }
   };
 
