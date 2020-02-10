@@ -1,0 +1,11 @@
+.edit-form .wrapper-grid {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: repeat(4, 25%);
+  grid-row-gap: 16px;
+}
+
+.edit-form .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+}

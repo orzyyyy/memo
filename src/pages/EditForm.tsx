@@ -6,6 +6,7 @@ import { MappingProps } from '../../server/controller/DocumentController';
 import Button from '../component/Button';
 import Input from '../component/Input';
 import Select from '../component/Select';
+import './css/edit-form.css';
 
 export interface FormProps {
   title: string;
@@ -235,13 +236,10 @@ const EditForm = ({
       maskAnimation="fade"
       mousePosition={pageInfo}
       bodyStyle={{ height: 260 }}
-      footer={
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 25%)' }}>{renderConfirmButtonGroup()}</div>
-      }
+      footer={<div className="footer-grid">{renderConfirmButtonGroup()}</div>}
+      className="edit-form"
     >
-      <div
-        style={{ display: 'grid', gridTemplateColumns: '15% 85%', gridTemplateRows: 'repeat(4, 25%)', gridRowGap: 16 }}
-      >
+      <div className="wrapper-grid">
         {renderTitle()}
         {renderCategory(isEditMode)}
         {formData.category !== 'utils' && renderType()}

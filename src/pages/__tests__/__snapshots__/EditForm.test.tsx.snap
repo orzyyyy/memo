@@ -47,14 +47,10 @@ exports[`EditForm empty dataItem 1`] = `
         "height": 260,
       }
     }
+    className="edit-form"
     footer={
       <div
-        style={
-          Object {
-            "display": "grid",
-            "gridTemplateColumns": "repeat(4, 25%)",
-          }
-        }
+        className="footer-grid"
       >
         <React.Fragment>
           <Button
@@ -110,7 +106,7 @@ exports[`EditForm empty dataItem 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="rc-dialog rc-dialog-zoom-appear"
+                    class="rc-dialog edit-form rc-dialog-zoom-appear"
                     role="document"
                     style="transform-origin: 0px 0px;"
                   >
@@ -146,7 +142,7 @@ exports[`EditForm empty dataItem 1`] = `
                         style="height: 260px;"
                       >
                         <div
-                          style="display: grid; grid-template-columns: 15% 85%; grid-template-rows: repeat(4, 25%);"
+                          class="wrapper-grid"
                         >
                           <span>
                             标题
@@ -201,7 +197,7 @@ exports[`EditForm empty dataItem 1`] = `
                         class="rc-dialog-footer"
                       >
                         <div
-                          style="display: grid; grid-template-columns: repeat(4, 25%);"
+                          class="footer-grid"
                         >
                           <button
                             style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
@@ -240,18 +236,13 @@ exports[`EditForm empty dataItem 1`] = `
                 "height": 260,
               }
             }
-            className=""
+            className="edit-form"
             closable={true}
             destroyOnClose={false}
             focusTriggerAfterClose={true}
             footer={
               <div
-                style={
-                  Object {
-                    "display": "grid",
-                    "gridTemplateColumns": "repeat(4, 25%)",
-                  }
-                }
+                className="footer-grid"
               >
                 <React.Fragment>
                   <Button
@@ -370,7 +361,7 @@ exports[`EditForm empty dataItem 1`] = `
                     transitionName="rc-dialog-zoom"
                   >
                     <LazyRenderBox
-                      className="rc-dialog "
+                      className="rc-dialog edit-form"
                       key="dialog-element"
                       onMouseDown={[Function]}
                       role="document"
@@ -378,7 +369,7 @@ exports[`EditForm empty dataItem 1`] = `
                       visible={true}
                     >
                       <div
-                        className="rc-dialog "
+                        className="rc-dialog edit-form"
                         onMouseDown={[Function]}
                         role="document"
                         style={Object {}}
@@ -426,14 +417,7 @@ exports[`EditForm empty dataItem 1`] = `
                             }
                           >
                             <div
-                              style={
-                                Object {
-                                  "display": "grid",
-                                  "gridRowGap": 16,
-                                  "gridTemplateColumns": "15% 85%",
-                                  "gridTemplateRows": "repeat(4, 25%)",
-                                }
-                              }
+                              className="wrapper-grid"
                             >
                               <span>
                                 标题
@@ -562,12 +546,7 @@ exports[`EditForm empty dataItem 1`] = `
                             className="rc-dialog-footer"
                           >
                             <div
-                              style={
-                                Object {
-                                  "display": "grid",
-                                  "gridTemplateColumns": "repeat(4, 25%)",
-                                }
-                              }
+                              className="footer-grid"
                             >
                               <Button
                                 onClick={[Function]}
@@ -698,14 +677,10 @@ exports[`EditForm render correctly 1`] = `
         "height": 260,
       }
     }
+    className="edit-form"
     footer={
       <div
-        style={
-          Object {
-            "display": "grid",
-            "gridTemplateColumns": "repeat(4, 25%)",
-          }
-        }
+        className="footer-grid"
       >
         <React.Fragment>
           <Button
@@ -761,7 +736,7 @@ exports[`EditForm render correctly 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="rc-dialog rc-dialog-zoom-appear"
+                    class="rc-dialog edit-form rc-dialog-zoom-appear"
                     role="document"
                     style="transform-origin: 0px 0px;"
                   >
@@ -797,7 +772,7 @@ exports[`EditForm render correctly 1`] = `
                         style="height: 260px;"
                       >
                         <div
-                          style="display: grid; grid-template-columns: 15% 85%; grid-template-rows: repeat(4, 25%);"
+                          class="wrapper-grid"
                         >
                           <span>
                             标题
@@ -852,7 +827,7 @@ exports[`EditForm render correctly 1`] = `
                         class="rc-dialog-footer"
                       >
                         <div
-                          style="display: grid; grid-template-columns: repeat(4, 25%);"
+                          class="footer-grid"
                         >
                           <button
                             style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
@@ -891,18 +866,13 @@ exports[`EditForm render correctly 1`] = `
                 "height": 260,
               }
             }
-            className=""
+            className="edit-form"
             closable={true}
             destroyOnClose={false}
             focusTriggerAfterClose={true}
             footer={
               <div
-                style={
-                  Object {
-                    "display": "grid",
-                    "gridTemplateColumns": "repeat(4, 25%)",
-                  }
-                }
+                className="footer-grid"
               >
                 <React.Fragment>
                   <Button
@@ -1021,7 +991,7 @@ exports[`EditForm render correctly 1`] = `
                     transitionName="rc-dialog-zoom"
                   >
                     <LazyRenderBox
-                      className="rc-dialog "
+                      className="rc-dialog edit-form"
                       key="dialog-element"
                       onMouseDown={[Function]}
                       role="document"
@@ -1029,7 +999,7 @@ exports[`EditForm render correctly 1`] = `
                       visible={true}
                     >
                       <div
-                        className="rc-dialog "
+                        className="rc-dialog edit-form"
                         onMouseDown={[Function]}
                         role="document"
                         style={Object {}}
@@ -1077,14 +1047,7 @@ exports[`EditForm render correctly 1`] = `
                             }
                           >
                             <div
-                              style={
-                                Object {
-                                  "display": "grid",
-                                  "gridRowGap": 16,
-                                  "gridTemplateColumns": "15% 85%",
-                                  "gridTemplateRows": "repeat(4, 25%)",
-                                }
-                              }
+                              className="wrapper-grid"
                             >
                               <span>
                                 标题
@@ -1213,12 +1176,7 @@ exports[`EditForm render correctly 1`] = `
                             className="rc-dialog-footer"
                           >
                             <div
-                              style={
-                                Object {
-                                  "display": "grid",
-                                  "gridTemplateColumns": "repeat(4, 25%)",
-                                }
-                              }
+                              className="footer-grid"
                             >
                               <Button
                                 onClick={[Function]}
