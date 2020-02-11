@@ -5,7 +5,7 @@ import { Context } from 'koa';
 
 @Controller('/github')
 export default class GithubController {
-  @Request({ url: '/update', method: 'post' })
+  @Request({ url: '/update', method: 'post', queue: true })
   async update(ctx: Context) {
     const { ref } = ctx.request.body;
 
