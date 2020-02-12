@@ -1,7 +1,7 @@
 import React from 'react';
 import marked from 'marked';
 import 'github-markdown-css/github-markdown.css';
-import './css/MarkdownEditor.css';
+import './css/markdown-editor.css';
 import LineNumber from '../component/LineNumber';
 
 export interface MarkdownEditorProps {
@@ -23,7 +23,7 @@ const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
   };
 
   return (
-    <div className="markdown-editor-wrapper">
+    <div className="markdown-editor">
       <LineNumber>
         <textarea className="markdown-body" onChange={onChange} value={value} onKeyUp={onKeyUp} />
       </LineNumber>

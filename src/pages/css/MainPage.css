@@ -1,6 +1,0 @@
-.main-page {
-  height: 100vh;
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: 5% auto 10%;
-}

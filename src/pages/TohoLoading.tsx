@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './css/TohoLoading.css';
+import './css/toho-loading.css';
 
 export interface TohoLoadingProps {
   currentNeta?: string[];
@@ -113,7 +113,7 @@ const TohoLoading = (props: TohoLoadingProps) => {
   );
 
   return (
-    <div className="TohoLoading">
+    <div className="toho-loading">
       {renderCurrentNeta()}
       {renderDot()}
     </div>
