@@ -4,7 +4,7 @@ exports[`MarkdownDetailDataController handleOnSave 1`] = `
 <MarkdownDetailDataController>
   <MarkdownDetail>
     <div
-      className="MarkdownDetail markdown-body"
+      className="markdown-detail markdown-body"
     >
       <div
         className="wrapper"

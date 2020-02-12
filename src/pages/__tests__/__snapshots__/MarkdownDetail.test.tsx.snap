@@ -5,7 +5,7 @@ exports[`MarkdownDetail render correctly 1`] = `
   dataSource="<ul><li>test</li></ul>"
 >
   <div
-    className="MarkdownDetail markdown-body"
+    className="markdown-detail markdown-body"
   >
     <div
       className="wrapper"

@@ -7,7 +7,7 @@ exports[`MarkdownEditorDataController render correctly 1`] = `
     onSave={[Function]}
   >
     <div
-      className="markdown-editor-wrapper"
+      className="markdown-editor"
     >
       <LineNumber>
         <textarea

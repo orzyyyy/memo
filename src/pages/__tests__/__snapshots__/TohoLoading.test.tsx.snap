@@ -10,7 +10,7 @@ exports[`TohoLoading render correctly 1`] = `
   }
 >
   <div
-    className="TohoLoading"
+    className="toho-loading"
   >
     <div
       className="neta-wrapper"

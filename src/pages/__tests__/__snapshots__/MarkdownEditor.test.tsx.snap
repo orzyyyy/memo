@@ -7,7 +7,7 @@ exports[`MarkdownEditor render correctly 1`] = `
   value="<ul><li>test</li></ul>"
 >
   <div
-    className="markdown-editor-wrapper"
+    className="markdown-editor"
   >
     <LineNumber>
       <textarea
