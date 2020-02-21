@@ -7,7 +7,7 @@ const MarkdownDetailDataController = () => {
   const id: string = getPathNameFromUrl();
   const [data] = useFetchDocumentData(id, 'markdown');
 
-  return <MarkdownDetail dataSource={data} />;
+  return <MarkdownDetail dataSource={data as any} />;
 };
 
 export default MarkdownDetailDataController;

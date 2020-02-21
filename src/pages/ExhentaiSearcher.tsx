@@ -17,7 +17,7 @@ const ExhentaiSearcher = ({
   onExhentaiSelectChange,
   onExhentaiLoadList,
 }: ExhentaiSearcherProps) => {
-  const [selectValue, setSelectValue] = useState();
+  const [selectValue, setSelectValue] = useState('');
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;

@@ -20,7 +20,7 @@ const MappingDetailDataController = () => {
     showMessageAfterFetching(result);
   };
 
-  let [data, setData] = useFetchDocumentData(id, 'mapping', handleOnSave);
+  let [data, setData]: any[] = useFetchDocumentData(id, 'mapping', handleOnSave);
   if (!data) {
     data = { position: { root: { x: -3000, y: -3000 } }, block: {}, tag: {}, line: {} };
   }

@@ -6,7 +6,7 @@ import 'github-markdown-css/github-markdown.css';
 const UtilWrapper = () => {
   const utilName: string = getPathNameFromUrl();
   const moduleName = camelCase(utilName);
-  const [currentUtil, setCurrentUtil] = useState();
+  const [currentUtil, setCurrentUtil] = useState(null as any);
 
   useEffect(() => {
     const fetchDocument = async () => {

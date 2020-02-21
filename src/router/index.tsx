@@ -9,14 +9,14 @@ const MainPageDataController = lazy(() => import('../controller/MainPageDataCont
 const MappingDetailDataController = lazy(() => import('../controller/MappingDetailDataController'));
 const MarkdownEditorDataController = lazy(() => import('../controller/MarkdownEditorDataController'));
 const MarkdownDetailDataController = lazy(() => import('../controller/MarkdownDetailDataController'));
-const UtilWrapper = lazy(() => import('../controller/UtilWrapper'));
+const UtilWrapper = lazy(() => import('../controller/UtilWrapper') as any);
 
 const routes: { path: string; component: React.LazyExoticComponent<() => JSX.Element>; key: string }[] = [
   { path: '/', component: MainPageDataController, key: 'main-page' },
   { path: '/ex-hentai', component: MainPageDataController, key: 'main-page-ex-hentai' },
   { path: '/article', component: MainPageDataController, key: 'main-page-article' },
   { path: '/utils', component: MainPageDataController, key: 'main-page-utils' },
-  { path: '/utils/:id', component: UtilWrapper, key: 'main-page-utils-detail' },
+  { path: '/utils/:id', component: UtilWrapper as any, key: 'main-page-utils-detail' },
   { path: '/mapping/:id', component: MappingDetailDataController, key: 'mapping-detail' },
   { path: '/markdown/edit/:id', component: MarkdownEditorDataController, key: 'markdown-edit' },
   { path: '/markdown/:id', component: MarkdownDetailDataController, key: 'markdown-detail' },

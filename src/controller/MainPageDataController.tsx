@@ -246,7 +246,7 @@ const MainPageDataController = () => {
         onSubmit={handleSubmit}
         onCancel={handleModalCancel}
         loading={formLoading}
-        dataItem={formDataItem}
+        dataItem={formDataItem as any}
         pageInfo={pageInfo}
       />
     </>

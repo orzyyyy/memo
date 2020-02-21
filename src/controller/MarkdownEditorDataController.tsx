@@ -1,9 +1,9 @@
 import React from 'react';
 import { useFetchDocumentData } from '../hooks/useFetchDocumentData';
 import MarkdownEditor from '../pages/MarkdownEditor';
-import { DataSource } from 'mini-xmind/lib/canvas/core';
 import { getPathNameFromUrl } from '../utils';
 import { DocumentCategoryProps } from '../../server/utils/document';
+import { DataSource } from 'mini-xmind/lib/canvas/core';
 
 export interface MarkdownEditorDataControllerState {
   dataSource: string;
@@ -25,7 +25,7 @@ const MarkdownEditorDataController = () => {
   const handleOnSave = async () => {
     const params: MarkdownEditorSaveProps = {
       id,
-      layout: data,
+      layout: data as any,
       category: 'markdown',
       format: true,
     };
@@ -38,13 +38,13 @@ const MarkdownEditorDataController = () => {
     showMessageAfterFetching(result);
   };
 
-  const [data, setData] = useFetchDocumentData(id, 'markdown-editor', handleOnSave);
+  const [data, setData]: any[] = useFetchDocumentData(id, 'markdown-editor', handleOnSave);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setData(e.target.value);
+    setData(e.target.value as any);
   };
 
-  return <MarkdownEditor value={data} onChange={handleOnChange} onSave={handleOnSave} />;
+  return <MarkdownEditor value={data as any} onChange={handleOnChange} onSave={handleOnSave} />;
 };
 
 export default MarkdownEditorDataController;
