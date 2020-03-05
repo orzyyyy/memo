@@ -84,7 +84,7 @@ export default class ExhentaiService {
       (target: any) => new Promise(resolve => resolve(target.innerText)),
     );
     const result = name
-      .replace(/[!@#:$%^&*·！#￥（——）：；“”‘、，|《。》？、【】[\]]/gim, '')
+      .replace(/[!@#:$%^&*·！#￥（——）：；“”‘、，|《。》？?、【】[\]]/gim, '')
       .replace(/\s+/g, '')
       .substr(0, 40);
     return result;
