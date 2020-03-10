@@ -27,7 +27,6 @@ const MarkdownEditorDataController = () => {
       id,
       layout: data as any,
       category: 'markdown',
-      format: true,
     };
     const response = await fetch('/api/memo/document/update/content', {
       body: JSON.stringify(params),
