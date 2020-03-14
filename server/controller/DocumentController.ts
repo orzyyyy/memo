@@ -55,14 +55,7 @@ export default class DocumentController {
     const id = key || md5(timeStamp.toString());
     const writeFilesPaths = getWriteMappingPaths(category, id);
     service.initHtmlTemplate(category, id);
-    service.updateMapping({
-      id,
-      title,
-      type,
-      subType,
-      category,
-      key,
-    });
+    service.updateMapping({ id, title, type, subType, category, key });
     service.updateContent(category, writeFilesPaths);
     updateSider();
     return id;
@@ -103,6 +96,7 @@ export default class DocumentController {
       content = service.formattedByPrettier(content);
     }
     service.updateContent(category, writeFilesPaths, content);
+    service.updateMapping({ id, createTime: new Date().getTime() });
     return content;
   }
 }
