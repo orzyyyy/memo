@@ -248,7 +248,7 @@ const MainPageDataController = () => {
           ) : null
         }
       />
-      <MainPageContentWrapper height={document.body.clientHeight - footerHeight - headerHeight}>
+      <MainPageContentWrapper height={document.documentElement.clientHeight - footerHeight - headerHeight}>
         {renderContent()}
       </MainPageContentWrapper>
       <Footer />
