@@ -101,13 +101,13 @@ const MainPageDataController = () => {
     };
 
     const getMappingData = () => {
-      fetch('mapping.json')
+      fetch('./assets/mapping.json')
         .then(response => response.json())
         .then(setMapping);
     };
 
     const getMenuData = () => {
-      fetch('sider.json')
+      fetch('./assets/sider.json')
         .then(response => response.json())
         .then(setMenuData);
     };
