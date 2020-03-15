@@ -7,8 +7,6 @@ import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataControll
 import { useResize } from '../hooks/useResize';
 import { history } from '../router';
 import { DocumentCategoryProps, SiderProps } from '../../server/utils/document';
-import mapping from '../assets/mapping.json';
-import menuData from '../assets/sider.json';
 import UtilList from '../pages/UtilList';
 import Header, { RightBarProps } from '../component/Header';
 import MainPageContentWrapper from '../pages/MainPageContentWrapper';
@@ -61,10 +59,6 @@ const ghPagesPrefix = isGhPages ? '/memo' : '';
 const headerHeight = 48;
 const footerHeight = 91;
 
-const dataSource = mapping
-  .filter((item: any) => item.visible !== false)
-  .sort((a: any, b: any) => b.createTime - a.createTime) as MappingProps[];
-
 const handleExhentaiLoadList = () => {
   fetch('/api/memo/exhentai/list/latest');
 };
@@ -85,11 +79,14 @@ const MainPageDataController = () => {
   const [formDataItem, setFormDataItem] = useState();
   const [exhentaiDateSet, setExhentaiDateSet] = useState([]);
   const [exhentaiListTargetDataSource, setExhentaiListTargetDataSource] = useState([] as ExHentaiInfoItem[]);
-  const [
-    siderSelectedKey,
-    //  setSiderSelectedKey
-  ] = useState(prefix || 'article');
+  const [siderSelectedKey] = useState(prefix || 'article');
   const [pageInfo, setPageInfo] = useState({ x: 0, y: 0 });
+  const [mapping, setMapping] = useState([]);
+  const [menuData, setMenuData] = useState([]);
+
+  const dataSource = mapping
+    .filter((item: any) => item.visible !== false)
+    .sort((a: any, b: any) => b.createTime - a.createTime) as MappingProps[];
 
   useResize();
 
@@ -103,8 +100,23 @@ const MainPageDataController = () => {
         });
     };
 
+    const getMappingData = () => {
+      fetch('./assets/mapping.json')
+        .then(response => response.json())
+        .then(setMapping);
+    };
+
+    const getMenuData = () => {
+      fetch('./assets/sider.json')
+        .then(response => response.json())
+        .then(setMenuData);
+    };
+
+    getMappingData();
+
     if (isLocal) {
       getExhentaiDateSet();
+      getMenuData();
     }
   }, []);
 
