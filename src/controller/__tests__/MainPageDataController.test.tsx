@@ -63,10 +63,7 @@ describe('MainPageDataController', () => {
 
   it('handleSubmit - update - mapping', done => {
     const wrapper: any = mount(<MainPageDataController />);
-    wrapper
-      .find('EditForm')
-      .props()
-      .onSubmit({ category: 'mapping' }, { id: 'test' });
+    wrapper.find('EditForm').props().onSubmit({ category: 'mapping' }, { id: 'test' });
     setTimeout(() => {
       wrapper.update();
       expect(location.href).toBe('http://localhost/mapping/test');
@@ -76,10 +73,7 @@ describe('MainPageDataController', () => {
 
   it('handleSubmit - update - markdown', done => {
     const wrapper: any = mount(<MainPageDataController />);
-    wrapper
-      .find('EditForm')
-      .props()
-      .onSubmit({ category: 'markdown' }, { id: 'test' });
+    wrapper.find('EditForm').props().onSubmit({ category: 'markdown' }, { id: 'test' });
     setTimeout(() => {
       wrapper.update();
       expect(location.href).toBe('http://localhost/markdown-editor/test');
@@ -89,10 +83,7 @@ describe('MainPageDataController', () => {
 
   it('handleSubmit - add - mapping', done => {
     const wrapper: any = mount(<MainPageDataController />);
-    wrapper
-      .find('EditForm')
-      .props()
-      .onSubmit({ category: 'mapping' });
+    wrapper.find('EditForm').props().onSubmit({ category: 'mapping' });
     setTimeout(() => {
       wrapper.update();
       expect(location.href).toBe('http://localhost/mapping/test');
@@ -102,10 +93,7 @@ describe('MainPageDataController', () => {
 
   it('handleSubmit - add - markdown', done => {
     const wrapper: any = mount(<MainPageDataController />);
-    wrapper
-      .find('EditForm')
-      .props()
-      .onSubmit({ category: 'markdown' });
+    wrapper.find('EditForm').props().onSubmit({ category: 'markdown' });
     setTimeout(() => {
       wrapper.update();
       expect(location.href).toBe('http://localhost/markdown-editor/test');
@@ -115,37 +103,25 @@ describe('MainPageDataController', () => {
 
   it('handleDelete', async () => {
     const wrapper: any = mount(<MainPageDataController />);
-    const result = await wrapper
-      .find('MainPageList')
-      .props()
-      .onDelete({ id: 'test', category: 'markdown' });
+    const result = await wrapper.find('MainPageList').props().onDelete({ id: 'test', category: 'markdown' });
     expect(result).toBe(undefined);
   });
 
   it('handleEdit', async () => {
     const wrapper: any = mount(<MainPageDataController />);
-    const result = await wrapper
-      .find('MainPageList')
-      .props()
-      .onEdit();
+    const result = await wrapper.find('MainPageList').props().onEdit();
     expect(result).toBe(undefined);
   });
 
   it('handleHide', async () => {
     const wrapper: any = mount(<MainPageDataController />);
-    const result = await wrapper
-      .find('MainPageList')
-      .props()
-      .onHide({ id: 'test' });
+    const result = await wrapper.find('MainPageList').props().onHide({ id: 'test' });
     expect(result).toBe(undefined);
   });
 
   it('handleListItemClick', async () => {
     const wrapper: any = mount(<MainPageDataController />);
-    await wrapper
-      .find('MainPageList')
-      .props()
-      .onListItemClick({ id: 'test', category: 'markdown' });
+    await wrapper.find('MainPageList').props().onListItemClick({ id: 'test', category: 'markdown' });
     expect(location.pathname).toBe('/markdown/test');
   });
 });

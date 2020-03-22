@@ -16,10 +16,7 @@ describe('Upload', () => {
   it('onClick should work correctly', () => {
     const onClick = jest.fn();
     const wrapper: any = mount(<Upload fileList={fileList} onClick={onClick} />);
-    wrapper
-      .find('.upload-item')
-      .at(0)
-      .simulate('click');
+    wrapper.find('.upload-item').at(0).simulate('click');
     expect(onClick).toBeCalledWith({ id: '1', url: 'test1', error: false, name: 'test1' });
   });
 

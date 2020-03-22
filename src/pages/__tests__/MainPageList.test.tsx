@@ -68,29 +68,14 @@ describe('MainPageList', () => {
         siderOpenKey={'all'}
       />,
     );
-    wrapper
-      .find('a')
-      .first()
-      .props()
-      .onClick({ stopPropagation });
+    wrapper.find('a').first().props().onClick({ stopPropagation });
     expect(onEdit).toHaveBeenCalled();
     expect(stopPropagation).toHaveBeenCalled();
-    wrapper
-      .find('a')
-      .at(1)
-      .props()
-      .onClick({ stopPropagation });
+    wrapper.find('a').at(1).props().onClick({ stopPropagation });
     expect(onHide).toHaveBeenCalled();
-    wrapper
-      .find('a')
-      .at(2)
-      .props()
-      .onClick({ stopPropagation });
+    wrapper.find('a').at(2).props().onClick({ stopPropagation });
     expect(onDelete).toHaveBeenCalled();
-    wrapper
-      .find('.list-item')
-      .first()
-      .simulate('click');
+    wrapper.find('.list-item').first().simulate('click');
     expect(onListItemClick).toHaveBeenCalled();
   });
 });
