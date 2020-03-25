@@ -96,7 +96,7 @@ export default class DocumentController {
       content = service.formattedByPrettier(content);
     }
     service.updateContent(category, writeFilesPaths, content);
-    service.updateMapping({ id, createTime: new Date().getTime() });
+    service.updateMapping({ id, modifyTime: new Date().getTime() });
     return content;
   }
 }
