@@ -224,14 +224,13 @@
     "category": "mapping"
   },
   {
-    "createTime": 1570004789513,
-    "modifyTime": 1570523701677,
+    "createTime": 1585122718747,
+    "modifyTime": 1585122417430,
     "id": "9b427e93191626274dcca8634ee0d67c",
     "title": "resume",
     "type": "其他",
     "subType": "个人资料",
-    "category": "markdown",
-    "visible": false
+    "category": "markdown"
   },
   {
     "createTime": 1571276218886,
