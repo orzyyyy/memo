@@ -64,7 +64,7 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id, key }: { category: DocumentCategoryProps; id: string; key?: string }) => {
-  history.replace(`${ghPagesPrefix}/${category}/${key ? key : id}`);
+  history.push(`${ghPagesPrefix}/${category}/${key ? key : id}`);
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
@@ -151,15 +151,15 @@ const MainPageDataController = () => {
     handleModalCancel();
     switch (item.category) {
       case 'mapping':
-        history.replace(`${ghPagesPrefix}/mapping/${id}`);
+        history.push(`${ghPagesPrefix}/mapping/${id}`);
         break;
 
       case 'markdown':
-        history.replace(`${ghPagesPrefix}/markdown-editor/${id}`);
+        history.push(`${ghPagesPrefix}/markdown-editor/${id}`);
         break;
 
       case 'utils':
-        history.replace(`${ghPagesPrefix}/utils/${id}`);
+        history.push(`${ghPagesPrefix}/utils/${id}`);
         break;
 
       default:
@@ -177,7 +177,6 @@ const MainPageDataController = () => {
     // history.replace(`${ghPagesPrefix}/${item.value}`);
     // Use this to hack
     location.href = `${ghPagesPrefix}/${item.value}`;
-    // setSiderSelectedKey(item.value);
   };
 
   const handleHide = async ({ id }: MappingProps) => {
