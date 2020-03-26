@@ -69,7 +69,7 @@ const EditForm = ({
     formDataDispatch({ key: 'type', data: dataItem.type });
     formDataDispatch({ key: 'subType', data: dataItem.subType });
     formDataDispatch({ key: 'title', data: dataItem.title });
-  }, [visible, dataItem]);
+  }, [visible, dataItem.category, dataItem.type, dataItem.subType, dataItem.title]);
 
   const reset = () => {
     formDataDispatch({ key: 'title', data: '' });
