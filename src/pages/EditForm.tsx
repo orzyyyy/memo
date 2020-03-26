@@ -69,8 +69,7 @@ const EditForm = ({
     formDataDispatch({ key: 'type', data: dataItem.type });
     formDataDispatch({ key: 'subType', data: dataItem.subType });
     formDataDispatch({ key: 'title', data: dataItem.title });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
+  }, [visible, dataItem]);
 
   const reset = () => {
     formDataDispatch({ key: 'title', data: '' });

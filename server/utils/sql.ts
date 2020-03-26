@@ -27,11 +27,9 @@ export const replacePlaceholderWithParams = (sql: string, params: any) => {
       .replace(/[\r]/g, '')
       .replace(/[\n]/g, '')
       // remove all ()
-      /* eslint-disable-next-line no-useless-escape */
-      .replace(/[\()]/g, '')
+      .replace(/[()]/g, '')
       // remove all space
-      /* eslint-disable-next-line no-useless-escape */
-      .replace(/\ +/g, '')
+      .replace(/ +/g, '')
       // remove all ; @ ,
       .replace(/[;@,]/g, '');
     variables.push(key);
