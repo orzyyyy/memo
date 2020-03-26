@@ -165,6 +165,8 @@ const MainPageDataController = () => {
       default:
         break;
     }
+    // hack for blank when toggling to target page.
+    location.reload();
   };
 
   const handleHeaderClick = (item: RightBarProps, e: React.MouseEvent) => {
