@@ -140,11 +140,6 @@ const MainPageDataController = () => {
     let id: string;
     if (dataItem && dataItem.id) {
       id = dataItem.id;
-      await fetch('/api/memo/document/update/mapping', {
-        body: JSON.stringify(Object.assign({}, dataItem, item)),
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
     } else {
       const response = await fetch('/api/memo/document/add', {
         body: JSON.stringify(item),
