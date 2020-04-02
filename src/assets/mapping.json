@@ -230,7 +230,8 @@
     "title": "resume",
     "type": "其他",
     "subType": "个人资料",
-    "category": "markdown"
+    "category": "markdown",
+    "visible": "false"
   },
   {
     "createTime": 1571276218886,
