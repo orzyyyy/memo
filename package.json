@@ -55,7 +55,6 @@
     ]
   },
   "dependencies": {
-    "chalk": "^4.0.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
