@@ -33,7 +33,7 @@
     "lint": "nino eslint",
     "lint-staged": "lint-staged",
     "log": "cross-var git log --graph --pretty=format:\"[%h](http://github.com/orzyyyy/memo/commit/%H) -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --abbrev-commit --date=relative $npm_package_version..HEAD",
-    "pre:server": "rimraf bin && mkdir bin && cpr server/resource bin/resource",
+    "pre:server": "rimraf bin && mkdir bin && cpr server/resource bin/resource && sh ./scripts/clean-proxy.sh",
     "prettier": "nino prettier",
     "restart": "pm2 restart memo-server",
     "run:server": "node bin",

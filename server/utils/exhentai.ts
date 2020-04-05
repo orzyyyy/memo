@@ -104,8 +104,9 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
   const imageStream = fs.createWriteStream(targetUrl);
   const timer = Date.now();
   let status = true;
+
   request(item)
-    .on('data', function() {
+    .on('data', function () {
       const newTimer = Date.now();
       if (newTimer - timer >= requestTime && fs.existsSync(targetUrl) && status) {
         imageStream.close();
@@ -114,14 +115,14 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
         status = false;
       }
     })
-    .on('error', function() {
-      logger.error('unexpected error occar, will re-request later');
+    .on('error', function (err) {
+      logger.error(err);
       fs.unlinkSync(targetUrl);
       logger.trace(`unlink: ${pageIndex}.jpg`);
       handleDownloadStream(imageUrl, i, counter, prefixPath);
     })
     .pipe(
-      imageStream.on('finish', function() {
+      imageStream.on('finish', function () {
         if (status) {
           counter.push(pageIndex);
           logger.info(`${pageIndex}.jpg ${counter.length}/${imageUrl.length}`);

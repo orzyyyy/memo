@@ -11,7 +11,7 @@ requestTime = 90000
 maxPageIndex = 40
 downloadPath = 'exhentai'
 winProxy = 'http://127.0.0.1:1081'
-linuxProxy = 'http://127.0.0.1:1081'
+linuxProxy = '127.0.0.1:1081'
 # size, normal is gdtm, large is gdtl
 thumbnailClass = '.gdtm a'
 listInfoPath = 'src/assets/exhentai/'
