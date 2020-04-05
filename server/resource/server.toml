@@ -1,7 +1,7 @@
 [exhentai]
 href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
 winLaunchArgs = ['--proxy-server=127.0.0.1:1081']
-linuxLaunchArgs = ['--proxy-server=127.0.0.1:12333']
+linuxLaunchArgs = ['--proxy-server=127.0.0.1:1081']
 headless = true
 winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 linuxChromePath = '/opt/google/chrome/chrome'
@@ -11,7 +11,7 @@ requestTime = 90000
 maxPageIndex = 40
 downloadPath = 'exhentai'
 winProxy = 'http://127.0.0.1:1081'
-linuxProxy = 'http://127.0.0.1:12333'
+linuxProxy = 'http://127.0.0.1:1081'
 # size, normal is gdtm, large is gdtl
 thumbnailClass = '.gdtm a'
 listInfoPath = 'src/assets/exhentai/'
