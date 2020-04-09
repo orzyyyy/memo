@@ -27,6 +27,7 @@
     "clean": "rimraf node_modules _dist package-lock.json",
     "codecov": "cross-env BUILD_ENV=test nino test --codecov",
     "compile:server": "npm run pre:server && tsc -p server",
+    "cross-env": "cross-env",
     "d": "npm run compile:server -- --watch",
     "dev": "rimraf dist && nino koei -w -d",
     "go": "pm2 start",
