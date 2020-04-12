@@ -128,11 +128,9 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
               onMouseDown={[Function]}
               onMouseUp={[Function]}
               onTouchEnd={[Function]}
-              onTouchStart={[Function]}
               onWheel={[Function]}
               style={
                 Object {
-                  "touchAction": "none",
                   "transform": "translate(-3000px,-3000px)",
                 }
               }
