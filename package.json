@@ -78,7 +78,7 @@
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "devDependencies": {
-    "@koa/router": "^9.0.0",
+    "@koa/router": "^8.0.8",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/blueimp-md5": "^2.7.0",
     "@types/classnames": "^2.2.10",
