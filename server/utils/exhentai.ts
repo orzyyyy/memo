@@ -110,15 +110,15 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
       const newTimer = Date.now();
       if (newTimer - timer >= requestTime && fs.existsSync(targetUrl) && status) {
         imageStream.close();
-        logger.trace(`unlink: ${pageIndex}.jpg`);
+        // logger.trace(`unlink: ${pageIndex}.jpg`);
         logger.error('time out at page index: ' + pageIndex);
         status = false;
       }
     })
     .on('error', function (err) {
       logger.error(err);
-      fs.unlinkSync(targetUrl);
-      logger.trace(`unlink: ${pageIndex}.jpg`);
+      // fs.unlinkSync(targetUrl);
+      // logger.trace(`unlink: ${pageIndex}.jpg`);
       handleDownloadStream(imageUrl, i, counter, prefixPath);
     })
     .pipe(
@@ -130,7 +130,7 @@ export function handleDownloadStream(imageUrl: string[], i: number, counter: num
             logger.info('download completed');
           }
         } else {
-          fs.unlinkSync(targetUrl);
+          // fs.unlinkSync(targetUrl);
           handleDownloadStream(imageUrl, i, counter, prefixPath);
         }
       }),
