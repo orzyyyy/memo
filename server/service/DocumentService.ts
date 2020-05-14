@@ -129,11 +129,7 @@ export default ${exportName};
     return templatePath;
   };
 
-  updateContent = (
-    category: DocumentCategoryProps,
-    writeFilesPaths: string[],
-    content?: string | number | undefined,
-  ) => {
+  updateContent = (category: DocumentCategoryProps, writeFilesPaths: string[], content?: any) => {
     for (const item of writeFilesPaths) {
       if (category === 'markdown') {
         fs.writeFileSync(joinWithRootPath(item), content || '');
