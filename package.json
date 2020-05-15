@@ -84,7 +84,7 @@
     "@types/classnames": "^2.2.10",
     "@types/enzyme": "^3.10.5",
     "@types/fetch-mock": "^7.3.2",
-    "@types/fs-extra": "^8.1.0",
+    "@types/fs-extra": "^9.0.0",
     "@types/jest": "^25.1.4",
     "@types/koa-router": "^7.4.0",
     "@types/koa-static": "^4.0.1",
