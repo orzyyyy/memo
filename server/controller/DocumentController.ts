@@ -2,7 +2,6 @@ import { Controller, Request } from '../utils/decorator';
 import md5 from 'blueimp-md5';
 import { getWriteMappingPaths, updateSider, DocumentCategoryProps } from '../utils/document';
 import DocumentService from '../service/DocumentService';
-import { Context } from 'koa';
 
 export interface MappingProps {
   createTime?: number;
@@ -25,7 +24,7 @@ export default class DocumentController {
   }
 
   @Request({ url: '/update/mapping', method: 'post' })
-  async updateTargetMapping(ctx: Context) {
+  async updateTargetMapping(ctx: any) {
     const { layout, id, title, type, subType, category, format } = ctx.request.body;
     if (!id) {
       throw Error('id is undefined');
@@ -48,7 +47,7 @@ export default class DocumentController {
   }
 
   @Request({ url: '/add', method: 'post' })
-  async initDocument(ctx: Context) {
+  async initDocument(ctx: any) {
     const { title, type, subType, category, key } = ctx.request.body;
     const service = this.service;
     const timeStamp = new Date().getTime();
@@ -62,7 +61,7 @@ export default class DocumentController {
   }
 
   @Request({ url: '/delete', method: 'delete' })
-  async deleteTargetDocument(ctx: Context) {
+  async deleteTargetDocument(ctx: any) {
     const { id, category } = ctx.request.body;
     const service = this.service;
     const writeFilesPaths = getWriteMappingPaths(category, id);
@@ -72,7 +71,7 @@ export default class DocumentController {
   }
 
   @Request({ url: '/hide', method: 'post' })
-  async hideTargetDocument(ctx: Context) {
+  async hideTargetDocument(ctx: any) {
     const { id } = ctx.request.body;
     const service = this.service;
     const item = service.getOriginMappingItem(id);
@@ -82,7 +81,7 @@ export default class DocumentController {
   }
 
   @Request({ url: '/update/content', method: 'post' })
-  async updateTargetContent(ctx: Context) {
+  async updateTargetContent(ctx: any) {
     const { layout, id, format, category } = ctx.request.body;
     if (!id) {
       throw Error('id is undefined');

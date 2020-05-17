@@ -45,7 +45,7 @@ export default class ExhentaiController {
   }
 
   @Request({ url: '/download', method: 'post' })
-  async downloadImages(ctx: Context) {
+  async downloadImages(ctx: any) {
     const { url } = ctx.request.body;
     const service = this.service;
     await service.initBrowser();
