@@ -108,7 +108,7 @@
     "koa-static": "^5.0.0",
     "lint-staged": "^10.0.8",
     "log4js": "^6.1.2",
-    "mockdate": "^2.0.5",
+    "mockdate": "^3.0.0",
     "node-fetch": "^2.6.0",
     "open": "^7.0.3",
     "pm2": "^4.2.3",
