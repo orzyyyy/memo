@@ -332,7 +332,8 @@
     "title": "对直面人生中无法避开的裂痕受挫时的记录",
     "type": "其他",
     "subType": "自省",
-    "category": "markdown"
+    "category": "markdown",
+    "visible": false
   },
   {
     "createTime": 1579676574018,
