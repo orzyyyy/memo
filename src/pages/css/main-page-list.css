@@ -35,3 +35,8 @@
   border-radius: 4px;
   margin: 16px;
 }
+
+.main-page-list .f-r {
+  float: right;
+  margin-right: 8;
+}

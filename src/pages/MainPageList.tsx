@@ -25,7 +25,7 @@ const MainPageList = ({
     <ul className="main-page-list">
       {dataSource.map(item => {
         const buttonGroup = (
-          <div style={{ float: 'right', marginRight: 8 }}>
+          <div className="f-r">
             <a
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
