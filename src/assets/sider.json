@@ -66,5 +66,15 @@
         "value": "记录"
       }
     ]
+  },
+  {
+    "key": "游戏",
+    "title": "游戏",
+    "children": [
+      {
+        "key": "EVE",
+        "value": "EVE"
+      }
+    ]
   }
 ]
