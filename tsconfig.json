@@ -15,5 +15,6 @@
     "outDir": "dist",
     "resolveJsonModule": true
   },
-  "exclude": ["**/__tests__/*"]
+  "exclude": ["**/__tests__/*"],
+  "typings": "./typings.d.ts"
 }
