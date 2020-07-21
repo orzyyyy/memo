@@ -1,20 +1,20 @@
 [exhentai]
-href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
-winLaunchArgs = ['--proxy-server=127.0.0.1:1081']
-linuxLaunchArgs = ['--proxy-server=127.0.0.1:1081']
+downloadPath = 'exhentai'
 headless = true
-winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+href = 'https://exhentai.org/?f_cats=1001&f_search=chinese&inline_set=dm_t&page='
 linuxChromePath = '/opt/google/chrome/chrome'
+linuxLaunchArgs = ['--proxy-server=127.0.0.1:1081']
+linuxProxy = '127.0.0.1:1081'
+maxPageIndex = 40
+requestTime = 1800000
 waitTime = 2500
 waitTimeAfterError = 10000
-requestTime = 90000
-maxPageIndex = 40
-downloadPath = 'exhentai'
+winChromePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+winLaunchArgs = ['--proxy-server=127.0.0.1:1081']
 winProxy = 'http://127.0.0.1:1081'
-linuxProxy = '127.0.0.1:1081'
 # size, normal is gdtm, large is gdtl
-thumbnailClass = '.gdtm a'
 listInfoPath = 'src/assets/exhentai/'
+thumbnailClass = '.gdtm a'
 
 [document]
 mappingFilePath = 'src/assets/mapping.json'
