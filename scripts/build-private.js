@@ -37,7 +37,7 @@ const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 
 const plugins = [
   ...htmlPluginProps,
-  new CopyWebpackPlugin(copyPluginProps),
+  new CopyWebpackPlugin({ patterns: copyPluginProps }),
   new PostCompile(() => {
     compressJSON();
     convertMarkdown2Html();
