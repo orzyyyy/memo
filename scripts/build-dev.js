@@ -27,9 +27,10 @@ const commonHtmlWebpackProps = {
 const copyPluginProps = getCopyPluginProps(true);
 const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 
+console.log(copyPluginProps);
 const plugins = [
   ...htmlPluginProps,
-  new CopyWebpackPlugin(copyPluginProps),
+  new CopyWebpackPlugin({ patterns: copyPluginProps }),
   new PostCompile(async () => {
     socket.emit('refresh');
     compressJSON();
