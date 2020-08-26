@@ -135,7 +135,9 @@ const getCopyPluginProps = (shouldCopyExhentai = false) => {
     {
       from: handleWithPrefix('src/assets'),
       to: handleWithPrefix(distPrefix + '/assets'),
-      ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
+      globOptions: {
+        ignore: ['mapping/*', 'markdown/*', 'exhentai/*'],
+      },
     },
   ];
   const exhentaiFiles = shouldCopyExhentai
