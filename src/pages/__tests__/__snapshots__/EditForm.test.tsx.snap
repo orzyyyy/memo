@@ -40,7 +40,7 @@ exports[`EditForm empty dataItem 1`] = `
   }
   visible={true}
 >
-  <Component
+  <_default
     animation="zoom"
     bodyStyle={
       Object {
@@ -628,7 +628,7 @@ exports[`EditForm empty dataItem 1`] = `
         </Portal>
       </Portal>
     </PortalWrapper>
-  </Component>
+  </_default>
 </EditForm>
 `;
 
@@ -672,7 +672,7 @@ exports[`EditForm render correctly 1`] = `
   }
   visible={true}
 >
-  <Component
+  <_default
     animation="zoom"
     bodyStyle={
       Object {
@@ -1260,6 +1260,6 @@ exports[`EditForm render correctly 1`] = `
         </Portal>
       </Portal>
     </PortalWrapper>
-  </Component>
+  </_default>
 </EditForm>
 `;
