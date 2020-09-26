@@ -87,7 +87,7 @@ exports[`EditForm empty dataItem 1`] = `
     <PortalWrapper
       visible={true}
     >
-      <Portal
+      <ForwardRef
         getContainer={[Function]}
       >
         <Portal
@@ -626,7 +626,7 @@ exports[`EditForm empty dataItem 1`] = `
             </div>
           </Dialog>
         </Portal>
-      </Portal>
+      </ForwardRef>
     </PortalWrapper>
   </Dialog>
 </EditForm>
@@ -719,7 +719,7 @@ exports[`EditForm render correctly 1`] = `
     <PortalWrapper
       visible={true}
     >
-      <Portal
+      <ForwardRef
         getContainer={[Function]}
       >
         <Portal
@@ -1258,7 +1258,7 @@ exports[`EditForm render correctly 1`] = `
             </div>
           </Dialog>
         </Portal>
-      </Portal>
+      </ForwardRef>
     </PortalWrapper>
   </Dialog>
 </EditForm>
