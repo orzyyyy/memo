@@ -97,18 +97,17 @@ exports[`EditForm empty dataItem 1`] = `
                 class="rc-dialog-root"
               >
                 <div
-                  class="rc-dialog-mask rc-dialog-fade-appear"
+                  class="rc-dialog-mask"
                 />
                 <div
                   aria-labelledby="rcDialogTitle1"
-                  class="rc-dialog-wrap "
+                  class="rc-dialog-wrap"
                   role="dialog"
                   tabindex="-1"
                 >
                   <div
-                    class="rc-dialog edit-form rc-dialog-zoom-appear"
+                    class="rc-dialog edit-form"
                     role="document"
-                    style="transform-origin: 0px 0px;"
                   >
                     <div
                       aria-hidden="true"
@@ -230,6 +229,7 @@ exports[`EditForm empty dataItem 1`] = `
           }
         >
           <Dialog
+            afterClose={[Function]}
             animation="zoom"
             bodyStyle={
               Object {
@@ -237,9 +237,6 @@ exports[`EditForm empty dataItem 1`] = `
               }
             }
             className="edit-form"
-            closable={true}
-            destroyOnClose={false}
-            focusTriggerAfterClose={true}
             footer={
               <div
                 className="footer-grid"
@@ -267,10 +264,7 @@ exports[`EditForm empty dataItem 1`] = `
             }
             getContainer={[Function]}
             getOpenCount={[Function]}
-            keyboard={true}
-            mask={true}
             maskAnimation="fade"
-            maskClosable={true}
             mousePosition={
               Object {
                 "x": 0,
@@ -278,7 +272,6 @@ exports[`EditForm empty dataItem 1`] = `
               }
             }
             onClose={[Function]}
-            prefixCls="rc-dialog"
             switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
@@ -286,91 +279,112 @@ exports[`EditForm empty dataItem 1`] = `
             <div
               className="rc-dialog-root"
             >
-              <Animate
-                animation={Object {}}
-                component=""
-                componentProps={Object {}}
-                key="mask"
-                onAppear={[Function]}
-                onEnd={[Function]}
-                onEnter={[Function]}
-                onLeave={[Function]}
-                showProp="visible"
-                transitionAppear={true}
-                transitionEnter={true}
-                transitionLeave={true}
-                transitionName="rc-dialog-fade"
+              <Mask
+                motionName="rc-dialog-fade"
+                prefixCls="rc-dialog"
+                style={
+                  Object {
+                    "zIndex": undefined,
+                  }
+                }
+                visible={true}
               >
-                <AnimateChild
-                  animation={Object {}}
+                <CSSMotion
                   key="mask"
-                  transitionAppear={true}
-                  transitionEnter={true}
-                  transitionLeave={true}
-                  transitionName="rc-dialog-fade"
+                  leavedClassName="rc-dialog-mask-hidden"
+                  motionName="rc-dialog-fade"
+                  visible={true}
                 >
-                  <LazyRenderBox
-                    className="rc-dialog-mask"
-                    hiddenClassName="rc-dialog-mask-hidden"
-                    key="mask"
-                    style={Object {}}
-                    visible={true}
-                  >
+                  <DomWrapper>
                     <div
                       className="rc-dialog-mask"
-                      style={Object {}}
+                      style={
+                        Object {
+                          "zIndex": undefined,
+                        }
+                      }
                     />
-                  </LazyRenderBox>
-                </AnimateChild>
-              </Animate>
+                  </DomWrapper>
+                </CSSMotion>
+              </Mask>
               <div
                 aria-labelledby="rcDialogTitle1"
-                className="rc-dialog-wrap "
+                className="rc-dialog-wrap"
                 onClick={[Function]}
                 onKeyDown={[Function]}
-                onMouseUp={[Function]}
                 role="dialog"
                 style={
                   Object {
                     "display": null,
+                    "zIndex": undefined,
                   }
                 }
                 tabIndex={-1}
               >
-                <Animate
-                  animation={Object {}}
-                  component=""
-                  componentProps={Object {}}
-                  key="dialog"
-                  onAppear={[Function]}
-                  onEnd={[Function]}
-                  onEnter={[Function]}
-                  onLeave={[Function]}
-                  showProp="visible"
-                  transitionAppear={true}
-                  transitionEnter={true}
-                  transitionLeave={true}
-                  transitionName="rc-dialog-zoom"
-                >
-                  <AnimateChild
-                    animation={Object {}}
-                    key="dialog-element"
-                    transitionAppear={true}
-                    transitionEnter={true}
-                    transitionLeave={true}
-                    transitionName="rc-dialog-zoom"
-                  >
-                    <LazyRenderBox
-                      className="rc-dialog edit-form"
-                      key="dialog-element"
-                      onMouseDown={[Function]}
-                      role="document"
-                      style={Object {}}
-                      visible={true}
+                <Content
+                  afterClose={[Function]}
+                  animation="zoom"
+                  ariaId="rcDialogTitle1"
+                  bodyStyle={
+                    Object {
+                      "height": 260,
+                    }
+                  }
+                  className="edit-form"
+                  closable={true}
+                  footer={
+                    <div
+                      className="footer-grid"
                     >
+                      <React.Fragment>
+                        <Button
+                          onClick={[Function]}
+                        >
+                          编辑
+                        </Button>
+                        <div />
+                        <Button
+                          onClick={[Function]}
+                        >
+                          清空
+                        </Button>
+                        <Button
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          确定
+                        </Button>
+                      </React.Fragment>
+                    </div>
+                  }
+                  getContainer={[Function]}
+                  getOpenCount={[Function]}
+                  maskAnimation="fade"
+                  motionName="rc-dialog-zoom"
+                  mousePosition={
+                    Object {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  onClose={[Function]}
+                  onVisibleChanged={[Function]}
+                  prefixCls="rc-dialog"
+                  switchScrollingEffect={[Function]}
+                  title="新建文档"
+                  visible={true}
+                >
+                  <CSSMotion
+                    motionName="rc-dialog-zoom"
+                    onAppearPrepare={[Function]}
+                    onEnterPrepare={[Function]}
+                    onVisibleChanged={[Function]}
+                    visible={true}
+                  >
+                    <DomWrapper>
                       <div
                         className="rc-dialog edit-form"
-                        onMouseDown={[Function]}
+                        key="dialog-element"
                         role="document"
                         style={Object {}}
                       >
@@ -619,9 +633,9 @@ exports[`EditForm empty dataItem 1`] = `
                           tabIndex={0}
                         />
                       </div>
-                    </LazyRenderBox>
-                  </AnimateChild>
-                </Animate>
+                    </DomWrapper>
+                  </CSSMotion>
+                </Content>
               </div>
             </div>
           </Dialog>
@@ -729,18 +743,17 @@ exports[`EditForm render correctly 1`] = `
                 class="rc-dialog-root"
               >
                 <div
-                  class="rc-dialog-mask rc-dialog-fade-appear"
+                  class="rc-dialog-mask"
                 />
                 <div
                   aria-labelledby="rcDialogTitle0"
-                  class="rc-dialog-wrap "
+                  class="rc-dialog-wrap"
                   role="dialog"
                   tabindex="-1"
                 >
                   <div
-                    class="rc-dialog edit-form rc-dialog-zoom-appear"
+                    class="rc-dialog edit-form"
                     role="document"
-                    style="transform-origin: 0px 0px;"
                   >
                     <div
                       aria-hidden="true"
@@ -862,6 +875,7 @@ exports[`EditForm render correctly 1`] = `
           }
         >
           <Dialog
+            afterClose={[Function]}
             animation="zoom"
             bodyStyle={
               Object {
@@ -869,9 +883,6 @@ exports[`EditForm render correctly 1`] = `
               }
             }
             className="edit-form"
-            closable={true}
-            destroyOnClose={false}
-            focusTriggerAfterClose={true}
             footer={
               <div
                 className="footer-grid"
@@ -899,10 +910,7 @@ exports[`EditForm render correctly 1`] = `
             }
             getContainer={[Function]}
             getOpenCount={[Function]}
-            keyboard={true}
-            mask={true}
             maskAnimation="fade"
-            maskClosable={true}
             mousePosition={
               Object {
                 "x": 0,
@@ -910,7 +918,6 @@ exports[`EditForm render correctly 1`] = `
               }
             }
             onClose={[Function]}
-            prefixCls="rc-dialog"
             switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
@@ -918,91 +925,112 @@ exports[`EditForm render correctly 1`] = `
             <div
               className="rc-dialog-root"
             >
-              <Animate
-                animation={Object {}}
-                component=""
-                componentProps={Object {}}
-                key="mask"
-                onAppear={[Function]}
-                onEnd={[Function]}
-                onEnter={[Function]}
-                onLeave={[Function]}
-                showProp="visible"
-                transitionAppear={true}
-                transitionEnter={true}
-                transitionLeave={true}
-                transitionName="rc-dialog-fade"
+              <Mask
+                motionName="rc-dialog-fade"
+                prefixCls="rc-dialog"
+                style={
+                  Object {
+                    "zIndex": undefined,
+                  }
+                }
+                visible={true}
               >
-                <AnimateChild
-                  animation={Object {}}
+                <CSSMotion
                   key="mask"
-                  transitionAppear={true}
-                  transitionEnter={true}
-                  transitionLeave={true}
-                  transitionName="rc-dialog-fade"
+                  leavedClassName="rc-dialog-mask-hidden"
+                  motionName="rc-dialog-fade"
+                  visible={true}
                 >
-                  <LazyRenderBox
-                    className="rc-dialog-mask"
-                    hiddenClassName="rc-dialog-mask-hidden"
-                    key="mask"
-                    style={Object {}}
-                    visible={true}
-                  >
+                  <DomWrapper>
                     <div
                       className="rc-dialog-mask"
-                      style={Object {}}
+                      style={
+                        Object {
+                          "zIndex": undefined,
+                        }
+                      }
                     />
-                  </LazyRenderBox>
-                </AnimateChild>
-              </Animate>
+                  </DomWrapper>
+                </CSSMotion>
+              </Mask>
               <div
                 aria-labelledby="rcDialogTitle0"
-                className="rc-dialog-wrap "
+                className="rc-dialog-wrap"
                 onClick={[Function]}
                 onKeyDown={[Function]}
-                onMouseUp={[Function]}
                 role="dialog"
                 style={
                   Object {
                     "display": null,
+                    "zIndex": undefined,
                   }
                 }
                 tabIndex={-1}
               >
-                <Animate
-                  animation={Object {}}
-                  component=""
-                  componentProps={Object {}}
-                  key="dialog"
-                  onAppear={[Function]}
-                  onEnd={[Function]}
-                  onEnter={[Function]}
-                  onLeave={[Function]}
-                  showProp="visible"
-                  transitionAppear={true}
-                  transitionEnter={true}
-                  transitionLeave={true}
-                  transitionName="rc-dialog-zoom"
-                >
-                  <AnimateChild
-                    animation={Object {}}
-                    key="dialog-element"
-                    transitionAppear={true}
-                    transitionEnter={true}
-                    transitionLeave={true}
-                    transitionName="rc-dialog-zoom"
-                  >
-                    <LazyRenderBox
-                      className="rc-dialog edit-form"
-                      key="dialog-element"
-                      onMouseDown={[Function]}
-                      role="document"
-                      style={Object {}}
-                      visible={true}
+                <Content
+                  afterClose={[Function]}
+                  animation="zoom"
+                  ariaId="rcDialogTitle0"
+                  bodyStyle={
+                    Object {
+                      "height": 260,
+                    }
+                  }
+                  className="edit-form"
+                  closable={true}
+                  footer={
+                    <div
+                      className="footer-grid"
                     >
+                      <React.Fragment>
+                        <Button
+                          onClick={[Function]}
+                        >
+                          编辑
+                        </Button>
+                        <div />
+                        <Button
+                          onClick={[Function]}
+                        >
+                          清空
+                        </Button>
+                        <Button
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          确定
+                        </Button>
+                      </React.Fragment>
+                    </div>
+                  }
+                  getContainer={[Function]}
+                  getOpenCount={[Function]}
+                  maskAnimation="fade"
+                  motionName="rc-dialog-zoom"
+                  mousePosition={
+                    Object {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  onClose={[Function]}
+                  onVisibleChanged={[Function]}
+                  prefixCls="rc-dialog"
+                  switchScrollingEffect={[Function]}
+                  title="新建文档"
+                  visible={true}
+                >
+                  <CSSMotion
+                    motionName="rc-dialog-zoom"
+                    onAppearPrepare={[Function]}
+                    onEnterPrepare={[Function]}
+                    onVisibleChanged={[Function]}
+                    visible={true}
+                  >
+                    <DomWrapper>
                       <div
                         className="rc-dialog edit-form"
-                        onMouseDown={[Function]}
+                        key="dialog-element"
                         role="document"
                         style={Object {}}
                       >
@@ -1251,9 +1279,9 @@ exports[`EditForm render correctly 1`] = `
                           tabIndex={0}
                         />
                       </div>
-                    </LazyRenderBox>
-                  </AnimateChild>
-                </Animate>
+                    </DomWrapper>
+                  </CSSMotion>
+                </Content>
               </div>
             </div>
           </Dialog>
