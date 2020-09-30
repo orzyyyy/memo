@@ -154,7 +154,7 @@ export default class ExhentaiService {
     const { waitTimeAfterError } = this.config;
     if (infoList.failed) {
       logger.trace(`re-request after ${waitTimeAfterError} ms`);
-      await this.page.waitFor(waitTimeAfterError);
+      await (this.page as any).waitForTimeout(waitTimeAfterError);
       logger.trace('re-request start');
       return false;
     }
@@ -187,7 +187,7 @@ export default class ExhentaiService {
 
       logger.info(`fetch completed => ${pageIndex}`);
 
-      await this.page.waitFor(waitTime);
+      await (this.page as any).waitForTimeout(waitTime);
     }
     await this.browser.close();
     return results;
@@ -233,7 +233,7 @@ export default class ExhentaiService {
         await this.browser.close();
       }
       if (i % 2 === 0) {
-        await this.page.waitFor(this.config.waitTime);
+        await (this.page as any).waitForTimeout(this.config.waitTime);
       }
     }
   };
@@ -247,7 +247,7 @@ export default class ExhentaiService {
 
       logger.info('image length: ' + result.length);
 
-      await this.page.waitFor(this.config.waitTime);
+      await (this.page as any).waitForTimeout(this.config.waitTime);
     }
     return result;
   };
@@ -265,7 +265,7 @@ export default class ExhentaiService {
       } while (!target);
       const result: any = target;
       results.push(result);
-      await this.page.waitFor(this.config.waitTime);
+      await (this.page as any).waitForTimeout(this.config.waitTime);
     }
     return results;
   };

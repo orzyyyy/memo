@@ -38,10 +38,10 @@ const $$eval = jest.fn().mockImplementation(async (_, callback) => {
   ]);
   return mockDetail;
 });
-const waitFor = jest.fn();
+const waitForTimeout = jest.fn();
 const close = jest.fn();
 // this.page
-const newPage = jest.fn().mockImplementation(() => ({ setCookie, goto, $eval, $$eval, waitFor }));
+const newPage = jest.fn().mockImplementation(() => ({ setCookie, goto, $eval, $$eval, waitForTimeout }));
 // this.browser
 const launch = jest.fn().mockImplementation(() => ({
   newPage,
