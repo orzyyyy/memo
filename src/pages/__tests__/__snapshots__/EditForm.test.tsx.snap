@@ -367,6 +367,7 @@ exports[`EditForm empty dataItem 1`] = `
                       "y": 0,
                     }
                   }
+                  onClick={[Function]}
                   onClose={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
@@ -385,6 +386,7 @@ exports[`EditForm empty dataItem 1`] = `
                       <div
                         className="rc-dialog edit-form"
                         key="dialog-element"
+                        onClick={[Function]}
                         role="document"
                         style={Object {}}
                       >
@@ -1013,6 +1015,7 @@ exports[`EditForm render correctly 1`] = `
                       "y": 0,
                     }
                   }
+                  onClick={[Function]}
                   onClose={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
@@ -1031,6 +1034,7 @@ exports[`EditForm render correctly 1`] = `
                       <div
                         className="rc-dialog edit-form"
                         key="dialog-element"
+                        onClick={[Function]}
                         role="document"
                         style={Object {}}
                       >
