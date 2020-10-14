@@ -237,6 +237,7 @@ exports[`EditForm empty dataItem 1`] = `
               }
             }
             className="edit-form"
+            destroyOnClose={false}
             footer={
               <div
                 className="footer-grid"
@@ -332,6 +333,7 @@ exports[`EditForm empty dataItem 1`] = `
                   }
                   className="edit-form"
                   closable={true}
+                  destroyOnClose={false}
                   footer={
                     <div
                       className="footer-grid"
@@ -380,6 +382,7 @@ exports[`EditForm empty dataItem 1`] = `
                     onAppearPrepare={[Function]}
                     onEnterPrepare={[Function]}
                     onVisibleChanged={[Function]}
+                    removeOnLeave={false}
                     visible={true}
                   >
                     <DomWrapper>
@@ -885,6 +888,7 @@ exports[`EditForm render correctly 1`] = `
               }
             }
             className="edit-form"
+            destroyOnClose={false}
             footer={
               <div
                 className="footer-grid"
@@ -980,6 +984,7 @@ exports[`EditForm render correctly 1`] = `
                   }
                   className="edit-form"
                   closable={true}
+                  destroyOnClose={false}
                   footer={
                     <div
                       className="footer-grid"
@@ -1028,6 +1033,7 @@ exports[`EditForm render correctly 1`] = `
                     onAppearPrepare={[Function]}
                     onEnterPrepare={[Function]}
                     onVisibleChanged={[Function]}
+                    removeOnLeave={false}
                     visible={true}
                   >
                     <DomWrapper>
