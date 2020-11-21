@@ -15,7 +15,7 @@ export default class PrintController {
         const reader = fs.createReadStream(file.path);
         const upStream = fs.createWriteStream(uploadPath);
         reader.pipe(upStream);
-        resolve();
+        resolve(0);
       });
     });
   }
