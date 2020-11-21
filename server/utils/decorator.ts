@@ -9,7 +9,7 @@ export function Controller(prefix: string, notUsedFunctions: string[] = []) {
   if (prefix) {
     router.prefix('/api/memo' + prefix);
   }
-  return function(target: any) {
+  return function (target: any) {
     const propsList = Object.getOwnPropertyDescriptors(target.prototype);
     for (const functionName in propsList) {
       if (functionName !== 'constructor' && !notUsedFunctions.includes(functionName)) {
@@ -28,9 +28,9 @@ async function executeFunc(targetFuncList: QueueInstanceProps[]) {
 }
 
 export function Request({ url, method, queue }: { url: string; method: HttpMehtod; queue?: number | boolean }) {
-  return function(_target: any, _name: string, descriptor: any) {
+  return function (_target: any, _name: string, descriptor: any) {
     const fn = descriptor.value;
-    const Constructor = _target.constructor || function() {};
+    const Constructor = _target.constructor || function () {};
     const Prototype = new Constructor();
     descriptor.value = (router: KoaRouter) => {
       router[method](url, async (ctx: Context, next: any) => {
@@ -62,7 +62,7 @@ export function Request({ url, method, queue }: { url: string; method: HttpMehto
             await new Promise(resolve => {
               ctx.res.on('finish', async () => {
                 await executeFunc(targetFuncList);
-                resolve();
+                resolve(0);
               });
             });
           }

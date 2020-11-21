@@ -57,7 +57,7 @@ const SlicingImage = () => {
               ?.drawImage(image, sliceWidth * j, i * sliceHeight, sliceWidth, sliceHeight, 0, 0, 35, 35);
           }
         }
-        resolve();
+        resolve(0);
       };
     });
   };
@@ -79,7 +79,7 @@ const SlicingImage = () => {
         await new Promise(resolve => {
           download(jtem, j, i);
           setTimeout(() => {
-            resolve();
+            resolve(0);
           }, 100);
         });
       }
