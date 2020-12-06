@@ -369,8 +369,9 @@ exports[`EditForm empty dataItem 1`] = `
                       "y": 0,
                     }
                   }
-                  onClick={[Function]}
                   onClose={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
                   switchScrollingEffect={[Function]}
@@ -389,7 +390,8 @@ exports[`EditForm empty dataItem 1`] = `
                       <div
                         className="rc-dialog edit-form"
                         key="dialog-element"
-                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseUp={[Function]}
                         role="document"
                         style={Object {}}
                       >
@@ -405,226 +407,230 @@ exports[`EditForm empty dataItem 1`] = `
                           }
                           tabIndex={0}
                         />
-                        <div
-                          className="rc-dialog-content"
+                        <Component
+                          visible={true}
                         >
-                          <button
-                            aria-label="Close"
-                            className="rc-dialog-close"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <span
-                              className="rc-dialog-close-x"
-                            />
-                          </button>
                           <div
-                            className="rc-dialog-header"
+                            className="rc-dialog-content"
                           >
-                            <div
-                              className="rc-dialog-title"
-                              id="rcDialogTitle1"
+                            <button
+                              aria-label="Close"
+                              className="rc-dialog-close"
+                              onClick={[Function]}
+                              type="button"
                             >
-                              新建文档
-                            </div>
-                          </div>
-                          <div
-                            className="rc-dialog-body"
-                            style={
-                              Object {
-                                "height": 260,
-                              }
-                            }
-                          >
+                              <span
+                                className="rc-dialog-close-x"
+                              />
+                            </button>
                             <div
-                              className="wrapper-grid"
+                              className="rc-dialog-header"
                             >
-                              <span>
-                                标题
-                              </span>
-                              <Input
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testTitle"
+                              <div
+                                className="rc-dialog-title"
+                                id="rcDialogTitle1"
                               >
-                                <input
+                                新建文档
+                              </div>
+                            </div>
+                            <div
+                              className="rc-dialog-body"
+                              style={
+                                Object {
+                                  "height": 260,
+                                }
+                              }
+                            >
+                              <div
+                                className="wrapper-grid"
+                              >
+                                <span>
+                                  标题
+                                </span>
+                                <Input
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testTitle"
-                                />
-                              </Input>
-                              <span>
-                                显示类别
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                              >
-                                <select
+                                >
+                                  <input
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testTitle"
+                                  />
+                                </Input>
+                                <span>
+                                  显示类别
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                 >
-                                  <option
-                                    value="markdown"
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
                                   >
-                                    markdown
-                                  </option>
-                                  <option
-                                    value="mapping"
-                                  >
-                                    mapping
-                                  </option>
-                                  <option
-                                    value="utils"
-                                  >
-                                    utils
-                                  </option>
-                                </select>
-                              </Select>
-                              <span>
-                                文档类别
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testType"
-                              >
-                                <select
+                                    <option
+                                      value="markdown"
+                                    >
+                                      markdown
+                                    </option>
+                                    <option
+                                      value="mapping"
+                                    >
+                                      mapping
+                                    </option>
+                                    <option
+                                      value="utils"
+                                    >
+                                      utils
+                                    </option>
+                                  </select>
+                                </Select>
+                                <span>
+                                  文档类别
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testType"
                                 >
-                                  <option
-                                    key="type-读书"
-                                    value="读书"
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testType"
                                   >
-                                    读书
-                                  </option>
-                                </select>
-                              </Select>
-                              <span>
-                                文档子类
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testSubType"
-                              >
-                                <select
+                                    <option
+                                      key="type-读书"
+                                      value="读书"
+                                    >
+                                      读书
+                                    </option>
+                                  </select>
+                                </Select>
+                                <span>
+                                  文档子类
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testSubType"
-                                />
-                              </Select>
+                                >
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testSubType"
+                                  />
+                                </Select>
+                              </div>
                             </div>
-                          </div>
-                          <div
-                            className="rc-dialog-footer"
-                          >
                             <div
-                              className="footer-grid"
+                              className="rc-dialog-footer"
                             >
-                              <Button
-                                onClick={[Function]}
+                              <div
+                                className="footer-grid"
                               >
-                                <button
+                                <Button
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  编辑
-                                </button>
-                              </Button>
-                              <div />
-                              <Button
-                                onClick={[Function]}
-                              >
-                                <button
+                                  <button
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    编辑
+                                  </button>
+                                </Button>
+                                <div />
+                                <Button
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  清空
-                                </button>
-                              </Button>
-                              <Button
-                                disabled={false}
-                                onClick={[Function]}
-                              >
-                                <button
+                                  <button
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    清空
+                                  </button>
+                                </Button>
+                                <Button
                                   disabled={false}
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  确定
-                                </button>
-                              </Button>
+                                  <button
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    确定
+                                  </button>
+                                </Button>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Component>
                         <div
                           aria-hidden="true"
                           style={
@@ -1020,8 +1026,9 @@ exports[`EditForm render correctly 1`] = `
                       "y": 0,
                     }
                   }
-                  onClick={[Function]}
                   onClose={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
                   switchScrollingEffect={[Function]}
@@ -1040,7 +1047,8 @@ exports[`EditForm render correctly 1`] = `
                       <div
                         className="rc-dialog edit-form"
                         key="dialog-element"
-                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseUp={[Function]}
                         role="document"
                         style={Object {}}
                       >
@@ -1056,226 +1064,230 @@ exports[`EditForm render correctly 1`] = `
                           }
                           tabIndex={0}
                         />
-                        <div
-                          className="rc-dialog-content"
+                        <Component
+                          visible={true}
                         >
-                          <button
-                            aria-label="Close"
-                            className="rc-dialog-close"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <span
-                              className="rc-dialog-close-x"
-                            />
-                          </button>
                           <div
-                            className="rc-dialog-header"
+                            className="rc-dialog-content"
                           >
-                            <div
-                              className="rc-dialog-title"
-                              id="rcDialogTitle0"
+                            <button
+                              aria-label="Close"
+                              className="rc-dialog-close"
+                              onClick={[Function]}
+                              type="button"
                             >
-                              新建文档
-                            </div>
-                          </div>
-                          <div
-                            className="rc-dialog-body"
-                            style={
-                              Object {
-                                "height": 260,
-                              }
-                            }
-                          >
+                              <span
+                                className="rc-dialog-close-x"
+                              />
+                            </button>
                             <div
-                              className="wrapper-grid"
+                              className="rc-dialog-header"
                             >
-                              <span>
-                                标题
-                              </span>
-                              <Input
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testTitle"
+                              <div
+                                className="rc-dialog-title"
+                                id="rcDialogTitle0"
                               >
-                                <input
+                                新建文档
+                              </div>
+                            </div>
+                            <div
+                              className="rc-dialog-body"
+                              style={
+                                Object {
+                                  "height": 260,
+                                }
+                              }
+                            >
+                              <div
+                                className="wrapper-grid"
+                              >
+                                <span>
+                                  标题
+                                </span>
+                                <Input
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testTitle"
-                                />
-                              </Input>
-                              <span>
-                                显示类别
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                              >
-                                <select
+                                >
+                                  <input
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testTitle"
+                                  />
+                                </Input>
+                                <span>
+                                  显示类别
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                 >
-                                  <option
-                                    value="markdown"
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
                                   >
-                                    markdown
-                                  </option>
-                                  <option
-                                    value="mapping"
-                                  >
-                                    mapping
-                                  </option>
-                                  <option
-                                    value="utils"
-                                  >
-                                    utils
-                                  </option>
-                                </select>
-                              </Select>
-                              <span>
-                                文档类别
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testType"
-                              >
-                                <select
+                                    <option
+                                      value="markdown"
+                                    >
+                                      markdown
+                                    </option>
+                                    <option
+                                      value="mapping"
+                                    >
+                                      mapping
+                                    </option>
+                                    <option
+                                      value="utils"
+                                    >
+                                      utils
+                                    </option>
+                                  </select>
+                                </Select>
+                                <span>
+                                  文档类别
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testType"
                                 >
-                                  <option
-                                    key="type-读书"
-                                    value="读书"
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testType"
                                   >
-                                    读书
-                                  </option>
-                                </select>
-                              </Select>
-                              <span>
-                                文档子类
-                              </span>
-                              <Select
-                                onChange={[Function]}
-                                style={
-                                  Object {
-                                    "width": "100%",
-                                  }
-                                }
-                                value="testSubType"
-                              >
-                                <select
+                                    <option
+                                      key="type-读书"
+                                      value="读书"
+                                    >
+                                      读书
+                                    </option>
+                                  </select>
+                                </Select>
+                                <span>
+                                  文档子类
+                                </span>
+                                <Select
                                   onChange={[Function]}
                                   style={
                                     Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
                                       "width": "100%",
                                     }
                                   }
                                   value="testSubType"
-                                />
-                              </Select>
+                                >
+                                  <select
+                                    onChange={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": "100%",
+                                      }
+                                    }
+                                    value="testSubType"
+                                  />
+                                </Select>
+                              </div>
                             </div>
-                          </div>
-                          <div
-                            className="rc-dialog-footer"
-                          >
                             <div
-                              className="footer-grid"
+                              className="rc-dialog-footer"
                             >
-                              <Button
-                                onClick={[Function]}
+                              <div
+                                className="footer-grid"
                               >
-                                <button
+                                <Button
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  编辑
-                                </button>
-                              </Button>
-                              <div />
-                              <Button
-                                onClick={[Function]}
-                              >
-                                <button
+                                  <button
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    编辑
+                                  </button>
+                                </Button>
+                                <div />
+                                <Button
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  清空
-                                </button>
-                              </Button>
-                              <Button
-                                disabled={false}
-                                onClick={[Function]}
-                              >
-                                <button
+                                  <button
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    清空
+                                  </button>
+                                </Button>
+                                <Button
                                   disabled={false}
                                   onClick={[Function]}
-                                  style={
-                                    Object {
-                                      "borderRadius": "0.25em",
-                                      "fontSize": 18,
-                                      "height": 32,
-                                      "width": 80,
-                                    }
-                                  }
                                 >
-                                  确定
-                                </button>
-                              </Button>
+                                  <button
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "borderRadius": "0.25em",
+                                        "fontSize": 18,
+                                        "height": 32,
+                                        "width": 80,
+                                      }
+                                    }
+                                  >
+                                    确定
+                                  </button>
+                                </Button>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Component>
                         <div
                           aria-hidden="true"
                           style={
