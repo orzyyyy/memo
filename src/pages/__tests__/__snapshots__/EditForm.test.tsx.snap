@@ -408,7 +408,7 @@ exports[`EditForm empty dataItem 1`] = `
                           tabIndex={0}
                         />
                         <Component
-                          visible={true}
+                          shouldUpdate={true}
                         >
                           <div
                             className="rc-dialog-content"
@@ -1065,7 +1065,7 @@ exports[`EditForm render correctly 1`] = `
                           tabIndex={0}
                         />
                         <Component
-                          visible={true}
+                          shouldUpdate={true}
                         >
                           <div
                             className="rc-dialog-content"
