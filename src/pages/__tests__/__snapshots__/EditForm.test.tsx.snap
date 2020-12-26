@@ -273,6 +273,287 @@ exports[`EditForm empty dataItem 1`] = `
               }
             }
             onClose={[Function]}
+            scrollLocker={
+              ScrollLocker {
+                "lock": [Function],
+                "lockTarget": 1,
+                "options": Object {
+                  "container": <body
+                    style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                  >
+                    <div>
+                      <div
+                        class="rc-dialog-root"
+                      >
+                        <div
+                          class="rc-dialog-mask"
+                        />
+                        <div
+                          aria-labelledby="rcDialogTitle0"
+                          class="rc-dialog-wrap"
+                          role="dialog"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="rc-dialog edit-form"
+                            role="document"
+                          >
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                            <div
+                              class="rc-dialog-content"
+                            >
+                              <button
+                                aria-label="Close"
+                                class="rc-dialog-close"
+                                type="button"
+                              >
+                                <span
+                                  class="rc-dialog-close-x"
+                                />
+                              </button>
+                              <div
+                                class="rc-dialog-header"
+                              >
+                                <div
+                                  class="rc-dialog-title"
+                                  id="rcDialogTitle0"
+                                >
+                                  新建文档
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-body"
+                                style="height: 260px;"
+                              >
+                                <div
+                                  class="wrapper-grid"
+                                >
+                                  <span>
+                                    标题
+                                  </span>
+                                  <input
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                    value="testTitle"
+                                  />
+                                  <span>
+                                    显示类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="markdown"
+                                    >
+                                      markdown
+                                    </option>
+                                    <option
+                                      value="mapping"
+                                    >
+                                      mapping
+                                    </option>
+                                    <option
+                                      value="utils"
+                                    >
+                                      utils
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="读书"
+                                    >
+                                      读书
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档子类
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-footer"
+                              >
+                                <div
+                                  class="footer-grid"
+                                >
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    编辑
+                                  </button>
+                                  <div />
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    清空
+                                  </button>
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    确定
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        class="rc-dialog-root"
+                      >
+                        <div
+                          class="rc-dialog-mask"
+                        />
+                        <div
+                          aria-labelledby="rcDialogTitle1"
+                          class="rc-dialog-wrap"
+                          role="dialog"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="rc-dialog edit-form"
+                            role="document"
+                          >
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                            <div
+                              class="rc-dialog-content"
+                            >
+                              <button
+                                aria-label="Close"
+                                class="rc-dialog-close"
+                                type="button"
+                              >
+                                <span
+                                  class="rc-dialog-close-x"
+                                />
+                              </button>
+                              <div
+                                class="rc-dialog-header"
+                              >
+                                <div
+                                  class="rc-dialog-title"
+                                  id="rcDialogTitle1"
+                                >
+                                  新建文档
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-body"
+                                style="height: 260px;"
+                              >
+                                <div
+                                  class="wrapper-grid"
+                                >
+                                  <span>
+                                    标题
+                                  </span>
+                                  <input
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                    value="testTitle"
+                                  />
+                                  <span>
+                                    显示类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="markdown"
+                                    >
+                                      markdown
+                                    </option>
+                                    <option
+                                      value="mapping"
+                                    >
+                                      mapping
+                                    </option>
+                                    <option
+                                      value="utils"
+                                    >
+                                      utils
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="读书"
+                                    >
+                                      读书
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档子类
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-footer"
+                              >
+                                <div
+                                  class="footer-grid"
+                                >
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    编辑
+                                  </button>
+                                  <div />
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    清空
+                                  </button>
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    确定
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </body>,
+                },
+                "unLock": [Function],
+              }
+            }
             switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
@@ -374,6 +655,287 @@ exports[`EditForm empty dataItem 1`] = `
                   onMouseUp={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
+                  scrollLocker={
+                    ScrollLocker {
+                      "lock": [Function],
+                      "lockTarget": 1,
+                      "options": Object {
+                        "container": <body
+                          style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                        >
+                          <div>
+                            <div
+                              class="rc-dialog-root"
+                            >
+                              <div
+                                class="rc-dialog-mask"
+                              />
+                              <div
+                                aria-labelledby="rcDialogTitle0"
+                                class="rc-dialog-wrap"
+                                role="dialog"
+                                tabindex="-1"
+                              >
+                                <div
+                                  class="rc-dialog edit-form"
+                                  role="document"
+                                >
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                  <div
+                                    class="rc-dialog-content"
+                                  >
+                                    <button
+                                      aria-label="Close"
+                                      class="rc-dialog-close"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rc-dialog-close-x"
+                                      />
+                                    </button>
+                                    <div
+                                      class="rc-dialog-header"
+                                    >
+                                      <div
+                                        class="rc-dialog-title"
+                                        id="rcDialogTitle0"
+                                      >
+                                        新建文档
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-body"
+                                      style="height: 260px;"
+                                    >
+                                      <div
+                                        class="wrapper-grid"
+                                      >
+                                        <span>
+                                          标题
+                                        </span>
+                                        <input
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                          value="testTitle"
+                                        />
+                                        <span>
+                                          显示类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="markdown"
+                                          >
+                                            markdown
+                                          </option>
+                                          <option
+                                            value="mapping"
+                                          >
+                                            mapping
+                                          </option>
+                                          <option
+                                            value="utils"
+                                          >
+                                            utils
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="读书"
+                                          >
+                                            读书
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档子类
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-footer"
+                                    >
+                                      <div
+                                        class="footer-grid"
+                                      >
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          编辑
+                                        </button>
+                                        <div />
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          清空
+                                        </button>
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          确定
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <div
+                              class="rc-dialog-root"
+                            >
+                              <div
+                                class="rc-dialog-mask"
+                              />
+                              <div
+                                aria-labelledby="rcDialogTitle1"
+                                class="rc-dialog-wrap"
+                                role="dialog"
+                                tabindex="-1"
+                              >
+                                <div
+                                  class="rc-dialog edit-form"
+                                  role="document"
+                                >
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                  <div
+                                    class="rc-dialog-content"
+                                  >
+                                    <button
+                                      aria-label="Close"
+                                      class="rc-dialog-close"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rc-dialog-close-x"
+                                      />
+                                    </button>
+                                    <div
+                                      class="rc-dialog-header"
+                                    >
+                                      <div
+                                        class="rc-dialog-title"
+                                        id="rcDialogTitle1"
+                                      >
+                                        新建文档
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-body"
+                                      style="height: 260px;"
+                                    >
+                                      <div
+                                        class="wrapper-grid"
+                                      >
+                                        <span>
+                                          标题
+                                        </span>
+                                        <input
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                          value="testTitle"
+                                        />
+                                        <span>
+                                          显示类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="markdown"
+                                          >
+                                            markdown
+                                          </option>
+                                          <option
+                                            value="mapping"
+                                          >
+                                            mapping
+                                          </option>
+                                          <option
+                                            value="utils"
+                                          >
+                                            utils
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="读书"
+                                          >
+                                            读书
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档子类
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-footer"
+                                    >
+                                      <div
+                                        class="footer-grid"
+                                      >
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          编辑
+                                        </button>
+                                        <div />
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          清空
+                                        </button>
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          确定
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </body>,
+                      },
+                      "unLock": [Function],
+                    }
+                  }
                   switchScrollingEffect={[Function]}
                   title="新建文档"
                   visible={true}
@@ -930,6 +1492,153 @@ exports[`EditForm render correctly 1`] = `
               }
             }
             onClose={[Function]}
+            scrollLocker={
+              ScrollLocker {
+                "lock": [Function],
+                "lockTarget": 0,
+                "options": Object {
+                  "container": <body
+                    style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                  >
+                    <div>
+                      <div
+                        class="rc-dialog-root"
+                      >
+                        <div
+                          class="rc-dialog-mask"
+                        />
+                        <div
+                          aria-labelledby="rcDialogTitle0"
+                          class="rc-dialog-wrap"
+                          role="dialog"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="rc-dialog edit-form"
+                            role="document"
+                          >
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                            <div
+                              class="rc-dialog-content"
+                            >
+                              <button
+                                aria-label="Close"
+                                class="rc-dialog-close"
+                                type="button"
+                              >
+                                <span
+                                  class="rc-dialog-close-x"
+                                />
+                              </button>
+                              <div
+                                class="rc-dialog-header"
+                              >
+                                <div
+                                  class="rc-dialog-title"
+                                  id="rcDialogTitle0"
+                                >
+                                  新建文档
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-body"
+                                style="height: 260px;"
+                              >
+                                <div
+                                  class="wrapper-grid"
+                                >
+                                  <span>
+                                    标题
+                                  </span>
+                                  <input
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                    value="testTitle"
+                                  />
+                                  <span>
+                                    显示类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="markdown"
+                                    >
+                                      markdown
+                                    </option>
+                                    <option
+                                      value="mapping"
+                                    >
+                                      mapping
+                                    </option>
+                                    <option
+                                      value="utils"
+                                    >
+                                      utils
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档类别
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    <option
+                                      value="读书"
+                                    >
+                                      读书
+                                    </option>
+                                  </select>
+                                  <span>
+                                    文档子类
+                                  </span>
+                                  <select
+                                    style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="rc-dialog-footer"
+                              >
+                                <div
+                                  class="footer-grid"
+                                >
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    编辑
+                                  </button>
+                                  <div />
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    清空
+                                  </button>
+                                  <button
+                                    style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                  >
+                                    确定
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              aria-hidden="true"
+                              style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                              tabindex="0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </body>,
+                },
+                "unLock": [Function],
+              }
+            }
             switchScrollingEffect={[Function]}
             title="新建文档"
             visible={true}
@@ -1031,6 +1740,153 @@ exports[`EditForm render correctly 1`] = `
                   onMouseUp={[Function]}
                   onVisibleChanged={[Function]}
                   prefixCls="rc-dialog"
+                  scrollLocker={
+                    ScrollLocker {
+                      "lock": [Function],
+                      "lockTarget": 0,
+                      "options": Object {
+                        "container": <body
+                          style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                        >
+                          <div>
+                            <div
+                              class="rc-dialog-root"
+                            >
+                              <div
+                                class="rc-dialog-mask"
+                              />
+                              <div
+                                aria-labelledby="rcDialogTitle0"
+                                class="rc-dialog-wrap"
+                                role="dialog"
+                                tabindex="-1"
+                              >
+                                <div
+                                  class="rc-dialog edit-form"
+                                  role="document"
+                                >
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                  <div
+                                    class="rc-dialog-content"
+                                  >
+                                    <button
+                                      aria-label="Close"
+                                      class="rc-dialog-close"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rc-dialog-close-x"
+                                      />
+                                    </button>
+                                    <div
+                                      class="rc-dialog-header"
+                                    >
+                                      <div
+                                        class="rc-dialog-title"
+                                        id="rcDialogTitle0"
+                                      >
+                                        新建文档
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-body"
+                                      style="height: 260px;"
+                                    >
+                                      <div
+                                        class="wrapper-grid"
+                                      >
+                                        <span>
+                                          标题
+                                        </span>
+                                        <input
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                          value="testTitle"
+                                        />
+                                        <span>
+                                          显示类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="markdown"
+                                          >
+                                            markdown
+                                          </option>
+                                          <option
+                                            value="mapping"
+                                          >
+                                            mapping
+                                          </option>
+                                          <option
+                                            value="utils"
+                                          >
+                                            utils
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档类别
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          <option
+                                            value="读书"
+                                          >
+                                            读书
+                                          </option>
+                                        </select>
+                                        <span>
+                                          文档子类
+                                        </span>
+                                        <select
+                                          style="height: 32px; width: 100%; border-radius: 0.25em; font-size: 18px;"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="rc-dialog-footer"
+                                    >
+                                      <div
+                                        class="footer-grid"
+                                      >
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          编辑
+                                        </button>
+                                        <div />
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          清空
+                                        </button>
+                                        <button
+                                          style="height: 32px; width: 80px; border-radius: 0.25em; font-size: 18px;"
+                                        >
+                                          确定
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    aria-hidden="true"
+                                    style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+                                    tabindex="0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </body>,
+                      },
+                      "unLock": [Function],
+                    }
+                  }
                   switchScrollingEffect={[Function]}
                   title="新建文档"
                   visible={true}
