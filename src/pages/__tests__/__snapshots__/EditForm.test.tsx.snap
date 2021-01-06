@@ -275,11 +275,13 @@ exports[`EditForm empty dataItem 1`] = `
             onClose={[Function]}
             scrollLocker={
               ScrollLocker {
+                "getContainer": [Function],
                 "lock": [Function],
                 "lockTarget": 1,
                 "options": Object {
                   "container": <body
-                    style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                    class="ant-scrolling-effect"
+                    style="padding-right: 0px; overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
                   >
                     <div>
                       <div
@@ -551,6 +553,7 @@ exports[`EditForm empty dataItem 1`] = `
                     </div>
                   </body>,
                 },
+                "reLock": [Function],
                 "unLock": [Function],
               }
             }
@@ -657,11 +660,13 @@ exports[`EditForm empty dataItem 1`] = `
                   prefixCls="rc-dialog"
                   scrollLocker={
                     ScrollLocker {
+                      "getContainer": [Function],
                       "lock": [Function],
                       "lockTarget": 1,
                       "options": Object {
                         "container": <body
-                          style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                          class="ant-scrolling-effect"
+                          style="padding-right: 0px; overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
                         >
                           <div>
                             <div
@@ -933,6 +938,7 @@ exports[`EditForm empty dataItem 1`] = `
                           </div>
                         </body>,
                       },
+                      "reLock": [Function],
                       "unLock": [Function],
                     }
                   }
@@ -1494,11 +1500,13 @@ exports[`EditForm render correctly 1`] = `
             onClose={[Function]}
             scrollLocker={
               ScrollLocker {
+                "getContainer": [Function],
                 "lock": [Function],
                 "lockTarget": 0,
                 "options": Object {
                   "container": <body
-                    style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                    class="ant-scrolling-effect"
+                    style="padding-right: 0px; overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
                   >
                     <div>
                       <div
@@ -1636,6 +1644,7 @@ exports[`EditForm render correctly 1`] = `
                     </div>
                   </body>,
                 },
+                "reLock": [Function],
                 "unLock": [Function],
               }
             }
@@ -1742,11 +1751,13 @@ exports[`EditForm render correctly 1`] = `
                   prefixCls="rc-dialog"
                   scrollLocker={
                     ScrollLocker {
+                      "getContainer": [Function],
                       "lock": [Function],
                       "lockTarget": 0,
                       "options": Object {
                         "container": <body
-                          style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+                          class="ant-scrolling-effect"
+                          style="padding-right: 0px; overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
                         >
                           <div>
                             <div
@@ -1884,6 +1895,7 @@ exports[`EditForm render correctly 1`] = `
                           </div>
                         </body>,
                       },
+                      "reLock": [Function],
                       "unLock": [Function],
                     }
                   }
