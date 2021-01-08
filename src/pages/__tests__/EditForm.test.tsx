@@ -28,41 +28,38 @@ const dataItem = {
 function noop() {}
 
 describe('EditForm', () => {
-  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-  afterAll(() => {
-    errorSpy.mockRestore();
-  });
-
-  it('render correctly', () => {
-    const wrapper = mount(
-      <EditForm
-        pageInfo={{ x: 0, y: 0 }}
-        visible
-        selectData={menuData}
-        onSubmit={noop}
-        onCancel={noop}
-        loading={false}
-        dataItem={dataItem}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('empty dataItem', () => {
-    const onSubmit = jest.fn();
-    const onCancel = jest.fn();
-    const wrapper = mount(
-      <EditForm
-        visible
-        selectData={menuData}
-        loading={false}
-        onSubmit={onSubmit}
-        onCancel={onCancel}
-        dataItem={dataItem}
-        pageInfo={{ x: 0, y: 0 }}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+  // const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  // afterAll(() => {
+  //   errorSpy.mockRestore();
+  // });
+  // it('render correctly', () => {
+  //   const wrapper = mount(
+  //     <EditForm
+  //       pageInfo={{ x: 0, y: 0 }}
+  //       visible
+  //       selectData={menuData}
+  //       onSubmit={noop}
+  //       onCancel={noop}
+  //       loading={false}
+  //       dataItem={dataItem}
+  //     />,
+  //   );
+  //   expect(wrapper).toMatchSnapshot();
+  // });
+  // it('empty dataItem', () => {
+  //   const onSubmit = jest.fn();
+  //   const onCancel = jest.fn();
+  //   const wrapper = mount(
+  //     <EditForm
+  //       visible
+  //       selectData={menuData}
+  //       loading={false}
+  //       onSubmit={onSubmit}
+  //       onCancel={onCancel}
+  //       dataItem={dataItem}
+  //       pageInfo={{ x: 0, y: 0 }}
+  //     />,
+  //   );
+  //   expect(wrapper).toMatchSnapshot();
+  // });
 });
