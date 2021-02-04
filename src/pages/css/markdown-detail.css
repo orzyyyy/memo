@@ -35,3 +35,7 @@
   background: #fff;
   transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
+p {
+  text-indent: 2em; /*首行缩进*/
+}
