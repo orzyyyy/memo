@@ -43,7 +43,7 @@ export const getListFiles = (): string[] => {
   return [];
 };
 
-export const getLatestDownloadDirName = (dateStamp?: string) => {
+export const getLatestDownloadDirName = (dateStamp?: string[] | string) => {
   let result = dateStamp;
   if (!dateStamp) {
     const downloadDir = fs.readdirSync(joinWithRootPath(downloadPath)).filter((item: string) => item !== '.gitkeep');
