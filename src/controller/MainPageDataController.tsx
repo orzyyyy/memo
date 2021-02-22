@@ -62,7 +62,8 @@ const handleExhentaiLoadList = () => {
 };
 
 const handleListItemClick = ({ category, id, key }: { category: DocumentCategoryProps; id: string; key?: string }) => {
-  history.push(`${ghPagesPrefix}/${category}/${key ? key : id}`);
+  // history.push(`${ghPagesPrefix}/${category}/${key ? key : id}`);
+  location.href = `${ghPagesPrefix}/${category}/${key ? key : id}`;
 };
 
 const getExhentaiTargetDataSource = async (url: string) => {
