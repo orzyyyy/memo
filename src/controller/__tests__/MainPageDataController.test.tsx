@@ -122,6 +122,6 @@ describe('MainPageDataController', () => {
   it('handleListItemClick', async () => {
     const wrapper: any = mount(<MainPageDataController />);
     await wrapper.find('MainPageList').props().onListItemClick({ id: 'test', category: 'markdown' });
-    expect(location.pathname).toBe('/markdown/test');
+    expect(location.pathname).toBe('/markdown-editor/test');
   });
 });

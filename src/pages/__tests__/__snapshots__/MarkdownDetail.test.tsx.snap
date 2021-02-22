@@ -8,7 +8,7 @@ exports[`MarkdownDetail render correctly 1`] = `
     className="markdown-detail markdown-body"
   >
     <div
-      className="wrapper"
+      className="wrapper-mobile"
     >
       <div
         className="content"

@@ -2,12 +2,14 @@
 
 exports[`MarkdownDetailDataController handleOnSave 1`] = `
 <MarkdownDetailDataController>
-  <MarkdownDetail>
+  <MarkdownDetail
+    screenSize="mobile"
+  >
     <div
       className="markdown-detail markdown-body"
     >
       <div
-        className="wrapper"
+        className="wrapper-mobile"
       >
         <div
           className="content"
