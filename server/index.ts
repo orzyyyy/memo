@@ -27,9 +27,9 @@ const buildEnv = process.env.BUILD_ENV;
 
 const app = new Koa();
 const server = createServer(app.callback());
-const io = IO(server);
+const io = (IO as any)(server);
 
-io.on('connection', socket => {
+io.on('connection', (socket: { on: (arg0: string, arg1: () => void) => void }) => {
   socket.on('refresh', () => {
     io.emit('refresh');
   });
