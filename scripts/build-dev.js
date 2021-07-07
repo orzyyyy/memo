@@ -27,7 +27,6 @@ const commonHtmlWebpackProps = {
 const copyPluginProps = getCopyPluginProps(true);
 const htmlPluginProps = getHtmlPluginProps(commonHtmlWebpackProps);
 
-console.log(copyPluginProps);
 const plugins = [
   ...htmlPluginProps,
   new CopyWebpackPlugin({ patterns: copyPluginProps }),
