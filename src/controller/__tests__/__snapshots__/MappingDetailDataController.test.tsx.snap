@@ -78,7 +78,6 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
           allowAnyClick={false}
           axis="both"
           bounds={false}
-          cancel={null}
           defaultClassName="react-draggable"
           defaultClassNameDragged="react-draggable-dragged"
           defaultClassNameDragging="react-draggable-dragging"
@@ -90,9 +89,6 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
           }
           disabled={false}
           enableUserSelectHack={true}
-          grid={null}
-          handle={null}
-          offsetParent={null}
           onDrag={[Function]}
           onMouseDown={[Function]}
           onStart={[Function]}
@@ -104,22 +100,16 @@ exports[`MappingDetailDataController handleOnSave 1`] = `
             }
           }
           scale={1}
-          transform={null}
         >
           <DraggableCore
             allowAnyClick={false}
-            cancel={null}
             disabled={false}
             enableUserSelectHack={true}
-            grid={null}
-            handle={null}
-            offsetParent={null}
             onDrag={[Function]}
             onMouseDown={[Function]}
             onStart={[Function]}
             onStop={[Function]}
             scale={1}
-            transform={null}
           >
             <div
               className="Canvas canvas-wrapper react-draggable"

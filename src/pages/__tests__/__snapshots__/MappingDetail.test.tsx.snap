@@ -527,7 +527,6 @@ exports[`MappingDetail render correctly 1`] = `
         allowAnyClick={false}
         axis="both"
         bounds={false}
-        cancel={null}
         defaultClassName="react-draggable"
         defaultClassNameDragged="react-draggable-dragged"
         defaultClassNameDragging="react-draggable-dragging"
@@ -539,9 +538,6 @@ exports[`MappingDetail render correctly 1`] = `
         }
         disabled={false}
         enableUserSelectHack={true}
-        grid={null}
-        handle={null}
-        offsetParent={null}
         onDrag={[Function]}
         onMouseDown={[Function]}
         onStart={[Function]}
@@ -553,22 +549,16 @@ exports[`MappingDetail render correctly 1`] = `
           }
         }
         scale={1}
-        transform={null}
       >
         <DraggableCore
           allowAnyClick={false}
-          cancel={null}
           disabled={false}
           enableUserSelectHack={true}
-          grid={null}
-          handle={null}
-          offsetParent={null}
           onDrag={[Function]}
           onMouseDown={[Function]}
           onStart={[Function]}
           onStop={[Function]}
           scale={1}
-          transform={null}
         >
           <div
             className="Canvas canvas-wrapper react-draggable"
@@ -847,7 +837,6 @@ exports[`MappingDetail render correctly 1`] = `
                 allowAnyClick={false}
                 axis="both"
                 bounds={false}
-                cancel={null}
                 defaultClassName="react-draggable"
                 defaultClassNameDragged="react-draggable-dragged"
                 defaultClassNameDragging="react-draggable-dragging"
@@ -859,10 +848,7 @@ exports[`MappingDetail render correctly 1`] = `
                 }
                 disabled={false}
                 enableUserSelectHack={true}
-                grid={null}
-                handle={null}
                 key="tag-416176"
-                offsetParent={null}
                 onDrag={[Function]}
                 onMouseDown={[Function]}
                 onStart={[Function]}
@@ -874,22 +860,16 @@ exports[`MappingDetail render correctly 1`] = `
                   }
                 }
                 scale={1}
-                transform={null}
               >
                 <DraggableCore
                   allowAnyClick={false}
-                  cancel={null}
                   disabled={false}
                   enableUserSelectHack={true}
-                  grid={null}
-                  handle={null}
-                  offsetParent={null}
                   onDrag={[Function]}
                   onMouseDown={[Function]}
                   onStart={[Function]}
                   onStop={[Function]}
                   scale={1}
-                  transform={null}
                 >
                   <div
                     className="react-draggable"
@@ -1072,7 +1052,6 @@ exports[`MappingDetail render correctly 1`] = `
                 allowAnyClick={false}
                 axis="both"
                 bounds={false}
-                cancel={null}
                 defaultClassName="react-draggable"
                 defaultClassNameDragged="react-draggable-dragged"
                 defaultClassNameDragging="react-draggable-dragging"
@@ -1084,10 +1063,7 @@ exports[`MappingDetail render correctly 1`] = `
                 }
                 disabled={false}
                 enableUserSelectHack={true}
-                grid={null}
-                handle={null}
                 key="tag-439992"
-                offsetParent={null}
                 onDrag={[Function]}
                 onMouseDown={[Function]}
                 onStart={[Function]}
@@ -1099,22 +1075,16 @@ exports[`MappingDetail render correctly 1`] = `
                   }
                 }
                 scale={1}
-                transform={null}
               >
                 <DraggableCore
                   allowAnyClick={false}
-                  cancel={null}
                   disabled={false}
                   enableUserSelectHack={true}
-                  grid={null}
-                  handle={null}
-                  offsetParent={null}
                   onDrag={[Function]}
                   onMouseDown={[Function]}
                   onStart={[Function]}
                   onStop={[Function]}
                   scale={1}
-                  transform={null}
                 >
                   <div
                     className="react-draggable"
@@ -1297,7 +1267,6 @@ exports[`MappingDetail render correctly 1`] = `
                 allowAnyClick={false}
                 axis="both"
                 bounds={false}
-                cancel={null}
                 defaultClassName="react-draggable"
                 defaultClassNameDragged="react-draggable-dragged"
                 defaultClassNameDragging="react-draggable-dragging"
@@ -1309,10 +1278,7 @@ exports[`MappingDetail render correctly 1`] = `
                 }
                 disabled={false}
                 enableUserSelectHack={true}
-                grid={null}
-                handle={null}
                 key="tag-443720"
-                offsetParent={null}
                 onDrag={[Function]}
                 onMouseDown={[Function]}
                 onStart={[Function]}
@@ -1324,22 +1290,16 @@ exports[`MappingDetail render correctly 1`] = `
                   }
                 }
                 scale={1}
-                transform={null}
               >
                 <DraggableCore
                   allowAnyClick={false}
-                  cancel={null}
                   disabled={false}
                   enableUserSelectHack={true}
-                  grid={null}
-                  handle={null}
-                  offsetParent={null}
                   onDrag={[Function]}
                   onMouseDown={[Function]}
                   onStart={[Function]}
                   onStop={[Function]}
                   scale={1}
-                  transform={null}
                 >
                   <div
                     className="react-draggable"
@@ -1522,7 +1482,6 @@ exports[`MappingDetail render correctly 1`] = `
                 allowAnyClick={false}
                 axis="both"
                 bounds={false}
-                cancel={null}
                 defaultClassName="react-draggable"
                 defaultClassNameDragged="react-draggable-dragged"
                 defaultClassNameDragging="react-draggable-dragging"
@@ -1534,10 +1493,7 @@ exports[`MappingDetail render correctly 1`] = `
                 }
                 disabled={false}
                 enableUserSelectHack={true}
-                grid={null}
-                handle={null}
                 key="tag-476280"
-                offsetParent={null}
                 onDrag={[Function]}
                 onMouseDown={[Function]}
                 onStart={[Function]}
@@ -1549,22 +1505,16 @@ exports[`MappingDetail render correctly 1`] = `
                   }
                 }
                 scale={1}
-                transform={null}
               >
                 <DraggableCore
                   allowAnyClick={false}
-                  cancel={null}
                   disabled={false}
                   enableUserSelectHack={true}
-                  grid={null}
-                  handle={null}
-                  offsetParent={null}
                   onDrag={[Function]}
                   onMouseDown={[Function]}
                   onStart={[Function]}
                   onStop={[Function]}
                   scale={1}
-                  transform={null}
                 >
                   <div
                     className="react-draggable"
@@ -1750,7 +1700,6 @@ exports[`MappingDetail render correctly 1`] = `
                 allowAnyClick={false}
                 axis="both"
                 bounds={false}
-                cancel={null}
                 defaultClassName="react-draggable"
                 defaultClassNameDragged="react-draggable-dragged"
                 defaultClassNameDragging="react-draggable-dragging"
@@ -1762,10 +1711,7 @@ exports[`MappingDetail render correctly 1`] = `
                 }
                 disabled={false}
                 enableUserSelectHack={true}
-                grid={null}
-                handle={null}
                 key="tag-491320"
-                offsetParent={null}
                 onDrag={[Function]}
                 onMouseDown={[Function]}
                 onStart={[Function]}
@@ -1777,22 +1723,16 @@ exports[`MappingDetail render correctly 1`] = `
                   }
                 }
                 scale={1}
-                transform={null}
               >
                 <DraggableCore
                   allowAnyClick={false}
-                  cancel={null}
                   disabled={false}
                   enableUserSelectHack={true}
-                  grid={null}
-                  handle={null}
-                  offsetParent={null}
                   onDrag={[Function]}
                   onMouseDown={[Function]}
                   onStart={[Function]}
                   onStop={[Function]}
                   scale={1}
-                  transform={null}
                 >
                   <div
                     className="react-draggable"
