@@ -61,7 +61,7 @@
     "cross-env": "^7.0.2",
     "date-fns": "^2.11.0",
     "fs-extra": "^10.0.0",
-    "github-markdown-css": "^4.0.0",
+    "github-markdown-css": "^5.0.0",
     "history": "^5.0.0",
     "marked": "^3.0.0",
     "mini-xmind": "^1.4.2",
