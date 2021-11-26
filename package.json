@@ -99,7 +99,7 @@
     "@types/socket.io": "^3.0.2",
     "@types/socket.io-client": "^3.0.0",
     "blueimp-md5": "^2.12.0",
-    "chalk": "^4.0.0",
+    "chalk": "^5.0.0",
     "cpr": "^3.0.1",
     "cross-var": "^1.1.0",
     "fetch-mock": "^9.2.1",
