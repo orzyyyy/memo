@@ -28,10 +28,10 @@ describe('MainPageDataController', () => {
 
   beforeAll(() => {
     /* eslint-disable-next-line no-underscore-dangle */
-    (global as any).window.__isLocal = true;
+    (window as any).__isLocal = true;
     const scrollWrapperInExhentaiList = document.createElement('div');
     scrollWrapperInExhentaiList.className = 'main-page-content-wrapper';
-    (global as any).document.body.append(scrollWrapperInExhentaiList);
+    (window as any).document.body.append(scrollWrapperInExhentaiList);
   });
 
   beforeEach(() => {
@@ -53,8 +53,7 @@ describe('MainPageDataController', () => {
 
   afterAll(() => {
     errorSpy.mockRestore();
-    /* eslint-disable-next-line no-underscore-dangle */
-    (global as any).window.__isLocal = undefined;
+    (window as any).__isLocal = undefined;
   });
 
   afterEach(() => {
