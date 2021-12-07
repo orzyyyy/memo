@@ -7,7 +7,7 @@ import Input from '../component/Input';
 
 export type ColProps = { [key: number]: React.RefObject<HTMLCanvasElement> };
 
-// there is a bug
+// maybe there is a bug
 // at the beginning, the rendering data of canvas is like
 // [
 //   [col, col, col, ...] => this is row1
@@ -35,9 +35,8 @@ const generateCanvasRefArr = (rowNum: number, colNum: number) => {
 const SlicingImage = () => {
   const [fileList, setFileList] = useState([] as UploadFile[]);
   const [rowNum, setRowNum] = useState(2);
-  const [colNum, setColNum] = useState(7);
+  const [colNum, setColNum] = useState(8);
   const canvasArr = generateCanvasRefArr(rowNum, colNum);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const canvasRef = useMemo(() => canvasArr, [rowNum, colNum]);
 
   const img2Canvas = async (url: string, row: number, col: number) => {
