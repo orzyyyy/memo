@@ -1,5 +1,5 @@
 import React from 'react';
-import marked from 'marked';
+import { marked } from 'marked';
 import 'github-markdown-css/github-markdown.css';
 import './css/markdown-editor.css';
 import LineNumber from '../component/LineNumber';
@@ -27,7 +27,7 @@ const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
       <LineNumber>
         <textarea className="markdown-body" onChange={onChange} value={value} onKeyUp={onKeyUp} />
       </LineNumber>
-      <div className="content markdown-body" dangerouslySetInnerHTML={{ __html: marked(value || '') }} />
+      <div className="content markdown-body" dangerouslySetInnerHTML={{ __html: marked.parse(value || '') }} />
     </div>
   );
 };

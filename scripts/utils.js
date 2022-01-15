@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 const { author, name } = require('../package.json');
-const marked = require('marked');
+const { marked } = require('marked');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const buildEnv = process.env.BUILD_ENV || 'dev';
@@ -197,7 +197,7 @@ const convertMarkdown2Html = () => {
     for (const file of files) {
       const targetUrl = handleWithPrefix(file);
       const content = fs.readFileSync(targetUrl).toString();
-      const result = file.includes('markdown-editor') ? content : marked(content || '');
+      const result = file.includes('markdown-editor') ? content : marked.parse(content || '');
       fs.outputFileSync(targetUrl, result);
     }
   });

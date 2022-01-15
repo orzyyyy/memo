@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPathNameFromUrl, camelCase } from '../utils';
-import marked from 'marked';
+import { marked } from 'marked';
 import 'github-markdown-css/github-markdown.css';
 
 const UtilWrapper = () => {
@@ -12,7 +12,7 @@ const UtilWrapper = () => {
     const fetchDocument = async () => {
       const response = await fetch(`./assets/document/${utilName}.md`);
       const result = await response.text();
-      return marked(result || '');
+      return marked.parse(result || '');
     };
 
     const loadModule = () => {
