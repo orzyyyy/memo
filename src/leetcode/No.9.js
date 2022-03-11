@@ -3,7 +3,7 @@
  * @return {boolean}
  * https://leetcode-cn.com/problems/palindrome-number/
  */
-var isPalindrome = function (x: number) {
+var isPalindrome = function (x) {
   if (x > Math.pow(2, 31) || x < -Math.pow(2, 31)) {
     return false;
   }
@@ -20,6 +20,6 @@ var isPalindrome = function (x: number) {
   return reverseResult === x + '';
 };
 
-var reverseStr = function (x: number) {
+var reverseStr = function (x) {
   return (x + '').split('').reverse().join('');
 };
