@@ -91,7 +91,7 @@
     "@types/marked": "^4.0.0",
     "@types/prettier": "^2.0.0",
     "@types/puppeteer-core": "^5.4.0",
-    "@types/react": "^17.0.0",
+    "@types/react": "^18.0.4",
     "@types/react-dom": "^17.0.0",
     "@types/request": "^2.48.4",
     "@types/socket.io": "^3.0.2",
