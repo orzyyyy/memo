@@ -60,15 +60,17 @@ const Uploader = ({ renderPlusItem, multiple, onChange, ...rest }: UploaderProps
     <div className="uploader">
       <div onClick={triggerInputUpload} className="upload-item">
         <span className="upload-button">
-          <input
-            type="file"
-            ref={uploadInput}
-            style={{ display: 'none' }}
-            onChange={onFileChange}
-            multiple={multiple}
-            {...rest}
-          />
-          {renderPlusItem ? renderPlusItem() : plusItem}
+          <>
+            <input
+              type="file"
+              ref={uploadInput}
+              style={{ display: 'none' }}
+              onChange={onFileChange}
+              multiple={multiple}
+              {...rest}
+            />
+            {renderPlusItem ? renderPlusItem() : plusItem}
+          </>
         </span>
       </div>
     </div>
