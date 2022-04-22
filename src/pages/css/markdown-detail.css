@@ -9,9 +9,9 @@
 
 .markdown-detail .wrapper {
   padding: 5px 24px;
-  font-size: 18px;
+  font-size: 24px;
   margin: auto;
-  width: 70%;
+  width: 58%;
   line-height: 1.8;
 }
 
@@ -23,9 +23,10 @@
 }
 
 .markdown-detail .content {
-  /* border: 1px solid #d3d3d3;
-  box-shadow: 0 0 2px #d3d3d3; */
-  background: #fff;
+  border: 1px solid #d3d3d3;
+  box-shadow: 0 0 2px #d3d3d3;
+  background: rgba(240, 240, 240, 0.25);
+  border-color: rgba(100, 100, 100, 0.1);
   color: #444;
   padding: 3% 6%;
   position: relative;
