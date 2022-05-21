@@ -19,7 +19,7 @@
     "build": "cross-env BUILD_ENV=netlify npm run build:common",
     "build:analyse": "cross-env BUILD_ENV=analyse npm run build:common",
     "build:common": "npm-run-all build:prepare build:content build:completed",
-    "build:completed": "rimraf dist && cp -r _dist dist && rimraf _dist && cp CNAME dist",
+    "build:completed": "rimraf dist && cp -r _dist dist && rimraf _dist",
     "build:content": "nino koei --output=_dist",
     "build:gh-pages": "cross-env BUILD_ENV=gh-pages npm run build:common",
     "build:prepare": "rimraf _dist",
