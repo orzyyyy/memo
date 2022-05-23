@@ -81,7 +81,7 @@
     "@testing-library/react-hooks": "^7.0.0",
     "@types/blueimp-md5": "^2.7.0",
     "@types/classnames": "^2.2.10",
-    "@types/enzyme": "^3.10.5",
+    "@types/enzyme": "^3.10.12",
     "@types/fetch-mock": "^7.3.2",
     "@types/fs-extra": "^9.0.0",
     "@types/jest": "^27.0.0",
