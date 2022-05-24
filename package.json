@@ -102,13 +102,13 @@
     "koa-body": "^5.0.0",
     "koa-static": "^5.0.0",
     "lint-staged": "^12.0.0",
-    "log4js": "^6.4.0",
-    "mockdate": "^3.0.2",
-    "open": "^8.0.0",
+    "log4js": "^6.5.1",
+    "mockdate": "^3.0.5",
+    "open": "^8.4.0",
     "pm2": "^5.2.0",
     "puppeteer-core": "^14.1.1",
     "rimraf": "^3.0.2",
-    "socket.io": "^4.1.2",
-    "wait-on": "^6.0.0"
+    "socket.io": "^4.5.1",
+    "wait-on": "^6.0.1"
   }
 }
