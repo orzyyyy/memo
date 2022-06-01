@@ -100,7 +100,7 @@
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
     "koa-static": "^5.0.0",
-    "lint-staged": "^12.4.2",
+    "lint-staged": "^13.0.0",
     "log4js": "^6.5.2",
     "mockdate": "^3.0.5",
     "open": "^8.4.0",
