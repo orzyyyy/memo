@@ -79,11 +79,8 @@ export default class ExhentaiService {
   };
 
   getComicName = async () => {
-    const name: string = await this.page.$eval(
-      '#gj',
-      (target: any) => new Promise(resolve => resolve(target.innerText)),
-    );
-    const result = name
+    const name = await this.page.$eval('#gj', (target: any) => new Promise(resolve => resolve(target.innerText)));
+    const result = (name as string)
       .replace(/[!@#:$%^&*·！#￥（——）：；“”‘、，|《。》？?、【】[\]]/gim, '')
       .replace(/\s+/g, '')
       .substr(0, 40);
@@ -120,7 +117,7 @@ export default class ExhentaiService {
         failed: true,
       };
     }
-    const exHentaiInfo: ExHentaiInfoItem[] = await this.page.$$eval(
+    const exHentaiInfo = (await this.page.$$eval(
       'div.gl1t',
       (wrappers: any[]) =>
         new Promise(resolve => {
@@ -142,7 +139,7 @@ export default class ExhentaiService {
           }
           resolve(results);
         }),
-    );
+    )) as ExHentaiInfoItem[];
     return {
       currentResult: exHentaiInfo,
       failed: false,
@@ -193,7 +190,7 @@ export default class ExhentaiService {
     return results;
   };
 
-  getUrlFromPaginationInfo = async (): Promise<string[]> =>
+  getUrlFromPaginationInfo = async () =>
     await this.page.$$eval(
       'table.ptt a',
       (wrappers: any[]) =>
@@ -212,7 +209,7 @@ export default class ExhentaiService {
         }),
     );
 
-  getAllThumbnaiUrls = async (): Promise<string[]> =>
+  getAllThumbnaiUrls = async () =>
     await this.page.$$eval(
       this.config.thumbnailClass,
       (wrappers: any[]) =>
@@ -242,7 +239,7 @@ export default class ExhentaiService {
     const result: string[] = [];
     for (const item of list) {
       await this.gotoTargetPage(item, true);
-      const thumbnailUrls: string[] = await this.getAllThumbnaiUrls();
+      const thumbnailUrls = (await this.getAllThumbnaiUrls()) as string[];
       result.push(...thumbnailUrls);
 
       logger.info('image length: ' + result.length);
@@ -284,13 +281,13 @@ export default class ExhentaiService {
         failed: true,
       };
     }
-    const imgUrl: string = await this.page.$eval(
+    const imgUrl = (await this.page.$eval(
       '[id=i3] img',
       (target: any) =>
         new Promise(resolve => {
           resolve(target.src);
         }),
-    );
+    )) as string;
     return {
       currentResult: imgUrl,
       failed: false,
