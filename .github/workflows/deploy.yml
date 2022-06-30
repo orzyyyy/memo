@@ -21,11 +21,10 @@ jobs:
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3.8.0
-        env:
+        with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_branch: gh-pages
           publish_dir: ./dist
-        with:
           allow_empty_commit: false
           user_name: 'peko-bot'
           user_email: 'zy410419243+peko-bot@gmail.com'
