@@ -54,7 +54,8 @@ export default class ExhentaiController {
 
     logger.info(`start fetching thumbnai urls from: ${url}`);
 
-    const list: string[] = [url, ...(await service.getUrlFromPaginationInfo())];
+    const urlArr = (await service.getUrlFromPaginationInfo()) as string[];
+    const list: string[] = [url, ...urlArr];
     const thumbnailUrls = await service.getThumbnailUrlFromDetailPage(list);
     writeIntoJsonFile(`${prefixPath}/list`, thumbnailUrls);
 
