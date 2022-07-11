@@ -61,7 +61,7 @@
     "fs-extra": "^10.1.0",
     "github-markdown-css": "^5.1.0",
     "history": "^5.3.0",
-    "marked": "^4.0.17",
+    "marked": "^4.0.18",
     "mini-xmind": "^1.4.2",
     "nino-cli": "^1.4.6",
     "npm-run-all": "^4.1.5",
