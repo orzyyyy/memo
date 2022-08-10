@@ -14,19 +14,32 @@ var threeSum = function (nums) {
   if (nums.length < 3) {
     return [];
   }
-  if (nums.every(item => item === 0)) {
+  if (nums.every((item) => item === 0)) {
     return [[0, 0, 0]];
   }
+  nums.sort((a, b) => a - b);
   var result = [];
-  for (var i = 0; i < nums.length - 2; i++) {
+  for (var i = 0; i < nums.length - 2 && nums[i] <= 0; i++) {
     var first = nums[i];
     for (var j = i + 1; j < nums.length - 1; j++) {
       var second = nums[j];
-      var third = nums[j + 1];
-      if (first + second + third === 0) {
-        result.push([first, second, third]);
+      for (var k = j + 1; k < nums.length; k++) {
+        var third = nums[k];
+        if (first + second + third === 0) {
+          result.push([first, second, third]);
+        }
       }
     }
   }
+  var resultSet = new Set();
+  for (const item of result) {
+    const key = `${item[0]},${item[1]},${item[2]}`;
+    resultSet.add(key, item);
+  }
+  result = [];
+  resultSet.forEach((item) => {
+    const resultItem = item.split(',').map((jtem) => parseInt(jtem));
+    result.push(resultItem);
+  });
   return result;
 };
