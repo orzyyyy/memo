@@ -27,8 +27,8 @@ export default class ExhentaiService {
     id: number;
   }[];
   config: any;
-  browser: puppeteer.Browser;
-  page: puppeteer.Page;
+  browser: any;
+  page: any;
   isWin: boolean;
 
   constructor() {
