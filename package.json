@@ -89,7 +89,7 @@
     "@types/koa__router": "^8.0.11",
     "@types/marked": "^4.0.6",
     "@types/prettier": "^2.7.0",
-    "@types/puppeteer-core": "^5.4.0",
+    "@types/puppeteer-core": "^7.0.4",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "@types/request": "^2.48.8",
