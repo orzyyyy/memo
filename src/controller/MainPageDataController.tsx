@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MappingProps } from '../../server/controller/DocumentController';
 import MainPageList from '../pages/MainPageList';
-import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import EditForm, { FormProps } from '../pages/EditForm';
 import ExhentaiList, { handleExhentaiDownload } from './ExHentaiListDataController';
 import { useResize } from '../hooks/useResize';
@@ -13,6 +12,13 @@ import MainPageContentWrapper from '../pages/MainPageContentWrapper';
 import Footer from '../component/Footer';
 import ExhentaiSearcher from '../pages/ExhentaiSearcher';
 let rightBar = require('../assets/rightBar.json');
+
+export interface ExHentaiInfoItem {
+  name?: string;
+  detailUrl: string;
+  postTime: number;
+  thumbnailUrl: string;
+}
 
 const neta = [
   '请冷静些，我们人多',
