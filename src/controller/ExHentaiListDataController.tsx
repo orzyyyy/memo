@@ -1,6 +1,6 @@
 import React from 'react';
 import ExHentaiList, { DownloadProps } from '../pages/ExHentaiList';
-import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
+import { ExHentaiInfoItem } from './MainPageDataController';
 
 export interface ExHentaiListDataControllerProps {
   dataSource: ExHentaiInfoItem[];

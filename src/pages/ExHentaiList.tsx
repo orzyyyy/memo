@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ExHentaiInfoItem } from '../../server/controller/ExhentaiController';
 import './css/exhentai-list.css';
+import { ExHentaiInfoItem } from '../controller/MainPageDataController';
 
 export interface DownloadProps {
   url: string;
