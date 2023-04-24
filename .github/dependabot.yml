@@ -18,10 +18,3 @@ updates:
     versions:
     - 8.0.1
     - 8.0.2
-  - dependency-name: puppeteer-core
-    versions:
-    - 7.0.0
-    - 7.0.1
-    - 7.0.4
-    - 7.1.0
-    - 8.0.0
